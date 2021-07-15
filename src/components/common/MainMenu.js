@@ -24,7 +24,7 @@ const MainMenu = () => {
     isError: rootItemIsError,
   } = useItem(rootId);
   const {
-    data: children,
+    data: children = [],
     isLoading,
     isError: childrenIsError,
   } = useSortedChildren(rootId, {

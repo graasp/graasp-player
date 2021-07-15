@@ -38,12 +38,10 @@ const Item = ({ id, isChildren }) => {
   const { data: item, isLoading, isError } = useItem(id);
 
   // fetch children if item is folder
-  const { data: children, isLoading: isChildrenLoading } = useSortedChildren(
-    id,
-    {
+  const { data: children = [], isLoading: isChildrenLoading } =
+    useSortedChildren(id, {
       enabled: Boolean(item?.get('type') === ITEM_TYPES.FOLDER),
-    },
-  );
+    });
 
   // fetch file content if type is file
   const { data: content, isError: isFileError } = useFileContent(id, {
