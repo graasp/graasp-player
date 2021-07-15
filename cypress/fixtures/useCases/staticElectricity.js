@@ -17,6 +17,7 @@ export const STATIC_ELECTRICITY = {
       description: '',
       creator: CURRENT_USER.id,
       type: ITEM_TYPES.FOLDER,
+      extra: {},
     },
     {
       id: 'gcafbd2a-5688-11eb-ae92-0242ac130015',
@@ -25,6 +26,7 @@ export const STATIC_ELECTRICITY = {
       description: '',
       creator: CURRENT_USER.id,
       type: ITEM_TYPES.FOLDER,
+      extra: {},
     },
     {
       id: 'gcefbd2a-5688-11eb-ae92-0542bc120002',
@@ -94,6 +96,7 @@ export const STATIC_ELECTRICITY = {
       description: '',
       creator: CURRENT_USER.id,
       type: ITEM_TYPES.FOLDER,
+      extra: {},
     },
     {
       id: 'gcafbd2a-4118-31eb-fe32-0542bc120002',
@@ -126,6 +129,7 @@ export const STATIC_ELECTRICITY = {
       description: '',
       creator: CURRENT_USER.id,
       type: ITEM_TYPES.FOLDER,
+      extra: {},
     },
     {
       id: 'gcbffd2a-4218-31eb-fe32-0542bc121102',
@@ -158,6 +162,7 @@ export const STATIC_ELECTRICITY = {
       description: '',
       creator: CURRENT_USER.id,
       type: ITEM_TYPES.FOLDER,
+      extra: {},
     },
     {
       id: 'gfbfed2a-4218-31eb-fe32-0522bc120002',

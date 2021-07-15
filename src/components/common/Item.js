@@ -11,6 +11,7 @@ import {
 import Alert from '@material-ui/lab/Alert';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
+import { List } from 'immutable';
 import { hooks } from '../../config/queryClient';
 import { ITEM_TYPES } from '../../enums';
 import FolderButton from './FolderButton';
@@ -38,7 +39,7 @@ const Item = ({ id, isChildren }) => {
   const { data: item, isLoading, isError } = useItem(id);
 
   // fetch children if item is folder
-  const { data: children = [], isLoading: isChildrenLoading } =
+  const { data: children = List(), isLoading: isChildrenLoading } =
     useSortedChildren(id, {
       enabled: Boolean(item?.get('type') === ITEM_TYPES.FOLDER),
     });

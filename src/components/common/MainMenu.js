@@ -7,6 +7,7 @@ import {
   DynamicTreeView,
   Loader,
 } from '@graasp/ui';
+import { List } from 'immutable';
 import { buildTreeItemClass, MAIN_MENU_ID } from '../../config/selectors';
 import { hooks } from '../../config/queryClient';
 import { ITEM_TYPES } from '../../enums';
@@ -24,7 +25,7 @@ const MainMenu = () => {
     isError: rootItemIsError,
   } = useItem(rootId);
   const {
-    data: children = [],
+    data: children = List(),
     isLoading,
     isError: childrenIsError,
   } = useSortedChildren(rootId, {
