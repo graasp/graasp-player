@@ -23,7 +23,7 @@ import {
 } from '../../config/selectors';
 import { SCREEN_MAX_HEIGHT } from '../../config/constants';
 
-const { useItem, useChildren, useFileContent, useS3FileContent } = hooks;
+const { useItem, useFileContent, useS3FileContent, useSortedChildren } = hooks;
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -38,9 +38,12 @@ const Item = ({ id, isChildren }) => {
   const { data: item, isLoading, isError } = useItem(id);
 
   // fetch children if item is folder
-  const { data: children, isLoading: isChildrenLoading } = useChildren(id, {
-    enabled: Boolean(item?.get('type') === ITEM_TYPES.FOLDER),
-  });
+  const { data: children, isLoading: isChildrenLoading } = useSortedChildren(
+    id,
+    {
+      enabled: Boolean(item?.get('type') === ITEM_TYPES.FOLDER),
+    },
+  );
 
   // fetch file content if type is file
   const { data: content, isError: isFileError } = useFileContent(id, {

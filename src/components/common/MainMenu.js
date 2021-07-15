@@ -11,7 +11,7 @@ import { buildTreeItemClass, MAIN_MENU_ID } from '../../config/selectors';
 import { hooks } from '../../config/queryClient';
 import { ITEM_TYPES } from '../../enums';
 
-const { useItem, useChildren } = hooks;
+const { useItem, useSortedChildren } = hooks;
 
 const MainMenu = () => {
   const { push } = useHistory();
@@ -27,7 +27,7 @@ const MainMenu = () => {
     data: children,
     isLoading,
     isError: childrenIsError,
-  } = useChildren(rootId, {
+  } = useSortedChildren(rootId, {
     enabled: Boolean(rootItem && rootItem.get('type') === ITEM_TYPES.FOLDER),
   });
 
@@ -50,7 +50,7 @@ const MainMenu = () => {
         rootLabel={rootItem.get('name')}
         rootId={rootId}
         useItem={useItem}
-        useChildren={useChildren}
+        useChildren={useSortedChildren}
         buildTreeItemClass={(nodeId) => buildTreeItemClass(nodeId)}
         initialExpendedItems={[rootId]}
         showCheckbox={false}
