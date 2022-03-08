@@ -4,7 +4,7 @@ import { I18nextProvider } from 'react-i18next';
 import ReduxToastr from 'react-redux-toastr';
 import { grey } from '@material-ui/core/colors';
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import { createTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import App from './App';
 import configureStore from '../store/configure';
 import i18nConfig from '../config/i18n';
@@ -15,7 +15,7 @@ import {
   ReactQueryDevtools,
 } from '../config/queryClient';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: '#5050d2',

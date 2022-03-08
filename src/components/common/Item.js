@@ -14,12 +14,10 @@ import PropTypes from 'prop-types';
 import { Api } from '@graasp/query-client';
 import { hooks } from '../../config/queryClient';
 import { ITEM_TYPES } from '../../enums';
-import FolderButton from './FolderButton';
 import {
   buildAppId,
   buildDocumentId,
   buildFileId,
-  buildFolderButtonId,
   FOLDER_NAME_TITLE_CLASS,
 } from '../../config/selectors';
 import { API_HOST, SCREEN_MAX_HEIGHT } from '../../config/constants';
@@ -74,9 +72,9 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
 
   switch (item.get('type')) {
     case ITEM_TYPES.FOLDER:
-      // display only one level of a folder
+      // do not display children folders
       if (isChildren) {
-        return <FolderButton id={buildFolderButtonId(id)} item={item} />;
+        return null;
       }
 
       // render each children recursively
@@ -84,7 +82,7 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
         <Container>
           {!showPinnedOnly && (
             <>
-              <Typography className={FOLDER_NAME_TITLE_CLASS} variant="h4">
+              <Typography className={FOLDER_NAME_TITLE_CLASS} variant="h5">
                 {item.get('name')}
               </Typography>
               <TextEditor value={item.get('description')} />

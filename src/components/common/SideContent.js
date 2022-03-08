@@ -8,13 +8,14 @@ import ForumIcon from '@material-ui/icons/Forum';
 import PushPinIcon from '@material-ui/icons/PushPin';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { Box, Paper, Slide } from '@material-ui/core';
+import { Box, Paper, Slide, Tooltip } from '@material-ui/core';
 import { Map } from 'immutable';
 import { useTranslation } from 'react-i18next';
 import Chatbox from './Chatbox';
 import { HEADER_HEIGHT, DRAWER_WIDTH } from '../../config/constants';
 import { LayoutContext } from '../context/LayoutContext';
 import Item from './Item';
+import ItemHeader from './ItemHeader'
 import {
   ITEM_CHATBOX_BUTTON_ID,
   PANNEL_CLOSE_BUTTON_ID,
@@ -116,16 +117,18 @@ const SideContent = ({ children, item }) => {
     if (!pinnedCount) return null;
 
     return (
-      <IconButton
-        id={ITEM_PINNED_BUTTON_ID}
-        className={classes.iconButton}
-        aria-label={
-          isPinnedMenuOpen ? t('Hide Pinned Items') : t('Show Pinned Items')
-        }
-        onClick={togglePinnedOpen}
-      >
-        <PushPinIcon />
-      </IconButton>
+      <Tooltip title={t('Pinned item')}>
+        <IconButton
+          id={ITEM_PINNED_BUTTON_ID}
+          className={classes.iconButton}
+          aria-label={
+            isPinnedMenuOpen ? t('Hide Pinned Items') : t('Show Pinned Items')
+          }
+          onClick={togglePinnedOpen}
+        >
+          <PushPinIcon />
+        </IconButton>
+      </Tooltip>
     );
   };
 
@@ -133,14 +136,16 @@ const SideContent = ({ children, item }) => {
     if (!settings?.showChatbox) return null;
 
     return (
-      <IconButton
-        id={ITEM_CHATBOX_BUTTON_ID}
-        className={classes.iconButton}
-        aria-label={isChatboxMenuOpen ? t('Hide Chat') : t('Show Chat')}
-        onClick={toggleChatOpen}
-      >
-        <ForumIcon />
-      </IconButton>
+      <Tooltip title={t('Chat')}>
+        <IconButton
+          id={ITEM_CHATBOX_BUTTON_ID}
+          className={classes.iconButton}
+          aria-label={isChatboxMenuOpen ? t('Hide Chat') : t('Show Chat')}
+          onClick={toggleChatOpen}
+        >
+          <ForumIcon />
+        </IconButton>
+      </Tooltip>
     );
   };
 
@@ -222,6 +227,8 @@ const SideContent = ({ children, item }) => {
         {diplayChatButton()}
 
         {displayPinButton()}
+
+        <ItemHeader id={item.get('id')} />
 
         {children}
       </main>

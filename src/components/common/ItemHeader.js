@@ -2,17 +2,16 @@ import React from 'react';
 import EditIcon from '@material-ui/icons/Edit';
 import { PermissionedComponent, Loader } from '@graasp/ui';
 import PropTypes from 'prop-types';
-import { Tooltip, Grid, makeStyles } from '@material-ui/core';
+import { Tooltip, makeStyles } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 import { hooks } from '../../config/queryClient';
 import { buildGraaspComposeItemRoute } from '../../config/constants';
 import { isRegularUser } from '../../utils/user';
 
-const useStyles = makeStyles((theme) => ({
-  wrapper: {
-    padding: theme.spacing(1),
+const useStyles = makeStyles(() => ({
+  iconButton: {
+    float: 'right',
   },
 }));
 
@@ -30,28 +29,22 @@ const ItemHeader = ({ id }) => {
   }
 
   const ActionButtons = (
-    <ButtonGroup
-      variant="contained"
-      color="primary"
-      aria-label="contained primary button group"
-    >
-      <Button onClick={onClickComposeView}>
-        <Tooltip title={t('Compose View')}>
-          <EditIcon />
-        </Tooltip>
-      </Button>
-    </ButtonGroup>
+    <Tooltip title={t('Compose View')}>
+      <IconButton
+        className={classes.iconButton}
+        aria-label={t('Compose view')}
+        onClick={onClickComposeView}
+      >
+        <EditIcon />
+      </IconButton>
+    </Tooltip>
   );
 
   return (
-    <Grid container justify="flex-end" className={classes.wrapper}>
-      <Grid item>
-        <PermissionedComponent
-          component={ActionButtons}
-          checkPermissions={() => isRegularUser(user)}
-        />
-      </Grid>
-    </Grid>
+    <PermissionedComponent
+      component={ActionButtons}
+      checkPermissions={() => isRegularUser(user)}
+    />
   );
 };
 
