@@ -5,88 +5,15 @@
   This feature should be ported to graasp-ui. */
 
 /* eslint-disable react/forbid-prop-types */
-/* eslint-disable prefer-arrow-callback */
 import React, { useState } from 'react';
 import TreeView from '@mui/lab/TreeView';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import TreeItem, { useTreeItem } from '@mui/lab/TreeItem';
+import TreeItem from '@mui/lab/TreeItem';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import Typography from '@material-ui/core/Typography';
 import CustomTreeItem from './CustomTreeItem';
-
-const CustomContent = React.forwardRef(function CustomContent(props, ref) {
-  const {
-    classes,
-    className,
-    label,
-    nodeId,
-    icon: iconProp,
-    expansionIcon,
-    displayIcon,
-  } = props;
-
-  const {
-    disabled,
-    expanded,
-    selected,
-    focused,
-    handleExpansion,
-    handleSelection,
-    preventSelection,
-  } = useTreeItem(nodeId);
-
-  const icon = iconProp || expansionIcon || displayIcon;
-
-  const handleMouseDown = (event) => {
-    preventSelection(event);
-  };
-
-  const handleExpansionClick = (event) => {
-    handleExpansion(event);
-  };
-
-  const handleSelectionClick = (event) => {
-    handleSelection(event);
-  };
-
-  return (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-    <div
-      className={clsx(className, classes.root, {
-        [classes.expanded]: expanded,
-        [classes.selected]: selected,
-        [classes.focused]: focused,
-        [classes.disabled]: disabled,
-      })}
-      onMouseDown={handleMouseDown}
-      ref={ref}
-    >
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-      <div onClick={handleExpansionClick} className={classes.iconContainer}>
-        {icon}
-      </div>
-      <Typography
-        onClick={handleSelectionClick}
-        component="div"
-        className={classes.label}
-      >
-        {label}
-      </Typography>
-    </div>
-  );
-});
-
-CustomContent.propTypes = {
-  classes: PropTypes.object.isRequired,
-  className: PropTypes.string.isRequired,
-  displayIcon: PropTypes.node.isRequired,
-  expansionIcon: PropTypes.node.isRequired,
-  icon: PropTypes.node.isRequired,
-  label: PropTypes.node.isRequired,
-  nodeId: PropTypes.string.isRequired,
-};
+import CustomContentTree from './CustomContentTree'
+import { ITEM_TYPES } from '../../../enums';
 
 const DynamicTreeView = ({
   id,
@@ -106,7 +33,7 @@ const DynamicTreeView = ({
   const onToggle = (_event, nodeIds) => setExpandedItems(nodeIds);
 
   // show only folder items in the navigation tree
-  const itemsFiltered = items.filter(item => item.type === "folder");
+  const itemsFiltered = items.filter(item => item.type === ITEM_TYPES.FOLDER);
 
   return (
     <TreeView
@@ -119,7 +46,7 @@ const DynamicTreeView = ({
       defaultExpandIcon={<ChevronRightIcon />}
       defaultSelected={rootId}
     >
-      <TreeItem ContentComponent={CustomContent} nodeId={rootId} label={rootLabel}>
+      <TreeItem ContentComponent={CustomContentTree} nodeId={rootId} label={rootLabel}>
         {itemsFiltered.map(({ id: itemId }) => (
           <CustomTreeItem
             key={itemId}

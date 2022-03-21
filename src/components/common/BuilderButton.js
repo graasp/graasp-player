@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const ItemHeader = ({ id }) => {
+const BuilderButton = ({ id }) => {
   const { t } = useTranslation();
   const classes = useStyles();
   const { data: user, isLoading } = hooks.useCurrentMember();
@@ -48,8 +48,8 @@ const ItemHeader = ({ id }) => {
   );
 };
 
-ItemHeader.propTypes = {
+BuilderButton.propTypes = {
   id: PropTypes.string.isRequired,
 };
 
-export default ItemHeader;
+export default BuilderButton;

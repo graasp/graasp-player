@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { Loader, Main } from '@graasp/ui';
 import { Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
@@ -20,17 +20,20 @@ const MainScreen = () => {
   const { data: item, isLoading, isError } = hooks.useItem(mainId);
   const { t } = useTranslation();
   const [leftContent, setLeftContent] = useState("");
-
-  useEffect(() => {
-    setLeftContent(item.get('name'));
-  }, [])
+  const [firstRender, setFirstRender] = useState(true);
 
   if (isLoading) {
+    console.log("pppp")
     return Loader;
   }
 
   if (!item || isError) {
     return <Alert severity="error">{t('This item does not exist')}</Alert>;
+  }
+
+  if(firstRender) {
+    setLeftContent(item.get('name'));
+    setFirstRender(false);
   }
 
   const content = !rootId ? (
