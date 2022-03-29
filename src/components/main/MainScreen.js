@@ -20,10 +20,9 @@ const MainScreen = () => {
   const { data: item, isLoading, isError } = hooks.useItem(mainId);
   const { t } = useTranslation();
   const [leftContent, setLeftContent] = useState("");
-  const [firstRender, setFirstRender] = useState(true);
+  const [isFirstItem, setIsFirstItem] = useState(true);
 
   if (isLoading) {
-    console.log("pppp")
     return Loader;
   }
 
@@ -31,9 +30,9 @@ const MainScreen = () => {
     return <Alert severity="error">{t('This item does not exist')}</Alert>;
   }
 
-  if(firstRender) {
+  if(isFirstItem) {
     setLeftContent(item.get('name'));
-    setFirstRender(false);
+    setIsFirstItem(false);
   }
 
   const content = !rootId ? (
