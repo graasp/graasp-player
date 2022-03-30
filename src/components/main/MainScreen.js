@@ -19,7 +19,7 @@ const MainScreen = () => {
   const mainId = focusedItemId || rootId;
   const { data: item, isLoading, isError } = hooks.useItem(mainId);
   const { t } = useTranslation();
-  const [leftContent, setLeftContent] = useState("");
+  const [leftContent, setLeftContent] = useState('');
   const [isFirstItem, setIsFirstItem] = useState(true);
 
   if (isLoading) {
@@ -30,7 +30,7 @@ const MainScreen = () => {
     return <Alert severity="error">{t('This item does not exist')}</Alert>;
   }
 
-  if(isFirstItem) {
+  if (isFirstItem) {
     setLeftContent(item.get('name'));
     setIsFirstItem(false);
   }
@@ -40,7 +40,7 @@ const MainScreen = () => {
       {t('No item defined.')}
     </Typography>
   ) : (
-      <Item id={mainId} />
+    <Item id={mainId} />
   );
 
   return (

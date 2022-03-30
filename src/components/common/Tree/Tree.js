@@ -12,7 +12,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import TreeItem from '@mui/lab/TreeItem';
 import PropTypes from 'prop-types';
 import CustomTreeItem from './CustomTreeItem';
-import CustomContentTree from './CustomContentTree'
+import CustomContentTree from './CustomContentTree';
 import { ITEM_TYPES } from '../../../enums';
 
 const DynamicTreeView = ({
@@ -33,7 +33,7 @@ const DynamicTreeView = ({
   const onToggle = (_event, nodeIds) => setExpandedItems(nodeIds);
 
   // show only folder items in the navigation tree
-  const itemsFiltered = items.filter(item => item.type === ITEM_TYPES.FOLDER);
+  const itemsFiltered = items.filter((item) => item.type === ITEM_TYPES.FOLDER);
 
   return (
     <TreeView
@@ -46,7 +46,11 @@ const DynamicTreeView = ({
       defaultExpandIcon={<ChevronRightIcon />}
       defaultSelected={rootId}
     >
-      <TreeItem ContentComponent={CustomContentTree} nodeId={rootId} label={rootLabel}>
+      <TreeItem
+        ContentComponent={CustomContentTree}
+        nodeId={rootId}
+        label={rootLabel}
+      >
         {itemsFiltered.map(({ id: itemId }) => (
           <CustomTreeItem
             key={itemId}

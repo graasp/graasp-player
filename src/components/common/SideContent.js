@@ -15,7 +15,7 @@ import Chatbox from './Chatbox';
 import { HEADER_HEIGHT, DRAWER_WIDTH } from '../../config/constants';
 import { LayoutContext } from '../context/LayoutContext';
 import Item from './Item';
-import BuilderButton from './BuilderButton'
+import BuilderButton from './BuilderButton';
 import {
   ITEM_CHATBOX_BUTTON_ID,
   PANNEL_CLOSE_BUTTON_ID,

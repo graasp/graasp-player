@@ -12,7 +12,7 @@ import { buildTreeItemClass } from '../../../config/selectors';
 import { ITEM_TYPES } from '../../../enums';
 import { hooks } from '../../../config/queryClient';
 import { isHidden } from '../../../utils/item';
-import CustomContentTree from './CustomContentTree'
+import CustomContentTree from './CustomContentTree';
 
 const { useItem, useItemTags, useItemsTags, useChildren } = hooks;
 
@@ -51,7 +51,8 @@ const CustomTreeItem = ({ itemId, expandedItems = [], selectedId }) => {
       return LoadingTreeItem;
     }
     const filteredChildren = children?.filter(
-      (child, idx) => !isHidden(childrenTags?.get(idx)) && child.type === ITEM_TYPES.FOLDER,
+      (child, idx) =>
+        !isHidden(childrenTags?.get(idx)) && child.type === ITEM_TYPES.FOLDER,
     );
 
     if (!filteredChildren?.size) {
