@@ -129,7 +129,7 @@ const SideContent = ({ children, item }) => {
     );
   };
 
-  const diplayChatButton = () => {
+  const displayChatButton = () => {
     if (!settings?.showChatbox) return null;
 
     return (
@@ -219,7 +219,7 @@ const SideContent = ({ children, item }) => {
           [classes.contentShift]: isChatboxMenuOpen || isPinnedMenuOpen,
         })}
       >
-        {diplayChatButton()}
+        {displayChatButton()}
 
         {displayPinButton()}
 

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@graasp/chatbox": "github:graasp/graasp-chatbox.git#main",
+    "@graasp/chatbox": "github:graasp/graasp-chatbox.git#30/exportChat",
     "@graasp/query-client": "github:graasp/graasp-query-client.git",
     "@graasp/ui": "github:graasp/graasp-ui.git",
     "@material-ui/core": "4.12.3",
