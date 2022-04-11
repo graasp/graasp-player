@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
@@ -22,6 +22,29 @@ const Chatbox = ({ item }) => {
   const { mutate: sendMessage } = useMutation(
     MUTATION_KEYS.POST_ITEM_CHAT_MESSAGE,
   );
+  const { mutate: editMessage } = useMutation(
+    MUTATION_KEYS.PATCH_ITEM_CHAT_MESSAGE,
+  );
+  const { mutate: deleteMessage } = useMutation(
+    MUTATION_KEYS.DELETE_ITEM_CHAT_MESSAGE,
+  );
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+
+  useEffect(
+    () => {
+      const handleResize = () => {
+        setWindowHeight(window.innerHeight);
+      };
+      window.addEventListener('resize', handleResize);
+
+      // cleanup eventListener
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    },
+    // run on first render only
+    [],
+  );
 
   const renderChatbox = () => {
     if (isChatLoading || isLoadingCurrentMember || isMembersLoading) {
@@ -37,8 +60,10 @@ const Chatbox = ({ item }) => {
         currentMember={currentMember}
         chatId={item.get('id')}
         messages={List(messages)}
-        height={window.innerHeight - HEADER_HEIGHT * 2}
+        height={windowHeight - HEADER_HEIGHT * 2}
         sendMessageFunction={sendMessage}
+        editMessageFunction={editMessage}
+        deleteMessageFunction={deleteMessage}
       />
     );
   };
