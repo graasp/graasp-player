@@ -3,7 +3,6 @@ import { CURRENT_USER } from './members';
 import { GRAASP_DOCUMENT_ITEM_VISIBLE, GRAASP_DOCUMENT_ITEM_HIDDEN, GRAASP_DOCUMENT_ITEM_PUBLIC_VISIBLE, GRAASP_DOCUMENT_ITEM_PUBLIC_HIDDEN } from './documents'
 
 const PUBLIC_TAG_ID = Cypress.env('PUBLIC_TAG_ID');
-const HIDDEN_TAG_ID = Cypress.env('HIDDEN_TAG_ID');
 
 export const DEFAULT_FOLDER_ITEM = {
   description: '',

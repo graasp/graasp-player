@@ -80,7 +80,6 @@ export const GRAASP_DOCUMENT_ITEM_PUBLIC_VISIBLE = {
   ],
 };
 
-
 export const GRAASP_DOCUMENT_ITEM_PUBLIC_HIDDEN = {
   id: 'fdf09f5a-5688-11eb-ae93-0242ac130010',
   type: ITEM_TYPES.DOCUMENT,
