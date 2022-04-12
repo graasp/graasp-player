@@ -1,5 +1,6 @@
 import { ITEM_TYPES } from '../../src/enums';
 import { CURRENT_USER } from './members';
+import { GRAASP_DOCUMENT_ITEM_VISIBLE, GRAASP_DOCUMENT_ITEM_HIDDEN, GRAASP_DOCUMENT_ITEM_PUBLIC_VISIBLE, GRAASP_DOCUMENT_ITEM_PUBLIC_HIDDEN } from './documents'
 
 const PUBLIC_TAG_ID = Cypress.env('PUBLIC_TAG_ID');
 const HIDDEN_TAG_ID = Cypress.env('HIDDEN_TAG_ID');
@@ -201,37 +202,8 @@ export const FOLDER_WITH_HIDDEN_ITEMS = {
         showChatbox: false,
       },
     },
-    {
-      ...DEFAULT_FOLDER_ITEM,
-      id: 'fdf09f5a-5688-11eb-ae93-0242ac130009',
-      name: 'Visible',
-      path: 'ecafbd2a_5688_11eb_ae93_0242ac130008.fdf09f5a_5688_11eb_ae93_0242ac130009',
-      extra: {
-        image: 'someimageurl',
-      },
-      settings: {
-        isPinned: false,
-        showChatbox: false,
-      },
-    },
-    {
-      ...DEFAULT_FOLDER_ITEM,
-      id: 'fdf09f5a-5688-11eb-ae93-0242ac130010',
-      name: 'Hidden',
-      path: 'ecafbd2a_5688_11eb_ae93_0242ac130008.fdf09f5a_5688_11eb_ae93_0242ac130010',
-      extra: {
-        image: 'someimageurl',
-      },
-      settings: {
-        isPinned: false,
-        showChatbox: false,
-      },
-      tags: [
-        {
-          tagId: HIDDEN_TAG_ID,
-        },
-      ],
-    },
+    GRAASP_DOCUMENT_ITEM_VISIBLE,
+    GRAASP_DOCUMENT_ITEM_HIDDEN,
   ],
 };
 
@@ -255,45 +227,8 @@ export const PUBLIC_FOLDER_WITH_HIDDEN_ITEMS = {
         },
       ],
     },
-    {
-      ...DEFAULT_FOLDER_ITEM,
-      id: 'fdf09f5a-5688-11eb-ae93-0242ac130009',
-      name: 'Visible',
-      path: 'ecafbd2a_5688_11eb_ae93_0242ac130008.fdf09f5a_5688_11eb_ae93_0242ac130009',
-      extra: {
-        image: 'someimageurl',
-      },
-      settings: {
-        isPinned: false,
-        showChatbox: false,
-      },
-      tags: [
-        {
-          tagId: PUBLIC_TAG_ID,
-        },
-      ],
-    },
-    {
-      ...DEFAULT_FOLDER_ITEM,
-      id: 'fdf09f5a-5688-11eb-ae93-0242ac130010',
-      name: 'Hidden',
-      path: 'ecafbd2a_5688_11eb_ae93_0242ac130008.fdf09f5a_5688_11eb_ae93_0242ac130010',
-      extra: {
-        image: 'someimageurl',
-      },
-      settings: {
-        isPinned: false,
-        showChatbox: false,
-      },
-      tags: [
-        {
-          tagId: HIDDEN_TAG_ID,
-        },
-        {
-          tagId: PUBLIC_TAG_ID,
-        },
-      ],
-    },
+    GRAASP_DOCUMENT_ITEM_PUBLIC_VISIBLE,
+    GRAASP_DOCUMENT_ITEM_PUBLIC_HIDDEN,
   ],
 };
 

@@ -3,7 +3,6 @@ import {
   buildFileId,
   buildDocumentId,
   buildAppId,
-  buildFolderButtonId,
   buildTreeItemClass,
 } from '../../src/config/selectors';
 import { ITEM_TYPES, MIME_TYPES } from '../../src/enums';
@@ -15,8 +14,9 @@ import {
 } from '../../src/utils/itemExtra';
 import { getDirectParentId } from '../../src/utils/item';
 import { LOAD_FOLDER_CONTENT_PAUSE } from './constants';
+import qs from 'qs';
 
-export const expectLinkViewScreenLayout = ({ id, name, extra }) => {
+export const expectLinkViewScreenLayout = ({ id, extra }) => {
   const { url, html } = getEmbeddedLinkExtra(extra);
 
   // embedded element
@@ -31,22 +31,23 @@ export const expectLinkViewScreenLayout = ({ id, name, extra }) => {
     cy.get(`iframe#${id}`).should('have.attr', 'src', url);
   }
 
-  // mainmenu
-  const menu = cy.get(`#${MAIN_MENU_ID}`);
-  menu.get(`#${MAIN_MENU_ID}`).contains(name);
 };
 
-export const expectAppViewScreenLayout = ({ id, name, extra }) => {
+export const expectAppViewScreenLayout = ({ id, extra }) => {
   const { url } = extra.app;
 
-  cy.get(`iframe#${buildAppId(id)}`).should('have.attr', 'src', url);
+  const appUrl = `${url}${qs.stringify(
+    { itemId: id },
+    {
+      addQueryPrefix: true,
+    },
+  )}`;
 
-  // mainmenu
-  const menu = cy.get(`#${MAIN_MENU_ID}`);
-  menu.get(`#${MAIN_MENU_ID}`).contains(name);
+  cy.get(`iframe#${buildAppId(id)}`).should('have.attr', 'src', appUrl);
+
 };
 
-export const expectFileViewScreenLayout = ({ id, name, extra }) => {
+export const expectFileViewScreenLayout = ({ id, extra }) => {
   const mimetype =
     getFileExtra(extra)?.mimetype || getS3FileExtra(extra)?.mimetype;
 
@@ -61,9 +62,6 @@ export const expectFileViewScreenLayout = ({ id, name, extra }) => {
   }
   cy.get(selector).should('exist');
 
-  // mainmenu
-  const menu = cy.get(`#${MAIN_MENU_ID}`);
-  menu.get(`#${MAIN_MENU_ID}`).contains(name);
 };
 
 export const expectDocumentViewScreenLayout = ({ id, extra }) => {
@@ -72,8 +70,10 @@ export const expectDocumentViewScreenLayout = ({ id, extra }) => {
   });
 };
 
-export const expectFolderButtonLayout = ({ id, name }) => {
-  cy.get(`#${buildFolderButtonId(id)}`).should('contain', name);
+export const expectFolderButtonLayout = ({ name }) => {
+    // mainmenu
+    const menu = cy.get(`#${MAIN_MENU_ID}`);
+    menu.get(`#${MAIN_MENU_ID}`).contains(name);
 };
 
 export const expectFolderLayout = ({ rootId, items }) => {

@@ -1,6 +1,6 @@
 import { buildMainPath } from '../../src/config/paths';
 import { FOLDER_WITH_HIDDEN_ITEMS } from '../fixtures/items';
-import { buildFolderButtonId } from '../../src/config/selectors';
+import { buildDocumentId } from '../../src/config/selectors';
 
 describe('Hidden Items', () => {
   it("Don't display Hidden items", () => {
@@ -12,10 +12,10 @@ describe('Hidden Items', () => {
     cy.visit(buildMainPath({ rootId: parent.id, id: null }));
 
     cy.get(
-      `#${buildFolderButtonId(FOLDER_WITH_HIDDEN_ITEMS.items[1].id)}`,
+      `#${buildDocumentId(FOLDER_WITH_HIDDEN_ITEMS.items[1].id)}`,
     ).should('exist');
     cy.get(
-      `#${buildFolderButtonId(FOLDER_WITH_HIDDEN_ITEMS.items[2].id)}`,
+      `#${buildDocumentId(FOLDER_WITH_HIDDEN_ITEMS.items[2].id)}`,
     ).should('not.exist');
   });
 

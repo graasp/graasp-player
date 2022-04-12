@@ -14,10 +14,12 @@ import PropTypes from 'prop-types';
 import { Api } from '@graasp/query-client';
 import { hooks } from '../../config/queryClient';
 import { ITEM_TYPES } from '../../enums';
+import FolderButton from './FolderButton';
 import {
   buildAppId,
   buildDocumentId,
   buildFileId,
+  buildFolderButtonId,
   FOLDER_NAME_TITLE_CLASS,
 } from '../../config/selectors';
 import { API_HOST, SCREEN_MAX_HEIGHT } from '../../config/constants';
@@ -72,9 +74,15 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
 
   switch (item.get('type')) {
     case ITEM_TYPES.FOLDER:
-      // do not display children folders
-      if (isChildren) {
+    
+      // do not display children folders if they are not pinned
+      if (!item.get('settings')?.isPinned && isChildren) {
         return null;
+      }
+
+      // only display children folders if they are pinned
+      if (item.get('settings')?.isPinned && isChildren) {
+        return <FolderButton id={buildFolderButtonId(id)} item={item} />;
       }
 
       // render each children recursively
