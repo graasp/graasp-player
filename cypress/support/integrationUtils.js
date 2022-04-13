@@ -1,3 +1,4 @@
+import qs from 'qs';
 import {
   MAIN_MENU_ID,
   buildFileId,
@@ -14,7 +15,6 @@ import {
 } from '../../src/utils/itemExtra';
 import { getDirectParentId } from '../../src/utils/item';
 import { LOAD_FOLDER_CONTENT_PAUSE } from './constants';
-import qs from 'qs';
 
 export const expectLinkViewScreenLayout = ({ id, extra }) => {
   const { url, html } = getEmbeddedLinkExtra(extra);

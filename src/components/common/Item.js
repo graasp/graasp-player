@@ -74,7 +74,6 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
 
   switch (item.get('type')) {
     case ITEM_TYPES.FOLDER:
-    
       // do not display children folders if they are not pinned
       if (!item.get('settings')?.isPinned && isChildren) {
         return null;
