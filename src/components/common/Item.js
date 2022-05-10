@@ -7,7 +7,7 @@ import {
   LinkItem,
   AppItem,
   TextEditor,
-  Collapser,
+  withCollapse,
 } from '@graasp/ui';
 import Alert from '@material-ui/lab/Alert';
 import { useTranslation } from 'react-i18next';
@@ -73,6 +73,8 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
     return <Alert severity="error">{t('An unexpected error occured.')}</Alert>;
   }
 
+  const showCollapse = item.get('settings')?.isExpandable;
+
   switch (item.get('type')) {
     case ITEM_TYPES.FOLDER: {
       // do not display children folders if they are not pinned
@@ -109,8 +111,11 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
     }
     case ITEM_TYPES.LINK: {
       const linkItem = <LinkItem item={item} height={SCREEN_MAX_HEIGHT} />;
-      if (item.get('settings')?.isExpandable) {
-        return <Collapser title={item.get('name')} content={linkItem} />;
+
+      if (showCollapse) {
+        return withCollapse({
+          item,
+        })(linkItem);
       }
       return linkItem;
     }
@@ -124,8 +129,11 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
           maxHeight={SCREEN_MAX_HEIGHT}
         />
       );
-      if (item.get('settings')?.isExpandable) {
-        return <Collapser title={item.get('name')} content={fileItem} />;
+
+      if (showCollapse) {
+        return withCollapse({
+          item,
+        })(fileItem);
       }
       return fileItem;
     }
@@ -133,8 +141,11 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
       const documentItem = (
         <DocumentItem id={buildDocumentId(id)} item={item} readOnly />
       );
-      if (item.get('settings')?.isExpandable) {
-        return <Collapser title={item.get('name')} content={documentItem} />;
+
+      if (showCollapse) {
+        return withCollapse({
+          item,
+        })(documentItem);
       }
       return documentItem;
     }
@@ -153,8 +164,11 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
           requestApiAccessToken={Api.requestApiAccessToken}
         />
       );
-      if (item.get('settings')?.isExpandable) {
-        return <Collapser title={item.get('name')} content={appItem} />;
+
+      if (showCollapse) {
+        return withCollapse({
+          item,
+        })(appItem);
       }
       return appItem;
     }
