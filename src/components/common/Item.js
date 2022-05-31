@@ -110,7 +110,9 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
       );
     }
     case ITEM_TYPES.LINK: {
-      const linkItem = <LinkItem item={item} height={SCREEN_MAX_HEIGHT} />;
+      const linkItem = (
+        <LinkItem item={item} height={SCREEN_MAX_HEIGHT} isResizable />
+      );
 
       if (showCollapse) {
         return withCollapse({
@@ -163,6 +165,8 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
           member={member}
           permission="read" // todo: use graasp-constants
           requestApiAccessToken={Api.requestApiAccessToken}
+          height={SCREEN_MAX_HEIGHT}
+          isResizable
         />
       );
 
