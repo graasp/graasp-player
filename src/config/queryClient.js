@@ -1,6 +1,6 @@
 import { configureQueryClient } from '@graasp/query-client';
 import notifier from '../middlewares/notifier';
-import { API_HOST } from './constants';
+import { API_HOST, DOMAIN } from './constants';
 
 const {
   queryClient,
@@ -10,6 +10,7 @@ const {
   ReactQueryDevtools,
 } = configureQueryClient({
   API_HOST,
+  DOMAIN,
   notifier,
   enableWebsocket: true,
   keepPreviousData: true,

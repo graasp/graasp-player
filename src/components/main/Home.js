@@ -37,11 +37,12 @@ const Home = () => {
     useItemsTags(sharedItems?.map(({ id }) => id).toJS());
 
   const filtred = ownItems?.filter(
-    (_item, idx) => !isLoadingOwnTags && !isHidden(ownItemsTags.get(idx)),
+    (_item, idx) => !isLoadingOwnTags && !isHidden(ownItemsTags?.get(idx)),
   );
 
   const shared = sharedItems?.filter(
-    (_item, idx) => !isLoadingSharedTags && !isHidden(sharedItemsTags.get(idx)),
+    (_item, idx) =>
+      !isLoadingSharedTags && !isHidden(sharedItemsTags?.get(idx)),
   );
 
   const renderSharedItems = () => {

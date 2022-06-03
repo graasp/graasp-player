@@ -7,6 +7,9 @@ import { ItemContextProvider } from '../context/ItemContext';
 import { useMutation, hooks } from '../../config/queryClient';
 import CookiesBanner from './CookiesBanner';
 import MainScreen from './MainScreen';
+import ItemForbiddenScreen from './ItemForbiddenScreen';
+
+const { useItem, useItemLogin, useCurrentMember } = hooks;
 
 const ItemScreen = () => (
   <ItemContextProvider>
@@ -22,12 +25,13 @@ ItemScreen.propTypes = {
 };
 
 const WrappedItemScreen = () => {
-  const { useCurrentMember, useItem, useItemLogin } = hooks;
   const { mutate: signOut } = useMutation(MUTATION_KEYS.SIGN_OUT);
   const { mutate: itemLoginSignIn } = useMutation(
     MUTATION_KEYS.POST_ITEM_LOGIN,
   );
   const { rootId } = useParams();
+
+  const ForbiddenContent = <ItemForbiddenScreen />;
 
   const Component = ItemLoginAuthorization({
     signIn: itemLoginSignIn,
@@ -36,6 +40,7 @@ const WrappedItemScreen = () => {
     useCurrentMember,
     useItem,
     useItemLogin,
+    ForbiddenContent,
   })(ItemScreen);
   return <Component />;
 };

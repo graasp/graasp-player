@@ -1,4 +1,4 @@
-import { toastr } from 'react-redux-toastr';
+import { toast } from 'react-toastify';
 import i18n from '../config/i18n';
 import {
   ERROR_MESSAGE_HEADER,
@@ -16,10 +16,10 @@ export default ({ type, payload }) => {
 
   // error notification
   if (payload?.error && message) {
-    toastr.error(i18n.t(ERROR_MESSAGE_HEADER), i18n.t(message));
+    toast.error(i18n.t(ERROR_MESSAGE_HEADER), i18n.t(message));
   }
   // success notification
   else if (message) {
-    toastr.success(i18n.t(SUCCESS_MESSAGE_HEADER), i18n.t(message));
+    toast.success(i18n.t(SUCCESS_MESSAGE_HEADER), i18n.t(message));
   }
 };

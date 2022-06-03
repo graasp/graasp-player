@@ -1,20 +1,19 @@
 import React from 'react';
-import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { I18nextProvider } from 'react-i18next';
-import ReduxToastr from 'react-redux-toastr';
+import { ToastContainer } from 'react-toastify';
 import { grey } from '@material-ui/core/colors';
-import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 import { createTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { GlobalStyles } from '@mui/material';
 import App from './App';
-import configureStore from '../store/configure';
 import i18nConfig from '../config/i18n';
-import { SHOW_NOTIFICATIONS, NODE_ENV, ENV } from '../config/constants';
+import { NODE_ENV, ENV, SHOW_NOTIFICATIONS } from '../config/constants';
 import {
   queryClient,
   QueryClientProvider,
   ReactQueryDevtools,
 } from '../config/queryClient';
+import { CurrentMemberContextProvider } from './context/CurrentMemberContext';
 
 const theme = createTheme({
   palette: {
@@ -38,18 +37,20 @@ const theme = createTheme({
 
 const globalStyles = <GlobalStyles styles={{ p: { fontSize: '1rem' } }} />;
 
-const { store } = configureStore();
-
 const Root = () => (
   <QueryClientProvider client={queryClient}>
     <I18nextProvider i18n={i18nConfig}>
-      <Provider store={store}>
-        {globalStyles}
-        <MuiThemeProvider theme={theme}>
-          {SHOW_NOTIFICATIONS && <ReduxToastr />}
-          <App />
-        </MuiThemeProvider>
-      </Provider>
+      {SHOW_NOTIFICATIONS && (
+        <ToastContainer position="bottom-right" theme="colored" />
+      )}
+      {globalStyles}
+      <MuiThemeProvider theme={theme}>
+        <Router>
+          <CurrentMemberContextProvider>
+            <App />
+          </CurrentMemberContextProvider>
+        </Router>
+      </MuiThemeProvider>
     </I18nextProvider>
     {NODE_ENV === ENV.DEVELOPMENT && <ReactQueryDevtools initialIsOpen />}
   </QueryClientProvider>

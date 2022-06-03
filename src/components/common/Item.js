@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container, makeStyles, Typography } from '@material-ui/core';
 import {
   Loader,
@@ -25,9 +25,9 @@ import {
 } from '../../config/selectors';
 import { API_HOST, SCREEN_MAX_HEIGHT } from '../../config/constants';
 import { isHidden } from '../../utils/item';
+import { CurrentMemberContext } from '../context/CurrentMemberContext';
 
-const { useItem, useChildren, useFileContent, useCurrentMember, useItemTags } =
-  hooks;
+const { useItem, useChildren, useFileContent, useItemTags } = hooks;
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -41,7 +41,8 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
   const classes = useStyles();
   const { data: item, isLoading, isError } = useItem(id);
   const { data: itemTags, isLoading: isTagsLoading } = useItemTags(id);
-  const { data: member, isLoading: isMemberLoading } = useCurrentMember();
+  const { data: member, isLoading: isMemberLoading } =
+    useContext(CurrentMemberContext);
   // fetch children if item is folder
   const isFolder = Boolean(item?.get('type') === ITEM_TYPES.FOLDER);
   const { data: children, isLoading: isChildrenLoading } = useChildren(id, {
