@@ -73,7 +73,7 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
     return <Alert severity="error">{t('An unexpected error occured.')}</Alert>;
   }
 
-  const showCollapse = item.get('settings')?.isExpandable;
+  const showCollapse = item.get('settings')?.isCollapsible;
 
   switch (item.get('type')) {
     case ITEM_TYPES.FOLDER: {
