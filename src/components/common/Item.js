@@ -127,6 +127,7 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
           item={item}
           content={content}
           maxHeight={SCREEN_MAX_HEIGHT}
+          showCollapse={showCollapse}
         />
       );
 
