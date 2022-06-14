@@ -2165,6 +2165,35 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@graasp/ui@github:graasp/graasp-ui.git#128/AddExtensionFeatureToIframesLinksAndApps":
+  version: 0.2.0
+  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=0337682291e5d72fc56b734910aedec713003148"
+  dependencies:
+    "@graasp/utils": "github:graasp/graasp-utils.git"
+    clsx: 1.1.1
+    http-status-codes: 2.2.0
+    immutable: 4.0.0
+    katex: 0.15.3
+    qs: 6.10.3
+    react-cookie-consent: 7.4.1
+    react-i18next: 11.16.9
+    react-quill: 1.3.5
+    react-rnd: 10.3.7
+    react-text-mask: 5.4.3
+    uuid: 8.3.2
+  peerDependencies:
+    "@material-ui/core": 4.11.0
+    "@material-ui/icons": 4.9.1
+    "@material-ui/lab": 4.0.0-alpha.58
+    ag-grid-community: 27.3.0
+    ag-grid-react: 27.3.0
+    i18next: 21.3.1
+    react: ^16.13.1
+    react-dom: 16.13.1
+  checksum: 084510f096f88f3a12c6576346febf6d440e4a2d2f59437822e5962345231183e6cc65048581e4a06ca8cb22e36f1cd0a2c9051e7bfc276f50cb56a2c333a02a
+  languageName: node
+  linkType: hard
+
 "@graasp/utils@github:graasp/graasp-utils.git":
   version: 0.1.0
   resolution: "@graasp/utils@https://github.com/graasp/graasp-utils.git#commit=fd6bb56269e37f1869eba555c198492f9d307f78"
@@ -4148,6 +4177,26 @@ __metadata:
     loader-utils: ^2.0.0
     regex-parser: ^2.2.11
   checksum: 5ceabea85219fcafed06f7d1aafb37dc761c6435e4ded2a8c6b01c69844250aa94ef65a4d07210dc7566c2d8b4c9ba8897518db596a550461eed26fbeb76b96f
+  languageName: node
+  linkType: hard
+
+"ag-grid-community@npm:27.3.0":
+  version: 27.3.0
+  resolution: "ag-grid-community@npm:27.3.0"
+  checksum: 3041c188239c50b875d45f82e4de1adfc7170c7338d0c18e504bc4d57bf71906bf291aaee0c59149ad65900e7308268ed5db32ad7f5f2368ef8e9e6b2c156a02
+  languageName: node
+  linkType: hard
+
+"ag-grid-react@npm:27.3.0":
+  version: 27.3.0
+  resolution: "ag-grid-react@npm:27.3.0"
+  dependencies:
+    prop-types: ^15.8.1
+  peerDependencies:
+    ag-grid-community: ~27.3.0
+    react: ^16.3.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.3.0 || ^17.0.0 || ^18.0.0
+  checksum: 9e4b7dd3649fb9ff2e4f0c63d273c7e76b076c5329812e775e43a0bf367b315e34968874d041001f0f29976160aa4dc62626c60ce4e6fd4f6d4d00f468a54810
   languageName: node
   linkType: hard
 
@@ -9263,6 +9312,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fast-memoize@npm:^2.5.1":
+  version: 2.5.2
+  resolution: "fast-memoize@npm:2.5.2"
+  checksum: 79fa759719ba4eac7e8c22fb3b0eb3f18f4a31e218c00b1eb4a5b53c5781921133a6b84472d59ec5a6ea8f26ad57b43cd99a350c0547ccce51489bc9a5f0b28d
+  languageName: node
+  linkType: hard
+
 "fast-redact@npm:^3.0.0":
   version: 3.1.1
   resolution: "fast-redact@npm:3.1.1"
@@ -10186,7 +10242,7 @@ __metadata:
     "@emotion/styled": 11.8.1
     "@graasp/chatbox": "github:graasp/graasp-chatbox.git#main"
     "@graasp/query-client": "github:graasp/graasp-query-client.git"
-    "@graasp/ui": "github:graasp/graasp-ui.git"
+    "@graasp/ui": "github:graasp/graasp-ui.git#128/AddExtensionFeatureToIframesLinksAndApps"
     "@graasp/websockets": "github:graasp/graasp-websockets.git#master"
     "@material-ui/core": 4.12.3
     "@material-ui/icons": 5.0.0-beta.4
@@ -10196,6 +10252,8 @@ __metadata:
     "@testing-library/jest-dom": 5.16.1
     "@testing-library/react": 12.1.2
     "@testing-library/user-event": 13.5.0
+    ag-grid-community: 27.3.0
+    ag-grid-react: 27.3.0
     clsx: 1.1.1
     concurrently: 7.0.0
     connected-react-router: 6.9.2
@@ -12721,6 +12779,17 @@ __metadata:
   bin:
     katex: cli.js
   checksum: eab97bbe292cc60b15fec264cba86d110e5e089045de084cd3a0f27b21ef65857a4d296c418ec3b397ff987671a20c6a9a1fd30f1862b86a0e6b7dbe3fb893f6
+  languageName: node
+  linkType: hard
+
+"katex@npm:0.15.3":
+  version: 0.15.3
+  resolution: "katex@npm:0.15.3"
+  dependencies:
+    commander: ^8.0.0
+  bin:
+    katex: cli.js
+  checksum: 12bec82d9ae9f122b9aeafaf2de476e702d12ae19bb9bdd9c8c24126fd81e752047bb856254af98ca54fc51f3bb7f149b3902d65dcdafb5e3deeb691ec4d3db2
   languageName: node
   linkType: hard
 
@@ -16010,7 +16079,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:15.8.1, prop-types@npm:^15.5.10, prop-types@npm:^15.5.6, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:15.8.1, prop-types@npm:^15.5.10, prop-types@npm:^15.5.6, prop-types@npm:^15.6.0, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -16305,6 +16374,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"re-resizable@npm:6.9.6":
+  version: 6.9.6
+  resolution: "re-resizable@npm:6.9.6"
+  dependencies:
+    fast-memoize: ^2.5.1
+  peerDependencies:
+    react: ^16.13.1 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.13.1 || ^17.0.0 || ^18.0.0
+  checksum: ac87fd1058a1086be6330cd56a25de6b89b872eafad3cc2e6b821e39adcb50e79241c78fc369a4eed84931f64affc07cefb4fc3c118ccbe77f93add25ad82a1a
+  languageName: node
+  linkType: hard
+
 "react-app-polyfill@npm:^2.0.0":
   version: 2.0.0
   resolution: "react-app-polyfill@npm:2.0.0"
@@ -16328,6 +16409,18 @@ __metadata:
   peerDependencies:
     react: ^16.13.1 || ^17.0.0
   checksum: 9676e9611998f58e43ae76721f33b80eb95be37ad3937de0fd4f623ac5e7c72573d45cc36ca5e0c6b9d494a09a8aea1aea7ba8ae5ad0ebb2b692837ef78a561e
+  languageName: node
+  linkType: hard
+
+"react-cookie-consent@npm:7.4.1":
+  version: 7.4.1
+  resolution: "react-cookie-consent@npm:7.4.1"
+  dependencies:
+    js-cookie: ^2.2.1
+    prop-types: ^15.7.2
+  peerDependencies:
+    react: ^16.13.1 || ^17.0.0 || ^18.0.0
+  checksum: 05ab24f7e028da89160baa51c1c2eb62156a98c8e0b55d6548fc95aba8a7e325b06637c1aa1a974b9456f2f1316082dda73ac3b6448fd79ac4cccecda195e4ed
   languageName: node
   linkType: hard
 
@@ -16383,6 +16476,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-draggable@npm:4.4.4":
+  version: 4.4.4
+  resolution: "react-draggable@npm:4.4.4"
+  dependencies:
+    clsx: ^1.1.1
+    prop-types: ^15.6.0
+  peerDependencies:
+    react: ">= 16.3.0"
+    react-dom: ">= 16.3.0"
+  checksum: b8258a58938c261a79f1b9ffd67774283c1ac732423c1c9c9f5fe4d17a06886edd659891e445ba089828ca59f1885e5b909262e24cf60640b8ed05c8499c88bb
+  languageName: node
+  linkType: hard
+
 "react-error-overlay@npm:^6.0.9":
   version: 6.0.10
   resolution: "react-error-overlay@npm:6.0.10"
@@ -16413,6 +16519,25 @@ __metadata:
     react-native:
       optional: true
   checksum: 8bb926e40136f57c21771d41b92c445ce457b70243fef45642c98967d2c6bb2d8a0df3c0db16909c2c6a8b007b2f7a4355b949a80e07f7e1152ed1be4756400d
+  languageName: node
+  linkType: hard
+
+"react-i18next@npm:11.16.9":
+  version: 11.16.9
+  resolution: "react-i18next@npm:11.16.9"
+  dependencies:
+    "@babel/runtime": ^7.14.5
+    html-escaper: ^2.0.2
+    html-parse-stringify: ^3.0.1
+  peerDependencies:
+    i18next: ">= 19.0.0"
+    react: ">= 16.8.0"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: b79606a0c36a822b3d9a1e4f2bb4b44643c121de9425ddfeea7e63e5136fe33d4b0b42f045f14d53592dcdbde1fb43cd7be4555b22747d2e0f6f754d3a60c711
   languageName: node
   linkType: hard
 
@@ -16522,6 +16647,20 @@ __metadata:
   version: 0.8.3
   resolution: "react-refresh@npm:0.8.3"
   checksum: 3cffe5a9cbac1c5d59bf74bf9fff43c987d87ef32098b9092ea94b6637377d86c08565b9374d9397f446b3fbcd95de986ec77220a16f979687cb39b7b89e2f91
+  languageName: node
+  linkType: hard
+
+"react-rnd@npm:10.3.7":
+  version: 10.3.7
+  resolution: "react-rnd@npm:10.3.7"
+  dependencies:
+    re-resizable: 6.9.6
+    react-draggable: 4.4.4
+    tslib: 2.3.1
+  peerDependencies:
+    react: ">=16.3.0"
+    react-dom: ">=16.3.0"
+  checksum: 312c08f21b6ef9dcfa2e4823ebf63a3142793168b02b2cd54327587ad8159d409577428c6c363e3805ba437403dcfc708df39ebc83b423e9d71002e3fca3f3fc
   languageName: node
   linkType: hard
 
@@ -19201,17 +19340,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tslib@npm:2.3.1, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.2.0":
+  version: 2.3.1
+  resolution: "tslib@npm:2.3.1"
+  checksum: de17a98d4614481f7fcb5cd53ffc1aaf8654313be0291e1bfaee4b4bb31a20494b7d218ff2e15017883e8ea9626599b3b0e0229c18383ba9dce89da2adf15cb9
+  languageName: node
+  linkType: hard
+
 "tslib@npm:^1.8.1, tslib@npm:^1.9.0":
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
   checksum: dbe628ef87f66691d5d2959b3e41b9ca0045c3ee3c7c7b906cc1e328b39f199bb1ad9e671c39025bd56122ac57dfbf7385a94843b1cc07c60a4db74795829acd
-  languageName: node
-  linkType: hard
-
-"tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.2.0":
-  version: 2.3.1
-  resolution: "tslib@npm:2.3.1"
-  checksum: de17a98d4614481f7fcb5cd53ffc1aaf8654313be0291e1bfaee4b4bb31a20494b7d218ff2e15017883e8ea9626599b3b0e0229c18383ba9dce89da2adf15cb9
   languageName: node
   linkType: hard
 
