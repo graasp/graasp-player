@@ -6,6 +6,7 @@ import {
   DocumentItem,
   LinkItem,
   AppItem,
+  H5PItem,
   TextEditor,
   withCollapse,
 } from '@graasp/ui';
@@ -23,8 +24,17 @@ import {
   buildFolderButtonId,
   FOLDER_NAME_TITLE_CLASS,
 } from '../../config/selectors';
-import { API_HOST, SCREEN_MAX_HEIGHT } from '../../config/constants';
+import {
+  API_HOST,
+  H5P_ASSETS_HOST,
+  SCREEN_MAX_HEIGHT,
+} from '../../config/constants';
 import { isHidden } from '../../utils/item';
+import {
+  buildServeH5PContentURL,
+  H5P_FRAME_CSS_PATH,
+  H5P_FRAME_JS_PATH,
+} from '../../config/h5p';
 
 const { useItem, useChildren, useFileContent, useCurrentMember, useItemTags } =
   hooks;
@@ -173,6 +183,28 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
       }
       return appItem;
     }
+
+    case ITEM_TYPES.H5P: {
+      const h5pContentPath = item.get('extra')?.h5p?.contentFilePath;
+      if (!h5pContentPath) {
+        return (
+          <Alert severity="error">{t('An unexpected error occured.')}</Alert>
+        );
+      }
+
+      return (
+        <H5PItem
+          itemId={id}
+          h5pAssetsHost={H5P_ASSETS_HOST}
+          playerOptions={{
+            h5pJsonPath: buildServeH5PContentURL(h5pContentPath),
+            frameJs: H5P_FRAME_JS_PATH,
+            frameCss: H5P_FRAME_CSS_PATH,
+          }}
+        />
+      );
+    }
+
     default:
       console.error(`The type ${item?.get('type')} is not defined`);
       return null;
