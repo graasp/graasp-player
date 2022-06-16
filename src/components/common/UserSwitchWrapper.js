@@ -12,6 +12,13 @@ import {
   MEMBER_PROFILE_PATH,
 } from '../../config/constants';
 import { CurrentMemberContext } from '../context/CurrentMemberContext';
+import {
+  HEADER_MEMBER_MENU_BUTTON_ID,
+  buildMemberMenuItemId,
+  HEADER_MEMBER_MENU_SIGN_IN_BUTTON_ID,
+  HEADER_MEMBER_MENU_SEE_PROFILE_BUTTON_ID,
+  HEADER_MEMBER_MENU_SIGN_OUT_BUTTON_ID,
+} from '../../config/selectors';
 
 const UserSwitchWrapper = ({ ButtonContent }) => {
   const {
@@ -43,6 +50,11 @@ const UserSwitchWrapper = ({ ButtonContent }) => {
         domain={DOMAIN}
         redirectPath={SIGN_IN_PATH}
         useMembers={hooks.useMembers}
+        buttonId={HEADER_MEMBER_MENU_BUTTON_ID}
+        signInMenuItemId={HEADER_MEMBER_MENU_SIGN_IN_BUTTON_ID}
+        signOutMenuItemId={HEADER_MEMBER_MENU_SIGN_OUT_BUTTON_ID}
+        seeProfileButtonId={HEADER_MEMBER_MENU_SEE_PROFILE_BUTTON_ID}
+        buildMemberMenuItemId={buildMemberMenuItemId}
       />
     </>
   );

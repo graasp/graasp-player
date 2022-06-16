@@ -17,6 +17,7 @@ export const APP_NAME = 'Graasp';
 
 export const ENV = {
   DEVELOPMENT: 'development',
+  TEST: 'test',
 };
 
 export const NODE_ENV =
@@ -38,7 +39,7 @@ export const SHOW_NOTIFICATIONS =
 export const AUTHENTICATION_HOST =
   ENV_AUTHENTICATION_HOST ||
   process.env.REACT_APP_AUTHENTICATION_HOST ||
-  'http://localhost:3112';
+  'http://localhost:3001';
 
 export const GRAASP_COMPOSE_HOST =
   ENV_GRAASP_COMPOSE_HOST ||

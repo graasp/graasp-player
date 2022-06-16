@@ -8,7 +8,8 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
-import { CURRENT_USER } from '../fixtures/members';
+import { COOKIE_KEYS } from '@graasp/utils';
+import { CURRENT_USER, MEMBERS } from '../fixtures/members';
 import {
   mockDefaultDownloadFile,
   mockGetChildren,
@@ -20,14 +21,19 @@ import {
   mockGetPublicItem,
   mockGetPublicChildren,
   mockPublicDefaultDownloadFile,
+  mockSignOut,
+  mockGetMembers,
+  mockProfilePage,
+  mockAuthPage,
 } from './server';
 
 Cypress.Commands.add(
   'setUpApi',
   ({
     items = [],
-    members = [],
+    members = Object.values(MEMBERS),
     currentMember = CURRENT_USER,
+    storedSessions = [],
     getItemError = false,
     getMemberError = false,
     getCurrentMemberError = false,
@@ -35,7 +41,11 @@ Cypress.Commands.add(
     const cachedItems = JSON.parse(JSON.stringify(items));
     const cachedMembers = JSON.parse(JSON.stringify(members));
 
-    cy.setCookie('session', currentMember ? 'somecookie' : null);
+    cy.setCookie(COOKIE_KEYS.SESSION_KEY, currentMember ? 'somecookie' : null);
+    cy.setCookie(
+      COOKIE_KEYS.STORED_SESSIONS_KEY,
+      JSON.stringify(storedSessions),
+    );
 
     mockGetItem(
       { items: cachedItems, currentMember },
@@ -56,5 +66,11 @@ Cypress.Commands.add(
 
     mockDefaultDownloadFile({ items: cachedItems, currentMember });
     mockPublicDefaultDownloadFile(cachedItems);
+
+    mockSignOut();
+
+    mockGetMembers(cachedMembers);
+    mockProfilePage();
+    mockAuthPage();
   },
 );
