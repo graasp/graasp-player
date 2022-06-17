@@ -2,7 +2,7 @@
 # Manual changes might be lost - proceed with caution!
 
 __metadata:
-  version: 6
+  version: 5
   cacheKey: 8
 
 "@ampproject/remapping@npm:^2.1.0":
@@ -596,7 +596,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-proposal-private-property-in-object@npm:^7.16.0, @babel/plugin-proposal-private-property-in-object@npm:^7.17.12":
+"@babel/plugin-proposal-private-property-in-object@npm:^7.17.12":
   version: 7.17.12
   resolution: "@babel/plugin-proposal-private-property-in-object@npm:7.17.12"
   dependencies:
@@ -20590,7 +20590,7 @@ __metadata:
 
 "typescript@patch:typescript@4.2.4#~builtin<compat/typescript>":
   version: 4.2.4
-  resolution: "typescript@patch:typescript@npm%3A4.2.4#~builtin<compat/typescript>::version=4.2.4&hash=bda367"
+  resolution: "typescript@patch:typescript@npm%3A4.2.4#~builtin<compat/typescript>::version=4.2.4&hash=de8f8a"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
@@ -20600,7 +20600,7 @@ __metadata:
 
 "typescript@patch:typescript@^4.4.3#~builtin<compat/typescript>":
   version: 4.7.3
-  resolution: "typescript@patch:typescript@npm%3A4.7.3#~builtin<compat/typescript>::version=4.7.3&hash=bda367"
+  resolution: "typescript@patch:typescript@npm%3A4.7.3#~builtin<compat/typescript>::version=4.7.3&hash=de8f8a"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
