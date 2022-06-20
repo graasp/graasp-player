@@ -41,7 +41,6 @@ const CustomContentTree = React.forwardRef((props, ref) => {
   };
 
   return (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       className={clsx(className, classes.root, {
         [classes.expanded]: expanded,
@@ -52,7 +51,6 @@ const CustomContentTree = React.forwardRef((props, ref) => {
       onMouseDown={handleMouseDown}
       ref={ref}
     >
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
       <div onClick={handleExpansionClick} className={classes.iconContainer}>
         {icon}
       </div>
