@@ -2183,7 +2183,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/ui@github:graasp/graasp-ui.git#e8f6d297a7995c902fba45485cdac791754fdf88":
+"@graasp/ui@github:graasp/graasp-ui.git#138/UsePdfjsViewer":
   version: 0.2.0
   resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=e8f6d297a7995c902fba45485cdac791754fdf88"
   dependencies:
@@ -10595,7 +10595,7 @@ __metadata:
     "@emotion/styled": 11.8.1
     "@graasp/chatbox": "github:graasp/graasp-chatbox.git#main"
     "@graasp/query-client": "github:graasp/graasp-query-client.git"
-    "@graasp/ui": "github:graasp/graasp-ui.git#e8f6d297a7995c902fba45485cdac791754fdf88"
+    "@graasp/ui": "github:graasp/graasp-ui.git#138/UsePdfjsViewer"
     "@graasp/websockets": "github:graasp/graasp-websockets.git#master"
     "@material-ui/core": 4.12.3
     "@material-ui/icons": 5.0.0-beta.4
@@ -11715,7 +11715,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-core-module@npm:^2.0.0, is-core-module@npm:^2.2.0, is-core-module@npm:^2.5.0, is-core-module@npm:^2.8.0, is-core-module@npm:^2.8.1":
+"is-core-module@npm:^2.0.0, is-core-module@npm:^2.5.0, is-core-module@npm:^2.8.0, is-core-module@npm:^2.8.1, is-core-module@npm:^2.9.0":
   version: 2.9.0
   resolution: "is-core-module@npm:2.9.0"
   dependencies:
@@ -17018,7 +17018,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:15.8.1, prop-types@npm:^15.0.0, prop-types@npm:^15.5.10, prop-types@npm:^15.5.6, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:15.8.1, prop-types@npm:^15.0.0, prop-types@npm:^15.5.10, prop-types@npm:^15.5.6, prop-types@npm:^15.6.0, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -17310,6 +17310,18 @@ __metadata:
     iconv-lite: 0.4.24
     unpipe: 1.0.0
   checksum: 5362adff1575d691bb3f75998803a0ffed8c64eabeaa06e54b4ada25a0cd1b2ae7f4f5ec46565d1bec337e08b5ac90c76eaa0758de6f72a633f025d754dec29e
+  languageName: node
+  linkType: hard
+
+"re-resizable@npm:6.9.6":
+  version: 6.9.6
+  resolution: "re-resizable@npm:6.9.6"
+  dependencies:
+    fast-memoize: ^2.5.1
+  peerDependencies:
+    react: ^16.13.1 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.13.1 || ^17.0.0 || ^18.0.0
+  checksum: ac87fd1058a1086be6330cd56a25de6b89b872eafad3cc2e6b821e39adcb50e79241c78fc369a4eed84931f64affc07cefb4fc3c118ccbe77f93add25ad82a1a
   languageName: node
   linkType: hard
 
@@ -18284,7 +18296,7 @@ __metadata:
     supports-preserve-symlinks-flag: ^1.0.0
   bin:
     resolve: bin/resolve
-  checksum: 07af5fc1e81aa1d866cbc9e9460fbb67318a10fa3c4deadc35c3ad8a898ee9a71a86a65e4755ac3195e0ea0cfbe201eb323ebe655ce90526fd61917313a34e4e
+  checksum: a2d14cc437b3a23996f8c7367eee5c7cf8149c586b07ca2ae00e96581ce59455555a1190be9aa92154785cf9f2042646c200d0e00e0bbd2b8a995a93a0ed3e4e
   languageName: node
   linkType: hard
 
@@ -18320,7 +18332,7 @@ __metadata:
     supports-preserve-symlinks-flag: ^1.0.0
   bin:
     resolve: bin/resolve
-  checksum: 5656f4d0bedcf8eb52685c1abdf8fbe73a1603bb1160a24d716e27a57f6cecbe2432ff9c89c2bd57542c3a7b9d14b1882b73bfe2e9d7849c9a4c0b8b39f02b8b
+  checksum: c79ecaea36c872ee4a79e3db0d3d4160b593f2ca16e031d8283735acd01715a203607e9ded3f91f68899c2937fa0d49390cddbe0fb2852629212f3cda283f4a7
   languageName: node
   linkType: hard
 
