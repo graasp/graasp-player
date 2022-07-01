@@ -1,4 +1,5 @@
 import { buildSignInPath } from '@graasp/utils';
+
 import env from '../env.json';
 
 const {

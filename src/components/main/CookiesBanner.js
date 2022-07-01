@@ -1,6 +1,8 @@
 import React from 'react';
-import { CookiesBanner } from '@graasp/ui';
 import { useTranslation } from 'react-i18next';
+
+import { CookiesBanner } from '@graasp/ui';
+
 import { ACCEPT_COOKIES_NAME } from '../../config/constants';
 
 const Component = () => {

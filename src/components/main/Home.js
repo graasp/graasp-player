@@ -1,18 +1,21 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Main, MainMenu as GraaspMainMenu, Loader } from '@graasp/ui';
-import { Divider, Grid, Container } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import { useNavigate } from 'react-router';
-import HeaderRightContent from './HeaderRightContent';
-import CookiesBanner from './CookiesBanner';
-import { hooks } from '../../config/queryClient';
-import { buildTreeItemClass, OWN_ITEMS_GRID_ID } from '../../config/selectors';
-import ItemCard from '../common/ItemCard';
+
+import { MainMenu as GraaspMainMenu, Loader, Main } from '@graasp/ui';
+
+import { Container, Divider, Grid } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+
 import { buildMainPath } from '../../config/paths';
-import DynamicTreeView from '../common/Tree/Tree';
+import { hooks } from '../../config/queryClient';
+import { OWN_ITEMS_GRID_ID, buildTreeItemClass } from '../../config/selectors';
 import { isHidden } from '../../utils/item';
+import ItemCard from '../common/ItemCard';
+import DynamicTreeView from '../common/Tree/Tree';
+import CookiesBanner from './CookiesBanner';
+import HeaderRightContent from './HeaderRightContent';
 
 const { useOwnItems, useSharedItems, useItemsTags } = hooks;
 

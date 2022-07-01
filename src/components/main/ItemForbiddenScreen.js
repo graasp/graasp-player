@@ -1,19 +1,22 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import BlockIcon from '@material-ui/icons/Block';
-import { Main, Button, Navigation, GraaspLogo } from '@graasp/ui';
 import { Link } from 'react-router-dom';
+
+import { Button, GraaspLogo, Main, Navigation } from '@graasp/ui';
+
+import { Grid, IconButton, Typography, makeStyles } from '@material-ui/core';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { Grid, IconButton, makeStyles, Typography } from '@material-ui/core';
-import UserSwitchWrapper from '../common/UserSwitchWrapper';
-import HeaderRightContent from './HeaderRightContent';
+import BlockIcon from '@material-ui/icons/Block';
+
 import {
+  APP_NAME,
   Context,
   GRAASP_LOGO_HEADER_HEIGHT,
   HOST_MAP,
-  APP_NAME,
 } from '../../config/constants';
 import { HOME_PATH } from '../../config/paths';
+import UserSwitchWrapper from '../common/UserSwitchWrapper';
+import HeaderRightContent from './HeaderRightContent';
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {

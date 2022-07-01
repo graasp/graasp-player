@@ -1,31 +1,34 @@
+import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import { Container, makeStyles, Typography } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
+
+import { Api } from '@graasp/query-client';
 import {
-  Loader,
-  FileItem,
-  DocumentItem,
-  LinkItem,
   AppItem,
+  DocumentItem,
+  FileItem,
+  LinkItem,
+  Loader,
   TextEditor,
   withCollapse,
 } from '@graasp/ui';
+
+import { Container, Typography, makeStyles } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
-import { useTranslation } from 'react-i18next';
-import PropTypes from 'prop-types';
-import { Api } from '@graasp/query-client';
+
+import { API_HOST, SCREEN_MAX_HEIGHT } from '../../config/constants';
 import { hooks } from '../../config/queryClient';
-import { ITEM_TYPES } from '../../enums';
-import FolderButton from './FolderButton';
 import {
+  FOLDER_NAME_TITLE_CLASS,
   buildAppId,
   buildDocumentId,
   buildFileId,
   buildFolderButtonId,
-  FOLDER_NAME_TITLE_CLASS,
 } from '../../config/selectors';
-import { API_HOST, SCREEN_MAX_HEIGHT } from '../../config/constants';
+import { ITEM_TYPES } from '../../enums';
 import { isHidden } from '../../utils/item';
 import { CurrentMemberContext } from '../context/CurrentMemberContext';
+import FolderButton from './FolderButton';
 
 const { useItem, useChildren, useFileContent, useItemTags } = hooks;
 

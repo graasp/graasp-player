@@ -1,7 +1,8 @@
-import React, { useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { hooks } from '../../config/queryClient';
+import React, { useEffect, useMemo } from 'react';
+
 import i18n from '../../config/i18n';
+import { hooks } from '../../config/queryClient';
 
 const CurrentMemberContext = React.createContext();
 

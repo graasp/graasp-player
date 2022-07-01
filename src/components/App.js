@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import { Loader, withAuthorization } from '@graasp/ui';
 import { useLocation } from 'react-router';
+import { Navigate, Route, Routes } from 'react-router-dom';
+
+import { Loader, withAuthorization } from '@graasp/ui';
 import { saveUrlForRedirection } from '@graasp/utils';
-import { buildMainPath, HOME_PATH } from '../config/paths';
+
+import { DOMAIN, SIGN_IN_PATH } from '../config/constants';
+import { HOME_PATH, buildMainPath } from '../config/paths';
+import { CurrentMemberContext } from './context/CurrentMemberContext';
 import Home from './main/Home';
 import ItemScreen from './main/ItemScreen';
-import { DOMAIN, SIGN_IN_PATH } from '../config/constants';
-import { CurrentMemberContext } from './context/CurrentMemberContext';
 
 export const App = () => {
   const { pathname } = useLocation();

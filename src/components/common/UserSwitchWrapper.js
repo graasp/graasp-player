@@ -1,24 +1,25 @@
-import React, { useContext } from 'react';
-import { useNavigate } from 'react-router';
-import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-import { UserSwitchWrapper as GraaspUserSwitch } from '@graasp/ui';
-import { MUTATION_KEYS } from '@graasp/query-client';
+import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router';
 
-import { useMutation, hooks } from '../../config/queryClient';
+import { MUTATION_KEYS } from '@graasp/query-client';
+import { UserSwitchWrapper as GraaspUserSwitch } from '@graasp/ui';
+
 import {
   DOMAIN,
-  SIGN_IN_PATH,
   MEMBER_PROFILE_PATH,
+  SIGN_IN_PATH,
 } from '../../config/constants';
-import { CurrentMemberContext } from '../context/CurrentMemberContext';
+import { hooks, useMutation } from '../../config/queryClient';
 import {
   HEADER_MEMBER_MENU_BUTTON_ID,
-  buildMemberMenuItemId,
-  HEADER_MEMBER_MENU_SIGN_IN_BUTTON_ID,
   HEADER_MEMBER_MENU_SEE_PROFILE_BUTTON_ID,
+  HEADER_MEMBER_MENU_SIGN_IN_BUTTON_ID,
   HEADER_MEMBER_MENU_SIGN_OUT_BUTTON_ID,
+  buildMemberMenuItemId,
 } from '../../config/selectors';
+import { CurrentMemberContext } from '../context/CurrentMemberContext';
 
 const UserSwitchWrapper = ({ ButtonContent }) => {
   const {

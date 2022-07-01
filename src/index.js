@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactGA from 'react-ga4';
-import './index.css';
-import Root from './components/Root';
-import * as serviceWorker from './serviceWorker';
 
 import '@graasp/ui/dist/bundle.css';
+
+import Root from './components/Root';
 import { GA_MEASUREMENT_ID, SENTRY_DSN } from './config/constants';
-import { hasAcceptedCookies } from './utils/cookies';
 import { SENTRY_ENVIRONMENT, SENTRY_TRACE_SAMPLE_RATE } from './config/sentry';
+import './index.css';
+import * as serviceWorker from './serviceWorker';
+import { hasAcceptedCookies } from './utils/cookies';
 
 Sentry.init({
   dsn: SENTRY_DSN,

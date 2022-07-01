@@ -1,13 +1,15 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { useParams } from 'react-router-dom';
+
 import { MUTATION_KEYS } from '@graasp/query-client';
-import PropTypes from 'prop-types';
 import { ItemLoginAuthorization } from '@graasp/ui';
+
+import { hooks, useMutation } from '../../config/queryClient';
 import { ItemContextProvider } from '../context/ItemContext';
-import { useMutation, hooks } from '../../config/queryClient';
 import CookiesBanner from './CookiesBanner';
-import MainScreen from './MainScreen';
 import ItemForbiddenScreen from './ItemForbiddenScreen';
+import MainScreen from './MainScreen';
 
 const { useItem, useItemLogin, useCurrentMember } = hooks;
 

@@ -1,14 +1,17 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { List, Map } from 'immutable';
 import PropTypes from 'prop-types';
-import { Typography } from '@material-ui/core';
+import React, { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+
 import GraaspChatbox from '@graasp/chatbox';
 import { MUTATION_KEYS } from '@graasp/query-client';
-import { Map, List } from 'immutable';
 import { Loader } from '@graasp/ui';
-import { ITEM_CHATBOX_ID } from '../../config/selectors';
-import { hooks, useMutation } from '../../config/queryClient';
+
+import { Typography } from '@material-ui/core';
+
 import { HEADER_HEIGHT } from '../../config/constants';
+import { hooks, useMutation } from '../../config/queryClient';
+import { ITEM_CHATBOX_ID } from '../../config/selectors';
 import { CurrentMemberContext } from '../context/CurrentMemberContext';
 
 const { useItemChat, useMembers } = hooks;

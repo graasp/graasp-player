@@ -1,30 +1,32 @@
-import React, { useContext } from 'react';
-import { useParams } from 'react-router';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { Map } from 'immutable';
+import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router';
+
+import { Box, Paper, Slide, Tooltip } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
-import ForumIcon from '@material-ui/icons/Forum';
-import PushPinIcon from '@material-ui/icons/PushPin';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { Box, Paper, Slide, Tooltip } from '@material-ui/core';
-import { Map } from 'immutable';
-import { useTranslation } from 'react-i18next';
-import Chatbox from './Chatbox';
-import { HEADER_HEIGHT, DRAWER_WIDTH } from '../../config/constants';
-import { LayoutContext } from '../context/LayoutContext';
-import Item from './Item';
-import BuilderButton from './BuilderButton';
+import ForumIcon from '@material-ui/icons/Forum';
+import PushPinIcon from '@material-ui/icons/PushPin';
+
+import { DRAWER_WIDTH, HEADER_HEIGHT } from '../../config/constants';
+import { hooks } from '../../config/queryClient';
 import {
   ITEM_CHATBOX_BUTTON_ID,
-  PANNEL_CLOSE_BUTTON_ID,
   ITEM_PINNED_BUTTON_ID,
   ITEM_PINNED_ID,
+  PANNEL_CLOSE_BUTTON_ID,
 } from '../../config/selectors';
-import { getParentsIdsFromPath } from '../../utils/item';
 import { ITEM_TYPES } from '../../enums';
-import { hooks } from '../../config/queryClient';
+import { getParentsIdsFromPath } from '../../utils/item';
+import { LayoutContext } from '../context/LayoutContext';
+import BuilderButton from './BuilderButton';
+import Chatbox from './Chatbox';
+import Item from './Item';
 
 const useStyles = makeStyles((theme) => ({
   iconButton: {

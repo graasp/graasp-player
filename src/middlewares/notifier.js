@@ -1,4 +1,5 @@
 import { toast } from 'react-toastify';
+
 import i18n from '../config/i18n';
 import {
   ERROR_MESSAGE_HEADER,

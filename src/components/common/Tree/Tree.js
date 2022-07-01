@@ -5,15 +5,17 @@
   This feature should be ported to graasp-ui. */
 
 /* eslint-disable react/forbid-prop-types */
-import React, { useState } from 'react';
-import TreeView from '@mui/lab/TreeView';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import TreeItem from '@mui/lab/TreeItem';
+import TreeView from '@mui/lab/TreeView';
 import PropTypes from 'prop-types';
-import CustomTreeItem from './CustomTreeItem';
-import CustomContentTree from './CustomContentTree';
+import React, { useState } from 'react';
+
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 import { ITEM_TYPES } from '../../../enums';
+import CustomContentTree from './CustomContentTree';
+import CustomTreeItem from './CustomTreeItem';
 
 const DynamicTreeView = ({
   id,
