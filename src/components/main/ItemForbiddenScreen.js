@@ -2,11 +2,11 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import { Button, GraaspLogo, Main, Navigation } from '@graasp/ui';
-
 import { Grid, IconButton, Typography, makeStyles } from '@material-ui/core';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import BlockIcon from '@material-ui/icons/Block';
+
+import { Button, GraaspLogo, Main, Navigation } from '@graasp/ui';
 
 import {
   APP_NAME,

@@ -2,11 +2,11 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 
-import { MainMenu as GraaspMainMenu, Loader, Main } from '@graasp/ui';
-
 import { Container, Divider, Grid } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+
+import { MainMenu as GraaspMainMenu, Loader, Main } from '@graasp/ui';
 
 import { buildMainPath } from '../../config/paths';
 import { hooks } from '../../config/queryClient';

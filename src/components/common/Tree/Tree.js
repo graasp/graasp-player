@@ -3,15 +3,14 @@
   The main goal is to add the ability to filter the item based on their tags. The Tree
   check for each element in the tree if it should be displayed (no hidden tag).
   This feature should be ported to graasp-ui. */
-
-/* eslint-disable react/forbid-prop-types */
-import TreeItem from '@mui/lab/TreeItem';
-import TreeView from '@mui/lab/TreeView';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import TreeItem from '@mui/lab/TreeItem';
+import TreeView from '@mui/lab/TreeView';
 
 import { ITEM_TYPES } from '../../../enums';
 import CustomContentTree from './CustomContentTree';

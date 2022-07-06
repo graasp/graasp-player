@@ -1813,31 +1813,31 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/cli@npm:^16.0.1":
-  version: 16.3.0
-  resolution: "@commitlint/cli@npm:16.3.0"
+"@commitlint/cli@npm:16.0.1":
+  version: 16.0.1
+  resolution: "@commitlint/cli@npm:16.0.1"
   dependencies:
-    "@commitlint/format": ^16.2.1
-    "@commitlint/lint": ^16.2.4
-    "@commitlint/load": ^16.3.0
-    "@commitlint/read": ^16.2.1
-    "@commitlint/types": ^16.2.1
+    "@commitlint/format": ^16.0.0
+    "@commitlint/lint": ^16.0.0
+    "@commitlint/load": ^16.0.0
+    "@commitlint/read": ^16.0.0
+    "@commitlint/types": ^16.0.0
     lodash: ^4.17.19
     resolve-from: 5.0.0
     resolve-global: 1.0.0
     yargs: ^17.0.0
   bin:
     commitlint: cli.js
-  checksum: 4fa791cd21fc4c61212de28cd4e64adc3de6d3a4f10ef89955d5382af6be95871d1a7cf210c6a7d74a8a6d75f008a52f7616bdc881776b292f45004ec2ced21a
+  checksum: a4ec182911a6a26cd4e5ad878089075ca96c417aac538b6bb42a4e7fd9c96e1c73ef4c9034c153f017ce28bf1c2ca837f403034e6462910f4c51a383aba3d5ee
   languageName: node
   linkType: hard
 
-"@commitlint/config-conventional@npm:^16.0.0":
-  version: 16.2.4
-  resolution: "@commitlint/config-conventional@npm:16.2.4"
+"@commitlint/config-conventional@npm:16.0.0":
+  version: 16.0.0
+  resolution: "@commitlint/config-conventional@npm:16.0.0"
   dependencies:
     conventional-changelog-conventionalcommits: ^4.3.1
-  checksum: 211a322967c1eeee961eb0be9752782d16c025213520b7ada173d6b16050efe477778103f32b62361ad595b79ff6703694569d99705469cb2be0ac5ffba6465e
+  checksum: a0c923c506eed8b460503247efcecb64f7376c0fcfd9a05330651334d2b0b38a41db2698b1886198ec1e71bcf67dad4e190253e684a3cb668c7cfc76e9e959d5
   languageName: node
   linkType: hard
 
@@ -1868,7 +1868,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/format@npm:^16.2.1":
+"@commitlint/format@npm:^16.0.0":
   version: 16.2.1
   resolution: "@commitlint/format@npm:16.2.1"
   dependencies:
@@ -1888,7 +1888,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/lint@npm:^16.2.4":
+"@commitlint/lint@npm:^16.0.0":
   version: 16.2.4
   resolution: "@commitlint/lint@npm:16.2.4"
   dependencies:
@@ -1900,7 +1900,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/load@npm:^16.3.0":
+"@commitlint/load@npm:^16.0.0":
   version: 16.3.0
   resolution: "@commitlint/load@npm:16.3.0"
   dependencies:
@@ -1937,7 +1937,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/read@npm:^16.2.1":
+"@commitlint/read@npm:^16.0.0":
   version: 16.2.1
   resolution: "@commitlint/read@npm:16.2.1"
   dependencies:
@@ -1992,7 +1992,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/types@npm:^16.2.1":
+"@commitlint/types@npm:^16.0.0, @commitlint/types@npm:^16.2.1":
   version: 16.2.1
   resolution: "@commitlint/types@npm:16.2.1"
   dependencies:
@@ -10671,8 +10671,8 @@ __metadata:
   resolution: "graasp-perform@workspace:."
   dependencies:
     "@babel/eslint-parser": ^7.16.5
-    "@commitlint/cli": ^16.0.1
-    "@commitlint/config-conventional": ^16.0.0
+    "@commitlint/cli": 16.0.1
+    "@commitlint/config-conventional": 16.0.0
     "@cypress/code-coverage": 3.9.12
     "@cypress/instrument-cra": 1.4.0
     "@emotion/react": 11.8.1

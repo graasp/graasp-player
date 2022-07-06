@@ -2,6 +2,9 @@ import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { Container, Typography, makeStyles } from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
+
 import { Api } from '@graasp/query-client';
 import {
   AppItem,
@@ -12,9 +15,6 @@ import {
   TextEditor,
   withCollapse,
 } from '@graasp/ui';
-
-import { Container, Typography, makeStyles } from '@material-ui/core';
-import Alert from '@material-ui/lab/Alert';
 
 import { API_HOST, SCREEN_MAX_HEIGHT } from '../../config/constants';
 import { hooks } from '../../config/queryClient';

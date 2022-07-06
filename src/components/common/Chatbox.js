@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { Typography } from '@material-ui/core';
+
 import GraaspChatbox from '@graasp/chatbox';
 import { MUTATION_KEYS } from '@graasp/query-client';
 import { Loader } from '@graasp/ui';
-
-import { Typography } from '@material-ui/core';
 
 import { HEADER_HEIGHT } from '../../config/constants';
 import { hooks, useMutation } from '../../config/queryClient';

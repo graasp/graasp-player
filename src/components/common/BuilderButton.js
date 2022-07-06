@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Loader, PermissionedComponent } from '@graasp/ui';
-
 import { Tooltip, makeStyles } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
+
+import { Loader, PermissionedComponent } from '@graasp/ui';
 
 import { buildGraaspComposeItemRoute } from '../../config/constants';
 import { isRegularUser } from '../../utils/user';

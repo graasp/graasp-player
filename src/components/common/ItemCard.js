@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { useNavigate } from 'react-router';
 
-import { ItemIcon } from '@graasp/ui';
-
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+
+import { ItemIcon } from '@graasp/ui';
 
 import { ITEM_CARD_MAX_LENGTH } from '../../config/constants';
 import { buildMainPath } from '../../config/paths';

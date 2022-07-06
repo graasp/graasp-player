@@ -73,8 +73,8 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.16.5",
-    "@commitlint/cli": "^16.0.1",
-    "@commitlint/config-conventional": "^16.0.0",
+    "@commitlint/cli": "16.0.1",
+    "@commitlint/config-conventional": "16.0.0",
     "@cypress/code-coverage": "3.9.12",
     "@cypress/instrument-cra": "1.4.0",
     "@graasp/websockets": "github:graasp/graasp-websockets.git#master",

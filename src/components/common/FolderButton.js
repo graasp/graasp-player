@@ -2,11 +2,11 @@ import truncate from 'lodash.truncate';
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 
-import { Card as GraaspCard } from '@graasp/ui';
-
 import { Tooltip, makeStyles } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
+
+import { Card as GraaspCard } from '@graasp/ui';
 
 import {
   DEFAULT_IMAGE_SRC,

@@ -1,4 +1,3 @@
-import { GlobalStyles } from '@mui/material';
 import React from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -6,6 +5,8 @@ import { ToastContainer } from 'react-toastify';
 
 import { grey } from '@material-ui/core/colors';
 import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
+
+import { GlobalStyles } from '@mui/material';
 
 import { ENV, NODE_ENV, SHOW_NOTIFICATIONS } from '../config/constants';
 import i18nConfig from '../config/i18n';

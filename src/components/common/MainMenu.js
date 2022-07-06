@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router';
 
-import { MainMenu as GraaspMainMenu, Loader } from '@graasp/ui';
-
 import Alert from '@material-ui/lab/Alert';
+
+import { MainMenu as GraaspMainMenu, Loader } from '@graasp/ui';
 
 import { hooks } from '../../config/queryClient';
 import { MAIN_MENU_ID } from '../../config/selectors';
