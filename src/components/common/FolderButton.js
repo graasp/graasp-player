@@ -1,3 +1,4 @@
+import { Record } from 'immutable';
 import truncate from 'lodash.truncate';
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
@@ -35,13 +36,13 @@ const useStyles = makeStyles({
 
 const FolderButton = ({ id, item }) => {
   const { setFocusedItemId } = useContext(ItemContext);
-  const description = item.get('description');
-  const name = item.get('name');
+  const description = item.description;
+  const name = item.name;
 
   const image = DEFAULT_IMAGE_SRC;
 
   const onClick = () => {
-    setFocusedItemId(item.get('id'));
+    setFocusedItemId(item.id);
   };
 
   const classes = useStyles();
@@ -75,7 +76,7 @@ const FolderButton = ({ id, item }) => {
 
 FolderButton.propTypes = {
   id: PropTypes.string,
-  item: PropTypes.instanceOf(Map).isRequired,
+  item: PropTypes.instanceOf(Record).isRequired,
 };
 
 FolderButton.defaultProps = {

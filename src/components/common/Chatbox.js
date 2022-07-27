@@ -1,4 +1,4 @@
-import { List, Map } from 'immutable';
+import { List, Record } from 'immutable';
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -18,9 +18,9 @@ const { useItemChat, useMembers } = hooks;
 
 const Chatbox = ({ item }) => {
   const { t } = useTranslation();
-  const { data: chat, isLoading: isChatLoading } = useItemChat(item.get('id'));
+  const { data: chat, isLoading: isChatLoading } = useItemChat(item.id);
   const { data: members, isLoading: isMembersLoading } = useMembers([
-    ...new Set(chat?.get('messages').map(({ creator }) => creator)),
+    ...new Set(chat?.messages.map(({ creator }) => creator)),
   ]);
   const { data: currentMember, isLoadingCurrentMember } =
     useContext(CurrentMemberContext);
@@ -56,14 +56,14 @@ const Chatbox = ({ item }) => {
       return <Loader />;
     }
 
-    const messages = chat?.get('messages') ?? [];
+    const messages = chat?.messages ?? [];
 
     return (
       <GraaspChatbox
         id={ITEM_CHATBOX_ID}
         members={members}
         currentMember={currentMember}
-        chatId={item.get('id')}
+        chatId={item.id}
         messages={List(messages)}
         height={windowHeight - HEADER_HEIGHT * 2}
         sendMessageFunction={sendMessage}
@@ -82,7 +82,7 @@ const Chatbox = ({ item }) => {
 };
 
 Chatbox.propTypes = {
-  item: PropTypes.instanceOf(Map).isRequired,
+  item: PropTypes.instanceOf(Record).isRequired,
 };
 
 export default Chatbox;
