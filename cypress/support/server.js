@@ -10,7 +10,7 @@ import { MEMBER_PROFILE_PATH } from '../../src/config/constants';
 const {
   buildGetChildrenRoute,
   buildGetItemRoute,
-  buildGetMemberBy,
+  buildGetMembersBy,
   buildGetItemTagsRoute,
   GET_CURRENT_MEMBER_ROUTE,
   buildDownloadFilesRoute,
@@ -208,7 +208,7 @@ export const mockGetMemberBy = (members, shouldThrowError) => {
     {
       method: DEFAULT_GET.method,
       url: new RegExp(
-        `${API_HOST}/${parseStringToRegExp(buildGetMemberBy(EMAIL_FORMAT))}`,
+        `${API_HOST}/${parseStringToRegExp(buildGetMembersBy([EMAIL_FORMAT]))}`,
       ),
     },
     ({ reply, url }) => {

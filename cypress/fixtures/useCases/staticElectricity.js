@@ -92,7 +92,7 @@ export const STATIC_ELECTRICITY = {
       creator: CURRENT_USER.id,
       type: ITEM_TYPES.LINK,
       extra: buildEmbeddedLinkExtra({
-        url: 'https://dai.ly/xgh289',
+        url: 'https://www.dailymotion.com/embed/video/xgh289?autoplay=1',
       }),
       settings: {},
     },
