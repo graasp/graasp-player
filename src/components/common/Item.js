@@ -65,8 +65,7 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
   }
 
   const isItemHidden = isHidden(itemTags?.toJS());
-  console.log(item.id)
-  console.log(itemTags)
+
   if (isItemHidden && isChildren) {
     return null;
   }
