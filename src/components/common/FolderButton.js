@@ -1,16 +1,19 @@
-import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import truncate from 'lodash.truncate';
-import { makeStyles, Tooltip } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+
+import { Tooltip, makeStyles } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
-import { Card as GraaspCard } from '@graasp/ui';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
-import { ItemContext } from '../context/ItemContext';
-import { stripHtml } from '../../utils/item';
+
+import { Card as GraaspCard } from '@graasp/ui';
+
 import {
   DEFAULT_IMAGE_SRC,
   DESCRIPTION_MAX_LENGTH,
 } from '../../config/constants';
+import { stripHtml } from '../../utils/item';
+import { ItemContext } from '../context/ItemContext';
 
 const useStyles = makeStyles({
   card: {

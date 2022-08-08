@@ -1,13 +1,16 @@
-import React from 'react';
-import EditIcon from '@material-ui/icons/Edit';
-import { PermissionedComponent, Loader } from '@graasp/ui';
 import PropTypes from 'prop-types';
-import { Tooltip, makeStyles } from '@material-ui/core';
+import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { Tooltip, makeStyles } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
-import { hooks } from '../../config/queryClient';
+import EditIcon from '@material-ui/icons/Edit';
+
+import { Loader, PermissionedComponent } from '@graasp/ui';
+
 import { buildGraaspComposeItemRoute } from '../../config/constants';
 import { isRegularUser } from '../../utils/user';
+import { CurrentMemberContext } from '../context/CurrentMemberContext';
 
 const useStyles = makeStyles(() => ({
   iconButton: {
@@ -18,7 +21,7 @@ const useStyles = makeStyles(() => ({
 const BuilderButton = ({ id }) => {
   const { t } = useTranslation();
   const classes = useStyles();
-  const { data: user, isLoading } = hooks.useCurrentMember();
+  const { data: user, isLoading } = useContext(CurrentMemberContext);
 
   const onClickComposeView = () => {
     window.location.href = buildGraaspComposeItemRoute(id);

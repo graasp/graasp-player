@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
-import { useParams } from 'react-router';
-import Alert from '@material-ui/lab/Alert';
 import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router';
+
+import Alert from '@material-ui/lab/Alert';
+
 import { MainMenu as GraaspMainMenu, Loader } from '@graasp/ui';
-import { MAIN_MENU_ID } from '../../config/selectors';
+
 import { hooks } from '../../config/queryClient';
+import { MAIN_MENU_ID } from '../../config/selectors';
 import { ITEM_TYPES } from '../../enums';
 import { ItemContext } from '../context/ItemContext';
 import DynamicTreeView from './Tree/Tree';

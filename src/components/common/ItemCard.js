@@ -1,15 +1,18 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import { useNavigate } from 'react-router';
-import { ItemIcon } from '@graasp/ui';
-import PropTypes from 'prop-types';
-import CardContent from '@material-ui/core/CardContent';
 import truncate from 'lodash.truncate';
-import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { useNavigate } from 'react-router';
+
+import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import { buildMainPath } from '../../config/paths';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+
+import { ItemIcon } from '@graasp/ui';
+
 import { ITEM_CARD_MAX_LENGTH } from '../../config/constants';
+import { buildMainPath } from '../../config/paths';
 
 const useStyles = makeStyles((theme) => ({
   bullet: {

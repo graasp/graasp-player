@@ -1,8 +1,9 @@
-/* eslint-disable react/forbid-prop-types */
-import React from 'react';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
+import PropTypes from 'prop-types';
+import React from 'react';
+
 import Typography from '@material-ui/core/Typography';
+
 import { useTreeItem } from '@mui/lab/TreeItem';
 
 const CustomContentTree = React.forwardRef((props, ref) => {
@@ -41,7 +42,6 @@ const CustomContentTree = React.forwardRef((props, ref) => {
   };
 
   return (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       className={clsx(className, classes.root, {
         [classes.expanded]: expanded,
@@ -52,7 +52,6 @@ const CustomContentTree = React.forwardRef((props, ref) => {
       onMouseDown={handleMouseDown}
       ref={ref}
     >
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
       <div onClick={handleExpansionClick} className={classes.iconContainer}>
         {icon}
       </div>

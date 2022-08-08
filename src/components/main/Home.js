@@ -1,18 +1,21 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Main, MainMenu as GraaspMainMenu, Loader } from '@graasp/ui';
-import { Divider, Grid, Container } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import { useNavigate } from 'react-router';
-import HeaderRightContent from './HeaderRightContent';
-import CookiesBanner from './CookiesBanner';
-import { hooks } from '../../config/queryClient';
-import { buildTreeItemClass } from '../../config/selectors';
-import ItemCard from '../common/ItemCard';
+
+import { Container, Divider, Grid } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+
+import { MainMenu as GraaspMainMenu, Loader, Main } from '@graasp/ui';
+
 import { buildMainPath } from '../../config/paths';
-import DynamicTreeView from '../common/Tree/Tree';
+import { hooks } from '../../config/queryClient';
+import { OWN_ITEMS_GRID_ID, buildTreeItemClass } from '../../config/selectors';
 import { isHidden } from '../../utils/item';
+import ItemCard from '../common/ItemCard';
+import DynamicTreeView from '../common/Tree/Tree';
+import CookiesBanner from './CookiesBanner';
+import HeaderRightContent from './HeaderRightContent';
 
 const { useOwnItems, useSharedItems, useItemsTags } = hooks;
 
@@ -37,11 +40,12 @@ const Home = () => {
     useItemsTags(sharedItems?.map(({ id }) => id).toJS());
 
   const filtred = ownItems?.filter(
-    (_item, idx) => !isLoadingOwnTags && !isHidden(ownItemsTags.get(idx)),
+    (_item, idx) => !isLoadingOwnTags && !isHidden(ownItemsTags?.get(idx)),
   );
 
   const shared = sharedItems?.filter(
-    (_item, idx) => !isLoadingSharedTags && !isHidden(sharedItemsTags.get(idx)),
+    (_item, idx) =>
+      !isLoadingSharedTags && !isHidden(sharedItemsTags?.get(idx)),
   );
 
   const renderSharedItems = () => {
@@ -80,7 +84,7 @@ const Home = () => {
     return (
       <>
         <Typography variant="h4">{t('My Items')}</Typography>
-        <Grid container spacing={3} justify="center">
+        <Grid id={OWN_ITEMS_GRID_ID} container spacing={3} justify="center">
           {filtred.map((i) => (
             <Grid item lg={3} md={4} sm={6}>
               <ItemCard item={i} />

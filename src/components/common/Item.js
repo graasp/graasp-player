@@ -1,43 +1,46 @@
-import React from 'react';
-import { Container, makeStyles, Typography } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
+
+import { Container, Typography, makeStyles } from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
+
+import { Api } from '@graasp/query-client';
 import {
-  Loader,
-  FileItem,
-  DocumentItem,
-  LinkItem,
   AppItem,
+  DocumentItem,
+  FileItem,
   H5PItem,
+  LinkItem,
+  Loader,
   TextEditor,
   withCollapse,
 } from '@graasp/ui';
-import Alert from '@material-ui/lab/Alert';
-import { useTranslation } from 'react-i18next';
-import PropTypes from 'prop-types';
-import { Api } from '@graasp/query-client';
-import { hooks } from '../../config/queryClient';
-import { ITEM_TYPES } from '../../enums';
-import FolderButton from './FolderButton';
+
 import {
+  API_HOST,
+  H5P_ASSETS_BASE_URL,
+  SCREEN_MAX_HEIGHT,
+} from '../../config/constants';
+import {
+  H5P_FRAME_CSS_PATH,
+  H5P_FRAME_JS_PATH,
+  buildServeH5PContentURL,
+} from '../../config/h5p';
+import { hooks } from '../../config/queryClient';
+import {
+  FOLDER_NAME_TITLE_CLASS,
   buildAppId,
   buildDocumentId,
   buildFileId,
   buildFolderButtonId,
-  FOLDER_NAME_TITLE_CLASS,
 } from '../../config/selectors';
-import {
-  API_HOST,
-  H5P_ASSETS_HOST,
-  SCREEN_MAX_HEIGHT,
-} from '../../config/constants';
+import { ITEM_TYPES } from '../../enums';
 import { isHidden } from '../../utils/item';
-import {
-  buildServeH5PContentURL,
-  H5P_FRAME_CSS_PATH,
-  H5P_FRAME_JS_PATH,
-} from '../../config/h5p';
+import { CurrentMemberContext } from '../context/CurrentMemberContext';
+import FolderButton from './FolderButton';
 
-const { useItem, useChildren, useFileContent, useCurrentMember, useItemTags } =
-  hooks;
+const { useItem, useChildren, useFileContent, useItemTags } = hooks;
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -51,7 +54,8 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
   const classes = useStyles();
   const { data: item, isLoading, isError } = useItem(id);
   const { data: itemTags, isLoading: isTagsLoading } = useItemTags(id);
-  const { data: member, isLoading: isMemberLoading } = useCurrentMember();
+  const { data: member, isLoading: isMemberLoading } =
+    useContext(CurrentMemberContext);
   // fetch children if item is folder
   const isFolder = Boolean(item?.get('type') === ITEM_TYPES.FOLDER);
   const { data: children, isLoading: isChildrenLoading } = useChildren(id, {
@@ -120,7 +124,9 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
       );
     }
     case ITEM_TYPES.LINK: {
-      const linkItem = <LinkItem item={item} height={SCREEN_MAX_HEIGHT} />;
+      const linkItem = (
+        <LinkItem item={item} height={SCREEN_MAX_HEIGHT} isResizable />
+      );
 
       if (showCollapse) {
         return withCollapse({
@@ -173,6 +179,8 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
           member={member}
           permission="read" // todo: use graasp-constants
           requestApiAccessToken={Api.requestApiAccessToken}
+          height={SCREEN_MAX_HEIGHT}
+          isResizable
         />
       );
 
@@ -195,7 +203,7 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
       return (
         <H5PItem
           itemId={id}
-          h5pAssetsHost={H5P_ASSETS_HOST}
+          h5pAssetsHost={H5P_ASSETS_BASE_URL}
           playerOptions={{
             h5pJsonPath: buildServeH5PContentURL(h5pContentPath),
             frameJs: H5P_FRAME_JS_PATH,

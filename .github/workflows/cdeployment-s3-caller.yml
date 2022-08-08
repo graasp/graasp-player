@@ -1,0 +1,30 @@
+name: Deploy to production environment
+
+# Controls when the action will run
+on:
+  # Triggers the workflow on repository-dispatch event
+  repository_dispatch:
+    types: [production-deployment]
+
+# This workflow is made up of one job that calls the reusable workflow in graasp-deploy
+jobs:
+  graasp-deploy-s3-workflow:
+    name: Graasp Player
+    # Reference reusable workflow file. Using the commit SHA is the safest for stability and security
+    uses: graasp/graasp-deploy/.github/workflows/cdeployment-s3.yml@7b5dd84304458c3c5ab03cbbde059670f77b1687
+    with:
+      build-folder: 'build'
+      tag: ${{ github.event.client_payload.tag }}
+    secrets:
+      aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_PROD }}
+      aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_PROD }}
+      aws-region: ${{ secrets.AWS_REGION_PROD }}
+      aws-s3-bucket-name: ${{ secrets.AWS_S3_BUCKET_NAME_GRAASP_PERFORM_PROD }}
+      cloudfront-distribution-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_GRAASP_PERFORM_PROD }}
+      api-host: ${{ secrets.REACT_APP_API_HOST_PROD }}
+      port: ${{ secrets.PORT }}
+      show-notifications: ${{ secrets.REACT_APP_SHOW_NOTIFICATIONS }}
+      authentication-host: ${{ secrets.REACT_APP_AUTHENTICATION_HOST_PROD }}
+      graasp-compose-host: ${{ secrets.BUILDER_CLIENT_HOST_PROD }}
+      graasp-explorer-host: ${{ secrets.EXPLORER_CLIENT_HOST_PROD }}
+      domain: ${{ secrets.REACT_APP_DOMAIN_PROD }}

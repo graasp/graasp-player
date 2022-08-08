@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 
 const ItemContext = React.createContext();
 
 const ItemContextProvider = ({ children }) => {
-  const [focusedItemId, setFocusedItemId] = useState(false);
+  const [focusedItemId, setFocusedItemId] = useState(null);
 
   return (
     <ItemContext.Provider

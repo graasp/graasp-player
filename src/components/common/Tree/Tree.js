@@ -3,17 +3,18 @@
   The main goal is to add the ability to filter the item based on their tags. The Tree
   check for each element in the tree if it should be displayed (no hidden tag).
   This feature should be ported to graasp-ui. */
-
-/* eslint-disable react/forbid-prop-types */
-import React, { useState } from 'react';
-import TreeView from '@mui/lab/TreeView';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import TreeItem from '@mui/lab/TreeItem';
 import PropTypes from 'prop-types';
-import CustomTreeItem from './CustomTreeItem';
-import CustomContentTree from './CustomContentTree';
+import React, { useState } from 'react';
+
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import TreeItem from '@mui/lab/TreeItem';
+import TreeView from '@mui/lab/TreeView';
+
 import { ITEM_TYPES } from '../../../enums';
+import CustomContentTree from './CustomContentTree';
+import CustomTreeItem from './CustomTreeItem';
 
 const DynamicTreeView = ({
   id,

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+
 import { ITEM_TYPES } from '../enums';
 
 export const getFileExtra = (extra) => extra?.[ITEM_TYPES.FILE];

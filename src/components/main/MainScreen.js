@@ -1,17 +1,20 @@
-import React, { useContext, useState } from 'react';
-import { Loader, Main } from '@graasp/ui';
-import { Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import React, { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Alert from '@material-ui/lab/Alert';
 import { useParams } from 'react-router';
-import MainMenu from '../common/MainMenu';
-import Item from '../common/Item';
+
+import { Typography } from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
+
+import { Loader, Main } from '@graasp/ui';
+
 import { hooks } from '../../config/queryClient';
-import HeaderRightContent from './HeaderRightContent';
+import Item from '../common/Item';
+import MainMenu from '../common/MainMenu';
 import SideContent from '../common/SideContent';
-import { LayoutContextProvider } from '../context/LayoutContext';
 import { ItemContext } from '../context/ItemContext';
+import { LayoutContextProvider } from '../context/LayoutContext';
+import HeaderRightContent from './HeaderRightContent';
 
 const MainScreen = () => {
   const { rootId } = useParams();

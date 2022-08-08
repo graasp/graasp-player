@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import { List, Map } from 'immutable';
 import PropTypes from 'prop-types';
-import { Typography } from '@material-ui/core';
+import React, { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { Typography } from '@material-ui/core';
+
 import GraaspChatbox from '@graasp/chatbox';
 import { MUTATION_KEYS } from '@graasp/query-client';
-import { Map, List } from 'immutable';
 import { Loader } from '@graasp/ui';
-import { ITEM_CHATBOX_ID } from '../../config/selectors';
-import { hooks, useMutation } from '../../config/queryClient';
-import { HEADER_HEIGHT } from '../../config/constants';
 
-const { useItemChat, useCurrentMember, useMembers } = hooks;
+import { HEADER_HEIGHT } from '../../config/constants';
+import { hooks, useMutation } from '../../config/queryClient';
+import { ITEM_CHATBOX_ID } from '../../config/selectors';
+import { CurrentMemberContext } from '../context/CurrentMemberContext';
+
+const { useItemChat, useMembers } = hooks;
 
 const Chatbox = ({ item }) => {
   const { t } = useTranslation();
@@ -18,7 +22,8 @@ const Chatbox = ({ item }) => {
   const { data: members, isLoading: isMembersLoading } = useMembers([
     ...new Set(chat?.get('messages').map(({ creator }) => creator)),
   ]);
-  const { data: currentMember, isLoadingCurrentMember } = useCurrentMember();
+  const { data: currentMember, isLoadingCurrentMember } =
+    useContext(CurrentMemberContext);
   const { mutate: sendMessage } = useMutation(
     MUTATION_KEYS.POST_ITEM_CHAT_MESSAGE,
   );
