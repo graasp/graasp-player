@@ -19,14 +19,9 @@ import {
 
 import {
   API_HOST,
-  H5P_ASSETS_BASE_URL,
+  H5P_INTEGRATION_URL,
   SCREEN_MAX_HEIGHT,
 } from '../../config/constants';
-import {
-  H5P_FRAME_CSS_PATH,
-  H5P_FRAME_JS_PATH,
-  buildServeH5PContentURL,
-} from '../../config/h5p';
 import { hooks } from '../../config/queryClient';
 import {
   FOLDER_NAME_TITLE_CLASS,
@@ -193,8 +188,8 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
     }
 
     case ITEM_TYPES.H5P: {
-      const h5pContentPath = item.get('extra')?.h5p?.contentFilePath;
-      if (!h5pContentPath) {
+      const contentId = item.get('extra')?.h5p?.contentId;
+      if (!contentId) {
         return (
           <Alert severity="error">{t('An unexpected error occured.')}</Alert>
         );
@@ -203,12 +198,8 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
       return (
         <H5PItem
           itemId={id}
-          h5pAssetsHost={H5P_ASSETS_BASE_URL}
-          playerOptions={{
-            h5pJsonPath: buildServeH5PContentURL(h5pContentPath),
-            frameJs: H5P_FRAME_JS_PATH,
-            frameCss: H5P_FRAME_CSS_PATH,
-          }}
+          contentId={contentId}
+          integrationUrl={H5P_INTEGRATION_URL}
         />
       );
     }
