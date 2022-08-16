@@ -1,16 +1,18 @@
 import { StatusCodes } from 'http-status-codes';
 import qs from 'qs';
+
 import { API_ROUTES } from '@graasp/query-client';
-import { getItemById, isChild, isError } from '../../src/utils/item';
-import { MEMBERS } from '../fixtures/members';
-import { ID_FORMAT, parseStringToRegExp, EMAIL_FORMAT } from './utils';
+
 import { DEFAULT_GET } from '../../src/api/utils';
 import { MEMBER_PROFILE_PATH } from '../../src/config/constants';
+import { getItemById, isChild, isError } from '../../src/utils/item';
+import { MEMBERS } from '../fixtures/members';
+import { EMAIL_FORMAT, ID_FORMAT, parseStringToRegExp } from './utils';
 
 const {
   buildGetChildrenRoute,
   buildGetItemRoute,
-  buildGetMemberBy,
+  buildGetMembersBy,
   buildGetItemTagsRoute,
   GET_CURRENT_MEMBER_ROUTE,
   buildDownloadFilesRoute,
@@ -208,7 +210,7 @@ export const mockGetMemberBy = (members, shouldThrowError) => {
     {
       method: DEFAULT_GET.method,
       url: new RegExp(
-        `${API_HOST}/${parseStringToRegExp(buildGetMemberBy(EMAIL_FORMAT))}`,
+        `${API_HOST}/${parseStringToRegExp(buildGetMembersBy(EMAIL_FORMAT))}`,
       ),
     },
     ({ reply, url }) => {
