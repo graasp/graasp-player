@@ -52,7 +52,7 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
   const { data: member, isLoading: isMemberLoading } =
     useContext(CurrentMemberContext);
   // fetch children if item is folder
-  const isFolder = Boolean(item?.get('type') === ITEM_TYPES.FOLDER);
+  const isFolder = Boolean(item?.type === ITEM_TYPES.FOLDER);
   const { data: children, isLoading: isChildrenLoading } = useChildren(id, {
     enabled: isFolder,
     getUpdates: isFolder,
@@ -61,7 +61,7 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
   // fetch file content if type is file
   const { data: content, isError: isFileError } = useFileContent(id, {
     enabled: Boolean(
-      item && [ITEM_TYPES.FILE, ITEM_TYPES.S3_FILE].includes(item.get('type')),
+      item && [ITEM_TYPES.FILE, ITEM_TYPES.S3_FILE].includes(item.type),
     ),
   });
 
@@ -70,6 +70,7 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
   }
 
   const isItemHidden = isHidden(itemTags?.toJS());
+
   if (isItemHidden && isChildren) {
     return null;
   }
@@ -82,17 +83,17 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
     return <Alert severity="error">{t('An unexpected error occured.')}</Alert>;
   }
 
-  const showCollapse = item.get('settings')?.isCollapsible;
+  const showCollapse = item.settings?.isCollapsible;
 
-  switch (item.get('type')) {
+  switch (item.type) {
     case ITEM_TYPES.FOLDER: {
       // do not display children folders if they are not pinned
-      if (!item.get('settings')?.isPinned && isChildren) {
+      if (!item.settings?.isPinned && isChildren) {
         return null;
       }
 
       // only display children folders if they are pinned
-      if (item.get('settings')?.isPinned && isChildren) {
+      if (item.settings?.isPinned && isChildren) {
         return <FolderButton id={buildFolderButtonId(id)} item={item} />;
       }
 
@@ -102,9 +103,9 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
           {!showPinnedOnly && (
             <>
               <Typography className={FOLDER_NAME_TITLE_CLASS} variant="h5">
-                {item.get('name')}
+                {item.name}
               </Typography>
-              <TextEditor value={item.get('description')} />
+              <TextEditor value={item.description} />
             </>
           )}
 
@@ -205,7 +206,7 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
     }
 
     default:
-      console.error(`The type ${item?.get('type')} is not defined`);
+      console.error(`The type ${item?.type} is not defined`);
       return null;
   }
 };

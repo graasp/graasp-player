@@ -25,9 +25,7 @@ const MainMenu = () => {
     isError: rootItemIsError,
   } = useItem(rootId);
 
-  const isFolder = Boolean(
-    rootItem && rootItem.get('type') === ITEM_TYPES.FOLDER,
-  );
+  const isFolder = Boolean(rootItem && rootItem.type === ITEM_TYPES.FOLDER);
   const {
     data: children,
     isLoading,
@@ -53,7 +51,7 @@ const MainMenu = () => {
   return (
     <GraaspMainMenu id={MAIN_MENU_ID}>
       <DynamicTreeView
-        rootLabel={rootItem.get('name')}
+        rootLabel={rootItem.name}
         rootId={rootId}
         initialExpendedItems={[rootId]}
         selectedId={focusedItemId}

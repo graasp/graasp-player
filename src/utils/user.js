@@ -5,5 +5,5 @@ export const isRegularUser = (user) => {
   }
 
   // todo: to change
-  return Boolean(!user?.get('email')?.includes('@graasp.org'));
+  return Boolean(!user?.email?.includes('@graasp.org'));
 };

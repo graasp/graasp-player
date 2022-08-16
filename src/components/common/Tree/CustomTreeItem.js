@@ -26,9 +26,7 @@ const CustomTreeItem = ({ itemId, expandedItems = [], selectedId }) => {
   const showItem =
     item && (!tags || tags.isEmpty() || (tags && !isHidden(tags.toJS())));
   const { data: children, isLoading: childrenIsLoading } = useChildren(itemId, {
-    enabled: Boolean(
-      item && showItem && item.get('type') === ITEM_TYPES.FOLDER,
-    ),
+    enabled: Boolean(item && showItem && item.type === ITEM_TYPES.FOLDER),
   });
   const { data: childrenTags, isLoading: isChildrenTagsLoading } = useItemsTags(
     children?.map((child) => child.id).toJS(),
@@ -71,7 +69,7 @@ const CustomTreeItem = ({ itemId, expandedItems = [], selectedId }) => {
     ));
   };
 
-  const content = childrenIsLoading ? LoadingTreeItem : item.get('name');
+  const content = childrenIsLoading ? LoadingTreeItem : item.name;
 
   // recursive display of children
   return (

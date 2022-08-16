@@ -210,7 +210,7 @@ export const mockGetMemberBy = (members, shouldThrowError) => {
     {
       method: DEFAULT_GET.method,
       url: new RegExp(
-        `${API_HOST}/${parseStringToRegExp(buildGetMembersBy(EMAIL_FORMAT))}`,
+        `${API_HOST}/${parseStringToRegExp(buildGetMembersBy([EMAIL_FORMAT]))}`,
       ),
     },
     ({ reply, url }) => {

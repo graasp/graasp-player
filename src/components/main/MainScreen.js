@@ -34,7 +34,7 @@ const MainScreen = () => {
   }
 
   if (isFirstItem) {
-    setLeftContent(item.get('name'));
+    setLeftContent(item.name);
     setIsFirstItem(false);
   }
 

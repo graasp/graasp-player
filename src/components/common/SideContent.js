@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Map } from 'immutable';
+import { Record } from 'immutable';
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -66,15 +66,15 @@ const useStyles = makeStyles((theme) => ({
 const { useItemsChildren } = hooks;
 
 const SideContent = ({ children, item }) => {
-  const settings = item.get('settings');
-  const isFolder = item.get('type') === ITEM_TYPES.FOLDER;
+  const settings = item.settings;
+  const isFolder = item.type === ITEM_TYPES.FOLDER;
   const { rootId } = useParams();
 
   /* This removes the parents that are higher than the perform root element
   Ex: if we are in item 6 and the root is 3, when spliting the path we get [ 1, 2, 3, 4, 5, 6 ].
   However the student cannot go higher than element 3, so we remove the element before 3, this
   give us [ 3, 4, 5, 6], which is the visible range of the student. */
-  const parents = getParentsIdsFromPath(item.get('path') || item.get('id'));
+  const parents = getParentsIdsFromPath(item.path || item.id);
   const parentsIds = parents.slice(
     parents.indexOf(rootId),
     /* When splitting the path, it returns the current element in the array. 
@@ -230,7 +230,7 @@ const SideContent = ({ children, item }) => {
 
         {displayPinButton()}
 
-        <BuilderButton id={item.get('id')} />
+        <BuilderButton id={item.id} />
 
         {children}
       </main>
@@ -244,7 +244,7 @@ const SideContent = ({ children, item }) => {
 
 SideContent.propTypes = {
   children: PropTypes.element.isRequired,
-  item: PropTypes.instanceOf(Map).isRequired,
+  item: PropTypes.instanceOf(Record).isRequired,
 };
 
 export default SideContent;

@@ -2302,16 +2302,16 @@ __metadata:
 
 "@graasp/translations@github:graasp/graasp-translations.git":
   version: 0.1.0
-  resolution: "@graasp/translations@https://github.com/graasp/graasp-translations.git#commit=b5839cf012e2838da6893d5cec9b3ecd5d0d3376"
+  resolution: "@graasp/translations@https://github.com/graasp/graasp-translations.git#commit=34847488d7f75863d97b26280266ba9b1a81e5e2"
   dependencies:
-    i18next: 21.6.11
-  checksum: bae42e4d5b91b09caa3d84b5568d2394995523ad9d8c80623ace0702ef09bde62f2731741ac4a31a244131ee009360c519d1e10defed4f54eb45de9c0bdc0403
+    i18next: 21.8.1
+  checksum: 343985f67d0e486e17f54691b75c10960a26e9bb4f36bc64e05b6226c9f3426ad20444435ad4ea55642e9226428118a9c8b1f751407a07581f4144d2da12ee19
   languageName: node
   linkType: hard
 
 "@graasp/ui@github:graasp/graasp-ui":
   version: 0.2.0
-  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=8e38ca1792bc922cfaff872551620ef8a20db7c9"
+  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=a5fb85c4684f848901815e0691ae9d3e3a89ed6e"
   dependencies:
     "@graasp/sdk": "github:graasp/graasp-sdk.git"
     clsx: 1.1.1
@@ -2341,7 +2341,7 @@ __metadata:
       optional: true
     ag-grid-react:
       optional: true
-  checksum: 59d4db944de392c52414a77f3f01b2fda6d5e0782fd6fa3f6b9544439cd160660d406bdb756bbf2755cd10bf4fc1391dcd9cfbf1c83049217dc2e50b62c3f2e2
+  checksum: 8178b01ea61e1df5eb1d4ab468680ed47f414b9e5fde07730a8064768cf59977b1c9f46f5471c09a9b37da117aa27768ebc3eb6fc56783c93e05c865ee02b6d5
   languageName: node
   linkType: hard
 
@@ -3029,9 +3029,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/styled-engine@npm:^5.8.7":
-  version: 5.8.7
-  resolution: "@mui/styled-engine@npm:5.8.7"
+"@mui/styled-engine@npm:^5.10.0":
+  version: 5.10.0
+  resolution: "@mui/styled-engine@npm:5.10.0"
   dependencies:
     "@babel/runtime": ^7.17.2
     "@emotion/cache": ^11.9.3
@@ -3046,17 +3046,17 @@ __metadata:
       optional: true
     "@emotion/styled":
       optional: true
-  checksum: b350758d8a117b37eb109c9d81e2aa0f2ca38269ca7e22744ea7f85aa6dda1139792b9ec1223a5ee2fa54f4897a093a63b8bb3db190824a5887678babe7bc898
+  checksum: 7fc41cdb72e3b660ab3dafbb1e3101f86a9a8c133443291254ad4e158638e1253b4ecd4cd55c48c5c1364ca31dbe93c8495ed125bba9ba305f6d2dd175ff0285
   languageName: node
   linkType: hard
 
 "@mui/system@npm:^5.4.4, @mui/system@npm:^5.5.0":
-  version: 5.9.3
-  resolution: "@mui/system@npm:5.9.3"
+  version: 5.10.0
+  resolution: "@mui/system@npm:5.10.0"
   dependencies:
     "@babel/runtime": ^7.17.2
     "@mui/private-theming": ^5.9.3
-    "@mui/styled-engine": ^5.8.7
+    "@mui/styled-engine": ^5.10.0
     "@mui/types": ^7.1.5
     "@mui/utils": ^5.9.3
     clsx: ^1.2.1
@@ -3074,7 +3074,7 @@ __metadata:
       optional: true
     "@types/react":
       optional: true
-  checksum: f94fda5744b50fa4730f4354a108da9b5e80c60b62c89c8f7ca3c37e1b5d6fb2efb9f4dcf04da5b3b8f00c91a547a5df0e4eb173bfce820ca147ede3167386b0
+  checksum: be86853ca79ed8a889d37fa02780c0dfe477ff5ffda4cabba8bf5865186b578cbd50646ea902c3f5712baf83d4b11fbd21428f643b42d1839d671cbedddfc546
   languageName: node
   linkType: hard
 
@@ -3524,8 +3524,8 @@ __metadata:
   linkType: hard
 
 "@testing-library/dom@npm:^8.0.0":
-  version: 8.16.1
-  resolution: "@testing-library/dom@npm:8.16.1"
+  version: 8.17.1
+  resolution: "@testing-library/dom@npm:8.17.1"
   dependencies:
     "@babel/code-frame": ^7.10.4
     "@babel/runtime": ^7.12.5
@@ -3535,7 +3535,7 @@ __metadata:
     dom-accessibility-api: ^0.5.9
     lz-string: ^1.4.4
     pretty-format: ^27.0.2
-  checksum: eca86b69f28cdab7226209075b3ca54f87fc0fc92a41440bbfa41e14ed0815aac4a63b1d9a08230e0dbd0de3a54c61cd90a3a423695e6840124e2473c8149e99
+  checksum: e4df091fcf84c9eac4a6ee4c76674c1d562bf98732f0ac8820972d7718ab10397b672b9f082aace3cacd1f610fc77de6e1b6094e67afe1df0443bf22eb9deab2
   languageName: node
   linkType: hard
 
@@ -3842,9 +3842,9 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*, @types/node@npm:>=12":
-  version: 18.6.4
-  resolution: "@types/node@npm:18.6.4"
-  checksum: fc453dd2b541f5812ba1a8f957f577727cf2d8aee886f1d5c03eb153b2b3373d2e0953c5bd2b7a5b184073bc317f54ec91f1ec4830a58eda4a833e90654021de
+  version: 18.6.5
+  resolution: "@types/node@npm:18.6.5"
+  checksum: e3e66c9a84b94010a57c1b9dac882c08484278d74f9d120dbe6a3e45d00740d178bd1d34a5deee28197c94b9f4359153b637bab9b305328e865027e9987a0f3d
   languageName: node
   linkType: hard
 
@@ -3918,13 +3918,13 @@ __metadata:
   linkType: hard
 
 "@types/react@npm:*":
-  version: 18.0.16
-  resolution: "@types/react@npm:18.0.16"
+  version: 18.0.17
+  resolution: "@types/react@npm:18.0.17"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 47853419adbf7f35f302cd4ef804c5a50498a0917a34e696caa693fc60b9c52c644ca2ecf64cbba4a5efd963771167d241906f117d16d59e20e84b882215b6bd
+  checksum: 18cae64f5bfd6bb58fbd8ee2ba52ec82de844f114254e26de7b513e4b86621f643f9b71d7066958cd571b0d78cb86cbceda449c5289f9349ca573df29ab69252
   languageName: node
   linkType: hard
 
@@ -8498,9 +8498,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.3.564, electron-to-chromium@npm:^1.4.202":
-  version: 1.4.211
-  resolution: "electron-to-chromium@npm:1.4.211"
-  checksum: 43d983b94f5aa542926c4063bae597591458b59e96ec0ab85a62cc296b9760c447d7d0af369d3c40b44b75cfc9d3a66277495736517c370cf03e181cf3ed39f1
+  version: 1.4.212
+  resolution: "electron-to-chromium@npm:1.4.212"
+  checksum: 972eb1b46bce2fa7fa19eb70779d27b84b7113daad01718a67cfbd92e2972c09eaf15bbe5e901467399e5e66c74a17a74891c7aeda8118b1ef655d8c1913ee2a
   languageName: node
   linkType: hard
 
@@ -10682,7 +10682,7 @@ __metadata:
     react-dom: 17.0.2
     react-ga4: 1.4.1
     react-i18next: 11.15.3
-    react-query: 3.34.7
+    react-query: 3.34.19
     react-router: 6.2.1
     react-router-dom: 6.2.1
     react-scripts: 4.0.3
@@ -11276,6 +11276,15 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.12.0
   checksum: 1897f751d346c692cae70e977f64982862114fc0453a75fe89f31b8029cf39606aa663f33495172eccb02c9297a089110f14a11e38be3e66092c0510ab616a06
+  languageName: node
+  linkType: hard
+
+"i18next@npm:21.8.1":
+  version: 21.8.1
+  resolution: "i18next@npm:21.8.1"
+  dependencies:
+    "@babel/runtime": ^7.17.2
+  checksum: d95da86626356d980c7063f41f2dcb3ce82462a11aa968df10bb87eb19e7fa54a2303643551bfef6276c18e6fb12e8e320f6ff914ff2ad4e0b32ff849150fed0
   languageName: node
   linkType: hard
 
@@ -13255,12 +13264,12 @@ __metadata:
   linkType: hard
 
 "jsx-ast-utils@npm:^2.4.1 || ^3.0.0, jsx-ast-utils@npm:^3.2.1, jsx-ast-utils@npm:^3.3.2":
-  version: 3.3.2
-  resolution: "jsx-ast-utils@npm:3.3.2"
+  version: 3.3.3
+  resolution: "jsx-ast-utils@npm:3.3.3"
   dependencies:
     array-includes: ^3.1.5
-    object.assign: ^4.1.2
-  checksum: 61d4596d44480afc03ae0a7ebb272aa6603dc4c3645805dea0fc8d9f0693542cd0959f3ba7c0c9b16c13dd5a900c7c4310108bada273132a8355efe3fed22064
+    object.assign: ^4.1.3
+  checksum: a2ed78cac49a0f0c4be8b1eafe3c5257a1411341d8e7f1ac740debae003de04e5f6372bfcfbd9d082e954ffd99aac85bcda85b7c6bc11609992483f4cdc0f745
   languageName: node
   linkType: hard
 
@@ -15321,7 +15330,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"object.assign@npm:^4.1.0, object.assign@npm:^4.1.2":
+"object.assign@npm:^4.1.0, object.assign@npm:^4.1.2, object.assign@npm:^4.1.3":
   version: 4.1.3
   resolution: "object.assign@npm:4.1.3"
   dependencies:
@@ -17721,24 +17730,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-query@npm:3.34.7":
-  version: 3.34.7
-  resolution: "react-query@npm:3.34.7"
-  dependencies:
-    "@babel/runtime": ^7.5.5
-    broadcast-channel: ^3.4.1
-    match-sorter: ^6.0.2
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-  peerDependenciesMeta:
-    react-dom:
-      optional: true
-    react-native:
-      optional: true
-  checksum: 879ea7c42a9414eaa0a49cceb2c87f69731ccb7e93cda73cf427b260822a1e5b34e524e6cc1dfcc00b6915cfc08399f23b36f701f5805b9ecb36cd4126cc4abe
-  languageName: node
-  linkType: hard
-
 "react-quill@npm:1.3.5":
   version: 1.3.5
   resolution: "react-quill@npm:1.3.5"
@@ -19346,12 +19337,12 @@ __metadata:
   linkType: hard
 
 "sodium-native@npm:^3.0.0":
-  version: 3.3.0
-  resolution: "sodium-native@npm:3.3.0"
+  version: 3.4.1
+  resolution: "sodium-native@npm:3.4.1"
   dependencies:
     node-gyp: latest
     node-gyp-build: ^4.3.0
-  checksum: 4412bc90155261e2006c979788d3b33e3bdba1c41669c7054a876b8731a68886e1450b356791abd2c4e7b217d21f50adfdc1e194d8909dd003223195bd8ddc0a
+  checksum: 88f2f8c9ecb3c7952098b667ee3803f24253d72a3b3874b126e0e36b2ac20432e12ad44bde3664024e6d0ae1bc6d24fdebc81273af161e735f2eec22f10d26dd
   languageName: node
   linkType: hard
 
