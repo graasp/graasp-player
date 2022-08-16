@@ -15,19 +15,20 @@ jobs:
   graasp-deploy-s3-workflow:
     name: Graasp Player
     # Reference reusable workflow file. Using the commit SHA is the safest for stability and security
-    uses: graasp/graasp-deploy/.github/workflows/cintegration-s3.yml@7b5dd84304458c3c5ab03cbbde059670f77b1687
+    uses: graasp/graasp-deploy/.github/workflows/cintegration-s3.yml@1a7c4c74273be6fd1c56eb6c5a8fb4af2d211b86
     with:
       build-folder: 'build'
     secrets:
+      api-host: ${{ secrets.REACT_APP_API_HOST_DEV }}
+      authentication-host: ${{ secrets.REACT_APP_AUTHENTICATION_HOST_DEV }}
       aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_DEV }}
-      aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_DEV }}
       aws-region: ${{ secrets.AWS_REGION_DEV }}
+      aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_DEV }}
       aws-s3-bucket-name: ${{ secrets.AWS_S3_BUCKET_NAME_GRAASP_PERFORM_DEV }}
       cloudfront-distribution-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_GRAASP_PERFORM_DEV }}
-      api-host: ${{ secrets.REACT_APP_API_HOST_DEV }}
-      port: ${{ secrets.PORT }}
-      show-notifications: ${{ secrets.REACT_APP_SHOW_NOTIFICATIONS }}
-      authentication-host: ${{ secrets.REACT_APP_AUTHENTICATION_HOST_DEV }}
+      domain: ${{ secrets.REACT_APP_DOMAIN_DEV }}
       graasp-compose-host: ${{ secrets.BUILDER_CLIENT_HOST_DEV }}
       graasp-explorer-host: ${{ secrets.EXPLORER_CLIENT_HOST_DEV }}
-      domain: ${{ secrets.REACT_APP_DOMAIN_DEV }}
+      h5p-integration-url: ${{ secrets.H5P_INTEGRATION_URL_DEV }}
+      port: ${{ secrets.PORT }}
+      show-notifications: ${{ secrets.REACT_APP_SHOW_NOTIFICATIONS }}
