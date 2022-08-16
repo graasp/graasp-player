@@ -2331,9 +2331,9 @@ __metadata:
 
 "@graasp/ui@github:graasp/graasp-ui.git#150/ChangeImmutableImplementationToWorkProperlyWithReactQuery":
   version: 0.2.0
-  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=ef55bc3243b95d7f0134b9e95486b4028999f24c"
+  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=463071b3f766b04c943b08d25019b9304cf355a4"
   dependencies:
-    "@graasp/utils": "github:graasp/graasp-utils.git"
+    "@graasp/sdk": "github:graasp/graasp-sdk.git"
     clsx: 1.1.1
     http-status-codes: 2.2.0
     immutable: 4.1.0
@@ -2361,7 +2361,7 @@ __metadata:
       optional: true
     ag-grid-react:
       optional: true
-  checksum: b75feefbc2a43b8282c98d9c262f8ab23910bceef2807a0fe8f77d3bc2d82d5bd8df0ee1be474909b3c10a7b8d9410230a0d891e50a85628ab6e5d265fe56c48
+  checksum: 2ee5eb3c9f932a7af686e9b88cad9fbd4f93edb98559c6f18ce47c7389d8bfad03e765fd4a67b75d8795bde9aeea408fad80f3614e8a92d9616800cb1c8e4242
   languageName: node
   linkType: hard
 
