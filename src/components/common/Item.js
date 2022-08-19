@@ -1,11 +1,15 @@
+import { Record, is } from 'immutable';
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useInView } from 'react-intersection-observer';
+import { useInfiniteQuery } from 'react-query';
 
 import { Container, Typography, makeStyles } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 
 import { Api } from '@graasp/query-client';
+import { Button } from '@graasp/ui';
 import {
   AppItem,
   DocumentItem,
@@ -40,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Item = ({ id, isChildren, showPinnedOnly }) => {
+  const { ref, inView } = useInView();
   const { t } = useTranslation();
   const classes = useStyles();
   const { data: item, isLoading, isError } = useItem(id);
@@ -60,7 +65,64 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
     ),
   });
 
-  if (isLoading || isTagsLoading || isChildrenLoading) {
+  const paginate = (list, pageSize, pageNumber) => {
+    const data = list
+      .filter((i) => i.type != 'folder' || !i.settings?.isPinned)
+      .slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
+
+    const createRecordPaginatedResponse = Record({
+      data: data,
+      pageNumber: undefined,
+    });
+
+    if (data.isEmpty() || list.size <= pageNumber * pageSize) {
+      return createRecordPaginatedResponse();
+    }
+    const response = createRecordPaginatedResponse({
+      data: data,
+      pageNumber: pageNumber,
+    });
+    return response;
+  };
+
+  const {
+    data: childrenPaginated,
+    isLoading: isChildrenPaginatedLoading,
+    isError: isChildrenPaginatedError,
+    isFetchingNextPage,
+    fetchNextPage,
+    hasNextPage,
+  } = useInfiniteQuery(
+    ['items', id, 'childrenPaginated'],
+    ({ pageParam = 1 }) => paginate(children, 8, pageParam),
+    {
+      getNextPageParam: (lastPage) => {
+        const pageNumber = lastPage.pageNumber;
+        if (pageNumber) {
+          return pageNumber + 1;
+        }
+        return undefined;
+      },
+      enabled: Boolean(!showPinnedOnly && children && !isChildrenLoading),
+      refetchOnWindowFocus: false,
+      isDataEqual: (oldData, newData) => {
+        return is(oldData, newData);
+      },
+    },
+  );
+
+  React.useEffect(() => {
+    if (inView) {
+      fetchNextPage();
+    }
+  }, [inView]);
+
+  if (
+    isLoading ||
+    isTagsLoading ||
+    isChildrenLoading ||
+    isChildrenPaginatedLoading
+  ) {
     return <Loader />;
   }
 
@@ -74,7 +136,7 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
     return <Alert severity="error">{t('You cannnot access this item')}</Alert>;
   }
 
-  if (isError || !item || isFileError) {
+  if (isError || !item || isFileError || isChildrenPaginatedError) {
     return <Alert severity="error">{t('An unexpected error occured.')}</Alert>;
   }
 
@@ -92,6 +154,18 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
         return <FolderButton id={buildFolderButtonId(id)} item={item} />;
       }
 
+      const showLoadMoreButton =
+        !hasNextPage || isFetchingNextPage ? null : (
+          <Container ref={ref}>
+            <Button
+              disabled={!hasNextPage || isFetchingNextPage}
+              onClick={() => fetchNextPage()}
+            >
+              Load more
+            </Button>
+          </Container>
+        );
+
       // render each children recursively
       return (
         <Container>
@@ -101,16 +175,33 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
                 {item.name}
               </Typography>
               <TextEditor value={item.description} />
+
+              {childrenPaginated.pages.map((page) => (
+                <>
+                  {page.data.map((thisItem) => (
+                    <Container key={thisItem.id} className={classes.container}>
+                      <Item isChildren id={thisItem.id} />
+                    </Container>
+                  ))}
+                </>
+              ))}
+              {showLoadMoreButton}
             </>
           )}
 
-          {children
-            .filter((i) => showPinnedOnly === (i.settings?.isPinned || false))
-            .map((thisItem) => (
-              <Container key={thisItem.id} className={classes.container}>
-                <Item isChildren id={thisItem.id} />
-              </Container>
-            ))}
+          {showPinnedOnly && (
+            <>
+              {children
+                .filter(
+                  (i) => showPinnedOnly === (i.settings?.isPinned || false),
+                )
+                .map((thisItem) => (
+                  <Container key={thisItem.id} className={classes.container}>
+                    <Item isChildren id={thisItem.id} />
+                  </Container>
+                ))}
+            </>
+          )}
         </Container>
       );
     }
