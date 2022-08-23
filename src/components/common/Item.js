@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer';
 import { useInfiniteQuery } from 'react-query';
 
 import { Container, Typography, makeStyles } from '@material-ui/core';
-import Alert from '@material-ui/lab/Alert';
+import { Alert, Skeleton } from '@material-ui/lab';
 
 import { Api } from '@graasp/query-client';
 import { Button } from '@graasp/ui';
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Item = ({ id, isChildren, showPinnedOnly }) => {
+const Item = ({ id, isChildren, showPinnedOnly, itemType, isCollapsible }) => {
   const { ref, inView } = useInView();
   const { t } = useTranslation();
   const classes = useStyles();
@@ -67,7 +67,8 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
 
   const paginate = (list, pageSize, pageNumber) => {
     const data = list
-      .filter((i) => i.type != 'folder' || !i.settings?.isPinned)
+      .filter((i) => i.type !== "folder")
+      .filter((i) => !i.settings?.isPinned)
       .slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
 
     const createRecordPaginatedResponse = Record({
@@ -94,7 +95,7 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
     hasNextPage,
   } = useInfiniteQuery(
     ['items', id, 'childrenPaginated'],
-    ({ pageParam = 1 }) => paginate(children, 8, pageParam),
+    ({ pageParam = 1 }) => paginate(children, 2, pageParam),
     {
       getNextPageParam: (lastPage) => {
         const pageNumber = lastPage.pageNumber;
@@ -123,7 +124,29 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
     isChildrenLoading ||
     isChildrenPaginatedLoading
   ) {
-    return <Loader />;
+    switch(true) {
+      case (isCollapsible): {
+        return <Skeleton variant="rect" width={'100%'} height={'56px'} />;
+      }
+      case (itemType === ITEM_TYPES.FOLDER): {
+        return <Skeleton variant="rect" width={'100%'} height={'130px'} />;
+      }
+      case ([ITEM_TYPES.FILE, ITEM_TYPES.S3_FILE, ITEM_TYPES.LINK, ITEM_TYPES.APP].includes(itemType)): {
+        return <Skeleton variant="rect" width={'100%'} height={SCREEN_MAX_HEIGHT} />;
+      }
+      case (itemType === ITEM_TYPES.DOCUMENT): {
+        return (
+          <>
+            <Skeleton variant="text" />
+            <Skeleton variant="text" />
+            <Skeleton variant="text" />
+          </>
+        );
+      }
+      default: {
+        return <Skeleton variant="rect" width={'100%'} />;
+      }
+    };
   }
 
   const isItemHidden = isHidden(itemTags?.toJS());
@@ -160,6 +183,7 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
             <Button
               disabled={!hasNextPage || isFetchingNextPage}
               onClick={() => fetchNextPage()}
+              fullWidth
             >
               Load more
             </Button>
@@ -180,7 +204,7 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
                 <>
                   {page.data.map((thisItem) => (
                     <Container key={thisItem.id} className={classes.container}>
-                      <Item isChildren id={thisItem.id} />
+                      <Item isChildren id={thisItem.id} itemType={thisItem.type} isCollapsible={thisItem.settings?.isCollapsible} />
                     </Container>
                   ))}
                 </>
@@ -197,7 +221,7 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
                 )
                 .map((thisItem) => (
                   <Container key={thisItem.id} className={classes.container}>
-                    <Item isChildren id={thisItem.id} />
+                    <Item isChildren id={thisItem.id} itemType={thisItem.type} isCollapsible={thisItem.settings?.isCollapsible} />
                   </Container>
                 ))}
             </>
@@ -283,6 +307,8 @@ Item.propTypes = {
   id: PropTypes.string.isRequired,
   isChildren: PropTypes.bool,
   showPinnedOnly: PropTypes.bool,
+  itemType: PropTypes.string,
+  isCollapsible: PropTypes.bool,
 };
 
 Item.defaultProps = {
