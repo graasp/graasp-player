@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Container, Typography, makeStyles } from '@material-ui/core';
-import Alert from '@material-ui/lab/Alert';
+import { Alert, Skeleton } from '@material-ui/lab';
 
 import { Api } from '@graasp/query-client';
 import {
@@ -12,7 +12,6 @@ import {
   FileItem,
   H5PItem,
   LinkItem,
-  Loader,
   TextEditor,
   withCollapse,
 } from '@graasp/ui';
@@ -44,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Item = ({ id, isChildren, showPinnedOnly }) => {
+const Item = ({ id, isChildren, showPinnedOnly, itemType, isCollapsible }) => {
   const { t } = useTranslation();
   const classes = useStyles();
   const { data: item, isLoading, isError } = useItem(id);
@@ -66,7 +65,39 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
   });
 
   if (isLoading || isTagsLoading || isChildrenLoading) {
-    return <Loader />;
+    switch (true) {
+      case isCollapsible: {
+        return <Skeleton variant="rect" width={'100%'} height={'56px'} />;
+      }
+      case itemType === ITEM_TYPES.FOLDER && isChildren: {
+        return null;
+      }
+      case itemType === ITEM_TYPES.FOLDER: {
+        return <Skeleton variant="rect" width={'100%'} height={'130px'} />;
+      }
+      case [
+        ITEM_TYPES.FILE,
+        ITEM_TYPES.S3_FILE,
+        ITEM_TYPES.LINK,
+        ITEM_TYPES.APP,
+      ].includes(itemType): {
+        return (
+          <Skeleton variant="rect" width={'100%'} height={SCREEN_MAX_HEIGHT} />
+        );
+      }
+      case itemType === ITEM_TYPES.DOCUMENT: {
+        return (
+          <>
+            <Skeleton variant="text" />
+            <Skeleton variant="text" />
+            <Skeleton variant="text" />
+          </>
+        );
+      }
+      default: {
+        return <Skeleton variant="rect" width={'100%'} />;
+      }
+    }
   }
 
   const isItemHidden = isHidden(itemTags?.toJS());
@@ -113,7 +144,12 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
             .filter((i) => showPinnedOnly === (i.settings?.isPinned || false))
             .map((thisItem) => (
               <Container key={thisItem.id} className={classes.container}>
-                <Item isChildren id={thisItem.id} />
+                <Item
+                  isChildren
+                  id={thisItem.id}
+                  itemType={thisItem.type}
+                  isCollapsible={thisItem.settings?.isCollapsible}
+                />
               </Container>
             ))}
         </Container>
@@ -164,7 +200,9 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
     }
     case ITEM_TYPES.APP: {
       if (isMemberLoading) {
-        return <Loader />;
+        return (
+          <Skeleton variant="rect" width={'100%'} height={SCREEN_MAX_HEIGHT} />
+        );
       }
 
       const appItem = (
@@ -215,6 +253,8 @@ Item.propTypes = {
   id: PropTypes.string.isRequired,
   isChildren: PropTypes.bool,
   showPinnedOnly: PropTypes.bool,
+  itemType: PropTypes.string,
+  isCollapsible: PropTypes.bool,
 };
 
 Item.defaultProps = {

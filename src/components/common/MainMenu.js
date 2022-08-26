@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router';
 
-import Alert from '@material-ui/lab/Alert';
+import { Alert, Skeleton } from '@material-ui/lab';
 
-import { MainMenu as GraaspMainMenu, Loader } from '@graasp/ui';
+import { MainMenu as GraaspMainMenu } from '@graasp/ui';
 
 import { hooks } from '../../config/queryClient';
 import { MAIN_MENU_ID } from '../../config/selectors';
@@ -41,7 +41,7 @@ const MainMenu = () => {
   }
 
   if (isLoading || rootItemIsLoading) {
-    return <Loader />;
+    return <Skeleton variant="text" />;
   }
 
   if (childrenIsError || rootItemIsError) {

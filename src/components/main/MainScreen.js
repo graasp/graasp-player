@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router';
 
 import { Typography } from '@material-ui/core';
-import Alert from '@material-ui/lab/Alert';
+import { Alert, Skeleton } from '@material-ui/lab';
 
-import { Loader, Main } from '@graasp/ui';
+import { Main } from '@graasp/ui';
 
 import { hooks } from '../../config/queryClient';
 import Item from '../common/Item';
@@ -26,7 +26,7 @@ const MainScreen = () => {
   const [isFirstItem, setIsFirstItem] = useState(true);
 
   if (isLoading) {
-    return Loader;
+    return <Skeleton variant="rect" width={'100%'} />;
   }
 
   if (!item || isError) {
