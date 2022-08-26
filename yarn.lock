@@ -2247,9 +2247,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/query-client@github:graasp/graasp-query-client":
+"@graasp/query-client@github:graasp/graasp-query-client#194/AllowReplyOfSignedUrlOfFiles":
   version: 0.1.0
-  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=1872025f2191336c792b31f729d471721d3ae30b"
+  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=d0a722ab188a2be8c1ca527e4fdda730a3ce3f74"
   dependencies:
     "@graasp/translations": "github:graasp/graasp-translations.git"
     "@graasp/utils": "github:graasp/graasp-utils.git"
@@ -2264,7 +2264,7 @@ __metadata:
     uuid: 8.3.2
   peerDependencies:
     react: ^17.0.0
-  checksum: 2f9c83ec4f00edf81993be6a2b1c0a16cd6a0cf4abad876b93aecd42ac8e1da4b9c977a5cd280c8af4dcfc5a6a6acd3234eff13a90bda363620d320381747474
+  checksum: b90bd43db21ef1342092fe51a1896b3eed0a57648ad5ee3a1cb3242fbeab15ad1e50a0e1f1c31f7e2beb7f182978f181e7c5d446acc1fb3756db50ace5250465
   languageName: node
   linkType: hard
 
@@ -2342,6 +2342,42 @@ __metadata:
     ag-grid-react:
       optional: true
   checksum: 59d4db944de392c52414a77f3f01b2fda6d5e0782fd6fa3f6b9544439cd160660d406bdb756bbf2755cd10bf4fc1391dcd9cfbf1c83049217dc2e50b62c3f2e2
+  languageName: node
+  linkType: hard
+
+"@graasp/ui@github:graasp/graasp-ui#157/DownloadAndUseFilesDirectlyFromAws":
+  version: 0.2.0
+  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=ddf33b918cf8dcf62e7f0942d652b56bc44e38e2"
+  dependencies:
+    "@graasp/sdk": "github:graasp/graasp-sdk.git"
+    clsx: 1.1.1
+    http-status-codes: 2.2.0
+    immutable: 4.1.0
+    katex: 0.15.3
+    lodash.truncate: 4.4.2
+    qs: 6.10.3
+    react-cookie-consent: 7.4.1
+    react-i18next: 11.16.9
+    react-quill: 1.3.5
+    react-rnd: 10.3.7
+    react-text-mask: 5.4.3
+    uuid: 8.3.2
+  peerDependencies:
+    "@material-ui/core": 4.11.0
+    "@material-ui/icons": 4.9.1
+    "@material-ui/lab": 4.0.0-alpha.58
+    ag-grid-community: 27.3.0
+    ag-grid-react: 27.3.0
+    i18next: 21.3.1
+    react: ^16.13.1
+    react-dom: 16.13.1
+    react-router-dom: 6.2.2
+  peerDependenciesMeta:
+    ag-grid-community:
+      optional: true
+    ag-grid-react:
+      optional: true
+  checksum: 523c226a18714c5d3b27c930e1d6be2b7c78c056dc71f4d6345fd204a684f10594672379044ce94ad7267f523c922664885b8061bb9ddf4c9b50a0b62e8850a7
   languageName: node
   linkType: hard
 
@@ -10641,9 +10677,9 @@ __metadata:
     "@emotion/react": 11.8.1
     "@emotion/styled": 11.8.1
     "@graasp/chatbox": "github:graasp/graasp-chatbox"
-    "@graasp/query-client": "github:graasp/graasp-query-client"
+    "@graasp/query-client": "github:graasp/graasp-query-client#194/AllowReplyOfSignedUrlOfFiles"
     "@graasp/sdk": "github:graasp/graasp-sdk"
-    "@graasp/ui": "github:graasp/graasp-ui"
+    "@graasp/ui": "github:graasp/graasp-ui#157/DownloadAndUseFilesDirectlyFromAws"
     "@graasp/websockets": "github:graasp/graasp-websockets"
     "@material-ui/core": 4.12.3
     "@material-ui/icons": 5.0.0-beta.4

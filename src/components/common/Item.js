@@ -58,11 +58,14 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
     getUpdates: isFolder,
   });
 
+  const replyUrl = Boolean(process.env.NODE_ENV === 'production');
+
   // fetch file content if type is file
-  const { data: content, isError: isFileError } = useFileContent(id, {
+  const { data: file, isError: isFileError } = useFileContent(id, {
     enabled: Boolean(
       item && [ITEM_TYPES.FILE, ITEM_TYPES.S3_FILE].includes(item.type),
     ),
+    replyUrl: replyUrl,
   });
 
   if (isLoading || isTagsLoading || isChildrenLoading) {
@@ -84,6 +87,8 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
   }
 
   const showCollapse = item.settings?.isCollapsible;
+
+  console.log(file)
 
   switch (item.type) {
     case ITEM_TYPES.FOLDER: {
@@ -133,14 +138,22 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
     }
     case ITEM_TYPES.FILE:
     case ITEM_TYPES.S3_FILE: {
-      const fileItem = (
+      const fileItem = (replyUrl && file?.url) ? (
         <FileItem
           id={buildFileId(id)}
           item={item}
-          content={content}
+          s3Url={file.url}
           maxHeight={SCREEN_MAX_HEIGHT}
           showCollapse={showCollapse}
-        />
+        />  
+      ) : (
+        <FileItem
+          id={buildFileId(id)}
+          item={item}
+          content={file}
+          maxHeight={SCREEN_MAX_HEIGHT}
+          showCollapse={showCollapse}
+        /> 
       );
 
       if (showCollapse) {
