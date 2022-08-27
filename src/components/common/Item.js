@@ -88,8 +88,6 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
 
   const showCollapse = item.settings?.isCollapsible;
 
-  console.log(file)
-
   switch (item.type) {
     case ITEM_TYPES.FOLDER: {
       // do not display children folders if they are not pinned
