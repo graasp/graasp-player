@@ -58,17 +58,15 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
     getUpdates: isFolder,
   });
 
-  const replyUrl = Boolean(process.env.NODE_ENV === 'production');
-
   // fetch file content if type is file
-  const { data: file, isError: isFileError } = useFileContent(id, {
+  const { data: file, isLoading: isFileContentLoading, isError: isFileError } = useFileContent(id, {
     enabled: Boolean(
       item && [ITEM_TYPES.FILE, ITEM_TYPES.S3_FILE].includes(item.type),
     ),
-    replyUrl: replyUrl,
+    replyUrl: true,
   });
 
-  if (isLoading || isTagsLoading || isChildrenLoading) {
+  if (isLoading || isTagsLoading || isChildrenLoading || isFileContentLoading) {
     return <Loader />;
   }
 
@@ -136,22 +134,15 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
     }
     case ITEM_TYPES.FILE:
     case ITEM_TYPES.S3_FILE: {
-      const fileItem = (replyUrl && file?.url) ? (
+      const fileUrl = file.serviceType === 'localService' ? `${process.env.REACT_APP_LOCAL_FILES_SERVER_HOST}${file.url}` : file.url;
+      const fileItem = (
         <FileItem
           id={buildFileId(id)}
           item={item}
-          s3Url={file.url}
+          fileUrl={fileUrl}
           maxHeight={SCREEN_MAX_HEIGHT}
           showCollapse={showCollapse}
-        />  
-      ) : (
-        <FileItem
-          id={buildFileId(id)}
-          item={item}
-          content={file}
-          maxHeight={SCREEN_MAX_HEIGHT}
-          showCollapse={showCollapse}
-        /> 
+        />
       );
 
       if (showCollapse) {
