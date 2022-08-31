@@ -59,7 +59,11 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
   });
 
   // fetch file content if type is file
-  const { data: file, isLoading: isFileContentLoading, isError: isFileError } = useFileContent(id, {
+  const {
+    data: file,
+    isLoading: isFileContentLoading,
+    isError: isFileError,
+  } = useFileContent(id, {
     enabled: Boolean(
       item && [ITEM_TYPES.FILE, ITEM_TYPES.S3_FILE].includes(item.type),
     ),
@@ -134,14 +138,14 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
     }
     case ITEM_TYPES.FILE:
     case ITEM_TYPES.S3_FILE: {
-      const fileUrl = file.serviceType === 'localService' ? `${process.env.REACT_APP_LOCAL_FILES_SERVER_HOST}${file.url}` : file.url;
       const fileItem = (
         <FileItem
           id={buildFileId(id)}
           item={item}
-          fileUrl={fileUrl}
+          fileUrl={file?.url}
           maxHeight={SCREEN_MAX_HEIGHT}
           showCollapse={showCollapse}
+          serviceType={file?.serviceType}
         />
       );
 
