@@ -20,7 +20,7 @@ jobs:
   graasp-deploy-s3-workflow:
     name: Graasp Player
     # Reference reusable workflow file. Using the commit SHA is the safest for stability and security
-    uses: graasp/graasp-deploy/.github/workflows/cintegration-s3.yml@7874cc405d2927cd11ade7f191f5aa859a7f3c73
+    uses: graasp/graasp-deploy/.github/workflows/cintegration-s3.yml@b7953248051ed6fa185e81a6629a1842499b21dd
     with:
       build-folder: 'build'
       graasp-compose-host-test: 'http://localhost:3111'
