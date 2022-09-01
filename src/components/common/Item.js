@@ -98,9 +98,10 @@ const Item = ({ id, isChildren, showPinnedOnly, itemType, isCollapsible }) => {
     isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
+    refetch: refetchChildrenPaginated,
   } = useInfiniteQuery(
     ['items', id, 'childrenPaginated'],
-    ({ pageParam = 1 }) => paginate(children, 2, pageParam),
+    ({ pageParam = 1 }) => paginate(children, 8, pageParam),
     {
       getNextPageParam: (lastPage) => {
         const pageNumber = lastPage.pageNumber;
@@ -118,10 +119,14 @@ const Item = ({ id, isChildren, showPinnedOnly, itemType, isCollapsible }) => {
   );
 
   React.useEffect(() => {
+    if (children) {
+      refetchChildrenPaginated();
+    }
+
     if (inView) {
       fetchNextPage();
     }
-  }, [inView]);
+  }, [inView, children]);
 
   if (
     isLoading ||
