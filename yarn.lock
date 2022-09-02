@@ -2249,7 +2249,7 @@ __metadata:
 
 "@graasp/query-client@github:graasp/graasp-query-client#194/AllowReplyOfSignedUrlOfFiles":
   version: 0.1.0
-  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=d0a722ab188a2be8c1ca527e4fdda730a3ce3f74"
+  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=34ad457cb228dc972779078b4d4b3486af171b3b"
   dependencies:
     "@graasp/translations": "github:graasp/graasp-translations.git"
     "@graasp/utils": "github:graasp/graasp-utils.git"
@@ -2264,7 +2264,7 @@ __metadata:
     uuid: 8.3.2
   peerDependencies:
     react: ^17.0.0
-  checksum: b90bd43db21ef1342092fe51a1896b3eed0a57648ad5ee3a1cb3242fbeab15ad1e50a0e1f1c31f7e2beb7f182978f181e7c5d446acc1fb3756db50ace5250465
+  checksum: 2d02746a0a9d4568115ffd4ac580cb571bb5ef42ba6b1ea14f790739f5a1a6d1e43ea0787c3285b6274cbd1fcf21ba83f976bcabdcc4543c8de10b3b90f3ad32
   languageName: node
   linkType: hard
 
@@ -20860,7 +20860,7 @@ __metadata:
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 9096d8f6c16cb80ef3bf96fcbbd055bf1c4a43bd14f3b7be45a9fbe7ada46ec977f604d5feed3263b4f2aa7d4c7477ce5f9cd87de0d6feedec69a983f3a4f93e
+  checksum: 96d3030cb01143570567cb4f3a616b10df65f658f0e74e853e77a089a6a954e35c800be7db8b9bfe9a1ae05d9c2897e281359f65e4caa1caf266368e1c4febd3
   languageName: node
   linkType: hard
 
