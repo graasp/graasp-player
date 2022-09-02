@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router';
 
-import { Alert, Skeleton } from '@material-ui/lab';
+import { Alert } from '@material-ui/lab';
 
 import { MainMenu as GraaspMainMenu } from '@graasp/ui';
 
@@ -40,10 +40,6 @@ const MainMenu = () => {
     return null;
   }
 
-  if (isLoading || rootItemIsLoading) {
-    return <Skeleton variant="text" />;
-  }
-
   if (childrenIsError || rootItemIsError) {
     return <Alert severity="error">{t('An unexpected error occured.')}</Alert>;
   }
@@ -59,6 +55,7 @@ const MainMenu = () => {
           setFocusedItemId(payload);
         }}
         items={children && !children.isEmpty() ? children : []}
+        isLoading={isLoading || rootItemIsLoading}
       />
     </GraaspMainMenu>
   );

@@ -15,6 +15,7 @@ import TreeView from '@mui/lab/TreeView';
 import { ITEM_TYPES } from '../../../enums';
 import CustomContentTree from './CustomContentTree';
 import CustomTreeItem from './CustomTreeItem';
+import { Skeleton } from '@material-ui/lab';
 
 const DynamicTreeView = ({
   id,
@@ -24,7 +25,12 @@ const DynamicTreeView = ({
   items,
   selectedId,
   onTreeItemSelect,
+  isLoading,
 }) => {
+  if (isLoading) {
+    return <Skeleton variant="text" />;
+  }
+
   const [expandedItems, setExpandedItems] = useState(initialExpendedItems);
 
   // types based on TreeView types
@@ -73,6 +79,7 @@ DynamicTreeView.propTypes = {
   initialExpendedItems: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedId: PropTypes.string.isRequired,
   onTreeItemSelect: PropTypes.any.isRequired,
+  isLoading: PropTypes.bool,
 };
 
 export default DynamicTreeView;
