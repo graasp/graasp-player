@@ -2246,10 +2246,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/query-client@github:graasp/graasp-query-client":
+"@graasp/query-client@github:graasp/graasp-query-client#198/PaginationWithInfiniteScrollOfItems":
   version: 0.1.0
-  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=1872025f2191336c792b31f729d471721d3ae30b"
+  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=f5e38605bf389bc984d322ec91316ef45f0c9d38"
   dependencies:
+    "@graasp/sdk": "github:graasp/graasp-sdk"
     "@graasp/translations": "github:graasp/graasp-translations.git"
     "@graasp/utils": "github:graasp/graasp-utils.git"
     axios: 0.27.2
@@ -2263,7 +2264,7 @@ __metadata:
     uuid: 8.3.2
   peerDependencies:
     react: ^17.0.0
-  checksum: 2f9c83ec4f00edf81993be6a2b1c0a16cd6a0cf4abad876b93aecd42ac8e1da4b9c977a5cd280c8af4dcfc5a6a6acd3234eff13a90bda363620d320381747474
+  checksum: 6f95a29461f643844e8ded9811401ea1ad97279a2e191a0969e7e7315d95e0af8630b3e89af495f5f76677531aec8d2c4ab49d911bce76edde68eb8d345db55d
   languageName: node
   linkType: hard
 
@@ -10666,7 +10667,7 @@ __metadata:
     "@emotion/react": 11.8.1
     "@emotion/styled": 11.8.1
     "@graasp/chatbox": "github:graasp/graasp-chatbox"
-    "@graasp/query-client": "github:graasp/graasp-query-client"
+    "@graasp/query-client": "github:graasp/graasp-query-client#198/PaginationWithInfiniteScrollOfItems"
     "@graasp/sdk": "github:graasp/graasp-sdk"
     "@graasp/ui": "github:graasp/graasp-ui"
     "@graasp/websockets": "github:graasp/graasp-websockets"

@@ -1,12 +1,10 @@
-import { Record, is } from 'immutable';
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
-import { useInfiniteQuery } from 'react-query';
 
 import { Container, Typography, makeStyles } from '@material-ui/core';
-import { Alert, Skeleton } from '@material-ui/lab';
+import { Alert } from '@material-ui/lab';
 
 import { Api } from '@graasp/query-client';
 import { Button } from '@graasp/ui';
@@ -39,7 +37,13 @@ import { isHidden } from '../../utils/item';
 import { CurrentMemberContext } from '../context/CurrentMemberContext';
 import FolderButton from './FolderButton';
 
-const { useItem, useChildren, useFileContent, useItemTags } = hooks;
+const {
+  useItem,
+  useChildren,
+  useFileContent,
+  useItemTags,
+  useChildrenPaginated,
+} = hooks;
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -48,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Item = ({ id, isChildren, showPinnedOnly, itemType, isCollapsible }) => {
+const Item = ({ id, isChildren, showPinnedOnly }) => {
   const { ref, inView } = useInView();
   const { t } = useTranslation();
   const classes = useStyles();
@@ -70,53 +74,17 @@ const Item = ({ id, isChildren, showPinnedOnly, itemType, isCollapsible }) => {
     ),
   });
 
-  const paginate = (list, pageSize, pageNumber) => {
-    const data = list
-      .filter((i) => i.type !== "folder")
-      .filter((i) => !i.settings?.isPinned)
-      .slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
-
-    const createRecordPaginatedResponse = Record({
-      data: data,
-      pageNumber: undefined,
-    });
-
-    if (data.isEmpty() || list.size <= pageNumber * pageSize) {
-      return createRecordPaginatedResponse();
-    }
-    const response = createRecordPaginatedResponse({
-      data: data,
-      pageNumber: pageNumber,
-    });
-    return response;
-  };
-
   const {
     data: childrenPaginated,
     isLoading: isChildrenPaginatedLoading,
     isError: isChildrenPaginatedError,
+    refetch: refetchChildrenPaginated,
+    hasNextPage,
     isFetchingNextPage,
     fetchNextPage,
-    hasNextPage,
-    refetch: refetchChildrenPaginated,
-  } = useInfiniteQuery(
-    ['items', id, 'childrenPaginated'],
-    ({ pageParam = 1 }) => paginate(children, 8, pageParam),
-    {
-      getNextPageParam: (lastPage) => {
-        const pageNumber = lastPage.pageNumber;
-        if (pageNumber) {
-          return pageNumber + 1;
-        }
-        return undefined;
-      },
-      enabled: Boolean(!showPinnedOnly && children && !isChildrenLoading),
-      refetchOnWindowFocus: false,
-      isDataEqual: (oldData, newData) => {
-        return is(oldData, newData);
-      },
-    },
-  );
+  } = useChildrenPaginated(id, children, {
+    enabled: Boolean(!showPinnedOnly && children && !isChildrenLoading),
+  });
 
   React.useEffect(() => {
     if (children) {
@@ -134,29 +102,7 @@ const Item = ({ id, isChildren, showPinnedOnly, itemType, isCollapsible }) => {
     isChildrenLoading ||
     isChildrenPaginatedLoading
   ) {
-    switch(true) {
-      case (isCollapsible): {
-        return <Skeleton variant="rect" width={'100%'} height={'56px'} />;
-      }
-      case (itemType === ITEM_TYPES.FOLDER): {
-        return <Skeleton variant="rect" width={'100%'} height={'130px'} />;
-      }
-      case ([ITEM_TYPES.FILE, ITEM_TYPES.S3_FILE, ITEM_TYPES.LINK, ITEM_TYPES.APP].includes(itemType)): {
-        return <Skeleton variant="rect" width={'100%'} height={SCREEN_MAX_HEIGHT} />;
-      }
-      case (itemType === ITEM_TYPES.DOCUMENT): {
-        return (
-          <>
-            <Skeleton variant="text" />
-            <Skeleton variant="text" />
-            <Skeleton variant="text" />
-          </>
-        );
-      }
-      default: {
-        return <Skeleton variant="rect" width={'100%'} />;
-      }
-    };
+    return <Loader />;
   }
 
   const isItemHidden = isHidden(itemTags?.toJS());
@@ -214,7 +160,7 @@ const Item = ({ id, isChildren, showPinnedOnly, itemType, isCollapsible }) => {
                 <>
                   {page.data.map((thisItem) => (
                     <Container key={thisItem.id} className={classes.container}>
-                      <Item isChildren id={thisItem.id} itemType={thisItem.type} isCollapsible={thisItem.settings?.isCollapsible} />
+                      <Item isChildren id={thisItem.id} />
                     </Container>
                   ))}
                 </>
@@ -231,7 +177,7 @@ const Item = ({ id, isChildren, showPinnedOnly, itemType, isCollapsible }) => {
                 )
                 .map((thisItem) => (
                   <Container key={thisItem.id} className={classes.container}>
-                    <Item isChildren id={thisItem.id} itemType={thisItem.type} isCollapsible={thisItem.settings?.isCollapsible} />
+                    <Item isChildren id={thisItem.id} />
                   </Container>
                 ))}
             </>
@@ -335,8 +281,6 @@ Item.propTypes = {
   id: PropTypes.string.isRequired,
   isChildren: PropTypes.bool,
   showPinnedOnly: PropTypes.bool,
-  itemType: PropTypes.string,
-  isCollapsible: PropTypes.bool,
 };
 
 Item.defaultProps = {
