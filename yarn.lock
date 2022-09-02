@@ -2347,7 +2347,7 @@ __metadata:
 
 "@graasp/ui@github:graasp/graasp-ui#157/DownloadAndUseFilesDirectlyFromAws":
   version: 0.2.0
-  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=3753a19cc9d1f72ddcb1f53b65a7f4bf4e3e1b01"
+  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=de16d035da0eae56b70b751dba36c388359b9354"
   dependencies:
     "@graasp/sdk": "github:graasp/graasp-sdk.git"
     clsx: 1.1.1
@@ -2377,7 +2377,7 @@ __metadata:
       optional: true
     ag-grid-react:
       optional: true
-  checksum: f496a9f88f6af3e03a85e8811ad3c03040a98879d5777dd82ac9ff94963640d78a82c5a9c5c625923f23cbb10b0d608338feb5f91abc35c09a308786dbbed7dd
+  checksum: 3c7a3544126369714b234be67781be4039337d1d82549f43af9e7ac339ef25df60a7ea00b26d24c19a4b77124d1f2a87fca7f9bdb261b02b59d7812ec626f4cf
   languageName: node
   linkType: hard
 
