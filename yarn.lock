@@ -2347,7 +2347,7 @@ __metadata:
 
 "@graasp/ui@github:graasp/graasp-ui#158/GraaspInitialSpaLoader":
   version: 0.2.0
-  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=73a882e8cf6c4f2ea270a0e537e905ad8638f08f"
+  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=ad151ffc383534aa633497cc9b46f3b557758a8c"
   dependencies:
     "@graasp/sdk": "github:graasp/graasp-sdk.git"
     clsx: 1.1.1
@@ -2377,7 +2377,7 @@ __metadata:
       optional: true
     ag-grid-react:
       optional: true
-  checksum: b718fd3448fe70e4ab07ca10d5e87a4d98f8ad33a5635e22b78e488537834ac04b579721c1074070dc7f2fddc94f14a49a9f75c2ca7c1721e4bf095e2e8e3e1e
+  checksum: a45257240b5191d17b107708af5605f6f2ccd48e5789613baafec218f16a16573a4abc99dc063ae8e9bd77961ba4b3c2b0df3043764ae59c86054a054a3cf437
   languageName: node
   linkType: hard
 

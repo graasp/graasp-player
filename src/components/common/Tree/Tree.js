@@ -8,6 +8,7 @@ import React, { useState } from 'react';
 
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Skeleton } from '@material-ui/lab';
 
 import TreeItem from '@mui/lab/TreeItem';
 import TreeView from '@mui/lab/TreeView';
@@ -15,7 +16,6 @@ import TreeView from '@mui/lab/TreeView';
 import { ITEM_TYPES } from '../../../enums';
 import CustomContentTree from './CustomContentTree';
 import CustomTreeItem from './CustomTreeItem';
-import { Skeleton } from '@material-ui/lab';
 
 const DynamicTreeView = ({
   id,

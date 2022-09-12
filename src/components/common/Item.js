@@ -11,6 +11,7 @@ import {
   DocumentItem,
   FileItem,
   H5PItem,
+  ItemSkeleton,
   LinkItem,
   TextEditor,
   withCollapse,
@@ -65,39 +66,14 @@ const Item = ({ id, isChildren, showPinnedOnly, itemType, isCollapsible }) => {
   });
 
   if (isLoading || isTagsLoading || isChildrenLoading) {
-    switch (true) {
-      case isCollapsible: {
-        return <Skeleton variant="rect" width={'100%'} height={'56px'} />;
-      }
-      case itemType === ITEM_TYPES.FOLDER && isChildren: {
-        return null;
-      }
-      case itemType === ITEM_TYPES.FOLDER: {
-        return <Skeleton variant="rect" width={'100%'} height={'130px'} />;
-      }
-      case [
-        ITEM_TYPES.FILE,
-        ITEM_TYPES.S3_FILE,
-        ITEM_TYPES.LINK,
-        ITEM_TYPES.APP,
-      ].includes(itemType): {
-        return (
-          <Skeleton variant="rect" width={'100%'} height={SCREEN_MAX_HEIGHT} />
-        );
-      }
-      case itemType === ITEM_TYPES.DOCUMENT: {
-        return (
-          <>
-            <Skeleton variant="text" />
-            <Skeleton variant="text" />
-            <Skeleton variant="text" />
-          </>
-        );
-      }
-      default: {
-        return <Skeleton variant="rect" width={'100%'} />;
-      }
-    }
+    return (
+      <ItemSkeleton
+        itemType={itemType}
+        isChildren={isChildren}
+        isCollapsible={isCollapsible}
+        screenMaxHeight={SCREEN_MAX_HEIGHT}
+      />
+    );
   }
 
   const isItemHidden = isHidden(itemTags?.toJS());
