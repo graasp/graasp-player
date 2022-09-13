@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
 
 import { Container, Typography, makeStyles } from '@material-ui/core';
-import { Alert } from '@material-ui/lab';
+import { Alert, Skeleton } from '@material-ui/lab';
 
 import { Api } from '@graasp/query-client';
 import { Button } from '@graasp/ui';
@@ -13,8 +13,8 @@ import {
   DocumentItem,
   FileItem,
   H5PItem,
+  ItemSkeleton,
   LinkItem,
-  Loader,
   TextEditor,
   withCollapse,
 } from '@graasp/ui';
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Item = ({ id, isChildren, showPinnedOnly }) => {
+const Item = ({ id, isChildren, showPinnedOnly, itemType, isCollapsible }) => {
   const { ref, inView } = useInView();
   const { t } = useTranslation();
   const classes = useStyles();
@@ -98,12 +98,19 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
   }, [inView, children]);
 
   if (
-    isLoading ||
-    isTagsLoading ||
-    isChildrenLoading ||
+    isLoading || 
+    isTagsLoading || 
+    isChildrenLoading || 
     isChildrenPaginatedLoading
   ) {
-    return <Loader />;
+    return (
+      <ItemSkeleton
+        itemType={itemType}
+        isChildren={isChildren}
+        isCollapsible={isCollapsible}
+        screenMaxHeight={SCREEN_MAX_HEIGHT}
+      />
+    );
   }
 
   const isItemHidden = isHidden(itemTags?.toJS());
@@ -161,7 +168,12 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
                 <>
                   {page.data.map((thisItem) => (
                     <Container key={thisItem.id} className={classes.container}>
-                      <Item isChildren id={thisItem.id} />
+                      <Item
+                        isChildren
+                        id={thisItem.id}
+                        itemType={thisItem.type}
+                        isCollapsible={thisItem.settings?.isCollapsible}
+                      />
                     </Container>
                   ))}
                 </>
@@ -178,7 +190,12 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
                 )
                 .map((thisItem) => (
                   <Container key={thisItem.id} className={classes.container}>
-                    <Item isChildren id={thisItem.id} />
+                    <Item
+                      isChildren
+                      id={thisItem.id}
+                      itemType={thisItem.type}
+                      isCollapsible={thisItem.settings?.isCollapsible}
+                    />
                   </Container>
                 ))}
             </>
@@ -231,7 +248,9 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
     }
     case ITEM_TYPES.APP: {
       if (isMemberLoading) {
-        return <Loader />;
+        return (
+          <Skeleton variant="rect" width={'100%'} height={SCREEN_MAX_HEIGHT} />
+        );
       }
 
       const appItem = (
@@ -282,6 +301,8 @@ Item.propTypes = {
   id: PropTypes.string.isRequired,
   isChildren: PropTypes.bool,
   showPinnedOnly: PropTypes.bool,
+  itemType: PropTypes.string,
+  isCollapsible: PropTypes.bool,
 };
 
 Item.defaultProps = {

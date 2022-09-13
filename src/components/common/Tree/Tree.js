@@ -8,6 +8,7 @@ import React, { useState } from 'react';
 
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Skeleton } from '@material-ui/lab';
 
 import TreeItem from '@mui/lab/TreeItem';
 import TreeView from '@mui/lab/TreeView';
@@ -24,7 +25,12 @@ const DynamicTreeView = ({
   items,
   selectedId,
   onTreeItemSelect,
+  isLoading,
 }) => {
+  if (isLoading) {
+    return <Skeleton variant="text" />;
+  }
+
   const [expandedItems, setExpandedItems] = useState(initialExpendedItems);
 
   // types based on TreeView types
@@ -73,6 +79,7 @@ DynamicTreeView.propTypes = {
   initialExpendedItems: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedId: PropTypes.string.isRequired,
   onTreeItemSelect: PropTypes.any.isRequired,
+  isLoading: PropTypes.bool,
 };
 
 export default DynamicTreeView;
