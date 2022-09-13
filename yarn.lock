@@ -2248,7 +2248,7 @@ __metadata:
 
 "@graasp/query-client@github:graasp/graasp-query-client#198/PaginationWithInfiniteScrollOfItems":
   version: 0.1.0
-  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=c5f0c0f2cee301794154557226b636c42435bdfa"
+  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=b0a48327dee98217ccd8d36bbc302538bb9893b8"
   dependencies:
     "@graasp/sdk": "github:graasp/graasp-sdk"
     "@graasp/translations": "github:graasp/graasp-translations.git"
@@ -2257,14 +2257,12 @@ __metadata:
     crypto-js: 4.1.1
     http-status-codes: 2.2.0
     immutable: 4.0.0
-    jest-immutable-matchers: 3.0.0
-    js-cookie: 3.0.1
     qs: 6.10.3
     react-query: 3.34.19
     uuid: 8.3.2
   peerDependencies:
     react: ^17.0.0
-  checksum: 912fd6970670205252f8341e26a170b0ef6f188201a0f851c01fdd0bd0bc3eb3629b2b5cf358087393dc9f8fc64214176bf43150251fc6449b3fbe3264e5d71e
+  checksum: ad4a2399d8e7f6c01009e7330d4bb9c54bb88aabd75ced5c65cc8dd71fe368114e7ef810e2c502b75e00618ba0216f84051406cebd8da2f100f9c4edea00952b
   languageName: node
   linkType: hard
 
@@ -12584,16 +12582,6 @@ __metadata:
     fsevents:
       optional: true
   checksum: 8ad5236d5646d2388d2bd58a57ea53698923434f43d59ea9ebdc58bce4d0b8544c8de2f7acaa9a6d73171f04460388b2b6d7d6b6c256aea4ebb8780140781596
-  languageName: node
-  linkType: hard
-
-"jest-immutable-matchers@npm:3.0.0":
-  version: 3.0.0
-  resolution: "jest-immutable-matchers@npm:3.0.0"
-  peerDependencies:
-    immutable: ">=3.0.0"
-    jest: ">=21.0.0"
-  checksum: 28c30e0bdb1637e3e1bf4a2b6f02cbc66ba6f3b4cb2c204968d13c591e0fabfdd0b68ee5fc1af49ba23ad702c0543676d7e70a6d19100193d2fafb1e7eb5621f
   languageName: node
   linkType: hard
 
