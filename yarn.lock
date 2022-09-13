@@ -2248,7 +2248,7 @@ __metadata:
 
 "@graasp/query-client@github:graasp/graasp-query-client#194/AllowReplyOfSignedUrlOfFiles":
   version: 0.1.0
-  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=34ad457cb228dc972779078b4d4b3486af171b3b"
+  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=e3a5159da8995d9f6222ea4568eb72d311b8c8d0"
   dependencies:
     "@graasp/sdk": "github:graasp/graasp-sdk"
     "@graasp/translations": "github:graasp/graasp-translations.git"
@@ -2262,7 +2262,7 @@ __metadata:
     uuid: 8.3.2
   peerDependencies:
     react: ^17.0.0
-  checksum: 2d02746a0a9d4568115ffd4ac580cb571bb5ef42ba6b1ea14f790739f5a1a6d1e43ea0787c3285b6274cbd1fcf21ba83f976bcabdcc4543c8de10b3b90f3ad32
+  checksum: 0c3a91d5ab83c57f2e5315d2b88de741ac8ad1a011e44ba18da2e6badebed6b3e5c277a63553ff559932198c885b1d895b42b44a002f3b98ef14f6e3e07e0800
   languageName: node
   linkType: hard
 
@@ -2330,7 +2330,7 @@ __metadata:
 
 "@graasp/ui@github:graasp/graasp-ui#157/DownloadAndUseFilesDirectlyFromAws":
   version: 0.2.0
-  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=de16d035da0eae56b70b751dba36c388359b9354"
+  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=cd7434c31517c2f6bb478eea86998f35d3434385"
   dependencies:
     "@graasp/sdk": "github:graasp/graasp-sdk.git"
     clsx: 1.1.1
@@ -2360,7 +2360,7 @@ __metadata:
       optional: true
     ag-grid-react:
       optional: true
-  checksum: 3c7a3544126369714b234be67781be4039337d1d82549f43af9e7ac339ef25df60a7ea00b26d24c19a4b77124d1f2a87fca7f9bdb261b02b59d7812ec626f4cf
+  checksum: f9a24156e8707484ef832b2398b24eddf781be7c7814a1a5b07312791f27267071a720774d0eef4115c2e144123311878521f28b82754a47103eb241e3160223
   languageName: node
   linkType: hard
 
