@@ -14,6 +14,7 @@ export const PANNEL_CLOSE_BUTTON_ID = 'chatboxCloseButton';
 
 export const buildFolderButtonId = (id) => `folderButton-${id}`;
 export const buildTreeItemClass = (id) => `buildTreeItem-${id}`;
+export const buildTreeShortcutItemClass = (id) => `buildTreeShortcutItem-${id}`;
 
 export const HEADER_MEMBER_MENU_BUTTON_ID = 'headerMemberMenuButton';
 export const HEADER_MEMBER_MENU_SEE_PROFILE_BUTTON_ID =

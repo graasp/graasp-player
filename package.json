@@ -29,6 +29,7 @@
     "react-dom": "17.0.2",
     "react-ga4": "1.4.1",
     "react-i18next": "11.15.3",
+    "react-intersection-observer": "9.4.0",
     "react-query": "3.34.19",
     "react-router": "6.2.1",
     "react-router-dom": "6.2.1",
@@ -58,7 +59,8 @@
     "release": "standard-version -a",
     "release:first": "standard-version -a --first-release",
     "release:minor": "standard-version -a --release-as minor",
-    "release:major": "standard-version -a --release-as major"
+    "release:major": "standard-version -a --release-as major",
+    "release:patch": "standard-version -a --release-as patch"
   },
   "eslintConfig": {
     "extends": "react-app"

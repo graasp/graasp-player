@@ -3,6 +3,7 @@
   The main goal is to add the ability to filter the item based on their tags. The Tree
   check for each element in the tree if it should be displayed (no hidden tag).
   This feature should be ported to graasp-ui. */
+import { Record } from 'immutable';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -10,23 +11,35 @@ import Skeleton from '@material-ui/lab/Skeleton';
 
 import TreeItem from '@mui/lab/TreeItem';
 
+import { GRAASP_MENU_ITEMS } from '../../../config/constants';
 import { hooks } from '../../../config/queryClient';
 import { buildTreeItemClass } from '../../../config/selectors';
 import { ITEM_TYPES } from '../../../enums';
 import { isHidden } from '../../../utils/item';
 import CustomContentTree from './CustomContentTree';
+import CustomTreeShortcutItem from './CustomTreeShortcutItem';
 
 const { useItem, useItemTags, useItemsTags, useChildren } = hooks;
 
 const LoadingTreeItem = <Skeleton variant="text" />;
 
-const CustomTreeItem = ({ itemId, expandedItems = [], selectedId }) => {
+const CustomTreeItem = ({ itemProp, expandedItems = [], selectedId }) => {
+  const itemId =
+    itemProp.type === ITEM_TYPES.SHORTCUT && itemProp.extra?.shortcut?.target
+      ? itemProp.extra?.shortcut?.target
+      : itemProp.id;
+
   const { data: item, isLoading, isError } = useItem(itemId);
   const { data: tags, isLoading: isTagLoading } = useItemTags(itemId);
   const showItem =
     item && (!tags || tags.isEmpty() || (tags && !isHidden(tags.toJS())));
   const { data: children, isLoading: childrenIsLoading } = useChildren(itemId, {
-    enabled: Boolean(item && showItem && item.type === ITEM_TYPES.FOLDER),
+    enabled: Boolean(
+      item &&
+        showItem &&
+        item.type === ITEM_TYPES.FOLDER &&
+        itemProp.type === ITEM_TYPES.FOLDER,
+    ),
   });
   const { data: childrenTags, isLoading: isChildrenTagsLoading } = useItemsTags(
     children?.map((child) => child.id).toJS(),
@@ -46,30 +59,40 @@ const CustomTreeItem = ({ itemId, expandedItems = [], selectedId }) => {
     return null;
   }
 
+  if (item.type !== ITEM_TYPES.FOLDER) {
+    return null;
+  }
+
   const renderChildrenItems = () => {
     if (childrenIsLoading || isChildrenTagsLoading) {
       return LoadingTreeItem;
     }
     const filteredChildren = children?.filter(
       (child, idx) =>
-        !isHidden(childrenTags?.get(idx)) && child.type === ITEM_TYPES.FOLDER,
+        !isHidden(childrenTags?.get(idx)) &&
+        GRAASP_MENU_ITEMS.includes(child.type),
     );
 
     if (!filteredChildren?.size) {
       return null;
     }
 
-    return filteredChildren.map(({ id: childId }) => (
+    return filteredChildren.map((childItem) => (
       <CustomTreeItem
-        key={childId}
-        itemId={childId}
+        key={childItem.id}
         expandedItems={expandedItems}
         selectedId={selectedId}
+        itemProp={childItem}
       />
     ));
   };
 
   const content = childrenIsLoading ? LoadingTreeItem : item.name;
+
+  // render CustomTreeShortcutItem when original item is a shortcut
+  if (itemProp.type === ITEM_TYPES.SHORTCUT) {
+    return <CustomTreeShortcutItem itemId={itemId} content={content} />;
+  }
 
   // recursive display of children
   return (
@@ -86,9 +109,9 @@ const CustomTreeItem = ({ itemId, expandedItems = [], selectedId }) => {
 };
 
 CustomTreeItem.propTypes = {
-  itemId: PropTypes.string.isRequired,
   expandedItems: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedId: PropTypes.string.isRequired,
+  itemProp: PropTypes.instanceOf(Record),
 };
 
 export default CustomTreeItem;

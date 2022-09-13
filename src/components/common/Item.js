@@ -1,18 +1,20 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useInView } from 'react-intersection-observer';
 
 import { Container, Typography, makeStyles } from '@material-ui/core';
-import Alert from '@material-ui/lab/Alert';
+import { Alert, Skeleton } from '@material-ui/lab';
 
 import { Api } from '@graasp/query-client';
+import { Button } from '@graasp/ui';
 import {
   AppItem,
   DocumentItem,
   FileItem,
   H5PItem,
+  ItemSkeleton,
   LinkItem,
-  Loader,
   TextEditor,
   withCollapse,
 } from '@graasp/ui';
@@ -31,11 +33,17 @@ import {
   buildFolderButtonId,
 } from '../../config/selectors';
 import { ITEM_TYPES } from '../../enums';
-import { isHidden } from '../../utils/item';
+import { isHidden, paginationContentFilter } from '../../utils/item';
 import { CurrentMemberContext } from '../context/CurrentMemberContext';
 import FolderButton from './FolderButton';
 
-const { useItem, useChildren, useFileContent, useItemTags } = hooks;
+const {
+  useItem,
+  useChildren,
+  useFileContent,
+  useItemTags,
+  useChildrenPaginated,
+} = hooks;
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -44,7 +52,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Item = ({ id, isChildren, showPinnedOnly }) => {
+
+const Item = ({
+  id,
+  isChildren,
+  showPinnedOnly,
+  itemType,
+  isCollapsible,
+  isShortcut,
+  isShortcutPinned,
+}) => {
+  const { ref, inView } = useInView();
   const { t } = useTranslation();
   const classes = useStyles();
   const { data: item, isLoading, isError } = useItem(id);
@@ -70,8 +88,44 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
     replyUrl: true,
   });
 
-  if (isLoading || isTagsLoading || isChildrenLoading || isFileContentLoading) {
-    return <Loader />;
+  const {
+    data: childrenPaginated,
+    isLoading: isChildrenPaginatedLoading,
+    isError: isChildrenPaginatedError,
+    refetch: refetchChildrenPaginated,
+    hasNextPage,
+    isFetchingNextPage,
+    fetchNextPage,
+  } = useChildrenPaginated(id, children, {
+    enabled: Boolean(!showPinnedOnly && children && !isChildrenLoading),
+    filterFunction: paginationContentFilter,
+  });
+
+  React.useEffect(() => {
+    if (children) {
+      refetchChildrenPaginated();
+    }
+
+    if (inView) {
+      fetchNextPage();
+    }
+  }, [inView, children]);
+
+  if (
+    isLoading || 
+    isTagsLoading || 
+    isChildrenLoading || 
+    isChildrenPaginatedLoading ||
+    isFileContentLoading
+  ) {
+    return (
+      <ItemSkeleton
+        itemType={itemType}
+        isChildren={isChildren}
+        isCollapsible={isCollapsible}
+        screenMaxHeight={SCREEN_MAX_HEIGHT}
+      />
+    );
   }
 
   const isItemHidden = isHidden(itemTags?.toJS());
@@ -84,7 +138,7 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
     return <Alert severity="error">{t('You cannnot access this item')}</Alert>;
   }
 
-  if (isError || !item || isFileError) {
+  if (isError || !item || isFileError || isChildrenPaginatedError) {
     return <Alert severity="error">{t('An unexpected error occured.')}</Alert>;
   }
 
@@ -92,15 +146,44 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
 
   switch (item.type) {
     case ITEM_TYPES.FOLDER: {
-      // do not display children folders if they are not pinned
-      if (!item.settings?.isPinned && isChildren) {
-        return null;
+      if (isChildren) {
+        const folderButton = (
+          <FolderButton id={buildFolderButtonId(id)} item={item} />
+        );
+
+        // display children shortcut pinned folders
+        if (isShortcut && isShortcutPinned) {
+          return folderButton;
+        }
+
+        // do not display shortcut folders if they are not pinned
+        if (isShortcut && !isShortcutPinned) {
+          return null;
+        }
+
+        // do not display children folders if they are not pinned
+        if (!item.settings?.isPinned) {
+          return null;
+        }
+
+        // only display children folders if they are pinned
+        if (item.settings?.isPinned) {
+          return folderButton;
+        }
       }
 
-      // only display children folders if they are pinned
-      if (item.settings?.isPinned && isChildren) {
-        return <FolderButton id={buildFolderButtonId(id)} item={item} />;
-      }
+      const showLoadMoreButton =
+        !hasNextPage || isFetchingNextPage ? null : (
+          <Container ref={ref}>
+            <Button
+              disabled={!hasNextPage || isFetchingNextPage}
+              onClick={() => fetchNextPage()}
+              fullWidth
+            >
+              {t('Load more')}
+            </Button>
+          </Container>
+        );
 
       // render each children recursively
       return (
@@ -111,16 +194,43 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
                 {item.name}
               </Typography>
               <TextEditor value={item.description} />
+
+              {childrenPaginated.pages.map((page) => (
+                <>
+                  {page.data.map((thisItem) => (
+                    <Container key={thisItem.id} className={classes.container}>
+                      <Item
+                        isChildren
+                        id={thisItem.id}
+                        itemType={thisItem.type}
+                        isCollapsible={thisItem.settings?.isCollapsible}
+                      />
+                    </Container>
+                  ))}
+                </>
+              ))}
+              {showLoadMoreButton}
             </>
           )}
 
-          {children
-            .filter((i) => showPinnedOnly === (i.settings?.isPinned || false))
-            .map((thisItem) => (
-              <Container key={thisItem.id} className={classes.container}>
-                <Item isChildren id={thisItem.id} />
-              </Container>
-            ))}
+          {showPinnedOnly && (
+            <>
+              {children
+                .filter(
+                  (i) => showPinnedOnly === (i.settings?.isPinned || false),
+                )
+                .map((thisItem) => (
+                  <Container key={thisItem.id} className={classes.container}>
+                    <Item
+                      isChildren
+                      id={thisItem.id}
+                      itemType={thisItem.type}
+                      isCollapsible={thisItem.settings?.isCollapsible}
+                    />
+                  </Container>
+                ))}
+            </>
+          )}
         </Container>
       );
     }
@@ -170,7 +280,9 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
     }
     case ITEM_TYPES.APP: {
       if (isMemberLoading) {
-        return <Loader />;
+        return (
+          <Skeleton variant="rect" width={'100%'} height={SCREEN_MAX_HEIGHT} />
+        );
       }
 
       const appItem = (
@@ -211,6 +323,22 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
       );
     }
 
+    case ITEM_TYPES.SHORTCUT: {
+      if (item.extra?.shortcut?.target) {
+        return (
+          <Item
+            isChildren
+            isShortcut
+            id={item.extra?.shortcut?.target}
+            isShortcutPinned={item.settings?.isPinned}
+          />
+        );
+      }
+      return (
+        <Alert severity="error">{t('An unexpected error occured.')}</Alert>
+      );
+    }
+
     default:
       console.error(`The type ${item?.type} is not defined`);
       return null;
@@ -221,6 +349,10 @@ Item.propTypes = {
   id: PropTypes.string.isRequired,
   isChildren: PropTypes.bool,
   showPinnedOnly: PropTypes.bool,
+  isShortcut: PropTypes.bool,
+  isShortcutPinned: PropTypes.bool,
+  itemType: PropTypes.string,
+  isCollapsible: PropTypes.bool,
 };
 
 Item.defaultProps = {

@@ -9,15 +9,26 @@ on:
 
   # Allows to run the workflow manually from the Actions tab
   workflow_dispatch:
-
+    # Inputs the workflow accepts.
+    inputs:
+      test-execution:
+        type: boolean
+        default: true
+        description: 'Execute test job (Default: yes)'
 # This workflow is made up of one job that calls the reusable workflow in graasp-deploy
 jobs:
   graasp-deploy-s3-workflow:
     name: Graasp Player
     # Reference reusable workflow file. Using the commit SHA is the safest for stability and security
-    uses: graasp/graasp-deploy/.github/workflows/cintegration-s3.yml@1a7c4c74273be6fd1c56eb6c5a8fb4af2d211b86
+    uses: graasp/graasp-deploy/.github/workflows/cintegration-s3.yml@b7953248051ed6fa185e81a6629a1842499b21dd
     with:
       build-folder: 'build'
+      graasp-compose-host-test: 'http://localhost:3111'
+      graasp-authentication-host-test: 'http://localhost:3001'
+      node-env-test: 'test'
+      hidden-item-tag-id-test: '12345678-1234-1234-1234-123456789012'
+      public-tag-id-test: '22345678-1234-1234-1234-123456789013'
+      test-execution: ${{ inputs.test-execution }}
     secrets:
       api-host: ${{ secrets.REACT_APP_API_HOST_DEV }}
       authentication-host: ${{ secrets.REACT_APP_AUTHENTICATION_HOST_DEV }}
@@ -32,3 +43,4 @@ jobs:
       h5p-integration-url: ${{ secrets.H5P_INTEGRATION_URL_DEV }}
       port: ${{ secrets.PORT }}
       show-notifications: ${{ secrets.REACT_APP_SHOW_NOTIFICATIONS }}
+      api-host-test: ${{ secrets.REACT_APP_API_HOST }}

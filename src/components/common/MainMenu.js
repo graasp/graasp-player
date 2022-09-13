@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router';
 
-import Alert from '@material-ui/lab/Alert';
+import { Alert } from '@material-ui/lab';
 
-import { MainMenu as GraaspMainMenu, Loader } from '@graasp/ui';
+import { MainMenu as GraaspMainMenu } from '@graasp/ui';
 
 import { hooks } from '../../config/queryClient';
 import { MAIN_MENU_ID } from '../../config/selectors';
@@ -40,10 +40,6 @@ const MainMenu = () => {
     return null;
   }
 
-  if (isLoading || rootItemIsLoading) {
-    return <Loader />;
-  }
-
   if (childrenIsError || rootItemIsError) {
     return <Alert severity="error">{t('An unexpected error occured.')}</Alert>;
   }
@@ -59,6 +55,7 @@ const MainMenu = () => {
           setFocusedItemId(payload);
         }}
         items={children && !children.isEmpty() ? children : []}
+        isLoading={isLoading || rootItemIsLoading}
       />
     </GraaspMainMenu>
   );

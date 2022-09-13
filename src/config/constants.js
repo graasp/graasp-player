@@ -1,5 +1,6 @@
 import { buildSignInPath } from '@graasp/sdk';
 
+import { ITEM_TYPES } from '../enums';
 import env from '../env.json';
 
 const {
@@ -75,6 +76,9 @@ export const SCREEN_MAX_HEIGHT = window.innerHeight * 0.8;
 export const buildGraaspComposeItemRoute = (id) =>
   `${GRAASP_COMPOSE_HOST}/items/${id}`;
 
+export const buildGraaspPerformItemRoute = (id) =>
+  `${window.location.origin}/${id}`;
+
 export const ITEM_CARD_MAX_LENGTH = 18;
 export const HEADER_HEIGHT = 64;
 export const DRAWER_WIDTH = 400;
@@ -106,3 +110,5 @@ export const HOST_MAP = {
 };
 
 export const GRAASP_LOGO_HEADER_HEIGHT = 40;
+
+export const GRAASP_MENU_ITEMS = [ITEM_TYPES.FOLDER, ITEM_TYPES.SHORTCUT];

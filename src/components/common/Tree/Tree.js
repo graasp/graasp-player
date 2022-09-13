@@ -8,11 +8,12 @@ import React, { useState } from 'react';
 
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Skeleton } from '@material-ui/lab';
 
 import TreeItem from '@mui/lab/TreeItem';
 import TreeView from '@mui/lab/TreeView';
 
-import { ITEM_TYPES } from '../../../enums';
+import { GRAASP_MENU_ITEMS } from '../../../config/constants';
 import CustomContentTree from './CustomContentTree';
 import CustomTreeItem from './CustomTreeItem';
 
@@ -24,7 +25,12 @@ const DynamicTreeView = ({
   items,
   selectedId,
   onTreeItemSelect,
+  isLoading,
 }) => {
+  if (isLoading) {
+    return <Skeleton variant="text" />;
+  }
+
   const [expandedItems, setExpandedItems] = useState(initialExpendedItems);
 
   // types based on TreeView types
@@ -34,7 +40,9 @@ const DynamicTreeView = ({
   const onToggle = (_event, nodeIds) => setExpandedItems(nodeIds);
 
   // show only folder items in the navigation tree
-  const itemsFiltered = items.filter((item) => item.type === ITEM_TYPES.FOLDER);
+  const itemsFiltered = items.filter((item) =>
+    GRAASP_MENU_ITEMS.includes(item.type),
+  );
 
   return (
     <TreeView
@@ -52,12 +60,12 @@ const DynamicTreeView = ({
         nodeId={rootId}
         label={rootLabel}
       >
-        {itemsFiltered.map(({ id: itemId }) => (
+        {itemsFiltered.map((item) => (
           <CustomTreeItem
-            key={itemId}
-            itemId={itemId}
+            key={item.id}
             expandedItems={expandedItems}
             selectedId={selectedId}
+            itemProp={item}
           />
         ))}
       </TreeItem>
@@ -73,6 +81,7 @@ DynamicTreeView.propTypes = {
   initialExpendedItems: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedId: PropTypes.string.isRequired,
   onTreeItemSelect: PropTypes.any.isRequired,
+  isLoading: PropTypes.bool,
 };
 
 export default DynamicTreeView;
