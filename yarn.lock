@@ -2248,7 +2248,7 @@ __metadata:
 
 "@graasp/query-client@github:graasp/graasp-query-client#198/PaginationWithInfiniteScrollOfItems":
   version: 0.1.0
-  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=f5e38605bf389bc984d322ec91316ef45f0c9d38"
+  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=c5f0c0f2cee301794154557226b636c42435bdfa"
   dependencies:
     "@graasp/sdk": "github:graasp/graasp-sdk"
     "@graasp/translations": "github:graasp/graasp-translations.git"
@@ -2264,7 +2264,7 @@ __metadata:
     uuid: 8.3.2
   peerDependencies:
     react: ^17.0.0
-  checksum: 6f95a29461f643844e8ded9811401ea1ad97279a2e191a0969e7e7315d95e0af8630b3e89af495f5f76677531aec8d2c4ab49d911bce76edde68eb8d345db55d
+  checksum: 912fd6970670205252f8341e26a170b0ef6f188201a0f851c01fdd0bd0bc3eb3629b2b5cf358087393dc9f8fc64214176bf43150251fc6449b3fbe3264e5d71e
   languageName: node
   linkType: hard
 

@@ -33,7 +33,7 @@ import {
   buildFolderButtonId,
 } from '../../config/selectors';
 import { ITEM_TYPES } from '../../enums';
-import { isHidden } from '../../utils/item';
+import { isHidden, paginationContentFilter } from '../../utils/item';
 import { CurrentMemberContext } from '../context/CurrentMemberContext';
 import FolderButton from './FolderButton';
 
@@ -84,6 +84,7 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
     fetchNextPage,
   } = useChildrenPaginated(id, children, {
     enabled: Boolean(!showPinnedOnly && children && !isChildrenLoading),
+    filterFunction: paginationContentFilter,
   });
 
   React.useEffect(() => {
@@ -141,7 +142,7 @@ const Item = ({ id, isChildren, showPinnedOnly }) => {
               onClick={() => fetchNextPage()}
               fullWidth
             >
-              Load more
+              {t('Load more')}
             </Button>
           </Container>
         );

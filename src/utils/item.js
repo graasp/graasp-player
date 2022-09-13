@@ -1,4 +1,5 @@
 import { HIDDEN_ITEM_TAG_ID } from '../config/constants';
+import { ITEM_TYPES } from '../enums';
 
 // eslint-disable-next-line no-useless-escape
 export const transformIdForPath = (id) => id.replace(/\-/g, '_');
@@ -83,3 +84,9 @@ export const isUrlValid = (str) => {
 };
 
 export const stripHtml = (str) => str?.replace(/<[^>]*>?/gm, '');
+
+export const paginationContentFilter = (items) => {
+  return items
+    .filter((i) => i.type !== ITEM_TYPES.FOLDER)
+    .filter((i) => !i.settings?.isPinned);
+};
