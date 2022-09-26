@@ -52,7 +52,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 const Item = ({
   id,
   isChildren,
@@ -107,9 +106,9 @@ const Item = ({
   }, [inView, children]);
 
   if (
-    isLoading || 
-    isTagsLoading || 
-    isChildrenLoading || 
+    isLoading ||
+    isTagsLoading ||
+    isChildrenLoading ||
     isChildrenPaginatedLoading
   ) {
     return (
@@ -230,7 +229,13 @@ const Item = ({
     }
     case ITEM_TYPES.LINK: {
       const linkItem = (
-        <LinkItem item={item} height={SCREEN_MAX_HEIGHT} isResizable />
+        <LinkItem
+          item={item}
+          height={SCREEN_MAX_HEIGHT}
+          isResizable
+          showButton={item.settings?.showLinkButton}
+          showIframe={item.settings?.showLinkIframe}
+        />
       );
 
       if (showCollapse) {
