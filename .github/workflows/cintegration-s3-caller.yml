@@ -21,27 +21,28 @@ jobs:
   graasp-deploy-s3-workflow:
     name: Graasp Player
     # Reference reusable workflow file. Using the commit SHA is the safest for stability and security
-    uses: graasp/graasp-deploy/.github/workflows/cintegration-s3.yml@5a5170f5c0c085f5a84141daac89e242616163ae
+    uses: graasp/graasp-deploy/.github/workflows/cintegration-s3.yml@1a7c4c74273be6fd1c56eb6c5a8fb4af2d211b86
     with:
       build-folder: 'build'
-      graasp-compose-host-test: 'http://localhost:3111'
       graasp-authentication-host-test: 'http://localhost:3001'
-      node-env-test: 'test'
+      graasp-compose-host-test: 'http://localhost:3111'
       hidden-item-tag-id-test: '12345678-1234-1234-1234-123456789012'
+      node-env-test: 'test'
       public-tag-id-test: '22345678-1234-1234-1234-123456789013'
       test-execution: ${{ inputs.test-execution }}
     secrets:
+      api-host-test: ${{ secrets.REACT_APP_API_HOST }}
       api-host: ${{ secrets.REACT_APP_API_HOST_DEV }}
       authentication-host: ${{ secrets.REACT_APP_AUTHENTICATION_HOST_DEV }}
       aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_DEV }}
       aws-region: ${{ secrets.AWS_REGION_DEV }}
-      aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_DEV }}
       aws-s3-bucket-name: ${{ secrets.AWS_S3_BUCKET_NAME_GRAASP_PERFORM_DEV }}
+      aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_DEV }}
       cloudfront-distribution-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_GRAASP_PERFORM_DEV }}
       domain: ${{ secrets.REACT_APP_DOMAIN_DEV }}
       graasp-compose-host: ${{ secrets.BUILDER_CLIENT_HOST_DEV }}
       graasp-explorer-host: ${{ secrets.EXPLORER_CLIENT_HOST_DEV }}
       h5p-integration-url: ${{ secrets.H5P_INTEGRATION_URL_DEV }}
       port: ${{ secrets.PORT }}
+      sentry-dsn: ${{ secrets.REACT_APP_SENTRY_DSN }}
       show-notifications: ${{ secrets.REACT_APP_SHOW_NOTIFICATIONS }}
-      api-host-test: ${{ secrets.REACT_APP_API_HOST }}
