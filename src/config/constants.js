@@ -76,7 +76,7 @@ export const SCREEN_MAX_HEIGHT = window.innerHeight * 0.8;
 export const buildGraaspComposeItemRoute = (id) =>
   `${GRAASP_COMPOSE_HOST}/items/${id}`;
 
-export const buildGraaspPerformItemRoute = (id) =>
+export const buildGraaspPlayerItemRoute = (id) =>
   `${window.location.origin}/${id}`;
 
 export const ITEM_CARD_MAX_LENGTH = 18;

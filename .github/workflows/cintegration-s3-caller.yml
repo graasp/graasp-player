@@ -36,10 +36,11 @@ jobs:
       aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_DEV }}
       cloudfront-distribution-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_GRAASP_PERFORM_DEV }}
       domain: ${{ secrets.REACT_APP_DOMAIN_DEV }}
+      ga-measurement-id: ${{ secrets.REACT_APP_GA_MEASUREMENT_ID_DEV }}
       graasp-compose-host: ${{ secrets.BUILDER_CLIENT_HOST_DEV }}
       graasp-explorer-host: ${{ secrets.EXPLORER_CLIENT_HOST_DEV }}
       h5p-integration-url: ${{ secrets.H5P_INTEGRATION_URL_DEV }}
-      hidden-item-tag-id: ${{ secrets.REACT_APP_HIDDEN_ITEM_TAG_ID_STAGE }}
+      hidden-item-tag-id: ${{ secrets.REACT_APP_HIDDEN_ITEM_TAG_ID_DEV }}
       port: ${{ secrets.PORT }}
       sentry-dsn: ${{ secrets.REACT_APP_SENTRY_DSN }}
       show-notifications: ${{ secrets.REACT_APP_SHOW_NOTIFICATIONS }}

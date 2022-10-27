@@ -7,14 +7,14 @@ import TreeView from '@mui/lab/TreeView';
 
 import { redirect } from '@graasp/utils';
 
-import { buildGraaspPerformItemRoute } from '../../../config/constants';
+import { buildGraaspPlayerItemRoute } from '../../../config/constants';
 import { buildTreeShortcutItemClass } from '../../../config/selectors';
 
 const CustomTreeShortcutItem = ({ itemId, content }) => {
   const onSelectShortcut = (_event, value) => {
     if (value) {
-      redirect(buildGraaspPerformItemRoute(value), {
-        name: buildGraaspPerformItemRoute(value),
+      redirect(buildGraaspPlayerItemRoute(value), {
+        name: buildGraaspPlayerItemRoute(value),
         openInNewTab: true,
       });
     }

@@ -24,6 +24,7 @@ jobs:
       aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_PROD }}
       cloudfront-distribution-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_GRAASP_PERFORM_PROD }}
       domain: ${{ secrets.REACT_APP_DOMAIN_PROD }}
+      ga-measurement-id: ${{ secrets.REACT_APP_GA_MEASUREMENT_ID_PROD }}
       graasp-compose-host: ${{ secrets.BUILDER_CLIENT_HOST_PROD }}
       graasp-explorer-host: ${{ secrets.EXPLORER_CLIENT_HOST_PROD }}
       h5p-integration-url: ${{ secrets.H5P_INTEGRATION_URL_PROD }}
