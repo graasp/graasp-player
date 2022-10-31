@@ -6,12 +6,10 @@ import { Tooltip, makeStyles } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
 
+import { buildItemLinkForBuilder } from '@graasp/sdk';
 import { Loader, PermissionedComponent } from '@graasp/ui';
 
-import {
-  FLOATING_BUTTON_Z_INDEX,
-  buildGraaspComposeItemRoute,
-} from '../../config/constants';
+import { FLOATING_BUTTON_Z_INDEX } from '../../config/constants';
 import { BUILDER_EDIT_BUTTON_ID } from '../../config/selectors';
 import { isRegularUser } from '../../utils/user';
 import { CurrentMemberContext } from '../context/CurrentMemberContext';
@@ -29,7 +27,14 @@ const BuilderButton = ({ id }) => {
   const { data: user, isLoading } = useContext(CurrentMemberContext);
 
   const onClickComposeView = () => {
-    window.location.href = buildGraaspComposeItemRoute(id);
+    const url = buildItemLinkForBuilder({
+      host: GRAASP_COMPOSE_HOST,
+      itemId: id,
+    });
+    redirect(url, {
+      openInNewTab: true,
+      name: buildBuilderTabName(id),
+    });
   };
 
   if (isLoading) {
