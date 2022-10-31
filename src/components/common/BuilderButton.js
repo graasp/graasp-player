@@ -6,7 +6,7 @@ import { Tooltip, makeStyles } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
 
-import { buildItemLinkForBuilder } from '@graasp/sdk';
+import { buildItemLinkForBuilder, redirect } from '@graasp/sdk';
 import { Loader, PermissionedComponent } from '@graasp/ui';
 
 import {

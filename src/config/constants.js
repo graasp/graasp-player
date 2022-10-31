@@ -115,3 +115,5 @@ export const FLOATING_BUTTON_Z_INDEX = 10;
 export const GRAASP_MENU_ITEMS = [ITEM_TYPES.FOLDER, ITEM_TYPES.SHORTCUT];
 
 export const buildBuilderTabName = (id) => `builder-tab-${id}`;
+
+export const DEFAULT_LINK_SHOW_BUTTON = true;

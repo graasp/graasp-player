@@ -1,5 +1,6 @@
 import qs from 'qs';
 
+import { DEFAULT_LINK_SHOW_BUTTON } from '../../src/config/constants';
 import {
   MAIN_MENU_ID,
   buildAppId,
@@ -17,7 +18,7 @@ import {
 } from '../../src/utils/itemExtra';
 import { LOAD_FOLDER_CONTENT_PAUSE } from './constants';
 
-export const expectLinkViewScreenLayout = ({ id, extra }) => {
+export const expectLinkViewScreenLayout = ({ id, extra, settings }) => {
   const { url, html } = getEmbeddedLinkExtra(extra);
 
   // embedded element
@@ -28,8 +29,12 @@ export const expectLinkViewScreenLayout = ({ id, extra }) => {
       expect('eee').to.contain('eee');
       expect(parsedHtml).to.contain(html);
     });
-  } else {
+  } else if (settings?.showLinkIframe) {
     cy.get(`iframe#${id}`).should('have.attr', 'src', url);
+  }
+
+  if (!html && (settings?.showLinkButton ?? DEFAULT_LINK_SHOW_BUTTON)) {
+    cy.get('[data-testid="OpenInNewIcon"]').should('be.visible');
   }
 };
 
