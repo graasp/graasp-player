@@ -247,8 +247,9 @@ const Item = ({
           height={SCREEN_MAX_HEIGHT}
           member={member}
           isResizable
-          showButton={item.settings?.showLinkButton}
-          showIframe={item.settings?.showLinkIframe}
+          // todo: remove default values once player follows ui
+          showButton={item.settings?.showLinkButton ?? true}
+          showIframe={item.settings?.showLinkIframe ?? false}
         />
       );
 
