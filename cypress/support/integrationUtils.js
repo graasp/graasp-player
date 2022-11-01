@@ -33,9 +33,10 @@ export const expectLinkViewScreenLayout = ({ id, extra, settings }) => {
     cy.get(`iframe#${id}`).should('have.attr', 'src', url);
   }
 
-  if (!html && (settings?.showLinkButton ?? DEFAULT_LINK_SHOW_BUTTON)) {
-    cy.get('[data-testid="OpenInNewIcon"]').should('be.visible');
-  }
+  // todo: enable when using mui5
+  // if (!html && (settings?.showLinkButton ?? DEFAULT_LINK_SHOW_BUTTON)) {
+  //   cy.get('[data-testid="OpenInNewIcon"]').should('be.visible');
+  // }
 };
 
 export const expectAppViewScreenLayout = ({ id, extra }) => {
