@@ -7,7 +7,7 @@
     "@emotion/styled": "11.8.1",
     "@graasp/chatbox": "github:graasp/graasp-chatbox",
     "@graasp/query-client": "github:graasp/graasp-query-client",
-    "@graasp/sdk": "github:graasp/graasp-sdk",
+    "@graasp/sdk": "github:graasp/graasp-sdk#54-fix-builder-link",
     "@graasp/ui": "github:graasp/graasp-ui#v0.2.1",
     "@material-ui/core": "4.12.3",
     "@material-ui/icons": "5.0.0-beta.4",
@@ -109,6 +109,9 @@
     "exclude": [
       "src/serviceWorker.js"
     ]
+  },
+  "resolutions": {
+    "@graasp/sdk": "github:graasp/graasp-sdk#54-fix-builder-link"
   },
   "packageManager": "yarn@3.2.4"
 }

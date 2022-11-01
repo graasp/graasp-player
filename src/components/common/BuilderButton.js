@@ -32,12 +32,13 @@ const BuilderButton = ({ id }) => {
 
   const onClickComposeView = () => {
     const url = buildItemLinkForBuilder({
-      host: GRAASP_COMPOSE_HOST,
+      origin: GRAASP_COMPOSE_HOST,
       itemId: id,
     });
     // eslint-disable-next-line no-console
-    console.log('url: ', GRAASP_COMPOSE_HOST, url);
+    alert('url: ' + GRAASP_COMPOSE_HOST + '-' + url);
     redirect(url, {
+      protocol: 'https',
       openInNewTab: true,
       name: buildBuilderTabName(id),
     });

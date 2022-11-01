@@ -2378,9 +2378,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/sdk@github:graasp/graasp-sdk":
+"@graasp/sdk@github:graasp/graasp-sdk#54-fix-builder-link":
   version: 0.1.0
-  resolution: "@graasp/sdk@https://github.com/graasp/graasp-sdk.git#commit=b90aef97b007d8f0bdd77cad8211f2c0e7b843c1"
+  resolution: "@graasp/sdk@https://github.com/graasp/graasp-sdk.git#commit=2a09cebb4a906860ed258e93c300f1655b8d1169"
   dependencies:
     "@fastify/secure-session": 5.2.0
     aws-sdk: 2.1111.0
@@ -2391,24 +2391,7 @@ __metadata:
     qs: 6.11.0
     slonik: 28.1.1
     uuid: 8.3.2
-  checksum: 6ead9b61e2736a9a24c639076f208e05f82d1873b0a3964f3d1aff3eb98fc4fc0a29e26ab84a9818e6ac32a10af9f44a8312479f57e5eb301405dbb2f5a3dbd9
-  languageName: node
-  linkType: hard
-
-"@graasp/sdk@github:graasp/graasp-sdk.git":
-  version: 0.1.0
-  resolution: "@graasp/sdk@https://github.com/graasp/graasp-sdk.git#commit=4fa31e8d473b13bfa0bad3e10da9e7b9ca4f20d5"
-  dependencies:
-    "@fastify/secure-session": 5.2.0
-    aws-sdk: 2.1111.0
-    fastify: ^3.29.1
-    fluent-json-schema: 3.1.0
-    immutable: 4.1.0
-    js-cookie: 3.0.1
-    qs: 6.11.0
-    slonik: 28.1.1
-    uuid: 8.3.2
-  checksum: 9af6a948678de50d9ae48792982e340d9aafd20e528185b4d34f8e54df7374573d011843741faabf5197cb8d73cf2fbadf033998937a313ceed61295f013dbc8
+  checksum: 142fec1719d95b71e9dbfbbe677db31f50bca9c71a698a286a5fc10d78a8242aec47a57674be56d06e6869461972f17c10bd70791395a854ec0a8418b1951342
   languageName: node
   linkType: hard
 
@@ -10554,7 +10537,7 @@ __metadata:
     "@emotion/styled": 11.8.1
     "@graasp/chatbox": "github:graasp/graasp-chatbox"
     "@graasp/query-client": "github:graasp/graasp-query-client"
-    "@graasp/sdk": "github:graasp/graasp-sdk"
+    "@graasp/sdk": "github:graasp/graasp-sdk#54-fix-builder-link"
     "@graasp/ui": "github:graasp/graasp-ui#v0.2.1"
     "@graasp/websockets": "github:graasp/graasp-websockets"
     "@material-ui/core": 4.12.3

@@ -73,9 +73,6 @@ export const GA_MEASUREMENT_ID =
 // use a bit less of the height because of the header and some margin
 export const SCREEN_MAX_HEIGHT = window.innerHeight * 0.8;
 
-export const buildGraaspComposeItemRoute = (id) =>
-  `${GRAASP_COMPOSE_HOST}/items/${id}`;
-
 export const buildGraaspPlayerItemRoute = (id) =>
   `${window.location.origin}/${id}`;
 
