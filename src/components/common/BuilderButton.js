@@ -35,6 +35,8 @@ const BuilderButton = ({ id }) => {
       host: GRAASP_COMPOSE_HOST,
       itemId: id,
     });
+    // eslint-disable-next-line no-console
+    console.log('url: ', GRAASP_COMPOSE_HOST, url);
     redirect(url, {
       openInNewTab: true,
       name: buildBuilderTabName(id),
