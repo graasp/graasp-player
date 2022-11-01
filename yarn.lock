@@ -2378,9 +2378,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/sdk@github:graasp/graasp-sdk#54-fix-builder-link":
+"@graasp/sdk@github:graasp/graasp-sdk":
   version: 0.1.0
-  resolution: "@graasp/sdk@https://github.com/graasp/graasp-sdk.git#commit=2a09cebb4a906860ed258e93c300f1655b8d1169"
+  resolution: "@graasp/sdk@https://github.com/graasp/graasp-sdk.git#commit=b2bc887720b46b5fe2388290c49f013ec9059511"
   dependencies:
     "@fastify/secure-session": 5.2.0
     aws-sdk: 2.1111.0
@@ -2391,7 +2391,7 @@ __metadata:
     qs: 6.11.0
     slonik: 28.1.1
     uuid: 8.3.2
-  checksum: 142fec1719d95b71e9dbfbbe677db31f50bca9c71a698a286a5fc10d78a8242aec47a57674be56d06e6869461972f17c10bd70791395a854ec0a8418b1951342
+  checksum: 1e40cf031c0346dcc494cb816b749cca0464b69a38381b58253e44d13653a7efccd5a6b5c30e0e0ed8adfc05ab72a7077706117387048fe40b373b63ab712600
   languageName: node
   linkType: hard
 
@@ -10537,7 +10537,7 @@ __metadata:
     "@emotion/styled": 11.8.1
     "@graasp/chatbox": "github:graasp/graasp-chatbox"
     "@graasp/query-client": "github:graasp/graasp-query-client"
-    "@graasp/sdk": "github:graasp/graasp-sdk#54-fix-builder-link"
+    "@graasp/sdk": "github:graasp/graasp-sdk"
     "@graasp/ui": "github:graasp/graasp-ui#v0.2.1"
     "@graasp/websockets": "github:graasp/graasp-websockets"
     "@material-ui/core": 4.12.3
