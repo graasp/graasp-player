@@ -84,9 +84,6 @@ export const DESCRIPTION_MAX_LENGTH = 130;
 export const DEFAULT_IMAGE_SRC =
   'https://pbs.twimg.com/profile_images/1300707321262346240/IsQAyu7q_400x400.jpg';
 
-// todo: factor out in graasp constants/utils
-export const ACCEPT_COOKIES_NAME = 'accept-all-cookies';
-
 // signin page path from auth host
 export const SIGN_IN_PATH = buildSignInPath({ host: AUTHENTICATION_HOST });
 
