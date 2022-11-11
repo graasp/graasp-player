@@ -255,7 +255,6 @@ const Item = ({
           fileUrl={file?.url}
           maxHeight={SCREEN_MAX_HEIGHT}
           showCollapse={showCollapse}
-          serviceType={file?.serviceType}
         />
       );
 
