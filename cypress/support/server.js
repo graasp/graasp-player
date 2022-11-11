@@ -2,6 +2,7 @@ import { StatusCodes } from 'http-status-codes';
 import qs from 'qs';
 
 import { API_ROUTES } from '@graasp/query-client';
+import { PermissionLevel } from '@graasp/sdk';
 
 import { DEFAULT_GET } from '../../src/api/utils';
 import { MEMBER_PROFILE_PATH } from '../../src/config/constants';
@@ -22,6 +23,7 @@ const {
   buildPublicDownloadFilesRoute,
   SIGN_OUT_ROUTE,
   buildGetMembersRoute,
+  buildGetItemMembershipsForItemsRoute,
 } = API_ROUTES;
 
 const API_HOST = Cypress.env('API_HOST');
@@ -118,6 +120,51 @@ export const mockGetItem = ({ items, currentMember }, shouldThrowError) => {
       });
     },
   ).as('getItem');
+};
+
+export const mockGetItemMembershipsForItem = (items, currentMember) => {
+  cy.intercept(
+    {
+      method: DEFAULT_GET.method,
+      url: new RegExp(
+        `${API_HOST}/${parseStringToRegExp(
+          buildGetItemMembershipsForItemsRoute([]),
+        )}`,
+      ),
+    },
+    ({ reply, url }) => {
+      const { itemId } = qs.parse(url.slice(url.indexOf('?') + 1));
+      const selectedItems = items.filter(({ id }) => itemId?.includes(id));
+      const allMemberships = selectedItems.map(
+        ({ creator, id, memberships }) => {
+          // build default membership depending on current member
+          // if the current member is the creator, it has membership
+          // otherwise it should return an error
+          const defaultMembership =
+            creator === currentMember?.id
+              ? [
+                  {
+                    permission: PermissionLevel.Admin,
+                    memberId: creator,
+                    itemId: id,
+                  },
+                ]
+              : { statusCode: StatusCodes.UNAUTHORIZED };
+
+          // if the defined memberships does not contain currentMember, it should throw
+          const currentMemberHasMembership = memberships?.find(
+            ({ memberId }) => memberId === currentMember?.id,
+          );
+          if (!currentMemberHasMembership) {
+            return defaultMembership;
+          }
+
+          return memberships || defaultMembership;
+        },
+      );
+      reply(allMemberships);
+    },
+  ).as('getItemMemberships');
 };
 
 export const mockGetPublicItem = ({ items }, shouldThrowError) => {

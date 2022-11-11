@@ -16,6 +16,7 @@ import {
   mockGetChildren,
   mockGetCurrentMember,
   mockGetItem,
+  mockGetItemMembershipsForItem,
   mockGetItemTags,
   mockGetItemsTags,
   mockGetMemberBy,
@@ -51,6 +52,7 @@ Cypress.Commands.add(
       { items: cachedItems, currentMember },
       getItemError || getCurrentMemberError,
     );
+    mockGetItemMembershipsForItem(items, currentMember);
     mockGetPublicItem({ items: cachedItems });
 
     mockGetItemTags(items, currentMember);

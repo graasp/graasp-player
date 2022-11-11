@@ -6,7 +6,11 @@ import { Tooltip, makeStyles } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
 
-import { buildItemLinkForBuilder, redirect } from '@graasp/sdk';
+import {
+  PermissionLevel,
+  buildItemLinkForBuilder,
+  redirect,
+} from '@graasp/sdk';
 import { Loader, PermissionedComponent } from '@graasp/ui';
 
 import {
@@ -14,6 +18,7 @@ import {
   GRAASP_COMPOSE_HOST,
   buildBuilderTabName,
 } from '../../config/constants';
+import { hooks } from '../../config/queryClient';
 import { BUILDER_EDIT_BUTTON_ID } from '../../config/selectors';
 import { isRegularUser } from '../../utils/user';
 import { CurrentMemberContext } from '../context/CurrentMemberContext';
@@ -29,6 +34,8 @@ const BuilderButton = ({ id }) => {
   const { t } = useTranslation();
   const classes = useStyles();
   const { data: user, isLoading } = useContext(CurrentMemberContext);
+  const { data: itemMemberships, isLoading: isLoadingItemMemberships } =
+    hooks.useItemMemberships(id);
 
   const onClickComposeView = () => {
     const url = buildItemLinkForBuilder({
@@ -41,9 +48,17 @@ const BuilderButton = ({ id }) => {
     });
   };
 
-  if (isLoading) {
+  if (isLoading || isLoadingItemMemberships) {
     <Loader />;
   }
+
+  // get user permission
+  const userPermission = itemMemberships?.find(
+    (perms) => perms.memberId === user?.id,
+  )?.permission;
+  const canOpenBuilder = userPermission
+    ? [PermissionLevel.Admin, PermissionLevel.Write].includes(userPermission)
+    : false;
 
   const ActionButtons = (
     <Tooltip title={t('Compose View')}>
@@ -61,7 +76,7 @@ const BuilderButton = ({ id }) => {
   return (
     <PermissionedComponent
       component={ActionButtons}
-      checkPermissions={() => isRegularUser(user)}
+      checkPermissions={() => canOpenBuilder}
     />
   );
 };

@@ -85,7 +85,6 @@ describe('Main Screen', () => {
         cy.visit(buildMainPath({ rootId: GRAASP_DOCUMENT_ITEM.id, id: null }));
 
         expectDocumentViewScreenLayout(GRAASP_DOCUMENT_ITEM);
-        cy.get(`#${BUILDER_EDIT_BUTTON_ID}`).should('be.visible').click();
       });
     });
 
@@ -135,6 +134,18 @@ describe('Main Screen', () => {
       cy.visit(buildMainPath({ rootId }));
 
       expectFolderLayout({ rootId, items: PUBLIC_STATIC_ELECTRICITY.items });
+    });
+  });
+
+  describe('Write access', () => {
+    beforeEach(() => {
+      cy.setUpApi({
+        items: [GRAASP_DOCUMENT_ITEM, ...FOLDER_WITH_SUBFOLDER_ITEM.items],
+      });
+    });
+    it('Show Builder button', () => {
+      cy.visit(buildMainPath({ rootId: GRAASP_DOCUMENT_ITEM.id, id: null }));
+      cy.get(`#${BUILDER_EDIT_BUTTON_ID}`).should('be.visible').click();
     });
   });
 });
