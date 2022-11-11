@@ -44,3 +44,4 @@ jobs:
       port: ${{ secrets.PORT }}
       sentry-dsn: ${{ secrets.REACT_APP_SENTRY_DSN }}
       show-notifications: ${{ secrets.REACT_APP_SHOW_NOTIFICATIONS }}
+      graasp-assets-url: ${{ secrets.REACT_APP_GRAASP_ASSETS_URL_DEV }}
