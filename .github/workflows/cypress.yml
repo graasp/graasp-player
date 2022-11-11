@@ -7,8 +7,10 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
-      - name: install
-        run: yarn
+      - name: Yarn install and cache
+        uses: graasp/graasp-deploy/.github/actions/yarn-install-and-cache/action.yml@v1
+        with:
+          cypress: true
 
       - name: cypress run
         uses: cypress-io/github-action@v4
