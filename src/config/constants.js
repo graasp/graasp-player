@@ -73,10 +73,7 @@ export const GA_MEASUREMENT_ID =
 // use a bit less of the height because of the header and some margin
 export const SCREEN_MAX_HEIGHT = window.innerHeight * 0.8;
 
-export const buildGraaspComposeItemRoute = (id) =>
-  `${GRAASP_COMPOSE_HOST}/items/${id}`;
-
-export const buildGraaspPerformItemRoute = (id) =>
+export const buildGraaspPlayerItemRoute = (id) =>
   `${window.location.origin}/${id}`;
 
 export const ITEM_CARD_MAX_LENGTH = 18;
@@ -86,9 +83,6 @@ export const DESCRIPTION_MAX_LENGTH = 130;
 
 export const DEFAULT_IMAGE_SRC =
   'https://pbs.twimg.com/profile_images/1300707321262346240/IsQAyu7q_400x400.jpg';
-
-// todo: factor out in graasp constants/utils
-export const ACCEPT_COOKIES_NAME = 'accept-all-cookies';
 
 // signin page path from auth host
 export const SIGN_IN_PATH = buildSignInPath({ host: AUTHENTICATION_HOST });
@@ -110,5 +104,10 @@ export const HOST_MAP = {
 };
 
 export const GRAASP_LOGO_HEADER_HEIGHT = 40;
+export const FLOATING_BUTTON_Z_INDEX = 10;
 
 export const GRAASP_MENU_ITEMS = [ITEM_TYPES.FOLDER, ITEM_TYPES.SHORTCUT];
+
+export const buildBuilderTabName = (id) => `builder-tab-${id}`;
+
+export const DEFAULT_LINK_SHOW_BUTTON = true;

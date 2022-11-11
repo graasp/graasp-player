@@ -7,7 +7,7 @@ import { Alert } from '@material-ui/lab';
 import { MainMenu as GraaspMainMenu } from '@graasp/ui';
 
 import { hooks } from '../../config/queryClient';
-import { MAIN_MENU_ID } from '../../config/selectors';
+import { MAIN_MENU_ID, TREE_VIEW_ID } from '../../config/selectors';
 import { ITEM_TYPES } from '../../enums';
 import { ItemContext } from '../context/ItemContext';
 import DynamicTreeView from './Tree/Tree';
@@ -47,6 +47,7 @@ const MainMenu = () => {
   return (
     <GraaspMainMenu id={MAIN_MENU_ID}>
       <DynamicTreeView
+        id={TREE_VIEW_ID}
         rootLabel={rootItem.name}
         rootId={rootId}
         initialExpendedItems={[rootId]}

@@ -1,14 +1,15 @@
 {
   "translations": {
     "Graasp Player": "Graasp Player",
-    "My Items": "Mes Eléments",
-    "Shared Items": "Eléments Partagés",
+    "My Items": "Mes Éléments",
+    "Shared Items": "Éléments Partagés",
     "You are not signed in.": "Vous n'êtes pas connecté.",
     "Show Chat": "Montrer le chat",
     "Hide Chat": "Cacher le chat",
     "Show Pinned Items": "Montrer les éléments épinglés",
     "Hide Pinned Items": "Cacher les éléments épinglés",
-    "You cannnot access this item": "Vous ne pouvez pas accéder à cet élément",
+    "You cannot access this item": "Vous ne pouvez pas accéder à cet élément",
+    "An unexpected error occurred.": "Une erreur inattendue est survenue.",
     "Pinned item": "Pinned item",
     "Chat": "Chat",
     "Load more": "Charger plus"

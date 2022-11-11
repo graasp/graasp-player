@@ -1,14 +1,14 @@
 import { buildMainPath } from '../../src/config/paths';
 import {
-  FOLDER_WITH_SUBFOLDER_ITEM,
-  FOLDER_WITH_PINNED_ITEMS,
-  PUBLIC_FOLDER_WITH_PINNED_ITEMS,
-} from '../fixtures/items';
-import {
   ITEM_PINNED_BUTTON_ID,
   ITEM_PINNED_ID,
   buildFolderButtonId,
 } from '../../src/config/selectors';
+import {
+  FOLDER_WITH_PINNED_ITEMS,
+  FOLDER_WITH_SUBFOLDER_ITEM,
+  PUBLIC_FOLDER_WITH_PINNED_ITEMS,
+} from '../fixtures/items';
 import { MEMBERS } from '../fixtures/members';
 
 describe('Pinned Items', () => {

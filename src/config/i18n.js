@@ -21,7 +21,7 @@ i18n.use(initReactI18next).init({
     formatSeparator: ',',
   },
   react: {
-    wait: true,
+    useSuspense: false,
   },
 });
 

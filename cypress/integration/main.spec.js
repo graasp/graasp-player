@@ -1,30 +1,31 @@
 import { buildMainPath } from '../../src/config/paths';
-import { GRAASP_LINK_ITEM, YOUTUBE_LINK_ITEM } from '../fixtures/links';
 import {
-  expectDocumentViewScreenLayout,
-  expectFileViewScreenLayout,
-  expectLinkViewScreenLayout,
-  expectAppViewScreenLayout,
-  expectFolderButtonLayout,
-  expectFolderLayout,
-} from '../support/integrationUtils';
+  BUILDER_EDIT_BUTTON_ID,
+  FOLDER_NAME_TITLE_CLASS,
+  MAIN_MENU_ID,
+} from '../../src/config/selectors';
+import { GRAASP_APP_ITEM } from '../fixtures/apps';
+import { GRAASP_DOCUMENT_ITEM } from '../fixtures/documents';
 import {
   IMAGE_ITEM_DEFAULT,
   PDF_ITEM_DEFAULT,
   VIDEO_ITEM_DEFAULT,
 } from '../fixtures/files';
-import { GRAASP_DOCUMENT_ITEM } from '../fixtures/documents';
-import { GRAASP_APP_ITEM } from '../fixtures/apps';
 import { FOLDER_WITH_SUBFOLDER_ITEM } from '../fixtures/items';
-import {
-  FOLDER_NAME_TITLE_CLASS,
-  MAIN_MENU_ID,
-} from '../../src/config/selectors';
+import { GRAASP_LINK_ITEM, YOUTUBE_LINK_ITEM } from '../fixtures/links';
+import { MEMBERS } from '../fixtures/members';
 import {
   PUBLIC_STATIC_ELECTRICITY,
   STATIC_ELECTRICITY,
 } from '../fixtures/useCases/staticElectricity';
-import { MEMBERS } from '../fixtures/members';
+import {
+  expectAppViewScreenLayout,
+  expectDocumentViewScreenLayout,
+  expectFileViewScreenLayout,
+  expectFolderButtonLayout,
+  expectFolderLayout,
+  expectLinkViewScreenLayout,
+} from '../support/integrationUtils';
 
 describe('Main Screen', () => {
   describe('Individual Items', () => {
@@ -84,6 +85,7 @@ describe('Main Screen', () => {
         cy.visit(buildMainPath({ rootId: GRAASP_DOCUMENT_ITEM.id, id: null }));
 
         expectDocumentViewScreenLayout(GRAASP_DOCUMENT_ITEM);
+        cy.get(`#${BUILDER_EDIT_BUTTON_ID}`).should('be.visible').click();
       });
     });
 

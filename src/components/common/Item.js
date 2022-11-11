@@ -50,8 +50,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },
+  wrappingContainer: {
+    padding: 0,
+  },
 }));
-
 
 const Item = ({
   id,
@@ -71,7 +73,11 @@ const Item = ({
     useContext(CurrentMemberContext);
   // fetch children if item is folder
   const isFolder = Boolean(item?.type === ITEM_TYPES.FOLDER);
-  const { data: children, isLoading: isChildrenLoading } = useChildren(id, {
+  const {
+    data: children,
+    isLoading: isChildrenLoading,
+    isError: isChildrenError,
+  } = useChildren(id, {
     enabled: isFolder,
     getUpdates: isFolder,
   });
@@ -135,10 +141,16 @@ const Item = ({
   }
 
   if (isItemHidden) {
-    return <Alert severity="error">{t('You cannnot access this item')}</Alert>;
+    return <Alert severity="error">{t('You cannot access this item')}</Alert>;
   }
 
-  if (isError || !item || isFileError || isChildrenPaginatedError) {
+  if (
+    isError ||
+    !item ||
+    isFileError ||
+    isChildrenError ||
+    isChildrenPaginatedError
+  ) {
     return <Alert severity="error">{t('An unexpected error occured.')}</Alert>;
   }
 
@@ -187,7 +199,7 @@ const Item = ({
 
       // render each children recursively
       return (
-        <Container>
+        <Container className={classes.wrappingContainer}>
           {!showPinnedOnly && (
             <>
               <Typography className={FOLDER_NAME_TITLE_CLASS} variant="h5">
@@ -216,10 +228,10 @@ const Item = ({
           {showPinnedOnly && (
             <>
               {children
-                .filter(
+                ?.filter(
                   (i) => showPinnedOnly === (i.settings?.isPinned || false),
                 )
-                .map((thisItem) => (
+                ?.map((thisItem) => (
                   <Container key={thisItem.id} className={classes.container}>
                     <Item
                       isChildren
@@ -236,7 +248,15 @@ const Item = ({
     }
     case ITEM_TYPES.LINK: {
       const linkItem = (
-        <LinkItem item={item} height={SCREEN_MAX_HEIGHT} isResizable />
+        <LinkItem
+          item={item}
+          height={SCREEN_MAX_HEIGHT}
+          member={member}
+          isResizable
+          // todo: remove default values once player follows ui
+          showButton={item.settings?.showLinkButton ?? true}
+          showIframe={item.settings?.showLinkIframe ?? false}
+        />
       );
 
       if (showCollapse) {
@@ -309,7 +329,7 @@ const Item = ({
       const contentId = item.get('extra')?.h5p?.contentId;
       if (!contentId) {
         return (
-          <Alert severity="error">{t('An unexpected error occured.')}</Alert>
+          <Alert severity="error">{t('An unexpected error occurred.')}</Alert>
         );
       }
 
@@ -334,7 +354,7 @@ const Item = ({
         );
       }
       return (
-        <Alert severity="error">{t('An unexpected error occured.')}</Alert>
+        <Alert severity="error">{t('An unexpected error occurred.')}</Alert>
       );
     }
 

@@ -1,4 +1,5 @@
 export const MAIN_MENU_ID = 'mainMenu';
+export const TREE_VIEW_ID = 'treeView';
 export const buildFileId = (id) => `file-${id}`;
 export const buildDocumentId = (id) => `document-${id}`;
 export const buildAppId = (id) => `app-${id}`;
@@ -9,6 +10,8 @@ export const ITEM_CHATBOX_BUTTON_ID = 'itemChatboxButton';
 
 export const ITEM_PINNED_ID = 'itemPinned';
 export const ITEM_PINNED_BUTTON_ID = 'itemPinnedButton';
+
+export const BUILDER_EDIT_BUTTON_ID = 'builderEditButton';
 
 export const PANNEL_CLOSE_BUTTON_ID = 'chatboxCloseButton';
 

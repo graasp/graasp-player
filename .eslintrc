@@ -1,5 +1,5 @@
 {
-  "extends": [ "prettier"],
+  "extends": ["prettier"],
   "plugins": ["import", "react"],
   "env": {
     "browser": true,
@@ -16,6 +16,11 @@
     "requireConfigFile": false,
     "babelOptions": {
       "presets": ["@babel/preset-react"]
+    }
+  },
+  "settings": {
+    "react": {
+      "version": "17"
     }
   },
   "rules": {
