@@ -118,9 +118,9 @@ const Item = ({
   }, [inView, children]);
 
   if (
-    isLoading || 
-    isTagsLoading || 
-    isChildrenLoading || 
+    isLoading ||
+    isTagsLoading ||
+    isChildrenLoading ||
     isChildrenPaginatedLoading ||
     isFileContentLoading
   ) {

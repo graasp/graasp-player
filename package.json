@@ -111,7 +111,8 @@
     ]
   },
   "resolutions": {
-    "@graasp/sdk": "github:graasp/graasp-sdk"
+    "@graasp/sdk": "github:graasp/graasp-sdk",
+    "@graasp/ui": "github:graasp/graasp-ui#157/DownloadAndUseFilesDirectlyFromAws"
   },
   "packageManager": "yarn@3.2.4"
 }
