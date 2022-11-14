@@ -6,12 +6,11 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Skeleton } from '@material-ui/lab';
-
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import TreeItem from '@mui/lab/TreeItem';
 import TreeView from '@mui/lab/TreeView';
+import Skeleton from '@mui/material/Skeleton';
 
 import { GRAASP_MENU_ITEMS } from '../../../config/constants';
 import CustomContentTree from './CustomContentTree';

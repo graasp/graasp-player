@@ -3,8 +3,7 @@ import React, { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router';
 
-import { Typography } from '@material-ui/core';
-import { Alert, Skeleton } from '@material-ui/lab';
+import { Alert, Skeleton, Typography } from '@mui/material';
 
 import { Main } from '@graasp/ui';
 

@@ -1,15 +1,14 @@
-import clsx from 'clsx';
 import { Record } from 'immutable';
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router';
 
-import { Box, Tooltip } from '@material-ui/core';
-import IconButton from '@material-ui/core/IconButton';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import ForumIcon from '@material-ui/icons/Forum';
-import PushPinIcon from '@material-ui/icons/PushPin';
+import ForumIcon from '@mui/icons-material/Forum';
+import PushPinIcon from '@mui/icons-material/PushPin';
+import { Box, Grid, Tooltip, styled } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
+import { useTheme } from '@mui/material/styles';
 
 import { DRAWER_WIDTH, FLOATING_BUTTON_Z_INDEX } from '../../config/constants';
 import { hooks } from '../../config/queryClient';
@@ -26,31 +25,20 @@ import Chatbox from './Chatbox';
 import Item from './Item';
 import SideDrawer from './SideDrawer';
 
-const useStyles = makeStyles((theme) => ({
-  iconButton: {
-    float: 'right',
-    zIndex: FLOATING_BUTTON_Z_INDEX,
-  },
-  root: {
-    display: 'flex',
-  },
-  drawer: {
-    width: DRAWER_WIDTH,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: DRAWER_WIDTH,
-    padding: theme.spacing(1),
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-  },
-  pinnedContainer: {
-    overflow: 'scroll',
-  },
-  content: {
+const StyledMain = styled('main')(({ theme, isShifted }) => {
+  const contentShift = isShifted
+    ? {
+        // // necessary for content to be below app bar
+        // ...theme.mixins.toolbar,
+        transition: theme.transitions.create('margin', {
+          easing: theme.transitions.easing.easeOut,
+          duration: theme.transitions.duration.enteringScreen,
+        }),
+        marginRight: DRAWER_WIDTH,
+      }
+    : {};
+
+  return {
     position: 'relative',
     flexGrow: 1,
     padding: theme.spacing(3),
@@ -59,17 +47,14 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginRight: 0,
-  },
-  contentShift: {
-    // // necessary for content to be below app bar
-    // ...theme.mixins.toolbar,
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginRight: DRAWER_WIDTH,
-  },
-}));
+    ...contentShift,
+  };
+});
+
+const StyledIconButton = styled(IconButton)({
+  float: 'right',
+  zIndex: FLOATING_BUTTON_Z_INDEX,
+});
 
 const { useItemsChildren } = hooks;
 
@@ -110,7 +95,6 @@ const SideContent = ({ children, item }) => {
   } = useContext(LayoutContext);
 
   const { t } = useTranslation();
-  const classes = useStyles();
   const theme = useTheme();
 
   const toggleChatOpen = () => {
@@ -128,16 +112,15 @@ const SideContent = ({ children, item }) => {
 
     return (
       <Tooltip title={t('Pinned item')}>
-        <IconButton
+        <StyledIconButton
           id={ITEM_PINNED_BUTTON_ID}
-          className={classes.iconButton}
           aria-label={
             isPinnedMenuOpen ? t('Hide Pinned Items') : t('Show Pinned Items')
           }
           onClick={togglePinnedOpen}
         >
           <PushPinIcon />
-        </IconButton>
+        </StyledIconButton>
       </Tooltip>
     );
   };
@@ -147,14 +130,14 @@ const SideContent = ({ children, item }) => {
 
     return (
       <Tooltip title={t('Chat')}>
-        <IconButton
+        <StyledIconButton
           id={ITEM_CHATBOX_BUTTON_ID}
           className={classes.iconButton}
           aria-label={isChatboxMenuOpen ? t('Hide Chat') : t('Show Chat')}
           onClick={toggleChatOpen}
         >
           <ForumIcon />
-        </IconButton>
+        </StyledIconButton>
       </Tooltip>
     );
   };
@@ -183,7 +166,7 @@ const SideContent = ({ children, item }) => {
         open={isPinnedMenuOpen}
       >
         {/* show parents pinned items */}
-        <Box className={classes.pinnedContainer} id={ITEM_PINNED_ID}>
+        <Box overflow="scroll" id={ITEM_PINNED_ID}>
           {parentsIds.map((i) => (
             <Item key={i} id={i} showPinnedOnly />
           ))}
@@ -196,13 +179,9 @@ const SideContent = ({ children, item }) => {
     <div>
       {displayChatbox()}
       {displayPinnedItems()}
-      <div className={classes.root}>
-        <main
-          className={clsx(classes.content, {
-            // todo: why is pinned true by default ? when there is no pins this makes no sense...
-            [classes.contentShift]:
-              isChatboxMenuOpen || (isPinnedMenuOpen && pinnedCount > 0),
-          })}
+      <Grid>
+        <StyledMain
+          isShifted={isChatboxMenuOpen || (isPinnedMenuOpen && pinnedCount > 0)}
         >
           {displayChatButton()}
 
@@ -211,8 +190,8 @@ const SideContent = ({ children, item }) => {
           <BuilderButton id={item.id} />
 
           {children}
-        </main>
-      </div>
+        </StyledMain>
+      </Grid>
     </div>
   );
 };

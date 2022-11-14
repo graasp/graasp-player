@@ -3,9 +3,9 @@ import truncate from 'lodash.truncate';
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 
-import { Tooltip, makeStyles } from '@material-ui/core';
-import IconButton from '@material-ui/core/IconButton';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import { Tooltip, styled } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
 
 import { Card as GraaspCard } from '@graasp/ui';
 
@@ -16,21 +16,15 @@ import {
 import { stripHtml } from '../../utils/item';
 import { ItemContext } from '../context/ItemContext';
 
-const useStyles = makeStyles({
-  card: {
-    // todo: responsive
-    maxWidth: '70vh',
-  },
-  link: {
-    textTransform: 'none',
-    padding: 0,
-    margin: 0,
-    border: 0,
-    background: 'transparent',
+const StyledButton = styled('button')({
+  textTransform: 'none',
+  padding: 0,
+  margin: 0,
+  border: 0,
+  background: 'transparent',
 
-    '&:hover': {
-      cursor: 'pointer',
-    },
+  '&:hover': {
+    cursor: 'pointer',
   },
 });
 
@@ -49,7 +43,8 @@ const FolderButton = ({ id, item }) => {
 
   return (
     <GraaspCard
-      className={classes.card}
+      // todo: responsive
+      sx={{ maxWidth: '70vh' }}
       description={truncate(stripHtml(description), {
         length: DESCRIPTION_MAX_LENGTH,
       })}
@@ -57,9 +52,9 @@ const FolderButton = ({ id, item }) => {
       image={image}
       cardId={id}
       NameWrapper={({ children }) => (
-        <button type="button" className={classes.link} onClick={onClick}>
+        <StyledButton type="button" onClick={onClick}>
           {children}
-        </button>
+        </StyledButton>
       )}
       Actions={
         <Tooltip title="coming soon" aria-label="favorite">

@@ -7,9 +7,8 @@ import { Record } from 'immutable';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Skeleton from '@material-ui/lab/Skeleton';
-
 import TreeItem from '@mui/lab/TreeItem';
+import Skeleton from '@mui/material/Skeleton';
 
 import { GRAASP_MENU_ITEMS } from '../../../config/constants';
 import { hooks } from '../../../config/queryClient';

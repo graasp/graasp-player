@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
-import OpenInNewIcon from '@material-ui/icons/OpenInNew';
-
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import TreeItem from '@mui/lab/TreeItem';
 import TreeView from '@mui/lab/TreeView';
 

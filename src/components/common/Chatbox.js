@@ -14,7 +14,6 @@ import { CurrentMemberContext } from '../context/CurrentMemberContext';
 const { useItemChat, useMembers, useAvatar, useItemMemberships } = hooks;
 
 const Chatbox = ({ item }) => {
-  const { t } = useTranslation();
   const { data: chat, isLoading: isChatLoading } = useItemChat(item.id);
   const { data: itemPermissions, isLoading: isLoadingItemPermissions } =
     useItemMemberships(item.id);

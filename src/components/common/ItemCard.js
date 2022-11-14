@@ -3,49 +3,37 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { useNavigate } from 'react-router';
 
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import Card from '@mui/material/Card';
+import CardActionArea from '@mui/material/CardActionArea';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
 import { ItemIcon } from '@graasp/ui';
 
 import { ITEM_CARD_MAX_LENGTH } from '../../config/constants';
 import { buildMainPath } from '../../config/paths';
 
-const useStyles = makeStyles((theme) => ({
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  iconClass: {
-    marginRight: theme.spacing(1),
-  },
-}));
-
 const SimpleCard = ({ item }) => {
-  const classes = useStyles();
   const navigate = useNavigate();
 
   const onClick = () => {
     navigate(buildMainPath({ rootId: item.id, id: null }));
   };
   return (
-    <Card className={classes.root}>
+    <Card>
       <CardActionArea onClick={onClick}>
         <CardContent>
-          <Typography variant="h5" component="h2" className={classes.title}>
+          <Typography
+            variant="h5"
+            component="h2"
+            display="flex"
+            alignItems="center"
+          >
             <ItemIcon
               type={item.type}
               extra={item.extra}
               name={item.name}
-              iconClass={classes.iconClass}
+              sx={{ mr: 1 }}
             />
             {truncate(item.name, { length: ITEM_CARD_MAX_LENGTH })}
           </Typography>

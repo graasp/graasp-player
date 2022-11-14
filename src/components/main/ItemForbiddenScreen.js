@@ -2,9 +2,9 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import { Grid, IconButton, Typography, makeStyles } from '@material-ui/core';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import BlockIcon from '@material-ui/icons/Block';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import BlockIcon from '@mui/icons-material/Block';
+import { Grid, IconButton, Typography, styled } from '@mui/material';
 
 import { Button, GraaspLogo, Main, Navigation } from '@graasp/ui';
 
@@ -18,62 +18,43 @@ import { HOME_PATH } from '../../config/paths';
 import UserSwitchWrapper from '../common/UserSwitchWrapper';
 import HeaderRightContent from './HeaderRightContent';
 
-const useStyles = makeStyles((theme) => ({
-  wrapper: {
-    textAlign: 'center',
-    height: '90vh',
-  },
-  switchButton: {
-    margin: theme.spacing(1, 'auto'),
-  },
-  icon: {
-    fontSize: '1.5em',
-  },
-  logo: {
-    fill: 'white',
-  },
-  title: {
-    margin: theme.spacing(0, 2, 0, 1),
-  },
-  leftContent: {
-    display: 'flex',
-    marginLeft: theme.spacing(1),
-  },
-  link: {
-    display: 'flex',
-    alignItems: 'center',
-    textDecoration: 'none',
-    color: 'inherit',
-  },
+const StyledLink = styled(Link)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  textDecoration: 'none',
+  color: 'inherit',
+}));
+
+const LeftContentWrapper = styled('div')(({ theme }) => ({
+  display: 'flex',
+  marginLeft: theme.spacing(1),
 }));
 
 function ItemForbiddenScreen() {
   const { t } = useTranslation();
-  const classes = useStyles();
 
   const ButtonContent = (
     <Button
       variant="outlined"
       startIcon={<AccountCircleIcon />}
-      className={classes.switchButton}
+      mt={1}
+      mr={1}
+      mx="auto"
     >
       {t('Switch account')}
     </Button>
   );
 
   const leftContent = (
-    <div className={classes.leftContent}>
-      <Link to={HOME_PATH} className={classes.link}>
-        <GraaspLogo
-          height={GRAASP_LOGO_HEADER_HEIGHT}
-          className={classes.logo}
-        />
-        <Typography variant="h6" color="inherit" className={classes.title}>
+    <LeftContentWrapper>
+      <StyledLink to={HOME_PATH}>
+        <GraaspLogo height={GRAASP_LOGO_HEADER_HEIGHT} sx={{ fill: 'white' }} />
+        <Typography variant="h6" color="inherit" mr={2} ml={1}>
           {APP_NAME}
         </Typography>
-      </Link>
+      </StyledLink>
       <Navigation hostMap={HOST_MAP} currentValue={Context.PLAYER} />
-    </div>
+    </LeftContentWrapper>
   );
 
   return (
@@ -86,12 +67,13 @@ function ItemForbiddenScreen() {
         container
         justifyContent="center"
         alignItems="center"
-        className={classes.wrapper}
+        textAlign="center"
+        height="90vh"
       >
         <Grid item>
           <Typography variant="h4">
-            <IconButton>
-              <BlockIcon className={classes.icon} />
+            <IconButton size="large">
+              <BlockIcon />
             </IconButton>
             {t('You cannot access this item')}
           </Typography>

@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Tooltip, makeStyles } from '@material-ui/core';
-import IconButton from '@material-ui/core/IconButton';
-import EditIcon from '@material-ui/icons/Edit';
+import EditIcon from '@mui/icons-material/Edit';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 
 import {
   PermissionLevel,
@@ -20,19 +20,10 @@ import {
 } from '../../config/constants';
 import { hooks } from '../../config/queryClient';
 import { BUILDER_EDIT_BUTTON_ID } from '../../config/selectors';
-import { isRegularUser } from '../../utils/user';
 import { CurrentMemberContext } from '../context/CurrentMemberContext';
-
-const useStyles = makeStyles(() => ({
-  iconButton: {
-    float: 'right',
-    zIndex: FLOATING_BUTTON_Z_INDEX,
-  },
-}));
 
 const BuilderButton = ({ id }) => {
   const { t } = useTranslation();
-  const classes = useStyles();
   const { data: user, isLoading } = useContext(CurrentMemberContext);
   const { data: itemMemberships, isLoading: isLoadingItemMemberships } =
     hooks.useItemMemberships(id);
@@ -63,8 +54,8 @@ const BuilderButton = ({ id }) => {
   const ActionButtons = (
     <Tooltip title={t('Compose View')}>
       <IconButton
+        sx={{ float: 'right', zIndex: FLOATING_BUTTON_Z_INDEX }}
         id={BUILDER_EDIT_BUTTON_ID}
-        className={classes.iconButton}
         aria-label={t('Compose view')}
         onClick={onClickComposeView}
       >

@@ -2,9 +2,8 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Typography from '@material-ui/core/Typography';
-
 import { useTreeItem } from '@mui/lab/TreeItem';
+import Typography from '@mui/material/Typography';
 
 const CustomContentTree = React.forwardRef((props, ref) => {
   const {

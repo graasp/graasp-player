@@ -3,13 +3,13 @@ import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
 
-import { Container, Typography, makeStyles } from '@material-ui/core';
-import { Alert, Skeleton } from '@material-ui/lab';
+import { Alert, Skeleton } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 
 import { Api } from '@graasp/query-client';
-import { Button } from '@graasp/ui';
 import {
   AppItem,
+  Button,
   DocumentItem,
   FileItem,
   H5PItem,
@@ -45,16 +45,6 @@ const {
   useChildrenPaginated,
 } = hooks;
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-  },
-  wrappingContainer: {
-    padding: 0,
-  },
-}));
-
 const Item = ({
   id,
   isChildren,
@@ -66,7 +56,6 @@ const Item = ({
 }) => {
   const { ref, inView } = useInView();
   const { t } = useTranslation();
-  const classes = useStyles();
   const { data: item, isLoading, isError } = useItem(id);
   const { data: itemTags, isLoading: isTagsLoading } = useItemTags(id);
   const { data: member, isLoading: isMemberLoading } =
@@ -193,7 +182,7 @@ const Item = ({
 
       // render each children recursively
       return (
-        <Container className={classes.wrappingContainer}>
+        <Container disableGutters>
           {!showPinnedOnly && (
             <>
               <Typography className={FOLDER_NAME_TITLE_CLASS} variant="h5">
@@ -204,7 +193,7 @@ const Item = ({
               {childrenPaginated.pages.map((page) => (
                 <>
                   {page.data.map((thisItem) => (
-                    <Container key={thisItem.id} className={classes.container}>
+                    <Container key={thisItem.id} mt={1} mb={1}>
                       <Item
                         isChildren
                         id={thisItem.id}

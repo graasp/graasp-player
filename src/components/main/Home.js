@@ -2,9 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 
-import { Container, Divider, Grid } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { Container, Divider, Grid } from '@mui/material';
+import Typography from '@mui/material/Typography';
 
 import { MainMenu as GraaspMainMenu, Loader, Main } from '@graasp/ui';
 
@@ -19,15 +18,8 @@ import HeaderRightContent from './HeaderRightContent';
 
 const { useOwnItems, useSharedItems, useItemsTags } = hooks;
 
-const useStyles = makeStyles((theme) => ({
-  divider: {
-    margin: theme.spacing(2, 0),
-  },
-}));
-
 const Home = () => {
   const { t } = useTranslation();
-  const classes = useStyles();
   const navigate = useNavigate();
 
   const { data: ownItems, isLoading: isLoadingOwnItems } = useOwnItems();
@@ -59,11 +51,11 @@ const Home = () => {
 
     return (
       <>
-        <Divider className={classes.divider} />
+        <Divider mt={2} mb={2} />
         <Typography variant="h4">{t('Shared Items')}</Typography>
         <Grid container spacing={3} justify="center">
           {shared.map((i) => (
-            <Grid item lg={3} md={4} sm={6}>
+            <Grid key={i.id} item lg={3} md={4} sm={6}>
               <ItemCard item={i} />
             </Grid>
           ))}
