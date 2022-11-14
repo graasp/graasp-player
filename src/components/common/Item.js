@@ -215,7 +215,7 @@ const Item = ({
                   (i) => showPinnedOnly === (i.settings?.isPinned || false),
                 )
                 ?.map((thisItem) => (
-                  <Container key={thisItem.id} className={classes.container}>
+                  <Container key={thisItem.id}>
                     <Item
                       isChildren
                       id={thisItem.id}

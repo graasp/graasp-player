@@ -132,7 +132,6 @@ const SideContent = ({ children, item }) => {
       <Tooltip title={t('Chat')}>
         <StyledIconButton
           id={ITEM_CHATBOX_BUTTON_ID}
-          className={classes.iconButton}
           aria-label={isChatboxMenuOpen ? t('Hide Chat') : t('Show Chat')}
           onClick={toggleChatOpen}
         >

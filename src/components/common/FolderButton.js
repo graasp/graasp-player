@@ -39,8 +39,6 @@ const FolderButton = ({ id, item }) => {
     setFocusedItemId(item.id);
   };
 
-  const classes = useStyles();
-
   return (
     <GraaspCard
       // todo: responsive
