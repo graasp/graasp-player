@@ -163,7 +163,7 @@ const SideContent = ({ children, item }) => {
         open={isPinnedMenuOpen}
       >
         {/* show parents pinned items */}
-        <Box overflow="scroll" id={ITEM_PINNED_ID}>
+        <Box overflow="auto" height="80vh" id={ITEM_PINNED_ID}>
           {parentsIds.map((i) => (
             <Item key={i} id={i} showPinnedOnly />
           ))}
