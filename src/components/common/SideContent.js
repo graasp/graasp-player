@@ -28,8 +28,6 @@ import SideDrawer from './SideDrawer';
 const StyledMain = styled('main')(({ theme, isShifted }) => {
   const contentShift = isShifted
     ? {
-        // // necessary for content to be below app bar
-        // ...theme.mixins.toolbar,
         transition: theme.transitions.create('margin', {
           easing: theme.transitions.easing.easeOut,
           duration: theme.transitions.duration.enteringScreen,

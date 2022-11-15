@@ -46,6 +46,7 @@ const MainMenu = () => {
 
   return (
     <GraaspMainMenu id={MAIN_MENU_ID}>
+      {/* todo: add styles to tree */}
       <div style={{ height: 10 }} />
       <DynamicTreeView
         id={TREE_VIEW_ID}

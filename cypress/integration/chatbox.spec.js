@@ -33,7 +33,7 @@ describe('Chatbox', () => {
     cy.get(`#${ITEM_CHATBOX_ID}`).should('be.visible');
   });
 
-  it.only('Side panel button should hide chatbox', () => {
+  it('Side panel button should hide chatbox', () => {
     cy.visit(buildMainPath({ rootId: ITEM_WITH_CHAT_BOX.id, id: null }));
 
     cy.get(`#${ITEM_CHATBOX_BUTTON_ID}`).should('exist');

@@ -51,7 +51,7 @@ const Home = () => {
 
     return (
       <>
-        <Divider mt={2} mb={2} />
+        <Divider my={2} />
         <Typography variant="h4">{t('Shared Items')}</Typography>
         <Grid container spacing={3} justify="center">
           {shared.map((i) => (
