@@ -2,7 +2,7 @@ import { buildMainPath } from '../../src/config/paths';
 import {
   ITEM_CHATBOX_BUTTON_ID,
   ITEM_CHATBOX_ID,
-  PANNEL_CLOSE_BUTTON_ID,
+  PANEL_CLOSE_BUTTON_SELECTOR,
 } from '../../src/config/selectors';
 import { LOAD_CHATBOX_PAUSE } from '../fixtures/constants';
 import { GRAASP_DOCUMENT_ITEM_WITH_CHAT_BOX } from '../fixtures/documents';
@@ -33,7 +33,7 @@ describe('Chatbox', () => {
     cy.get(`#${ITEM_CHATBOX_ID}`).should('be.visible');
   });
 
-  it('Side panel button should hide chatbox', () => {
+  it.only('Side panel button should hide chatbox', () => {
     cy.visit(buildMainPath({ rootId: ITEM_WITH_CHAT_BOX.id, id: null }));
 
     cy.get(`#${ITEM_CHATBOX_BUTTON_ID}`).should('exist');
@@ -44,7 +44,7 @@ describe('Chatbox', () => {
     cy.wait(LOAD_CHATBOX_PAUSE);
     cy.get(`#${ITEM_CHATBOX_ID}`).should('be.visible');
 
-    cy.get(`#${PANNEL_CLOSE_BUTTON_ID}`).click();
+    cy.get(PANEL_CLOSE_BUTTON_SELECTOR).click();
     cy.get(`#${ITEM_CHATBOX_ID}`).should('not.be.visible');
   });
 

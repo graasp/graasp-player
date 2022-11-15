@@ -13,7 +13,7 @@ export const ITEM_PINNED_BUTTON_ID = 'itemPinnedButton';
 
 export const BUILDER_EDIT_BUTTON_ID = 'builderEditButton';
 
-export const PANNEL_CLOSE_BUTTON_ID = 'chatboxCloseButton';
+export const PANEL_CLOSE_BUTTON_SELECTOR = '[data-testid="ChevronRightIcon"]';
 
 export const buildFolderButtonId = (id) => `folderButton-${id}`;
 export const buildTreeItemClass = (id) => `buildTreeItem-${id}`;
