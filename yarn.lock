@@ -2369,9 +2369,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/ui@github:graasp/graasp-ui#188-pdf-viewer-constant":
+"@graasp/ui@github:graasp/graasp-ui":
   version: 0.4.0
-  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=ab5306c6a9eaaf2fe9e290e5a971ab28fce8e6a6"
+  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=5811ea5fdcd51116f6f6b7022fa4423a4e489a94"
   dependencies:
     "@graasp/sdk": "github:graasp/graasp-sdk.git"
     clsx: 1.1.1
@@ -2404,7 +2404,7 @@ __metadata:
       optional: true
     ag-grid-react:
       optional: true
-  checksum: 6b6032aebc436e6321327e055f1080bcddeae9a77143bbe90becf03a78554b51ff1d1e6e110bbbda0f2eb006f9342ea49ab760eac897b29388f7ceed4b562844
+  checksum: eb3946911a547421604e94a84ebf486a09c03768d7a758002e86dbc684d64e1536f9fb76d4f99b2d5be0ac9af06c8e4134688e6d21ea3a8081be250da0e0bb2c
   languageName: node
   linkType: hard
 
@@ -10344,7 +10344,7 @@ __metadata:
     "@graasp/chatbox": "github:graasp/graasp-chatbox#v1"
     "@graasp/query-client": "github:graasp/graasp-query-client"
     "@graasp/sdk": "github:graasp/graasp-sdk"
-    "@graasp/ui": "github:graasp/graasp-ui#188-pdf-viewer-constant"
+    "@graasp/ui": "github:graasp/graasp-ui"
     "@graasp/websockets": "github:graasp/graasp-websockets"
     "@mui/icons-material": 5.10.9
     "@mui/lab": 5.0.0-alpha.107
