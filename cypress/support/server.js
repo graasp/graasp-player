@@ -281,7 +281,7 @@ export const mockDefaultDownloadFile = (
   cy.intercept(
     {
       method: DEFAULT_GET.method,
-      url: new RegExp(`${API_HOST}/${buildDownloadFilesRoute(ID_FORMAT)}$`),
+      url: new RegExp(`${API_HOST}/${buildDownloadFilesRoute(ID_FORMAT)}`),
     },
     ({ reply, url }) => {
       if (shouldThrowError) {
@@ -290,6 +290,7 @@ export const mockDefaultDownloadFile = (
 
       const id = url.slice(API_HOST.length).split('/')[2];
       const item = items.find(({ id: thisId }) => id === thisId);
+      const { replyUrl } = qs.parse(url.slice(url.indexOf('?') + 1));
 
       // item does not exist in db
       if (!item) {
@@ -302,7 +303,14 @@ export const mockDefaultDownloadFile = (
       if (isError(error)) {
         return reply(error);
       }
-      return reply({ fixture: item.filepath });
+
+      // either return the file url or the fixture data
+      // info: we don't test fixture data anymore since the frontend uses url only
+      if (replyUrl) {
+        return reply({ url: item.filepath });
+      } else {
+        return reply({ fixture: item.filepath });
+      }
     },
   ).as('downloadFile');
 };
@@ -312,7 +320,7 @@ export const mockPublicDefaultDownloadFile = (items, shouldThrowError) => {
     {
       method: DEFAULT_GET.method,
       url: new RegExp(
-        `${API_HOST}/${buildPublicDownloadFilesRoute(ID_FORMAT)}$`,
+        `${API_HOST}/${buildPublicDownloadFilesRoute(ID_FORMAT)}`,
       ),
     },
     ({ reply, url }) => {
@@ -322,6 +330,7 @@ export const mockPublicDefaultDownloadFile = (items, shouldThrowError) => {
 
       const id = url.slice(API_HOST.length).split('/')[3];
       const item = items.find(({ id: thisId }) => id === thisId);
+      const { replyUrl } = qs.parse(url.slice(url.indexOf('?') + 1));
 
       // item does not exist in db
       if (!item) {
@@ -335,7 +344,13 @@ export const mockPublicDefaultDownloadFile = (items, shouldThrowError) => {
         return reply(error);
       }
 
-      return reply({ fixture: item.filepath });
+      // either return the file url or the fixture data
+      // info: we don't test fixture data anymore since the frontend uses url only
+      if (replyUrl) {
+        return reply({ url: item.filepath });
+      } else {
+        return reply({ fixture: item.filepath });
+      }
     },
   ).as('publicDownloadFile');
 };

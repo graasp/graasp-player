@@ -1,11 +1,12 @@
 import { ITEM_TYPES } from '../../../src/enums';
-import { CURRENT_USER } from '../members';
 import {
   buildAppExtra,
   buildDocumentExtra,
   buildEmbeddedLinkExtra,
   buildFileExtra,
 } from '../../../src/utils/itemExtra';
+import { MOCK_IMAGE_URL } from '../fileLinks';
+import { CURRENT_USER } from '../members';
 
 const PUBLIC_TAG_ID = Cypress.env('PUBLIC_TAG_ID');
 
@@ -189,7 +190,7 @@ export const STATIC_ELECTRICITY = {
         encoding: '7bit',
         mimetype: 'image/jpeg',
       }),
-      filepath: 'useCases/staticElectricity/lightningImage.jpeg',
+      filepath: MOCK_IMAGE_URL,
       settings: {},
     },
     {

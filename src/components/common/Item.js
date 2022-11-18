@@ -22,6 +22,7 @@ import {
   API_HOST,
   DEFAULT_RESIZABLE_SETTING,
   H5P_INTEGRATION_URL,
+  PDF_VIEWER_LINK,
   SCREEN_MAX_HEIGHT,
 } from '../../config/constants';
 import { hooks } from '../../config/queryClient';
@@ -264,6 +265,7 @@ const Item = ({
           fileUrl={file?.url}
           maxHeight={SCREEN_MAX_HEIGHT}
           showCollapse={showCollapse}
+          pdfViewerLink={PDF_VIEWER_LINK}
         />
       );
 
