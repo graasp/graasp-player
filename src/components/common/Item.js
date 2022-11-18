@@ -295,7 +295,7 @@ const Item = ({
           permission="read" // todo: use graasp-constants
           requestApiAccessToken={Api.requestApiAccessToken}
           height={SCREEN_MAX_HEIGHT}
-          // isResizable // todo: use item settings
+          isResizable={item.settings?.isResizable || DEFAULT_RESIZABLE_SETTING}
         />
       );
 

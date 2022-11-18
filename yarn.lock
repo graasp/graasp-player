@@ -2371,7 +2371,7 @@ __metadata:
 
 "@graasp/ui@github:graasp/graasp-ui#182-auto-resize":
   version: 0.3.1
-  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=01a886fe17724adbf4e0fecf8833d1f721f54e86"
+  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=58c7e8cb6c251f773fe477fb936147d2c2f1f732"
   dependencies:
     "@graasp/sdk": "github:graasp/graasp-sdk.git"
     clsx: 1.1.1
@@ -2404,7 +2404,7 @@ __metadata:
       optional: true
     ag-grid-react:
       optional: true
-  checksum: ed13e9b11bcc91681189242fab1428cb105fb7e7074de230794290c7664dc267bec66b86c8c5fc21dd9eb4724316616e9aec93cd49cc37601c8226a0fbdac78c
+  checksum: 14ed73e8195f77ec389f6b8e0e9d95450c507dfe50496d63ffeeabd23e0dd4db29974c0e131c339420090ecc0b9c4773409bb3319e807f8b814f26d50959c48b
   languageName: node
   linkType: hard
 
