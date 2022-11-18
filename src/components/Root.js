@@ -3,7 +3,7 @@ import { I18nextProvider } from 'react-i18next';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
-import { GlobalStyles } from '@mui/material';
+import { CssBaseline, GlobalStyles } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 
 import { theme } from '@graasp/ui';
@@ -28,6 +28,7 @@ const Root = () => (
       )}
       {globalStyles}
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <Router>
           <CurrentMemberContextProvider>
             <App />
