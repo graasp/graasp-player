@@ -20,6 +20,7 @@ import {
 
 import {
   API_HOST,
+  DEFAULT_RESIZABLE_SETTING,
   H5P_INTEGRATION_URL,
   SCREEN_MAX_HEIGHT,
 } from '../../config/constants';
