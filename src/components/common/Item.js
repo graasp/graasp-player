@@ -22,6 +22,7 @@ import {
   API_HOST,
   DEFAULT_RESIZABLE_SETTING,
   H5P_INTEGRATION_URL,
+  PDF_VIEWER_LINK,
   SCREEN_MAX_HEIGHT,
 } from '../../config/constants';
 import { hooks } from '../../config/queryClient';
@@ -72,10 +73,15 @@ const Item = ({
   });
 
   // fetch file content if type is file
-  const { data: content, isError: isFileError } = useFileContent(id, {
+  const {
+    data: file,
+    isLoading: isFileContentLoading,
+    isError: isFileError,
+  } = useFileContent(id, {
     enabled: Boolean(
       item && [ITEM_TYPES.FILE, ITEM_TYPES.S3_FILE].includes(item.type),
     ),
+    replyUrl: true,
   });
 
   const {
@@ -105,7 +111,8 @@ const Item = ({
     isLoading ||
     isTagsLoading ||
     isChildrenLoading ||
-    isChildrenPaginatedLoading
+    isChildrenPaginatedLoading ||
+    isFileContentLoading
   ) {
     return (
       <ItemSkeleton
@@ -255,9 +262,10 @@ const Item = ({
         <FileItem
           id={buildFileId(id)}
           item={item}
-          content={content}
+          fileUrl={file?.url}
           maxHeight={SCREEN_MAX_HEIGHT}
           showCollapse={showCollapse}
+          pdfViewerLink={PDF_VIEWER_LINK}
         />
       );
 

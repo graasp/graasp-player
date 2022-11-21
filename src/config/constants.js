@@ -112,3 +112,8 @@ export const buildBuilderTabName = (id) => `builder-tab-${id}`;
 
 export const DEFAULT_LINK_SHOW_BUTTON = true;
 export const DEFAULT_RESIZABLE_SETTING = false;
+
+// todo: move to graasp sdk to reuse in builder
+export const PDF_VIEWER_LINK = process.env.REACT_APP_GRAASP_ASSETS_URL
+  ? `https://${process.env.REACT_APP_GRAASP_ASSETS_URL}/pdf-viewer/web/viewer.html?file=`
+  : '';

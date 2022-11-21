@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.1.11 (2022-11-18)
+
+### 0.1.10 (2022-11-18)
+
+
+### Features
+
+* auto-resize apps ([#156](https://github.com/graasp/graasp-player/issues/156)) ([a125edb](https://github.com/graasp/graasp-player/commit/a125edbc8492f11865b8e49276f8017f965134eb))
+
 ### 0.1.9 (2022-11-14)
 
 
