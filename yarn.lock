@@ -2238,7 +2238,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/ui@github:graasp/graasp-ui":
+"@graasp/ui@github:graasp/graasp-ui#v0.4.1":
   version: 0.4.1
   resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=b149f001be54097916816f622bb8dfdf3f3a9cfb"
   dependencies:
@@ -10290,7 +10290,7 @@ __metadata:
     "@graasp/chatbox": "github:graasp/graasp-chatbox#v1"
     "@graasp/query-client": "github:graasp/graasp-query-client"
     "@graasp/sdk": "github:graasp/graasp-sdk"
-    "@graasp/ui": "github:graasp/graasp-ui"
+    "@graasp/ui": "github:graasp/graasp-ui#v0.4.1"
     "@graasp/websockets": "github:graasp/graasp-websockets"
     "@mui/icons-material": 5.10.9
     "@mui/lab": 5.0.0-alpha.107

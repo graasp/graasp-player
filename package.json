@@ -8,7 +8,7 @@
     "@graasp/chatbox": "github:graasp/graasp-chatbox#v1",
     "@graasp/query-client": "github:graasp/graasp-query-client",
     "@graasp/sdk": "github:graasp/graasp-sdk",
-    "@graasp/ui": "github:graasp/graasp-ui",
+    "@graasp/ui": "github:graasp/graasp-ui#v0.4.1",
     "@mui/icons-material": "5.10.9",
     "@mui/lab": "5.0.0-alpha.107",
     "@mui/material": "5.10.13",
@@ -110,7 +110,7 @@
   },
   "resolutions": {
     "@graasp/sdk": "github:graasp/graasp-sdk",
-    "@graasp/ui": "github:graasp/graasp-ui"
+    "@graasp/ui": "github:graasp/graasp-ui#v0.4.1"
   },
   "packageManager": "yarn@3.2.4"
 }
