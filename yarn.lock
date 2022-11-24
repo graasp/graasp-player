@@ -2273,7 +2273,7 @@ __metadata:
       optional: true
     ag-grid-react:
       optional: true
-  checksum: 1fc82519ef9d544934c30c9378592e9bd2de33d1a18adea91bba7ba7f260d261696340f3a3b740753ec2e6b60c83d34115439540c4498c2dbe8efbc2e2b00b8f
+  checksum: 008c718e85fe0b296bbc9bbb7a625687f9df09a1a47bfe8bbbc026df2fac34ee2ce17a63decd81cea07eebe62b51885380e817c9cc05a8d2f099ce92429a4de1
   languageName: node
   linkType: hard
 
@@ -7348,9 +7348,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:9.5.2":
-  version: 9.5.2
-  resolution: "cypress@npm:9.5.2"
+"cypress@npm:11.2.0":
+  version: 11.2.0
+  resolution: "cypress@npm:11.2.0"
   dependencies:
     "@cypress/request": ^2.88.10
     "@cypress/xvfb": ^1.2.4
@@ -7371,7 +7371,7 @@ __metadata:
     dayjs: ^1.10.4
     debug: ^4.3.2
     enquirer: ^2.3.6
-    eventemitter2: ^6.4.3
+    eventemitter2: 6.4.7
     execa: 4.1.0
     executable: ^4.1.1
     extract-zip: 2.0.1
@@ -7384,7 +7384,7 @@ __metadata:
     listr2: ^3.8.3
     lodash: ^4.17.21
     log-symbols: ^4.0.0
-    minimist: ^1.2.5
+    minimist: ^1.2.6
     ospath: ^1.2.2
     pretty-bytes: ^5.6.0
     proxy-from-env: 1.0.0
@@ -7396,7 +7396,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: d19a183df25adcb87ba4914fb177a2b8bf2f004c8364fa21abb6bf66f2462d6f586bf09b58480e804f6b499281d931712a3e262f09880859e3170d513c5c9227
+  checksum: e13649fb4b62a3c9dff7cc571f4e01dba009d8179b05c4f885c5ceb4ed76b78a7323fec491d992da35527708b54e596bfc9edb1d702f788317889f794d8c1e76
   languageName: node
   linkType: hard
 
@@ -8925,10 +8925,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eventemitter2@npm:^6.4.3":
-  version: 6.4.9
-  resolution: "eventemitter2@npm:6.4.9"
-  checksum: be59577c1e1c35509c7ba0e2624335c35bbcfd9485b8a977384c6cc6759341ea1a98d3cb9dbaa5cea4fff9b687e504504e3f9c2cc1674cf3bd8a43a7c74ea3eb
+"eventemitter2@npm:6.4.7":
+  version: 6.4.7
+  resolution: "eventemitter2@npm:6.4.7"
+  checksum: 1b36a77e139d6965ebf3a36c01fa00c089ae6b80faa1911e52888f40b3a7057b36a2cc45dcd1ad87cda3798fe7b97a0aabcbb8175a8b96092a23bb7d0f039e66
   languageName: node
   linkType: hard
 
@@ -10303,7 +10303,7 @@ __metadata:
     "@trivago/prettier-plugin-sort-imports": 3.3.1
     clsx: 1.1.1
     concurrently: 7.4.0
-    cypress: 9.5.2
+    cypress: 11.2.0
     env-cmd: 10.1.0
     eslint: ^7.32.0
     eslint-config-airbnb: 18.2.1
