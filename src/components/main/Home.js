@@ -78,7 +78,7 @@ const Home = () => {
         <Typography variant="h4">{t('My Items')}</Typography>
         <Grid id={OWN_ITEMS_GRID_ID} container spacing={3} justify="center">
           {filtred.map((i) => (
-            <Grid item lg={3} md={4} sm={6}>
+            <Grid key={i.id} item lg={3} md={4} sm={6}>
               <ItemCard item={i} />
             </Grid>
           ))}

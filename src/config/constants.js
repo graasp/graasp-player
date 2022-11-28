@@ -11,10 +11,8 @@ const {
   GRAASP_EXPLORE_HOST: ENV_GRAASP_EXPLORE_HOST,
   H5P_INTEGRATION_URL: ENV_H5P_INTEGRATION_URL,
   NODE_ENV: ENV_NODE_ENV,
-  GA_MEASUREMENT_ID: ENV_GA_MEASUREMENT_ID,
   HIDDEN_ITEM_TAG_ID: ENV_HIDDEN_ITEM_TAG_ID,
   DOMAIN: ENV_DOMAIN,
-  REACT_APP_SENTRY_DSN: ENV_SENTRY_DSN,
 } = env;
 
 export const APP_NAME = 'Graasp';
@@ -31,7 +29,7 @@ export const NODE_ENV =
   process.env.NODE_ENV ||
   ENV.DEVELOPMENT;
 
-export const SENTRY_DSN = ENV_SENTRY_DSN || process.env.REACT_APP_SENTRY_DSN;
+export const SENTRY_DSN = process.env.REACT_APP_SENTRY_DSN;
 
 export const API_HOST =
   ENV_API_HOST || process.env.REACT_APP_API_HOST || 'http://localhost:3112';
@@ -66,8 +64,7 @@ export const H5P_INTEGRATION_URL =
 export const HIDDEN_ITEM_TAG_ID =
   ENV_HIDDEN_ITEM_TAG_ID || process.env.REACT_APP_HIDDEN_ITEM_TAG_ID || false;
 
-export const GA_MEASUREMENT_ID =
-  ENV_GA_MEASUREMENT_ID || process.env.REACT_APP_GA_MEASUREMENT_ID;
+export const GA_MEASUREMENT_ID = process.env.REACT_APP_GA_MEASUREMENT_ID;
 
 // define a max height depending on the screen height
 // use a bit less of the height because of the header and some margin

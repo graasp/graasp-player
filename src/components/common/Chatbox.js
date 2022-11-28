@@ -1,7 +1,6 @@
 import { Record } from 'immutable';
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import GraaspChatbox from '@graasp/chatbox';
 import { MUTATION_KEYS } from '@graasp/query-client';
@@ -41,15 +40,13 @@ const Chatbox = ({ item }) => {
     return <Loader />;
   }
 
-  const messages = chat?.messages ?? [];
-
   return (
     <GraaspChatbox
       id={ITEM_CHATBOX_ID}
       members={members}
       currentMember={currentMember}
       chatId={item.id}
-      messages={chat?.messages}
+      messages={chat?.messages ?? []}
       sendMessageFunction={sendMessage}
       editMessageFunction={editMessage}
       deleteMessageFunction={deleteMessage}

@@ -1,6 +1,13 @@
 {
-  "extends": ["prettier"],
-  "plugins": ["import", "react"],
+  "extends": [
+    "react-app",
+    "airbnb",
+    "prettier",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": ["import", "jsx-a11y", "react", "@typescript-eslint"],
   "env": {
     "browser": true,
     "node": true,
@@ -11,23 +18,30 @@
     "cy": true,
     "Cypress": true
   },
-  "parser": "@babel/eslint-parser",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "requireConfigFile": false,
-    "babelOptions": {
-      "presets": ["@babel/preset-react"]
-    }
-  },
-  "settings": {
-    "react": {
-      "version": "17"
-    }
+      "ecmaFeatures": {
+          "jsx": true
+      },
+      "ecmaVersion": "latest",
+      "sourceType": "module"
   },
   "rules": {
+    "react/function-component-definition":[2, { "namedComponents": "arrow-function" }],
+    "import/extensions": "off",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    // note you must disable the base rule as it can report incorrect errors
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    // remove when possible
+    "@typescript-eslint/no-explicit-any": "off",
+    // disable the rule for all files
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [".js", ".jsx"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     ],
     "import/no-named-as-default": 0,
@@ -46,5 +60,35 @@
     "react/state-in-constructor": ["error", "never"],
     "no-console": [1, { "allow": ["error"] }],
     "no-restricted-syntax": "off"
+  },
+  "overrides": [
+    {
+      // enable the rule specifically for TypeScript files
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "@typescript-eslint/explicit-module-boundary-types": ["error"]
+      }
+    },
+    {
+      // enable the rule specifically for src files
+      "files": ["src/**/*.js", "src/**/*.tsx", "src/**/*.ts"],
+      "rules": {
+        "no-restricted-syntax": ["error"]
+      }
+    }
+  ],
+  "settings": {
+    "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+          "alwaysTryTypes": true
+      },
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
   }
 }

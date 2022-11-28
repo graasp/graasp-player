@@ -109,7 +109,7 @@ describe('Main Screen', () => {
   });
 
   describe('Use cases', () => {
-    it(`Display ${STATIC_ELECTRICITY.items[0].name}`, () => {
+    it.only(`Display ${STATIC_ELECTRICITY.items[0].name}`, () => {
       cy.setUpApi(STATIC_ELECTRICITY);
       const parentFolder = STATIC_ELECTRICITY.items[0];
       const rootId = parentFolder.id;

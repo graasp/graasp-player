@@ -16,6 +16,7 @@ import { buildTreeItemClass } from '../../../config/selectors';
 import { ITEM_TYPES } from '../../../enums';
 import { isHidden } from '../../../utils/item';
 import CustomContentTree from './CustomContentTree';
+import CustomLabel from './CustomLabel';
 import CustomTreeShortcutItem from './CustomTreeShortcutItem';
 
 const { useItem, useItemTags, useItemsTags, useChildren } = hooks;
@@ -86,7 +87,11 @@ const CustomTreeItem = ({ itemProp, expandedItems = [], selectedId }) => {
     ));
   };
 
-  const content = childrenIsLoading ? LoadingTreeItem : item.name;
+  const content = childrenIsLoading ? (
+    LoadingTreeItem
+  ) : (
+    <CustomLabel extra={item.extra} type={item.type} text={item.name} />
+  );
 
   // render CustomTreeShortcutItem when original item is a shortcut
   if (itemProp.type === ITEM_TYPES.SHORTCUT) {
@@ -110,7 +115,7 @@ const CustomTreeItem = ({ itemProp, expandedItems = [], selectedId }) => {
 CustomTreeItem.propTypes = {
   expandedItems: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedId: PropTypes.string.isRequired,
-  itemProp: PropTypes.instanceOf(Record),
+  itemProp: PropTypes.instanceOf(Record).isRequired,
 };
 
 export default CustomTreeItem;

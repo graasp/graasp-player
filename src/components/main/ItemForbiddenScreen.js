@@ -18,7 +18,7 @@ import { HOME_PATH } from '../../config/paths';
 import UserSwitchWrapper from '../common/UserSwitchWrapper';
 import HeaderRightContent from './HeaderRightContent';
 
-const StyledLink = styled(Link)(({ theme }) => ({
+const StyledLink = styled(Link)(() => ({
   display: 'flex',
   alignItems: 'center',
   textDecoration: 'none',
@@ -30,7 +30,7 @@ const LeftContentWrapper = styled('div')(({ theme }) => ({
   marginLeft: theme.spacing(1),
 }));
 
-function ItemForbiddenScreen() {
+const ItemForbiddenScreen = () => {
   const { t } = useTranslation();
 
   const ButtonContent = (
@@ -87,6 +87,6 @@ function ItemForbiddenScreen() {
       </Grid>
     </Main>
   );
-}
+};
 
 export default ItemForbiddenScreen;

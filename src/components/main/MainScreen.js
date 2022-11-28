@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router';
 
@@ -25,7 +25,7 @@ const MainScreen = () => {
   const [isFirstItem, setIsFirstItem] = useState(true);
 
   if (isLoading) {
-    return <Skeleton variant="rect" width={'100%'} />;
+    return <Skeleton variant="rect" width="100%" />;
   }
 
   if (!item || isError) {

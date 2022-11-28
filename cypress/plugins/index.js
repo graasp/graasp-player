@@ -28,6 +28,7 @@ module.exports = (on, config) => {
       AUTHENTICATION_HOST: process.env.REACT_APP_AUTHENTICATION_HOST,
     },
   };
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   require('@cypress/code-coverage/task')(on, newConfig);
   return newConfig;
 };

@@ -105,6 +105,7 @@ const Item = ({
     if (inView) {
       fetchNextPage();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView, children]);
 
   if (
@@ -216,6 +217,7 @@ const Item = ({
           )}
 
           {showPinnedOnly && (
+            // eslint-disable-next-line react/jsx-no-useless-fragment
             <>
               {children
                 ?.filter(
@@ -291,7 +293,7 @@ const Item = ({
     case ITEM_TYPES.APP: {
       if (isMemberLoading) {
         return (
-          <Skeleton variant="rect" width={'100%'} height={SCREEN_MAX_HEIGHT} />
+          <Skeleton variant="rect" width="100%" height={SCREEN_MAX_HEIGHT} />
         );
       }
 
@@ -361,13 +363,16 @@ Item.propTypes = {
   showPinnedOnly: PropTypes.bool,
   isShortcut: PropTypes.bool,
   isShortcutPinned: PropTypes.bool,
-  itemType: PropTypes.string,
+  itemType: PropTypes.string.isRequired,
   isCollapsible: PropTypes.bool,
 };
 
 Item.defaultProps = {
   isChildren: false,
   showPinnedOnly: false,
+  isShortcut: false,
+  isShortcutPinned: false,
+  isCollapsible: false,
 };
 
 export default Item;

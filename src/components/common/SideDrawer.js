@@ -16,18 +16,16 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
   },
 }));
 
-const SideDrawer = ({ children, onClose, title, open }) => {
-  return (
-    <StyledDrawer anchor="right" variant="persistent" open={open}>
-      <Toolbar />
-      <DrawerHeader handleDrawerClose={onClose} direction="rtl">
-        <Typography variant="h6">{title}</Typography>
-      </DrawerHeader>
-      <Divider />
-      {children}
-    </StyledDrawer>
-  );
-};
+const SideDrawer = ({ children, onClose, title, open }) => (
+  <StyledDrawer anchor="right" variant="persistent" open={open}>
+    <Toolbar />
+    <DrawerHeader handleDrawerClose={onClose} direction="rtl">
+      <Typography variant="h6">{title}</Typography>
+    </DrawerHeader>
+    <Divider />
+    {children}
+  </StyledDrawer>
+);
 
 SideDrawer.propTypes = {
   children: PropTypes.element.isRequired,

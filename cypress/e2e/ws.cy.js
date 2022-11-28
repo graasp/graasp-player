@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { WebSocket } from '@graasp/websockets/test/mock-client';
 import { buildMainPath } from '../../src/config/paths';
 import {

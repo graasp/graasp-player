@@ -1,21 +1,20 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 const ItemContext = React.createContext();
 
 const ItemContextProvider = ({ children }) => {
   const [focusedItemId, setFocusedItemId] = useState(null);
 
-  return (
-    <ItemContext.Provider
-      value={{
-        focusedItemId,
-        setFocusedItemId,
-      }}
-    >
-      {children}
-    </ItemContext.Provider>
+  const value = useMemo(
+    () => ({
+      focusedItemId,
+      setFocusedItemId,
+    }),
+    [focusedItemId, setFocusedItemId],
   );
+
+  return <ItemContext.Provider value={value}>{children}</ItemContext.Provider>;
 };
 
 ItemContextProvider.propTypes = {

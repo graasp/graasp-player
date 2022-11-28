@@ -33,31 +33,29 @@ const UserSwitchWrapper = ({ ButtonContent }) => {
   const { mutate: switchUser } = useMutation(MUTATION_KEYS.SWITCH_MEMBER);
 
   return (
-    <>
-      <GraaspUserSwitch
-        ButtonContent={ButtonContent}
-        navigate={navigate}
-        signOut={signOut}
-        currentMember={member}
-        isCurrentMemberLoading={isLoading}
-        isCurrentMemberSuccess={isSuccessUser}
-        useAvatar={hooks.useAvatar}
-        switchMember={switchUser}
-        seeProfileText={t('See Profile')}
-        signedOutTooltipText={t('You are not signed in.')}
-        signOutText={t('Sign Out')}
-        switchMemberText={t('Sign in with another account')}
-        profilePath={MEMBER_PROFILE_PATH}
-        domain={DOMAIN}
-        redirectPath={SIGN_IN_PATH}
-        useMembers={hooks.useMembers}
-        buttonId={HEADER_MEMBER_MENU_BUTTON_ID}
-        signInMenuItemId={HEADER_MEMBER_MENU_SIGN_IN_BUTTON_ID}
-        signOutMenuItemId={HEADER_MEMBER_MENU_SIGN_OUT_BUTTON_ID}
-        seeProfileButtonId={HEADER_MEMBER_MENU_SEE_PROFILE_BUTTON_ID}
-        buildMemberMenuItemId={buildMemberMenuItemId}
-      />
-    </>
+    <GraaspUserSwitch
+      ButtonContent={ButtonContent}
+      navigate={navigate}
+      signOut={signOut}
+      currentMember={member}
+      isCurrentMemberLoading={isLoading}
+      isCurrentMemberSuccess={isSuccessUser}
+      useAvatar={hooks.useAvatar}
+      switchMember={switchUser}
+      seeProfileText={t('See Profile')}
+      signedOutTooltipText={t('You are not signed in.')}
+      signOutText={t('Sign Out')}
+      switchMemberText={t('Sign in with another account')}
+      profilePath={MEMBER_PROFILE_PATH}
+      domain={DOMAIN}
+      redirectPath={SIGN_IN_PATH}
+      useMembers={hooks.useMembers}
+      buttonId={HEADER_MEMBER_MENU_BUTTON_ID}
+      signInMenuItemId={HEADER_MEMBER_MENU_SIGN_IN_BUTTON_ID}
+      signOutMenuItemId={HEADER_MEMBER_MENU_SIGN_OUT_BUTTON_ID}
+      seeProfileButtonId={HEADER_MEMBER_MENU_SEE_PROFILE_BUTTON_ID}
+      buildMemberMenuItemId={buildMemberMenuItemId}
+    />
   );
 };
 

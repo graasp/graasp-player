@@ -14,23 +14,26 @@ import Skeleton from '@mui/material/Skeleton';
 
 import { GRAASP_MENU_ITEMS } from '../../../config/constants';
 import CustomContentTree from './CustomContentTree';
+import CustomLabel from './CustomLabel';
 import CustomTreeItem from './CustomTreeItem';
 
 const DynamicTreeView = ({
   id,
   rootLabel,
   rootId,
+  rootExtra,
+  rootType,
   initialExpendedItems = [],
   items,
   selectedId,
   onTreeItemSelect,
   isLoading,
 }) => {
+  const [expandedItems, setExpandedItems] = useState(initialExpendedItems);
+
   if (isLoading) {
     return <Skeleton variant="text" />;
   }
-
-  const [expandedItems, setExpandedItems] = useState(initialExpendedItems);
 
   // types based on TreeView types
   const onSelect = (_event, value) => onTreeItemSelect?.(value);
@@ -57,7 +60,9 @@ const DynamicTreeView = ({
       <TreeItem
         ContentComponent={CustomContentTree}
         nodeId={rootId}
-        label={rootLabel}
+        label={
+          <CustomLabel type={rootType} extra={rootExtra} text={rootLabel} />
+        }
       >
         {itemsFiltered.map((item) => (
           <CustomTreeItem
@@ -76,11 +81,17 @@ DynamicTreeView.propTypes = {
   id: PropTypes.string.isRequired,
   rootLabel: PropTypes.string.isRequired,
   rootId: PropTypes.string.isRequired,
-  items: PropTypes.any.isRequired,
+  rootExtra: PropTypes.shape({}).isRequired,
+  rootType: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf().isRequired,
   initialExpendedItems: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedId: PropTypes.string.isRequired,
-  onTreeItemSelect: PropTypes.any.isRequired,
+  onTreeItemSelect: PropTypes.func.isRequired,
   isLoading: PropTypes.bool,
+};
+
+DynamicTreeView.defaultProps = {
+  isLoading: false,
 };
 
 export default DynamicTreeView;

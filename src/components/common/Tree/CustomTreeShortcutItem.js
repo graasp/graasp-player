@@ -29,7 +29,7 @@ const CustomTreeShortcutItem = ({ itemId, content }) => {
         nodeId={itemId}
         label={content}
         className={buildTreeShortcutItemClass(itemId)}
-      ></TreeItem>
+      />
     </TreeView>
   );
 };

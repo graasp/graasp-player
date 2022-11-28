@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 const LayoutContext = React.createContext();
 
@@ -7,17 +7,23 @@ const LayoutContextProvider = ({ children }) => {
   const [isPinnedMenuOpen, setIsPinnedMenuOpen] = useState(true);
   const [isChatboxMenuOpen, setIsChatboxMenuOpen] = useState(false);
 
+  const value = useMemo(
+    () => ({
+      isPinnedMenuOpen,
+      setIsPinnedMenuOpen,
+      isChatboxMenuOpen,
+      setIsChatboxMenuOpen,
+    }),
+    [
+      isPinnedMenuOpen,
+      setIsPinnedMenuOpen,
+      isChatboxMenuOpen,
+      setIsChatboxMenuOpen,
+    ],
+  );
+
   return (
-    <LayoutContext.Provider
-      value={{
-        isPinnedMenuOpen,
-        setIsPinnedMenuOpen,
-        isChatboxMenuOpen,
-        setIsChatboxMenuOpen,
-      }}
-    >
-      {children}
-    </LayoutContext.Provider>
+    <LayoutContext.Provider value={value}>{children}</LayoutContext.Provider>
   );
 };
 

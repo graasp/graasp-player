@@ -40,3 +40,5 @@ cypress/downloads
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+react-app-env.d.ts

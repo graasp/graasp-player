@@ -52,6 +52,8 @@ const MainMenu = () => {
         id={TREE_VIEW_ID}
         rootLabel={rootItem.name}
         rootId={rootId}
+        rootType={rootItem.type}
+        rootExtra={rootItem.extra}
         initialExpendedItems={[rootId]}
         selectedId={focusedItemId}
         onTreeItemSelect={(payload) => {

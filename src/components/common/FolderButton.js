@@ -1,7 +1,7 @@
 import { Record } from 'immutable';
 import truncate from 'lodash.truncate';
 import PropTypes from 'prop-types';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { Tooltip, styled } from '@mui/material';
@@ -28,10 +28,25 @@ const StyledButton = styled('button')({
   },
 });
 
+const Wrapper = ({ onClick }) => {
+  const InnerChild = ({ children }) => (
+    <StyledButton type="button" onClick={onClick}>
+      {children}
+    </StyledButton>
+  );
+  InnerChild.propTypes = {
+    children: PropTypes.node.isRequired,
+  };
+  return InnerChild;
+};
+Wrapper.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
+
 const FolderButton = ({ id, item }) => {
   const { setFocusedItemId } = useContext(ItemContext);
-  const description = item.description;
-  const name = item.name;
+  const { description } = item;
+  const { name } = item;
 
   const image = DEFAULT_IMAGE_SRC;
 
@@ -49,11 +64,7 @@ const FolderButton = ({ id, item }) => {
       name={name}
       image={image}
       cardId={id}
-      NameWrapper={({ children }) => (
-        <StyledButton type="button" onClick={onClick}>
-          {children}
-        </StyledButton>
-      )}
+      NameWrapper={Wrapper({ onClick })}
       Actions={
         <Tooltip title="coming soon" aria-label="favorite">
           <span>

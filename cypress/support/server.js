@@ -308,9 +308,10 @@ export const mockDefaultDownloadFile = (
       // info: we don't test fixture data anymore since the frontend uses url only
       if (replyUrl) {
         return reply({ url: item.filepath });
-      } else {
+      } 
+      
         return reply({ fixture: item.filepath });
-      }
+      
     },
   ).as('downloadFile');
 };
@@ -348,9 +349,10 @@ export const mockPublicDefaultDownloadFile = (items, shouldThrowError) => {
       // info: we don't test fixture data anymore since the frontend uses url only
       if (replyUrl) {
         return reply({ url: item.filepath });
-      } else {
+      } 
+      
         return reply({ fixture: item.filepath });
-      }
+      
     },
   ).as('publicDownloadFile');
 };

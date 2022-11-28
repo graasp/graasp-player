@@ -8,7 +8,6 @@ import ForumIcon from '@mui/icons-material/Forum';
 import PushPinIcon from '@mui/icons-material/PushPin';
 import { Box, Grid, Tooltip, styled } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
-import { useTheme } from '@mui/material/styles';
 
 import { DRAWER_WIDTH, FLOATING_BUTTON_Z_INDEX } from '../../config/constants';
 import { hooks } from '../../config/queryClient';
@@ -57,7 +56,7 @@ const StyledIconButton = styled(IconButton)({
 const { useItemsChildren } = hooks;
 
 const SideContent = ({ children, item }) => {
-  const settings = item.settings;
+  const settings = item.settings ?? {};
   const isFolder = item.type === ITEM_TYPES.FOLDER;
   const { rootId } = useParams();
 
@@ -82,7 +81,7 @@ const SideContent = ({ children, item }) => {
 
   let pinnedCount = 0;
   child?.forEach((elt) => {
-    pinnedCount += elt?.filter(({ settings: s }) => s?.isPinned).size;
+    pinnedCount += elt?.filter(({ settings: s }) => s?.isPinned).size ?? 0;
   });
 
   const {
@@ -93,7 +92,6 @@ const SideContent = ({ children, item }) => {
   } = useContext(LayoutContext);
 
   const { t } = useTranslation();
-  const theme = useTheme();
 
   const toggleChatOpen = () => {
     setIsChatboxMenuOpen(!isChatboxMenuOpen);

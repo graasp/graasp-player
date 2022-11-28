@@ -1,6 +1,5 @@
 import qs from 'qs';
 
-import { DEFAULT_LINK_SHOW_BUTTON } from '../../src/config/constants';
 import {
   MAIN_MENU_ID,
   buildAppId,

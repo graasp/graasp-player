@@ -85,8 +85,7 @@ export const isUrlValid = (str) => {
 
 export const stripHtml = (str) => str?.replace(/<[^>]*>?/gm, '');
 
-export const paginationContentFilter = (items) => {
-  return items
+export const paginationContentFilter = (items) =>
+  items
     .filter((i) => i.type !== ITEM_TYPES.FOLDER)
     .filter((i) => !i.settings?.isPinned);
-};
