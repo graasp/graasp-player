@@ -13,7 +13,8 @@ const CustomLabel: FC<Props> = ({ text, extra, type }) => (
   <div>
     <ItemIcon
       alt={`${text} icon`}
-      sx={{ pt: 1, mr: 1 }}
+      // todo: replace this icon with a custom icon
+      sx={{ mb: '-2px', mr: 1, fontSize: '1rem' }}
       type={type}
       extra={extra}
     />

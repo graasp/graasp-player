@@ -41,8 +41,12 @@ const CustomContentTree = React.forwardRef((props, ref) => {
     handleSelection(event);
   };
 
-  // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-  const iconComponent = <div onClick={handleExpansionClick}>{icon}</div>;
+  const iconComponent = (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+    <div onClick={handleExpansionClick} className={classes.iconContainer}>
+      {icon}
+    </div>
+  );
 
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
@@ -71,6 +75,7 @@ CustomContentTree.propTypes = {
     selected: PropTypes.string.isRequired,
     focused: PropTypes.string.isRequired,
     disabled: PropTypes.string.isRequired,
+    iconContainer: PropTypes.string.isRequired,
   }).isRequired,
   className: PropTypes.string.isRequired,
   displayIcon: PropTypes.node.isRequired,
