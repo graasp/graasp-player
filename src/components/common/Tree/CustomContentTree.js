@@ -61,7 +61,11 @@ const CustomContentTree = React.forwardRef((props, ref) => {
       ref={ref}
     >
       {iconComponent}
-      <Typography onClick={handleSelectionClick} component="div">
+      <Typography
+        onClick={handleSelectionClick}
+        component="div"
+        className={classes.label}
+      >
         {label}
       </Typography>
     </div>
@@ -76,6 +80,7 @@ CustomContentTree.propTypes = {
     focused: PropTypes.string.isRequired,
     disabled: PropTypes.string.isRequired,
     iconContainer: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
   }).isRequired,
   className: PropTypes.string.isRequired,
   displayIcon: PropTypes.node.isRequired,
