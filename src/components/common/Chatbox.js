@@ -1,4 +1,4 @@
-import { Record } from 'immutable';
+import { List, Record } from 'immutable';
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 
@@ -46,7 +46,7 @@ const Chatbox = ({ item }) => {
       members={members}
       currentMember={currentMember}
       chatId={item.id}
-      messages={chat?.messages ?? []}
+      messages={chat?.messages ?? List()}
       sendMessageFunction={sendMessage}
       editMessageFunction={editMessage}
       deleteMessageFunction={deleteMessage}
