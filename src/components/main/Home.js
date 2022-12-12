@@ -154,6 +154,7 @@ const Home = () => {
 
   const sidebar = (
     <>
+      <div style={{ height: '15px' }} />
       {renderOwnItemsMenu()}
       {renderSharedItemsMenu()}
     </>
