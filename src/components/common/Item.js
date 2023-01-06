@@ -86,7 +86,7 @@ const Item = ({
     replyUrl: true,
   });
 
-  // get etherpad url if type is url
+  // get etherpad url if type is etherpad
   const etherpadQuery = useEtherpad(item, 'read');
 
   const {
