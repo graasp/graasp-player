@@ -10,6 +10,7 @@ import {
   AppItem,
   Button,
   DocumentItem,
+  EtherpadItem,
   FileItem,
   H5PItem,
   ItemSkeleton,
@@ -39,6 +40,7 @@ import { CurrentMemberContext } from '../context/CurrentMemberContext';
 import FolderButton from './FolderButton';
 
 const {
+  useEtherpad,
   useItem,
   useChildren,
   useFileContent,
@@ -84,6 +86,9 @@ const Item = ({
     replyUrl: true,
   });
 
+  // get etherpad url if type is url
+  const etherpadQuery = useEtherpad(item, 'read');
+
   const {
     data: childrenPaginated,
     isLoading: isChildrenPaginatedLoading,
@@ -113,7 +118,8 @@ const Item = ({
     isTagsLoading ||
     isChildrenLoading ||
     isChildrenPaginatedLoading ||
-    isFileContentLoading
+    isFileContentLoading ||
+    etherpadQuery?.isLoading
   ) {
     return (
       <ItemSkeleton
@@ -140,7 +146,8 @@ const Item = ({
     !item ||
     isFileError ||
     isChildrenError ||
-    isChildrenPaginatedError
+    isChildrenPaginatedError ||
+    etherpadQuery?.isError
   ) {
     return <Alert severity="error">{t('An unexpected error occured.')}</Alert>;
   }
@@ -331,6 +338,26 @@ const Item = ({
           itemId={id}
           contentId={contentId}
           integrationUrl={H5P_INTEGRATION_URL}
+        />
+      );
+    }
+
+    case ITEM_TYPES.ETHERPAD: {
+      if (!etherpadQuery?.data?.padUrl) {
+        return (
+          <Alert severity="error">{t('An unexpected error occurred.')}</Alert>
+        );
+      }
+      return (
+        <EtherpadItem
+          itemId={item.id}
+          padUrl={etherpadQuery.data.padUrl}
+          options={{
+            showLineNumbers: false,
+            showControls: false,
+            showChat: false,
+            noColors: true,
+          }}
         />
       );
     }

@@ -6,9 +6,9 @@
     "@emotion/react": "11.10.4",
     "@emotion/styled": "11.10.4",
     "@graasp/chatbox": "github:graasp/graasp-chatbox#v1",
-    "@graasp/query-client": "github:graasp/graasp-query-client",
-    "@graasp/sdk": "github:graasp/graasp-sdk",
-    "@graasp/ui": "0.4.2",
+    "@graasp/query-client": "github:graasp/graasp-query-client#etherpad",
+    "@graasp/sdk": "0.2.0",
+    "@graasp/ui": "0.7.0",
     "@mui/icons-material": "5.10.9",
     "@mui/lab": "5.0.0-alpha.107",
     "@mui/material": "5.10.13",
@@ -112,10 +112,6 @@
     "exclude": [
       "src/serviceWorker.js"
     ]
-  },
-  "resolutions": {
-    "@graasp/sdk": "github:graasp/graasp-sdk",
-    "@graasp/ui": "0.4.2"
   },
   "packageManager": "yarn@3.2.4"
 }

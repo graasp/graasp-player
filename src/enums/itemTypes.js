@@ -7,6 +7,7 @@ const ITEM_TYPES = {
   DOCUMENT: 'document',
   APP: 'app',
   H5P: 'h5p',
+  ETHERPAD: 'etherpad',
 };
 
 Object.freeze(ITEM_TYPES);
