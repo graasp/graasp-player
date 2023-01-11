@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/graasp/graasp-player/compare/v0.1.13...v0.2.0) (2023-01-11)
+
+
+### Features
+
+* add etherpad view ([#170](https://github.com/graasp/graasp-player/issues/170)) ([4faaf57](https://github.com/graasp/graasp-player/commit/4faaf57ce8273f568ca6deff68b03ed3051c3c32))
+
 ### 0.1.13 (2022-12-12)
 
 
