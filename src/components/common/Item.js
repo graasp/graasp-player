@@ -21,6 +21,7 @@ import {
 
 import {
   API_HOST,
+  APP_CONTEXT,
   DEFAULT_RESIZABLE_SETTING,
   H5P_INTEGRATION_URL,
   PDF_VIEWER_LINK,
@@ -314,6 +315,7 @@ const Item = ({
           requestApiAccessToken={Api.requestApiAccessToken}
           height={SCREEN_MAX_HEIGHT}
           isResizable={item.settings?.isResizable || DEFAULT_RESIZABLE_SETTING}
+          context={APP_CONTEXT}
         />
       );
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
@@ -6,11 +6,11 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import BlockIcon from '@mui/icons-material/Block';
 import { Grid, IconButton, Typography, styled } from '@mui/material';
 
+import { Context } from '@graasp/sdk';
 import { Button, GraaspLogo, Main, Navigation } from '@graasp/ui';
 
 import {
   APP_NAME,
-  Context,
   GRAASP_LOGO_HEADER_HEIGHT,
   HOST_MAP,
 } from '../../config/constants';
@@ -30,17 +30,11 @@ const LeftContentWrapper = styled('div')(({ theme }) => ({
   marginLeft: theme.spacing(1),
 }));
 
-const ItemForbiddenScreen = () => {
+const ItemForbiddenScreen: FC = () => {
   const { t } = useTranslation();
 
   const ButtonContent = (
-    <Button
-      variant="outlined"
-      startIcon={<AccountCircleIcon />}
-      mt={1}
-      mr={1}
-      mx="auto"
-    >
+    <Button variant="outlined" startIcon={<AccountCircleIcon />}>
       {t('Switch account')}
     </Button>
   );

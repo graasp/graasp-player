@@ -9,10 +9,8 @@ import IconButton from '@mui/material/IconButton';
 
 import { Card as GraaspCard } from '@graasp/ui';
 
-import {
-  DEFAULT_IMAGE_SRC,
-  DESCRIPTION_MAX_LENGTH,
-} from '../../config/constants';
+import { DESCRIPTION_MAX_LENGTH } from '../../config/constants';
+import image from '../../resources/logo.png';
 import { stripHtml } from '../../utils/item';
 import { ItemContext } from '../context/ItemContext';
 
@@ -47,8 +45,6 @@ const FolderButton = ({ id, item }) => {
   const { setFocusedItemId } = useContext(ItemContext);
   const { description } = item;
   const { name } = item;
-
-  const image = DEFAULT_IMAGE_SRC;
 
   const onClick = () => {
     setFocusedItemId(item.id);
