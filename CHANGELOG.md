@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.1](https://github.com/graasp/graasp-player/compare/v0.2.0...v0.2.1) (2023-01-19)
+
+
+### Bug Fixes
+
+* h5p revert to default iframe ([#174](https://github.com/graasp/graasp-player/issues/174)) ([7e5325d](https://github.com/graasp/graasp-player/commit/7e5325dc6253b23fd9baf8299863912fd84e146c))
+
 ## [0.2.0](https://github.com/graasp/graasp-player/compare/v0.1.13...v0.2.0) (2023-01-11)
 
 
