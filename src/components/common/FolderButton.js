@@ -10,7 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import { Card as GraaspCard } from '@graasp/ui';
 
 import { DESCRIPTION_MAX_LENGTH } from '../../config/constants';
-import image from '../../resources/logo.png';
+import image from '../../resources/avatar.png';
 import { stripHtml } from '../../utils/item';
 import { ItemContext } from '../context/ItemContext';
 
