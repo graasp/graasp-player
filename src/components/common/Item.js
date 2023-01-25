@@ -198,7 +198,7 @@ const Item = ({
 
       // render each children recursively
       return (
-        <Container disableGutters>
+        <>
           {!showPinnedOnly && (
             <>
               <Typography className={FOLDER_NAME_TITLE_CLASS} variant="h5">
@@ -243,7 +243,7 @@ const Item = ({
                 ))}
             </>
           )}
-        </Container>
+        </>
       );
     }
     case ITEM_TYPES.LINK: {

@@ -4,7 +4,7 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import TreeItem from '@mui/lab/TreeItem';
 import TreeView from '@mui/lab/TreeView';
 
-import { redirect } from '@graasp/utils';
+import { redirect } from '@graasp/sdk';
 
 import { buildGraaspPlayerItemRoute } from '../../../config/constants';
 import { buildTreeShortcutItemClass } from '../../../config/selectors';

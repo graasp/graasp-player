@@ -6,7 +6,7 @@ import { useParams } from 'react-router';
 
 import ForumIcon from '@mui/icons-material/Forum';
 import PushPinIcon from '@mui/icons-material/PushPin';
-import { Box, Grid, Tooltip, styled } from '@mui/material';
+import { Grid, Stack, Tooltip, styled } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
 import { DRAWER_WIDTH, FLOATING_BUTTON_Z_INDEX } from '../../config/constants';
@@ -161,11 +161,11 @@ const SideContent = ({ children, item }) => {
         open={isPinnedMenuOpen}
       >
         {/* show parents pinned items */}
-        <Box overflow="auto" height="80vh" id={ITEM_PINNED_ID}>
+        <Stack id={ITEM_PINNED_ID} spacing={2} mt={1}>
           {parentsIds.map((i) => (
             <Item key={i} id={i} showPinnedOnly />
           ))}
-        </Box>
+        </Stack>
       </SideDrawer>
     );
   };
