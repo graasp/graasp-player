@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.2](https://github.com/graasp/graasp-player/compare/v0.2.1...v0.2.2) (2023-01-31)
+
+
+### Bug Fixes
+
+* update @graasp/query-client ([#182](https://github.com/graasp/graasp-player/issues/182)) ([28ad838](https://github.com/graasp/graasp-player/commit/28ad838d74f20b73c56ad00b16f705d1af3705f9))
+* update chatbox with mention fix ([e3eaa11](https://github.com/graasp/graasp-player/commit/e3eaa11344867c8bf64d500491d2ebb9988602c1))
+
 ## [0.2.1](https://github.com/graasp/graasp-player/compare/v0.2.0...v0.2.1) (2023-01-19)
 
 
