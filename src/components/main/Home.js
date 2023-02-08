@@ -16,6 +16,8 @@ import DynamicTreeView from '../common/Tree/Tree';
 import CookiesBanner from './CookiesBanner';
 import HeaderRightContent from './HeaderRightContent';
 
+import HeaderNavigation from './HeaderNavigation';
+
 const { useOwnItems, useSharedItems, useItemsTags } = hooks;
 
 const Home = () => {
@@ -164,7 +166,7 @@ const Home = () => {
     <Main
       open
       sidebar={sidebar}
-      headerLeftContent={t('Graasp Player')}
+      headerLeftContent={<HeaderNavigation />}
       headerRightContent={<HeaderRightContent />}
     >
       <CookiesBanner />
