@@ -1,3 +1,5 @@
+import { Platform } from '@graasp/ui';
+
 export const MAIN_MENU_ID = 'mainMenu';
 export const TREE_VIEW_ID = 'treeView';
 export const buildFileId = (id) => `file-${id}`;
@@ -29,3 +31,11 @@ export const HEADER_MEMBER_MENU_SIGN_OUT_BUTTON_ID =
   'headerMemberMenuSignOutButton';
 export const buildMemberMenuItemId = (id) => `memberMenuItem-${id}`;
 export const OWN_ITEMS_GRID_ID = 'ownItemsGrid';
+
+export const APP_NAVIGATION_PLATFORM_SWITCH_ID = 'appNavigationPlatformSwitch';
+export const APP_NAVIGATION_PLATFORM_SWITCH_BUTTON_IDS = {
+  [Platform.Builder]: 'appNavigationPlatformSwitchButtonBuilder',
+  [Platform.Player]: 'appNavigationPlatformSwitchButtonPlayer',
+  [Platform.Library]: 'appNavigationPlatformSwitchButtonLibrary',
+  [Platform.Analytics]: 'appNavigationPlatformSwitchButtonAnalytics',
+};
