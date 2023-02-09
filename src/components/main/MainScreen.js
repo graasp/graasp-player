@@ -5,9 +5,7 @@ import { useParams } from 'react-router-dom';
 
 import { Alert, Skeleton, Typography } from '@mui/material';
 
-import {
-  Main
-} from '@graasp/ui';
+import { Main } from '@graasp/ui';
 
 import { hooks } from '../../config/queryClient';
 import Item from '../common/Item';
@@ -52,7 +50,9 @@ const MainScreen = () => {
     <Main
       open={Boolean(rootId)}
       sidebar={rootId && <MainMenu />}
-      headerLeftContent={<HeaderNavigation rootId={rootId} topItemName={topItemName} />}
+      headerLeftContent={
+        <HeaderNavigation rootId={rootId} topItemName={topItemName} />
+      }
       headerRightContent={<HeaderRightContent id={mainId} />}
     >
       <LayoutContextProvider>

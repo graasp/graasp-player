@@ -14,9 +14,8 @@ import { isHidden } from '../../utils/item';
 import ItemCard from '../common/ItemCard';
 import DynamicTreeView from '../common/Tree/Tree';
 import CookiesBanner from './CookiesBanner';
-import HeaderRightContent from './HeaderRightContent';
-
 import HeaderNavigation from './HeaderNavigation';
+import HeaderRightContent from './HeaderRightContent';
 
 const { useOwnItems, useSharedItems, useItemsTags } = hooks;
 
