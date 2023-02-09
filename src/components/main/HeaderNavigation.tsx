@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { Box, Typography, styled } from '@mui/material';
@@ -82,16 +81,6 @@ export const HeaderNavigation = ({
       </Box>
     </Box>
   );
-};
-
-HeaderNavigation.propTypes = {
-  rootId: PropTypes.string,
-  topItemName: PropTypes.string,
-};
-
-HeaderNavigation.defaultProps = {
-  rootId: undefined,
-  topItemName: '',
 };
 
 export default HeaderNavigation;
