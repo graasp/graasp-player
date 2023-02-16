@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/graasp/graasp-player/compare/v0.2.2...v0.3.0) (2023-02-14)
+
+
+### Features
+
+* upgrade packages ([#187](https://github.com/graasp/graasp-player/issues/187)) ([bf3ef37](https://github.com/graasp/graasp-player/commit/bf3ef3740ef0553c12297127c25c85d295dd774c))
+
 ## [0.2.2](https://github.com/graasp/graasp-player/compare/v0.2.1...v0.2.2) (2023-01-31)
 
 
