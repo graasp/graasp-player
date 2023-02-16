@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/graasp/graasp-player/compare/v0.3.0...v0.4.0) (2023-02-16)
+
+
+### Features
+
+* add platform switch to player ([#184](https://github.com/graasp/graasp-player/issues/184)) ([b7a32d4](https://github.com/graasp/graasp-player/commit/b7a32d4fb00355c71c4142949610bf7bf3ae3b80))
+
 ## [0.3.0](https://github.com/graasp/graasp-player/compare/v0.2.2...v0.3.0) (2023-02-14)
 
 
