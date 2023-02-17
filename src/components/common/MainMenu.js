@@ -59,7 +59,7 @@ const MainMenu = () => {
         onTreeItemSelect={(payload) => {
           setFocusedItemId(payload);
         }}
-        items={children && !children.isEmpty() ? children : []}
+        items={children}
         isLoading={isLoading || rootItemIsLoading}
       />
     </GraaspMainMenu>
