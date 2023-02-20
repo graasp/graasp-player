@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
+import { Stack } from '@mui/material';
+
 import { ItemType, UnknownExtra } from '@graasp/sdk';
 import { ItemIcon } from '@graasp/ui';
 
@@ -10,16 +12,16 @@ type Props = {
 };
 
 const CustomLabel: FC<Props> = ({ text, extra, type }) => (
-  <div>
+  <Stack direction="row">
     <ItemIcon
       alt={`${text} icon`}
       // todo: replace this icon with a custom icon
-      sx={{ mb: '-2px', mr: 1, fontSize: '1rem' }}
+      sx={{ mt: 0.5, mr: 1, fontSize: '1rem' }}
       type={type}
       extra={extra}
     />
     {text}
-  </div>
+  </Stack>
 );
 
 export default CustomLabel;
