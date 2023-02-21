@@ -3,7 +3,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { useTreeItem } from '@mui/lab/TreeItem';
+import { styled } from '@mui/material';
 import Typography from '@mui/material/Typography';
+
+const StyledDiv = styled('div')({
+  // align expand arrow to top
+  alignItems: 'start !important',
+});
 
 // eslint-disable-next-line react/display-name
 const CustomContentTree = React.forwardRef((props, ref) => {
@@ -50,7 +56,7 @@ const CustomContentTree = React.forwardRef((props, ref) => {
 
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-    <div
+    <StyledDiv
       className={clsx(className, classes.root, {
         [classes.expanded]: expanded,
         [classes.selected]: selected,
@@ -68,7 +74,7 @@ const CustomContentTree = React.forwardRef((props, ref) => {
       >
         {label}
       </Typography>
-    </div>
+    </StyledDiv>
   );
 });
 
