@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.1](https://github.com/graasp/graasp-player/compare/v0.4.0...v0.4.1) (2023-02-24)
+
+
+### Bug Fixes
+
+* fixes overflow of card title in button wrapper ([00baf46](https://github.com/graasp/graasp-player/commit/00baf469a688926bcdbddc52e1437171268f8f3d))
+* fixes overflow of title of pinned cards ([c1fc1bf](https://github.com/graasp/graasp-player/commit/c1fc1bf2e106bc34be72f685a1d1c41d06953b47))
+* improve tree view ([#191](https://github.com/graasp/graasp-player/issues/191)) ([e46c8ce](https://github.com/graasp/graasp-player/commit/e46c8cea4f9e1b07c6883212a05652a1b0988c30))
+* **ui:** align arrow in tree view with first line of text ([e46c8ce](https://github.com/graasp/graasp-player/commit/e46c8cea4f9e1b07c6883212a05652a1b0988c30))
+
 ## [0.4.0](https://github.com/graasp/graasp-player/compare/v0.3.0...v0.4.0) (2023-02-16)
 
 
