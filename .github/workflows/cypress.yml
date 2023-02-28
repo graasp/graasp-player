@@ -6,29 +6,58 @@ on:
   push:
     branches-ignore:
       - main
-      - master
 
-# This workflow is made up of one job that calls the reusable workflow in graasp-deploy
+concurrency:
+  group: cypress-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  graasp-deploy-cypress-workflow:
-    # only cancel in-progress jobs or runs for the current workflow
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
-      cancel-in-progress: true
+  cypress:
+    name: Cypress
+    runs-on: ubuntu-latest
+    steps:
+      # Check-out repository under $GITHUB_WORKSPACE, so the job can access it
+      - name: Check out code
+        uses: actions/checkout@v3
 
-    # Replace with repository name
-    name: Graasp Player
-    # Replace 'main' with the hash of a commit, so it points to an specific version of the reusable workflow that is used
-    # Reference reusable workflow file. Using the commit SHA is the safest for stability and security
-    uses: graasp/graasp-deploy/.github/workflows/cypress.yml@v1
-    with:
-      graasp-domain-test: localhost
-      graasp-compose-host-test: http://localhost:3111
-      graasp-authentication-host-test: http://localhost:3001
-      # mock values
-      hidden-item-tag-id-test: 12345678-1234-1234-1234-123456789012
-      node-env-test: test
+      - name: Yarn Install and Cache
+        uses: graasp/graasp-deploy/.github/actions/yarn-install-and-cache@v1
+        with:
+          cypress: true
 
-    # Insert required secrets based on repository with the following format: ${{ secrets.SECRET_NAME }}
-    secrets:
-      api-host-test: ${{ secrets.REACT_APP_API_HOST }}
+      # type check
+      - name: Type-check code
+        run: tsc --noEmit
+
+      #  use the Cypress GitHub Action to run Cypress tests within the chrome browser
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          install: false
+          start: yarn dev
+          browser: chrome
+          quiet: true
+          config-file: cypress.config.ts
+          cache-key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+        env:
+          VITE_PORT: 3112
+          VITE_GRAASP_DOMAIN: localhost
+          VITE_GRAASP_API_HOST: http://localhost:3636
+          VITE_GRAASP_AUTH_HOST: http://localhost:3001
+          VITE_GRAASP_BUILDER_HOST: http://localhost:3111
+          VITE_SHOW_NOTIFICATIONS: false
+          VITE_HIDDEN_ITEM_TAG_ID: 'hidden-item-tag-id'
+          VITE_PUBLIC_TAG_ID: 'public-tag-id'
+
+      # after the test run completes
+      # store any screenshots
+      # NOTE: screenshots will be generated only if E2E test failed
+      # thus we store screenshots only on failures
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+
+      - name: coverage report
+        run: npx nyc report --reporter=text-summary

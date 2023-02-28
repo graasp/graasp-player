@@ -1,52 +1,54 @@
 name: Deploy to development environment
 
-# Control when the action will run.
+# Controls when the action will run
 on:
   # Triggers the workflow on push events only for the main branch
   push:
     branches:
       - main
-      - master
 
   # Allows to run the workflow manually from the Actions tab
   workflow_dispatch:
-    # Inputs the workflow accepts.
-    inputs:
-      test-execution:
-        description: 'Execute test job (Default: true)'
-        type: choice
-        options:
-          - yes
-          - no
-        default: yes
-# This workflow is made up of one job that calls the reusable workflow in graasp-deploy
-jobs:
-  graasp-deploy-s3-workflow:
-    # abort previous deployment if a newer one is in progress
-    concurrency:
-      group: deploy-development
-      cancel-in-progress: true
 
-    name: Graasp Player
-    # Reference reusable workflow file. Using the commit SHA is the safest for stability and security
-    uses: graasp/graasp-deploy/.github/workflows/cintegration-s3.yml@v1
-    with:
-      build-folder: 'build'
-    secrets:
-      api-host: ${{ secrets.REACT_APP_API_HOST_DEV }}
-      authentication-host: ${{ secrets.REACT_APP_AUTHENTICATION_HOST_DEV }}
-      aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_DEV }}
-      aws-region: ${{ secrets.AWS_REGION_DEV }}
-      aws-s3-bucket-name: ${{ secrets.AWS_S3_BUCKET_NAME_GRAASP_PERFORM_DEV }}
-      aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_DEV }}
-      cloudfront-distribution-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_GRAASP_PERFORM_DEV }}
-      domain: ${{ secrets.REACT_APP_DOMAIN_DEV }}
-      ga-measurement-id: ${{ secrets.REACT_APP_GA_MEASUREMENT_ID_DEV }}
-      graasp-compose-host: ${{ secrets.BUILDER_CLIENT_HOST_DEV }}
-      graasp-explorer-host: ${{ secrets.EXPLORER_CLIENT_HOST_DEV }}
-      h5p-integration-url: ${{ secrets.H5P_INTEGRATION_URL_DEV }}
-      hidden-item-tag-id: ${{ secrets.REACT_APP_HIDDEN_ITEM_TAG_ID_DEV }}
-      port: ${{ secrets.PORT }}
-      sentry-dsn: ${{ secrets.REACT_APP_SENTRY_DSN }}
-      show-notifications: ${{ secrets.REACT_APP_SHOW_NOTIFICATIONS }}
-      graasp-assets-url: ${{ secrets.REACT_APP_GRAASP_ASSETS_URL_DEV }}
+jobs:
+  deploy-app:
+    name: Deploy to dev
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Yarn install and Cache dependencies
+        uses: graasp/graasp-deploy/.github/actions/yarn-install-and-cache@v1
+
+      - name: Yarn build
+        # Set environment variables required to perform the build. These are only available to this step
+        env:
+          VITE_PORT: ${{ vars.VITE_PORT }}
+          VITE_GRAASP_DOMAIN: ${{ vars.VITE_GRAASP_DOMAIN }}
+          VITE_GRAASP_API_HOST: ${{ vars.VITE_GRAASP_API_HOST }}
+          VITE_GRAASP_AUTH_HOST: ${{ vars.VITE_GRAASP_AUTH_HOST }}
+          VITE_GRAASP_BUILDER_HOST: ${{ vars.VITE_GRAASP_BUILDER_HOST }}
+          VITE_GRAASP_LIBRARY_HOST: ${{ vars.VITE_GRAASP_LIBRARY_HOST }}
+          VITE_GRAASP_ANALYTICS_HOST: ${{ vars.VITE_GRAASP_ANALYTICS_HOST }}
+          VITE_GRAASP_ASSETS_URL: ${{ vars.VITE_GRAASP_ASSETS_URL }}
+          VITE_GRAASP_H5P_INTEGRATION_URL: ${{ secrets.VITE_GRAASP_H5P_INTEGRATION_URL }}
+          VITE_SENTRY_ENV: ${{ vars.VITE_SENTRY_ENV }}
+          VITE_SENTRY_DSN: ${{ secrets.VITE_SENTRY_DSN }}
+          VITE_GA_MEASUREMENT_ID: ${{ secrets.VITE_GA_MEASUREMENT_ID }}
+          VITE_HIDDEN_ITEM_TAG_ID: ${{ secrets.VITE_HIDDEN_ITEM_TAG_ID }}
+          VITE_SHOW_NOTIFICATIONS: ${{ vars.VITE_SHOW_NOTIFICATIONS }}
+        run: yarn build
+        shell: bash
+
+      - name: Deploy
+        uses: graasp/graasp-deploy/.github/actions/deploy-s3@v1
+        # Replace input build-folder or version if needed
+        with:
+          build-folder: 'build'
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_DEV }}
+          aws-region: ${{ secrets.AWS_REGION_DEV }}
+          aws-s3-bucket-name: ${{ secrets.AWS_S3_BUCKET_NAME_GRAASP_PERFORM_DEV }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_DEV }}
+          cloudfront-distribution-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_GRAASP_PERFORM_DEV }}
