@@ -62,12 +62,6 @@
       }
     ],
     "import/no-named-as-default": 0,
-    "react/require-default-props": [
-      2,
-      {
-        "functions": "defaultArguments"
-      }
-    ],
     "react/static-property-placement": [
       "error",
       "property assignment",
@@ -104,7 +98,13 @@
       "rules": {
         "@typescript-eslint/explicit-module-boundary-types": [
           "error"
-        ]
+        ],
+        "react/require-default-props": [
+          2,
+          {
+            "functions": "defaultArguments"
+          }
+        ],
       }
     },
     {

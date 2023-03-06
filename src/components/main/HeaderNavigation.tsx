@@ -40,7 +40,7 @@ interface HeaderNavigationProps {
 }
 
 export const HeaderNavigation = ({
-  rootId = undefined,
+  rootId = undefined, // this makes eslint happy with react/require-default-props
   topItemName = '',
 }: HeaderNavigationProps): JSX.Element => {
   const getNavigationEvents = usePlatformNavigation(platformsHostsMap, rootId);
