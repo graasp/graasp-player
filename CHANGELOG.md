@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/graasp/graasp-player/compare/v0.4.1...v0.5.0) (2023-03-06)
+
+
+### Features
+
+* add document styles in Player ([#203](https://github.com/graasp/graasp-player/issues/203)) ([944f158](https://github.com/graasp/graasp-player/commit/944f1588da4be12665dfd4fe1ddb76a4b96896bc))
+* remove builder button ([#198](https://github.com/graasp/graasp-player/issues/198)) ([967addc](https://github.com/graasp/graasp-player/commit/967addce3eb711120ed784c4712a6dad3a24e16f))
+
 ## [0.4.1](https://github.com/graasp/graasp-player/compare/v0.4.0...v0.4.1) (2023-02-24)
 
 
