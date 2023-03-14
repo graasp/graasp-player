@@ -35,13 +35,13 @@ const StyledLink = styled(Link)(() => ({
 }));
 
 interface HeaderNavigationProps {
-  rootId: string;
-  topItemName: string;
+  rootId?: string;
+  topItemName?: string;
 }
 
 export const HeaderNavigation = ({
-  rootId,
-  topItemName,
+  rootId = undefined, // this makes eslint happy with react/require-default-props
+  topItemName = '',
 }: HeaderNavigationProps): JSX.Element => {
   const getNavigationEvents = usePlatformNavigation(platformsHostsMap, rootId);
 

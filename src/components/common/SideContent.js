@@ -19,7 +19,6 @@ import {
 import { ITEM_TYPES } from '../../enums';
 import { getParentsIdsFromPath } from '../../utils/item';
 import { LayoutContext } from '../context/LayoutContext';
-import BuilderButton from './BuilderButton';
 import Chatbox from './Chatbox';
 import Item from './Item';
 import SideDrawer from './SideDrawer';
@@ -182,7 +181,6 @@ const SideContent = ({ children, item }) => {
 
           {displayPinButton()}
 
-          <BuilderButton id={item.id} />
 
           {children}
         </StyledMain>

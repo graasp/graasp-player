@@ -20,6 +20,8 @@ const StyledButton = styled('button')({
   margin: 0,
   border: 0,
   background: 'transparent',
+  textOverflow: 'ellipsis',
+  maxWidth: '100%',
 
   '&:hover': {
     cursor: 'pointer',

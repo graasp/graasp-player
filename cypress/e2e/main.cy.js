@@ -1,22 +1,21 @@
 import { buildMainPath } from '../../src/config/paths';
 import {
-  BUILDER_EDIT_BUTTON_ID,
   FOLDER_NAME_TITLE_CLASS,
-  MAIN_MENU_ID,
+  MAIN_MENU_ID
 } from '../../src/config/selectors';
 import { GRAASP_APP_ITEM } from '../fixtures/apps';
 import { GRAASP_DOCUMENT_ITEM } from '../fixtures/documents';
 import {
   IMAGE_ITEM_DEFAULT,
   PDF_ITEM_DEFAULT,
-  VIDEO_ITEM_DEFAULT,
+  VIDEO_ITEM_DEFAULT
 } from '../fixtures/files';
 import { FOLDER_WITH_SUBFOLDER_ITEM } from '../fixtures/items';
 import { GRAASP_LINK_ITEM, YOUTUBE_LINK_ITEM } from '../fixtures/links';
 import { MEMBERS } from '../fixtures/members';
 import {
   PUBLIC_STATIC_ELECTRICITY,
-  STATIC_ELECTRICITY,
+  STATIC_ELECTRICITY
 } from '../fixtures/useCases/staticElectricity';
 import {
   expectAppViewScreenLayout,
@@ -24,7 +23,7 @@ import {
   expectFileViewScreenLayout,
   expectFolderButtonLayout,
   expectFolderLayout,
-  expectLinkViewScreenLayout,
+  expectLinkViewScreenLayout
 } from '../support/integrationUtils';
 
 describe('Main Screen', () => {
@@ -143,9 +142,6 @@ describe('Main Screen', () => {
         items: [GRAASP_DOCUMENT_ITEM, ...FOLDER_WITH_SUBFOLDER_ITEM.items],
       });
     });
-    it('Show Builder button', () => {
-      cy.visit(buildMainPath({ rootId: GRAASP_DOCUMENT_ITEM.id, id: null }));
-      cy.get(`#${BUILDER_EDIT_BUTTON_ID}`).should('be.visible').click();
-    });
+    // todo: check that the builder can be accessed using the navigation
   });
 });

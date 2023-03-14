@@ -1,5 +1,5 @@
 /* This file is a copy of DynamicTreeView in graasp-ui.
-  A lot of features have been stripped to accomodate the simple needs of hidden items. 
+  A lot of features have been stripped to accomodate the simple needs of hidden items.
   The main goal is to add the ability to filter the item based on their tags. The Tree
   check for each element in the tree if it should be displayed (no hidden tag).
   This feature should be ported to graasp-ui. */
@@ -53,8 +53,8 @@ const DynamicTreeView = ({
       onNodeToggle={onToggle}
       expanded={expandedItems}
       aria-label="icon expansion"
-      defaultCollapseIcon={<ExpandMoreIcon />}
-      defaultExpandIcon={<ChevronRightIcon />}
+      defaultCollapseIcon={<ExpandMoreIcon sx={{ mt: 0.4 }} />}
+      defaultExpandIcon={<ChevronRightIcon sx={{ mt: 0.4 }} />}
       defaultSelected={rootId}
     >
       <TreeItem

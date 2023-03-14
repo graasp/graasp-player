@@ -7,7 +7,12 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-  "plugins": ["import", "jsx-a11y", "react", "@typescript-eslint"],
+  "plugins": [
+    "import",
+    "jsx-a11y",
+    "react",
+    "@typescript-eslint"
+  ],
   "env": {
     "browser": true,
     "node": true,
@@ -20,20 +25,27 @@
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-      "ecmaFeatures": {
-          "jsx": true
-      },
-      "ecmaVersion": "latest",
-      "sourceType": "module"
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
   },
   "rules": {
-    "react/function-component-definition":[2, { "namedComponents": "arrow-function" }],
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function"
+      }
+    ],
     "import/extensions": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
     // note you must disable the base rule as it can report incorrect errors
     "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": ["error"],
+    "@typescript-eslint/no-use-before-define": [
+      "error"
+    ],
     // remove when possible
     "@typescript-eslint/no-explicit-any": "off",
     // disable the rule for all files
@@ -41,7 +53,12 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
       }
     ],
     "import/no-named-as-default": 0,
@@ -57,37 +74,77 @@
         "propTypes": "static public field"
       }
     ],
-    "react/state-in-constructor": ["error", "never"],
-    "no-console": [1, { "allow": ["error"] }],
+    "react/state-in-constructor": [
+      "error",
+      "never"
+    ],
+    "no-console": [
+      1,
+      {
+        "allow": [
+          "error"
+        ]
+      }
+    ],
     "no-restricted-syntax": "off"
   },
   "overrides": [
     {
       // enable the rule specifically for TypeScript files
-      "files": ["*.ts", "*.tsx"],
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
       "rules": {
-        "@typescript-eslint/explicit-module-boundary-types": ["error"]
+        "@typescript-eslint/explicit-module-boundary-types": [
+          "error"
+        ],
+        "react/require-default-props": [
+          2,
+          {
+            "functions": "defaultArguments"
+          }
+        ],
       }
     },
     {
       // enable the rule specifically for src files
-      "files": ["src/**/*.js", "src/**/*.tsx", "src/**/*.ts"],
+      "files": [
+        "src/**/*.js",
+        "src/**/*.tsx",
+        "src/**/*.ts"
+      ],
       "rules": {
-        "no-restricted-syntax": ["error"]
+        "no-restricted-syntax": [
+          "error"
+        ]
       }
     }
   ],
   "settings": {
-    "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
+    "import/extensions": [
+      ".js",
+      ".jsx",
+      ".ts",
+      ".tsx"
+    ],
     "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
     },
     "import/resolver": {
       "typescript": {
-          "alwaysTryTypes": true
+        "alwaysTryTypes": true
       },
       "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
       }
     }
   }

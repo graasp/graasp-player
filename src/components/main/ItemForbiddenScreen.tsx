@@ -1,34 +1,15 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import BlockIcon from '@mui/icons-material/Block';
-import { Grid, IconButton, Typography, styled } from '@mui/material';
+import { Grid, IconButton, Typography } from '@mui/material';
 
-import { Context } from '@graasp/sdk';
-import { Button, GraaspLogo, Main, Navigation } from '@graasp/ui';
+import { Button, Main } from '@graasp/ui';
 
-import {
-  APP_NAME,
-  GRAASP_LOGO_HEADER_HEIGHT,
-  HOST_MAP,
-} from '../../config/constants';
-import { HOME_PATH } from '../../config/paths';
 import UserSwitchWrapper from '../common/UserSwitchWrapper';
+import HeaderNavigation from './HeaderNavigation';
 import HeaderRightContent from './HeaderRightContent';
-
-const StyledLink = styled(Link)(() => ({
-  display: 'flex',
-  alignItems: 'center',
-  textDecoration: 'none',
-  color: 'inherit',
-}));
-
-const LeftContentWrapper = styled('div')(({ theme }) => ({
-  display: 'flex',
-  marginLeft: theme.spacing(1),
-}));
 
 const ItemForbiddenScreen: FC = () => {
   const { t } = useTranslation();
@@ -39,22 +20,10 @@ const ItemForbiddenScreen: FC = () => {
     </Button>
   );
 
-  const leftContent = (
-    <LeftContentWrapper>
-      <StyledLink to={HOME_PATH}>
-        <GraaspLogo height={GRAASP_LOGO_HEADER_HEIGHT} sx={{ fill: 'white' }} />
-        <Typography variant="h6" color="inherit" mr={2} ml={1}>
-          {APP_NAME}
-        </Typography>
-      </StyledLink>
-      <Navigation hostMap={HOST_MAP} currentValue={Context.PLAYER} />
-    </LeftContentWrapper>
-  );
-
   return (
     <Main
       open={false}
-      headerLeftContent={leftContent}
+      headerLeftContent={<HeaderNavigation />}
       headerRightContent={<HeaderRightContent />}
     >
       <Grid
