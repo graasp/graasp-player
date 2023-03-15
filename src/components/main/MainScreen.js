@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
@@ -56,16 +55,10 @@ const MainScreen = () => {
       headerRightContent={<HeaderRightContent id={mainId} />}
     >
       <LayoutContextProvider>
-        <SideContent item={item}>{content}</SideContent>
+        <SideContent item={item} content={content} />
       </LayoutContextProvider>
     </Main>
   );
-};
-
-MainScreen.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({ itemId: PropTypes.string }).isRequired,
-  }).isRequired,
 };
 
 export default MainScreen;

@@ -1,8 +1,7 @@
 import { Record } from 'immutable';
 import PropTypes from 'prop-types';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router';
 
 import ForumIcon from '@mui/icons-material/Forum';
 import PushPinIcon from '@mui/icons-material/PushPin';
@@ -10,7 +9,6 @@ import { Grid, Stack, Tooltip, styled } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
 import { DRAWER_WIDTH, FLOATING_BUTTON_Z_INDEX } from '../../config/constants';
-import { hooks } from '../../config/queryClient';
 import {
   ITEM_CHATBOX_BUTTON_ID,
   ITEM_PINNED_BUTTON_ID,
@@ -18,6 +16,7 @@ import {
 } from '../../config/selectors';
 import { ITEM_TYPES } from '../../enums';
 import { getParentsIdsFromPath } from '../../utils/item';
+import { ItemContext } from '../context/ItemContext';
 import { LayoutContext } from '../context/LayoutContext';
 import Chatbox from './Chatbox';
 import Item from './Item';
@@ -52,12 +51,20 @@ const StyledIconButton = styled(IconButton)({
   zIndex: FLOATING_BUTTON_Z_INDEX,
 });
 
-const { useItemsChildren } = hooks;
+const SideContent = ({ content, item }) => {
+  const { descendants, rootId } = useContext(ItemContext);
 
-const SideContent = ({ children, item }) => {
+  const {
+    isPinnedMenuOpen,
+    setIsPinnedMenuOpen,
+    isChatboxMenuOpen,
+    setIsChatboxMenuOpen,
+  } = useContext(LayoutContext);
+
+  const { t } = useTranslation();
+
   const settings = item.settings ?? {};
   const isFolder = item.type === ITEM_TYPES.FOLDER;
-  const { rootId } = useParams();
 
   /* This removes the parents that are higher than the perform root element
   Ex: if we are in item 6 and the root is 3, when splitting the path we get [ 1, 2, 3, 4, 5, 6 ].
@@ -73,24 +80,9 @@ const SideContent = ({ children, item }) => {
     isFolder ? parents.length : -1,
   );
 
-  const { data: child } = useItemsChildren([...parentsIds], {
-    enabled: isFolder,
-    getUpdates: isFolder,
-  });
-
-  let pinnedCount = 0;
-  child?.forEach((elt) => {
-    pinnedCount += elt?.filter(({ settings: s }) => s?.isPinned).size ?? 0;
-  });
-
-  const {
-    isPinnedMenuOpen,
-    setIsPinnedMenuOpen,
-    isChatboxMenuOpen,
-    setIsChatboxMenuOpen,
-  } = useContext(LayoutContext);
-
-  const { t } = useTranslation();
+  const pinnedCount = descendants?.filter(
+    ({ settings: s }) => s.isPinned,
+  )?.size;
 
   const toggleChatOpen = () => {
     setIsChatboxMenuOpen(!isChatboxMenuOpen);
@@ -181,8 +173,7 @@ const SideContent = ({ children, item }) => {
 
           {displayPinButton()}
 
-
-          {children}
+          {content}
         </StyledMain>
       </Grid>
     </div>
@@ -190,7 +181,7 @@ const SideContent = ({ children, item }) => {
 };
 
 SideContent.propTypes = {
-  children: PropTypes.element.isRequired,
+  content: PropTypes.element.isRequired,
   item: PropTypes.instanceOf(Record).isRequired,
 };
 

@@ -40,7 +40,6 @@ const DynamicTreeView = ({
 
   // types based on TreeView types
   const onToggle = (_event, nodeIds) => setExpandedItems(nodeIds);
-  console.log(items?.toJS());
   // show only folder items in the navigation tree
   const itemsFiltered = items?.filter((item) =>
     GRAASP_MENU_ITEMS.includes(item.type),
