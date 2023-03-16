@@ -4,12 +4,14 @@
 
 1. Run `yarn` to install the dependencies
 2. Run the API at `localhost:3000`
-3. Set the following environnement variables in `.env.local`
+3. Set the following environnement variables in `.env.development`
 
 ```sh
 VITE_PORT=3112
 VITE_GRAASP_API_HOST=http://localhost:3000
 VITE_GRAASP_AUTH_HOST=http://localhost:3001
+VITE_GRAASP_BUILDER_HOST=http://localhost:3001
+VITE_GRAASP_LIBRARY_HOST=http://localhost:3001
 VITE_SENTRY_ENV=development
 VITE_H5P_INTEGRATION_URL=
 VITE_SHOW_NOTIFICATIONS=true
