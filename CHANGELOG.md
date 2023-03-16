@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/graasp/graasp-player/compare/v0.5.0...v0.6.0) (2023-03-16)
+
+
+### Features
+
+* move player to vite ([#204](https://github.com/graasp/graasp-player/issues/204)) ([fff08ab](https://github.com/graasp/graasp-player/commit/fff08abb4c8d9cbcaab0974b81d60e917865119c))
+
 ## [0.5.0](https://github.com/graasp/graasp-player/compare/v0.4.1...v0.5.0) (2023-03-06)
 
 
