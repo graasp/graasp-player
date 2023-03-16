@@ -15,7 +15,7 @@
     "@emotion/styled": "11.10.5",
     "@graasp/chatbox": "1.0.3",
     "@graasp/query-client": "0.3.0",
-    "@graasp/sdk": "0.6.0",
+    "@graasp/sdk": "github:graasp/graasp-sdk#110-fix-core",
     "@graasp/ui": "2.0.0",
     "@mui/icons-material": "5.11.0",
     "@mui/lab": "5.0.0-alpha.119",
