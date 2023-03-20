@@ -47,7 +47,7 @@ const BuilderButton = ({ itemId }: Props): JSX.Element => {
 
   // get user permission
   const userPermission = itemMemberships?.find(
-    (perms) => perms.memberId === user?.id,
+    (perms) => perms.member.id === user?.id,
   )?.permission;
   const canOpenBuilder = userPermission
     ? [PermissionLevel.Admin, PermissionLevel.Write].includes(userPermission)

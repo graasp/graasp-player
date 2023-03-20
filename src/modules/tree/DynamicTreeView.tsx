@@ -28,7 +28,7 @@ type Props = {
   rootId: string;
   rootExtra?: ItemRecord['extra'];
   rootType?: `${ItemType}`;
-  items: List<ItemRecord>;
+  items?: List<ItemRecord>;
   initialExpendedItems: string[];
   selectedId?: string;
   onTreeItemSelect?: (value: string) => void;
@@ -62,7 +62,7 @@ const DynamicTreeView = ({
     setExpandedItems(nodeIds);
 
   // show only folder items in the navigation tree
-  const itemsFiltered = items.filter((item) =>
+  const itemsFiltered = items?.filter((item) =>
     GRAASP_MENU_ITEMS.includes(item.type),
   );
 
@@ -84,7 +84,7 @@ const DynamicTreeView = ({
           <CustomLabel type={rootType} extra={rootExtra} text={rootLabel} />
         }
       >
-        {itemsFiltered.map((item) => (
+        {itemsFiltered?.map((item) => (
           <CustomTreeItem
             key={item.id}
             expandedItems={expandedItems}

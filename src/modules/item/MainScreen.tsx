@@ -59,7 +59,7 @@ const MainScreen = (): JSX.Element => {
       headerRightContent={<HeaderRightContent />}
     >
       <LayoutContextProvider>
-        <SideContent item={item}>{content}</SideContent>
+        <SideContent item={item} content={content} />
       </LayoutContextProvider>
     </Main>
   );

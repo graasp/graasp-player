@@ -98,7 +98,6 @@ const Item = ({
           item.type,
         ),
     ),
-    replyUrl: true,
   });
 
   // get etherpad url if type is etherpad

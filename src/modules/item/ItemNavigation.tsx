@@ -6,8 +6,6 @@ import { ItemType } from '@graasp/sdk';
 import { FAILURE_MESSAGES } from '@graasp/translations';
 import { MainMenu } from '@graasp/ui';
 
-import { List } from 'immutable';
-
 import { useMessagesTranslation } from '@/config/i18n';
 import { hooks } from '@/config/queryClient';
 import { MAIN_MENU_ID, TREE_VIEW_ID } from '@/config/selectors';
@@ -65,7 +63,7 @@ const ItemNavigation = (): JSX.Element | null => {
         onTreeItemSelect={(payload) => {
           setFocusedItemId(payload);
         }}
-        items={children && !children.isEmpty() ? children : List()}
+        items={children}
         isLoading={isLoading || rootItemIsLoading}
       />
     </MainMenu>

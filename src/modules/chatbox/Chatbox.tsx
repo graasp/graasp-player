@@ -7,7 +7,7 @@ import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
 
 import { ITEM_CHATBOX_ID } from '../../config/selectors';
 
-const { useItemChat, useMembers, useAvatar, useItemMemberships } = hooks;
+const { useItemChat, useAvatar, useItemMemberships } = hooks;
 const {
   usePostItemChatMessage,
   usePatchItemChatMessage,
@@ -22,21 +22,15 @@ const Chatbox = ({ item }: Props): JSX.Element => {
   const { data: chat, isLoading: isChatLoading } = useItemChat(item.id);
   const { data: itemPermissions, isLoading: isLoadingItemPermissions } =
     useItemMemberships(item.id);
-  const { data: members, isLoading: isMembersLoading } = useMembers(
-    itemPermissions?.map((m) => m.memberId)?.toArray() || [],
-  );
-  const { data: currentMember, isLoading: isLoadingCurrentMember } =
-    useCurrentMemberContext();
+  const members = itemPermissions?.map((m) => m.member);
+  const {
+    data: currentMember, isLoading: isLoadingCurrentMember
+  } = useCurrentMemberContext();
   const { mutate: sendMessage } = usePostItemChatMessage();
   const { mutate: editMessage } = usePatchItemChatMessage();
   const { mutate: deleteMessage } = useDeleteItemChatMessage();
 
-  if (
-    isChatLoading ||
-    isLoadingCurrentMember ||
-    isMembersLoading ||
-    isLoadingItemPermissions
-  ) {
+  if (isChatLoading || isLoadingCurrentMember || isLoadingItemPermissions) {
     return <Loader />;
   }
 

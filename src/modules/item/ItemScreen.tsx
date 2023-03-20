@@ -1,42 +1,60 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import { MUTATION_KEYS } from '@graasp/query-client';
 import { ItemLoginAuthorization } from '@graasp/ui';
 
-import { hooks, mutations, useMutation } from '@/config/queryClient';
+import { HOME_PATH } from '@/config/paths';
+import { hooks, mutations } from '@/config/queryClient';
 import { ItemContextProvider } from '@/contexts/ItemContext';
 import CookiesBanner from '@/modules/cookies/CookiesBanner';
 
 import ItemForbiddenScreen from './ItemForbiddenScreen';
 import MainScreen from './MainScreen';
 
-const { useItem, useItemLogin, useCurrentMember } = hooks;
-const { usePostItemLogin } = mutations;
+const { useItem, useItemLoginSchemaType, useCurrentMember } = hooks;
 
-const ItemScreen = () => (
-  <ItemContextProvider>
-    <CookiesBanner />
-    <MainScreen />
-  </ItemContextProvider>
-);
+const ItemScreenWrapper = (rootId: string) => {
+  const ItemScreen = (): JSX.Element => (
+    <ItemContextProvider rootId={rootId}>
+      <CookiesBanner />
+      <MainScreen />
+    </ItemContextProvider>
+  );
+
+  return ItemScreen;
+};
+
+const { usePostItemLogin, useSignOut } = mutations;
 
 const WrappedItemScreen = (): JSX.Element => {
-  const { mutate: signOut } = useMutation(MUTATION_KEYS.SIGN_OUT);
+  const { mutate: signOut } = useSignOut();
   const { mutate: itemLoginSignIn } = usePostItemLogin();
   const { rootId } = useParams();
+  const navigate = useNavigate();
 
   const ForbiddenContent = <ItemForbiddenScreen />;
 
+  if (!rootId) {
+    navigate(HOME_PATH);
+    // TODO: return not found?
+    return ForbiddenContent;
+  }
+
   const Component = ItemLoginAuthorization({
     signIn: itemLoginSignIn,
+    // todo: change type in UI
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     signOut,
     // this is because the itemId can not be undefined in ui
-    itemId: rootId || '',
+    itemId: rootId,
     useCurrentMember,
     useItem,
-    useItemLogin,
     ForbiddenContent,
-  })(ItemScreen);
+    // todo: change type in UI
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    useItemLoginSchemaType,
+  })(ItemScreenWrapper(rootId));
   return <Component />;
 };
 

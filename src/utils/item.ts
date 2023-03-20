@@ -1,9 +1,7 @@
-import { ItemType } from '@graasp/sdk';
+import { ItemTagType, ItemType } from '@graasp/sdk';
 import { ItemRecord, ItemTagRecord } from '@graasp/sdk/frontend';
 
 import { List, isList } from 'immutable';
-
-import { HIDDEN_ITEM_TAG_ID } from '@/config/env';
 
 /**
  * @deprecated
@@ -81,7 +79,7 @@ export const isHidden = (
   }
   if (isList(tags)) {
     return Boolean(
-      tags?.filter(({ tagId }) => tagId === HIDDEN_ITEM_TAG_ID)?.size,
+      tags?.filter(({ type }) => type === ItemTagType.HIDDEN)?.size,
     );
   }
   return false;

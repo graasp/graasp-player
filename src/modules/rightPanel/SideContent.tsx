@@ -1,5 +1,3 @@
-import { useParams } from 'react-router';
-
 import ForumIcon from '@mui/icons-material/Forum';
 import PushPinIcon from '@mui/icons-material/PushPin';
 import { Grid, Stack, Tooltip, styled } from '@mui/material';
@@ -10,12 +8,12 @@ import { ItemRecord } from '@graasp/sdk/frontend';
 import { PLAYER } from '@graasp/translations';
 
 import { usePlayerTranslation } from '@/config/i18n';
+import { useItemContext } from '@/contexts/ItemContext';
 import { useLayoutContext } from '@/contexts/LayoutContext';
 import Chatbox from '@/modules/chatbox/Chatbox';
 import Item from '@/modules/item/Item';
 
 import { DRAWER_WIDTH, FLOATING_BUTTON_Z_INDEX } from '../../config/constants';
-import { hooks } from '../../config/queryClient';
 import {
   ITEM_CHATBOX_BUTTON_ID,
   ITEM_PINNED_BUTTON_ID,
@@ -55,17 +53,24 @@ const StyledIconButton = styled(IconButton)({
   zIndex: FLOATING_BUTTON_Z_INDEX,
 });
 
-const { useItemsChildren } = hooks;
-
 type Props = {
   item: ItemRecord;
-  children: JSX.Element;
+  content: JSX.Element;
 };
 
-const SideContent = ({ children, item }: Props): JSX.Element => {
+const SideContent = ({ content, item }: Props): JSX.Element => {
+  const { descendants, rootId } = useItemContext();
+
+  const {
+    isPinnedMenuOpen,
+    setIsPinnedMenuOpen,
+    isChatboxMenuOpen,
+    setIsChatboxMenuOpen,
+  } = useLayoutContext();
+
+  const { t } = usePlayerTranslation();
   const settings = item.settings ?? {};
   const isFolder = item.type === ItemType.FOLDER;
-  const { rootId = '' } = useParams();
 
   /* This removes the parents that are higher than the perform root element
   Ex: if we are in item 6 and the root is 3, when splitting the path we get [ 1, 2, 3, 4, 5, 6 ].
@@ -81,24 +86,8 @@ const SideContent = ({ children, item }: Props): JSX.Element => {
     isFolder ? parents.length : -1,
   );
 
-  const { data: child } = useItemsChildren([...parentsIds], {
-    enabled: isFolder,
-    getUpdates: isFolder,
-  });
-
-  let pinnedCount = 0;
-  child?.forEach((elt) => {
-    pinnedCount += elt?.filter(({ settings: s }) => s?.isPinned).size ?? 0;
-  });
-
-  const {
-    isPinnedMenuOpen,
-    setIsPinnedMenuOpen,
-    isChatboxMenuOpen,
-    setIsChatboxMenuOpen,
-  } = useLayoutContext();
-
-  const { t } = usePlayerTranslation();
+  const pinnedCount =
+    descendants?.filter(({ settings: s }) => s.isPinned)?.size || 0;
 
   const toggleChatOpen = () => {
     setIsChatboxMenuOpen(!isChatboxMenuOpen);
@@ -195,7 +184,7 @@ const SideContent = ({ children, item }: Props): JSX.Element => {
 
           {displayPinButton()}
 
-          {children}
+          {content}
         </StyledMain>
       </Grid>
     </div>

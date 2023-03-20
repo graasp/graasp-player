@@ -15,10 +15,10 @@ type Props = {
 const MemberAvatar = ({ member }: Props): JSX.Element => {
   const { t } = useCommonTranslation();
   const {
-    data: thumbnailBlob,
+    data: avatarUrl,
     isLoading: isLoadingAvatar,
     isFetching: isFetchingAvatar,
-  } = hooks.useAvatar({
+  } = hooks.useAvatarUrl({
     id: member?.id,
     size: ThumbnailSize.Small,
   });
@@ -32,7 +32,7 @@ const MemberAvatar = ({ member }: Props): JSX.Element => {
       variant="circular"
       maxWidth={AVATAR_ICON_HEIGHT}
       maxHeight={AVATAR_ICON_HEIGHT}
-      blob={thumbnailBlob}
+      url={avatarUrl}
       sx={{ mx: 1 }}
     />
   );
