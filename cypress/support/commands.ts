@@ -20,11 +20,9 @@ import {
   mockGetMemberBy,
   mockGetMembers,
   mockGetPublicChildren,
-  mockGetPublicItem,
   mockPatchAppData,
   mockPostAppData,
   mockProfilePage,
-  mockPublicDefaultDownloadFile,
   mockSignOut,
 } from './server';
 
@@ -56,7 +54,7 @@ Cypress.Commands.add(
       getItemError || getCurrentMemberError,
     );
     mockGetItemMembershipsForItem(items, currentMember);
-    mockGetPublicItem({ items: cachedItems });
+    // mockGetPublicItem({ items: cachedItems });
 
     mockGetItemTags(items, currentMember);
 
@@ -70,7 +68,7 @@ Cypress.Commands.add(
     mockGetCurrentMember(currentMember, getCurrentMemberError);
 
     mockDefaultDownloadFile({ items: cachedItems, currentMember });
-    mockPublicDefaultDownloadFile(cachedItems);
+    // mockPublicDefaultDownloadFile(cachedItems);
 
     mockSignOut();
 
@@ -101,7 +99,7 @@ Cypress.Commands.add('getIframeBody', (iframeSelector) =>
 
 Cypress.Commands.add(
   'checkContentInElementInIframe',
-  (iframeSelector, elementSelector, text) =>
+  (iframeSelector: string, elementSelector, text) =>
     cy
       .get(iframeSelector)
       .then(($iframe) =>

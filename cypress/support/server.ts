@@ -33,8 +33,6 @@ const {
   GET_CURRENT_MEMBER_ROUTE,
   buildDownloadFilesRoute,
   GET_OWN_ITEMS_ROUTE,
-  buildGetPublicItemRoute,
-  buildPublicDownloadFilesRoute,
   SIGN_OUT_ROUTE,
   buildGetMembersRoute,
   buildGetItemMembershipsForItemsRoute,
@@ -57,7 +55,7 @@ const checkMemberHasAccess = ({
   // mock membership
   const creator = item?.creator;
   const haveMembership =
-    creator === member.id ||
+    creator.id === member.id ||
     item.memberships?.find(({ memberId }) => memberId === member.id);
 
   if (haveMembership) {
@@ -92,7 +90,7 @@ export const mockGetOwnItems = ({
       }
       const own = items.filter(
         ({ creator, path }) =>
-          creator === currentMember.id && !path.includes('.'),
+          creator.id === currentMember.id && !path.includes('.'),
       );
       return reply(own);
     },
@@ -175,7 +173,7 @@ export const mockGetItemMembershipsForItem = (
           // if the current member is the creator, it has membership
           // otherwise it should return an error
           const defaultMembership =
-            creator === currentMember?.id
+            creator.id === currentMember?.id
               ? [
                   {
                     permission: PermissionLevel.Admin,
@@ -201,38 +199,38 @@ export const mockGetItemMembershipsForItem = (
   ).as('getItemMemberships');
 };
 
-export const mockGetPublicItem = (
-  { items }: { items: MockItem[] },
-  shouldThrowError?: boolean,
-): void => {
-  cy.intercept(
-    {
-      method: DEFAULT_GET.method,
-      url: new RegExp(`${API_HOST}/${buildGetPublicItemRoute(ID_FORMAT)}$`),
-    },
-    ({ url, reply }) => {
-      const itemId = url.slice(API_HOST.length).split('/')[3];
-      const item = getItemById(items, itemId);
+// export const mockGetPublicItem = (
+//   { items }: { items: MockItem[] },
+//   shouldThrowError?: boolean,
+// ): void => {
+//   cy.intercept(
+//     {
+//       method: DEFAULT_GET.method,
+//       url: new RegExp(`${API_HOST}/${buildGetPublicItemRoute(ID_FORMAT)}$`),
+//     },
+//     ({ url, reply }) => {
+//       const itemId = url.slice(API_HOST.length).split('/')[3];
+//       const item = getItemById(items, itemId);
 
-      // item does not exist in db
-      if (!item || shouldThrowError) {
-        return reply({
-          statusCode: StatusCodes.NOT_FOUND,
-        });
-      }
+//       // item does not exist in db
+//       if (!item || shouldThrowError) {
+//         return reply({
+//           statusCode: StatusCodes.NOT_FOUND,
+//         });
+//       }
 
-      const error = checkIsPublic(item);
-      if (isError(error)) {
-        return reply(error);
-      }
+//       const error = checkIsPublic(item);
+//       if (isError(error)) {
+//         return reply(error);
+//       }
 
-      return reply({
-        body: item,
-        statusCode: StatusCodes.OK,
-      });
-    },
-  ).as('getPublicItem');
-};
+//       return reply({
+//         body: item,
+//         statusCode: StatusCodes.OK,
+//       });
+//     },
+//   ).as('getPublicItem');
+// };
 
 export const mockGetChildren = (items: MockItem[], member: Member): void => {
   cy.intercept(
@@ -358,48 +356,48 @@ export const mockDefaultDownloadFile = (
   ).as('downloadFile');
 };
 
-export const mockPublicDefaultDownloadFile = (
-  items: MockItem[],
-  shouldThrowError?: boolean,
-): void => {
-  cy.intercept(
-    {
-      method: DEFAULT_GET.method,
-      url: new RegExp(
-        `${API_HOST}/${buildPublicDownloadFilesRoute(ID_FORMAT)}`,
-      ),
-    },
-    ({ reply, url }) => {
-      if (shouldThrowError) {
-        return reply({ statusCode: StatusCodes.BAD_REQUEST });
-      }
+// export const mockPublicDefaultDownloadFile = (
+//   items: MockItem[],
+//   shouldThrowError?: boolean,
+// ): void => {
+//   cy.intercept(
+//     {
+//       method: DEFAULT_GET.method,
+//       url: new RegExp(
+//         `${API_HOST}/${buildPublicDownloadFilesRoute(ID_FORMAT)}`,
+//       ),
+//     },
+//     ({ reply, url }) => {
+//       if (shouldThrowError) {
+//         return reply({ statusCode: StatusCodes.BAD_REQUEST });
+//       }
 
-      const id = url.slice(API_HOST.length).split('/')[3];
-      const item = items.find(({ id: thisId }) => id === thisId);
-      const { replyUrl } = qs.parse(url.slice(url.indexOf('?') + 1));
+//       const id = url.slice(API_HOST.length).split('/')[3];
+//       const item = items.find(({ id: thisId }) => id === thisId);
+//       const { replyUrl } = qs.parse(url.slice(url.indexOf('?') + 1));
 
-      // item does not exist in db
-      if (!item) {
-        return reply({
-          statusCode: StatusCodes.NOT_FOUND,
-        });
-      }
+//       // item does not exist in db
+//       if (!item) {
+//         return reply({
+//           statusCode: StatusCodes.NOT_FOUND,
+//         });
+//       }
 
-      const error = checkIsPublic(item);
-      if (isError(error)) {
-        return reply(error);
-      }
+//       const error = checkIsPublic(item);
+//       if (isError(error)) {
+//         return reply(error);
+//       }
 
-      // either return the file url or the fixture data
-      // info: we don't test fixture data anymore since the frontend uses url only
-      if (replyUrl) {
-        return reply({ url: item.filepath });
-      }
+//       // either return the file url or the fixture data
+//       // info: we don't test fixture data anymore since the frontend uses url only
+//       if (replyUrl) {
+//         return reply({ url: item.filepath });
+//       }
 
-      return reply({ fixture: item.filepath });
-    },
-  ).as('publicDownloadFile');
-};
+//       return reply({ fixture: item.filepath });
+//     },
+//   ).as('publicDownloadFile');
+// };
 
 export const mockGetItemTags = (items: MockItem[], member: Member): void => {
   cy.intercept(

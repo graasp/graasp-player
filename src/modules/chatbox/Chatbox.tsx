@@ -7,7 +7,7 @@ import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
 
 import { ITEM_CHATBOX_ID } from '../../config/selectors';
 
-const { useItemChat, useAvatar, useItemMemberships } = hooks;
+const { useItemChat, useAvatarUrl, useItemMemberships } = hooks;
 const {
   usePostItemChatMessage,
   usePatchItemChatMessage,
@@ -44,7 +44,7 @@ const Chatbox = ({ item }: Props): JSX.Element => {
       sendMessageFunction={sendMessage}
       editMessageFunction={editMessage}
       deleteMessageFunction={deleteMessage}
-      useAvatarHook={useAvatar}
+      useAvatarUrl={useAvatarUrl}
     />
   );
 };
