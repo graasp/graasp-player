@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import ReactGA from 'react-ga4';
 
 import { hasAcceptedCookies } from '@graasp/sdk';
+import '@graasp/ui/dist/bundle.css';
 
 import * as Sentry from '@sentry/react';
 import { BrowserTracing } from '@sentry/tracing';
