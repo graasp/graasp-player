@@ -352,9 +352,11 @@ const Item = ({
 
       return (
         <H5PItem
-          itemId={id}
+          itemId={item.id}
+          item={item}
           contentId={contentId}
           integrationUrl={H5P_INTEGRATION_URL}
+          showCollapse={showCollapse}
         />
       );
     }
