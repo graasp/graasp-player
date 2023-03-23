@@ -270,7 +270,7 @@ const Item = ({
       );
     }
     case ItemType.LINK: {
-      const linkItem = (
+      return (
         <LinkItem
           item={item}
           height={SCREEN_MAX_HEIGHT}
@@ -282,12 +282,10 @@ const Item = ({
           showCollapse={showCollapse}
         />
       );
-
-      return linkItem;
     }
     case ItemType.LOCAL_FILE:
     case ItemType.S3_FILE: {
-      const fileItem = (
+      return (
         <FileItem
           id={buildFileId(id)}
           item={item}
@@ -297,19 +295,15 @@ const Item = ({
           pdfViewerLink={PDF_VIEWER_LINK}
         />
       );
-
-      return fileItem;
     }
     case ItemType.DOCUMENT: {
-      const documentItem = (
+      return (
         <DocumentItem
           id={buildDocumentId(id)}
           item={item}
           showCollapse={showCollapse}
         />
       );
-
-      return documentItem;
     }
     case ItemType.APP: {
       if (isMemberLoading) {
@@ -322,7 +316,7 @@ const Item = ({
         );
       }
 
-      const appItem = (
+      return (
         <AppItem
           id={buildAppId(id)}
           item={item}
@@ -336,8 +330,6 @@ const Item = ({
           showCollapse={showCollapse}
         />
       );
-
-      return appItem;
     }
 
     case ItemType.H5P: {
