@@ -334,14 +334,10 @@ const Item = ({
           height={SCREEN_MAX_HEIGHT}
           isResizable={item.settings?.isResizable || DEFAULT_RESIZABLE_SETTING}
           context={APP_CONTEXT}
+          showCollapse={showCollapse}
         />
       );
 
-      if (showCollapse) {
-        return withCollapse({
-          item,
-        })(appItem);
-      }
       return appItem;
     }
 
