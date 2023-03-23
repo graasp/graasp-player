@@ -280,14 +280,10 @@ const Item = ({
           // todo: remove default values once player follows ui
           showButton={Boolean(item.settings?.showLinkButton || true)}
           showIframe={Boolean(item.settings?.showLinkIframe)}
+          showCollapse={showCollapse}
         />
       );
 
-      if (showCollapse) {
-        return withCollapse({
-          item,
-        })(linkItem);
-      }
       return linkItem;
     }
     case ItemType.LOCAL_FILE:
