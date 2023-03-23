@@ -299,11 +299,6 @@ const Item = ({
         />
       );
 
-      if (showCollapse) {
-        return withCollapse({
-          item,
-        })(fileItem);
-      }
       return fileItem;
     }
     case ItemType.DOCUMENT: {
