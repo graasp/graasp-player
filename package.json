@@ -33,7 +33,7 @@
     "@graasp/query-client": "0.3.1",
     "@graasp/sdk": "0.8.1",
     "@graasp/translations": "1.8.0",
-    "@graasp/ui": "2.1.0",
+    "@graasp/ui": "github:graasp/graasp-ui#195-adds-collapse-to-h5p",
     "@graasp/websockets": "github:graasp/graasp-plugin-websockets",
     "@mui/icons-material": "5.11.9",
     "@mui/lab": "5.0.0-alpha.120",
