@@ -303,14 +303,13 @@ const Item = ({
     }
     case ItemType.DOCUMENT: {
       const documentItem = (
-        <DocumentItem id={buildDocumentId(id)} item={item} />
+        <DocumentItem
+          id={buildDocumentId(id)}
+          item={item}
+          showCollapse={showCollapse}
+        />
       );
 
-      if (showCollapse) {
-        return withCollapse({
-          item,
-        })(documentItem);
-      }
       return documentItem;
     }
     case ItemType.APP: {
