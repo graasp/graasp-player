@@ -16,7 +16,6 @@ import {
   ItemSkeleton,
   LinkItem,
   TextEditor,
-  withCollapse,
 } from '@graasp/ui';
 
 import { List } from 'immutable';
