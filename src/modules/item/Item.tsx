@@ -233,6 +233,7 @@ const Item = ({
                   {page.data.map((thisItem) => (
                     <Box
                       key={thisItem.id}
+                      textAlign="center"
                       marginTop={(theme) => theme.spacing(1)}
                       marginBottom={(theme) => theme.spacing(1)}
                     >

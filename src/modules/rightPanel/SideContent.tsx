@@ -45,7 +45,6 @@ const StyledMain = styled('main', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    textAlign: 'center',
     marginRight: 0,
     ...contentShift,
   };
