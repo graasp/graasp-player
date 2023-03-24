@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.1](https://github.com/graasp/graasp-player/compare/v0.6.0...v0.6.1) (2023-03-24)
+
+
+### Bug Fixes
+
+* **ui:** styles of text and images ([#221](https://github.com/graasp/graasp-player/issues/221)) ([2ee61bd](https://github.com/graasp/graasp-player/commit/2ee61bdcee94f49fc5cd4a6c81654721ea24ac7d))
+
+
+### Documentation
+
+* improve doc related to env files ([#213](https://github.com/graasp/graasp-player/issues/213)) ([0e309d4](https://github.com/graasp/graasp-player/commit/0e309d495ff0a5499ed1074000088c01f42cefa6))
+
 ## [0.6.0](https://github.com/graasp/graasp-player/compare/v0.5.0...v0.6.0) (2023-03-16)
 
 
