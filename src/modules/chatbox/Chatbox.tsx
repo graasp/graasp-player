@@ -19,7 +19,7 @@ type Props = {
 };
 
 const Chatbox = ({ item }: Props): JSX.Element => {
-  const { data: chat, isLoading: isChatLoading } = useItemChat(item.id);
+  const { data: messages, isLoading: isChatLoading } = useItemChat(item.id);
   const { data: itemPermissions, isLoading: isLoadingItemPermissions } =
     useItemMemberships(item.id);
   const members = itemPermissions?.map((m) => m.member);
@@ -40,7 +40,7 @@ const Chatbox = ({ item }: Props): JSX.Element => {
       members={members}
       currentMember={currentMember as MemberRecord}
       chatId={item.id}
-      messages={chat?.messages}
+      messages={messages}
       sendMessageFunction={sendMessage}
       editMessageFunction={editMessage}
       deleteMessageFunction={deleteMessage}
