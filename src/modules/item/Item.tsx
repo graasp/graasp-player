@@ -345,7 +345,7 @@ const Item = ({
       return (
         <H5PItem
           itemId={item.id}
-          item={item}
+          itemName={item.name}
           contentId={contentId}
           integrationUrl={H5P_INTEGRATION_URL}
           showCollapse={showCollapse}
