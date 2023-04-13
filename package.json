@@ -34,7 +34,7 @@
     "@graasp/query-client": "0.4.1",
     "@graasp/sdk": "0.10.1",
     "@graasp/translations": "1.11.0",
-    "@graasp/ui": "2.4.1",
+    "@graasp/ui": "github:graasp/graasp-ui#322-fix-app-iframe-loading-forever",
     "@mui/icons-material": "5.11.9",
     "@mui/lab": "5.0.0-alpha.120",
     "@mui/material": "5.11.9",
@@ -55,6 +55,7 @@
   "devDependencies": {
     "@commitlint/config-conventional": "17.4.4",
     "@cypress/code-coverage": "3.10.0",
+    "@graasp/websockets": "github:graasp/graasp-plugin-websockets",
     "@trivago/prettier-plugin-sort-imports": "4.0.0",
     "@types/lodash.truncate": "^4.4.7",
     "@types/node": "^18.13.0",
@@ -89,6 +90,7 @@
   "resolutions": {
     "immutable": "4.3.0",
     "@graasp/sdk": "0.10.1",
+    "@graasp/ui": "github:graasp/graasp-ui#322-fix-app-iframe-loading-forever",
     "react-query": "3.39.3"
   },
   "packageManager": "yarn@3.4.1"
