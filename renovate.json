@@ -1,6 +1,21 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base"
+  "extends": ["config:base"],
+  "packageRules": [
+    {
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["patch", "minor"],
+      "groupName": "devDependencies (non-major)"
+    },
+    {
+      "matchPackagePatterns": ["mui"],
+      "matchUpdateTypes": ["patch", "minor"],
+      "groupName": "mui (non-major)"
+    },
+    {
+      "matchPackagePatterns": ["actions"],
+      "matchUpdateTypes": ["patch", "minor", "major"],
+      "groupName": "actions"
+    }
   ]
 }
