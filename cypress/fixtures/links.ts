@@ -30,6 +30,15 @@ export const GRAASP_LINK_ITEM: EmbeddedLinkItemType = {
   },
 };
 
+export const GRAASP_LINK_ITEM_IFRAME_ONLY = {
+  ...GRAASP_LINK_ITEM,
+  id: 'ecafbd2a-5688-11eb-ae91-0242ac130122',
+  settings: {
+    showLinkIframe: true,
+    showLinkButton: false,
+  },
+};
+
 export const YOUTUBE_LINK_ITEM: EmbeddedLinkItemType = {
   id: 'gcafbd2a-5688-11eb-ae93-0242ac130002',
   type: ItemType.LINK,

@@ -19,7 +19,7 @@ export default defineConfig({
     PUBLIC_TAG_ID: process.env.VITE_PUBLIC_TAG_ID || 'public-tag-id',
   },
   e2e: {
-    baseUrl: 'http://localhost:3112',
+    baseUrl: `http://localhost:${process.env.VITE_PORT || 3112}`,
     setupNodeEvents(on, config) {
       // eslint-disable-next-line @typescript-eslint/no-var-requires, global-require
       require('@cypress/code-coverage/task')(on, config);

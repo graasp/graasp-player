@@ -12,7 +12,7 @@ import { MOCK_SESSIONS } from '../fixtures/members';
 import { MEMBER_PROFILE_PATH, SIGN_IN_PATH } from '../support/constants';
 
 // catch hook warning from react
-Cypress.on('uncaught:exception', (err, runnable) => {
+Cypress.on('uncaught:exception', (err) => {
   if (err.message.startsWith('Error: Invalid hook call.')) {
     // failing the test
     return true;

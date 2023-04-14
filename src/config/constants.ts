@@ -50,7 +50,6 @@ export const GRAASP_MENU_ITEMS: string[] = [ItemType.FOLDER, ItemType.SHORTCUT];
 
 export const buildBuilderTabName = (id: string): string => `builder-tab-${id}`;
 
-export const DEFAULT_LINK_SHOW_BUTTON = true;
 export const DEFAULT_RESIZABLE_SETTING = false;
 
 // todo: remove when files that use this are in TS

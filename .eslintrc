@@ -1,14 +1,13 @@
 {
   "extends": [
-    "react-app",
     "airbnb",
     "plugin:import/typescript", // this is needed because airbnb uses eslint-plugin-import
     "prettier",
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "eslint:recommended"
   ],
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "react-hooks"],
   "env": {
     "browser": true,
     "node": true,
@@ -17,7 +16,8 @@
   },
   "globals": {
     "cy": true,
-    "Cypress": true
+    "Cypress": true,
+    "JSX": "readonly"
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -38,6 +38,8 @@
     // note you must disable the base rule as it can report incorrect errors
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"],
     // remove when possible
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/explicit-module-boundary-types": [

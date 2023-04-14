@@ -1,4 +1,4 @@
-import { Item, ItemType } from '@graasp/sdk';
+import { DiscriminatedItem, ItemType } from '@graasp/sdk';
 
 import {
   GRAASP_DOCUMENT_ITEM_HIDDEN,
@@ -10,7 +10,7 @@ import { CURRENT_USER } from './members';
 
 const PUBLIC_TAG_ID = Cypress.env('PUBLIC_TAG_ID');
 
-export type MockItem = Item & {
+export type MockItem = DiscriminatedItem & {
   // for testing
   filepath?: string;
   memberships?: { memberId: string }[];

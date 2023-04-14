@@ -1,17 +1,18 @@
 import {
   AppItemType,
+  DEFAULT_LINK_SHOW_BUTTON,
+  DiscriminatedItem,
   DocumentItemType,
   EmbeddedLinkItemType,
-  Item,
   ItemType,
   LocalFileItemType,
+  MimeTypes,
   S3FileItemType,
   getDocumentExtra,
   getEmbeddedLinkExtra,
   getFileExtra,
   getParentFromPath,
   getS3FileExtra,
-  MimeTypes,
 } from '@graasp/sdk';
 
 import qs from 'qs';
@@ -37,17 +38,20 @@ export const expectLinkViewScreenLayout = ({
     cy.get(`#${id}`).then((element) => {
       // transform innerhtml content to match provided html
       const parsedHtml = element.html().replaceAll('=""', '');
-      expect('eee').to.contain('eee');
       expect(parsedHtml).to.contain(html);
     });
   } else if (settings?.showLinkIframe) {
     cy.get(`iframe#${id}`).should('have.attr', 'src', url);
   }
 
-  // todo: enable when using mui5
-  // if (!html && (settings?.showLinkButton ?? DEFAULT_LINK_SHOW_BUTTON)) {
-  //   cy.get('[data-testid="OpenInNewIcon"]').should('be.visible');
-  // }
+  if (!html) {
+    if (settings?.showLinkButton ?? DEFAULT_LINK_SHOW_BUTTON) {
+      cy.get('[data-testid="OpenInNewIcon"]').should('be.visible');
+    } else {
+      // button should not be shown when the setting is false
+      cy.get('[data-testid="OpenInNewIcon"]').should('not.exist');
+    }
+  }
 };
 
 export const expectAppViewScreenLayout = ({ id, extra }: AppItemType): void => {
@@ -110,7 +114,7 @@ export const expectFolderLayout = ({
   items,
 }: {
   rootId: string;
-  items: Item[];
+  items: DiscriminatedItem[];
 }): void => {
   const children = items.filter(
     (item) => getParentFromPath(item.path) === rootId,
