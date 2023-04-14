@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { WebSocket } from '@graasp/websockets/test/mock-client';
+import { WebSocket } from '@graasp/plugin-websockets/test/mock-client';
 
 import { buildMainPath } from '../../src/config/paths';
 import {

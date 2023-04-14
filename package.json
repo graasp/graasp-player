@@ -29,12 +29,12 @@
   "dependencies": {
     "@emotion/react": "11.10.6",
     "@emotion/styled": "11.10.6",
-    "@graasp/chatbox": "github:graasp/graasp-chatbox#test-reduce-bundle",
+    "@graasp/chatbox": "1.2.0",
+    "@graasp/plugin-websockets": "1.0.0",
     "@graasp/query-client": "0.4.0",
-    "@graasp/sdk": "github:graasp/graasp-sdk#149-add-embedded-link-item-settings",
+    "@graasp/sdk": "0.10.1",
     "@graasp/translations": "1.11.0",
-    "@graasp/ui": "2.3.1",
-    "@graasp/websockets": "github:graasp/graasp-plugin-websockets",
+    "@graasp/ui": "2.4.0",
     "@mui/icons-material": "5.11.9",
     "@mui/lab": "5.0.0-alpha.120",
     "@mui/material": "5.11.9",
@@ -87,7 +87,7 @@
     "vite-plugin-istanbul": "4.0.1"
   },
   "resolutions": {
-    "@graasp/sdk": "github:graasp/graasp-sdk#149-add-embedded-link-item-settings",
+    "@graasp/sdk": "0.10.1",
     "immutable": "4.3.0",
     "react-query": "3.39.3"
   },

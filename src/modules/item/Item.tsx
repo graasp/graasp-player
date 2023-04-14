@@ -16,7 +16,6 @@ import {
   ItemSkeleton,
   LinkItem,
   TextEditor,
-  withCollapse,
 } from '@graasp/ui';
 
 import { List } from 'immutable';
@@ -55,7 +54,6 @@ type Props = {
   id?: string;
   isChildren?: boolean;
   showPinnedOnly?: boolean;
-  isCollapsible?: boolean;
   isShortcut?: boolean;
   isShortcutPinned?: boolean;
 };
@@ -64,7 +62,6 @@ const Item = ({
   id = '',
   isChildren = false,
   showPinnedOnly = false,
-  isCollapsible = false,
   isShortcut = false,
   isShortcutPinned = false,
 }: Props): JSX.Element | null => {
@@ -140,7 +137,6 @@ const Item = ({
       <ItemSkeleton
         itemType={item?.type as ItemType}
         isChildren={isChildren}
-        isCollapsible={isCollapsible}
         screenMaxHeight={SCREEN_MAX_HEIGHT}
       />
     );
@@ -237,11 +233,7 @@ const Item = ({
                       marginTop={(theme) => theme.spacing(1)}
                       marginBottom={(theme) => theme.spacing(1)}
                     >
-                      <Item
-                        isChildren
-                        id={thisItem.id}
-                        isCollapsible={thisItem.settings?.isCollapsible}
-                      />
+                      <Item isChildren id={thisItem.id} />
                     </Box>
                   ))}
                 </>
@@ -259,11 +251,7 @@ const Item = ({
                 )
                 ?.map((thisItem) => (
                   <Container key={thisItem.id}>
-                    <Item
-                      isChildren
-                      id={thisItem.id}
-                      isCollapsible={thisItem.settings?.isCollapsible}
-                    />
+                    <Item isChildren id={thisItem.id} />
                   </Container>
                 ))}
             </>
@@ -283,11 +271,11 @@ const Item = ({
         />
       );
 
-      if (showCollapse) {
-        return withCollapse({
-          item,
-        })(linkItem);
-      }
+      // if (showCollapse) {
+      //   return withCollapse({
+      //     item,
+      //   })(linkItem);
+      // }
       return linkItem;
     }
     case ItemType.LOCAL_FILE:
@@ -303,11 +291,11 @@ const Item = ({
         />
       );
 
-      if (showCollapse) {
-        return withCollapse({
-          item,
-        })(fileItem);
-      }
+      // if (showCollapse) {
+      //   return withCollapse({
+      //     item,
+      //   })(fileItem);
+      // }
       return fileItem;
     }
     case ItemType.DOCUMENT: {
@@ -315,11 +303,11 @@ const Item = ({
         <DocumentItem id={buildDocumentId(id)} item={item} />
       );
 
-      if (showCollapse) {
-        return withCollapse({
-          item,
-        })(documentItem);
-      }
+      // if (showCollapse) {
+      //   return withCollapse({
+      //     item,
+      //   })(documentItem);
+      // }
       return documentItem;
     }
     case ItemType.APP: {
@@ -347,11 +335,12 @@ const Item = ({
         />
       );
 
-      if (showCollapse) {
-        return withCollapse({
-          item,
-        })(appItem);
-      }
+      // todo: we should be able to remove this since it is included in ui
+      // if (showCollapse) {
+      //   return withCollapse({
+      //     itemName: item.name,
+      //   })(appItem);
+      // }
       return appItem;
     }
 
@@ -368,6 +357,7 @@ const Item = ({
       return (
         <H5PItem
           itemId={id}
+          itemName={item.name}
           contentId={contentId}
           integrationUrl={H5P_INTEGRATION_URL}
         />

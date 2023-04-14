@@ -1042,9 +1042,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/chatbox@github:graasp/graasp-chatbox#test-reduce-bundle":
-  version: 1.1.0
-  resolution: "@graasp/chatbox@https://github.com/graasp/graasp-chatbox.git#commit=84bd7c7b767a1e44ea17d0439b417e6cd3a84ff0"
+"@graasp/chatbox@npm:1.2.0":
+  version: 1.2.0
+  resolution: "@graasp/chatbox@npm:1.2.0"
   dependencies:
     "@graasp/query-client": 0.4.0
     "@graasp/sdk": 0.10.0
@@ -1069,7 +1069,22 @@ __metadata:
     react: ^17.0.0
     react-dom: "*"
     react-i18next: ^12.0.0
-  checksum: 0194151a9d17ac6ced9c49dab91c7a44e8cfd460549362b3558bfd0951d922db315774003fe3fd19b0d1e0533998b90b3e6b9563eef04ce10e6333f109c0cd9f
+  checksum: c4131ecbaa5a85e401c21f4b2dd94cf95f641453107b52e5d9f12ceee715a0e811bc39be0e19b5622755b4783ba4aa0bc48a5a42878d39c3c9bad984810bb0ac
+  languageName: node
+  linkType: hard
+
+"@graasp/plugin-websockets@npm:1.0.0":
+  version: 1.0.0
+  resolution: "@graasp/plugin-websockets@npm:1.0.0"
+  dependencies:
+    "@fastify/websocket": 5.0.1
+    "@graasp/sdk": 0.9.0
+    ajv: 8.12.0
+    dotenv: 16.0.3
+    fastify: 3.29.5
+    fastify-plugin: 3.0.1
+    ioredis: 5.3.1
+  checksum: 409cb28c9e48fb1e4cadfe56b33731b93bbfc9e54c88f00241e0b51654e638d5f1be629368b0b6fa4789e5309d9ad76decae8e6c9ce189ac652ddd77bb09bbbf
   languageName: node
   linkType: hard
 
@@ -1092,9 +1107,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/sdk@github:graasp/graasp-sdk#149-add-embedded-link-item-settings":
-  version: 0.10.0
-  resolution: "@graasp/sdk@https://github.com/graasp/graasp-sdk.git#commit=a39769d3979333f70f9e194467e8f535b0689c40"
+"@graasp/sdk@npm:0.10.1":
+  version: 0.10.1
+  resolution: "@graasp/sdk@npm:0.10.1"
   dependencies:
     "@fastify/secure-session": 5.3.0
     aws-sdk: 2.1356.0
@@ -1105,7 +1120,7 @@ __metadata:
     qs: 6.11.1
     slonik: 28.1.1
     uuid: 9.0.0
-  checksum: 674ecd007577885b1bc9f145423a184c5442d651670e60e3797bcbfc7bc5285cb8acc2ed373d9f6620647051d1cabf489f0034e9fd4ecfff73f185820f7d0c2b
+  checksum: 481c739ccd1e2dff23f04278c9d07393b53723708be768b3d66d7a1dab82c773aa45f3d6f656112b9b0d43fd3916a54ef7351dbe0b8609fbc1d2d8433d723561
   languageName: node
   linkType: hard
 
@@ -1166,18 +1181,42 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/websockets@github:graasp/graasp-plugin-websockets":
-  version: 1.0.0
-  resolution: "@graasp/websockets@https://github.com/graasp/graasp-plugin-websockets.git#commit=87127da6f7b90df34e94e72102b383e26db6d0e1"
+"@graasp/ui@npm:2.4.0":
+  version: 2.4.0
+  resolution: "@graasp/ui@npm:2.4.0"
   dependencies:
-    "@fastify/websocket": 5.0.1
-    "@graasp/sdk": 0.9.0
-    ajv: 8.12.0
-    dotenv: 16.0.3
-    fastify: 3.29.5
-    fastify-plugin: 3.0.1
-    ioredis: 5.3.1
-  checksum: 74b8a2dec68fd4457dda59a33ba9d96b72117d226cd03cc04805d4a4f728e30dbc798d9ec3ba9cc2e52ac2726d44a9692e06edf33e9219d31964f7fb56a082da
+    "@graasp/sdk": 0.9.3
+    clsx: 1.1.1
+    http-status-codes: 2.2.0
+    immutable: 4.2.4
+    katex: 0.16.0
+    lodash.truncate: 4.4.2
+    qs: 6.11.0
+    quill-emoji: 0.2.0
+    react-cookie-consent: 7.4.1
+    react-i18next: 11.17.0
+    react-quill: 2.0.0-beta.4
+    react-rnd: 10.3.7
+    react-text-mask: 5.4.3
+    uuid: 9.0.0
+  peerDependencies:
+    "@emotion/react": ~11.10.6
+    "@emotion/styled": ~11.10.6
+    "@mui/icons-material": ~5.11.9
+    "@mui/lab": ~5.0.0-alpha.120
+    "@mui/material": ~5.11.9
+    ag-grid-community: 28.1.1
+    ag-grid-react: 28.1.1
+    i18next: ~21.8.9
+    react: 17.0.2
+    react-dom: 17.0.2
+    react-router-dom: 6.2.2
+  peerDependenciesMeta:
+    ag-grid-community:
+      optional: true
+    ag-grid-react:
+      optional: true
+  checksum: 7b1f6bdde19d3dd10fbb1d78faefe9407ac2daa4bf7c32433802f4d76b0a565edb64aca327f20ab98b34e8a77caf84b840e5399ba529759e84992ddd01f00bf1
   languageName: node
   linkType: hard
 
@@ -5087,12 +5126,12 @@ __metadata:
     "@cypress/code-coverage": 3.10.0
     "@emotion/react": 11.10.6
     "@emotion/styled": 11.10.6
-    "@graasp/chatbox": "github:graasp/graasp-chatbox#test-reduce-bundle"
+    "@graasp/chatbox": 1.2.0
+    "@graasp/plugin-websockets": 1.0.0
     "@graasp/query-client": 0.4.0
-    "@graasp/sdk": "github:graasp/graasp-sdk#149-add-embedded-link-item-settings"
+    "@graasp/sdk": 0.10.1
     "@graasp/translations": 1.11.0
-    "@graasp/ui": 2.3.1
-    "@graasp/websockets": "github:graasp/graasp-plugin-websockets"
+    "@graasp/ui": 2.4.0
     "@mui/icons-material": 5.11.9
     "@mui/lab": 5.0.0-alpha.120
     "@mui/material": 5.11.9
