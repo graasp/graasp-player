@@ -31,9 +31,9 @@
     "@emotion/styled": "11.10.6",
     "@graasp/chatbox": "1.1.0",
     "@graasp/query-client": "0.4.0",
-    "@graasp/sdk": "0.9.2",
-    "@graasp/translations": "1.8.0",
-    "@graasp/ui": "2.2.0",
+    "@graasp/sdk": "github:graasp/graasp-sdk#149-add-embedded-link-item-settings",
+    "@graasp/translations": "1.11.0",
+    "@graasp/ui": "2.3.1",
     "@graasp/websockets": "github:graasp/graasp-plugin-websockets",
     "@mui/icons-material": "5.11.9",
     "@mui/lab": "5.0.0-alpha.120",
@@ -84,6 +84,7 @@
     "vite-plugin-istanbul": "4.0.1"
   },
   "resolutions": {
+    "@graasp/sdk": "github:graasp/graasp-sdk#149-add-embedded-link-item-settings",
     "react-query": "3.39.3"
   },
   "packageManager": "yarn@3.4.1"

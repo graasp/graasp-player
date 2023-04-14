@@ -276,11 +276,10 @@ const Item = ({
         <LinkItem
           item={item}
           height={SCREEN_MAX_HEIGHT}
-          member={member}
+          memberId={member?.id}
           isResizable
-          // todo: remove default values once player follows ui
-          showButton={Boolean(item.settings?.showLinkButton || true)}
-          showIframe={Boolean(item.settings?.showLinkIframe)}
+          showButton={item.settings?.showLinkButton}
+          showIframe={item.settings?.showLinkIframe}
         />
       );
 
