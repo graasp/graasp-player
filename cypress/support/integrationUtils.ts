@@ -1,6 +1,5 @@
 import {
   AppItemType,
-  DEFAULT_LINK_SHOW_BUTTON,
   DiscriminatedItem,
   DocumentItemType,
   EmbeddedLinkItemType,
@@ -14,6 +13,7 @@ import {
   getParentFromPath,
   getS3FileExtra,
 } from '@graasp/sdk';
+import { DEFAULT_LINK_SHOW_BUTTON } from '@graasp/ui';
 
 import qs from 'qs';
 
