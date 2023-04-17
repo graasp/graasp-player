@@ -25,11 +25,9 @@ type Props = {
 
 const UserSwitchWrapper = ({ ButtonContent }: Props): JSX.Element => {
   const {
-    query: {
-      data: member,
-      isLoading = true,
-      isSuccess: isSuccessUser = false,
-    } = {},
+    data: member,
+    isLoading = true,
+    isSuccess: isSuccessUser = false,
   } = useCurrentMemberContext();
   const { t: translateBuilder } = useBuilderTranslation();
   const { mutateAsync: useSwitchMemberAsyncMutation } = useSwitchMember();

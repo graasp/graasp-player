@@ -34,7 +34,7 @@
     "@graasp/query-client": "0.4.0",
     "@graasp/sdk": "0.10.1",
     "@graasp/translations": "1.11.0",
-    "@graasp/ui": "github:graasp/graasp-ui#329-export-public-constants-and-refactor-internal-constants",
+    "@graasp/ui": "github:graasp/graasp-ui#main",
     "@mui/icons-material": "5.11.9",
     "@mui/lab": "5.0.0-alpha.120",
     "@mui/material": "5.11.9",
@@ -88,7 +88,7 @@
   },
   "resolutions": {
     "@graasp/sdk": "0.10.1",
-    "@graasp/ui": "github:graasp/graasp-ui#329-export-public-constants-and-refactor-internal-constants",
+    "@graasp/ui": "github:graasp/graasp-ui#main",
     "immutable": "4.3.0",
     "react-query": "3.39.3"
   },

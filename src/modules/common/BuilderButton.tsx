@@ -26,7 +26,7 @@ type Props = {
 
 const BuilderButton = ({ itemId }: Props): JSX.Element => {
   const { t } = usePlayerTranslation();
-  const { query: { data: user, isLoading } = {} } = useCurrentMemberContext();
+  const { data: user, isLoading } = useCurrentMemberContext();
   const { data: itemMemberships, isLoading: isLoadingItemMemberships } =
     hooks.useItemMemberships(itemId);
 

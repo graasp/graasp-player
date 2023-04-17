@@ -52,7 +52,4 @@ export const buildBuilderTabName = (id: string): string => `builder-tab-${id}`;
 
 export const DEFAULT_RESIZABLE_SETTING = false;
 
-// todo: remove when files that use this are in TS
-export const APP_CONTEXT = Context.PLAYER;
-
 export const AVATAR_ICON_HEIGHT = 30;

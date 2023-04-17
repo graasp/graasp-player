@@ -13,8 +13,7 @@ import Home from '@/modules/main/Home';
 
 export const App = (): JSX.Element => {
   const { pathname } = useLocation();
-  const { query: { data: currentMember, isLoading } = {} } =
-    useCurrentMemberContext();
+  const { data: currentMember, isLoading } = useCurrentMemberContext();
 
   if (isLoading) {
     return <CustomInitialLoader />;

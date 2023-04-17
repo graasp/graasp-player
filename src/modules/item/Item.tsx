@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { Alert, Box, Container, Skeleton, Typography } from '@mui/material';
 
 import { Api } from '@graasp/query-client';
-import { ItemType } from '@graasp/sdk';
+import { Context, ItemType, PermissionLevel } from '@graasp/sdk';
 import { FAILURE_MESSAGES, PLAYER } from '@graasp/translations';
 import {
   AppItem,
@@ -21,7 +21,6 @@ import {
 import { List } from 'immutable';
 
 import {
-  APP_CONTEXT,
   DEFAULT_RESIZABLE_SETTING,
   PDF_VIEWER_LINK,
   SCREEN_MAX_HEIGHT,
@@ -70,8 +69,12 @@ const Item = ({
   const { t: translateMessage } = useMessagesTranslation();
   const { data: item, isLoading, isError } = useItem(id);
   const { data: itemTags, isLoading: isTagsLoading } = useItemTags(id);
-  const { query: { data: member, isLoading: isMemberLoading } = {} } =
-    useCurrentMemberContext();
+  const {
+    data: member,
+    isLoading: isLoadingMember,
+    isError: isErrorMember,
+    isSuccess: isSuccessMember,
+  } = useCurrentMemberContext();
   // fetch children if item is folder
   const isFolder = Boolean(item?.type === ItemType.FOLDER);
   const {
@@ -131,11 +134,12 @@ const Item = ({
     isChildrenLoading ||
     isChildrenPaginatedLoading ||
     isFileContentLoading ||
-    etherpadQuery?.isLoading
+    etherpadQuery?.isLoading ||
+    isLoadingMember
   ) {
     return (
       <ItemSkeleton
-        itemType={item?.type as ItemType}
+        itemType={item?.type ?? ItemType.FOLDER}
         isChildren={isChildren}
         screenMaxHeight={SCREEN_MAX_HEIGHT}
       />
@@ -162,7 +166,8 @@ const Item = ({
     isFileError ||
     isChildrenError ||
     isChildrenPaginatedError ||
-    etherpadQuery?.isError
+    etherpadQuery?.isError ||
+    isErrorMember
   ) {
     return (
       <Alert severity="error">
@@ -301,7 +306,7 @@ const Item = ({
       return documentItem;
     }
     case ItemType.APP: {
-      if (isMemberLoading) {
+      if (isLoadingMember) {
         return (
           <Skeleton
             variant="rectangular"
@@ -310,23 +315,30 @@ const Item = ({
           />
         );
       }
-
-      const appItem = (
-        <AppItem
-          id={buildAppId(id)}
-          item={item}
-          apiHost={API_HOST} // todo: to change
-          member={member}
-          permission="read" // todo: use graasp-constants
-          requestApiAccessToken={Api.requestApiAccessToken}
-          height={SCREEN_MAX_HEIGHT}
-          isResizable={item.settings?.isResizable || DEFAULT_RESIZABLE_SETTING}
-          context={APP_CONTEXT}
-          showCollapse={showCollapse}
-        />
+      if (isSuccessMember)
+        return (
+          <AppItem
+            id={buildAppId(id)}
+            item={item}
+            apiHost={API_HOST} // todo: to change
+            member={member}
+            permission={PermissionLevel.Read}
+            requestApiAccessToken={(payload) =>
+              Api.requestApiAccessToken(payload, { API_HOST })
+            }
+            height={SCREEN_MAX_HEIGHT}
+            isResizable={
+              item.settings?.isResizable || DEFAULT_RESIZABLE_SETTING
+            }
+            context={Context.PLAYER}
+            showCollapse={showCollapse}
+          />
+        );
+      return (
+        <Alert severity="error">
+          {translateMessage(FAILURE_MESSAGES.UNEXPECTED_ERROR)}
+        </Alert>
       );
-
-      return appItem;
     }
 
     case ItemType.H5P: {

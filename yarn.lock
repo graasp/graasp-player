@@ -1142,9 +1142,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/ui@github:graasp/graasp-ui#329-export-public-constants-and-refactor-internal-constants":
+"@graasp/ui@github:graasp/graasp-ui#main":
   version: 2.4.0
-  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=d989700de16685bd8801027d911a7a99ae516648"
+  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=3e758b563792505b08af65052b44581f0e7a78b9"
   dependencies:
     "@graasp/sdk": 0.9.3
     clsx: 1.1.1
@@ -5092,7 +5092,7 @@ __metadata:
     "@graasp/query-client": 0.4.0
     "@graasp/sdk": 0.10.1
     "@graasp/translations": 1.11.0
-    "@graasp/ui": "github:graasp/graasp-ui#329-export-public-constants-and-refactor-internal-constants"
+    "@graasp/ui": "github:graasp/graasp-ui#main"
     "@mui/icons-material": 5.11.9
     "@mui/lab": 5.0.0-alpha.120
     "@mui/material": 5.11.9
