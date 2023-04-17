@@ -268,14 +268,10 @@ const Item = ({
           isResizable
           showButton={item.settings?.showLinkButton}
           showIframe={item.settings?.showLinkIframe}
+          showCollapse={showCollapse}
         />
       );
 
-      // if (showCollapse) {
-      //   return withCollapse({
-      //     item,
-      //   })(linkItem);
-      // }
       return linkItem;
     }
     case ItemType.LOCAL_FILE:
@@ -291,23 +287,17 @@ const Item = ({
         />
       );
 
-      // if (showCollapse) {
-      //   return withCollapse({
-      //     item,
-      //   })(fileItem);
-      // }
       return fileItem;
     }
     case ItemType.DOCUMENT: {
       const documentItem = (
-        <DocumentItem id={buildDocumentId(id)} item={item} />
+        <DocumentItem
+          id={buildDocumentId(id)}
+          item={item}
+          showCollapse={showCollapse}
+        />
       );
 
-      // if (showCollapse) {
-      //   return withCollapse({
-      //     item,
-      //   })(documentItem);
-      // }
       return documentItem;
     }
     case ItemType.APP: {
@@ -332,15 +322,10 @@ const Item = ({
           height={SCREEN_MAX_HEIGHT}
           isResizable={item.settings?.isResizable || DEFAULT_RESIZABLE_SETTING}
           context={APP_CONTEXT}
+          showCollapse={showCollapse}
         />
       );
 
-      // todo: we should be able to remove this since it is included in ui
-      // if (showCollapse) {
-      //   return withCollapse({
-      //     itemName: item.name,
-      //   })(appItem);
-      // }
       return appItem;
     }
 
@@ -360,6 +345,7 @@ const Item = ({
           itemName={item.name}
           contentId={contentId}
           integrationUrl={H5P_INTEGRATION_URL}
+          showCollapse={showCollapse}
         />
       );
     }
