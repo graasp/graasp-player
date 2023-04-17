@@ -55,7 +55,6 @@
   "devDependencies": {
     "@commitlint/config-conventional": "17.4.4",
     "@cypress/code-coverage": "3.10.0",
-    "@graasp/websockets": "github:graasp/graasp-plugin-websockets",
     "@trivago/prettier-plugin-sort-imports": "4.0.0",
     "@types/lodash.truncate": "^4.4.7",
     "@types/node": "^18.13.0",
