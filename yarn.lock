@@ -1042,13 +1042,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/chatbox@npm:1.2.0":
-  version: 1.2.0
-  resolution: "@graasp/chatbox@npm:1.2.0"
+"@graasp/chatbox@npm:1.2.1":
+  version: 1.2.1
+  resolution: "@graasp/chatbox@npm:1.2.1"
   dependencies:
-    "@graasp/query-client": 0.4.0
-    "@graasp/sdk": 0.10.0
-    "@graasp/ui": 2.3.1
     i18next: 21.8.1
     lodash.truncate: 4.4.2
     moment: 2.29.4
@@ -1062,14 +1059,17 @@ __metadata:
   peerDependencies:
     "@emotion/react": ^11.10.6
     "@emotion/styled": ^11.10.6
+    "@graasp/query-client": ^0.4.0
+    "@graasp/sdk": ^0.10.0
     "@graasp/translations": ^1.10.0
+    "@graasp/ui": ^2.3.1
     "@mui/icons-material": ^5.11.11
     "@mui/lab": ^5.0.0-alpha.121
     "@mui/material": ^5.11.11
     react: ^17.0.0
     react-dom: "*"
     react-i18next: ^12.0.0
-  checksum: c4131ecbaa5a85e401c21f4b2dd94cf95f641453107b52e5d9f12ceee715a0e811bc39be0e19b5622755b4783ba4aa0bc48a5a42878d39c3c9bad984810bb0ac
+  checksum: 7d358f2e1969038cd29ce0d0ac8ed768303ef46ce410c771c229be6acbe15a36f4f3d50da8a541bb29521ca623950c372dd5d456effb4b69c9926feb2ede2a18
   languageName: node
   linkType: hard
 
@@ -1088,11 +1088,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/query-client@npm:0.4.0":
-  version: 0.4.0
-  resolution: "@graasp/query-client@npm:0.4.0"
+"@graasp/query-client@npm:0.4.1":
+  version: 0.4.1
+  resolution: "@graasp/query-client@npm:0.4.1"
   dependencies:
-    "@graasp/sdk": 0.9.2
+    "@graasp/sdk": 0.10.0
     "@graasp/translations": 1.8.0
     axios: 0.27.2
     crypto-js: 4.1.1
@@ -1103,7 +1103,7 @@ __metadata:
     uuid: 9.0.0
   peerDependencies:
     react: ^17.0.0
-  checksum: 11086df2caefd00e9421952aea253d0c6e045da595fea8e5d5039ab128d0b6e293052561a6ae1135b59fe1f9e674f83c8f55990e9e8824e23b6282da2e6acfe4
+  checksum: 5ab2f261582838f822ee330d97e936163b0b222bafa113d9a8a417bebe17bdf9c645541ba682c09af480ab9747d9dbd16811a5feea9890fb0d17558234f7a14c
   languageName: node
   linkType: hard
 
@@ -1142,9 +1142,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/ui@github:graasp/graasp-ui#main":
-  version: 2.4.0
-  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=3e758b563792505b08af65052b44581f0e7a78b9"
+"@graasp/ui@npm:2.4.1":
+  version: 2.4.1
+  resolution: "@graasp/ui@npm:2.4.1"
   dependencies:
     "@graasp/sdk": 0.9.3
     clsx: 1.1.1
@@ -1177,7 +1177,7 @@ __metadata:
       optional: true
     ag-grid-react:
       optional: true
-  checksum: b8688f3c90ec65dedd08d75f53eb3da02be68f91b466be1a76e21d86b11231ddbe75c859759649b27a6f7fe5d629756b113797acd332560763ceeb69f01e2aed
+  checksum: e9c8644adaeeb81d17f88d3c98747f3463dc20bc00d87d3dfc8ac7c482c70aa8ee352e144e92353d63bb3263a2b47eab4acdc7addd2d24311e130f697a70974c
   languageName: node
   linkType: hard
 
@@ -5087,12 +5087,12 @@ __metadata:
     "@cypress/code-coverage": 3.10.0
     "@emotion/react": 11.10.6
     "@emotion/styled": 11.10.6
-    "@graasp/chatbox": 1.2.0
+    "@graasp/chatbox": 1.2.1
     "@graasp/plugin-websockets": 1.0.0
-    "@graasp/query-client": 0.4.0
+    "@graasp/query-client": 0.4.1
     "@graasp/sdk": 0.10.1
     "@graasp/translations": 1.11.0
-    "@graasp/ui": "github:graasp/graasp-ui#main"
+    "@graasp/ui": 2.4.1
     "@mui/icons-material": 5.11.9
     "@mui/lab": 5.0.0-alpha.120
     "@mui/material": 5.11.9

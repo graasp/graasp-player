@@ -29,12 +29,12 @@
   "dependencies": {
     "@emotion/react": "11.10.6",
     "@emotion/styled": "11.10.6",
-    "@graasp/chatbox": "1.2.0",
+    "@graasp/chatbox": "1.2.1",
     "@graasp/plugin-websockets": "1.0.0",
-    "@graasp/query-client": "0.4.0",
+    "@graasp/query-client": "0.4.1",
     "@graasp/sdk": "0.10.1",
     "@graasp/translations": "1.11.0",
-    "@graasp/ui": "github:graasp/graasp-ui#main",
+    "@graasp/ui": "2.4.1",
     "@mui/icons-material": "5.11.9",
     "@mui/lab": "5.0.0-alpha.120",
     "@mui/material": "5.11.9",
@@ -87,9 +87,8 @@
     "vite-plugin-istanbul": "4.0.1"
   },
   "resolutions": {
-    "@graasp/sdk": "0.10.1",
-    "@graasp/ui": "github:graasp/graasp-ui#main",
     "immutable": "4.3.0",
+    "@graasp/sdk": "0.10.1",
     "react-query": "3.39.3"
   },
   "packageManager": "yarn@3.4.1"
