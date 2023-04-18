@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.2](https://github.com/graasp/graasp-player/compare/v0.6.1...v0.6.2) (2023-04-18)
+
+
+### Bug Fixes
+
+* assign showCollapse prop to items ([8df59c9](https://github.com/graasp/graasp-player/commit/8df59c9e4e5255c7cd55cf13de1e483168fa91b8))
+* **deps:** use npm dependencies and adapt to new collapsible ui ([#231](https://github.com/graasp/graasp-player/issues/231)) ([8df59c9](https://github.com/graasp/graasp-player/commit/8df59c9e4e5255c7cd55cf13de1e483168fa91b8))
+* link button is shown even when setting is false ([#229](https://github.com/graasp/graasp-player/issues/229)) ([c765021](https://github.com/graasp/graasp-player/commit/c7650219e78cd3b85bdcdb046ebd43874ca9f13b))
+
 ## [0.6.1](https://github.com/graasp/graasp-player/compare/v0.6.0...v0.6.1) (2023-03-24)
 
 
