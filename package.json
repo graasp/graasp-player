@@ -30,7 +30,6 @@
     "@emotion/react": "11.10.6",
     "@emotion/styled": "11.10.6",
     "@graasp/chatbox": "1.2.1",
-    "@graasp/plugin-websockets": "1.0.0",
     "@graasp/query-client": "0.4.1",
     "@graasp/sdk": "0.10.1",
     "@graasp/translations": "1.11.0",
@@ -55,6 +54,7 @@
   "devDependencies": {
     "@commitlint/config-conventional": "17.4.4",
     "@cypress/code-coverage": "3.10.0",
+    "@graasp/plugin-websockets": "1.0.0",
     "@trivago/prettier-plugin-sort-imports": "4.0.0",
     "@types/lodash.truncate": "^4.4.7",
     "@types/node": "^18.13.0",
@@ -87,8 +87,8 @@
     "vite-plugin-istanbul": "4.0.1"
   },
   "resolutions": {
-    "immutable": "4.3.0",
     "@graasp/sdk": "0.10.1",
+    "immutable": "4.3.0",
     "@graasp/ui": "github:graasp/graasp-ui#322-fix-app-iframe-loading-forever",
     "react-query": "3.39.3"
   },
