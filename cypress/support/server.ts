@@ -4,10 +4,18 @@ import { Member, PermissionLevel, isChildOf } from '@graasp/sdk';
 import { StatusCodes } from 'http-status-codes';
 import * as qs from 'qs';
 
+import {
+  buildAppApiAccessTokenRoute,
+  buildAppItemLinkForTest,
+  buildGetAppData,
+} from '../fixtures/apps';
 import { MockItem } from '../fixtures/items';
 import { MEMBERS } from '../fixtures/members';
 import {
+  DEFAULT_DELETE,
   DEFAULT_GET,
+  DEFAULT_PATCH,
+  DEFAULT_POST,
   EMAIL_FORMAT,
   ID_FORMAT,
   getItemById,
@@ -521,4 +529,101 @@ export const mockAuthPage = (): void => {
       reply(redirectionReply);
     },
   ).as('goToAuthPage');
+};
+
+export const mockGetAppLink = (shouldThrowError: boolean): void => {
+  cy.intercept(
+    {
+      method: DEFAULT_GET.method,
+      url: new RegExp(`${API_HOST}/${buildAppItemLinkForTest()}`),
+    },
+    ({ reply, url }) => {
+      if (shouldThrowError) {
+        return reply({ statusCode: StatusCodes.BAD_REQUEST });
+      }
+
+      const filepath = url.slice(API_HOST.length).split('?')[0];
+      return reply({ fixture: filepath });
+    },
+  ).as('getAppLink');
+};
+
+export const mockAppApiAccessToken = (shouldThrowError: boolean): void => {
+  cy.intercept(
+    {
+      method: DEFAULT_POST.method,
+      url: new RegExp(`${API_HOST}/${buildAppApiAccessTokenRoute(ID_FORMAT)}$`),
+    },
+    ({ reply }) => {
+      if (shouldThrowError) {
+        return reply({ statusCode: StatusCodes.BAD_REQUEST });
+      }
+
+      return reply({ token: 'token' });
+    },
+  ).as('appApiAccessToken');
+};
+
+export const mockGetAppData = (shouldThrowError: boolean): void => {
+  cy.intercept(
+    {
+      method: DEFAULT_GET.method,
+      url: new RegExp(`${API_HOST}/${buildGetAppData(ID_FORMAT)}$`),
+    },
+    ({ reply }) => {
+      if (shouldThrowError) {
+        return reply({ statusCode: StatusCodes.BAD_REQUEST });
+      }
+
+      return reply({ data: 'get app data' });
+    },
+  ).as('getAppData');
+};
+
+export const mockPostAppData = (shouldThrowError: boolean): void => {
+  cy.intercept(
+    {
+      method: DEFAULT_POST.method,
+      url: new RegExp(`${API_HOST}/${buildGetAppData(ID_FORMAT)}$`),
+    },
+    ({ reply }) => {
+      if (shouldThrowError) {
+        return reply({ statusCode: StatusCodes.BAD_REQUEST });
+      }
+
+      return reply({ data: 'post app data' });
+    },
+  ).as('postAppData');
+};
+
+export const mockDeleteAppData = (shouldThrowError: boolean): void => {
+  cy.intercept(
+    {
+      method: DEFAULT_DELETE.method,
+      url: new RegExp(`${API_HOST}/${buildGetAppData(ID_FORMAT)}$`),
+    },
+    ({ reply }) => {
+      if (shouldThrowError) {
+        return reply({ statusCode: StatusCodes.BAD_REQUEST });
+      }
+
+      return reply({ data: 'delete app data' });
+    },
+  ).as('deleteAppData');
+};
+
+export const mockPatchAppData = (shouldThrowError: boolean): void => {
+  cy.intercept(
+    {
+      method: DEFAULT_PATCH.method,
+      url: new RegExp(`${API_HOST}/${buildGetAppData(ID_FORMAT)}$`),
+    },
+    ({ reply }) => {
+      if (shouldThrowError) {
+        return reply({ statusCode: StatusCodes.BAD_REQUEST });
+      }
+
+      return reply({ data: 'patch app data' });
+    },
+  ).as('patchAppData');
 };
