@@ -30,3 +30,5 @@ export const HIDDEN_ITEM_TAG_ID =
 export const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
 
 export const GRAASP_ASSETS_URL = import.meta.env.VITE_GRAASP_ASSETS_URL;
+
+export const APP_VERSION = import.meta.env.VITE_VERSION || 'latest';

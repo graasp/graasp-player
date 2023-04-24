@@ -8,15 +8,17 @@ import '@graasp/ui/dist/bundle.css';
 import * as Sentry from '@sentry/react';
 import { BrowserTracing } from '@sentry/tracing';
 
-import { GA_MEASUREMENT_ID, SENTRY_DSN } from '@/config/env';
+import { APP_VERSION, GA_MEASUREMENT_ID, SENTRY_DSN } from '@/config/env';
 import { SENTRY_ENVIRONMENT, SENTRY_TRACE_SAMPLE_RATE } from '@/config/sentry';
 
+import pkg from '../package.json';
 import Root from './Root';
 
 Sentry.init({
   dsn: SENTRY_DSN,
   integrations: [new BrowserTracing()],
   environment: SENTRY_ENVIRONMENT,
+  release: `${pkg.name}@${APP_VERSION}`,
 
   // Set tracesSampleRate to 1.0 to capture 100%
   // of transactions for performance monitoring.
