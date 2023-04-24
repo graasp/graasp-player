@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.client_payload.tag }}
 
       - name: Yarn install and Cache dependencies
         uses: graasp/graasp-deploy/.github/actions/yarn-install-and-cache@v1
