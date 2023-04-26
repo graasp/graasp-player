@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { Alert, Box, Container, Skeleton, Typography } from '@mui/material';
 
 import { Api } from '@graasp/query-client';
-import { Context, ItemType, PermissionLevel } from '@graasp/sdk';
+import { Context, DEFAULT_LANG, ItemType, PermissionLevel } from '@graasp/sdk';
 import { FAILURE_MESSAGES, PLAYER } from '@graasp/translations';
 import {
   AppItem,
@@ -318,11 +318,9 @@ const Item = ({
       if (isSuccessMember)
         return (
           <AppItem
-            id={buildAppId(id)}
+            frameId={buildAppId(id)}
             item={item}
-            apiHost={API_HOST} // todo: to change
-            member={member}
-            permission={PermissionLevel.Read}
+            memberId={member.id}
             requestApiAccessToken={(payload) =>
               Api.requestApiAccessToken(payload, { API_HOST })
             }
@@ -330,7 +328,19 @@ const Item = ({
             isResizable={
               item.settings?.isResizable || DEFAULT_RESIZABLE_SETTING
             }
-            context={Context.PLAYER}
+            contextPayload={{
+              apiHost: API_HOST,
+              settings: item.settings,
+              lang:
+                // todo: remove once it is added in ItemSettings type in sdk
+                (item.settings?.lang as string | undefined) ||
+                member?.extra?.lang ||
+                DEFAULT_LANG,
+              permission: PermissionLevel.Read,
+              context: Context.PLAYER,
+              memberId: member?.id,
+              itemId: item.id,
+            }}
             showCollapse={showCollapse}
           />
         );

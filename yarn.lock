@@ -1153,7 +1153,7 @@ __metadata:
 
 "@graasp/ui@github:graasp/graasp-ui#322-fix-app-iframe-loading-forever":
   version: 2.4.1
-  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=ca25ac5af02923fad86d158c39a3726e1f9dc86b"
+  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=dedf16bb67353672e9e9cef96e27e2fb13587c54"
   dependencies:
     "@graasp/sdk": 0.9.3
     clsx: 1.1.1
@@ -1186,7 +1186,7 @@ __metadata:
       optional: true
     ag-grid-react:
       optional: true
-  checksum: b36ba61262e6bdec7cdd4cb2d6b45d99be26fb4346fc09a002b8e7813067ac557ff295bfa66bc8b34e2fdca0633211cceaed830d828e3a25791b141e9d595b6b
+  checksum: 6c03c97a7b92a69155e4943979d671605fead067700604793fbed9338d2f03367c597eb9d14aad8adad5677c98156349f0ecc0f1fd26e1b008193a95745c2f26
   languageName: node
   linkType: hard
 
