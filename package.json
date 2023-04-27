@@ -31,14 +31,14 @@
     "@emotion/styled": "11.10.6",
     "@graasp/chatbox": "1.2.1",
     "@graasp/query-client": "0.4.1",
-    "@graasp/sdk": "0.10.1",
+    "@graasp/sdk": "0.12.0",
     "@graasp/translations": "1.11.0",
-    "@graasp/ui": "github:graasp/graasp-ui#322-fix-app-iframe-loading-forever",
+    "@graasp/ui": "2.4.2",
     "@mui/icons-material": "5.11.9",
     "@mui/lab": "5.0.0-alpha.120",
     "@mui/material": "5.11.9",
-    "@sentry/react": "7.39.0",
-    "@sentry/tracing": "7.39.0",
+    "@sentry/react": "7.50.0",
+    "@sentry/tracing": "7.50.0",
     "clsx": "1.2.1",
     "immutable": "4.3.0",
     "lodash.truncate": "4.4.2",
@@ -88,8 +88,7 @@
     "vite-plugin-istanbul": "4.0.1"
   },
   "resolutions": {
-    "@graasp/sdk": "0.10.1",
-    "@graasp/ui": "github:graasp/graasp-ui#322-fix-app-iframe-loading-forever",
+    "@graasp/sdk": "0.12.0",
     "immutable": "4.3.0",
     "react-query": "3.39.3"
   },

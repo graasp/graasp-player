@@ -7,6 +7,7 @@ import {
   LocalFileItemType,
   MimeTypes,
   S3FileItemType,
+  appendQueryParamToUrl,
   getDocumentExtra,
   getEmbeddedLinkExtra,
   getFileExtra,
@@ -14,8 +15,6 @@ import {
   getS3FileExtra,
 } from '@graasp/sdk';
 import { DEFAULT_LINK_SHOW_BUTTON } from '@graasp/ui';
-
-import qs from 'qs';
 
 import {
   MAIN_MENU_ID,
@@ -57,12 +56,7 @@ export const expectLinkViewScreenLayout = ({
 export const expectAppViewScreenLayout = ({ id, extra }: AppItemType): void => {
   const { url } = extra.app;
 
-  const appUrl = `${url}${qs.stringify(
-    { itemId: id },
-    {
-      addQueryPrefix: true,
-    },
-  )}`;
+  const appUrl = appendQueryParamToUrl(url, { itemId: id });
 
   cy.get(`iframe#${buildAppId(id)}`).should('have.attr', 'src', appUrl);
 };
