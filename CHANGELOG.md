@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.3](https://github.com/graasp/graasp-player/compare/v0.6.2...v0.6.3) (2023-04-27)
+
+
+### Bug Fixes
+
+* apps loading forever ([#227](https://github.com/graasp/graasp-player/issues/227)) ([04a0e61](https://github.com/graasp/graasp-player/commit/04a0e618240bd461667e3ed223d0cfc19d46ce69))
+* checkout supplied tag in deploy workflow and setup sentry release ([#233](https://github.com/graasp/graasp-player/issues/233)) ([b56f256](https://github.com/graasp/graasp-player/commit/b56f2566467818c4b6e7d1ede5fcba0501d4f7f1))
+* update ui and props of `AppItem` ([04a0e61](https://github.com/graasp/graasp-player/commit/04a0e618240bd461667e3ed223d0cfc19d46ce69))
+
 ## [0.6.2](https://github.com/graasp/graasp-player/compare/v0.6.1...v0.6.2) (2023-04-18)
 
 
