@@ -23,9 +23,8 @@ const Chatbox = ({ item }: Props): JSX.Element => {
   const { data: itemPermissions, isLoading: isLoadingItemPermissions } =
     useItemMemberships(item.id);
   const members = itemPermissions?.map((m) => m.member);
-  const {
-    data: currentMember, isLoading: isLoadingCurrentMember
-  } = useCurrentMemberContext();
+  const { data: currentMember, isLoading: isLoadingCurrentMember } =
+    useCurrentMemberContext();
   const { mutate: sendMessage } = usePostItemChatMessage();
   const { mutate: editMessage } = usePatchItemChatMessage();
   const { mutate: deleteMessage } = useDeleteItemChatMessage();

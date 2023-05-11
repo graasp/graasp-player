@@ -135,7 +135,7 @@ const Home = (): JSX.Element => {
   return (
     <Main
       open
-      context={Context.PLAYER}
+      context={Context.Player}
       sidebar={sidebar}
       headerLeftContent={<HeaderNavigation />}
       headerRightContent={<HeaderRightContent />}

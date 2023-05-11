@@ -35,12 +35,10 @@ export const SIGN_IN_PATH = buildSignInPath({ host: AUTHENTICATION_HOST });
 export const MEMBER_PROFILE_PATH = `${GRAASP_BUILDER_HOST}/profile`;
 
 export const HOST_MAP = {
-  [Context.BUILDER]: GRAASP_BUILDER_HOST,
-  [Context.LIBRARY]: GRAASP_LIBRARY_HOST,
-  [Context.ANALYTICS]: GRAASP_ANALYTICS_HOST,
-  [Context.PLAYER]: '/',
-  [Context.ANALYZER]: GRAASP_ANALYTICS_HOST,
-  [Context.EXPLORER]: GRAASP_LIBRARY_HOST,
+  [Context.Builder]: GRAASP_BUILDER_HOST,
+  [Context.Library]: GRAASP_LIBRARY_HOST,
+  [Context.Analytics]: GRAASP_ANALYTICS_HOST,
+  [Context.Player]: '/',
 };
 
 export const GRAASP_LOGO_HEADER_HEIGHT = 40;

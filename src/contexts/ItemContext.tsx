@@ -26,7 +26,7 @@ type ItemContextType = {
 const ItemContext = React.createContext<ItemContextType>({
   rootId: '',
   focusedItemId: '',
-  setFocusedItemId: (id: string) => null,
+  setFocusedItemId: () => null,
   isRootItemLoading: true,
   isRootItemError: false,
   isDescendantsLoading: true,
