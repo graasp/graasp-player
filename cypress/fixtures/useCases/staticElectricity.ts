@@ -1,4 +1,5 @@
 import {
+  ItemTagType,
   ItemType,
   buildDocumentExtra,
   buildEmbeddedLinkExtra,
@@ -6,10 +7,9 @@ import {
 } from '@graasp/sdk';
 
 import { MOCK_IMAGE_URL } from '../fileLinks';
-import { MockItem } from '../items';
 import { CURRENT_USER } from '../members';
-
-const PUBLIC_TAG_ID = Cypress.env('PUBLIC_TAG_ID');
+import { MockItem } from '../mockTypes';
+import { mockItemTag } from '../tags';
 
 // eslint-disable-next-line import/prefer-default-export
 export const STATIC_ELECTRICITY: {
@@ -315,7 +315,7 @@ PUBLIC_STATIC_ELECTRICITY.items = PUBLIC_STATIC_ELECTRICITY.items.map(
   (item) => {
     const newItem = {
       ...item,
-      tags: [...(item?.tags ?? []), { tagId: PUBLIC_TAG_ID }],
+      tags: [...(item?.tags ?? []), mockItemTag({ type: ItemTagType.PUBLIC })],
     };
     return newItem;
   },
