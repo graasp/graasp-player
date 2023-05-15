@@ -12,9 +12,9 @@ export const GRAASP_APP_ITEM: AppItemType = {
   name: 'graasp app',
   description: 'a description for graasp app',
   path: 'baefbd2a_5688_11eb_ae93_0242ac130002',
-  creator: CURRENT_USER.id,
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
+  creator: CURRENT_USER,
+  createdAt: new Date(),
+  updatedAt: new Date(),
   extra: {
     app: { url: 'https://graasp.eu' },
   },
@@ -71,9 +71,9 @@ export const APP_USING_CONTEXT_ITEM: MockItem = {
       url: `${API_HOST}/${buildAppItemLinkForTest('app.html')}`,
     },
   },
-  creator: CURRENT_USER.id,
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
+  creator: CURRENT_USER,
+  createdAt: new Date(),
+  updatedAt: new Date(),
 };
 
 export const GRAASP_APP_ITEMS_FIXTURE = [

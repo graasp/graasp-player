@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import { COOKIE_KEYS, Member } from '@graasp/sdk';
+import { COOKIE_KEYS, ChatMessage, Member } from '@graasp/sdk';
 
 import { MockItem } from '@/../cypress/fixtures/items';
 
@@ -13,13 +13,15 @@ import {
   mockGetAppLink,
   mockGetChildren,
   mockGetCurrentMember,
+  mockGetDescendants,
   mockGetItem,
+  mockGetItemChat,
   mockGetItemMembershipsForItem,
   mockGetItemTags,
   mockGetItemsTags,
+  mockGetLoginSchemaType,
   mockGetMemberBy,
   mockGetMembers,
-  mockGetPublicChildren,
   mockPatchAppData,
   mockPostAppData,
   mockProfilePage,
@@ -30,49 +32,46 @@ Cypress.Commands.add(
   'setUpApi',
   ({
     items = [],
+    chatMessages = [],
     members = Object.values(MEMBERS),
     currentMember = CURRENT_USER,
-    storedSessions = [],
     getItemError = false,
     getMemberError = false,
     getAppLinkError = false,
     getCurrentMemberError = false,
   } = {}) => {
-    // why do we do this ???
-    const cachedItems = items;
-    const cachedMembers = JSON.parse(JSON.stringify(members));
     if (currentMember) {
       cy.setCookie(COOKIE_KEYS.SESSION_KEY, 'somecookie');
     }
-    cy.setCookie(
-      COOKIE_KEYS.STORED_SESSIONS_KEY,
-      JSON.stringify(storedSessions),
-    );
 
     mockGetItem(
-      { items: cachedItems, currentMember },
+      { items, currentMember },
       getItemError || getCurrentMemberError,
     );
+    mockGetItemChat({ chatMessages });
     mockGetItemMembershipsForItem(items, currentMember);
     // mockGetPublicItem({ items: cachedItems });
 
     mockGetItemTags(items, currentMember);
 
     mockGetItemsTags(items, currentMember);
+    mockGetLoginSchemaType(items, currentMember);
 
-    mockGetChildren(cachedItems, currentMember);
-    mockGetPublicChildren(cachedItems);
+    mockGetChildren(items, currentMember);
+    // mockGetPublicChildren(cachedItems);
 
-    mockGetMemberBy(cachedMembers, getMemberError);
+    mockGetDescendants(items, currentMember);
+
+    mockGetMemberBy(members, getMemberError);
 
     mockGetCurrentMember(currentMember, getCurrentMemberError);
 
-    mockDefaultDownloadFile({ items: cachedItems, currentMember });
+    mockDefaultDownloadFile({ items, currentMember });
     // mockPublicDefaultDownloadFile(cachedItems);
 
     mockSignOut();
 
-    mockGetMembers(cachedMembers);
+    mockGetMembers(members);
     mockProfilePage();
     mockAuthPage();
     mockGetAppLink(getAppLinkError);
@@ -116,6 +115,7 @@ declare global {
       setUpApi({
         items,
         members,
+        chatMessages,
         currentMember,
         storedSessions,
         getItemError,
@@ -125,6 +125,7 @@ declare global {
       }?: {
         items?: MockItem[];
         members?: Member[];
+        chatMessages?: ChatMessage[];
         currentMember?: Member;
         storedSessions?: { id: string; token: string; createdAt: number }[];
         getItemError?: boolean;

@@ -1,3 +1,5 @@
+import { ChatMessage } from '@graasp/sdk';
+
 import { MockItem } from '../fixtures/items';
 
 // use simple id format for tests
@@ -35,6 +37,12 @@ export const getItemById = (
   items: MockItem[],
   targetId: string,
 ): MockItem | undefined => items.find(({ id }) => targetId === id);
+
+export const getChatMessagesById = (
+  chatMessages: ChatMessage[],
+  targetId: string,
+): ChatMessage[] | undefined =>
+  chatMessages.filter(({ item }) => targetId === item.id);
 
 export const EMAIL_FORMAT = '[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+';
 

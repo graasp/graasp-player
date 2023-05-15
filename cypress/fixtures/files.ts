@@ -19,9 +19,9 @@ export const IMAGE_ITEM_DEFAULT: LocalFileItemType & { filepath: string } = {
   description: 'a default image description',
   type: ItemType.LOCAL_FILE,
   path: 'bd5519a2_5ba9_4305_b221_185facbe6a99',
-  creator: CURRENT_USER.id,
-  createdAt: '2021-03-16T16:00:50.968Z',
-  updatedAt: '2021-03-16T16:00:52.655Z',
+  creator: CURRENT_USER,
+  createdAt: new Date(Date.parse('2021-03-16T16:00:50.968Z')),
+  updatedAt: new Date(Date.parse('2021-03-16T16:00:52.655Z')),
   extra: buildFileExtra({
     name: 'icon.png',
     path: '9a95/e2e1/2a7b-1615910428274',
@@ -42,9 +42,9 @@ export const VIDEO_ITEM_DEFAULT: LocalFileItemType & { filepath: string } = {
   description: 'a default video description',
   type: ItemType.LOCAL_FILE,
   path: 'qd5519a2_5ba9_4305_b221_185facbe6a99',
-  creator: CURRENT_USER.id,
-  createdAt: '2021-03-16T16:00:50.968Z',
-  updatedAt: '2021-03-16T16:00:52.655Z',
+  creator: CURRENT_USER,
+  createdAt: new Date(Date.parse('2021-03-16T16:00:50.968Z')),
+  updatedAt: new Date(Date.parse('2021-03-16T16:00:52.655Z')),
   extra: buildFileExtra({
     name: 'video.mp4',
     path: '9a95/e2e1/2a7b-1615910428274',
@@ -65,9 +65,9 @@ export const PDF_ITEM_DEFAULT: LocalFileItemType & { filepath: string } = {
   description: 'a default pdf description',
   type: ItemType.LOCAL_FILE,
   path: 'cd5519a2_5ba9_4305_b221_185facbe6a99',
-  creator: CURRENT_USER.id,
-  createdAt: '2021-03-16T16:00:50.968Z',
-  updatedAt: '2021-03-16T16:00:52.655Z',
+  creator: CURRENT_USER,
+  createdAt: new Date(Date.parse('2021-03-16T16:00:50.968Z')),
+  updatedAt: new Date(Date.parse('2021-03-16T16:00:52.655Z')),
   extra: buildFileExtra({
     name: 'doc.pdf',
     path: '9a95/e2e1/2a7b-1615910428274',
@@ -88,9 +88,9 @@ export const IMAGE_ITEM_S3: S3FileItemType = {
   description: 'a default image description',
   type: ItemType.S3_FILE,
   path: 'ad5519a2_5ba9_4305_b221_185facbe6a99',
-  creator: CURRENT_USER.id,
-  createdAt: '2021-03-16T16:00:50.968Z',
-  updatedAt: '2021-03-16T16:00:52.655Z',
+  creator: CURRENT_USER,
+  createdAt: new Date(Date.parse('2021-03-16T16:00:50.968Z')),
+  updatedAt: new Date(Date.parse('2021-03-16T16:00:52.655Z')),
   extra: buildS3FileExtra({
     name: 'mock-image',
     path: MOCK_IMAGE_URL, // for testing
@@ -109,9 +109,9 @@ export const VIDEO_ITEM_S3: S3FileItemType = {
   description: 'a default video description',
   type: ItemType.S3_FILE,
   path: 'qd5519a2_5ba9_4305_b221_185facbe6a93',
-  creator: CURRENT_USER.id,
-  createdAt: '2021-03-16T16:00:50.968Z',
-  updatedAt: '2021-03-16T16:00:52.655Z',
+  creator: CURRENT_USER,
+  createdAt: new Date(Date.parse('2021-03-16T16:00:50.968Z')),
+  updatedAt: new Date(Date.parse('2021-03-16T16:00:52.655Z')),
   extra: buildS3FileExtra({
     name: 'mock-video',
     path: MOCK_VIDEO_URL, // for testing
@@ -130,9 +130,9 @@ export const PDF_ITEM_S3: S3FileItemType = {
   description: 'a default pdf description',
   type: ItemType.S3_FILE,
   path: 'bd5519a2_5ba9_4305_b221_185facbe6a99',
-  creator: CURRENT_USER.id,
-  createdAt: '2021-03-16T16:00:50.968Z',
-  updatedAt: '2021-03-16T16:00:52.655Z',
+  creator: CURRENT_USER,
+  createdAt: new Date(Date.parse('2021-03-16T16:00:50.968Z')),
+  updatedAt: new Date(Date.parse('2021-03-16T16:00:52.655Z')),
   extra: buildS3FileExtra({
     name: 'mock-pdf',
     path: MOCK_PDF_URL, // for testing

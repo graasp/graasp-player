@@ -5,7 +5,11 @@ import { Alert, Box, Container, Skeleton, Typography } from '@mui/material';
 
 import { Api } from '@graasp/query-client';
 import { Context, DEFAULT_LANG, ItemType, PermissionLevel } from '@graasp/sdk';
-import { EtherpadItemTypeRecord } from '@graasp/sdk/frontend';
+import {
+  EtherpadItemTypeRecord,
+  LocalFileItemTypeRecord,
+  S3FileItemTypeRecord,
+} from '@graasp/sdk/frontend';
 import { FAILURE_MESSAGES, PLAYER } from '@graasp/translations';
 import {
   AppItem,
@@ -45,7 +49,7 @@ const {
   useEtherpad,
   useItem,
   useChildren,
-  useFileContent,
+  useFileContentUrl,
   useItemTags,
   useChildrenPaginated,
 } = hooks;
@@ -69,7 +73,7 @@ const EtherpadContent = ({ item }: EtherpadContentProps) => {
   if (etherpadQuery?.isLoading) {
     return (
       <ItemSkeleton
-        itemType={item?.type ?? ItemType.FOLDER}
+        itemType={item.type}
         isChildren={false}
         screenMaxHeight={SCREEN_MAX_HEIGHT}
       />
@@ -104,6 +108,48 @@ const EtherpadContent = ({ item }: EtherpadContentProps) => {
   );
 };
 
+type FileContentProps = {
+  item: S3FileItemTypeRecord | LocalFileItemTypeRecord;
+};
+const FileContent = ({ item }: FileContentProps) => {
+  const { t: translateMessage } = useMessagesTranslation();
+  // fetch file content if type is file
+  const {
+    data: file,
+    isLoading: isFileContentLoading,
+    isError: isFileError,
+  } = useFileContentUrl(item.id);
+
+  if (isFileContentLoading) {
+    return (
+      <ItemSkeleton
+        itemType={item.type}
+        isChildren={false}
+        screenMaxHeight={SCREEN_MAX_HEIGHT}
+      />
+    );
+  }
+  if (isFileError) {
+    return (
+      <Alert severity="error">
+        {translateMessage(FAILURE_MESSAGES.UNEXPECTED_ERROR)}
+      </Alert>
+    );
+  }
+  const fileItem = (
+    <FileItem
+      id={buildFileId(item.id)}
+      item={item}
+      fileUrl={file?.url}
+      maxHeight={SCREEN_MAX_HEIGHT}
+      showCollapse={item.settings?.isCollapsible}
+      pdfViewerLink={PDF_VIEWER_LINK}
+    />
+  );
+
+  return fileItem;
+};
+
 const Item = ({
   id = '',
   isChildren = false,
@@ -131,20 +177,6 @@ const Item = ({
   } = useChildren(id, {
     enabled: isFolder,
     getUpdates: isFolder,
-  });
-
-  // fetch file content if type is file
-  const {
-    data: file,
-    isLoading: isFileContentLoading,
-    isError: isFileError,
-  } = useFileContent(id, {
-    enabled: Boolean(
-      item &&
-        ([ItemType.LOCAL_FILE, ItemType.S3_FILE] as string[]).includes(
-          item.type,
-        ),
-    ),
   });
 
   const {
@@ -176,7 +208,6 @@ const Item = ({
     isTagsLoading ||
     isChildrenLoading ||
     isChildrenPaginatedLoading ||
-    isFileContentLoading ||
     isLoadingMember
   ) {
     return (
@@ -205,7 +236,6 @@ const Item = ({
   if (
     isError ||
     !item ||
-    isFileError ||
     isChildrenError ||
     isChildrenPaginatedError ||
     isErrorMember
@@ -318,18 +348,7 @@ const Item = ({
     }
     case ItemType.LOCAL_FILE:
     case ItemType.S3_FILE: {
-      const fileItem = (
-        <FileItem
-          id={buildFileId(id)}
-          item={item}
-          fileUrl={file?.url}
-          maxHeight={SCREEN_MAX_HEIGHT}
-          showCollapse={showCollapse}
-          pdfViewerLink={PDF_VIEWER_LINK}
-        />
-      );
-
-      return fileItem;
+      return <FileContent item={item} />;
     }
     case ItemType.DOCUMENT: {
       const documentItem = (

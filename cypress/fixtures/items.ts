@@ -13,6 +13,8 @@ const PUBLIC_TAG_ID = Cypress.env('PUBLIC_TAG_ID');
 export type MockItem = DiscriminatedItem & {
   // for testing
   filepath?: string;
+  // path to a fixture file in cypress
+  filefixture?: string;
   memberships?: { memberId: string }[];
   tags?: { tagId: string }[];
 };
@@ -27,9 +29,9 @@ export const DEFAULT_FOLDER_ITEM: MockItem = {
       childrenOrder: [],
     },
   },
-  creator: CURRENT_USER.id,
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
+  creator: CURRENT_USER,
+  createdAt: new Date(),
+  updatedAt: new Date(),
   type: ItemType.FOLDER,
   settings: {
     isPinned: false,
@@ -37,7 +39,7 @@ export const DEFAULT_FOLDER_ITEM: MockItem = {
   },
 };
 
-export const ITEM_WITH_CHAT_BOX = {
+export const ITEM_WITH_CHAT_BOX: MockItem = {
   ...DEFAULT_FOLDER_ITEM,
   id: 'ecafbd2a-5688-11eb-ae93-0242ac130002',
   name: 'parent folder',
@@ -48,7 +50,7 @@ export const ITEM_WITH_CHAT_BOX = {
   },
 };
 
-export const ITEM_WITHOUT_CHAT_BOX = {
+export const ITEM_WITHOUT_CHAT_BOX: MockItem = {
   ...DEFAULT_FOLDER_ITEM,
   id: 'fdf09f5a-5688-11eb-ae93-0242ac130003',
   name: 'child folder',

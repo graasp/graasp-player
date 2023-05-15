@@ -59,10 +59,10 @@ describe('Pinned Items', () => {
     });
 
     it('If no items are pinned toggle pinned should not exist', () => {
-      const parent = FOLDER_WITH_SUBFOLDER_ITEM.items[0];
+      const parent = FOLDER_WITH_SUBFOLDER_ITEM.items[2];
       cy.visit(buildMainPath({ rootId: parent.id }));
 
-      cy.wait('@getChildren');
+      cy.wait(['@getChildren', '@getItemTags']);
       cy.get(`#${ITEM_PINNED_BUTTON_ID}`).should('not.exist');
       cy.get(`#${ITEM_PINNED_ID}`).should('not.exist');
     });

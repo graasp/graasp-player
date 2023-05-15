@@ -21,9 +21,9 @@ export const STATIC_ELECTRICITY: {
       path: 'fdf09f5a_5688_11eb_ae31_0242ac130003',
       name: 'Static Electricity',
       description: '',
-      creator: CURRENT_USER.id,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      creator: CURRENT_USER,
+      createdAt: new Date(),
+      updatedAt: new Date(),
       type: ItemType.FOLDER,
       extra: {
         [ItemType.FOLDER]: {
@@ -37,9 +37,9 @@ export const STATIC_ELECTRICITY: {
       path: 'fdf09f5a_5688_11eb_ae31_0242ac130003.gcafbd2a_5688_11eb_ae92_0242ac130015',
       name: 'Causes and experiences',
       description: '',
-      creator: CURRENT_USER.id,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      creator: CURRENT_USER,
+      createdAt: new Date(),
+      updatedAt: new Date(),
       type: ItemType.FOLDER,
       extra: {
         [ItemType.FOLDER]: {
@@ -59,9 +59,9 @@ export const STATIC_ELECTRICITY: {
       path: 'fdf09f5a_5688_11eb_ae31_0242ac130003.gcafbd2a_5688_11eb_ae92_0242ac130015.gcefbd2a_5688_11eb_ae92_0542bc120002',
       name: 'cat',
       description: '',
-      creator: CURRENT_USER.id,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      creator: CURRENT_USER,
+      createdAt: new Date(),
+      updatedAt: new Date(),
       type: ItemType.DOCUMENT,
       extra: buildDocumentExtra({
         content:
@@ -74,9 +74,9 @@ export const STATIC_ELECTRICITY: {
       path: 'fdf09f5a_5688_11eb_ae31_0242ac130003.gcafbd2a_5688_11eb_ae92_0242ac130015.gcefbd2a_5688_11eb_fe32_0542bc120002',
       name: 'causes text',
       description: '',
-      creator: CURRENT_USER.id,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      creator: CURRENT_USER,
+      createdAt: new Date(),
+      updatedAt: new Date(),
       type: ItemType.DOCUMENT,
       extra: buildDocumentExtra({
         content:
@@ -89,9 +89,9 @@ export const STATIC_ELECTRICITY: {
       path: 'fdf09f5a_5688_11eb_ae31_0242ac130003.gcafbd2a_5688_11eb_ae92_0242ac130015.gcefbd2a_5648_31eb_fe32_0542bc120002',
       name: 'causes link',
       description: '',
-      creator: CURRENT_USER.id,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      creator: CURRENT_USER,
+      createdAt: new Date(),
+      updatedAt: new Date(),
       type: ItemType.LINK,
       extra: buildEmbeddedLinkExtra({
         url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cat_demonstrating_static_cling_with_styrofoam_peanuts.jpg/310px-Cat_demonstrating_static_cling_with_styrofoam_peanuts.jpg',
@@ -106,9 +106,9 @@ export const STATIC_ELECTRICITY: {
       path: 'fdf09f5a_5688_11eb_ae31_0242ac130003.gcafbd2a_5688_11eb_ae92_0242ac130015.gcefbd4e_5688_11eb_fe32_0542bc120002',
       name: 'pressure text',
       description: '',
-      creator: CURRENT_USER.id,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      creator: CURRENT_USER,
+      createdAt: new Date(),
+      updatedAt: new Date(),
       type: ItemType.DOCUMENT,
       extra: buildDocumentExtra({
         content:
@@ -121,9 +121,9 @@ export const STATIC_ELECTRICITY: {
       path: 'fdf09f5a_5688_11eb_ae31_0242ac130003.gcafbd2a_5688_11eb_ae92_0242ac130015.gceffe4e_5688_11eb_fe32_0542bc120002',
       name: 'causes video link',
       description: '',
-      creator: CURRENT_USER.id,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      creator: CURRENT_USER,
+      createdAt: new Date(),
+      updatedAt: new Date(),
       type: ItemType.LINK,
       extra: buildEmbeddedLinkExtra({
         url: 'https://www.dailymotion.com/embed/video/xgh289?autoplay=1',
@@ -138,9 +138,9 @@ export const STATIC_ELECTRICITY: {
       path: 'fdf09f5a_5688_11eb_ae31_0242ac130003.gcafbd2a_4218_31eb_fe32_0542bc120002',
       name: 'Introduction',
       description: '',
-      creator: CURRENT_USER.id,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      creator: CURRENT_USER,
+      createdAt: new Date(),
+      updatedAt: new Date(),
       type: ItemType.FOLDER,
       extra: {
         [ItemType.FOLDER]: {
@@ -158,9 +158,9 @@ export const STATIC_ELECTRICITY: {
       name: 'Balloons and Static Electricity Source',
       description:
         '<p>Grab a balloon to explore concepts of static electricity such as charge transfer, attraction, repulsion, and induced charge.</p>',
-      creator: CURRENT_USER.id,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      creator: CURRENT_USER,
+      createdAt: new Date(),
+      updatedAt: new Date(),
       type: ItemType.APP,
       extra: {
         [ItemType.APP]: {
@@ -174,9 +174,9 @@ export const STATIC_ELECTRICITY: {
       path: 'fdf09f5a_5688_11eb_ae31_0242ac130003.gcafbd2a_4218_31eb_fe32_0542bc120002.gcafbd2a_4118_31eb_fe32_1542bc120002',
       name: 'some text',
       description: '',
-      creator: CURRENT_USER.id,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      creator: CURRENT_USER,
+      createdAt: new Date(),
+      updatedAt: new Date(),
       type: ItemType.DOCUMENT,
       extra: buildDocumentExtra({
         content:
@@ -189,9 +189,9 @@ export const STATIC_ELECTRICITY: {
       path: 'fdf09f5a_5688_11eb_ae31_0242ac130003.gcbffd2a_4218_31eb_fe32_0542bc120002',
       name: 'Removal and Prevention',
       description: '',
-      creator: CURRENT_USER.id,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      creator: CURRENT_USER,
+      createdAt: new Date(),
+      updatedAt: new Date(),
       type: ItemType.FOLDER,
       extra: {
         [ItemType.FOLDER]: {
@@ -208,9 +208,9 @@ export const STATIC_ELECTRICITY: {
       path: 'fdf09f5a_5688_11eb_ae31_0242ac130003.gcbffd2a_4218_31eb_fe32_0542bc120002.gcbffd2a_4218_31eb_fe32_0542bc121102',
       name: 'text',
       description: '',
-      creator: CURRENT_USER.id,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      creator: CURRENT_USER,
+      createdAt: new Date(),
+      updatedAt: new Date(),
       type: ItemType.DOCUMENT,
       extra: buildDocumentExtra({
         content:
@@ -223,9 +223,9 @@ export const STATIC_ELECTRICITY: {
       path: 'fdf09f5a_5688_11eb_ae31_0242ac130003.gcbffd2a_4218_31eb_fe32_0542bc120002.gcbffd2a_4218_31eb_fe32_0542bc121145',
       name: 'image link',
       description: '',
-      creator: CURRENT_USER.id,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      creator: CURRENT_USER,
+      createdAt: new Date(),
+      updatedAt: new Date(),
       type: ItemType.LINK,
       extra: buildEmbeddedLinkExtra({
         url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Antistatic_bag.jpg/220px-Antistatic_bag.jpg',
@@ -240,9 +240,9 @@ export const STATIC_ELECTRICITY: {
       path: 'fdf09f5a_5688_11eb_ae31_0242ac130003.gfbfed2a_4218_31eb_fe32_0542bc120002',
       name: 'Static Discharge: Lightning',
       description: '',
-      creator: CURRENT_USER.id,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      creator: CURRENT_USER,
+      createdAt: new Date(),
+      updatedAt: new Date(),
       type: ItemType.FOLDER,
       extra: {
         [ItemType.FOLDER]: {
@@ -260,9 +260,9 @@ export const STATIC_ELECTRICITY: {
       path: 'fdf09f5a_5688_11eb_ae31_0242ac130003.gfbfed2a_4218_31eb_fe32_0542bc120002.gfbfed2a_4218_31eb_fe32_0522bc120002',
       name: 'lightning image',
       description: '',
-      creator: CURRENT_USER.id,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      creator: CURRENT_USER,
+      createdAt: new Date(),
+      updatedAt: new Date(),
       type: ItemType.LOCAL_FILE,
       extra: buildFileExtra({
         name: 'icon.jpeg',
@@ -279,9 +279,9 @@ export const STATIC_ELECTRICITY: {
       path: 'fdf09f5a_5688_11eb_ae31_0242ac130003.gfbfed2a_4218_31eb_fe32_0542bc120002.gfbfed2a_4218_31eb_fe32_0522bc120065',
       name: 'lightning text',
       description: '',
-      creator: CURRENT_USER.id,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      creator: CURRENT_USER,
+      createdAt: new Date(),
+      updatedAt: new Date(),
       type: ItemType.DOCUMENT,
       extra: buildDocumentExtra({
         content:
@@ -294,9 +294,9 @@ export const STATIC_ELECTRICITY: {
       path: 'fdf09f5a_5688_11eb_ae31_0242ac130003.gfbfed2a_4218_31eb_fe32_0542bc120002.gfbfed2a_4218_31eb_fe32_0522bc120265',
       name: 'youtube link',
       description: '',
-      creator: CURRENT_USER.id,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      creator: CURRENT_USER,
+      createdAt: new Date(),
+      updatedAt: new Date(),
       type: ItemType.LINK,
       extra: buildEmbeddedLinkExtra({
         url: 'https://www.youtube.com/watch?v=9HS08L1EIjQ',
