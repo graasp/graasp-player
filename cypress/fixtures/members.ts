@@ -7,8 +7,8 @@ export const MEMBERS: { [key: string]: Member } = {
     email: 'anna@email.com',
     type: MemberType.Individual,
     extra: {},
-    createdAt: '2022-02-04T13:45:56Z',
-    updatedAt: '2022-02-04T13:45:56Z',
+    createdAt: new Date(Date.parse('2022-02-04T13:45:56Z')),
+    updatedAt: new Date(Date.parse('2022-02-04T13:45:56Z')),
   },
   BOB: {
     id: 'bob-id',
@@ -16,8 +16,8 @@ export const MEMBERS: { [key: string]: Member } = {
     email: 'bob@email.com',
     type: MemberType.Individual,
     extra: {},
-    createdAt: '2022-02-04T13:45:56Z',
-    updatedAt: '2022-02-04T13:45:56Z',
+    createdAt: new Date(Date.parse('2022-02-04T13:45:56Z')),
+    updatedAt: new Date(Date.parse('2022-02-04T13:45:56Z')),
   },
   CEDRIC: {
     id: 'cedric-id',
@@ -25,8 +25,8 @@ export const MEMBERS: { [key: string]: Member } = {
     email: 'cedric@email.com',
     type: MemberType.Individual,
     extra: {},
-    createdAt: '2022-02-04T13:45:56Z',
-    updatedAt: '2022-02-04T13:45:56Z',
+    createdAt: new Date(Date.parse('2022-02-04T13:45:56Z')),
+    updatedAt: new Date(Date.parse('2022-02-04T13:45:56Z')),
   },
 };
 

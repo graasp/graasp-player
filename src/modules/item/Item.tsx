@@ -115,7 +115,7 @@ const FileContent = ({ item }: FileContentProps) => {
   const { t: translateMessage } = useMessagesTranslation();
   // fetch file content if type is file
   const {
-    data: file,
+    data: fileUrl,
     isLoading: isFileContentLoading,
     isError: isFileError,
   } = useFileContentUrl(item.id);
@@ -140,7 +140,7 @@ const FileContent = ({ item }: FileContentProps) => {
     <FileItem
       id={buildFileId(item.id)}
       item={item}
-      fileUrl={file?.url}
+      fileUrl={fileUrl}
       maxHeight={SCREEN_MAX_HEIGHT}
       showCollapse={item.settings?.isCollapsible}
       pdfViewerLink={PDF_VIEWER_LINK}

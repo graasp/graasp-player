@@ -81,8 +81,8 @@ const CustomTreeItem = ({
       return LoadingTreeItem;
     }
     const filteredChildren = children?.filter(
-      (child, idx) =>
-        !isHidden(childrenTags?.get(idx)) &&
+      (child) =>
+        !isHidden(childrenTags?.data?.get(child.id)) &&
         GRAASP_MENU_ITEMS.includes(child.type),
     );
 

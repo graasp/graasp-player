@@ -16,8 +16,6 @@ export default defineConfig({
     API_HOST: process.env.VITE_GRAASP_API_HOST || 'http://localhost:3000',
     AUTHENTICATION_HOST:
       process.env.VITE_GRAASP_AUTH_HOST || 'http://localhost:3001',
-    HIDDEN_ITEM_TAG_ID: process.env.VITE_HIDDEN_ITEM_TAG_ID || 'hidden-tag-id',
-    PUBLIC_TAG_ID: process.env.VITE_PUBLIC_TAG_ID || 'public-tag-id',
   },
   e2e: {
     baseUrl: `http://localhost:${process.env.VITE_PORT || 3112}`,

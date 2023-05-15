@@ -1,4 +1,4 @@
-import { DiscriminatedItem, ItemType } from '@graasp/sdk';
+import { ItemTagType, ItemType } from '@graasp/sdk';
 
 import {
   GRAASP_DOCUMENT_ITEM_HIDDEN,
@@ -7,17 +7,8 @@ import {
   GRAASP_DOCUMENT_ITEM_VISIBLE,
 } from './documents';
 import { CURRENT_USER } from './members';
-
-const PUBLIC_TAG_ID = Cypress.env('PUBLIC_TAG_ID');
-
-export type MockItem = DiscriminatedItem & {
-  // for testing
-  filepath?: string;
-  // path to a fixture file in cypress
-  filefixture?: string;
-  memberships?: { memberId: string }[];
-  tags?: { tagId: string }[];
-};
+import { MockItem } from './mockTypes';
+import { mockItemTag } from './tags';
 
 export const DEFAULT_FOLDER_ITEM: MockItem = {
   description: '',
@@ -156,11 +147,7 @@ export const PUBLIC_FOLDER_WITH_PINNED_ITEMS: { items: MockItem[] } = {
         isPinned: false,
         showChatbox: false,
       },
-      tags: [
-        {
-          tagId: PUBLIC_TAG_ID,
-        },
-      ],
+      tags: [mockItemTag({ type: ItemTagType.PUBLIC })],
     },
     {
       ...DEFAULT_FOLDER_ITEM,
@@ -180,11 +167,7 @@ export const PUBLIC_FOLDER_WITH_PINNED_ITEMS: { items: MockItem[] } = {
           icons: [],
         },
       },
-      tags: [
-        {
-          tagId: PUBLIC_TAG_ID,
-        },
-      ],
+      tags: [mockItemTag({ type: ItemTagType.PUBLIC })],
     },
     {
       ...DEFAULT_FOLDER_ITEM,
@@ -195,11 +178,7 @@ export const PUBLIC_FOLDER_WITH_PINNED_ITEMS: { items: MockItem[] } = {
         isPinned: true,
         showChatbox: false,
       },
-      tags: [
-        {
-          tagId: PUBLIC_TAG_ID,
-        },
-      ],
+      tags: [mockItemTag({ type: ItemTagType.PUBLIC })],
     },
   ],
 };
@@ -218,6 +197,17 @@ export const FOLDER_WITH_HIDDEN_ITEMS: { items: MockItem[] } = {
     },
     GRAASP_DOCUMENT_ITEM_VISIBLE,
     GRAASP_DOCUMENT_ITEM_HIDDEN,
+    {
+      ...DEFAULT_FOLDER_ITEM,
+      id: 'ecafbd2a-5688-11eb-ae93-0242ac130012',
+      name: 'hidden folder',
+      path: 'ecafbd2a_5688_11eb_ae93_0242ac130008.ecafbd2a-5688-11eb-ae93-0242ac130012',
+      settings: {
+        isPinned: false,
+        showChatbox: false,
+      },
+      tags: [mockItemTag({ type: ItemTagType.HIDDEN })],
+    },
   ],
 };
 
@@ -235,11 +225,7 @@ export const PUBLIC_FOLDER_WITH_HIDDEN_ITEMS = {
         isPinned: false,
         showChatbox: false,
       },
-      tags: [
-        {
-          tagId: PUBLIC_TAG_ID,
-        },
-      ],
+      tags: [mockItemTag({ type: ItemTagType.PUBLIC })],
     },
     GRAASP_DOCUMENT_ITEM_PUBLIC_VISIBLE,
     GRAASP_DOCUMENT_ITEM_PUBLIC_HIDDEN,

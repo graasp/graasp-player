@@ -1,8 +1,11 @@
 import { API_ROUTES } from '@graasp/query-client';
 import {
   ChatMessage,
+  ItemTag,
+  ItemTagType,
   Member,
   PermissionLevel,
+  ResultOf,
   isChildOf,
   isDescendantOf,
 } from '@graasp/sdk';
@@ -15,8 +18,8 @@ import {
   buildAppItemLinkForTest,
   buildGetAppData,
 } from '../fixtures/apps';
-import { MockItem } from '../fixtures/items';
 import { MEMBERS } from '../fixtures/members';
+import { MockItem } from '../fixtures/mockTypes';
 import {
   DEFAULT_DELETE,
   DEFAULT_GET,
@@ -49,8 +52,6 @@ const {
 
 const API_HOST = Cypress.env('API_HOST');
 
-const PUBLIC_TAG_ID = Cypress.env('PUBLIC_TAG_ID');
-
 export const isError = (error?: { statusCode: number }): boolean =>
   Boolean(error?.statusCode);
 
@@ -66,7 +67,7 @@ const checkMemberHasAccess = ({
   const haveMembership =
     creator.id === member.id ||
     item.memberships?.find(({ memberId }) => memberId === member.id);
-  const isPublic = item?.tags?.find(({ tagId }) => tagId === PUBLIC_TAG_ID);
+  const isPublic = item?.tags?.find(({ type }) => type === ItemTagType.PUBLIC);
 
   if (haveMembership) {
     return undefined;
@@ -411,8 +412,8 @@ export const mockDefaultDownloadFile = (
 
       // either return the file url or the fixture data
       // info: we don't test fixture data anymore since the frontend uses url only
-      if (replyUrl) {
-        return reply({ url: item.filepath });
+      if (replyUrl && item.filepath) {
+        return reply(item.filepath);
       }
 
       return reply({ fixture: item.filefixture });
@@ -502,11 +503,22 @@ export const mockGetItemsTags = (items: MockItem[], member: Member): void => {
 
       const result = items
         .filter(({ id }) => ids.includes(id))
-        .map((item) => {
-          const error = checkMemberHasAccess({ item, member });
+        .reduce(
+          (acc, item) => {
+            const error = checkMemberHasAccess({ item, member });
 
-          return isError(error) ? error : item?.tags ?? [];
-        });
+            return isError(error)
+              ? { ...acc, error: [...acc.errors, error] }
+              : {
+                  ...acc,
+                  data: {
+                    ...acc.data,
+                    [item.id]: item.tags?.map((t) => ({ item, ...t })) ?? [],
+                  },
+                };
+          },
+          { data: {}, errors: [] } as ResultOf<ItemTag[]>,
+        );
       reply({
         statusCode: StatusCodes.OK,
         body: result,

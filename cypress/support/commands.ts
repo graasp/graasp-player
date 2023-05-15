@@ -1,9 +1,8 @@
 /// <reference types="cypress" />
 import { COOKIE_KEYS, ChatMessage, Member } from '@graasp/sdk';
 
-import { MockItem } from '@/../cypress/fixtures/items';
-
 import { CURRENT_USER, MEMBERS } from '../fixtures/members';
+import { MockItem } from '../fixtures/mockTypes';
 import {
   mockAppApiAccessToken,
   mockAuthPage,

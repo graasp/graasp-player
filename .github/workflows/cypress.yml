@@ -46,8 +46,6 @@ jobs:
           VITE_GRAASP_AUTH_HOST: http://localhost:3001
           VITE_GRAASP_BUILDER_HOST: http://localhost:3111
           VITE_SHOW_NOTIFICATIONS: false
-          VITE_HIDDEN_ITEM_TAG_ID: 'hidden-item-tag-id'
-          VITE_PUBLIC_TAG_ID: 'public-tag-id'
 
       # after the test run completes
       # store any screenshots

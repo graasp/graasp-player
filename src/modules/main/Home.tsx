@@ -41,12 +41,12 @@ const Home = (): JSX.Element => {
     useItemsTags(sharedItems?.map(({ id }) => id).toArray() || []);
 
   const filtred = ownItems?.filter(
-    (_item, idx) => !isLoadingOwnTags && !isHidden(ownItemsTags?.get(idx)),
+    (item) => !isLoadingOwnTags && !isHidden(ownItemsTags?.data?.get(item.id)),
   );
 
   const shared = sharedItems?.filter(
-    (_item, idx) =>
-      !isLoadingSharedTags && !isHidden(sharedItemsTags?.get(idx)),
+    (item) =>
+      !isLoadingSharedTags && !isHidden(sharedItemsTags?.data?.get(item.id)),
   );
 
   const renderContent = () => (

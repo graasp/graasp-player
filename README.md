@@ -15,9 +15,6 @@ VITE_GRAASP_LIBRARY_HOST=http://localhost:3005
 VITE_SENTRY_ENV=development
 VITE_H5P_INTEGRATION_URL=
 VITE_SHOW_NOTIFICATIONS=true
-# only used by the server for tests
-VITE_PUBLIC_TAG_ID=123456-123789
-VITE_HIDDEN_ITEM_TAG_ID=456789-123456
 ```
 
 4. Run `yarn start`. The client should be accessible at `localhost:3112`
@@ -33,8 +30,6 @@ VITE_GRAASP_AUTH_HOST=http://localhost:3001
 VITE_SENTRY_ENV=test
 VITE_H5P_INTEGRATION_URL=
 VITE_SHOW_NOTIFICATIONS=false
-VITE_PUBLIC_TAG_ID=123456-123789
-VITE_HIDDEN_ITEM_TAG_ID=456789-123456
 ```
 
 Run `yarn cypress`. This should run every tests headlessly.
