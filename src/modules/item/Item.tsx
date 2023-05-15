@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import { Alert, Box, Container, Skeleton, Typography } from '@mui/material';
 
 import { Api } from '@graasp/query-client';
 import { Context, DEFAULT_LANG, ItemType, PermissionLevel } from '@graasp/sdk';
+import { EtherpadItemTypeRecord } from '@graasp/sdk/frontend';
 import { FAILURE_MESSAGES, PLAYER } from '@graasp/translations';
 import {
   AppItem,
@@ -57,6 +58,52 @@ type Props = {
   isShortcutPinned?: boolean;
 };
 
+type EtherpadContentProps = {
+  item: EtherpadItemTypeRecord;
+};
+const EtherpadContent = ({ item }: EtherpadContentProps) => {
+  const { t: translateMessage } = useMessagesTranslation();
+  // get etherpad url if type is etherpad
+  const etherpadQuery = useEtherpad(item, 'read');
+
+  if (etherpadQuery?.isLoading) {
+    return (
+      <ItemSkeleton
+        itemType={item?.type ?? ItemType.FOLDER}
+        isChildren={false}
+        screenMaxHeight={SCREEN_MAX_HEIGHT}
+      />
+    );
+  }
+
+  if (etherpadQuery?.isError) {
+    return (
+      <Alert severity="error">
+        {translateMessage(FAILURE_MESSAGES.UNEXPECTED_ERROR)}
+      </Alert>
+    );
+  }
+  if (!etherpadQuery?.data?.padUrl) {
+    return (
+      <Alert severity="error">
+        {translateMessage(FAILURE_MESSAGES.UNEXPECTED_ERROR)}
+      </Alert>
+    );
+  }
+  return (
+    <EtherpadItem
+      itemId={item.id}
+      padUrl={etherpadQuery.data.padUrl}
+      options={{
+        showLineNumbers: false,
+        showControls: false,
+        showChat: false,
+        noColors: true,
+      }}
+    />
+  );
+};
+
 const Item = ({
   id = '',
   isChildren = false,
@@ -100,9 +147,6 @@ const Item = ({
     ),
   });
 
-  // get etherpad url if type is etherpad
-  const etherpadQuery = useEtherpad(item, 'read');
-
   const {
     data: childrenPaginated,
     isLoading: isChildrenPaginatedLoading,
@@ -133,7 +177,6 @@ const Item = ({
     isChildrenLoading ||
     isChildrenPaginatedLoading ||
     isFileContentLoading ||
-    etherpadQuery?.isLoading ||
     isLoadingMember
   ) {
     return (
@@ -165,7 +208,6 @@ const Item = ({
     isFileError ||
     isChildrenError ||
     isChildrenPaginatedError ||
-    etherpadQuery?.isError ||
     isErrorMember
   ) {
     return (
@@ -229,7 +271,7 @@ const Item = ({
               <TextEditor value={item.description} />
 
               {childrenPaginated?.pages.map((page) => (
-                <>
+                <Fragment key={page.pageNumber}>
                   {page.data.map((thisItem) => (
                     <Box
                       key={thisItem.id}
@@ -240,26 +282,22 @@ const Item = ({
                       <Item isChildren id={thisItem.id} />
                     </Box>
                   ))}
-                </>
+                </Fragment>
               ))}
               {showLoadMoreButton}
             </>
           )}
 
-          {showPinnedOnly && (
-            // eslint-disable-next-line react/jsx-no-useless-fragment
-            <>
-              {children
-                ?.filter(
-                  (i) => showPinnedOnly === (i.settings?.isPinned || false),
-                )
-                ?.map((thisItem) => (
-                  <Container key={thisItem.id}>
-                    <Item isChildren id={thisItem.id} />
-                  </Container>
-                ))}
-            </>
-          )}
+          {showPinnedOnly &&
+            children
+              ?.filter(
+                (i) => showPinnedOnly === (i.settings?.isPinned || false),
+              )
+              ?.map((thisItem) => (
+                <Container key={thisItem.id}>
+                  <Item isChildren id={thisItem.id} />
+                </Container>
+              ))}
         </>
       );
     }
@@ -336,7 +374,7 @@ const Item = ({
                 member?.extra?.lang ||
                 DEFAULT_LANG,
               permission: PermissionLevel.Read,
-              context: Context.PLAYER,
+              context: Context.Player,
               memberId: member?.id,
               itemId: item.id,
             }}
@@ -372,25 +410,7 @@ const Item = ({
     }
 
     case ItemType.ETHERPAD: {
-      if (!etherpadQuery?.data?.padUrl) {
-        return (
-          <Alert severity="error">
-            {translateMessage(FAILURE_MESSAGES.UNEXPECTED_ERROR)}
-          </Alert>
-        );
-      }
-      return (
-        <EtherpadItem
-          itemId={item.id}
-          padUrl={etherpadQuery.data.padUrl}
-          options={{
-            showLineNumbers: false,
-            showControls: false,
-            showChat: false,
-            noColors: true,
-          }}
-        />
-      );
+      return <EtherpadContent item={item} />;
     }
 
     case ItemType.SHORTCUT: {

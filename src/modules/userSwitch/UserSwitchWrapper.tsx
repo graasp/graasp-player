@@ -17,7 +17,7 @@ import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
 
 import MemberAvatar from './MemberAvatar';
 
-const { useSwitchMember, useSignOut } = mutations;
+const { useSignOut } = mutations;
 
 type Props = {
   ButtonContent?: JSX.Element;
@@ -30,7 +30,7 @@ const UserSwitchWrapper = ({ ButtonContent }: Props): JSX.Element => {
     isSuccess: isSuccessUser = false,
   } = useCurrentMemberContext();
   const { t: translateBuilder } = useBuilderTranslation();
-  const { mutateAsync: useSwitchMemberAsyncMutation } = useSwitchMember();
+  // const { mutateAsync: useSwitchMemberAsyncMutation } = useSwitchMember();
   const { mutate: useSignOutMutation } = useSignOut();
 
   return (
@@ -40,13 +40,13 @@ const UserSwitchWrapper = ({ ButtonContent }: Props): JSX.Element => {
       currentMember={member}
       isCurrentMemberLoading={isLoading}
       isCurrentMemberSuccess={isSuccessUser}
-      switchMember={useSwitchMemberAsyncMutation}
+      // switchMember={useSwitchMemberAsyncMutation}
       seeProfileText={translateBuilder(BUILDER.USER_SWITCH_PROFILE_BUTTON)}
       signedOutTooltipText={translateBuilder(
         BUILDER.USER_SWITCH_SIGNED_OUT_TOOLTIP,
       )}
       signOutText={translateBuilder(BUILDER.USER_SWITCH_SIGN_OUT_BUTTON)}
-      switchMemberText={translateBuilder(BUILDER.USER_SWITCH_SWITCH_USER_TEXT)}
+      // switchMemberText={translateBuilder(BUILDER.USER_SWITCH_SWITCH_USER_TEXT)}
       profilePath={MEMBER_PROFILE_PATH}
       domain={DOMAIN}
       redirectPath={SIGN_IN_PATH}

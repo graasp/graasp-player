@@ -22,10 +22,13 @@ export default ({ type, payload }: NotifierType): void => {
 
   // error notification
   if (payload?.error && message) {
-    toast.error(t(message) || t(FAILURE_MESSAGES.UNEXPECTED_ERROR));
+    const translatedMessage =
+      t(message) || t(FAILURE_MESSAGES.UNEXPECTED_ERROR);
+    toast.error(translatedMessage);
   }
   // success notification
   else if (message) {
-    toast.success(t(message) || t(SUCCESS_MESSAGES.DEFAULT_SUCCESS));
+    const translatedMessage = t(message) || t(SUCCESS_MESSAGES.DEFAULT_SUCCESS);
+    toast.success(translatedMessage);
   }
 };

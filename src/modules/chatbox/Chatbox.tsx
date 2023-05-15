@@ -1,5 +1,5 @@
 import GraaspChatbox from '@graasp/chatbox';
-import { ItemRecord, MemberRecord } from '@graasp/sdk/frontend';
+import { ItemRecord } from '@graasp/sdk/frontend';
 import { Loader } from '@graasp/ui';
 
 import { hooks, mutations } from '@/config/queryClient';
@@ -37,7 +37,7 @@ const Chatbox = ({ item }: Props): JSX.Element => {
     <GraaspChatbox
       id={ITEM_CHATBOX_ID}
       members={members}
-      currentMember={currentMember as MemberRecord}
+      currentMember={currentMember}
       chatId={item.id}
       messages={messages}
       sendMessageFunction={sendMessage}

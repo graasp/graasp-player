@@ -27,7 +27,7 @@ const ItemForbiddenScreen: FC = () => {
   return (
     <Main
       open={false}
-      context={Context.PLAYER}
+      context={Context.Player}
       headerLeftContent={<HeaderNavigation topItemName="" />}
       headerRightContent={<HeaderRightContent />}
     >
