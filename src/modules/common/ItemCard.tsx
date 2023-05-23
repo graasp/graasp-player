@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import { Stack } from '@mui/material';
 import Card from '@mui/material/Card';
@@ -10,21 +10,19 @@ import { ItemRecord } from '@graasp/sdk/frontend';
 import { ItemIcon } from '@graasp/ui';
 
 import { buildMainPath } from '../../config/paths';
+import { HIDDEN_STYLE } from './HiddenWrapper';
 
 type Props = {
   item: ItemRecord;
+  isHidden?: boolean;
 };
 
-const SimpleCard = ({ item }: Props): JSX.Element => {
-  const navigate = useNavigate();
-
-  const onClick = () => {
-    navigate(buildMainPath({ rootId: item.id }));
-  };
+const SimpleCard = ({ item, isHidden = false }: Props): JSX.Element => {
+  const link = buildMainPath({ rootId: item.id });
 
   return (
-    <Card>
-      <CardActionArea onClick={onClick}>
+    <Card style={isHidden ? HIDDEN_STYLE : undefined}>
+      <CardActionArea component={Link} to={link}>
         <CardContent>
           <Stack direction="row" alignItems="center">
             <ItemIcon

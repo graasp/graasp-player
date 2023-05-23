@@ -16,7 +16,8 @@ const {
   DOMAIN,
   // todo: improve types
   notifier: notifier as (e: unknown) => void,
-  enableWebsocket: true,
+  // todo: re-enable once websockets work in refactor
+  enableWebsocket: false,
   defaultQueryOptions: {
     keepPreviousData: true,
     // avoid refetching when same data are closely fetched

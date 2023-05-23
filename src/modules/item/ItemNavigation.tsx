@@ -23,16 +23,10 @@ const ItemNavigation = (): JSX.Element | null => {
     data: rootItem,
     isLoading: rootItemIsLoading,
     isError: rootItemIsError,
+    isSuccess,
   } = useItem(rootId);
-
-  const isFolder = Boolean(rootItem && rootItem.type === ItemType.FOLDER);
-  const {
-    data: children,
-    isLoading,
-    isError: childrenIsError,
-  } = useChildren(rootId, {
-    enabled: isFolder,
-    getUpdates: isFolder,
+  const { data: children } = useChildren(rootItem?.id, {
+    enabled: rootItem?.type === ItemType.FOLDER,
   });
 
   // display nothing when no item is defined
@@ -40,7 +34,7 @@ const ItemNavigation = (): JSX.Element | null => {
     return null;
   }
 
-  if (childrenIsError || rootItemIsError) {
+  if (rootItemIsError) {
     return (
       <Alert severity="error">
         {translateMessage(FAILURE_MESSAGES.UNEXPECTED_ERROR)}
@@ -48,26 +42,24 @@ const ItemNavigation = (): JSX.Element | null => {
     );
   }
 
-  return (
-    <MainMenu id={MAIN_MENU_ID}>
-      {/* todo: add styles to tree */}
-      <div style={{ height: 10 }} />
-      <DynamicTreeView
-        id={TREE_VIEW_ID}
-        rootLabel={rootItem?.name}
-        rootId={rootId}
-        rootType={rootItem?.type}
-        rootExtra={rootItem?.extra}
-        initialExpendedItems={[rootId]}
-        selectedId={focusedItemId}
-        onTreeItemSelect={(payload) => {
-          setFocusedItemId(payload);
-        }}
-        items={children}
-        isLoading={isLoading || rootItemIsLoading}
-      />
-    </MainMenu>
-  );
+  if (isSuccess)
+    return (
+      <MainMenu id={MAIN_MENU_ID}>
+        <div style={{ height: '15px' }} />
+        <DynamicTreeView
+          id={TREE_VIEW_ID}
+          header={rootItem.name}
+          items={children}
+          initialExpendedItems={[rootId]}
+          selectedId={focusedItemId}
+          onTreeItemSelect={(payload) => {
+            setFocusedItemId(payload);
+          }}
+          isLoading={rootItemIsLoading}
+        />
+      </MainMenu>
+    );
+  return null;
 };
 
 export default ItemNavigation;

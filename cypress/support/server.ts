@@ -1,10 +1,12 @@
 import { API_ROUTES } from '@graasp/query-client';
 import {
   ChatMessage,
+  DiscriminatedItem,
   ItemTag,
   ItemTagType,
   Member,
   PermissionLevel,
+  PermissionLevelCompare,
   ResultOf,
   isChildOf,
   isDescendantOf,
@@ -19,7 +21,7 @@ import {
   buildGetAppData,
 } from '../fixtures/apps';
 import { MEMBERS } from '../fixtures/members';
-import { MockItem } from '../fixtures/mockTypes';
+import { MockItem, MockItemTag } from '../fixtures/mockTypes';
 import {
   DEFAULT_DELETE,
   DEFAULT_GET,
@@ -57,23 +59,58 @@ export const isError = (error?: { statusCode: number }): boolean =>
 
 const checkMemberHasAccess = ({
   item,
+  items,
   member,
 }: {
   item: MockItem;
+  items: MockItem[];
   member: Member;
 }) => {
   // mock membership
-  const creator = item?.creator;
-  const haveMembership =
+  const { creator } = item;
+  const haveWriteMembership =
     creator.id === member.id ||
-    item.memberships?.find(({ memberId }) => memberId === member.id);
-  const isPublic = item?.tags?.find(({ type }) => type === ItemTagType.PUBLIC);
+    items.find(
+      (i) =>
+        item.path.startsWith(i.path) &&
+        i.memberships?.find(
+          ({ memberId, permission }) =>
+            memberId === member.id &&
+            PermissionLevelCompare.gte(permission, PermissionLevel.Write),
+        ),
+    );
+  const haveReadMembership =
+    items.find(
+      (i) =>
+        item.path.startsWith(i.path) &&
+        i.memberships?.find(
+          ({ memberId, permission }) =>
+            memberId === member.id &&
+            PermissionLevelCompare.lt(permission, PermissionLevel.Write),
+        ),
+    ) ?? false;
 
-  if (haveMembership) {
+  const isHidden =
+    items.find(
+      (i) =>
+        item.path.startsWith(i.path) &&
+        i?.tags?.find(({ type }) => type === ItemTagType.HIDDEN),
+    ) ?? false;
+  const isPublic =
+    items.find(
+      (i) =>
+        item.path.startsWith(i.path) &&
+        i?.tags?.find(({ type }) => type === ItemTagType.PUBLIC),
+    ) ?? false;
+  // user is more than a reader so he can access the item
+  if (isHidden && haveWriteMembership) {
     return undefined;
   }
-  // check if item is public in which case return
-  if (isPublic) {
+  if (!isHidden && (haveWriteMembership || haveReadMembership)) {
+    return undefined;
+  }
+  // item is public and not hidden
+  if (!isHidden && isPublic) {
     return undefined;
   }
   return { statusCode: StatusCodes.FORBIDDEN };
@@ -152,7 +189,11 @@ export const mockGetItem = (
         });
       }
 
-      const error = checkMemberHasAccess({ item, member: currentMember });
+      const error = checkMemberHasAccess({
+        item,
+        items,
+        member: currentMember,
+      });
       if (isError(error)) {
         return reply(error);
       }
@@ -286,12 +327,14 @@ export const mockGetChildren = (items: MockItem[], member: Member): void => {
         });
       }
 
-      const error = checkMemberHasAccess({ item, member });
+      const error = checkMemberHasAccess({ item, items, member });
       if (isError(error)) {
         return reply(error);
       }
-      const children = items.filter((newItem) =>
-        isChildOf(newItem.path, item.path),
+      const children = items.filter(
+        (newItem) =>
+          isChildOf(newItem.path, item.path) &&
+          checkMemberHasAccess({ item: newItem, items, member }) === undefined,
       );
       return reply(children);
     },
@@ -315,12 +358,14 @@ export const mockGetDescendants = (items: MockItem[], member: Member): void => {
         });
       }
 
-      const error = checkMemberHasAccess({ item, member });
+      const error = checkMemberHasAccess({ item, items, member });
       if (isError(error)) {
         return reply(error);
       }
-      const descendants = items.filter((newItem) =>
-        isDescendantOf(newItem.path, item.path),
+      const descendants = items.filter(
+        (newItem) =>
+          isDescendantOf(newItem.path, item.path) &&
+          checkMemberHasAccess({ item: newItem, items, member }) === undefined,
       );
       return reply(descendants);
     },
@@ -405,7 +450,11 @@ export const mockDefaultDownloadFile = (
         });
       }
 
-      const error = checkMemberHasAccess({ item, member: currentMember });
+      const error = checkMemberHasAccess({
+        item,
+        items,
+        member: currentMember,
+      });
       if (isError(error)) {
         return reply(error);
       }
@@ -481,12 +530,23 @@ export const mockGetItemTags = (items: MockItem[], member: Member): void => {
         });
       }
 
-      const error = checkMemberHasAccess({ item, member });
+      const error = checkMemberHasAccess({ item, items, member });
       if (isError(error)) {
         return reply(error);
       }
 
-      const result = item?.tags || [];
+      const itemTags = items
+        .filter((i) => item.path.startsWith(i.path) && Boolean(i.tags))
+        .map(
+          (i) =>
+            i.tags?.map((t) => ({
+              ...t,
+              item: i as DiscriminatedItem,
+            })) as ItemTag[],
+        );
+      const result =
+        itemTags.reduce<MockItemTag[]>((acc, tags) => [...acc, ...tags], []) ||
+        [];
       return reply(result);
     },
   ).as('getItemTags');
@@ -505,7 +565,7 @@ export const mockGetItemsTags = (items: MockItem[], member: Member): void => {
         .filter(({ id }) => ids.includes(id))
         .reduce(
           (acc, item) => {
-            const error = checkMemberHasAccess({ item, member });
+            const error = checkMemberHasAccess({ item, items, member });
 
             return isError(error)
               ? { ...acc, error: [...acc.errors, error] }

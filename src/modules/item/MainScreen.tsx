@@ -52,7 +52,7 @@ const MainScreen = (): JSX.Element => {
     <Main
       open={Boolean(rootId)}
       context={Context.Player}
-      sidebar={rootId ? <ItemNavigation /> : undefined}
+      sidebar={<ItemNavigation />}
       headerLeftContent={
         <HeaderNavigation rootId={rootId} topItemName={topItemName} />
       }

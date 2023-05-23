@@ -22,7 +22,7 @@ import {
 import { getParentsIdsFromPath } from '../../utils/item';
 import SideDrawer from './SideDrawer';
 
-const StyledMain = styled('main', {
+const StyledMain = styled('div', {
   shouldForwardProp: (propName) => propName !== 'isShifted',
 })<{ isShifted: boolean }>(({ theme, isShifted }) => {
   const contentShift = isShifted

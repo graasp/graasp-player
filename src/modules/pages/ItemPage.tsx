@@ -5,18 +5,18 @@ import { ItemLoginAuthorization } from '@graasp/ui';
 import { HOME_PATH } from '@/config/paths';
 import { hooks, mutations } from '@/config/queryClient';
 import { ItemContextProvider } from '@/contexts/ItemContext';
-import CookiesBanner from '@/modules/cookies/CookiesBanner';
+import PlayerCookiesBanner from '@/modules/cookies/PlayerCookiesBanner';
 
-import ItemForbiddenScreen from './ItemForbiddenScreen';
-import MainScreen from './MainScreen';
+import ItemForbiddenScreen from '../item/ItemForbiddenScreen';
+import MainScreen from '../item/MainScreen';
 
 const { useItem, useItemLoginSchemaType, useCurrentMember } = hooks;
 
 const ItemScreenWrapper = (rootId: string) => {
   const ItemScreen = (): JSX.Element => (
     <ItemContextProvider rootId={rootId}>
-      <CookiesBanner />
       <MainScreen />
+      <PlayerCookiesBanner />
     </ItemContextProvider>
   );
 
@@ -25,7 +25,7 @@ const ItemScreenWrapper = (rootId: string) => {
 
 const { usePostItemLogin, useSignOut } = mutations;
 
-const WrappedItemScreen = (): JSX.Element => {
+const ItemPage = (): JSX.Element => {
   const { mutate: signOut } = useSignOut();
   const { mutate: itemLoginSignIn } = usePostItemLogin();
   const { rootId } = useParams();
@@ -58,4 +58,4 @@ const WrappedItemScreen = (): JSX.Element => {
   return <Component />;
 };
 
-export default WrappedItemScreen;
+export default ItemPage;

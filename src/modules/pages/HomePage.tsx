@@ -1,18 +1,16 @@
 import { useNavigate } from 'react-router';
 
-import { Box, Divider, styled } from '@mui/material';
+import { Divider, Skeleton, Stack, styled } from '@mui/material';
 
-import { COOKIE_KEYS, Context } from '@graasp/sdk';
+import { Context } from '@graasp/sdk';
 import { COMMON } from '@graasp/translations';
-import { CookiesBanner, Loader, Main, MainMenu } from '@graasp/ui';
+import { Main, MainMenu } from '@graasp/ui';
 
-import { List } from 'immutable';
-
-import { DOMAIN } from '@/config/env';
 import { useCommonTranslation } from '@/config/i18n';
 import { buildMainPath } from '@/config/paths';
 import { hooks } from '@/config/queryClient';
 import { MY_ITEMS_ID, SHARED_ITEMS_ID } from '@/config/selectors';
+import PlayerCookiesBanner from '@/modules/cookies/PlayerCookiesBanner';
 import HeaderNavigation from '@/modules/header/HeaderNavigation';
 import HeaderRightContent from '@/modules/header/HeaderRightContent';
 import ItemGrid from '@/modules/main/ItemGrid';
@@ -25,51 +23,43 @@ const StyledDivider = styled(Divider)(({ theme }) => ({
 
 const { useOwnItems, useSharedItems, useItemsTags } = hooks;
 
-const Home = (): JSX.Element => {
+const HomePage = (): JSX.Element => {
   const { t } = useCommonTranslation();
   const navigate = useNavigate();
 
   const { data: ownItems, isLoading: isLoadingOwnItems } = useOwnItems();
-  // todo: change in query-client to not query when list of ids is undefined
-  const { data: ownItemsTags, isLoading: isLoadingOwnTags } = useItemsTags(
-    ownItems?.map(({ id }) => id).toArray() || [],
-  );
+
   const { data: sharedItems, isLoading: isLoadingSharedItems } =
     useSharedItems();
-  // todo: change in query-client to not query when list of ids is undefined
   const { data: sharedItemsTags, isLoading: isLoadingSharedTags } =
-    useItemsTags(sharedItems?.map(({ id }) => id).toArray() || []);
-
-  const filtred = ownItems?.filter(
-    (item) => !isLoadingOwnTags && !isHidden(ownItemsTags?.data?.get(item.id)),
-  );
+    useItemsTags(sharedItems?.map(({ id }) => id).toArray());
 
   const shared = sharedItems?.filter(
     (item) =>
-      !isLoadingSharedTags && !isHidden(sharedItemsTags?.data?.get(item.id)),
+      !isLoadingSharedTags &&
+      !isHidden(item, sharedItemsTags?.data?.get(item.id)),
   );
 
   const renderContent = () => (
-    <Box margin={2} alignItems="center">
+    <Stack m={2} divider={<StyledDivider variant="middle" flexItem />}>
       <ItemGrid
         title={t(COMMON.USER_OWN_ITEMS)}
         isLoading={isLoadingOwnItems}
-        items={filtred}
+        items={ownItems}
       />
-      <StyledDivider />
       <ItemGrid
         title={t(COMMON.USER_SHARED_WITH_ITEMS)}
         isLoading={isLoadingSharedItems}
-        items={shared}
+        items={sharedItems}
       />
-    </Box>
+    </Stack>
   );
 
   const renderOwnItemsMenu = () => {
     const rootOwnId = 'own';
 
     if (isLoadingOwnItems) {
-      return <Loader />;
+      return <Skeleton />;
     }
 
     if (!ownItems?.size) {
@@ -80,16 +70,15 @@ const Home = (): JSX.Element => {
       <MainMenu>
         <DynamicTreeView
           id={MY_ITEMS_ID}
-          rootLabel={t(COMMON.USER_OWN_ITEMS)}
-          rootId={rootOwnId}
-          initialExpendedItems={[rootOwnId]}
+          header={t(COMMON.USER_OWN_ITEMS)}
+          items={ownItems}
           onTreeItemSelect={(payload) => {
             if (payload !== rootOwnId) {
               navigate(buildMainPath({ rootId: payload }));
             }
           }}
-          items={filtred || List()}
           selectedId=""
+          onlyShowContainerItems
         />
       </MainMenu>
     );
@@ -99,7 +88,7 @@ const Home = (): JSX.Element => {
     const rootSharedId = 'shared';
 
     if (isLoadingSharedItems) {
-      return <Loader />;
+      return <Skeleton />;
     }
 
     if (!shared?.size) {
@@ -110,46 +99,40 @@ const Home = (): JSX.Element => {
       <MainMenu>
         <DynamicTreeView
           id={SHARED_ITEMS_ID}
-          rootLabel={t(COMMON.USER_SHARED_WITH_ITEMS)}
-          rootId={rootSharedId}
+          header={t(COMMON.USER_SHARED_WITH_ITEMS)}
+          items={shared}
           initialExpendedItems={[]}
           onTreeItemSelect={(payload) => {
             if (payload !== rootSharedId) {
               navigate(buildMainPath({ rootId: payload }));
             }
           }}
-          items={shared}
+          onlyShowContainerItems
         />
       </MainMenu>
     );
   };
 
-  const sidebar = (
-    <>
-      <div style={{ height: '15px' }} />
-      {renderOwnItemsMenu()}
-      {renderSharedItemsMenu()}
-    </>
-  );
-
   return (
     <Main
       open
       context={Context.Player}
-      sidebar={sidebar}
+      sidebar={
+        <>
+          <div style={{ height: '15px' }} />
+          <Stack divider={<Divider variant="middle" flexItem />}>
+            {renderOwnItemsMenu()}
+            {renderSharedItemsMenu()}
+          </Stack>
+        </>
+      }
       headerLeftContent={<HeaderNavigation />}
       headerRightContent={<HeaderRightContent />}
     >
-      <CookiesBanner
-        acceptText={t(COMMON.COOKIE_BANNER_ACCEPT_BUTTON)}
-        declineButtonText={t(COMMON.COOKIE_BANNER_DECLINE_BUTTON)}
-        cookieName={COOKIE_KEYS.ACCEPT_COOKIES_KEY}
-        text={t(COMMON.COOKIE_BANNER_TEXT)}
-        domain={DOMAIN}
-      />
       {renderContent()}
+      <PlayerCookiesBanner />
     </Main>
   );
 };
 
-export default Home;
+export default HomePage;

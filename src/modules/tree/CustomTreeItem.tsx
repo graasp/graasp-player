@@ -14,11 +14,12 @@ import { hooks } from '@/config/queryClient';
 import { buildTreeItemClass } from '@/config/selectors';
 import { isHidden } from '@/utils/item';
 
+import HiddenWrapper from '../common/HiddenWrapper';
 import CustomContentTree from './CustomContentTree';
 import CustomLabel from './CustomLabel';
 import CustomTreeShortcutItem from './CustomTreeShortcutItem';
 
-const { useItem, useItemTags, useItemsTags, useChildren } = hooks;
+const { useItem, useItemTags, useChildren } = hooks;
 
 const LoadingTreeItem = <Skeleton variant="text" />;
 
@@ -44,19 +45,14 @@ const CustomTreeItem = ({
 
   const { data: item, isLoading, isError } = useItem(itemId);
   const { data: tags, isLoading: isTagLoading } = useItemTags(itemId);
-  const showItem =
-    item && (!tags || tags.isEmpty() || (tags && !isHidden(tags)));
+
   const { data: children, isLoading: childrenIsLoading } = useChildren(itemId, {
     enabled: Boolean(
       item &&
-        showItem &&
         item.type === ItemType.FOLDER &&
         itemProp.type === ItemType.FOLDER,
     ),
   });
-  const { data: childrenTags, isLoading: isChildrenTagsLoading } = useItemsTags(
-    children?.map((child) => child.id).toJS() || [],
-  );
 
   if (isLoading || isTagLoading) {
     return (
@@ -68,22 +64,16 @@ const CustomTreeItem = ({
       />
     );
   }
-  if (!showItem || !item || isError) {
-    return null;
-  }
-
-  if (item.type !== ItemType.FOLDER) {
+  if (!item || isError) {
     return null;
   }
 
   const renderChildrenItems = () => {
-    if (childrenIsLoading || isChildrenTagsLoading) {
+    if (childrenIsLoading) {
       return LoadingTreeItem;
     }
-    const filteredChildren = children?.filter(
-      (child) =>
-        !isHidden(childrenTags?.data?.get(child.id)) &&
-        GRAASP_MENU_ITEMS.includes(child.type),
+    const filteredChildren = children?.filter((child) =>
+      GRAASP_MENU_ITEMS.includes(child.type),
     );
 
     if (!filteredChildren?.size) {
@@ -113,15 +103,20 @@ const CustomTreeItem = ({
 
   // recursive display of children
   return (
-    <TreeItem
-      ContentComponent={CustomContentTree}
-      key={itemId}
-      nodeId={itemId}
-      label={content}
-      className={buildTreeItemClass(itemId)}
+    <HiddenWrapper
+      itemId={itemId}
+      hidden={isHidden(item, tags, { exactPath: false })}
     >
-      {renderChildrenItems()}
-    </TreeItem>
+      <TreeItem
+        ContentComponent={CustomContentTree}
+        key={itemId}
+        nodeId={itemId}
+        label={content}
+        className={buildTreeItemClass(itemId)}
+      >
+        {renderChildrenItems()}
+      </TreeItem>
+    </HiddenWrapper>
   );
 };
 

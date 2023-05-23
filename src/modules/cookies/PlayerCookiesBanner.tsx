@@ -5,7 +5,7 @@ import { CookiesBanner } from '@graasp/ui';
 import { DOMAIN } from '@/config/env';
 import { useCommonTranslation } from '@/config/i18n';
 
-const CookiesBannerComponent = (): JSX.Element => {
+const PlayerCookiesBanner = (): JSX.Element => {
   const { t } = useCommonTranslation();
 
   return (
@@ -19,4 +19,4 @@ const CookiesBannerComponent = (): JSX.Element => {
   );
 };
 
-export default CookiesBannerComponent;
+export default PlayerCookiesBanner;

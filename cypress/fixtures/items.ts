@@ -1,4 +1,4 @@
-import { ItemTagType, ItemType } from '@graasp/sdk';
+import { ItemTagType, ItemType, PermissionLevel } from '@graasp/sdk';
 
 import {
   GRAASP_DOCUMENT_ITEM_HIDDEN,
@@ -6,7 +6,7 @@ import {
   GRAASP_DOCUMENT_ITEM_PUBLIC_VISIBLE,
   GRAASP_DOCUMENT_ITEM_VISIBLE,
 } from './documents';
-import { CURRENT_USER } from './members';
+import { CURRENT_USER, MEMBERS } from './members';
 import { MockItem } from './mockTypes';
 import { mockItemTag } from './tags';
 
@@ -28,6 +28,7 @@ export const DEFAULT_FOLDER_ITEM: MockItem = {
     isPinned: false,
     showChatbox: false,
   },
+  memberships: [{ memberId: MEMBERS.BOB.id, permission: PermissionLevel.Read }],
 };
 
 export const ITEM_WITH_CHAT_BOX: MockItem = {
@@ -211,16 +212,13 @@ export const FOLDER_WITH_HIDDEN_ITEMS: { items: MockItem[] } = {
   ],
 };
 
-export const PUBLIC_FOLDER_WITH_HIDDEN_ITEMS = {
+export const PUBLIC_FOLDER_WITH_HIDDEN_ITEMS: { items: MockItem[] } = {
   items: [
     {
       ...DEFAULT_FOLDER_ITEM,
       id: 'ecafbd2a-5688-11eb-ae93-0242ac130008',
       name: 'public parent folder with hidden child',
       path: 'ecafbd2a_5688_11eb_ae93_0242ac130008',
-      extra: {
-        image: 'someimageurl',
-      },
       settings: {
         isPinned: false,
         showChatbox: false,

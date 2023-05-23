@@ -2,10 +2,11 @@ import {
   DocumentItemType,
   ItemTagType,
   ItemType,
+  PermissionLevel,
   buildDocumentExtra,
 } from '@graasp/sdk';
 
-import { CURRENT_USER } from './members';
+import { CURRENT_USER, MEMBERS } from './members';
 import { MockItem } from './mockTypes';
 import { mockItemTag } from './tags';
 
@@ -62,6 +63,7 @@ export const GRAASP_DOCUMENT_ITEM_HIDDEN: MockItem = {
     showChatbox: false,
   },
   tags: [mockItemTag({ type: ItemTagType.HIDDEN })],
+  memberships: [{ memberId: MEMBERS.BOB.id, permission: PermissionLevel.Read }],
 };
 
 export const GRAASP_DOCUMENT_ITEM_PUBLIC_VISIBLE: MockItem = {

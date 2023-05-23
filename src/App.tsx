@@ -8,8 +8,8 @@ import { SIGN_IN_PATH } from '@/config/constants';
 import { DOMAIN } from '@/config/env';
 import { HOME_PATH, buildMainPath } from '@/config/paths';
 import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
-import ItemScreen from '@/modules/item/ItemScreen';
-import Home from '@/modules/main/Home';
+import HomePage from '@/modules/pages/HomePage';
+import ItemPage from '@/modules/pages/ItemPage';
 
 export const App = (): JSX.Element => {
   const { pathname } = useLocation();
@@ -27,12 +27,12 @@ export const App = (): JSX.Element => {
       saveUrlForRedirection(pathname, DOMAIN);
     },
   };
-  const HomeWithAuthorization = withAuthorization(Home, props);
+  const HomePageWithAuthorization = withAuthorization(HomePage, props);
 
   return (
     <Routes>
-      <Route path={buildMainPath()} element={<ItemScreen />} />
-      <Route path={HOME_PATH} element={<HomeWithAuthorization />} />
+      <Route path={buildMainPath()} element={<ItemPage />} />
+      <Route path={HOME_PATH} element={<HomePageWithAuthorization />} />
       <Route element={<Navigate to={HOME_PATH} />} />
     </Routes>
   );
