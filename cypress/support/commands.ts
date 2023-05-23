@@ -21,6 +21,8 @@ import {
   mockGetLoginSchemaType,
   mockGetMemberBy,
   mockGetMembers,
+  mockGetOwnItems,
+  mockGetSharedItems,
   mockPatchAppData,
   mockPostAppData,
   mockProfilePage,
@@ -41,8 +43,10 @@ Cypress.Commands.add(
   } = {}) => {
     if (currentMember) {
       cy.setCookie(COOKIE_KEYS.SESSION_KEY, 'somecookie');
+      cy.setCookie(COOKIE_KEYS.ACCEPT_COOKIES_KEY, 'true');
     }
-
+    mockGetOwnItems({ items, currentMember });
+    mockGetSharedItems({ items, currentMember });
     mockGetItem(
       { items, currentMember },
       getItemError || getCurrentMemberError,

@@ -2,6 +2,8 @@ import { Platform } from '@graasp/ui';
 
 export const MAIN_MENU_ID = 'mainMenu';
 export const TREE_VIEW_ID = 'treeView';
+export const SHOW_MORE_ITEMS_ID = 'showMoreItems';
+export const HOME_NAVIGATION_STACK_ID = 'homeNavigation';
 export const SHARED_ITEMS_ID = 'sharedItems';
 export const MY_ITEMS_ID = 'myItems';
 export const buildFileId = (id: string): string => `file-${id}`;

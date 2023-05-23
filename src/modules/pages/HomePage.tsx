@@ -9,7 +9,11 @@ import { Main, MainMenu } from '@graasp/ui';
 import { useCommonTranslation } from '@/config/i18n';
 import { buildMainPath } from '@/config/paths';
 import { hooks } from '@/config/queryClient';
-import { MY_ITEMS_ID, SHARED_ITEMS_ID } from '@/config/selectors';
+import {
+  HOME_NAVIGATION_STACK_ID,
+  MY_ITEMS_ID,
+  SHARED_ITEMS_ID,
+} from '@/config/selectors';
 import PlayerCookiesBanner from '@/modules/cookies/PlayerCookiesBanner';
 import HeaderNavigation from '@/modules/header/HeaderNavigation';
 import HeaderRightContent from '@/modules/header/HeaderRightContent';
@@ -77,7 +81,6 @@ const HomePage = (): JSX.Element => {
               navigate(buildMainPath({ rootId: payload }));
             }
           }}
-          selectedId=""
           onlyShowContainerItems
         />
       </MainMenu>
@@ -120,7 +123,10 @@ const HomePage = (): JSX.Element => {
       sidebar={
         <>
           <div style={{ height: '15px' }} />
-          <Stack divider={<Divider variant="middle" flexItem />}>
+          <Stack
+            id={HOME_NAVIGATION_STACK_ID}
+            divider={<Divider variant="middle" flexItem />}
+          >
             {renderOwnItemsMenu()}
             {renderSharedItemsMenu()}
           </Stack>

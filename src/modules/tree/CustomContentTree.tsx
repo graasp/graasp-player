@@ -64,7 +64,9 @@ const CustomContentTree = React.forwardRef(
 
     const handleSelectionClick = (event: MouseEvent) => {
       // this handles the auto expansion of an item on click to show children
-      if (!expanded) handleExpansion(event);
+      if (!expanded) {
+        handleExpansion(event);
+      }
       handleSelection(event);
     };
 

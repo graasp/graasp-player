@@ -10,6 +10,7 @@ import {
   ResultOf,
   isChildOf,
   isDescendantOf,
+  isRootItem,
 } from '@graasp/sdk';
 
 import { StatusCodes } from 'http-status-codes';
@@ -49,6 +50,7 @@ const {
   buildGetMembersRoute,
   GET_CURRENT_MEMBER_ROUTE,
   GET_OWN_ITEMS_ROUTE,
+  SHARED_ITEM_WITH_ROUTE,
   SIGN_OUT_ROUTE,
 } = API_ROUTES;
 
@@ -147,6 +149,32 @@ export const mockGetOwnItems = ({
       return reply(own);
     },
   ).as('getOwnItems');
+};
+
+export const mockGetSharedItems = ({
+  items,
+  currentMember,
+}: {
+  items: MockItem[];
+  currentMember: Member;
+}): void => {
+  cy.intercept(
+    {
+      method: DEFAULT_GET.method,
+      url: `${API_HOST}/${SHARED_ITEM_WITH_ROUTE}`,
+    },
+    ({ reply }) => {
+      if (!currentMember) {
+        return reply({ statusCode: StatusCodes.UNAUTHORIZED, body: null });
+      }
+      const shared = items.filter(
+        ({ memberships, path }) =>
+          memberships?.find((m) => m.memberId === currentMember.id) &&
+          isRootItem({ path }),
+      );
+      return reply(shared);
+    },
+  ).as('getSharedItems');
 };
 
 export const mockGetCurrentMember = (

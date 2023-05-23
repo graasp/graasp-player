@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { TreeItem } from '@mui/lab';
 import TreeView from '@mui/lab/TreeView';
-import { Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
 
 import { ItemRecord } from '@graasp/sdk/frontend';
@@ -12,15 +11,15 @@ import { ItemRecord } from '@graasp/sdk/frontend';
 import { List } from 'immutable';
 
 import { GRAASP_MENU_ITEMS } from '@/config/constants';
+import { SHOW_MORE_ITEMS_ID } from '@/config/selectors';
 
 import CustomTreeItem from './CustomTreeItem';
 
-const MAX_NUM_ITEMS = 5;
-const SHOW_MORE_NODE = 'show-more';
+const MAX_NUM_ITEMS = 10;
 
 type Props = {
   id: string;
-  header: string;
+  header?: string;
   items?: List<ItemRecord>;
   initialExpendedItems?: string[];
   selectedId?: string;
@@ -57,11 +56,7 @@ const DynamicTreeView = ({
 
   // types based on TreeView types
   const onSelect = (_event: unknown, value: string) => {
-    if (value === SHOW_MORE_NODE) {
-      setShowAll(true);
-    } else {
-      onTreeItemSelect?.(value);
-    }
+    onTreeItemSelect?.(value);
   };
 
   // types based on TreeView types
@@ -82,12 +77,13 @@ const DynamicTreeView = ({
   );
 
   return (
-    <>
-      <Typography sx={{ ml: 2 }} variant="body1">
-        {header}
-      </Typography>
+    <Box id={id}>
+      {header && (
+        <Typography sx={{ ml: 2 }} variant="body1">
+          {header}
+        </Typography>
+      )}
       <TreeView
-        id={id}
         onNodeSelect={onSelect}
         onNodeToggle={onToggle}
         expanded={expandedItems}
@@ -103,15 +99,18 @@ const DynamicTreeView = ({
             itemProp={item}
           />
         ))}
-        {shownItems && itemsToShow && shownItems?.size < itemsToShow?.size && (
-          <TreeItem
-            sx={{ opacity: 0.5 }}
-            label="Show More..."
-            nodeId={SHOW_MORE_NODE}
-          />
-        )}
       </TreeView>
-    </>
+      {shownItems && itemsToShow && shownItems?.size < itemsToShow?.size && (
+        <Button
+          id={SHOW_MORE_ITEMS_ID}
+          sx={{ ml: 2 }}
+          onClick={() => setShowAll(true)}
+          size="small"
+        >
+          Show More...
+        </Button>
+      )}
+    </Box>
   );
 };
 
