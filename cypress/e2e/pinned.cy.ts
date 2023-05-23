@@ -62,7 +62,7 @@ describe('Pinned Items', () => {
       const parent = FOLDER_WITH_SUBFOLDER_ITEM.items[2];
       cy.visit(buildMainPath({ rootId: parent.id }));
 
-      cy.wait(['@getChildren', '@getItemTags']);
+      cy.wait(['@getChildren']);
       cy.get(`#${ITEM_PINNED_BUTTON_ID}`).should('not.exist');
       cy.get(`#${ITEM_PINNED_ID}`).should('not.exist');
     });
