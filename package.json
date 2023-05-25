@@ -31,7 +31,7 @@
     "@emotion/styled": "11.10.6",
     "@graasp/chatbox": "github:graasp/graasp-chatbox#typeorm",
     "@graasp/query-client": "github:graasp/graasp-query-client#typeorm",
-    "@graasp/sdk": "github:graasp/graasp-sdk#typeorm",
+    "@graasp/sdk": "github:graasp/graasp-sdk",
     "@graasp/translations": "1.13.0",
     "@graasp/ui": "github:graasp/graasp-ui#typeorm",
     "@mui/icons-material": "5.11.9",
@@ -92,7 +92,7 @@
     "vite-plugin-istanbul": "4.0.1"
   },
   "resolutions": {
-    "@graasp/sdk": "github:graasp/graasp-sdk#typeorm",
+    "@graasp/sdk": "github:graasp/graasp-sdk",
     "@graasp/query-client": "github:graasp/graasp-query-client#typeorm",
     "@graasp/ui": "github:graasp/graasp-ui#typeorm",
     "immutable": "4.3.0"

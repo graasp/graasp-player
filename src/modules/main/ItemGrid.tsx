@@ -41,7 +41,7 @@ const ItemGrid = ({ isLoading, items, title }: Props): JSX.Element | null => {
               isHidden={Boolean(
                 itemsTags?.data
                   .get(item.id)
-                  .find(({ type }) => type === ItemTagType.HIDDEN),
+                  .find(({ type }) => type === ItemTagType.Hidden),
               )}
             />
           </Grid>

@@ -89,7 +89,7 @@ export const isHidden = (
     return false;
   }
   if (isList(tags)) {
-    const hiddenTags = tags?.filter(({ type }) => type === ItemTagType.HIDDEN);
+    const hiddenTags = tags?.filter(({ type }) => type === ItemTagType.Hidden);
     if (option?.exactPath) {
       return hiddenTags?.some((t) => item.path === t.item.path);
     }
