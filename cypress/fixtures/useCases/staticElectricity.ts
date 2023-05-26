@@ -315,7 +315,7 @@ PUBLIC_STATIC_ELECTRICITY.items = PUBLIC_STATIC_ELECTRICITY.items.map(
   (item) => {
     const newItem = {
       ...item,
-      tags: [...(item?.tags ?? []), mockItemTag({ type: ItemTagType.PUBLIC })],
+      tags: [...(item?.tags ?? []), mockItemTag({ type: ItemTagType.Public })],
     };
     return newItem;
   },

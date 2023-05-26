@@ -165,7 +165,7 @@ export const PUBLIC_FOLDER_WITH_PINNED_ITEMS: { items: MockItem[] } = {
         isPinned: false,
         showChatbox: false,
       },
-      tags: [mockItemTag({ type: ItemTagType.PUBLIC })],
+      tags: [mockItemTag({ type: ItemTagType.Public })],
     },
     {
       ...DEFAULT_FOLDER_ITEM,
@@ -185,7 +185,7 @@ export const PUBLIC_FOLDER_WITH_PINNED_ITEMS: { items: MockItem[] } = {
           icons: [],
         },
       },
-      tags: [mockItemTag({ type: ItemTagType.PUBLIC })],
+      tags: [mockItemTag({ type: ItemTagType.Public })],
     },
     {
       ...DEFAULT_FOLDER_ITEM,
@@ -196,7 +196,7 @@ export const PUBLIC_FOLDER_WITH_PINNED_ITEMS: { items: MockItem[] } = {
         isPinned: true,
         showChatbox: false,
       },
-      tags: [mockItemTag({ type: ItemTagType.PUBLIC })],
+      tags: [mockItemTag({ type: ItemTagType.Public })],
     },
   ],
 };
@@ -224,7 +224,7 @@ export const FOLDER_WITH_HIDDEN_ITEMS: { items: MockItem[] } = {
         isPinned: false,
         showChatbox: false,
       },
-      tags: [mockItemTag({ type: ItemTagType.HIDDEN })],
+      tags: [mockItemTag({ type: ItemTagType.Hidden })],
     },
   ],
 };
@@ -240,7 +240,7 @@ export const PUBLIC_FOLDER_WITH_HIDDEN_ITEMS: { items: MockItem[] } = {
         isPinned: false,
         showChatbox: false,
       },
-      tags: [mockItemTag({ type: ItemTagType.PUBLIC })],
+      tags: [mockItemTag({ type: ItemTagType.Public })],
     },
     GRAASP_DOCUMENT_ITEM_PUBLIC_VISIBLE,
     GRAASP_DOCUMENT_ITEM_PUBLIC_HIDDEN,

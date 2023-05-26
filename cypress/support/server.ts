@@ -71,7 +71,7 @@ const checkMemberHasAccess = ({
   // mock membership
   const { creator } = item;
   const haveWriteMembership =
-    creator.id === member.id ||
+    creator?.id === member.id ||
     items.find(
       (i) =>
         item.path.startsWith(i.path) &&
@@ -96,13 +96,13 @@ const checkMemberHasAccess = ({
     items.find(
       (i) =>
         item.path.startsWith(i.path) &&
-        i?.tags?.find(({ type }) => type === ItemTagType.HIDDEN),
+        i?.tags?.find(({ type }) => type === ItemTagType.Hidden),
     ) ?? false;
   const isPublic =
     items.find(
       (i) =>
         item.path.startsWith(i.path) &&
-        i?.tags?.find(({ type }) => type === ItemTagType.PUBLIC),
+        i?.tags?.find(({ type }) => type === ItemTagType.Public),
     ) ?? false;
   // user is more than a reader so he can access the item
   if (isHidden && haveWriteMembership) {
@@ -144,7 +144,7 @@ export const mockGetOwnItems = ({
       }
       const own = items.filter(
         ({ creator, path }) =>
-          creator.id === currentMember.id && !path.includes('.'),
+          creator?.id === currentMember.id && !path.includes('.'),
       );
       return reply(own);
     },
@@ -279,7 +279,7 @@ export const mockGetItemMembershipsForItem = (
           // if the current member is the creator, it has membership
           // otherwise it should return an error
           const defaultMembership =
-            creator.id === currentMember?.id
+            creator?.id === currentMember?.id
               ? [
                   {
                     permission: PermissionLevel.Admin,

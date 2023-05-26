@@ -62,7 +62,7 @@ export const GRAASP_DOCUMENT_ITEM_HIDDEN: MockItem = {
     isPinned: false,
     showChatbox: false,
   },
-  tags: [mockItemTag({ type: ItemTagType.HIDDEN })],
+  tags: [mockItemTag({ type: ItemTagType.Hidden })],
   memberships: [{ memberId: MEMBERS.BOB.id, permission: PermissionLevel.Read }],
 };
 
@@ -82,7 +82,7 @@ export const GRAASP_DOCUMENT_ITEM_PUBLIC_VISIBLE: MockItem = {
     isPinned: false,
     showChatbox: false,
   },
-  tags: [mockItemTag({ type: ItemTagType.PUBLIC })],
+  tags: [mockItemTag({ type: ItemTagType.Public })],
 };
 
 export const GRAASP_DOCUMENT_ITEM_PUBLIC_HIDDEN: MockItem = {
@@ -102,8 +102,8 @@ export const GRAASP_DOCUMENT_ITEM_PUBLIC_HIDDEN: MockItem = {
     showChatbox: false,
   },
   tags: [
-    mockItemTag({ type: ItemTagType.PUBLIC }),
-    mockItemTag({ type: ItemTagType.HIDDEN }),
+    mockItemTag({ type: ItemTagType.Public }),
+    mockItemTag({ type: ItemTagType.Hidden }),
   ],
 };
 
