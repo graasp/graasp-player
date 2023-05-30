@@ -30,15 +30,15 @@
     "@emotion/react": "11.10.6",
     "@emotion/styled": "11.10.6",
     "@graasp/chatbox": "github:graasp/graasp-chatbox#typeorm",
-    "@graasp/query-client": "github:graasp/graasp-query-client#typeorm",
-    "@graasp/sdk": "github:graasp/graasp-sdk",
+    "@graasp/query-client": "1.0.0-rc1",
+    "@graasp/sdk": "1.0.0-rc1",
     "@graasp/translations": "1.13.0",
-    "@graasp/ui": "github:graasp/graasp-ui#typeorm",
+    "@graasp/ui": "3.0.0-rc1",
     "@mui/icons-material": "5.11.9",
     "@mui/lab": "5.0.0-alpha.120",
     "@mui/material": "5.11.9",
-    "@sentry/react": "7.50.0",
-    "@sentry/tracing": "7.50.0",
+    "@sentry/react": "7.53.1",
+    "@sentry/tracing": "7.53.1",
     "clsx": "1.2.1",
     "i18next": "22.4.15",
     "immutable": "4.3.0",
@@ -92,10 +92,7 @@
     "vite-plugin-istanbul": "4.0.1"
   },
   "resolutions": {
-    "@graasp/sdk": "github:graasp/graasp-sdk",
-    "@graasp/query-client": "github:graasp/graasp-query-client#typeorm",
-    "@graasp/ui": "github:graasp/graasp-ui#typeorm",
-    "immutable": "4.3.0"
+    "@graasp/sdk": "1.0.0-rc1"
   },
-  "packageManager": "yarn@3.4.1"
+  "packageManager": "yarn@3.5.1"
 }
