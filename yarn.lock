@@ -1174,21 +1174,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/translations@github:graasp/graasp-translations#156-add-hidden-wrapper-translations":
-  version: 1.13.0
-  resolution: "@graasp/translations@https://github.com/graasp/graasp-translations.git#commit=345d03dde99606ac9e99444465c1f51cc7fc91d5"
-  dependencies:
-    i18next: 22.4.15
-  checksum: 5d5b2fe4ab08780d618d5b44e7caad9e85a65243201d0da8ed6d9851d02f7c6e9282fb93bc143b8b655d3645ea5ac5b1fcdec7aa79b5bb4d9351458dcf5d73e0
-  languageName: node
-  linkType: hard
-
 "@graasp/translations@npm:1.13.0":
   version: 1.13.0
   resolution: "@graasp/translations@npm:1.13.0"
   dependencies:
     i18next: 22.4.15
   checksum: 319a62cf134e7427f31ba8fb7e9e91b536b9e97b05f773f0d459c42ab933a54c9175af3aa5017b82fcfdf91b934e5faf0f6a7c6dfb98e0b788698ebf2a9a64e1
+  languageName: node
+  linkType: hard
+
+"@graasp/translations@npm:1.14.0":
+  version: 1.14.0
+  resolution: "@graasp/translations@npm:1.14.0"
+  dependencies:
+    i18next: 22.4.15
+  checksum: 54001bdd6c37bb03a9f6d9677c10f8a7f29c1c488ec2d04b80aa92eeeb6582221c0171b4d9d66de048acca8707c46cf00d0660ad03e63b305d48cff0a71dd173
   languageName: node
   linkType: hard
 
@@ -5427,7 +5427,7 @@ __metadata:
     "@graasp/plugin-websockets": 1.0.0
     "@graasp/query-client": 1.0.0-rc1
     "@graasp/sdk": 1.0.0-rc1
-    "@graasp/translations": "github:graasp/graasp-translations#156-add-hidden-wrapper-translations"
+    "@graasp/translations": 1.14.0
     "@graasp/ui": 3.0.0-rc1
     "@mui/icons-material": 5.11.9
     "@mui/lab": 5.0.0-alpha.120
