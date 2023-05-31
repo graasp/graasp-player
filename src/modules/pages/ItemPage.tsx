@@ -25,7 +25,7 @@ const ItemScreenWrapper = (rootId: string) => {
 
 const { usePostItemLogin, useSignOut } = mutations;
 
-const ItemPage = (): JSX.Element => {
+const ItemPage = (): JSX.Element | null => {
   const { mutate: signOut } = useSignOut();
   const { mutate: itemLoginSignIn } = usePostItemLogin();
   const { rootId } = useParams();
@@ -35,8 +35,7 @@ const ItemPage = (): JSX.Element => {
 
   if (!rootId) {
     navigate(HOME_PATH);
-    // TODO: return not found?
-    return ForbiddenContent;
+    return null;
   }
 
   const Component = ItemLoginAuthorization({

@@ -27,10 +27,10 @@ describe('Navigation', () => {
     cy.setUpApi({
       items: [...items, ...sharedItems],
     });
-    // eslint-disable-next-line no-console
-    console.log(items);
     cy.visit('/');
+
     cy.wait(['@getCurrentMember', '@getOwnItems', '@getSharedItems']);
+
     cy.get(`#${MY_ITEMS_ID} #${SHOW_MORE_ITEMS_ID}`).click();
     items.forEach((i) =>
       cy.get(`.${buildTreeItemClass(i.id)}`, { timeout: 2000 }),

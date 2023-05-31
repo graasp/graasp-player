@@ -41,15 +41,6 @@ const DynamicTreeView = ({
   const [expandedItems, setExpandedItems] = useState(initialExpendedItems);
   const [showAll, setShowAll] = useState(false);
 
-  // const {
-  //   data: children,
-  //   isLoading: isLoadingChildren,
-  //   isError: isErrorChildren,
-  // } = useDescendants(rootId, {
-  //   enabled: isFolder,
-  //   getUpdates: isFolder,
-  // });
-
   if (isLoading) {
     return <Skeleton variant="text" />;
   }
@@ -62,11 +53,6 @@ const DynamicTreeView = ({
   // types based on TreeView types
   const onToggle = (_event: unknown, nodeIds: string[]) =>
     setExpandedItems(nodeIds);
-
-  // show only folder items in the navigation tree
-  // const itemsFiltered = items?.filter((item) =>
-  //   GRAASP_MENU_ITEMS.includes(item.type),
-  // );
 
   const itemsToShow = items?.filter((item) =>
     onlyShowContainerItems ? GRAASP_MENU_ITEMS.includes(item.type) : true,

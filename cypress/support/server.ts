@@ -118,14 +118,6 @@ const checkMemberHasAccess = ({
   return { statusCode: StatusCodes.FORBIDDEN };
 };
 
-// const checkIsPublic = (item: MockItem): { statusCode: number } | undefined => {
-//   const isPublic = item?.tags?.find(({ tagId }) => tagId === PUBLIC_TAG_ID);
-//   if (!isPublic) {
-//     return { statusCode: StatusCodes.UNAUTHORIZED };
-//   }
-//   return undefined;
-// };
-
 export const mockGetOwnItems = ({
   items,
   currentMember,
@@ -305,39 +297,6 @@ export const mockGetItemMembershipsForItem = (
   ).as('getItemMemberships');
 };
 
-// export const mockGetPublicItem = (
-//   { items }: { items: MockItem[] },
-//   shouldThrowError?: boolean,
-// ): void => {
-//   cy.intercept(
-//     {
-//       method: DEFAULT_GET.method,
-//       url: new RegExp(`${API_HOST}/${buildGetPublicItemRoute(ID_FORMAT)}$`),
-//     },
-//     ({ url, reply }) => {
-//       const itemId = url.slice(API_HOST.length).split('/')[3];
-//       const item = getItemById(items, itemId);
-
-//       // item does not exist in db
-//       if (!item || shouldThrowError) {
-//         return reply({
-//           statusCode: StatusCodes.NOT_FOUND,
-//         });
-//       }
-
-//       const error = checkIsPublic(item);
-//       if (isError(error)) {
-//         return reply(error);
-//       }
-
-//       return reply({
-//         body: item,
-//         statusCode: StatusCodes.OK,
-//       });
-//     },
-//   ).as('getPublicItem');
-// };
-
 export const mockGetChildren = (items: MockItem[], member: Member): void => {
   cy.intercept(
     {
@@ -399,35 +358,6 @@ export const mockGetDescendants = (items: MockItem[], member: Member): void => {
     },
   ).as('getDescendants');
 };
-
-// export const mockGetPublicChildren = (items: MockItem[]): void => {
-//   cy.intercept(
-//     {
-//       method: DEFAULT_GET.method,
-//       url: new RegExp(`${API_HOST}/p/items/${ID_FORMAT}/children`),
-//     },
-//     ({ url, reply }) => {
-//       const id = url.slice(API_HOST.length).split('/')[3];
-//       const item = items.find(({ id: thisId }) => id === thisId);
-//       // item does not exist in db
-//       if (!item) {
-//         return reply({
-//           statusCode: StatusCodes.NOT_FOUND,
-//         });
-//       }
-
-//       const error = checkIsPublic(item);
-//       if (isError(error)) {
-//         return reply(error);
-//       }
-
-//       const children = items.filter((testItem) =>
-//         isChildOf(testItem.path, item.path),
-//       );
-//       return reply(children);
-//     },
-//   ).as('getPublicChildren');
-// };
 
 export const mockGetMemberBy = (
   members: Member[],
@@ -497,49 +427,6 @@ export const mockDefaultDownloadFile = (
     },
   ).as('downloadFile');
 };
-
-// export const mockPublicDefaultDownloadFile = (
-//   items: MockItem[],
-//   shouldThrowError?: boolean,
-// ): void => {
-//   cy.intercept(
-//     {
-//       method: DEFAULT_GET.method,
-//       url: new RegExp(
-//         `${API_HOST}/${buildPublicDownloadFilesRoute(ID_FORMAT)}`,
-//       ),
-//     },
-//     ({ reply, url }) => {
-//       if (shouldThrowError) {
-//         return reply({ statusCode: StatusCodes.BAD_REQUEST });
-//       }
-
-//       const id = url.slice(API_HOST.length).split('/')[3];
-//       const item = items.find(({ id: thisId }) => id === thisId);
-//       const { replyUrl } = qs.parse(url.slice(url.indexOf('?') + 1));
-
-//       // item does not exist in db
-//       if (!item) {
-//         return reply({
-//           statusCode: StatusCodes.NOT_FOUND,
-//         });
-//       }
-
-//       const error = checkIsPublic(item);
-//       if (isError(error)) {
-//         return reply(error);
-//       }
-
-//       // either return the file url or the fixture data
-//       // info: we don't test fixture data anymore since the frontend uses url only
-//       if (replyUrl) {
-//         return reply({ url: item.filepath });
-//       }
-
-//       return reply({ fixture: item.filepath });
-//     },
-//   ).as('publicDownloadFile');
-// };
 
 export const mockGetItemTags = (items: MockItem[], member: Member): void => {
   cy.intercept(

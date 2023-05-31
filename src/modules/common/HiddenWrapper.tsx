@@ -1,7 +1,9 @@
 import { Box, styled } from '@mui/material';
 
 import { ItemRecord } from '@graasp/sdk/frontend';
+import { PLAYER } from '@graasp/translations';
 
+import { usePlayerTranslation } from '@/config/i18n';
 import { buildHiddenWrapperId } from '@/config/selectors';
 
 export const HIDDEN_STYLE = {
@@ -23,18 +25,17 @@ const HiddenWrapper = ({
   hidden: boolean;
   itemId: ItemRecord['id'];
   children: JSX.Element;
-}): JSX.Element => (
-  <StyledBox
-    isHidden={isHidden}
-    id={buildHiddenWrapperId(itemId, isHidden)}
-    title={
-      isHidden
-        ? "This element is hidden, you can see it because you have admin or write access, users with read access won't see it"
-        : undefined
-    }
-  >
-    {children}
-  </StyledBox>
-);
+}): JSX.Element => {
+  const { t } = usePlayerTranslation();
+  return (
+    <StyledBox
+      isHidden={isHidden}
+      id={buildHiddenWrapperId(itemId, isHidden)}
+      title={isHidden ? t(PLAYER.HIDDEN_WRAPPER_TOOLTIP) : undefined}
+    >
+      {children}
+    </StyledBox>
+  );
+};
 
 export default HiddenWrapper;

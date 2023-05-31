@@ -53,7 +53,6 @@ Cypress.Commands.add(
     );
     mockGetItemChat({ chatMessages });
     mockGetItemMembershipsForItem(items, currentMember);
-    // mockGetPublicItem({ items: cachedItems });
 
     mockGetItemTags(items, currentMember);
 
@@ -61,7 +60,6 @@ Cypress.Commands.add(
     mockGetLoginSchemaType(items, currentMember);
 
     mockGetChildren(items, currentMember);
-    // mockGetPublicChildren(cachedItems);
 
     mockGetDescendants(items, currentMember);
 
@@ -70,7 +68,6 @@ Cypress.Commands.add(
     mockGetCurrentMember(currentMember, getCurrentMemberError);
 
     mockDefaultDownloadFile({ items, currentMember });
-    // mockPublicDefaultDownloadFile(cachedItems);
 
     mockSignOut();
 
@@ -139,11 +136,6 @@ declare global {
 
       getIframeDocument(iframeSelector: string): Chainable;
       getIframeBody(iframeSelector: string): Chainable;
-
-      // clickElementInIframe(
-      //   iframeSelector: string,
-      //   elementSelector: string,
-      // ): Chainable;
 
       checkContentInElementInIframe(
         iframeSelector: string,

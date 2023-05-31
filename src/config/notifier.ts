@@ -1,17 +1,10 @@
 import { toast } from 'react-toastify';
 
-import { FAILURE_MESSAGES, SUCCESS_MESSAGES } from '@graasp/translations';
+import { Notifier } from '@graasp/query-client';
 
-import { useMessagesTranslation } from '@/config/i18n';
+// import { FAILURE_MESSAGES, SUCCESS_MESSAGES } from '@graasp/translations';
 
-type NotifierType = {
-  type: string;
-  payload: { error: string };
-};
-
-// todo: check how this works and improve error reporting
-export default ({ type, payload }: NotifierType): void => {
-  const { t } = useMessagesTranslation();
+const notifier: Notifier = ({ type, payload }) => {
   const message = null;
   switch (type) {
     // error messages
@@ -22,13 +15,15 @@ export default ({ type, payload }: NotifierType): void => {
 
   // error notification
   if (payload?.error && message) {
-    const translatedMessage =
-      t(message) || t(FAILURE_MESSAGES.UNEXPECTED_ERROR);
-    toast.error(translatedMessage);
+    // todo: can't use translation hooks inside this function
+    // const translatedMessage =
+    //   t(message) || t(FAILURE_MESSAGES.UNEXPECTED_ERROR);
+    toast.error(message);
   }
   // success notification
   else if (message) {
-    const translatedMessage = t(message) || t(SUCCESS_MESSAGES.DEFAULT_SUCCESS);
-    toast.success(translatedMessage);
+    // const translatedMessage = t(message) || t(SUCCESS_MESSAGES.DEFAULT_SUCCESS);
+    toast.success(message);
   }
 };
+export default notifier;

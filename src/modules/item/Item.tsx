@@ -266,6 +266,9 @@ const ItemContent = ({ item }: ItemContentProps) => {
       );
       return folderButton;
 
+      // todo: check that the folders are displayed as expected.
+      // in case everything is okay, remove the following
+
       // // display children shortcut pinned folders
       // if (isShortcut && isShortcutPinned) {
       //   return folderButton;
