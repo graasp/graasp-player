@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/graasp/graasp-player/compare/v0.6.4...v1.0.0) (2023-06-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* typeorm ([#216](https://github.com/graasp/graasp-player/issues/216))
+
+### Features
+
+* typeorm ([#216](https://github.com/graasp/graasp-player/issues/216)) ([6e89839](https://github.com/graasp/graasp-player/commit/6e8983970be7ed9a8fe3526cfb06f2bcb2fbdfc9))
+
 ## [0.6.4](https://github.com/graasp/graasp-player/compare/v0.6.3...v0.6.4) (2023-05-09)
 
 
