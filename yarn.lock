@@ -6515,7 +6515,7 @@ __metadata:
     qs: 6.11.2
     react: 18.2.0
     react-dom: 18.2.0
-    react-ga4: 2.0.0
+    react-ga4: 2.1.0
     react-i18next: 11.18.6
     react-intersection-observer: 9.4.3
     react-router: 6.8.2
@@ -9688,10 +9688,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-ga4@npm:2.0.0":
-  version: 2.0.0
-  resolution: "react-ga4@npm:2.0.0"
-  checksum: 7cb9f2d7863466f429e0256ed4903c84e3e7c3f21d913455716555ea7649240d142ad36586994daece67d1a8383482f58a35898d432fb43e4884ce0234235e68
+"react-ga4@npm:2.1.0":
+  version: 2.1.0
+  resolution: "react-ga4@npm:2.1.0"
+  checksum: f7fb41141418d4ad14756f1126a1e9958db37d4d84ae6cd798043dc03a390b6dba74d69311af0349f0b9580a43bda8930138194ccc29c4100efe446e2d6eb057
   languageName: node
   linkType: hard
 
