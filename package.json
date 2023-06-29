@@ -36,7 +36,7 @@
     "@graasp/ui": "3.0.0",
     "@mui/icons-material": "5.11.16",
     "@mui/lab": "5.0.0-alpha.134",
-    "@mui/material": "5.11.16",
+    "@mui/material": "5.13.6",
     "@sentry/react": "7.53.1",
     "@sentry/tracing": "7.53.1",
     "clsx": "1.2.1",
