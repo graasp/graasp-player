@@ -1,6 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { WebSocket } from '@graasp/plugin-websockets/test/mock-client';
+import { MockWebSocket } from '@graasp/query-client';
 
 import { buildMainPath } from '../../src/config/paths';
 import {
@@ -10,7 +8,7 @@ import {
 import { FOLDER_WITH_SUBFOLDER_ITEM } from '../fixtures/items';
 import { expectFolderButtonLayout } from '../support/integrationUtils';
 
-function beforeWs(visitRoute: string, wsClientStub: WebSocket) {
+function beforeWs(visitRoute: string, wsClientStub: MockWebSocket) {
   cy.setCookie('session', 'somecookie');
   cy.visit(visitRoute, {
     onBeforeLoad: (win) => {
@@ -20,7 +18,7 @@ function beforeWs(visitRoute: string, wsClientStub: WebSocket) {
 }
 
 describe('Websocket interactions', () => {
-  let client: WebSocket;
+  let client: MockWebSocket;
   const { items } = FOLDER_WITH_SUBFOLDER_ITEM;
   const newChild = {
     ...FOLDER_WITH_SUBFOLDER_ITEM.items[1],
@@ -29,11 +27,11 @@ describe('Websocket interactions', () => {
   };
 
   beforeEach(() => {
-    client = new WebSocket();
+    client = new MockWebSocket();
     cy.setUpApi(FOLDER_WITH_SUBFOLDER_ITEM);
   });
 
-  it.skip('Displays create child update', () => {
+  it('Displays create child update', () => {
     const parent = FOLDER_WITH_SUBFOLDER_ITEM.items[0];
     beforeWs(buildMainPath({ rootId: parent.id }), client);
 
@@ -61,7 +59,7 @@ describe('Websocket interactions', () => {
       });
   });
 
-  it.skip('Displays remove child update', () => {
+  it('Displays remove child update', () => {
     const parent = FOLDER_WITH_SUBFOLDER_ITEM.items[0];
     beforeWs(buildMainPath({ rootId: parent.id }), client);
 
