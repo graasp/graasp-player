@@ -66,7 +66,7 @@
     "@types/uuid": "9.0.2",
     "@typescript-eslint/eslint-plugin": "5.60.1",
     "@typescript-eslint/parser": "5.60.1",
-    "@vitejs/plugin-react": "^3.1.0",
+    "@vitejs/plugin-react": "^4.0.0",
     "commitlint": "17.6.6",
     "concurrently": "7.6.0",
     "cypress": "12.16.0",
