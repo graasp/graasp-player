@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.1](https://github.com/graasp/graasp-player/compare/v1.0.0...v1.0.1) (2023-06-30)
+
+
+### Bug Fixes
+
+* bump @graasp/query-client to fix etherpad queries ([#262](https://github.com/graasp/graasp-player/issues/262)) ([d72ff2b](https://github.com/graasp/graasp-player/commit/d72ff2bb6890a09fc52c53b88a4ab57967f14bb7))
+* **deps:** update dependency @graasp/query-client to v1.0.1 ([#245](https://github.com/graasp/graasp-player/issues/245)) ([313b671](https://github.com/graasp/graasp-player/commit/313b671e2db68c6250176ff820092586c8081e80))
+* **deps:** update dependency @graasp/ui to v3.0.0 ([5969f79](https://github.com/graasp/graasp-player/commit/5969f796e8e2d63ad61e6cfca44bd6f951423cf8))
+* **deps:** update emotion monorepo to v11.10.8 ([18c4c94](https://github.com/graasp/graasp-player/commit/18c4c9467dd7fdecf78e821fd2f7223238066bb9))
+* **deps:** update mui (non-major) ([d132bd3](https://github.com/graasp/graasp-player/commit/d132bd37f0b3cbeae1bae0ff9bbdd7ca965536fb))
+* **deps:** update react-router monorepo to v6.8.2 ([1272f8a](https://github.com/graasp/graasp-player/commit/1272f8a9fb281af09ec7fbdb44e093218879a63e))
+
 ## [1.0.0](https://github.com/graasp/graasp-player/compare/v0.6.4...v1.0.0) (2023-06-01)
 
 
