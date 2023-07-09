@@ -1698,13 +1698,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cypress/code-coverage@npm:3.10.7":
-  version: 3.10.7
-  resolution: "@cypress/code-coverage@npm:3.10.7"
+"@cypress/code-coverage@npm:3.10.8":
+  version: 3.10.8
+  resolution: "@cypress/code-coverage@npm:3.10.8"
   dependencies:
     "@cypress/webpack-preprocessor": ^5.11.0
     chalk: 4.1.2
-    dayjs: 1.10.7
+    dayjs: 1.11.8
     debug: 4.3.4
     execa: 4.1.0
     globby: 11.0.4
@@ -1713,7 +1713,7 @@ __metadata:
     nyc: 15.1.0
   peerDependencies:
     cypress: "*"
-  checksum: a40bcbccdb9c89fd86ef5361c454d2c1545a39128b640d6df8f65a44dade20d83bf22506bf12579fef2a28496916f1be16f979564223a08f894f0e364f0b4c08
+  checksum: 1b8949bc5ad32d7d05760280997e3b08d28606ce3f1e9091f56160a0705520f69e88bce0eb62befc86c8c2fc5bc115c56918827b18786ede7f704a68912cb854
   languageName: node
   linkType: hard
 
@@ -2974,23 +2974,23 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 20.3.1
-  resolution: "@types/node@npm:20.3.1"
-  checksum: 63a393ab6d947be17320817b35d7277ef03728e231558166ed07ee30b09fd7c08861be4d746f10fdc63ca7912e8cd023939d4eab887ff6580ff704ff24ed810c
+  version: 20.4.1
+  resolution: "@types/node@npm:20.4.1"
+  checksum: 22cbcc792f2eb636fe4188778ed0f32658ab872aa7fcb9847b3fa289a42b14b9f5e30c6faec50ef3c7adbc6c2a246926e5858136bb8b10c035a3fcaa6afbeed2
   languageName: node
   linkType: hard
 
 "@types/node@npm:^14.14.31":
-  version: 14.18.51
-  resolution: "@types/node@npm:14.18.51"
-  checksum: 0960a31d2ac605763fe79c8edcee3cb48257d345ce417c019d84ff5d8cd92dd0937674814ab3f169346b4259c29f640556006bcb2c54cfb3e63fa0cf728d320e
+  version: 14.18.53
+  resolution: "@types/node@npm:14.18.53"
+  checksum: 3acbcf4e38cdc5999c824db5c6689ca8f4a185562aad5c0263d9859381d8590a16e6a72343aeb30d48ff9a7ac9b6ae259bcb8c2d594703a30d12277904524704
   languageName: node
   linkType: hard
 
 "@types/node@npm:^18.13.0":
-  version: 18.16.18
-  resolution: "@types/node@npm:18.16.18"
-  checksum: d32d8a0a04cd3f5ecb361bcb42f3a07623881ac90d680e06bf626defb3c663a94860d11690babe607cfe67265eceeb8a59ba5fe40c0e49f5a1b01e0088640469
+  version: 18.16.19
+  resolution: "@types/node@npm:18.16.19"
+  checksum: 63c31f09616508aa7135380a4c79470a897b75f9ff3a70eb069e534dfabdec3f32fb0f9df5939127f1086614d980ddea0fa5e8cc29a49103c4f74cd687618aaf
   languageName: node
   linkType: hard
 
@@ -4535,15 +4535,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress-vite@npm:1.4.0":
-  version: 1.4.0
-  resolution: "cypress-vite@npm:1.4.0"
+"cypress-vite@npm:1.4.1":
+  version: 1.4.1
+  resolution: "cypress-vite@npm:1.4.1"
   dependencies:
     chokidar: ^3.5.3
     debug: ^4.3.4
   peerDependencies:
     vite: ^2.9.0 || ^3.0.0 || ^4.0.0
-  checksum: 4a5b673c1c2e7b7f78861ee93e7282092d5e0e2dfe9d1d8313e9e09f63c60198b5ac846cb8baf3bc85b0b0b88ba440d216e1f495bf3ad256f3700c46ed77e1c1
+  checksum: ee0c06f14a6324491e0177ef262cceed28a72bccade0160709a200731f3f0451ca29e9a70214724393d838bec6ca11184c040c22cbd0d691e00beafc13309856
   languageName: node
   linkType: hard
 
@@ -4631,10 +4631,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:1.10.7":
-  version: 1.10.7
-  resolution: "dayjs@npm:1.10.7"
-  checksum: a0a4ca95abaa03d0702161dc2c35d16121188e342f5052b9c61cdf784dab68af766f477c04f87f71c6af666fd4d13db9b9853b87265850d6093b7b04e1bb1cd7
+"dayjs@npm:1.11.8":
+  version: 1.11.8
+  resolution: "dayjs@npm:1.11.8"
+  checksum: 4fe04b6df98ba6e5f89b49d80bba603cbf01e21a1b4a24ecb163c94c0ba5324a32ac234a139cee654f89d5277a2bcebca5347e6676c28a0a6d1a90f1d34a42b8
   languageName: node
   linkType: hard
 
@@ -6393,7 +6393,7 @@ __metadata:
   resolution: "graasp-player@workspace:."
   dependencies:
     "@commitlint/config-conventional": 17.4.4
-    "@cypress/code-coverage": 3.10.7
+    "@cypress/code-coverage": 3.10.8
     "@emotion/react": 11.10.8
     "@emotion/styled": 11.10.8
     "@graasp/chatbox": 2.0.0
@@ -6421,7 +6421,7 @@ __metadata:
     concurrently: 7.6.0
     cypress: 12.16.0
     cypress-iframe: 1.0.1
-    cypress-vite: 1.4.0
+    cypress-vite: 1.4.1
     env-cmd: 10.1.0
     eslint: ^8.34.0
     eslint-config-airbnb: 19.0.4
