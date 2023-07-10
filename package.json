@@ -28,8 +28,8 @@
     "cypress:run": "env-cmd -f ./.env.test cypress run --browser chrome"
   },
   "dependencies": {
-    "@emotion/react": "11.10.8",
-    "@emotion/styled": "11.10.8",
+    "@emotion/react": "11.11.1",
+    "@emotion/styled": "11.11.0",
     "@graasp/chatbox": "2.0.0",
     "@graasp/query-client": "1.1.4",
     "@graasp/sdk": "1.1.1",
