@@ -55,7 +55,7 @@
     "uuid": "9.0.0"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "17.4.4",
+    "@commitlint/config-conventional": "17.6.7",
     "@cypress/code-coverage": "3.10.9",
     "@trivago/prettier-plugin-sort-imports": "4.1.1",
     "@types/lodash.truncate": "^4.4.7",
