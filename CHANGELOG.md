@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.2](https://github.com/graasp/graasp-player/compare/v1.0.1...v1.0.2) (2023-07-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @graasp/translations to v1.15.0 ([#258](https://github.com/graasp/graasp-player/issues/258)) ([b0f1122](https://github.com/graasp/graasp-player/commit/b0f1122b0883e387e0d32ba66dd74a1f07689d29))
+* **deps:** update dependency @mui/lab to v5.0.0-alpha.137 ([#277](https://github.com/graasp/graasp-player/issues/277)) ([14092b5](https://github.com/graasp/graasp-player/commit/14092b53fa32545eaf116bb9a15269ebf23ed83c))
+* **deps:** update dependency @mui/material to v5.13.6 ([#261](https://github.com/graasp/graasp-player/issues/261)) ([4a1b39b](https://github.com/graasp/graasp-player/commit/4a1b39b81b854b2d547c6700aa17aa6ce1bdb156))
+* **deps:** update dependency react-ga4 to v2.1.0 ([#264](https://github.com/graasp/graasp-player/issues/264)) ([0bff514](https://github.com/graasp/graasp-player/commit/0bff514a2f3bbb0a9a63cfb7055726d915f4c1d5))
+* **deps:** update dependency react-intersection-observer to v9.5.2 ([#265](https://github.com/graasp/graasp-player/issues/265)) ([7ad8142](https://github.com/graasp/graasp-player/commit/7ad8142b17e97f0a652a921dea72d648b52f5db8))
+* **deps:** update dependency react-toastify to v9.1.3 ([#250](https://github.com/graasp/graasp-player/issues/250)) ([962952a](https://github.com/graasp/graasp-player/commit/962952a022b67009589b928a50ce5f7b2ad92886))
+* **deps:** update emotion monorepo ([#268](https://github.com/graasp/graasp-player/issues/268)) ([23eb4c0](https://github.com/graasp/graasp-player/commit/23eb4c0534efc4be6e86cff39fd0e4ffb530f3fa))
+* **deps:** update mui (non-major) to v5.14.1 ([#280](https://github.com/graasp/graasp-player/issues/280)) ([40a788e](https://github.com/graasp/graasp-player/commit/40a788ec8a644500a9cc74d7005ebf5e07ced225))
+* **deps:** update react-router monorepo to v6.14.2 ([#269](https://github.com/graasp/graasp-player/issues/269)) ([04ccb08](https://github.com/graasp/graasp-player/commit/04ccb08871c5ce4e80c8b355d5e4b97fef8b0d59))
+* **deps:** update sentry packages to v7.57.0 ([#270](https://github.com/graasp/graasp-player/issues/270)) ([0cd3de5](https://github.com/graasp/graasp-player/commit/0cd3de5efccea17180cc479fe64b46cb81ff8e6c))
+* update index.html description ([92f2de0](https://github.com/graasp/graasp-player/commit/92f2de04583ef1da1fa4d8a295136a3b661575e5))
+
 ## [1.0.1](https://github.com/graasp/graasp-player/compare/v1.0.0...v1.0.1) (2023-06-30)
 
 
