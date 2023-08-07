@@ -3,9 +3,8 @@ import { BUILDER } from '@graasp/translations';
 import { UserSwitchWrapper as GraaspUserSwitch } from '@graasp/ui';
 
 import { MEMBER_PROFILE_PATH, SIGN_IN_PATH } from '@/config/constants';
-import { DOMAIN } from '@/config/env';
 import { useBuilderTranslation } from '@/config/i18n';
-import { hooks, mutations } from '@/config/queryClient';
+import { mutations } from '@/config/queryClient';
 import {
   HEADER_MEMBER_MENU_BUTTON_ID,
   HEADER_MEMBER_MENU_SEE_PROFILE_BUTTON_ID,
@@ -24,11 +23,7 @@ type Props = {
 };
 
 const UserSwitchWrapper = ({ ButtonContent }: Props): JSX.Element => {
-  const {
-    data: member,
-    isLoading = true,
-    isSuccess: isSuccessUser = false,
-  } = useCurrentMemberContext();
+  const { data: member, isLoading = true } = useCurrentMemberContext();
   const { t: translateBuilder } = useBuilderTranslation();
   // const { mutateAsync: useSwitchMemberAsyncMutation } = useSwitchMember();
   const { mutate: useSignOutMutation } = useSignOut();
@@ -39,7 +34,6 @@ const UserSwitchWrapper = ({ ButtonContent }: Props): JSX.Element => {
       signOut={useSignOutMutation}
       currentMember={member}
       isCurrentMemberLoading={isLoading}
-      isCurrentMemberSuccess={isSuccessUser}
       // switchMember={useSwitchMemberAsyncMutation}
       seeProfileText={translateBuilder(BUILDER.USER_SWITCH_PROFILE_BUTTON)}
       signedOutTooltipText={translateBuilder(
@@ -48,9 +42,7 @@ const UserSwitchWrapper = ({ ButtonContent }: Props): JSX.Element => {
       signOutText={translateBuilder(BUILDER.USER_SWITCH_SIGN_OUT_BUTTON)}
       // switchMemberText={translateBuilder(BUILDER.USER_SWITCH_SWITCH_USER_TEXT)}
       profilePath={MEMBER_PROFILE_PATH}
-      domain={DOMAIN}
       redirectPath={SIGN_IN_PATH}
-      useMembers={hooks.useMembers}
       buttonId={HEADER_MEMBER_MENU_BUTTON_ID}
       signInMenuItemId={HEADER_MEMBER_MENU_SIGN_IN_BUTTON_ID}
       signOutMenuItemId={HEADER_MEMBER_MENU_SIGN_OUT_BUTTON_ID}

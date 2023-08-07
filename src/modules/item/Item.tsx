@@ -435,7 +435,7 @@ const Item = ({
             <Typography className={FOLDER_NAME_TITLE_CLASS} variant="h5">
               {item.name}
             </Typography>
-            <TextEditor value={item.description} />
+            <TextEditor value={item.description ?? undefined} />
 
             {childrenPaginated?.pages.map((page) => (
               <Fragment key={page.pageNumber}>

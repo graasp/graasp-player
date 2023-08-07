@@ -121,7 +121,7 @@ export const isUrlValid = (str: string): boolean => {
   return Boolean(str && pattern.test(str));
 };
 
-export const stripHtml = (str: string): string =>
+export const stripHtml = (str?: string | null): string | undefined =>
   str?.replace(/<[^>]*>?/gm, '');
 
 export const paginationContentFilter = (
