@@ -29,12 +29,23 @@ jobs:
       - name: Type-check code
         run: tsc --noEmit
 
+      - name: Build App
+        run: yarn build
+        shell: bash
+        env:
+          VITE_PORT: 3112
+          VITE_GRAASP_DOMAIN: localhost
+          VITE_GRAASP_API_HOST: http://localhost:3636
+          VITE_GRAASP_AUTH_HOST: http://localhost:3001
+          VITE_GRAASP_BUILDER_HOST: http://localhost:3111
+          VITE_SHOW_NOTIFICATIONS: false
+
       #  use the Cypress GitHub Action to run Cypress tests within the chrome browser
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
           install: false
-          start: yarn dev
+          start: yarn preview --port 3112
           browser: chrome
           quiet: true
           config-file: cypress.config.ts
