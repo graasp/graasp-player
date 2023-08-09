@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.3](https://github.com/graasp/graasp-player/compare/v1.0.2...v1.0.3) (2023-08-09)
+
+
+### Bug Fixes
+
+* deps and prettier ([#295](https://github.com/graasp/graasp-player/issues/295)) ([9750005](https://github.com/graasp/graasp-player/commit/975000578afce173137f970f166eff8fd1ed92a6))
+* **deps:** update dependency @graasp/translations to v1.18.1 ([#296](https://github.com/graasp/graasp-player/issues/296)) ([a39fc81](https://github.com/graasp/graasp-player/commit/a39fc81ff7ca73be303a2a47ba5c3edf47fbd684))
+* **deps:** update mui (non-major) ([#297](https://github.com/graasp/graasp-player/issues/297)) ([c583502](https://github.com/graasp/graasp-player/commit/c583502e4e35168fe2031ae5b535dd6a847c3f8a))
+* **deps:** update sentry packages to v7.61.0 ([#289](https://github.com/graasp/graasp-player/issues/289)) ([9cd0410](https://github.com/graasp/graasp-player/commit/9cd04108f348b32fe23f28771d30b979791e9aef))
+* force instrumentation when running in test mode ([9750005](https://github.com/graasp/graasp-player/commit/975000578afce173137f970f166eff8fd1ed92a6))
+* use preview instead of dev server ([9750005](https://github.com/graasp/graasp-player/commit/975000578afce173137f970f166eff8fd1ed92a6))
+
 ## [1.0.2](https://github.com/graasp/graasp-player/compare/v1.0.1...v1.0.2) (2023-07-20)
 
 
