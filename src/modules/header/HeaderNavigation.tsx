@@ -60,7 +60,7 @@ export const HeaderNavigation = ({
     },
     [Platform.Analytics]: {
       id: APP_NAVIGATION_PLATFORM_SWITCH_BUTTON_IDS[Platform.Analytics],
-      ...getNavigationEvents(Platform.Library),
+      ...getNavigationEvents(Platform.Analytics),
     },
   };
   return (
