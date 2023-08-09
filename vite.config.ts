@@ -37,6 +37,7 @@ export default ({ mode }: { mode: string }): UserConfigExport => {
         exclude: ['node_modules', 'test/'],
         extension: ['.js', '.ts', '.tsx'],
         requireEnv: false,
+        forceBuildInstrument: mode === 'test',
         checkProd: true,
       }),
       ...(mode === 'dev'
