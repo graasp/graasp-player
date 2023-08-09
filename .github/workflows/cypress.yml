@@ -30,7 +30,7 @@ jobs:
         run: tsc --noEmit
 
       - name: Build App
-        run: yarn build
+        run: yarn build:test
         shell: bash
         env:
           VITE_PORT: 3112
@@ -46,7 +46,7 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           install: false
-          start: yarn preview --port 3112
+          start: yarn preview:test
           browser: chrome
           quiet: true
           config-file: cypress.config.ts

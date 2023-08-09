@@ -15,7 +15,9 @@
     "start": "yarn dev",
     "start:test": "vite --mode test",
     "build": "tsc && vite build",
+    "build:test": "vite build --mode test",
     "preview": "vite preview",
+    "preview:test": "vite preview --mode test",
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
     "check": "yarn prettier:check && yarn lint && yarn type-check",
@@ -24,7 +26,7 @@
     "hooks:uninstall": "husky uninstall",
     "hooks:install": "husky install",
     "cypress:open": "env-cmd -f ./.env.test cypress open",
-    "test": "concurrently -k -s first \"yarn start:test\" \"yarn cypress:run\"",
+    "test": "yarn build:test && concurrently -k -s first \"yarn preview:test\" \"yarn cypress:run\"",
     "cypress:run": "env-cmd -f ./.env.test cypress run --browser chrome"
   },
   "dependencies": {
