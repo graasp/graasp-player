@@ -11,7 +11,11 @@ import {
 } from '@graasp/ui';
 
 import { APP_NAME, GRAASP_LOGO_HEADER_HEIGHT } from '@/config/constants';
-import { GRAASP_BUILDER_HOST, GRAASP_LIBRARY_HOST } from '@/config/env';
+import {
+  GRAASP_ANALYTICS_HOST,
+  GRAASP_BUILDER_HOST,
+  GRAASP_LIBRARY_HOST,
+} from '@/config/env';
 import {
   APP_NAVIGATION_PLATFORM_SWITCH_BUTTON_IDS,
   APP_NAVIGATION_PLATFORM_SWITCH_ID,
@@ -21,6 +25,7 @@ import {
 export const platformsHostsMap = defaultHostsMapper({
   [Platform.Builder]: GRAASP_BUILDER_HOST,
   [Platform.Library]: GRAASP_LIBRARY_HOST,
+  [Platform.Analytics]: GRAASP_ANALYTICS_HOST,
 });
 
 const StyledLink = styled(Link)(() => ({
@@ -55,7 +60,7 @@ export const HeaderNavigation = ({
     },
     [Platform.Analytics]: {
       id: APP_NAVIGATION_PLATFORM_SWITCH_BUTTON_IDS[Platform.Analytics],
-      disabled: true,
+      ...getNavigationEvents(Platform.Library),
     },
   };
   return (
