@@ -1203,7 +1203,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.14.5":
+"@babel/runtime@npm:^7.14.5, @babel/runtime@npm:^7.22.5":
   version: 7.22.10
   resolution: "@babel/runtime@npm:7.22.10"
   dependencies:
@@ -6832,7 +6832,7 @@ __metadata:
     eslint-plugin-react-hooks: 4.6.0
     http-status-codes: 2.2.0
     husky: 8.0.3
-    i18next: 22.4.15
+    i18next: 23.4.4
     immutable: 4.3.2
     lodash.truncate: 4.4.2
     path: 0.12.7
@@ -7135,6 +7135,15 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.20.6
   checksum: fced898227983e439c59e7aa6e7b87e53ad1b8a1c85f0613a968881418266e5336e9443831125590559796075d516fe3dbf8118679c894094a0a404be78b02a2
+  languageName: node
+  linkType: hard
+
+"i18next@npm:23.4.4":
+  version: 23.4.4
+  resolution: "i18next@npm:23.4.4"
+  dependencies:
+    "@babel/runtime": ^7.22.5
+  checksum: faa968dcba328528231e3cd140d5a0f4b9b472b75874b7cbf8415e2dbff48397f1cdcc36a739ea6915f6970c367fdd7f985f120e63e1c30a839c53e366d851fd
   languageName: node
   linkType: hard
 
