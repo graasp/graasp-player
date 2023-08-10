@@ -26,7 +26,6 @@ export const platformsHostsMap = defaultHostsMapper({
   [Platform.Builder]: GRAASP_BUILDER_HOST,
   [Platform.Library]: GRAASP_LIBRARY_HOST,
   [Platform.Analytics]: GRAASP_ANALYTICS_HOST,
-  [Platform.Player]: '/',
 });
 
 const StyledLink = styled(Link)(() => ({
@@ -54,6 +53,7 @@ export const HeaderNavigation = ({
     },
     [Platform.Player]: {
       id: APP_NAVIGATION_PLATFORM_SWITCH_BUTTON_IDS[Platform.Player],
+      href: '/',
     },
     [Platform.Library]: {
       id: APP_NAVIGATION_PLATFORM_SWITCH_BUTTON_IDS[Platform.Library],
