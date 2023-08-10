@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/graasp/graasp-player/compare/v1.0.3...v1.1.0) (2023-08-10)
+
+
+### Features
+
+* enable analytics dashboard ([#306](https://github.com/graasp/graasp-player/issues/306)) ([6aabddd](https://github.com/graasp/graasp-player/commit/6aabddd294b6c19ba1c1fb3a29393bf864e8cbd0))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @graasp/query-client to v1.4.0 ([#288](https://github.com/graasp/graasp-player/issues/288)) ([fc1cafe](https://github.com/graasp/graasp-player/commit/fc1cafeff9d0ae2917c6d3be05636235563d2dc5))
+* **deps:** update sentry packages to v7.62.0 ([#301](https://github.com/graasp/graasp-player/issues/301)) ([cced3b4](https://github.com/graasp/graasp-player/commit/cced3b4d9e859844ba78fbc8c5a451dfbc259419))
+
 ## [1.0.3](https://github.com/graasp/graasp-player/compare/v1.0.2...v1.0.3) (2023-08-09)
 
 
