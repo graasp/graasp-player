@@ -70,7 +70,7 @@
     "@typescript-eslint/eslint-plugin": "6.3.0",
     "@typescript-eslint/parser": "6.3.0",
     "@vitejs/plugin-react": "^4.0.4",
-    "commitlint": "17.7.0",
+    "commitlint": "17.7.1",
     "concurrently": "8.2.0",
     "cypress": "12.17.3",
     "cypress-iframe": "1.0.1",
