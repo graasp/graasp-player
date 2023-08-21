@@ -14,7 +14,6 @@ import {
 } from '@graasp/sdk';
 
 import { StatusCodes } from 'http-status-codes';
-import * as qs from 'qs';
 
 import {
   buildAppApiAccessTokenRoute,
@@ -262,9 +261,8 @@ export const mockGetItemMembershipsForItem = (
       ),
     },
     ({ reply, url }) => {
-      const itemId = qs.parse(url.slice(url.indexOf('?') + 1))
-        .itemId as string[];
-      const selectedItems = items.filter(({ id }) => itemId?.includes(id));
+      const itemIds = new URLSearchParams(new URL(url).search).getAll('itemId');
+      const selectedItems = items.filter(({ id }) => itemIds?.includes(id));
       const allMemberships = selectedItems.map(
         ({ creator, id, memberships }) => {
           // build default membership depending on current member
@@ -400,7 +398,7 @@ export const mockDefaultDownloadFile = (
 
       const id = url.slice(API_HOST.length).split('/')[2];
       const item = items.find(({ id: thisId }) => id === thisId);
-      const { replyUrl } = qs.parse(url.slice(url.indexOf('?') + 1));
+      const replyUrl = new URLSearchParams(new URL(url).search).get('replyUrl');
       // item does not exist in db
       if (!item) {
         return reply({
@@ -556,12 +554,7 @@ export const mockGetMembers = (members: Member[]): void => {
       url: `${API_HOST}/${buildGetMembersRoute([''])}*`,
     },
     ({ url, reply }) => {
-      let memberIds = qs.parse(url.slice(url.indexOf('?') + 1)).id as
-        | string
-        | string[];
-      if (typeof memberIds === 'string') {
-        memberIds = [memberIds] as string[];
-      }
+      const memberIds = new URLSearchParams(url).getAll('id');
       const allMembers = memberIds?.map((id) =>
         members.find(({ id: mId }) => mId === id),
       );
