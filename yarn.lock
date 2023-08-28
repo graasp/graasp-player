@@ -3228,9 +3228,9 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 20.5.2
-  resolution: "@types/node@npm:20.5.2"
-  checksum: 46d032bb9a1db687693f6351702572d2f1e12face32caf8182323413918de27d4ac16cc2b15ff6b891651313e602da18edbdd095d16d2b5a26588c2edffca892
+  version: 20.5.7
+  resolution: "@types/node@npm:20.5.7"
+  checksum: fc284c8e16ddc04569730d58e87eae349eb1c3dd9020cb79a1862d9d9add6f04e7367a236f3252db8db2572f90278e250f4cd43d27d264972b54394eaba1ed76
   languageName: node
   linkType: hard
 
@@ -3242,16 +3242,16 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:^16.18.39":
-  version: 16.18.42
-  resolution: "@types/node@npm:16.18.42"
-  checksum: 8a06c4c422bff046b3ca4daae2b34be0448b14c3bc02d921d527e3e22d39c906a03ff52e71d8af5c0e46a42351fff682c481c20a79904b4bc6cefd0e8a4f1562
+  version: 16.18.46
+  resolution: "@types/node@npm:16.18.46"
+  checksum: 1aed3fe9693f2098b8dac8c76c809c1925a456da00dd6f06c1ccb55c62ccfbbe7ec43ccfd12001f9cb4ff84e138292ae53456435dfecd5c4bb1324394c3e09c7
   languageName: node
   linkType: hard
 
 "@types/node@npm:^18.13.0":
-  version: 18.17.7
-  resolution: "@types/node@npm:18.17.7"
-  checksum: cb327da222eb9dc2a8e86c957bef58b16f20a2f6b109e43ff10267e83b342bcba5257e800438dd54deb2bd66bb7815539a759c6dcf91e1b0b08b3add1d5886c8
+  version: 18.17.12
+  resolution: "@types/node@npm:18.17.12"
+  checksum: 79f8bcca3067a3c529f30e172df8d14f25ab9e4cd6a05ed897a924ab1dec774e8ea172ef5c4a67ffec433d423a0c81778f17db22606d574bc83871b60aab298e
   languageName: node
   linkType: hard
 
@@ -3313,13 +3313,13 @@ __metadata:
   linkType: hard
 
 "@types/react@npm:*, @types/react@npm:^18.0.27":
-  version: 18.2.20
-  resolution: "@types/react@npm:18.2.20"
+  version: 18.2.21
+  resolution: "@types/react@npm:18.2.21"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 30f699c60e5e4bfef273ce64d320651cdd60f5c6a08361c6c7eca8cebcccda1ac953d2ee57c9f321b5ae87f8a62c72b6d35ca42df0e261d337849952daab2141
+  checksum: ffed203bfe7aad772b8286f7953305c9181ac3a8f27d3f5400fbbc2a8e27ca8e5bbff818ee014f39ca0d19d2b3bb154e5bdbec7e232c6f80b59069375aa78349
   languageName: node
   linkType: hard
 
@@ -4665,9 +4665,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"concurrently@npm:8.2.0":
-  version: 8.2.0
-  resolution: "concurrently@npm:8.2.0"
+"concurrently@npm:8.2.1":
+  version: 8.2.1
+  resolution: "concurrently@npm:8.2.1"
   dependencies:
     chalk: ^4.1.2
     date-fns: ^2.30.0
@@ -4681,7 +4681,7 @@ __metadata:
   bin:
     conc: dist/bin/concurrently.js
     concurrently: dist/bin/concurrently.js
-  checksum: eafe6a4d9b7fda87f55ea285cfc6acd937a5286ceec8991ab48e6cc27c45fce6a5c6f45e18d7555defa15dc7d7e8941bc5a9d1ceaf182e31441d420e00333434
+  checksum: 216cb16d5b301cbd9c657b19430836d1686fe8fa9b9ef35ef7ac601e1a5cf6535166a3e57de446696dbd5e7e3f45d78fc70f33c5fd4bb565342cd5e752c5b069
   languageName: node
   linkType: hard
 
@@ -6741,7 +6741,7 @@ __metadata:
     "@vitejs/plugin-react": ^4.0.4
     clsx: 1.2.1
     commitlint: 17.7.1
-    concurrently: 8.2.0
+    concurrently: 8.2.1
     cypress: 12.17.4
     cypress-iframe: 1.0.1
     cypress-vite: 1.4.2

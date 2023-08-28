@@ -73,7 +73,7 @@
     "@typescript-eslint/parser": "6.4.1",
     "@vitejs/plugin-react": "^4.0.4",
     "commitlint": "17.7.1",
-    "concurrently": "8.2.0",
+    "concurrently": "8.2.1",
     "cypress": "12.17.4",
     "cypress-iframe": "1.0.1",
     "cypress-vite": "1.4.2",
