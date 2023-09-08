@@ -30,6 +30,7 @@ export const DRAWER_WIDTH = 400;
 export const DESCRIPTION_MAX_LENGTH = 130;
 
 // signin page path from auth host
+// TODO: SIGN_IN_PATH should be clearly typed as an URL object to avoid confusion with routes
 export const SIGN_IN_PATH = buildSignInPath({ host: AUTHENTICATION_HOST });
 
 export const MEMBER_PROFILE_PATH = `${GRAASP_BUILDER_HOST}/profile`;

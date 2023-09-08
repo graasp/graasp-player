@@ -56,7 +56,7 @@ const ItemForbiddenScreen: FC = () => {
             )
           }
         </Typography>
-        <UserSwitchWrapper ButtonContent={ButtonContent} />
+        <UserSwitchWrapper ButtonContent={ButtonContent} preserveUrl />
       </Stack>
     </Main>
   );

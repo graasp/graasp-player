@@ -20,13 +20,26 @@ const { useSignOut } = mutations;
 
 type Props = {
   ButtonContent?: JSX.Element;
+  /** If true keeps the current window location as redirection URL in graasp-auth */
+  preserveUrl?: boolean;
 };
 
-const UserSwitchWrapper = ({ ButtonContent }: Props): JSX.Element => {
+const UserSwitchWrapper = ({
+  ButtonContent,
+  preserveUrl = false,
+}: Props): JSX.Element => {
   const { data: member, isLoading = true } = useCurrentMemberContext();
   const { t: translateBuilder } = useBuilderTranslation();
   // const { mutateAsync: useSwitchMemberAsyncMutation } = useSwitchMember();
   const { mutate: useSignOutMutation } = useSignOut();
+
+  const redirectUrl = new URL(SIGN_IN_PATH);
+  if (preserveUrl) {
+    redirectUrl.searchParams.set(
+      'url',
+      encodeURIComponent(window.location.href),
+    );
+  }
 
   return (
     <GraaspUserSwitch
@@ -42,7 +55,7 @@ const UserSwitchWrapper = ({ ButtonContent }: Props): JSX.Element => {
       signOutText={translateBuilder(BUILDER.USER_SWITCH_SIGN_OUT_BUTTON)}
       // switchMemberText={translateBuilder(BUILDER.USER_SWITCH_SWITCH_USER_TEXT)}
       profilePath={MEMBER_PROFILE_PATH}
-      redirectPath={SIGN_IN_PATH}
+      redirectPath={redirectUrl.toString()}
       buttonId={HEADER_MEMBER_MENU_BUTTON_ID}
       signInMenuItemId={HEADER_MEMBER_MENU_SIGN_IN_BUTTON_ID}
       signOutMenuItemId={HEADER_MEMBER_MENU_SIGN_OUT_BUTTON_ID}
