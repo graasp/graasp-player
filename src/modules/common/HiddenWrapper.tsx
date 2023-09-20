@@ -9,6 +9,8 @@ import { buildHiddenWrapperId } from '@/config/selectors';
 export const HIDDEN_STYLE = {
   backgroundColor: '#eee',
   color: 'rgba(0, 0, 0, 0.3)',
+  padding: '16px',
+  opacity: '0.5',
 };
 
 const StyledBox = styled(Box, {
