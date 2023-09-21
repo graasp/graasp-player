@@ -2102,9 +2102,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/query-client@github:graasp/graasp-query-client#423-add-etherpad-queue":
-  version: 1.6.0
-  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=96b25e76358497434a736e1608d4a768153408ac"
+"@graasp/query-client@npm:1.7.0":
+  version: 1.7.0
+  resolution: "@graasp/query-client@npm:1.7.0"
   dependencies:
     "@graasp/sdk": 1.4.0
     "@graasp/translations": 1.19.0
@@ -2117,7 +2117,7 @@ __metadata:
     uuid: 9.0.0
   peerDependencies:
     react: ^17.0.0
-  checksum: 9247688aada5f0ca6ef6295fd84d849a8b2fa65e25dd5d0515075c5c2c3042b0fbfecb2cc5af7a20323040ad5b9065bdbdfbc38830e6e4d2e758c0bb2e35e4c2
+  checksum: b4488bc85cb2e8fa6cb3efb02a3e3a50af988b1cc049a34cf4dcad2aa2c3fd9b6a48aaac2a807612c9fedf7a99fcb6caef43942774d5a81b0cf0b62727abeb16
   languageName: node
   linkType: hard
 
@@ -6769,7 +6769,7 @@ __metadata:
     "@emotion/react": 11.11.1
     "@emotion/styled": 11.11.0
     "@graasp/chatbox": 2.0.1
-    "@graasp/query-client": "github:graasp/graasp-query-client#423-add-etherpad-queue"
+    "@graasp/query-client": 1.7.0
     "@graasp/sdk": 1.4.0
     "@graasp/translations": 1.18.3
     "@graasp/ui": 3.4.0
