@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/graasp/graasp-player/compare/v1.1.0...v1.2.0) (2023-09-21)
+
+
+### Features
+
+* keep current window location on login of forbidden screen ([#344](https://github.com/graasp/graasp-player/issues/344)) ([a4b755b](https://github.com/graasp/graasp-player/commit/a4b755b46422007a8a4c3f723137c573197d2b39))
+
+
+### Bug Fixes
+
+* allow multiple etherpads to be opened simultaneously ([#345](https://github.com/graasp/graasp-player/issues/345)) ([b08d27c](https://github.com/graasp/graasp-player/commit/b08d27c04ea899bd66aefb25411dacdae48b4c63))
+* **deps:** update dependency @graasp/chatbox to v2.0.1 ([#326](https://github.com/graasp/graasp-player/issues/326)) ([efefce2](https://github.com/graasp/graasp-player/commit/efefce25acc65e279de5a7bbb5187820fd2bd23e))
+* **deps:** update dependency @graasp/query-client to v1.4.1 ([#318](https://github.com/graasp/graasp-player/issues/318)) ([5d087f9](https://github.com/graasp/graasp-player/commit/5d087f979423900a5e1c207df0bde919a47c4586))
+* **deps:** update dependency @graasp/query-client to v1.4.3 ([#322](https://github.com/graasp/graasp-player/issues/322)) ([e231e6c](https://github.com/graasp/graasp-player/commit/e231e6cd4b87505e9342956902dad9f66ec7467e))
+* **deps:** update dependency @graasp/sdk to v1.2.1 ([#320](https://github.com/graasp/graasp-player/issues/320)) ([1d47851](https://github.com/graasp/graasp-player/commit/1d47851f08c44bada195d42b8c2a57f50b8747d3))
+* **deps:** update dependency @graasp/translations to v1.18.3 ([#319](https://github.com/graasp/graasp-player/issues/319)) ([4ba2b4a](https://github.com/graasp/graasp-player/commit/4ba2b4a1a87bf8c8f9d84f171b23f66c75c70b6f))
+* **deps:** update dependency @graasp/ui to v3.3.2 ([#323](https://github.com/graasp/graasp-player/issues/323)) ([b40383b](https://github.com/graasp/graasp-player/commit/b40383b2bf587fd58322d45d70f3d50d54ef581d))
+* **deps:** update dependency react-i18next to v13 ([#310](https://github.com/graasp/graasp-player/issues/310)) ([e6a9ffc](https://github.com/graasp/graasp-player/commit/e6a9ffcef42ec72370d586bb763baabc715c39d4))
+* **deps:** update dependency react-i18next to v13.2.0 ([#330](https://github.com/graasp/graasp-player/issues/330)) ([de39d75](https://github.com/graasp/graasp-player/commit/de39d7536f9ed73753b61bc104c6c98406f07a00))
+* **deps:** update mui (non-major) ([#316](https://github.com/graasp/graasp-player/issues/316)) ([b6796de](https://github.com/graasp/graasp-player/commit/b6796de11ed0e340f1eea8487b3dcf28394e8127))
+* **deps:** update mui (non-major) ([#333](https://github.com/graasp/graasp-player/issues/333)) ([42f81a8](https://github.com/graasp/graasp-player/commit/42f81a8aaa71300a34c72b5ab081dad659b68dc7))
+* **deps:** update react-router monorepo to v6.15.0 ([#312](https://github.com/graasp/graasp-player/issues/312)) ([2fc6641](https://github.com/graasp/graasp-player/commit/2fc664179bdb3fecd265f48ee2cdae5e74e8dd76))
+* **deps:** update sentry packages to v7.63.0 ([#313](https://github.com/graasp/graasp-player/issues/313)) ([0835e6b](https://github.com/graasp/graasp-player/commit/0835e6b489b2bda47b93045ee7d5deb7b001cfb4))
+* **deps:** update sentry packages to v7.64.0 ([#317](https://github.com/graasp/graasp-player/issues/317)) ([3057429](https://github.com/graasp/graasp-player/commit/30574290a6ecd25a250c206429d6ed5592131c07))
+* improve hidden pdf display ([#349](https://github.com/graasp/graasp-player/issues/349)) ([61f88b8](https://github.com/graasp/graasp-player/commit/61f88b808424983be26abe34ddeab01f6a774e95))
+
 ## [1.1.0](https://github.com/graasp/graasp-player/compare/v1.0.3...v1.1.0) (2023-08-10)
 
 
