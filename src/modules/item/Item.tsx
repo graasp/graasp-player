@@ -328,6 +328,7 @@ const ItemContentWrapper = ({ item }: { item: ItemRecord }) => {
   const { data: itemTags } = useItemTags(item.id);
   const isItemHidden = isHidden(item, itemTags);
 
+  // An item the user has access to can be hidden (write, admin) so we hide it in player
   if (isItemHidden) {
     return null;
   }
