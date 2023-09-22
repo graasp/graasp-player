@@ -48,7 +48,6 @@ import {
 import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
 import { isHidden, paginationContentFilter } from '@/utils/item';
 
-import HiddenWrapper from '../common/HiddenWrapper';
 import PinnedFolderItem from './PinnedFolderItem';
 
 const {
@@ -329,11 +328,10 @@ const ItemContentWrapper = ({ item }: { item: ItemRecord }) => {
   const { data: itemTags } = useItemTags(item.id);
   const isItemHidden = isHidden(item, itemTags);
 
-  return (
-    <HiddenWrapper itemId={item.id} hidden={isItemHidden}>
-      <ItemContent item={item} />
-    </HiddenWrapper>
-  );
+  if (isItemHidden) {
+    return null;
+  }
+  return <ItemContent item={item} />;
 };
 
 type Props = {
