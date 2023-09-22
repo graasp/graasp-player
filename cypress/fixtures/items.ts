@@ -35,7 +35,10 @@ export const DEFAULT_FOLDER_ITEM: MockItem = {
     isPinned: false,
     showChatbox: false,
   },
-  memberships: [{ memberId: MEMBERS.BOB.id, permission: PermissionLevel.Read }],
+  memberships: [
+    { memberId: MEMBERS.BOB.id, permission: PermissionLevel.Read },
+    { memberId: MEMBERS.CEDRIC.id, permission: PermissionLevel.Write },
+  ],
 };
 
 export const ITEM_WITH_CHAT_BOX: MockItem = {
