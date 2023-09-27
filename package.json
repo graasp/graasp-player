@@ -74,7 +74,7 @@
     "@vitejs/plugin-react": "^4.0.4",
     "commitlint": "17.7.1",
     "concurrently": "8.2.1",
-    "cypress": "12.17.4",
+    "cypress": "13.2.0",
     "cypress-iframe": "1.0.1",
     "cypress-vite": "1.4.2",
     "env-cmd": "10.1.0",
