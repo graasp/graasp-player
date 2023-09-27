@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.1](https://github.com/graasp/graasp-player/compare/v1.2.0...v1.2.1) (2023-09-27)
+
+
+### Bug Fixes
+
+* add collapsible on shortcuts ([#354](https://github.com/graasp/graasp-player/issues/354)) ([7ad6092](https://github.com/graasp/graasp-player/commit/7ad6092aaecdce8c4b5b72c32049d0ccda2c6b5b))
+* **deps:** update cypress ([7ad6092](https://github.com/graasp/graasp-player/commit/7ad6092aaecdce8c4b5b72c32049d0ccda2c6b5b))
+* **deps:** update deps ([7ad6092](https://github.com/graasp/graasp-player/commit/7ad6092aaecdce8c4b5b72c32049d0ccda2c6b5b))
+* do not show hidden items to admin and writers ([#351](https://github.com/graasp/graasp-player/issues/351)) ([8065b33](https://github.com/graasp/graasp-player/commit/8065b33447cd1906e73352a64f460f7bc381cce0))
+
 ## [1.2.0](https://github.com/graasp/graasp-player/compare/v1.1.0...v1.2.0) (2023-09-21)
 
 
