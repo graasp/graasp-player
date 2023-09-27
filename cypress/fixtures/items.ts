@@ -8,6 +8,7 @@ import {
 import { v4 } from 'uuid';
 
 import {
+  GRAASP_DOCUMENT_ITEM,
   GRAASP_DOCUMENT_ITEM_HIDDEN,
   GRAASP_DOCUMENT_ITEM_PUBLIC_HIDDEN,
   GRAASP_DOCUMENT_ITEM_PUBLIC_VISIBLE,
@@ -228,6 +229,33 @@ export const FOLDER_WITH_HIDDEN_ITEMS: { items: MockItem[] } = {
         showChatbox: false,
       },
       tags: [mockItemTag({ type: ItemTagType.Hidden })],
+    },
+  ],
+};
+
+export const FOLDER_WITH_COLLAPSIBLE_SHORTCUT_ITEMS: { items: MockItem[] } = {
+  items: [
+    // original for the shortcut
+    GRAASP_DOCUMENT_ITEM,
+    {
+      ...DEFAULT_FOLDER_ITEM,
+      id: 'ecafbd2a-5688-11eb-ae93-0242ac130008',
+      name: 'parent folder',
+      path: 'ecafbd2a_5688_11eb_ae93_0242ac130008',
+      settings: {
+        isPinned: false,
+        showChatbox: false,
+      },
+    },
+    // shortcut with collapse enabled
+    {
+      ...GRAASP_DOCUMENT_ITEM_VISIBLE,
+      name: 'Shortcut to original document',
+      type: ItemType.SHORTCUT,
+      extra: {
+        [ItemType.SHORTCUT]: { target: 'ecafbd2a-5688-12eb-ae91-0242ac130002' },
+      },
+      settings: { isCollapsible: true },
     },
   ],
 };

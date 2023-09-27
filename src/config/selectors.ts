@@ -21,6 +21,10 @@ export const HIDDEN_WRAPPER_ID_CY = 'hiddenWrapper';
 export const buildHiddenWrapperId = (id: string, isHidden: boolean): string =>
   `${HIDDEN_WRAPPER_ID_CY}-${id}-${isHidden ? 'grayed' : 'visible'}`;
 
+export const COLLAPSIBLE_WRAPPER_ID = 'collapsibleWrapper';
+export const buildCollapsibleId = (id: string): string =>
+  `${COLLAPSIBLE_WRAPPER_ID}-${id}`;
+
 export const BUILDER_EDIT_BUTTON_ID = 'builderEditButton';
 
 export const PANEL_CLOSE_BUTTON_SELECTOR = '[data-testid="ChevronRightIcon"]';

@@ -14,6 +14,7 @@ import {
   ItemRecord,
   LocalFileItemTypeRecord,
   S3FileItemTypeRecord,
+  ShortcutItemTypeRecord,
 } from '@graasp/sdk/frontend';
 import { FAILURE_MESSAGES, PLAYER } from '@graasp/translations';
 import {
@@ -26,6 +27,7 @@ import {
   ItemSkeleton,
   LinkItem,
   TextEditor,
+  withCollapse,
 } from '@graasp/ui';
 
 import { List } from 'immutable';
@@ -41,6 +43,7 @@ import { hooks } from '@/config/queryClient';
 import {
   FOLDER_NAME_TITLE_CLASS,
   buildAppId,
+  buildCollapsibleId,
   buildDocumentId,
   buildFileId,
   buildFolderButtonId,
@@ -253,6 +256,27 @@ const H5PContent = ({ item }: { item: H5PItemTypeRecord }): JSX.Element => {
   );
 };
 
+const ShortcutContent = ({
+  item,
+}: {
+  item: ShortcutItemTypeRecord;
+}): JSX.Element => {
+  if (item.settings.isCollapsible) {
+    return (
+      <span id={buildCollapsibleId(item.id)}>
+        {withCollapse({ item })(
+          // eslint-disable-next-line @typescript-eslint/no-use-before-define
+          <Item isChildren id={item.extra?.shortcut?.target} />,
+        )}
+      </span>
+    );
+  }
+  return (
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    <Item isChildren id={item.extra?.shortcut?.target} />
+  );
+};
+
 type ItemContentProps = {
   item: ItemRecord;
 };
@@ -312,10 +336,7 @@ const ItemContent = ({ item }: ItemContentProps) => {
     }
 
     case ItemType.SHORTCUT: {
-      return (
-        // eslint-disable-next-line @typescript-eslint/no-use-before-define
-        <Item isChildren id={item.extra?.shortcut?.target} />
-      );
+      return <ShortcutContent item={item} />;
     }
 
     default:
