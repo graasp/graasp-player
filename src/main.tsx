@@ -5,8 +5,8 @@ import ReactGA from 'react-ga4';
 import { hasAcceptedCookies } from '@graasp/sdk';
 import '@graasp/ui/dist/bundle.css';
 
+import { BrowserTracing } from '@sentry/browser';
 import * as Sentry from '@sentry/react';
-import { BrowserTracing } from '@sentry/tracing';
 
 import { APP_VERSION, GA_MEASUREMENT_ID, SENTRY_DSN } from '@/config/env';
 import { SENTRY_ENVIRONMENT, SENTRY_TRACE_SAMPLE_RATE } from '@/config/sentry';
@@ -32,6 +32,8 @@ if (GA_MEASUREMENT_ID && hasAcceptedCookies()) {
 }
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   <React.StrictMode>
     <Root />
   </React.StrictMode>,

@@ -1,0 +1,10 @@
+{
+  "GRAASP_PLAYER": "Graasp Player",
+  "SHOW_CHAT_TOOLTIP": "Montrer le chat",
+  "HIDE_CHAT_TOOLTIP": "Cacher le chat",
+  "SHOW_PINNED_ITEMS_TOOLTIP": "Montrer les éléments épinglés",
+  "HIDE_PINNED_ITEMS_TOOLTIP": "Cacher les éléments épinglés",
+  "PINNED_ITEMS": "Éléments épinglés",
+  "LOAD_MORE": "Montrer plus",
+  "HIDDEN_WRAPPER_TOOLTIP": "Cet élément est caché, vous pouvez le voir car vous possédez un droit d'administration ou d'écriture, les utilisateurs avec droits de lecture ne peuvent pas voir cet élément"
+}

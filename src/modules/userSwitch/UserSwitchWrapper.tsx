@@ -1,9 +1,7 @@
 import { MemberRecord } from '@graasp/sdk/frontend';
-import { BUILDER } from '@graasp/translations';
 import { UserSwitchWrapper as GraaspUserSwitch } from '@graasp/ui';
 
 import { MEMBER_PROFILE_PATH, SIGN_IN_PATH } from '@/config/constants';
-import { useBuilderTranslation } from '@/config/i18n';
 import { mutations } from '@/config/queryClient';
 import {
   HEADER_MEMBER_MENU_BUTTON_ID,
@@ -29,8 +27,6 @@ const UserSwitchWrapper = ({
   preserveUrl = false,
 }: Props): JSX.Element => {
   const { data: member, isLoading = true } = useCurrentMemberContext();
-  const { t: translateBuilder } = useBuilderTranslation();
-  // const { mutateAsync: useSwitchMemberAsyncMutation } = useSwitchMember();
   const { mutate: useSignOutMutation } = useSignOut();
 
   const redirectUrl = new URL(SIGN_IN_PATH);
@@ -47,13 +43,6 @@ const UserSwitchWrapper = ({
       signOut={useSignOutMutation}
       currentMember={member}
       isCurrentMemberLoading={isLoading}
-      // switchMember={useSwitchMemberAsyncMutation}
-      seeProfileText={translateBuilder(BUILDER.USER_SWITCH_PROFILE_BUTTON)}
-      signedOutTooltipText={translateBuilder(
-        BUILDER.USER_SWITCH_SIGNED_OUT_TOOLTIP,
-      )}
-      signOutText={translateBuilder(BUILDER.USER_SWITCH_SIGN_OUT_BUTTON)}
-      // switchMemberText={translateBuilder(BUILDER.USER_SWITCH_SWITCH_USER_TEXT)}
       profilePath={MEMBER_PROFILE_PATH}
       redirectPath={redirectUrl.toString()}
       buttonId={HEADER_MEMBER_MENU_BUTTON_ID}

@@ -16,7 +16,7 @@ import {
   S3FileItemTypeRecord,
   ShortcutItemTypeRecord,
 } from '@graasp/sdk/frontend';
-import { FAILURE_MESSAGES, PLAYER } from '@graasp/translations';
+import { FAILURE_MESSAGES } from '@graasp/translations';
 import {
   AppItem,
   Button,
@@ -49,6 +49,7 @@ import {
   buildFolderButtonId,
 } from '@/config/selectors';
 import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
+import { PLAYER } from '@/langs/constants';
 import { isHidden, paginationContentFilter } from '@/utils/item';
 
 import PinnedFolderItem from './PinnedFolderItem';

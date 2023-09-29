@@ -5,11 +5,11 @@ import IconButton from '@mui/material/IconButton';
 
 import { ItemType } from '@graasp/sdk';
 import { ItemRecord } from '@graasp/sdk/frontend';
-import { PLAYER } from '@graasp/translations';
 
 import { usePlayerTranslation } from '@/config/i18n';
 import { useItemContext } from '@/contexts/ItemContext';
 import { useLayoutContext } from '@/contexts/LayoutContext';
+import { PLAYER } from '@/langs/constants';
 import Chatbox from '@/modules/chatbox/Chatbox';
 import Item from '@/modules/item/Item';
 

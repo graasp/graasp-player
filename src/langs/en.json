@@ -1,0 +1,10 @@
+{
+  "GRAASP_PLAYER": "Graasp Player",
+  "SHOW_CHAT_TOOLTIP": "Show chat",
+  "HIDE_CHAT_TOOLTIP": "Hide chat",
+  "SHOW_PINNED_ITEMS_TOOLTIP": "Show pinned items",
+  "HIDE_PINNED_ITEMS_TOOLTIP": "Hide pinned items",
+  "PINNED_ITEMS": "Pinned items",
+  "LOAD_MORE": "Load more",
+  "HIDDEN_WRAPPER_TOOLTIP": "This element is hidden, you can see it because you have admin or write access, users with read access won't see it"
+}

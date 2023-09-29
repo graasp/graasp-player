@@ -4,8 +4,6 @@ import { useTreeItem } from '@mui/lab/TreeItem';
 import { styled } from '@mui/material';
 import Typography from '@mui/material/Typography';
 
-import clsx from 'clsx';
-
 const StyledDiv = styled('div')({
   // align expand arrow to top
   alignItems: 'start !important',
@@ -54,15 +52,15 @@ const CustomContentTree = React.forwardRef(
 
     const icon = iconProp || expansionIcon || displayIcon;
 
-    const handleMouseDown = (event: MouseEvent) => {
+    const handleMouseDown = (event: MouseEvent<HTMLDivElement>) => {
       preventSelection(event);
     };
 
-    const handleExpansionClick = (event: MouseEvent) => {
+    const handleExpansionClick = (event: MouseEvent<HTMLDivElement>) => {
       handleExpansion(event);
     };
 
-    const handleSelectionClick = (event: MouseEvent) => {
+    const handleSelectionClick = (event: MouseEvent<HTMLDivElement>) => {
       // this handles the auto expansion of an item on click to show children
       if (!expanded) {
         handleExpansion(event);
@@ -77,15 +75,19 @@ const CustomContentTree = React.forwardRef(
       </div>
     );
 
+    const classNames = [
+      className,
+      classes.root,
+      expanded ? classes.expanded : '',
+      disabled ? classes.disabled : '',
+      selected ? classes.selected : '',
+      focused ? classes.focused : '',
+    ].join(' ');
+
     return (
       // eslint-disable-next-line jsx-a11y/no-static-element-interactions
       <StyledDiv
-        className={clsx(className, classes.root, {
-          [classes.expanded]: expanded,
-          [classes.selected]: selected,
-          [classes.focused]: focused,
-          [classes.disabled]: disabled,
-        })}
+        className={classNames}
         onMouseDown={handleMouseDown}
         ref={ref as Ref<HTMLDivElement>}
       >

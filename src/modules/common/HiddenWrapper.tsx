@@ -1,10 +1,10 @@
 import { Box, styled } from '@mui/material';
 
 import { ItemRecord } from '@graasp/sdk/frontend';
-import { PLAYER } from '@graasp/translations';
 
 import { usePlayerTranslation } from '@/config/i18n';
 import { buildHiddenWrapperId } from '@/config/selectors';
+import { PLAYER } from '@/langs/constants';
 
 export const HIDDEN_STYLE = {
   backgroundColor: '#eee',
