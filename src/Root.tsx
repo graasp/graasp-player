@@ -1,4 +1,3 @@
-import React from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -21,7 +20,7 @@ import App from './App';
 
 const globalStyles = <GlobalStyles styles={{ p: { fontSize: '1rem' } }} />;
 
-const Root = (): React.ReactNode => (
+const Root = (): JSX.Element => (
   <QueryClientProvider client={queryClient}>
     <I18nextProvider i18n={i18n}>
       {SHOW_NOTIFICATIONS && (

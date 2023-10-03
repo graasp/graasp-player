@@ -2982,15 +2982,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/tracing@npm:7.73.0":
-  version: 7.73.0
-  resolution: "@sentry/tracing@npm:7.73.0"
-  dependencies:
-    "@sentry-internal/tracing": 7.73.0
-  checksum: eb41e0315c8c4fbdba676b4adf264c4f8f24010d292e7734c534d8cd4b83cea00c8a458bba5f186fc653c99ca9d4a6aa25ba6af22abef321563587722bbaea07
-  languageName: node
-  linkType: hard
-
 "@sentry/types@npm:7.73.0":
   version: 7.73.0
   resolution: "@sentry/types@npm:7.73.0"
@@ -4253,25 +4244,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*":
-  version: 18.2.24
-  resolution: "@types/react@npm:18.2.24"
+"@types/react@npm:*, @types/react@npm:18.2.21":
+  version: 18.2.21
+  resolution: "@types/react@npm:18.2.21"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: ea5d8204e71b1c9c6631f429a93f8e7be0614cdbdb464e92b3181bdccd8a7c45e30ded8b13da726684b6393f651317c36d54832e3d3cdea0da480a3f26268909
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^18.2.23":
-  version: 18.2.23
-  resolution: "@types/react@npm:18.2.23"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": "*"
-    csstype: ^3.0.2
-  checksum: efb9d1ed1940c0e7ba08a21ffba5e266d8dbbb8fe618cfb97bc902dfc96385fdd8189e3f7f64b4aa13134f8e61947d60560deb23be151253c3a97b0d070897ca
+  checksum: ffed203bfe7aad772b8286f7953305c9181ac3a8f27d3f5400fbbc2a8e27ca8e5bbff818ee014f39ca0d19d2b3bb154e5bdbec7e232c6f80b59069375aa78349
   languageName: node
   linkType: hard
 
@@ -5446,7 +5426,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:1.2.1, clsx@npm:^1.1.1":
+"clsx@npm:^1.1.1":
   version: 1.2.1
   resolution: "clsx@npm:1.2.1"
   checksum: 30befca8019b2eb7dbad38cff6266cf543091dae2825c856a62a8ccf2c3ab9c2907c4d12b288b73101196767f66812365400a227581484a05f968b0307cfaf12
@@ -7630,17 +7610,15 @@ __metadata:
     "@mui/lab": 5.0.0-alpha.146
     "@mui/material": 5.14.11
     "@sentry/react": 7.73.0
-    "@sentry/tracing": 7.73.0
     "@trivago/prettier-plugin-sort-imports": 4.2.0
     "@types/lodash.truncate": ^4.4.7
     "@types/node": ^18.13.0
-    "@types/react": ^18.2.23
+    "@types/react": 18.2.21
     "@types/react-dom": ^18.2.8
     "@types/uuid": 9.0.4
     "@typescript-eslint/eslint-plugin": 6.7.3
     "@typescript-eslint/parser": 6.7.3
     "@vitejs/plugin-react": ^4.1.0
-    clsx: 1.2.1
     commitlint: 17.7.2
     concurrently: 8.2.1
     cypress: 13.3.0
