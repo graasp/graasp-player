@@ -2483,12 +2483,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/ui@npm:3.5.2":
-  version: 3.5.2
-  resolution: "@graasp/ui@npm:3.5.2"
+"@graasp/ui@npm:3.5.3":
+  version: 3.5.3
+  resolution: "@graasp/ui@npm:3.5.3"
   dependencies:
     "@graasp/sdk": 1.6.0
-    http-status-codes: 2.2.0
+    http-status-codes: 2.3.0
     immutable: 4.3.2
     katex: 0.16.8
     lodash.truncate: 4.4.2
@@ -2499,7 +2499,7 @@ __metadata:
     react-rnd: 10.4.1
     react-text-mask: 5.5.0
     short-uuid: 4.2.2
-    uuid: 9.0.0
+    uuid: 9.0.1
   peerDependencies:
     "@emotion/cache": ~11.10.7 || ~11.11.0
     "@emotion/react": ~11.10.6 || ~11.11.0
@@ -2521,7 +2521,7 @@ __metadata:
       optional: true
     ag-grid-react:
       optional: true
-  checksum: 76ae50c8cf437d3ea407b424f2c4294608d0aab1fec10be05962c139d942622d1b39e6ef6a9be0edaad5455bd30236dfac0932ef55b7aeeb254b4e64150c327c
+  checksum: 22314d899dfe3a20b1cc0cf033b65b472e3c0a047112f41e1f1fe194417c8d1173ac1d47a522254b07ad6f5bf8f3c7022545a66767ca252f56c87f0ea35e992b
   languageName: node
   linkType: hard
 
@@ -7605,7 +7605,7 @@ __metadata:
     "@graasp/query-client": 1.8.2
     "@graasp/sdk": 1.7.0
     "@graasp/translations": 1.19.2
-    "@graasp/ui": 3.5.2
+    "@graasp/ui": 3.5.3
     "@mui/icons-material": 5.14.11
     "@mui/lab": 5.0.0-alpha.146
     "@mui/material": 5.14.11
