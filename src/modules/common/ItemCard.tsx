@@ -6,8 +6,10 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
-import { DiscriminatedItem, ItemType } from '@graasp/sdk';
+import { DiscriminatedItem, ItemType, Triggers } from '@graasp/sdk';
 import { ItemIcon } from '@graasp/ui';
+
+import { mutations } from '@/config/queryClient';
 
 import { buildMainPath } from '../../config/paths';
 import { HIDDEN_STYLE } from './HiddenWrapper';
@@ -24,9 +26,14 @@ const SimpleCard = ({ item, isHidden = false }: Props): JSX.Element => {
       ? item.extra
       : undefined;
 
+  const { mutate: triggerAction } = mutations.usePostItemAction();
+  const handleCardClick = () => {
+    // trigger player Action for item view
+    triggerAction({ itemId: item.id, payload: { type: Triggers.ItemView } });
+  };
   return (
     <Card style={isHidden ? HIDDEN_STYLE : undefined}>
-      <CardActionArea component={Link} to={link}>
+      <CardActionArea component={Link} to={link} onClick={handleCardClick}>
         <CardContent>
           <Stack direction="row" alignItems="center">
             <ItemIcon

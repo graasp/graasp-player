@@ -4,11 +4,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [2.1.0](https://github.com/graasp/graasp-player/compare/v2.0.1...v2.1.0) (2023-11-16)
 
-
 ### Features
 
 * redirects to account for profile ([#403](https://github.com/graasp/graasp-player/issues/403)) ([06887c7](https://github.com/graasp/graasp-player/commit/06887c7eeceb7e59206e24dd9a55e6b2cfc5283d))
-
 
 ### Bug Fixes
 
@@ -17,7 +15,6 @@ All notable changes to this project will be documented in this file. See [standa
 * upgrade deps ([#412](https://github.com/graasp/graasp-player/issues/412)) ([ed7fbd5](https://github.com/graasp/graasp-player/commit/ed7fbd5c06c0e5ecfe93a57367d0041f9a0e6054))
 
 ## [2.0.1](https://github.com/graasp/graasp-player/compare/v2.0.0...v2.0.1) (2023-11-06)
-
 
 ### Bug Fixes
 
@@ -28,7 +25,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [2.0.0](https://github.com/graasp/graasp-player/compare/v1.2.2...v2.0.0) (2023-11-03)
 
-
 ### ⚠ BREAKING CHANGES
 
 * remove immutable ([#392](https://github.com/graasp/graasp-player/issues/392))
@@ -36,7 +32,6 @@ All notable changes to this project will be documented in this file. See [standa
 ### Features
 
 * remove immutable ([#392](https://github.com/graasp/graasp-player/issues/392)) ([36937ad](https://github.com/graasp/graasp-player/commit/36937add6bbf93babcdb8dc9af60f3a79f68fcab))
-
 
 ### Bug Fixes
 
@@ -46,7 +41,6 @@ All notable changes to this project will be documented in this file. See [standa
 * **deps:** update react-router monorepo to v6.17.0 ([#375](https://github.com/graasp/graasp-player/issues/375)) ([8aacb0f](https://github.com/graasp/graasp-player/commit/8aacb0f5da4761e90adb159309186a2b3b1d3e71))
 
 ## [1.2.2](https://github.com/graasp/graasp-player/compare/v1.2.1...v1.2.2) (2023-10-16)
-
 
 ### Bug Fixes
 
@@ -61,7 +55,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.2.1](https://github.com/graasp/graasp-player/compare/v1.2.0...v1.2.1) (2023-09-27)
 
-
 ### Bug Fixes
 
 * add collapsible on shortcuts ([#354](https://github.com/graasp/graasp-player/issues/354)) ([7ad6092](https://github.com/graasp/graasp-player/commit/7ad6092aaecdce8c4b5b72c32049d0ccda2c6b5b))
@@ -71,11 +64,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.2.0](https://github.com/graasp/graasp-player/compare/v1.1.0...v1.2.0) (2023-09-21)
 
-
 ### Features
 
 * keep current window location on login of forbidden screen ([#344](https://github.com/graasp/graasp-player/issues/344)) ([a4b755b](https://github.com/graasp/graasp-player/commit/a4b755b46422007a8a4c3f723137c573197d2b39))
-
 
 ### Bug Fixes
 
@@ -97,11 +88,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.1.0](https://github.com/graasp/graasp-player/compare/v1.0.3...v1.1.0) (2023-08-10)
 
-
 ### Features
 
 * enable analytics dashboard ([#306](https://github.com/graasp/graasp-player/issues/306)) ([6aabddd](https://github.com/graasp/graasp-player/commit/6aabddd294b6c19ba1c1fb3a29393bf864e8cbd0))
-
 
 ### Bug Fixes
 
@@ -109,7 +98,6 @@ All notable changes to this project will be documented in this file. See [standa
 * **deps:** update sentry packages to v7.62.0 ([#301](https://github.com/graasp/graasp-player/issues/301)) ([cced3b4](https://github.com/graasp/graasp-player/commit/cced3b4d9e859844ba78fbc8c5a451dfbc259419))
 
 ## [1.0.3](https://github.com/graasp/graasp-player/compare/v1.0.2...v1.0.3) (2023-08-09)
-
 
 ### Bug Fixes
 
@@ -121,7 +109,6 @@ All notable changes to this project will be documented in this file. See [standa
 * use preview instead of dev server ([9750005](https://github.com/graasp/graasp-player/commit/975000578afce173137f970f166eff8fd1ed92a6))
 
 ## [1.0.2](https://github.com/graasp/graasp-player/compare/v1.0.1...v1.0.2) (2023-07-20)
-
 
 ### Bug Fixes
 
@@ -139,7 +126,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.0.1](https://github.com/graasp/graasp-player/compare/v1.0.0...v1.0.1) (2023-06-30)
 
-
 ### Bug Fixes
 
 * bump @graasp/query-client to fix etherpad queries ([#262](https://github.com/graasp/graasp-player/issues/262)) ([d72ff2b](https://github.com/graasp/graasp-player/commit/d72ff2bb6890a09fc52c53b88a4ab57967f14bb7))
@@ -151,7 +137,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.0.0](https://github.com/graasp/graasp-player/compare/v0.6.4...v1.0.0) (2023-06-01)
 
-
 ### ⚠ BREAKING CHANGES
 
 * typeorm ([#216](https://github.com/graasp/graasp-player/issues/216))
@@ -162,13 +147,11 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [0.6.4](https://github.com/graasp/graasp-player/compare/v0.6.3...v0.6.4) (2023-05-09)
 
-
 ### Bug Fixes
 
 * bump @graasp/ui to 2.5.0 and @graasp/translations to 1.12.0 ([#236](https://github.com/graasp/graasp-player/issues/236)) ([4522964](https://github.com/graasp/graasp-player/commit/45229640d3832d7bedabe3737b9b941724de206a))
 
 ## [0.6.3](https://github.com/graasp/graasp-player/compare/v0.6.2...v0.6.3) (2023-04-27)
-
 
 ### Bug Fixes
 
@@ -178,7 +161,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [0.6.2](https://github.com/graasp/graasp-player/compare/v0.6.1...v0.6.2) (2023-04-18)
 
-
 ### Bug Fixes
 
 * assign showCollapse prop to items ([8df59c9](https://github.com/graasp/graasp-player/commit/8df59c9e4e5255c7cd55cf13de1e483168fa91b8))
@@ -187,11 +169,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [0.6.1](https://github.com/graasp/graasp-player/compare/v0.6.0...v0.6.1) (2023-03-24)
 
-
 ### Bug Fixes
 
 * **ui:** styles of text and images ([#221](https://github.com/graasp/graasp-player/issues/221)) ([2ee61bd](https://github.com/graasp/graasp-player/commit/2ee61bdcee94f49fc5cd4a6c81654721ea24ac7d))
-
 
 ### Documentation
 
@@ -199,13 +179,11 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [0.6.0](https://github.com/graasp/graasp-player/compare/v0.5.0...v0.6.0) (2023-03-16)
 
-
 ### Features
 
 * move player to vite ([#204](https://github.com/graasp/graasp-player/issues/204)) ([fff08ab](https://github.com/graasp/graasp-player/commit/fff08abb4c8d9cbcaab0974b81d60e917865119c))
 
 ## [0.5.0](https://github.com/graasp/graasp-player/compare/v0.4.1...v0.5.0) (2023-03-06)
-
 
 ### Features
 
@@ -213,7 +191,6 @@ All notable changes to this project will be documented in this file. See [standa
 * remove builder button ([#198](https://github.com/graasp/graasp-player/issues/198)) ([967addc](https://github.com/graasp/graasp-player/commit/967addce3eb711120ed784c4712a6dad3a24e16f))
 
 ## [0.4.1](https://github.com/graasp/graasp-player/compare/v0.4.0...v0.4.1) (2023-02-24)
-
 
 ### Bug Fixes
 
@@ -224,20 +201,17 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [0.4.0](https://github.com/graasp/graasp-player/compare/v0.3.0...v0.4.0) (2023-02-16)
 
-
 ### Features
 
 * add platform switch to player ([#184](https://github.com/graasp/graasp-player/issues/184)) ([b7a32d4](https://github.com/graasp/graasp-player/commit/b7a32d4fb00355c71c4142949610bf7bf3ae3b80))
 
 ## [0.3.0](https://github.com/graasp/graasp-player/compare/v0.2.2...v0.3.0) (2023-02-14)
 
-
 ### Features
 
 * upgrade packages ([#187](https://github.com/graasp/graasp-player/issues/187)) ([bf3ef37](https://github.com/graasp/graasp-player/commit/bf3ef3740ef0553c12297127c25c85d295dd774c))
 
 ## [0.2.2](https://github.com/graasp/graasp-player/compare/v0.2.1...v0.2.2) (2023-01-31)
-
 
 ### Bug Fixes
 
@@ -246,20 +220,17 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [0.2.1](https://github.com/graasp/graasp-player/compare/v0.2.0...v0.2.1) (2023-01-19)
 
-
 ### Bug Fixes
 
 * h5p revert to default iframe ([#174](https://github.com/graasp/graasp-player/issues/174)) ([7e5325d](https://github.com/graasp/graasp-player/commit/7e5325dc6253b23fd9baf8299863912fd84e146c))
 
 ## [0.2.0](https://github.com/graasp/graasp-player/compare/v0.1.13...v0.2.0) (2023-01-11)
 
-
 ### Features
 
 * add etherpad view ([#170](https://github.com/graasp/graasp-player/issues/170)) ([4faaf57](https://github.com/graasp/graasp-player/commit/4faaf57ce8273f568ca6deff68b03ed3051c3c32))
 
 ### 0.1.13 (2022-12-12)
-
 
 ### Features
 
@@ -271,20 +242,17 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### 0.1.10 (2022-11-18)
 
-
 ### Features
 
 * auto-resize apps ([#156](https://github.com/graasp/graasp-player/issues/156)) ([a125edb](https://github.com/graasp/graasp-player/commit/a125edbc8492f11865b8e49276f8017f965134eb))
 
 ### 0.1.9 (2022-11-14)
 
-
 ### Features
 
 * update workflows ([#152](https://github.com/graasp/graasp-player/issues/152)) ([f7942bd](https://github.com/graasp/graasp-player/commit/f7942bda97130775abd0be4c135caba41e542aac))
 
 ### 0.1.8 (2022-11-03)
-
 
 ### Bug Fixes
 
@@ -302,7 +270,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.1.2](https://github.com/graasp/graasp-player/compare/v0.1.1...v0.1.2) (2022-08-17)
 
-
 ### Features
 
 * integrate H5P apps display ([#99](https://github.com/graasp/graasp-player/issues/99)) ([4e7e505](https://github.com/graasp/graasp-player/commit/4e7e505f9c66656a7df7500c6987dfeb911259f4))
@@ -311,10 +278,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## 0.1.0 (2022-07-21)
 
-
 ### Features
 
-*  add ci caller workflow to graasp-deploy ([624d5c4](https://github.com/graasp/graasp-player/commit/624d5c472bf6f06dfe28c21e0ddb3469c90b2d15))
+* add ci caller workflow to graasp-deploy ([624d5c4](https://github.com/graasp/graasp-player/commit/624d5c472bf6f06dfe28c21e0ddb3469c90b2d15))
 * add aasa ([a0b700b](https://github.com/graasp/graasp-player/commit/a0b700bd61963a0dc13703d9f3df11aeb01e50ca)), closes [#34](https://github.com/graasp/graasp-player/issues/34)
 * add basic layout ([eb65335](https://github.com/graasp/graasp-player/commit/eb6533504dc9011446323c23a88a5151ec45d756))
 * add cdelivery caller workflow to graasp-deploy ([f48f09b](https://github.com/graasp/graasp-player/commit/f48f09b3bb58bd5731be866dcb673fb7be147ae1))
@@ -347,7 +313,6 @@ All notable changes to this project will be documented in this file. See [standa
 * update staging versions in graasp deploy ([d0ae758](https://github.com/graasp/graasp-player/commit/d0ae7586397f12cc3d03356be76583bd88fbda9e))
 * visualize Collapse component ([#82](https://github.com/graasp/graasp-player/issues/82)) ([5b0efa8](https://github.com/graasp/graasp-player/commit/5b0efa855f7daa62eedf56ce7f6158e7ed1536eb))
 
-
 ### Bug Fixes
 
 * add team id prefix ([dca002b](https://github.com/graasp/graasp-player/commit/dca002b3e92d2075e6668d802cba4a76917e6c74))
@@ -374,13 +339,11 @@ All notable changes to this project will be documented in this file. See [standa
 * update yarn.lock ([6ed5125](https://github.com/graasp/graasp-player/commit/6ed5125f00f82c41f7791d43b03a76735447349a))
 * wrong secret names ([1238711](https://github.com/graasp/graasp-player/commit/123871119915f251abe8504bd7eeec5bf2b5a7f6))
 
-
 ### Build System
 
 * init commit ([37cf8b9](https://github.com/graasp/graasp-player/commit/37cf8b9db535b733abb0ea814ca2a15dfee83247))
 * merge main, update dependencies ([8d61a1b](https://github.com/graasp/graasp-player/commit/8d61a1b6bba02932814d8d87c460b6cf5343b38c))
 * update dependencies ([af2fc93](https://github.com/graasp/graasp-player/commit/af2fc93789eaba6e7105bda33cea4de9cc0dfccb))
-
 
 ### Tests
 
@@ -394,7 +357,6 @@ All notable changes to this project will be documented in this file. See [standa
 * fix tests ([a6b85c8](https://github.com/graasp/graasp-player/commit/a6b85c87dc7aa25ee741257df6f47b3cbf831f2e))
 * fix websocket tests, use 41/rollup on ui ([62ee09b](https://github.com/graasp/graasp-player/commit/62ee09b954b2db9f9d238baf2b9bf181b6df0a83))
 * update tests to take into account display changes ([f28f61f](https://github.com/graasp/graasp-player/commit/f28f61fd79fc310018507dfef49f47d156b4a400))
-
 
 ### Continuous Integration
 

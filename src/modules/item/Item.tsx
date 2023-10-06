@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from 'react';
+import { Fragment, useCallback, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import { Alert, Box, Container, Skeleton, Typography } from '@mui/material';
@@ -18,6 +18,7 @@ import {
   PermissionLevel,
   S3FileItemType,
   ShortcutItemType,
+  Triggers,
 } from '@graasp/sdk';
 import { FAILURE_MESSAGES } from '@graasp/translations';
 import {
@@ -40,7 +41,7 @@ import {
 } from '@/config/constants';
 import { API_HOST, H5P_INTEGRATION_URL } from '@/config/env';
 import { useMessagesTranslation, usePlayerTranslation } from '@/config/i18n';
-import { axios, hooks } from '@/config/queryClient';
+import { axios, hooks, mutations } from '@/config/queryClient';
 import {
   FOLDER_NAME_TITLE_CLASS,
   buildAppId,
@@ -121,6 +122,15 @@ const FileContent = ({ item }: FileContentProps) => {
     isLoading: isFileContentLoading,
     isError: isFileError,
   } = useFileContentUrl(item.id);
+  const { mutate: triggerAction } = mutations.usePostItemAction();
+
+  const onDownloadClick = useCallback(() => {
+    triggerAction({
+      itemId: item.id,
+      payload: { type: Triggers.ItemDownload },
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [item.id]);
 
   if (isFileContentLoading) {
     return (
@@ -146,6 +156,7 @@ const FileContent = ({ item }: FileContentProps) => {
       maxHeight={SCREEN_MAX_HEIGHT}
       showCollapse={item.settings?.isCollapsible}
       pdfViewerLink={PDF_VIEWER_LINK}
+      onClick={onDownloadClick}
     />
   );
 
@@ -154,6 +165,12 @@ const FileContent = ({ item }: FileContentProps) => {
 
 const LinkContent = ({ item }: { item: EmbeddedLinkItemType }): JSX.Element => {
   const { data: member } = useCurrentMemberContext();
+
+  const { mutate: triggerAction } = mutations.usePostItemAction();
+  const handleLinkClick = () => {
+    // trigger player Action for link click
+    triggerAction({ itemId: item.id, payload: { type: Triggers.LinkOpen } });
+  };
   const linkItem = (
     <LinkItem
       item={item}
@@ -163,6 +180,7 @@ const LinkContent = ({ item }: { item: EmbeddedLinkItemType }): JSX.Element => {
       showButton={item.settings?.showLinkButton}
       showIframe={item.settings?.showLinkIframe}
       showCollapse={item.settings?.isCollapsible}
+      onClick={handleLinkClick}
     />
   );
 

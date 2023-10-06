@@ -6,9 +6,10 @@ import TreeView from '@mui/lab/TreeView';
 import { Box, Button, Typography } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
 
-import { DiscriminatedItem } from '@graasp/sdk';
+import { DiscriminatedItem, Triggers } from '@graasp/sdk';
 
 import { GRAASP_MENU_ITEMS } from '@/config/constants';
+import { mutations } from '@/config/queryClient';
 import { SHOW_MORE_ITEMS_ID } from '@/config/selectors';
 
 import CustomTreeItem from './CustomTreeItem';
@@ -38,6 +39,7 @@ const DynamicTreeView = ({
 }: Props): JSX.Element => {
   const [expandedItems, setExpandedItems] = useState(initialExpendedItems);
   const [showAll, setShowAll] = useState(false);
+  const { mutate: triggerAction } = mutations.usePostItemAction();
 
   if (isLoading) {
     return <Skeleton variant="text" />;
@@ -45,6 +47,9 @@ const DynamicTreeView = ({
 
   // types based on TreeView types
   const onSelect = (_event: unknown, value: string) => {
+    // trigger player Action for item view
+    triggerAction({ itemId: value, payload: { type: Triggers.ItemView } });
+
     onTreeItemSelect?.(value);
   };
 
