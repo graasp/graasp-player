@@ -60,7 +60,7 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "17.7.0",
-    "@cypress/code-coverage": "3.12.3",
+    "@cypress/code-coverage": "3.12.4",
     "@trivago/prettier-plugin-sort-imports": "4.2.0",
     "@types/lodash.truncate": "^4.4.7",
     "@types/node": "^18.13.0",
