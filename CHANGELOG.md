@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.2](https://github.com/graasp/graasp-player/compare/v1.2.1...v1.2.2) (2023-10-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @graasp/query-client to v1.11.0 ([#364](https://github.com/graasp/graasp-player/issues/364)) ([9352303](https://github.com/graasp/graasp-player/commit/935230367aee7cd0da127312db0dcbe6cb008df7))
+* **deps:** update dependency @graasp/sdk to v1.8.0 ([#367](https://github.com/graasp/graasp-player/issues/367)) ([16a7415](https://github.com/graasp/graasp-player/commit/16a7415f9c97a82794bf06deea850aa51c09cae9))
+* **deps:** update dependency @graasp/ui to v3.5.3 ([#360](https://github.com/graasp/graasp-player/issues/360)) ([87d7300](https://github.com/graasp/graasp-player/commit/87d73008fea5bdce9c76b31ab5779dde73c499c3))
+* **deps:** update dependency @graasp/ui to v3.5.4 ([fef85e5](https://github.com/graasp/graasp-player/commit/fef85e5e49e89d0b3775b164f24d73a9278104fe))
+* **deps:** update dependency @sentry/react to v7.74.0 ([#370](https://github.com/graasp/graasp-player/issues/370)) ([6fe0550](https://github.com/graasp/graasp-player/commit/6fe05507008b275c788866ea6825d46972a4d3b3))
+* **deps:** update dependency react-i18next to v13.3.0 ([#369](https://github.com/graasp/graasp-player/issues/369)) ([fe44e1d](https://github.com/graasp/graasp-player/commit/fe44e1d8199a863eb685fab4d8b33afe725bb6e2))
+* **deps:** update mui (non-major) ([8b573a2](https://github.com/graasp/graasp-player/commit/8b573a21b6688557e7c250234c5694c5a0fa1780))
+* **deps:** update sentry packages to v7.73.0 ([#337](https://github.com/graasp/graasp-player/issues/337)) ([2f34985](https://github.com/graasp/graasp-player/commit/2f34985181dca3aeed444978adb70a42c82bd61b))
+
 ## [1.2.1](https://github.com/graasp/graasp-player/compare/v1.2.0...v1.2.1) (2023-09-27)
 
 
