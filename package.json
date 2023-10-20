@@ -42,7 +42,7 @@
     "@mui/icons-material": "5.14.13",
     "@mui/lab": "5.0.0-alpha.148",
     "@mui/material": "5.14.13",
-    "@sentry/react": "7.74.0",
+    "@sentry/react": "7.74.1",
     "i18next": "23.5.1",
     "immutable": "4.3.4",
     "lodash.truncate": "4.4.2",
