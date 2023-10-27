@@ -2384,21 +2384,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/translations@npm:1.19.2":
-  version: 1.19.2
-  resolution: "@graasp/translations@npm:1.19.2"
-  dependencies:
-    i18next: 23.4.6
-  checksum: e4ae1daf83e4e9e2b9bc23f3aa6480d53cbe03b53a2ad847f9933351f7b1aea31c3866fb5296aadc2872d5fdf0db22ba0b576bfff712bd6916a971094c823266
-  languageName: node
-  linkType: hard
-
 "@graasp/translations@npm:1.19.3":
   version: 1.19.3
   resolution: "@graasp/translations@npm:1.19.3"
   dependencies:
     i18next: 23.5.1
   checksum: ccb7f9fac81790207425cdb92f925bf48ff448b8e378d0be1e22b4095a4a43d441d5be3d07a9ff20b1650d9b011699d10a8b89ae062677edfc1dc6ebe427f3ce
+  languageName: node
+  linkType: hard
+
+"@graasp/translations@npm:1.19.4":
+  version: 1.19.4
+  resolution: "@graasp/translations@npm:1.19.4"
+  dependencies:
+    i18next: 23.6.0
+  checksum: 50bd0ee306b1ffe0387987ca09922f6f1f4a348fb7f82169826e6fa58a132614eb92a1aedb4fbc0af514aa82af210db2d560d9be2ff2b201b0dc01c4cf542bdd
   languageName: node
   linkType: hard
 
@@ -7309,7 +7309,7 @@ __metadata:
     "@graasp/chatbox": 2.0.1
     "@graasp/query-client": 1.11.0
     "@graasp/sdk": 1.8.0
-    "@graasp/translations": 1.19.2
+    "@graasp/translations": 1.19.4
     "@graasp/ui": 3.5.4
     "@mui/icons-material": 5.14.15
     "@mui/lab": 5.0.0-alpha.150
