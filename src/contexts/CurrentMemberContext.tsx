@@ -2,12 +2,12 @@ import { createContext, useContext, useEffect } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { UseQueryResult } from 'react-query';
 
-import { MemberRecord } from '@graasp/sdk/frontend';
+import { CompleteMember } from '@graasp/sdk';
 
 import i18n from '@/config/i18n';
 import { hooks } from '@/config/queryClient';
 
-type CurrentMemberContextType = UseQueryResult<MemberRecord>;
+type CurrentMemberContextType = UseQueryResult<CompleteMember | null>;
 
 const CurrentMemberContext = createContext<CurrentMemberContextType>(
   {} as CurrentMemberContextType,

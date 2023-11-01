@@ -1,5 +1,4 @@
-import { ThumbnailSize } from '@graasp/sdk';
-import { MemberRecord } from '@graasp/sdk/frontend';
+import { Member, ThumbnailSize } from '@graasp/sdk';
 import { COMMON } from '@graasp/translations';
 import { Avatar } from '@graasp/ui';
 
@@ -9,7 +8,7 @@ import { hooks } from '@/config/queryClient';
 import { buildMemberAvatarClass } from '@/config/selectors';
 
 type Props = {
-  member?: MemberRecord;
+  member?: Member | null;
 };
 
 const MemberAvatar = ({ member }: Props): JSX.Element => {

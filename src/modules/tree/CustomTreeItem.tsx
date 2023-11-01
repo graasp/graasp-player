@@ -6,8 +6,7 @@
 import TreeItem from '@mui/lab/TreeItem';
 import Skeleton from '@mui/material/Skeleton';
 
-import { ItemType, getShortcutExtra } from '@graasp/sdk';
-import { ItemRecord } from '@graasp/sdk/frontend';
+import { DiscriminatedItem, ItemType, getShortcutExtra } from '@graasp/sdk';
 
 import { GRAASP_MENU_ITEMS } from '@/config/constants';
 import { hooks } from '@/config/queryClient';
@@ -24,7 +23,7 @@ const { useItem, useItemTags, useChildren } = hooks;
 const LoadingTreeItem = <Skeleton variant="text" />;
 
 type Props = {
-  itemProp: ItemRecord;
+  itemProp: DiscriminatedItem;
   expandedItems?: string[];
   selectedId?: string;
 };
@@ -76,7 +75,7 @@ const CustomTreeItem = ({
       GRAASP_MENU_ITEMS.includes(child.type),
     );
 
-    if (!filteredChildren?.size) {
+    if (!filteredChildren?.length) {
       return null;
     }
 

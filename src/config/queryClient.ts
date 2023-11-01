@@ -11,6 +11,7 @@ const {
   useMutation,
   mutations,
   ReactQueryDevtools,
+  axios,
 } = configureQueryClient({
   API_HOST,
   DOMAIN,
@@ -31,4 +32,5 @@ export {
   useMutation,
   mutations,
   ReactQueryDevtools,
+  axios,
 };

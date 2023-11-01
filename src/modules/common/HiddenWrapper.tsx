@@ -1,6 +1,6 @@
 import { Box, styled } from '@mui/material';
 
-import { ItemRecord } from '@graasp/sdk/frontend';
+import { DiscriminatedItem } from '@graasp/sdk';
 
 import { usePlayerTranslation } from '@/config/i18n';
 import { buildHiddenWrapperId } from '@/config/selectors';
@@ -25,7 +25,7 @@ const HiddenWrapper = ({
   children,
 }: {
   hidden: boolean;
-  itemId: ItemRecord['id'];
+  itemId: DiscriminatedItem['id'];
   children: JSX.Element;
 }): JSX.Element => {
   const { t } = usePlayerTranslation();

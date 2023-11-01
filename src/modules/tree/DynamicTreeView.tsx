@@ -6,9 +6,7 @@ import TreeView from '@mui/lab/TreeView';
 import { Box, Button, Typography } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
 
-import { ItemRecord } from '@graasp/sdk/frontend';
-
-import { List } from 'immutable';
+import { DiscriminatedItem } from '@graasp/sdk';
 
 import { GRAASP_MENU_ITEMS } from '@/config/constants';
 import { SHOW_MORE_ITEMS_ID } from '@/config/selectors';
@@ -20,7 +18,7 @@ const MAX_NUM_ITEMS = 10;
 type Props = {
   id: string;
   header?: string;
-  items?: List<ItemRecord>;
+  items?: DiscriminatedItem[];
   initialExpendedItems?: string[];
   selectedId?: string;
   onTreeItemSelect?: (value: string) => void;
@@ -59,7 +57,7 @@ const DynamicTreeView = ({
   );
   const shownItems = itemsToShow?.slice(
     0,
-    showAll ? itemsToShow?.size : MAX_NUM_ITEMS,
+    showAll ? itemsToShow?.length : MAX_NUM_ITEMS,
   );
 
   return (
@@ -86,16 +84,18 @@ const DynamicTreeView = ({
           />
         ))}
       </TreeView>
-      {shownItems && itemsToShow && shownItems?.size < itemsToShow?.size && (
-        <Button
-          id={SHOW_MORE_ITEMS_ID}
-          sx={{ ml: 2 }}
-          onClick={() => setShowAll(true)}
-          size="small"
-        >
-          Show More...
-        </Button>
-      )}
+      {shownItems &&
+        itemsToShow &&
+        shownItems?.length < itemsToShow?.length && (
+          <Button
+            id={SHOW_MORE_ITEMS_ID}
+            sx={{ ml: 2 }}
+            onClick={() => setShowAll(true)}
+            size="small"
+          >
+            Show More...
+          </Button>
+        )}
     </Box>
   );
 };

@@ -1,4 +1,4 @@
-import { MemberRecord } from '@graasp/sdk/frontend';
+import { CompleteMember } from '@graasp/sdk';
 import { UserSwitchWrapper as GraaspUserSwitch } from '@graasp/ui';
 
 import { MEMBER_PROFILE_PATH, SIGN_IN_PATH } from '@/config/constants';
@@ -42,6 +42,7 @@ const UserSwitchWrapper = ({
       ButtonContent={ButtonContent}
       signOut={useSignOutMutation}
       currentMember={member}
+      userMenuItems={[]}
       isCurrentMemberLoading={isLoading}
       profilePath={MEMBER_PROFILE_PATH}
       redirectPath={redirectUrl.toString()}
@@ -50,8 +51,8 @@ const UserSwitchWrapper = ({
       signOutMenuItemId={HEADER_MEMBER_MENU_SIGN_OUT_BUTTON_ID}
       seeProfileButtonId={HEADER_MEMBER_MENU_SEE_PROFILE_BUTTON_ID}
       buildMemberMenuItemId={buildMemberMenuItemId}
-      renderAvatar={(avatar?: MemberRecord): JSX.Element => (
-        <MemberAvatar member={avatar} />
+      renderAvatar={(m?: CompleteMember | null): JSX.Element => (
+        <MemberAvatar member={m} />
       )}
     />
   );

@@ -2,7 +2,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { Tooltip, styled } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
-import { ItemRecord } from '@graasp/sdk/frontend';
+import { DiscriminatedItem } from '@graasp/sdk';
 import { Card as GraaspCard } from '@graasp/ui';
 
 import truncate from 'lodash.truncate';
@@ -37,7 +37,7 @@ const Wrapper = ({ onClick }: { onClick: () => void }) => {
 };
 
 type Props = {
-  item: ItemRecord;
+  item: DiscriminatedItem;
   id?: string;
 };
 

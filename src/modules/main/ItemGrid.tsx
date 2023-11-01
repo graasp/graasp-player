@@ -1,9 +1,6 @@
 import { Grid, Typography } from '@mui/material';
 
-import { ItemTagType } from '@graasp/sdk';
-import { ItemRecord } from '@graasp/sdk/frontend';
-
-import { List } from 'immutable';
+import { DiscriminatedItem, ItemTagType } from '@graasp/sdk';
 
 import { hooks } from '@/config/queryClient';
 import ItemCard from '@/modules/common/ItemCard';
@@ -13,19 +10,17 @@ const { useItemsTags } = hooks;
 
 type Props = {
   isLoading: boolean;
-  items?: List<ItemRecord>;
+  items?: DiscriminatedItem[];
   title: string;
 };
 
 const ItemGrid = ({ isLoading, items, title }: Props): JSX.Element | null => {
-  const { data: itemsTags } = useItemsTags(
-    items?.map(({ id }) => id).toArray(),
-  );
+  const { data: itemsTags } = useItemsTags(items?.map(({ id }) => id));
   if (isLoading) {
     <LoadingItemsIndicator />;
   }
 
-  if (!items?.size) {
+  if (!items?.length) {
     return null;
   }
   return (
@@ -39,9 +34,9 @@ const ItemGrid = ({ isLoading, items, title }: Props): JSX.Element | null => {
             <ItemCard
               item={item}
               isHidden={Boolean(
-                itemsTags?.data
-                  .get(item.id)
-                  .find(({ type }) => type === ItemTagType.Hidden),
+                itemsTags?.data[item.id].find(
+                  ({ type }) => type === ItemTagType.Hidden,
+                ),
               )}
             />
           </Grid>

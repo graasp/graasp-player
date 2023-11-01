@@ -3,8 +3,7 @@ import PushPinIcon from '@mui/icons-material/PushPin';
 import { Grid, Stack, Tooltip, styled } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
-import { ItemType } from '@graasp/sdk';
-import { ItemRecord } from '@graasp/sdk/frontend';
+import { DiscriminatedItem, ItemType } from '@graasp/sdk';
 
 import { usePlayerTranslation } from '@/config/i18n';
 import { useItemContext } from '@/contexts/ItemContext';
@@ -54,7 +53,7 @@ const StyledIconButton = styled(IconButton)({
 });
 
 type Props = {
-  item: ItemRecord;
+  item: DiscriminatedItem;
   content: JSX.Element;
 };
 
@@ -87,7 +86,7 @@ const SideContent = ({ content, item }: Props): JSX.Element => {
   );
 
   const pinnedCount =
-    descendants?.filter(({ settings: s }) => s.isPinned)?.size || 0;
+    descendants?.filter(({ settings: s }) => s.isPinned)?.length || 0;
 
   const toggleChatOpen = () => {
     setIsChatboxMenuOpen(!isChatboxMenuOpen);

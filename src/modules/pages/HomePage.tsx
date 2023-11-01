@@ -36,12 +36,11 @@ const HomePage = (): JSX.Element => {
   const { data: sharedItems, isLoading: isLoadingSharedItems } =
     useSharedItems();
   const { data: sharedItemsTags, isLoading: isLoadingSharedTags } =
-    useItemsTags(sharedItems?.map(({ id }) => id).toArray());
+    useItemsTags(sharedItems?.map(({ id }) => id));
 
   const shared = sharedItems?.filter(
     (item) =>
-      !isLoadingSharedTags &&
-      !isHidden(item, sharedItemsTags?.data?.get(item.id)),
+      !isLoadingSharedTags && !isHidden(item, sharedItemsTags?.data?.[item.id]),
   );
 
   const renderContent = () => (
@@ -66,7 +65,7 @@ const HomePage = (): JSX.Element => {
       return <Skeleton />;
     }
 
-    if (!ownItems?.size) {
+    if (!ownItems?.length) {
       return null;
     }
 
@@ -94,7 +93,7 @@ const HomePage = (): JSX.Element => {
       return <Skeleton />;
     }
 
-    if (!shared?.size) {
+    if (!shared?.length) {
       return null;
     }
 

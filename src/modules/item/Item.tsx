@@ -4,18 +4,21 @@ import { useInView } from 'react-intersection-observer';
 import { Alert, Box, Container, Skeleton, Typography } from '@mui/material';
 
 import { Api } from '@graasp/query-client';
-import { Context, DEFAULT_LANG, ItemType, PermissionLevel } from '@graasp/sdk';
 import {
-  AppItemTypeRecord,
-  DocumentItemTypeRecord,
-  EmbeddedLinkItemTypeRecord,
-  EtherpadItemTypeRecord,
-  H5PItemTypeRecord,
-  ItemRecord,
-  LocalFileItemTypeRecord,
-  S3FileItemTypeRecord,
-  ShortcutItemTypeRecord,
-} from '@graasp/sdk/frontend';
+  AppItemType,
+  Context,
+  DEFAULT_LANG,
+  DiscriminatedItem,
+  DocumentItemType,
+  EmbeddedLinkItemType,
+  EtherpadItemType,
+  H5PItemType,
+  ItemType,
+  LocalFileItemType,
+  PermissionLevel,
+  S3FileItemType,
+  ShortcutItemType,
+} from '@graasp/sdk';
 import { FAILURE_MESSAGES } from '@graasp/translations';
 import {
   AppItem,
@@ -30,8 +33,6 @@ import {
   withCollapse,
 } from '@graasp/ui';
 
-import { List } from 'immutable';
-
 import {
   DEFAULT_RESIZABLE_SETTING,
   PDF_VIEWER_LINK,
@@ -39,7 +40,7 @@ import {
 } from '@/config/constants';
 import { API_HOST, H5P_INTEGRATION_URL } from '@/config/env';
 import { useMessagesTranslation, usePlayerTranslation } from '@/config/i18n';
-import { hooks } from '@/config/queryClient';
+import { axios, hooks } from '@/config/queryClient';
 import {
   FOLDER_NAME_TITLE_CLASS,
   buildAppId,
@@ -64,7 +65,7 @@ const {
 } = hooks;
 
 type EtherpadContentProps = {
-  item: EtherpadItemTypeRecord;
+  item: EtherpadItemType;
 };
 const EtherpadContent = ({ item }: EtherpadContentProps) => {
   const { t: translateMessage } = useMessagesTranslation();
@@ -110,7 +111,7 @@ const EtherpadContent = ({ item }: EtherpadContentProps) => {
 };
 
 type FileContentProps = {
-  item: S3FileItemTypeRecord | LocalFileItemTypeRecord;
+  item: S3FileItemType | LocalFileItemType;
 };
 const FileContent = ({ item }: FileContentProps) => {
   const { t: translateMessage } = useMessagesTranslation();
@@ -151,11 +152,7 @@ const FileContent = ({ item }: FileContentProps) => {
   return fileItem;
 };
 
-const LinkContent = ({
-  item,
-}: {
-  item: EmbeddedLinkItemTypeRecord;
-}): JSX.Element => {
+const LinkContent = ({ item }: { item: EmbeddedLinkItemType }): JSX.Element => {
   const { data: member } = useCurrentMemberContext();
   const linkItem = (
     <LinkItem
@@ -172,11 +169,7 @@ const LinkContent = ({
   return linkItem;
 };
 
-const DocumentContent = ({
-  item,
-}: {
-  item: DocumentItemTypeRecord;
-}): JSX.Element => {
+const DocumentContent = ({ item }: { item: DocumentItemType }): JSX.Element => {
   const documentItem = (
     <DocumentItem
       id={buildDocumentId(item.id)}
@@ -188,12 +181,9 @@ const DocumentContent = ({
   return documentItem;
 };
 
-const AppContent = ({ item }: { item: AppItemTypeRecord }): JSX.Element => {
-  const {
-    data: member,
-    isLoading: isLoadingMember,
-    isSuccess: isSuccessMember,
-  } = useCurrentMemberContext();
+const AppContent = ({ item }: { item: AppItemType }): JSX.Element => {
+  const { data: member, isLoading: isLoadingMember } =
+    useCurrentMemberContext();
   const { t: translateMessage } = useMessagesTranslation();
 
   if (isLoadingMember) {
@@ -201,14 +191,14 @@ const AppContent = ({ item }: { item: AppItemTypeRecord }): JSX.Element => {
       <Skeleton variant="rectangular" width="100%" height={SCREEN_MAX_HEIGHT} />
     );
   }
-  if (isSuccessMember)
+  if (member)
     return (
       <AppItem
         frameId={buildAppId(item.id)}
         item={item}
         memberId={member.id}
         requestApiAccessToken={(payload) =>
-          Api.requestApiAccessToken(payload, { API_HOST })
+          Api.requestApiAccessToken(payload, { API_HOST, axios })
         }
         height={SCREEN_MAX_HEIGHT}
         isResizable={item.settings?.isResizable || DEFAULT_RESIZABLE_SETTING}
@@ -235,7 +225,7 @@ const AppContent = ({ item }: { item: AppItemTypeRecord }): JSX.Element => {
   );
 };
 
-const H5PContent = ({ item }: { item: H5PItemTypeRecord }): JSX.Element => {
+const H5PContent = ({ item }: { item: H5PItemType }): JSX.Element => {
   const { t: translateMessage } = useMessagesTranslation();
   const contentId = item?.extra?.h5p?.contentId;
   if (!contentId) {
@@ -257,11 +247,7 @@ const H5PContent = ({ item }: { item: H5PItemTypeRecord }): JSX.Element => {
   );
 };
 
-const ShortcutContent = ({
-  item,
-}: {
-  item: ShortcutItemTypeRecord;
-}): JSX.Element => {
+const ShortcutContent = ({ item }: { item: ShortcutItemType }): JSX.Element => {
   if (item.settings.isCollapsible) {
     return (
       <span id={buildCollapsibleId(item.id)}>
@@ -279,7 +265,7 @@ const ShortcutContent = ({
 };
 
 type ItemContentProps = {
-  item: ItemRecord;
+  item: DiscriminatedItem;
 };
 
 const ItemContent = ({ item }: ItemContentProps) => {
@@ -341,12 +327,12 @@ const ItemContent = ({ item }: ItemContentProps) => {
     }
 
     default:
-      console.error(`The type ${item?.type} is not defined`);
+      console.error(`The type of item is not defined`, item);
       return null;
   }
 };
 
-const ItemContentWrapper = ({ item }: { item: ItemRecord }) => {
+const ItemContentWrapper = ({ item }: { item: DiscriminatedItem }) => {
   const { data: itemTags } = useItemTags(item.id);
   const isItemHidden = isHidden(item, itemTags);
 
@@ -384,7 +370,7 @@ const Item = ({
   // fetch children if item is folder
   const isFolder = Boolean(item?.type === ItemType.FOLDER);
   const {
-    data: children = List(),
+    data: children = [],
     isLoading: isChildrenLoading,
     isError: isChildrenError,
   } = useChildren(id, {

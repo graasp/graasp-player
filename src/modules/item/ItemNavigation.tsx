@@ -3,8 +3,6 @@ import { Alert } from '@mui/material';
 import { FAILURE_MESSAGES } from '@graasp/translations';
 import { MainMenu, useShortenURLParams } from '@graasp/ui';
 
-import { List } from 'immutable';
-
 import { useMessagesTranslation } from '@/config/i18n';
 import { ROOT_ID_PATH } from '@/config/paths';
 import { hooks } from '@/config/queryClient';
@@ -46,7 +44,7 @@ const ItemNavigation = (): JSX.Element | null => {
         <div style={{ height: '15px' }} />
         <DynamicTreeView
           id={TREE_VIEW_ID}
-          items={List([rootItem])}
+          items={[rootItem]}
           initialExpendedItems={[rootId]}
           selectedId={focusedItemId}
           onTreeItemSelect={(payload) => {

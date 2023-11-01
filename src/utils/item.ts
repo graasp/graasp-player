@@ -1,7 +1,4 @@
-import { ItemTagType, ItemType } from '@graasp/sdk';
-import { ItemRecord, ItemTagRecord } from '@graasp/sdk/frontend';
-
-import { List, isList } from 'immutable';
+import { DiscriminatedItem, ItemTag, ItemTagType, ItemType } from '@graasp/sdk';
 
 /**
  * @deprecated
@@ -76,8 +73,8 @@ export const isError = (error?: { statusCode: number }): boolean =>
  * @returns
  */
 export const isHidden = (
-  item: ItemRecord,
-  tags?: List<ItemTagRecord> | { statusCode: number },
+  item: DiscriminatedItem,
+  tags?: ItemTag[] | { statusCode: number },
   option?: { exactPath: boolean },
 ): boolean => {
   // if there are not tags then the item is not hidden
@@ -88,7 +85,7 @@ export const isHidden = (
   if ('statusCode' in tags && isError(tags)) {
     return false;
   }
-  if (isList(tags)) {
+  if (Array.isArray(tags)) {
     const hiddenTags = tags?.filter(({ type }) => type === ItemTagType.Hidden);
     if (option?.exactPath) {
       return hiddenTags?.some((t) => item.path === t.item.path);
@@ -100,7 +97,10 @@ export const isHidden = (
   return false;
 };
 
-export const areItemsEqual = (i1: ItemRecord, i2: ItemRecord): boolean => {
+export const areItemsEqual = (
+  i1: DiscriminatedItem,
+  i2: DiscriminatedItem,
+): boolean => {
   if (!i1 && !i2) return true;
 
   if (!i1 || !i2) return false;
@@ -125,8 +125,8 @@ export const stripHtml = (str?: string | null): string | undefined =>
   str?.replace(/<[^>]*>?/gm, '');
 
 export const paginationContentFilter = (
-  items: List<ItemRecord>,
-): List<ItemRecord> =>
+  items: DiscriminatedItem[],
+): DiscriminatedItem[] =>
   items
     .filter((i) => i.type !== ItemType.FOLDER)
     .filter((i) => !i.settings?.isPinned);

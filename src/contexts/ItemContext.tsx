@@ -1,8 +1,6 @@
 import React, { useContext, useMemo, useState } from 'react';
 
-import { ItemRecord } from '@graasp/sdk/frontend';
-
-import { List } from 'immutable';
+import { DiscriminatedItem } from '@graasp/sdk';
 
 import { hooks } from '@/config/queryClient';
 
@@ -15,10 +13,10 @@ type ItemContextType = {
   rootId: string;
   focusedItemId?: string;
   setFocusedItemId: (id: string) => void;
-  rootItem?: ItemRecord;
+  rootItem?: DiscriminatedItem;
   isRootItemLoading: boolean;
   isRootItemError: boolean;
-  descendants?: List<ItemRecord>;
+  descendants?: DiscriminatedItem[];
   isDescendantsLoading: boolean;
   isDescendantsError: boolean;
 };
