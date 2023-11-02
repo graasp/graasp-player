@@ -186,11 +186,6 @@ const AppContent = ({ item }: { item: AppItemType }): JSX.Element => {
     useCurrentMemberContext();
   const { t: translateMessage } = useMessagesTranslation();
 
-  if (isLoadingMember) {
-    return (
-      <Skeleton variant="rectangular" width="100%" height={SCREEN_MAX_HEIGHT} />
-    );
-  }
   if (member)
     return (
       <AppItem
@@ -218,6 +213,13 @@ const AppContent = ({ item }: { item: AppItemType }): JSX.Element => {
         showCollapse={item.settings?.isCollapsible}
       />
     );
+
+  if (isLoadingMember) {
+    return (
+      <Skeleton variant="rectangular" width="100%" height={SCREEN_MAX_HEIGHT} />
+    );
+  }
+
   return (
     <Alert severity="error">
       {translateMessage(FAILURE_MESSAGES.UNEXPECTED_ERROR)}
