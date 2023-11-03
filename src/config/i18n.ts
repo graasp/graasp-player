@@ -10,7 +10,7 @@ import en from '../langs/en.json';
 import fr from '../langs/fr.json';
 import it from '../langs/it.json';
 
-const i18n = buildI18n(namespaces.player).use(initReactI18next);
+const i18n = buildI18n().use(initReactI18next);
 const PLAYER_NAMESPACE = 'player';
 i18n.addResourceBundle('en', PLAYER_NAMESPACE, en);
 i18n.addResourceBundle('fr', PLAYER_NAMESPACE, fr);
