@@ -93,8 +93,7 @@
     "vite-plugin-istanbul": "5.0.0"
   },
   "resolutions": {
-    "i18next": "23.5.1",
-    "@graasp/sdk": "github:graasp/graasp-sdk#remove-frontend"
+    "i18next": "23.5.1"
   },
   "packageManager": "yarn@3.6.4"
 }
