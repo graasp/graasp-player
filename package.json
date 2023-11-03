@@ -36,7 +36,7 @@
     "@emotion/styled": "11.11.0",
     "@graasp/chatbox": "github:graasp/graasp-chatbox#remove-immutable",
     "@graasp/query-client": "github:graasp/graasp-query-client#433-remove-immutable",
-    "@graasp/sdk": "github:graasp/graasp-sdk#remove-frontend",
+    "@graasp/sdk": "2.0.0",
     "@graasp/translations": "1.19.2",
     "@graasp/ui": "github:graasp/graasp-ui#remove-immutable",
     "@mui/icons-material": "5.14.15",

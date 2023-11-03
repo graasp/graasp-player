@@ -1815,9 +1815,9 @@ __metadata:
 
 "@graasp/query-client@github:graasp/graasp-query-client#433-remove-immutable":
   version: 1.11.1
-  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=f3108a7e7a657afc1f041019f949f916c5805d97"
+  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=ce01533bf158429bdbe7bfb623f2c7d048ac9500"
   dependencies:
-    "@graasp/sdk": "github:graasp/graasp-sdk#remove-frontend"
+    "@graasp/sdk": 2.0.0
     "@graasp/translations": 1.19.4
     axios: 0.27.2
     crypto-js: 4.1.1
@@ -1827,7 +1827,7 @@ __metadata:
     uuid: 9.0.1
   peerDependencies:
     react: ^17.0.0 || ^18.0.0
-  checksum: d2cbb4bc96a7313c234a54b9926d8d991abd017e80e63fc990fa0a4e9a322742dcc3c6b6b288c55d2886e04daf5d918fa937d0c6e5cc7265b9ad243e88a8afe4
+  checksum: c14a0b8172b8ebef1c8eb85941cb08d010501078f69a28965da1cb34371f0e096370d69a8bb794d9d131fe9119854c795a7401035cb37af13da069336f230df4
   languageName: node
   linkType: hard
 
@@ -6679,7 +6679,7 @@ __metadata:
     "@emotion/styled": 11.11.0
     "@graasp/chatbox": "github:graasp/graasp-chatbox#remove-immutable"
     "@graasp/query-client": "github:graasp/graasp-query-client#433-remove-immutable"
-    "@graasp/sdk": "github:graasp/graasp-sdk#remove-frontend"
+    "@graasp/sdk": 2.0.0
     "@graasp/translations": 1.19.2
     "@graasp/ui": "github:graasp/graasp-ui#remove-immutable"
     "@mui/icons-material": 5.14.15
