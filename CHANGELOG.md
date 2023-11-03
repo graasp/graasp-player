@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/graasp/graasp-player/compare/v1.2.2...v2.0.0) (2023-11-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove immutable ([#392](https://github.com/graasp/graasp-player/issues/392))
+
+### Features
+
+* remove immutable ([#392](https://github.com/graasp/graasp-player/issues/392)) ([36937ad](https://github.com/graasp/graasp-player/commit/36937add6bbf93babcdb8dc9af60f3a79f68fcab))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @sentry/react to v7.74.1 ([7f9eb64](https://github.com/graasp/graasp-player/commit/7f9eb64ffb5b7ee6187931420ad21966970c329c))
+* **deps:** update dependency react-i18next to v13.3.1 ([7385884](https://github.com/graasp/graasp-player/commit/7385884c920e01bace7f3146bc731df4c7dd8fb6))
+* **deps:** update mui (non-major) ([0863d8d](https://github.com/graasp/graasp-player/commit/0863d8dddba386f1c3b3ae055f38074c1f92e8b0))
+* **deps:** update react-router monorepo to v6.17.0 ([#375](https://github.com/graasp/graasp-player/issues/375)) ([8aacb0f](https://github.com/graasp/graasp-player/commit/8aacb0f5da4761e90adb159309186a2b3b1d3e71))
+
 ## [1.2.2](https://github.com/graasp/graasp-player/compare/v1.2.1...v1.2.2) (2023-10-16)
 
 
