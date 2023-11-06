@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.1](https://github.com/graasp/graasp-player/compare/v2.0.0...v2.0.1) (2023-11-06)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @sentry/react to v7.77.0 ([#390](https://github.com/graasp/graasp-player/issues/390)) ([25f3052](https://github.com/graasp/graasp-player/commit/25f30528627948b213521950636f7002bb9fc34f))
+* **deps:** update mui (non-major) ([#394](https://github.com/graasp/graasp-player/issues/394)) ([438c19d](https://github.com/graasp/graasp-player/commit/438c19dded27dcfb8f35db147feec66173cf46fb))
+* **deps:** update react-router monorepo to v6.18.0 ([#396](https://github.com/graasp/graasp-player/issues/396)) ([f4f19df](https://github.com/graasp/graasp-player/commit/f4f19df6fbc12894b7f43f6d8bf7a76b090d4f1f))
+* update sdk ([61a0b87](https://github.com/graasp/graasp-player/commit/61a0b879e7d34ceb61a53f1fd985cff10986b7dd))
+
 ## [2.0.0](https://github.com/graasp/graasp-player/compare/v1.2.2...v2.0.0) (2023-11-03)
 
 
