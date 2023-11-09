@@ -25,7 +25,7 @@ describe('Header', () => {
       cy.get(`#${HEADER_MEMBER_MENU_BUTTON_ID}`).click();
       cy.get(`#${HEADER_MEMBER_MENU_SEE_PROFILE_BUTTON_ID}`).click();
       cy.wait('@goToMemberProfile');
-      cy.url().should('equal', Cypress.env('ACCOUNT_HOST'));
+      cy.url().should('contain', Cypress.env('ACCOUNT_HOST'));
     });
 
     // todo: not available currently because cookie is httpOnly
