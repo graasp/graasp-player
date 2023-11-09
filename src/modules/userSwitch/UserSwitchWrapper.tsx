@@ -1,7 +1,8 @@
 import { CompleteMember } from '@graasp/sdk';
 import { UserSwitchWrapper as GraaspUserSwitch } from '@graasp/ui';
 
-import { MEMBER_PROFILE_PATH, SIGN_IN_PATH } from '@/config/constants';
+import { SIGN_IN_PATH } from '@/config/constants';
+import { GRAASP_ACCOUNT_HOST } from '@/config/env';
 import { mutations } from '@/config/queryClient';
 import {
   HEADER_MEMBER_MENU_BUTTON_ID,
@@ -44,7 +45,7 @@ const UserSwitchWrapper = ({
       currentMember={member}
       userMenuItems={[]}
       isCurrentMemberLoading={isLoading}
-      profilePath={MEMBER_PROFILE_PATH}
+      profilePath={GRAASP_ACCOUNT_HOST}
       redirectPath={redirectUrl.toString()}
       buttonId={HEADER_MEMBER_MENU_BUTTON_ID}
       signInMenuItemId={HEADER_MEMBER_MENU_SIGN_IN_BUTTON_ID}

@@ -33,8 +33,6 @@ export const DESCRIPTION_MAX_LENGTH = 130;
 // TODO: SIGN_IN_PATH should be clearly typed as an URL object to avoid confusion with routes
 export const SIGN_IN_PATH = buildSignInPath({ host: AUTHENTICATION_HOST });
 
-export const MEMBER_PROFILE_PATH = `${GRAASP_BUILDER_HOST}/profile`;
-
 export const HOST_MAP = {
   [Context.Builder]: GRAASP_BUILDER_HOST,
   [Context.Library]: GRAASP_LIBRARY_HOST,
