@@ -4,7 +4,7 @@ import {
   HEADER_MEMBER_MENU_SEE_PROFILE_BUTTON_ID,
   HEADER_MEMBER_MENU_SIGN_OUT_BUTTON_ID,
 } from '../../src/config/selectors';
-import { MEMBER_PROFILE_PATH, SIGN_IN_PATH } from '../support/constants';
+import { SIGN_IN_PATH } from '../support/constants';
 
 // catch hook warning from react
 Cypress.on('uncaught:exception', (err) => {
@@ -25,7 +25,7 @@ describe('Header', () => {
       cy.get(`#${HEADER_MEMBER_MENU_BUTTON_ID}`).click();
       cy.get(`#${HEADER_MEMBER_MENU_SEE_PROFILE_BUTTON_ID}`).click();
       cy.wait('@goToMemberProfile');
-      cy.url().should('equal', MEMBER_PROFILE_PATH);
+      cy.url().should('equal', Cypress.env('ACCOUNT_HOST'));
     });
 
     // todo: not available currently because cookie is httpOnly

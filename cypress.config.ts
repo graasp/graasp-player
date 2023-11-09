@@ -16,6 +16,8 @@ export default defineConfig({
     API_HOST: process.env.VITE_GRAASP_API_HOST || 'http://localhost:3000',
     AUTHENTICATION_HOST:
       process.env.VITE_GRAASP_AUTH_HOST || 'http://localhost:3001',
+    ACCOUNT_HOST:
+      process.env.VITE_GRAASP_ACCOUNT_HOST || 'http://localhost:3114',
   },
   e2e: {
     baseUrl: `http://localhost:${process.env.VITE_PORT || 3112}`,

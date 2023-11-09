@@ -34,10 +34,6 @@ import {
   parseStringToRegExp,
 } from './utils';
 
-export const MEMBER_PROFILE_PATH = `${Cypress.env(
-  'GRAASP_COMPOSE_HOST',
-)}/profile`;
-
 const {
   buildDownloadFilesRoute,
   buildGetItemChatRoute,
@@ -577,7 +573,7 @@ export const mockProfilePage = (): void => {
   cy.intercept(
     {
       method: DEFAULT_GET.method,
-      url: MEMBER_PROFILE_PATH,
+      url: Cypress.env('ACCOUNT_HOST'),
     },
     ({ reply }) => {
       reply(redirectionReply);
