@@ -6622,7 +6622,7 @@ __metadata:
     eslint-plugin-react-hooks: 4.6.0
     http-status-codes: 2.3.0
     husky: 8.0.3
-    i18next: 23.5.1
+    i18next: 23.7.6
     lodash.truncate: 4.4.2
     prettier: 3.0.3
     react: 18.2.0
@@ -6911,12 +6911,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:23.5.1":
-  version: 23.5.1
-  resolution: "i18next@npm:23.5.1"
+"i18next@npm:23.7.6":
+  version: 23.7.6
+  resolution: "i18next@npm:23.7.6"
   dependencies:
-    "@babel/runtime": ^7.22.5
-  checksum: 4be043bd72287bfae9777a3252b9458d2e3f5e9a97ea62cf434e6e3767b45df4365d8780d0dd14efd4e9da5eb0f90534510b138f1372d1cb9012000a69bbedaf
+    "@babel/runtime": ^7.23.2
+  checksum: ddfca4277f9a19b0c5d85f8506384f8bfebe8b32d75a51d472d81e9c39ada5911594d8a41fa63ab25f66f63a9519544809d1a46ef6f6d905af1e2724b39ba55b
   languageName: node
   linkType: hard
 

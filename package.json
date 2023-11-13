@@ -43,7 +43,7 @@
     "@mui/lab": "5.0.0-alpha.151",
     "@mui/material": "5.14.16",
     "@sentry/react": "7.77.0",
-    "i18next": "23.5.1",
+    "i18next": "23.7.6",
     "lodash.truncate": "4.4.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -93,7 +93,7 @@
     "vite-plugin-istanbul": "5.0.0"
   },
   "resolutions": {
-    "i18next": "23.5.1",
+    "i18next": "23.7.6",
     "@graasp/sdk": "2.0.1"
   },
   "packageManager": "yarn@3.6.4"
