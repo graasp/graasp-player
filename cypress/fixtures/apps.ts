@@ -1,8 +1,10 @@
-import { AppItemType, ItemType } from '@graasp/sdk';
+import { AppItemType, ItemTagType, ItemType } from '@graasp/sdk';
 
 import { APP_NAME } from './apps/apps';
-import { DEFAULT_FOLDER_ITEM, MockItem } from './items';
-import { CURRENT_USER } from './members';
+import { DEFAULT_FOLDER_ITEM } from './items';
+import { CURRENT_USER, MEMBERS } from './members';
+import { MockItem } from './mockTypes';
+import { mockItemTag } from './tags';
 
 // mock an app with the graasp link
 // eslint-disable-next-line import/prefer-default-export
@@ -13,8 +15,8 @@ export const GRAASP_APP_ITEM: AppItemType = {
   description: 'a description for graasp app',
   path: 'baefbd2a_5688_11eb_ae93_0242ac130002',
   creator: CURRENT_USER,
-  createdAt: new Date(),
-  updatedAt: new Date(),
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
   extra: {
     app: { url: 'https://graasp.eu' },
   },
@@ -72,8 +74,26 @@ export const APP_USING_CONTEXT_ITEM: MockItem = {
     },
   },
   creator: CURRENT_USER,
-  createdAt: new Date(),
-  updatedAt: new Date(),
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
+};
+
+export const PUBLIC_APP_USING_CONTEXT_ITEM: MockItem = {
+  id: 'ecafbd2a-5688-12eb-ae91-0272ac130003',
+  path: 'ecafbd2a_5688_12eb_ae91_0272ac130003',
+  name: 'my app',
+  description: 'my app description',
+  type: ItemType.APP,
+  settings: {},
+  extra: {
+    [ItemType.APP]: {
+      url: `${API_HOST}/${buildAppItemLinkForTest('app.html')}`,
+    },
+  },
+  creator: MEMBERS.BOB,
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
+  tags: [mockItemTag({ type: ItemTagType.Public })],
 };
 
 export const GRAASP_APP_ITEMS_FIXTURE = [

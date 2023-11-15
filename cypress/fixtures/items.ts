@@ -29,8 +29,8 @@ export const DEFAULT_FOLDER_ITEM: MockItem = {
     },
   },
   creator: CURRENT_USER,
-  createdAt: new Date(),
-  updatedAt: new Date(),
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
   type: ItemType.FOLDER,
   settings: {
     isPinned: false,

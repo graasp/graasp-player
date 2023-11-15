@@ -96,5 +96,5 @@
     "i18next": "23.5.1",
     "@graasp/sdk": "2.0.1"
   },
-  "packageManager": "yarn@3.6.4"
+  "packageManager": "yarn@4.0.2"
 }
