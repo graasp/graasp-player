@@ -126,7 +126,7 @@ declare global {
         items?: MockItem[];
         members?: Member[];
         chatMessages?: ChatMessage[];
-        currentMember?: Member;
+        currentMember?: Member | null;
         storedSessions?: { id: string; token: string; createdAt: number }[];
         getItemError?: boolean;
         getMemberError?: boolean;

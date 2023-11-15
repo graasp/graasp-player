@@ -61,18 +61,18 @@ const checkMemberHasAccess = ({
 }: {
   item: MockItem;
   items: MockItem[];
-  member: Member;
+  member: Member | null;
 }) => {
   // mock membership
   const { creator } = item;
   const haveWriteMembership =
-    creator?.id === member.id ||
+    creator?.id === member?.id ||
     items.find(
       (i) =>
         item.path.startsWith(i.path) &&
         i.memberships?.find(
           ({ memberId, permission }) =>
-            memberId === member.id &&
+            memberId === member?.id &&
             PermissionLevelCompare.gte(permission, PermissionLevel.Write),
         ),
     );
@@ -82,7 +82,7 @@ const checkMemberHasAccess = ({
         item.path.startsWith(i.path) &&
         i.memberships?.find(
           ({ memberId, permission }) =>
-            memberId === member.id &&
+            memberId === member?.id &&
             PermissionLevelCompare.lt(permission, PermissionLevel.Write),
         ),
     ) ?? false;
@@ -118,7 +118,7 @@ export const mockGetOwnItems = ({
   currentMember,
 }: {
   items: MockItem[];
-  currentMember: Member;
+  currentMember: Member | null;
 }): void => {
   cy.intercept(
     {
@@ -143,7 +143,7 @@ export const mockGetSharedItems = ({
   currentMember,
 }: {
   items: MockItem[];
-  currentMember: Member;
+  currentMember: Member | null;
 }): void => {
   cy.intercept(
     {
@@ -165,7 +165,7 @@ export const mockGetSharedItems = ({
 };
 
 export const mockGetCurrentMember = (
-  currentMember = MEMBERS.ANNA,
+  currentMember: Member | null = MEMBERS.ANNA,
   shouldThrowError = false,
 ): void => {
   cy.intercept(
@@ -174,6 +174,10 @@ export const mockGetCurrentMember = (
       url: `${API_HOST}/${GET_CURRENT_MEMBER_ROUTE}`,
     },
     ({ reply }) => {
+      // simulate member accessing without log in
+      if (currentMember == null) {
+        return reply({ statusCode: StatusCodes.UNAUTHORIZED });
+      }
       if (shouldThrowError) {
         return reply({ statusCode: StatusCodes.BAD_REQUEST, body: null });
       }
@@ -185,7 +189,7 @@ export const mockGetCurrentMember = (
 };
 
 export const mockGetItem = (
-  { items, currentMember }: { items: MockItem[]; currentMember: Member },
+  { items, currentMember }: { items: MockItem[]; currentMember: Member | null },
   shouldThrowError?: boolean,
 ): void => {
   cy.intercept(
@@ -245,7 +249,7 @@ export const mockGetItemChat = ({
 
 export const mockGetItemMembershipsForItem = (
   items: MockItem[],
-  currentMember: Member,
+  currentMember: Member | null,
 ): void => {
   cy.intercept(
     {
@@ -291,7 +295,10 @@ export const mockGetItemMembershipsForItem = (
   ).as('getItemMemberships');
 };
 
-export const mockGetChildren = (items: MockItem[], member: Member): void => {
+export const mockGetChildren = (
+  items: MockItem[],
+  member: Member | null,
+): void => {
   cy.intercept(
     {
       method: DEFAULT_GET.method,
@@ -322,7 +329,10 @@ export const mockGetChildren = (items: MockItem[], member: Member): void => {
   ).as('getChildren');
 };
 
-export const mockGetDescendants = (items: MockItem[], member: Member): void => {
+export const mockGetDescendants = (
+  items: MockItem[],
+  member: Member | null,
+): void => {
   cy.intercept(
     {
       method: DEFAULT_GET.method,
@@ -379,7 +389,7 @@ export const mockGetMemberBy = (
 };
 
 export const mockDefaultDownloadFile = (
-  { items, currentMember }: { items: MockItem[]; currentMember: Member },
+  { items, currentMember }: { items: MockItem[]; currentMember: Member | null },
   shouldThrowError?: boolean,
 ): void => {
   cy.intercept(
@@ -422,7 +432,10 @@ export const mockDefaultDownloadFile = (
   ).as('downloadFile');
 };
 
-export const mockGetItemTags = (items: MockItem[], member: Member): void => {
+export const mockGetItemTags = (
+  items: MockItem[],
+  member: Member | null,
+): void => {
   cy.intercept(
     {
       method: DEFAULT_GET.method,
@@ -461,7 +474,10 @@ export const mockGetItemTags = (items: MockItem[], member: Member): void => {
   ).as('getItemTags');
 };
 
-export const mockGetItemsTags = (items: MockItem[], member: Member): void => {
+export const mockGetItemsTags = (
+  items: MockItem[],
+  member: Member | null,
+): void => {
   cy.intercept(
     {
       method: DEFAULT_GET.method,
@@ -500,7 +516,7 @@ export const mockGetLoginSchemaType = (
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   items: MockItem[],
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  member: Member,
+  member: Member | null,
 ): void => {
   cy.intercept(
     {

@@ -22,6 +22,7 @@ export default ({ mode }: { mode: string }): UserConfigExport => {
     preview: {
       port: parseInt(process.env.VITE_PORT, 10),
       strictPort: true,
+      open: mode !== 'test',
     },
     build: {
       outDir: 'build',

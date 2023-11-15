@@ -3,7 +3,10 @@ import 'cypress-iframe';
 
 import { buildMainPath } from '@/config/paths';
 
-import { APP_USING_CONTEXT_ITEM } from '../fixtures/apps';
+import {
+  APP_USING_CONTEXT_ITEM,
+  PUBLIC_APP_USING_CONTEXT_ITEM,
+} from '../fixtures/apps';
 
 const clickElementInIframe = (
   iframeSelector: string,
@@ -58,5 +61,39 @@ describe('Apps', () => {
     // check app can patch app-data
     clickElementInIframe(iframeSelector, '#patchAppData');
     checkContentInElementInIframe(iframeSelector, 'ul', 'patch app data');
+  });
+});
+describe('Public Apps', () => {
+  const { id, name } = PUBLIC_APP_USING_CONTEXT_ITEM;
+  beforeEach(() => {
+    cy.setUpApi({
+      items: [PUBLIC_APP_USING_CONTEXT_ITEM],
+      currentMember: null,
+    });
+
+    cy.visit(buildMainPath({ rootId: id }));
+  });
+
+  it('Public App should request context', () => {
+    cy.wait(3000);
+    const iframeSelector = `iframe[title="${name}"]`;
+    cy.frameLoaded(iframeSelector);
+
+    // check app receives successfully the context
+    clickElementInIframe(iframeSelector, '#requestContext');
+    checkContentInElementInIframe(
+      iframeSelector,
+      '#requestContext-message',
+      id,
+    );
+
+    // check app receives successfully the token
+    clickElementInIframe(iframeSelector, '#requestToken');
+    cy.wait('@appApiAccessToken');
+    checkContentInElementInIframe(
+      iframeSelector,
+      'ul',
+      `GET_AUTH_TOKEN_SUCCESS_${id}`,
+    );
   });
 });
