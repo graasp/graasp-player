@@ -182,16 +182,19 @@ const DocumentContent = ({ item }: { item: DocumentItemType }): JSX.Element => {
 };
 
 const AppContent = ({ item }: { item: AppItemType }): JSX.Element => {
-  const { data: member, isLoading: isLoadingMember } =
-    useCurrentMemberContext();
+  const {
+    data: member,
+    isLoading: isLoadingMember,
+    isSuccess: isSuccessMember,
+  } = useCurrentMemberContext();
   const { t: translateMessage } = useMessagesTranslation();
 
-  if (member)
+  if (member || isSuccessMember)
     return (
       <AppItem
         frameId={buildAppId(item.id)}
         item={item}
-        memberId={member.id}
+        memberId={member?.id}
         requestApiAccessToken={(payload) =>
           Api.requestApiAccessToken(payload, { API_HOST, axios })
         }
