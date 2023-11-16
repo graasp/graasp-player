@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/graasp/graasp-player/compare/v2.0.1...v2.1.0) (2023-11-16)
+
+
+### Features
+
+* redirects to account for profile ([#403](https://github.com/graasp/graasp-player/issues/403)) ([06887c7](https://github.com/graasp/graasp-player/commit/06887c7eeceb7e59206e24dd9a55e6b2cfc5283d))
+
+
+### Bug Fixes
+
+* allow apps to render even when member is null ([#406](https://github.com/graasp/graasp-player/issues/406)) ([310f557](https://github.com/graasp/graasp-player/commit/310f5574b10578ea5217add1cde3b409b2103564))
+* **deps:** update dependency react-i18next to v13.3.2 ([#408](https://github.com/graasp/graasp-player/issues/408)) ([266cf27](https://github.com/graasp/graasp-player/commit/266cf274c793f1d7bb1894ef079e9b77bda7c902))
+* upgrade deps ([#412](https://github.com/graasp/graasp-player/issues/412)) ([ed7fbd5](https://github.com/graasp/graasp-player/commit/ed7fbd5c06c0e5ecfe93a57367d0041f9a0e6054))
+
 ## [2.0.1](https://github.com/graasp/graasp-player/compare/v2.0.0...v2.0.1) (2023-11-06)
 
 
