@@ -3398,7 +3398,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^18.11.9, @types/node@npm:^18.18.9":
+"@types/node@npm:^18.11.9":
   version: 18.18.9
   resolution: "@types/node@npm:18.18.9"
   dependencies:
@@ -3411,6 +3411,15 @@ __metadata:
   version: 18.18.6
   resolution: "@types/node@npm:18.18.6"
   checksum: ba8b71c724c4c9b1908faf09be1aa062790ef4194f956f6c7ae9791f8d2c1d123635695e41c3c8326223d2262bae2b3b5c8774c7a6c5885a98437b6fb04a2f0c
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^20.0.0":
+  version: 20.9.0
+  resolution: "@types/node@npm:20.9.0"
+  dependencies:
+    undici-types: "npm:~5.26.4"
+  checksum: a934f7645ed117a27857147403b0c657ffbca578c8f280e4c21d27dfb43e58dc4f24c4319d4335b8a4fa08e28fb2dc905a5bd5e4bc8878047164c56c1b162139
   languageName: node
   linkType: hard
 
@@ -6769,7 +6778,7 @@ __metadata:
     "@sentry/react": "npm:7.80.1"
     "@trivago/prettier-plugin-sort-imports": "npm:4.3.0"
     "@types/lodash.truncate": "npm:^4.4.9"
-    "@types/node": "npm:^18.18.9"
+    "@types/node": "npm:^20.0.0"
     "@types/react": "npm:18.2.37"
     "@types/react-dom": "npm:^18.2.15"
     "@types/uuid": "npm:9.0.7"
