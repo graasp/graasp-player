@@ -1087,12 +1087,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/config-conventional@npm:17.7.0":
-  version: 17.7.0
-  resolution: "@commitlint/config-conventional@npm:17.7.0"
+"@commitlint/config-conventional@npm:17.8.1":
+  version: 17.8.1
+  resolution: "@commitlint/config-conventional@npm:17.8.1"
   dependencies:
     conventional-changelog-conventionalcommits: "npm:^6.1.0"
-  checksum: 932cf35c12855e360c750bc19ffedc0925f8658f316aaacdf5441ce775712934386643a9ac418f18e24e5bb1bf71ed721b8ae452a13d04908b0e55cd3d2d988f
+  checksum: ce8ace1a13f3a797ed699ffa13dc46273a27e1dc3ae8a9d01492c0637a8592e4ed24bb32d9a43f8745a8690a52d77ea4a950d039977b0dbcbf834f8cbacf5def
   languageName: node
   linkType: hard
 
@@ -6592,7 +6592,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "graasp-player@workspace:."
   dependencies:
-    "@commitlint/config-conventional": "npm:17.7.0"
+    "@commitlint/config-conventional": "npm:17.8.1"
     "@cypress/code-coverage": "npm:3.12.5"
     "@emotion/cache": "npm:11.11.0"
     "@emotion/react": "npm:11.11.1"
