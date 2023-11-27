@@ -1,22 +1,27 @@
+import { useNavigate } from 'react-router';
+
 import { Alert } from '@mui/material';
 
 import { FAILURE_MESSAGES } from '@graasp/translations';
 import { MainMenu, useShortenURLParams } from '@graasp/ui';
 
 import { useMessagesTranslation } from '@/config/i18n';
-import { ROOT_ID_PATH } from '@/config/paths';
+import { ROOT_ID_PATH, buildMainPath } from '@/config/paths';
 import { hooks } from '@/config/queryClient';
 import { MAIN_MENU_ID, TREE_VIEW_ID } from '@/config/selectors';
-import { useItemContext } from '@/contexts/ItemContext';
 import DynamicTreeView from '@/modules/tree/DynamicTreeView';
+import { isHidden } from '@/utils/item';
 
-const { useItem } = hooks;
+const { useItem, useDescendants, useItemsTags } = hooks;
 
 const ItemNavigation = (): JSX.Element | null => {
   const rootId = useShortenURLParams(ROOT_ID_PATH);
 
   const { t: translateMessage } = useMessagesTranslation();
-  const { setFocusedItemId, focusedItemId } = useItemContext();
+  const navigate = useNavigate();
+
+  const { data: descendants } = useDescendants({ id: rootId || '' });
+  const { data: itemsTags } = useItemsTags(descendants?.map(({ id }) => id));
 
   const {
     data: rootItem,
@@ -44,11 +49,13 @@ const ItemNavigation = (): JSX.Element | null => {
         <div style={{ height: '15px' }} />
         <DynamicTreeView
           id={TREE_VIEW_ID}
-          items={[rootItem]}
+          items={descendants?.filter(
+            (ele) => !isHidden(ele, itemsTags?.data?.[ele.id]),
+          )}
           initialExpendedItems={[rootId]}
-          selectedId={focusedItemId}
+          mainItem={rootItem}
           onTreeItemSelect={(payload) => {
-            setFocusedItemId(payload);
+            navigate(buildMainPath({ rootId: payload }));
           }}
           isLoading={rootItemIsLoading}
         />

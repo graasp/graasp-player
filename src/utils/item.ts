@@ -1,4 +1,10 @@
-import { DiscriminatedItem, ItemTag, ItemTagType, ItemType } from '@graasp/sdk';
+import {
+  DiscriminatedItem,
+  FolderItemExtra,
+  ItemTag,
+  ItemTagType,
+  ItemType,
+} from '@graasp/sdk';
 
 /**
  * @deprecated
@@ -130,3 +136,41 @@ export const paginationContentFilter = (
   items
     .filter((i) => i.type !== ItemType.FOLDER)
     .filter((i) => !i.settings?.isPinned);
+
+// handle item children tree
+let matchingIds: string[] = [];
+const handleItemChildren = (
+  data: DiscriminatedItem[],
+  obj: DiscriminatedItem & { children?: DiscriminatedItem[] },
+) => {
+  if ((obj?.extra as FolderItemExtra)?.folder?.childrenOrder?.length) {
+    const matchingElements = data.filter((item) => {
+      const isMatch = (
+        obj?.extra as FolderItemExtra
+      )?.folder.childrenOrder.includes(item.id);
+      if (isMatch) {
+        matchingIds.push(item.id);
+      }
+      return isMatch;
+    });
+
+    // eslint-disable-next-line no-param-reassign
+    obj.children = matchingElements;
+    if (obj.children.length) {
+      obj.children.forEach((ele) => {
+        handleItemChildren(data, ele);
+      });
+    }
+  } else {
+    // eslint-disable-next-line no-param-reassign
+    obj.children = [];
+  }
+};
+
+export const getNodeTree = (data: DiscriminatedItem[]): DiscriminatedItem[] => {
+  data?.forEach((ele) => handleItemChildren(data, ele));
+
+  const res = data.filter((ele) => matchingIds.indexOf(ele.id) === -1);
+  matchingIds = [];
+  return res;
+};

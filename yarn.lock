@@ -3633,6 +3633,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"classnames@npm:2.3.2":
+  version: 2.3.2
+  resolution: "classnames@npm:2.3.2"
+  checksum: ba3151c12e8b6a84c64b340ab4259ad0408947652009314462d828e94631505989c6a7d7e796bec1d309be9295d3111b498ad18a9d533fe3e6f859e51e574cbb
+  languageName: node
+  linkType: hard
+
 "clean-css@npm:^3.4.20":
   version: 3.4.28
   resolution: "clean-css@npm:3.4.28"
@@ -5728,6 +5735,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:6.18.1"
     "@typescript-eslint/parser": "npm:6.18.1"
     "@vitejs/plugin-react": "npm:^4.2.0"
+    classnames: "npm:2.3.2"
     commitlint: "npm:18.4.4"
     concurrently: "npm:8.2.2"
     cypress: "npm:13.6.2"
@@ -5748,6 +5756,7 @@ __metadata:
     lodash.truncate: "npm:4.4.2"
     prettier: "npm:3.1.1"
     react: "npm:18.2.0"
+    react-accessible-treeview: "npm:2.8.0"
     react-dom: "npm:18.2.0"
     react-ga4: "npm:2.1.0"
     react-i18next: "npm:13.5.0"
@@ -8854,6 +8863,18 @@ __metadata:
     react: ^16.13.1 || ^17.0.0 || ^18.0.0
     react-dom: ^16.13.1 || ^17.0.0 || ^18.0.0
   checksum: f2d3e29b1346e0c25f02690ea1e196fb28f93b091dc29c8847501336321eaec252e0bd4a962c7030a9ac1067aa6b4ad10965c3c3fd0b41bfe83a9b274a6785ec
+  languageName: node
+  linkType: hard
+
+"react-accessible-treeview@npm:2.8.0":
+  version: 2.8.0
+  resolution: "react-accessible-treeview@npm:2.8.0"
+  peerDependencies:
+    classnames: ^2.2.6
+    prop-types: ^15.7.2
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 413b49bf797472b457359e286c4bfb07ebe31876b0f775822ac2205950311b2ef72ab6f98ce40ce379d28a0c27244b3b53559128065622a39d361a2c738b5a98
   languageName: node
   linkType: hard
 
