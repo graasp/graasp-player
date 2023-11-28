@@ -36,6 +36,7 @@ interface NodeProps {
   element: INode;
   isBranch: boolean;
   isExpanded: boolean;
+  isSelected: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getNodeProps: () => any;
   onSelect: (id: UUID) => void;
@@ -46,26 +47,33 @@ const RenderedNode = ({
   isExpanded,
   getNodeProps,
   onSelect,
+  isSelected,
 }: NodeProps) => (
-  // eslint-disable-next-line react/jsx-props-no-spreading, react/button-has-type
-  <button {...getNodeProps()} className="flex-center">
+  <button
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    {...getNodeProps()}
+    className="flex-center"
+    type="button"
+  >
     {isBranch &&
       (isExpanded ? (
-        <IconButton sx={{ padding: 0.5 }}>
+        <IconButton sx={{ padding: 0 }}>
           <ExpandMoreIcon />
         </IconButton>
       ) : (
-        <IconButton sx={{ padding: 0.5 }}>
+        <IconButton sx={{ padding: 0 }}>
           <ChevronRightIcon />
         </IconButton>
       ))}
     <Typography
       component="button"
-      sx={{ display: 'flex', alignItems: 'center', gap: '4px' }}
-      onClick={(e) => {
-        e.stopPropagation();
-        onSelect(element?.id as UUID);
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '4px',
+        background: isSelected ? '#e0e2e2' : 'none',
       }}
+      onClick={() => onSelect(element?.id as UUID)}
     >
       <FolderIcon fontSize="small" />
       {element.name}

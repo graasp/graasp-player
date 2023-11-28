@@ -5,8 +5,12 @@
   margin: 0;
   padding-left: 8px;
 }
-.tree-leaf-list-item {
+
+.tree-node-group {
   padding-left: 8px;
+}
+.tree-leaf-list-item {
+  padding-left: 24px;
 }
 .tree-branch-wrapper,
 .tree-node__leaf {
