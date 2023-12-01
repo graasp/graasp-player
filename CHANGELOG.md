@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/graasp/graasp-player/compare/v2.1.0...v2.2.0) (2023-12-01)
+
+
+### Features
+
+* add action triggers on item view and download ([#374](https://github.com/graasp/graasp-player/issues/374)) ([bdd3a4a](https://github.com/graasp/graasp-player/commit/bdd3a4a4f436939ea89bdaff12acb1786568ae8f))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @graasp/sdk to v3.3.0 ([#419](https://github.com/graasp/graasp-player/issues/419)) ([c32538e](https://github.com/graasp/graasp-player/commit/c32538eedc5e3daa993b95b96efb70a7ce4b0c6b))
+* upgrade deps ([#425](https://github.com/graasp/graasp-player/issues/425)) ([cf58374](https://github.com/graasp/graasp-player/commit/cf5837493319f1e381236a9dd0cabc61a7a626e1))
+
 ## [2.1.0](https://github.com/graasp/graasp-player/compare/v2.0.1...v2.1.0) (2023-11-16)
 
 ### Features
