@@ -2,6 +2,7 @@ import { PermissionLevel } from '@graasp/sdk';
 
 import { buildMainPath } from '@/config/paths';
 import {
+  MAIN_MENU_ID,
   MY_ITEMS_ID,
   SHARED_ITEMS_ID,
   SHOW_MORE_ITEMS_ID,
@@ -51,6 +52,9 @@ describe('Navigation', () => {
 
     const child = FOLDER_WITH_SUBFOLDER_ITEM.items[1];
     const childOfChild = FOLDER_WITH_SUBFOLDER_ITEM.items[3];
+    cy.wait(1000);
+    const menu = cy.get(`#${MAIN_MENU_ID}`);
+    menu.click();
     cy.get(`.${buildTreeItemClass(child.id)}`).click();
     cy.get(`.${buildTreeItemClass(childOfChild.id)}`);
   });

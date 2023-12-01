@@ -27,7 +27,8 @@ export const buildCollapsibleId = (id: string): string =>
 
 export const BUILDER_EDIT_BUTTON_ID = 'builderEditButton';
 
-export const PANEL_CLOSE_BUTTON_SELECTOR = '[data-testid="ChevronRightIcon"]';
+export const CHATBOX_DRAWER_ID = 'chatboxDrawer';
+export const PANEL_CLOSE_BUTTON_SELECTOR = `#${CHATBOX_DRAWER_ID} [data-testid="ChevronRightIcon"]`;
 
 export const buildFolderButtonId = (id: string): string => `folderButton-${id}`;
 export const buildTreeItemClass = (id: string): string => `buildTreeItem-${id}`;

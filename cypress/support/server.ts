@@ -356,7 +356,9 @@ export const mockGetDescendants = (
       const descendants = items.filter(
         (newItem) =>
           isDescendantOf(newItem.path, item.path) &&
-          checkMemberHasAccess({ item: newItem, items, member }) === undefined,
+          checkMemberHasAccess({ item: newItem, items, member }) ===
+            undefined &&
+          newItem.path !== item.path,
       );
       return reply(descendants);
     },

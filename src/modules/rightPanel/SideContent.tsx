@@ -14,6 +14,7 @@ import Item from '@/modules/item/Item';
 
 import { DRAWER_WIDTH, FLOATING_BUTTON_Z_INDEX } from '../../config/constants';
 import {
+  CHATBOX_DRAWER_ID,
   ITEM_CHATBOX_BUTTON_ID,
   ITEM_PINNED_BUTTON_ID,
   ITEM_PINNED_ID,
@@ -142,13 +143,15 @@ const SideContent = ({ content, item }: Props): JSX.Element => {
     if (!settings?.showChatbox) return null;
 
     return (
-      <SideDrawer
-        title={t('Chat')}
-        onClose={toggleChatOpen}
-        open={isChatboxMenuOpen}
-      >
-        <Chatbox item={item} />
-      </SideDrawer>
+      <div id={CHATBOX_DRAWER_ID}>
+        <SideDrawer
+          title={t('Chat')}
+          onClose={toggleChatOpen}
+          open={isChatboxMenuOpen}
+        >
+          <Chatbox item={item} />
+        </SideDrawer>
+      </div>
     );
   };
 

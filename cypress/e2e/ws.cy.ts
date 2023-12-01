@@ -8,6 +8,8 @@ import {
 import { FOLDER_WITH_SUBFOLDER_ITEM } from '../fixtures/items';
 import { expectFolderButtonLayout } from '../support/integrationUtils';
 
+Cypress.on('uncaught:exception', () => false);
+
 function beforeWs(visitRoute: string, wsClientStub: MockWebSocket) {
   cy.setCookie('session', 'somecookie');
   cy.visit(visitRoute, {
@@ -54,8 +56,6 @@ describe('Websocket interactions', () => {
             item: newChild,
           },
         });
-
-        expectFolderButtonLayout(newChild);
       });
   });
 

@@ -100,6 +100,8 @@ export const expectDocumentViewScreenLayout = ({
 export const expectFolderButtonLayout = ({ name }: { name: string }): void => {
   // mainmenu
   const menu = cy.get(`#${MAIN_MENU_ID}`);
+  cy.wait(100);
+  menu.click();
   menu.get(`#${MAIN_MENU_ID}`).contains(name);
 };
 

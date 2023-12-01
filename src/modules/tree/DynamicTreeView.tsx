@@ -7,13 +7,11 @@ import FolderIcon from '@mui/icons-material/Folder';
 import { Box, Button, IconButton, Typography } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
 
-import { DiscriminatedItem, Triggers } from '@graasp/sdk';
-
-import { UUID } from 'crypto';
+import { DiscriminatedItem, Triggers, UUID } from '@graasp/sdk';
 
 import { GRAASP_MENU_ITEMS } from '@/config/constants';
 import { mutations } from '@/config/queryClient';
-import { SHOW_MORE_ITEMS_ID } from '@/config/selectors';
+import { SHOW_MORE_ITEMS_ID, buildTreeItemClass } from '@/config/selectors';
 import { getNodeTree } from '@/utils/item';
 
 import './style.css';
@@ -52,8 +50,8 @@ const RenderedNode = ({
   <button
     // eslint-disable-next-line react/jsx-props-no-spreading
     {...getNodeProps()}
-    className="flex-center"
     type="button"
+    className={`${buildTreeItemClass(element.id as string)} flex-center`}
   >
     {isBranch &&
       (isExpanded ? (
