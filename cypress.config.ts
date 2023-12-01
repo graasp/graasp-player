@@ -1,3 +1,4 @@
+import setupCoverage from '@cypress/code-coverage/task';
 import { defineConfig } from 'cypress';
 
 export default defineConfig({
@@ -22,8 +23,7 @@ export default defineConfig({
   e2e: {
     baseUrl: `http://localhost:${process.env.VITE_PORT || 3112}`,
     setupNodeEvents(on, config) {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires, global-require
-      require('@cypress/code-coverage/task')(on, config);
+      setupCoverage(on, config);
       return config;
     },
   },
