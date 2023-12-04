@@ -5383,7 +5383,7 @@ __metadata:
     eslint-plugin-react-hooks: "npm:4.6.0"
     http-status-codes: "npm:2.3.0"
     husky: "npm:8.0.3"
-    i18next: "npm:23.7.6"
+    i18next: "npm:23.7.7"
     lodash.truncate: "npm:4.4.2"
     prettier: "npm:3.1.0"
     react: "npm:18.2.0"
