@@ -9,6 +9,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FolderIcon from '@mui/icons-material/Folder';
 import { Box, Button, IconButton, Typography } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
+import { deepPurple } from '@mui/material/colors';
 
 import { DiscriminatedItem, Triggers, UUID } from '@graasp/sdk';
 
@@ -74,7 +75,7 @@ const RenderedNode = ({
         display: 'flex',
         alignItems: 'center',
         gap: '4px',
-        background: isSelected ? '#e0e2e2' : 'none',
+        background: isSelected ? deepPurple[50] : 'none',
         border: 'none',
         cursor: 'pointer',
       }}
