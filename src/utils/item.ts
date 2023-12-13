@@ -138,10 +138,10 @@ export const paginationContentFilter = (
     .filter((i) => !i.settings?.isPinned);
 
 // handle item children tree
-let matchingIds: string[] = [];
-const handleItemChildren = (
+const buildItemsTree = (
   data: DiscriminatedItem[],
   obj: DiscriminatedItem & { children?: DiscriminatedItem[] },
+  matchingIds: string[],
 ) => {
   if ((obj?.extra as FolderItemExtra)?.folder?.childrenOrder?.length) {
     const matchingElements = data.filter((item) => {
@@ -158,7 +158,7 @@ const handleItemChildren = (
     obj.children = matchingElements;
     if (obj.children.length) {
       obj.children.forEach((ele) => {
-        handleItemChildren(data, ele);
+        buildItemsTree(data, ele, matchingIds);
       });
     }
   } else {
@@ -168,9 +168,9 @@ const handleItemChildren = (
 };
 
 export const getNodeTree = (data: DiscriminatedItem[]): DiscriminatedItem[] => {
-  data?.forEach((ele) => handleItemChildren(data, ele));
+  const matchingIds: string[] = [];
+  data?.forEach((ele) => buildItemsTree(data, ele, matchingIds));
 
   const res = data.filter((ele) => matchingIds.indexOf(ele.id) === -1);
-  matchingIds = [];
   return res;
 };

@@ -8,7 +8,7 @@ import { ROOT_ID_PATH } from '@/config/paths';
 import { hooks } from '@/config/queryClient';
 import { MAIN_MENU_ID, TREE_VIEW_ID } from '@/config/selectors';
 import { useItemContext } from '@/contexts/ItemContext';
-import DynamicTreeView from '@/modules/tree/DynamicTreeView';
+import TreeView from '@/modules/tree/TreeView';
 import { isHidden } from '@/utils/item';
 
 const { useItem, useDescendants, useItemsTags } = hooks;
@@ -46,7 +46,7 @@ const ItemNavigation = (): JSX.Element | null => {
     return (
       <MainMenu id={MAIN_MENU_ID}>
         <div style={{ height: '15px' }} />
-        <DynamicTreeView
+        <TreeView
           id={TREE_VIEW_ID}
           items={descendants?.filter(
             (ele) => !isHidden(ele, itemsTags?.data?.[ele.id]),

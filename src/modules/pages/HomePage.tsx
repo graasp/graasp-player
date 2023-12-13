@@ -18,7 +18,7 @@ import PlayerCookiesBanner from '@/modules/cookies/PlayerCookiesBanner';
 import HeaderNavigation from '@/modules/header/HeaderNavigation';
 import HeaderRightContent from '@/modules/header/HeaderRightContent';
 import ItemGrid from '@/modules/main/ItemGrid';
-import DynamicTreeView from '@/modules/tree/DynamicTreeView';
+import TreeView from '@/modules/tree/TreeView';
 import { isHidden } from '@/utils/item';
 
 const StyledDivider = styled(Divider)(({ theme }) => ({
@@ -71,7 +71,7 @@ const HomePage = (): JSX.Element => {
 
     return (
       <MainMenu>
-        <DynamicTreeView
+        <TreeView
           id={MY_ITEMS_ID}
           header={t(COMMON.USER_OWN_ITEMS)}
           items={ownItems}
@@ -99,7 +99,7 @@ const HomePage = (): JSX.Element => {
 
     return (
       <MainMenu>
-        <DynamicTreeView
+        <TreeView
           id={SHARED_ITEMS_ID}
           header={t(COMMON.USER_SHARED_WITH_ITEMS)}
           items={shared}

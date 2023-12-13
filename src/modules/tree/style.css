@@ -5,38 +5,3 @@
   margin: 0;
   padding-left: 8px;
 }
-
-.tree-node-group {
-  padding-left: 8px;
-}
-.tree-leaf-list-item {
-  padding-left: 24px;
-}
-.tree-branch-wrapper,
-.tree-node__leaf {
-  outline: none;
-}
-
-.tree-node {
-  cursor: pointer;
-}
-
-.tree-node {
-  display: inline-block;
-}
-
-.checkbox-icon {
-  margin: 0 5px;
-  vertical-align: middle;
-}
-
-button {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-}
-
-.flex-center {
-  display: flex;
-  align-items: center;
-}

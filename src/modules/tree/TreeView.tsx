@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import TreeView, { INode, flattenTree } from 'react-accessible-treeview';
+import AccessibleTreeView, {
+  INode,
+  flattenTree,
+} from 'react-accessible-treeview';
 
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -30,6 +33,7 @@ type Props = {
   mainItem?: DiscriminatedItem;
 };
 
+// Props here is passed from TreeView react-accessible-treeview component
 interface NodeProps {
   element: INode;
   isBranch: boolean;
@@ -47,11 +51,12 @@ const RenderedNode = ({
   onSelect,
   isSelected,
 }: NodeProps) => (
-  <button
+  <Box
     // eslint-disable-next-line react/jsx-props-no-spreading
     {...getNodeProps()}
-    type="button"
-    className={`${buildTreeItemClass(element.id as string)} flex-center`}
+    className={`${buildTreeItemClass(element.id as string)}`}
+    display="flex"
+    sx={{ alignItems: 'center' }}
   >
     {isBranch &&
       (isExpanded ? (
@@ -70,16 +75,18 @@ const RenderedNode = ({
         alignItems: 'center',
         gap: '4px',
         background: isSelected ? '#e0e2e2' : 'none',
+        border: 'none',
+        cursor: 'pointer',
       }}
       onClick={() => onSelect(element?.id as UUID)}
     >
       <FolderIcon fontSize="small" />
       {element.name}
     </Typography>
-  </button>
+  </Box>
 );
 
-const DynamicTreeView = ({
+const TreeView = ({
   id,
   header,
   items,
@@ -119,8 +126,9 @@ const DynamicTreeView = ({
           {header}
         </Typography>
       )}
-      <TreeView
+      <AccessibleTreeView
         data={flattenTree({
+          // here there's should be a root item for all children which basically gonna be an empty name
           name: '',
           children: mainItem
             ? [
@@ -132,7 +140,7 @@ const DynamicTreeView = ({
               ]
             : itemsToShow,
         })}
-        aria-label="directory tree"
+        aria-label={`${mainItem?.name} tree`}
         // eslint-disable-next-line react/no-unstable-nested-components
         nodeRenderer={(props) => (
           // eslint-disable-next-line react/jsx-props-no-spreading
@@ -156,4 +164,4 @@ const DynamicTreeView = ({
   );
 };
 
-export default DynamicTreeView;
+export default TreeView;
