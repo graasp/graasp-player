@@ -1,10 +1,4 @@
-import {
-  DiscriminatedItem,
-  FolderItemExtra,
-  ItemTag,
-  ItemTagType,
-  ItemType,
-} from '@graasp/sdk';
+import { DiscriminatedItem, ItemTag, ItemTagType, ItemType } from '@graasp/sdk';
 
 /**
  * @deprecated
@@ -137,40 +131,83 @@ export const paginationContentFilter = (
     .filter((i) => i.type !== ItemType.FOLDER)
     .filter((i) => !i.settings?.isPinned);
 
-// handle item children tree
-const buildItemsTree = (
-  data: DiscriminatedItem[],
-  obj: DiscriminatedItem & { children?: DiscriminatedItem[] },
-  matchingIds: string[],
-) => {
-  if ((obj?.extra as FolderItemExtra)?.folder?.childrenOrder?.length) {
-    const matchingElements = data.filter((item) => {
-      const isMatch = (
-        obj?.extra as FolderItemExtra
-      )?.folder.childrenOrder.includes(item.id);
-      if (isMatch) {
-        matchingIds.push(item.id);
-      }
-      return isMatch;
-    });
+interface Node {
+  children: string[];
+}
 
-    // eslint-disable-next-line no-param-reassign
-    obj.children = matchingElements;
-    if (obj.children.length) {
-      obj.children.forEach((ele) => {
-        buildItemsTree(data, ele, matchingIds);
-      });
+interface Tree {
+  [nodeId: string]: Node;
+}
+
+const createMapTree = (data: DiscriminatedItem[]) => {
+  const childrenTreeMap: Tree = {};
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < data.length; i++) {
+    const ele = data[i];
+    const parents = getParentsIdsFromPath(ele.path, { ignoreSelf: true });
+    const lastParent = parents[parents.length - 1];
+    if (lastParent) {
+      if (childrenTreeMap[lastParent]) {
+        childrenTreeMap[lastParent].children = [
+          ...childrenTreeMap[lastParent].children,
+          ele.id,
+        ];
+      } else {
+        childrenTreeMap[lastParent] = { children: [ele.id] };
+      }
     }
-  } else {
-    // eslint-disable-next-line no-param-reassign
-    obj.children = [];
   }
+  return childrenTreeMap;
 };
 
-export const getNodeTree = (data: DiscriminatedItem[]): DiscriminatedItem[] => {
-  const matchingIds: string[] = [];
-  data?.forEach((ele) => buildItemsTree(data, ele, matchingIds));
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type ItemWithChildren = any;
 
-  const res = data.filter((ele) => matchingIds.indexOf(ele.id) === -1);
-  return res;
+interface TreeNode {
+  [nodeId: string]: ItemWithChildren;
+}
+
+// handle item children tree
+const buildItemsTree = (data: DiscriminatedItem[]) => {
+  const tree: TreeNode = {};
+  if (data.length === 1) {
+    tree[data[0].id] = { ...data[0], children: [] };
+  }
+  const mapTree: Tree = createMapTree(data);
+  const keys = Object.keys(mapTree);
+  const allChildren: string[] = keys.reduce((acc: string[], key: string) => {
+    const node = mapTree[key as keyof Tree];
+    if (node && node.children) {
+      acc.push(...node.children);
+    }
+    return acc;
+  }, []);
+  const rootKeys = keys.filter((key) => !allChildren.includes(key));
+
+  const buildTree = (nodeId: string) => {
+    const node = data.find((ele) => ele.id === nodeId);
+    if (mapTree[nodeId]) {
+      if (node) {
+        (node as ItemWithChildren).children = mapTree[nodeId].children.map(
+          (childId) => buildTree(childId),
+        );
+      }
+    }
+    return node;
+  };
+
+  rootKeys.forEach((ele) => {
+    tree[ele] = buildTree(ele);
+  });
+
+  return tree;
+};
+
+export const getNodeTree = (
+  data: (DiscriminatedItem & { name: string })[],
+): TreeNode => {
+  const res = data.filter((ele) => ele.type === ItemType.FOLDER);
+
+  const rootItemTree = buildItemsTree(res);
+  return rootItemTree;
 };

@@ -4,6 +4,7 @@ import AccessibleTreeView, {
   flattenTree,
 } from 'react-accessible-treeview';
 
+// import { IFlatMetadata } from 'react-accessible-treeview/dist/TreeView/utils';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FolderIcon from '@mui/icons-material/Folder';
@@ -120,6 +121,8 @@ const TreeView = ({
     showAll ? itemsToShow?.length : MAX_NUM_ITEMS,
   );
 
+  const res = Object.values(getNodeTree(itemsToShow || []))?.[0];
+
   return (
     <Box id={id}>
       {header && (
@@ -131,15 +134,7 @@ const TreeView = ({
         data={flattenTree({
           // here there's should be a root item for all children which basically gonna be an empty name
           name: '',
-          children: mainItem
-            ? [
-                {
-                  name: mainItem?.name,
-                  children: getNodeTree(itemsToShow || []),
-                  id: mainItem.id,
-                },
-              ]
-            : itemsToShow,
+          children: res ? [res] : [],
         })}
         aria-label={`${mainItem?.name} tree`}
         // eslint-disable-next-line react/no-unstable-nested-components

@@ -48,7 +48,7 @@ const ItemNavigation = (): JSX.Element | null => {
         <div style={{ height: '15px' }} />
         <TreeView
           id={TREE_VIEW_ID}
-          items={descendants?.filter(
+          items={[rootItem, ...(descendants || [])]?.filter(
             (ele) => !isHidden(ele, itemsTags?.data?.[ele.id]),
           )}
           initialExpendedItems={[rootId]}
