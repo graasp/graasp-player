@@ -32,7 +32,6 @@ type Props = {
   onTreeItemSelect?: (value: string) => void;
   isLoading?: boolean;
   onlyShowContainerItems?: boolean;
-  mainItem?: DiscriminatedItem;
 };
 
 // Props here is passed from TreeView react-accessible-treeview component
@@ -95,7 +94,6 @@ const TreeView = ({
   onTreeItemSelect,
   isLoading = false,
   onlyShowContainerItems = true,
-  mainItem,
 }: Props): JSX.Element => {
   const [showAll, setShowAll] = useState(false);
   const { mutate: triggerAction } = mutations.usePostItemAction();
@@ -136,7 +134,6 @@ const TreeView = ({
           name: '',
           children: res ? [res] : [],
         })}
-        aria-label={`${mainItem?.name} tree`}
         // eslint-disable-next-line react/no-unstable-nested-components
         nodeRenderer={(props) => (
           // eslint-disable-next-line react/jsx-props-no-spreading

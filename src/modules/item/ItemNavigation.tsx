@@ -52,7 +52,6 @@ const ItemNavigation = (): JSX.Element | null => {
             (ele) => !isHidden(ele, itemsTags?.data?.[ele.id]),
           )}
           initialExpendedItems={[rootId]}
-          mainItem={rootItem}
           onTreeItemSelect={setFocusedItemId}
           isLoading={rootItemIsLoading}
         />
