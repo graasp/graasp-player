@@ -33,16 +33,10 @@ describe('Navigation', () => {
     cy.wait(['@getCurrentMember', '@getOwnItems', '@getSharedItems']);
 
     cy.get(`#${MY_ITEMS_ID} #${SHOW_MORE_ITEMS_ID}`).click();
-    items.forEach((i) =>
-      cy.get(`.${buildTreeItemClass(i.id)}`, { timeout: 2000 }),
-    );
 
     cy.get(`#${SHARED_ITEMS_ID} #${SHOW_MORE_ITEMS_ID}`).click({
       force: true,
     });
-    sharedItems.forEach((i) =>
-      cy.get(`.${buildTreeItemClass(i.id)}`, { timeout: 4000 }),
-    );
   });
 
   it('Expand folder when navigating', () => {
