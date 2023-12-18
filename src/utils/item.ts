@@ -160,8 +160,9 @@ const createMapTree = (data: DiscriminatedItem[]) => {
   return childrenTreeMap;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type ItemWithChildren = any;
+type ItemWithChildren = DiscriminatedItem & {
+  children: ItemWithChildren[];
+};
 
 interface TreeNode {
   [nodeId: string]: ItemWithChildren;
@@ -188,9 +189,11 @@ const buildItemsTree = (data: DiscriminatedItem[]) => {
     const node = data.find((ele) => ele.id === nodeId);
     if (mapTree[nodeId]) {
       if (node) {
-        (node as ItemWithChildren).children = mapTree[nodeId].children.map(
-          (childId) => buildTree(childId),
+        const nodeCopy = JSON.parse(JSON.stringify(node));
+        nodeCopy.children = mapTree[nodeId].children.map((childId) =>
+          buildTree(childId),
         );
+        return nodeCopy;
       }
     }
     return node;
