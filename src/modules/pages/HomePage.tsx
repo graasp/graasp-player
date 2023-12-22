@@ -103,7 +103,7 @@ const HomePage = (): JSX.Element => {
           id={SHARED_ITEMS_ID}
           header={t(COMMON.USER_SHARED_WITH_ITEMS)}
           items={shared}
-          initialExpendedItems={[]}
+          initialExpandedItemIds={[]}
           onTreeItemSelect={(payload) => {
             if (payload !== rootSharedId) {
               navigate(buildMainPath({ rootId: payload }));

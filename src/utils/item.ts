@@ -131,12 +131,12 @@ export const paginationContentFilter = (
     .filter((i) => i.type !== ItemType.FOLDER)
     .filter((i) => !i.settings?.isPinned);
 
-interface Node {
-  children: string[];
-}
+// interface Node {
+//   children: ;
+// }
 
 interface Tree {
-  [nodeId: string]: Node;
+  [nodeId: string]: DiscriminatedItem[];
 }
 
 const createMapTree = (data: DiscriminatedItem[]) => {
@@ -148,12 +148,9 @@ const createMapTree = (data: DiscriminatedItem[]) => {
     const lastParent = parents[parents.length - 1];
     if (lastParent) {
       if (childrenTreeMap[lastParent]) {
-        childrenTreeMap[lastParent].children = [
-          ...childrenTreeMap[lastParent].children,
-          ele.id,
-        ];
+        childrenTreeMap[lastParent] = [...childrenTreeMap[lastParent], ele];
       } else {
-        childrenTreeMap[lastParent] = { children: [ele.id] };
+        childrenTreeMap[lastParent] = [ele];
       }
     }
   }
@@ -176,22 +173,28 @@ const buildItemsTree = (data: DiscriminatedItem[]) => {
   }
   const mapTree: Tree = createMapTree(data);
   const keys = Object.keys(mapTree);
-  const allChildren: string[] = keys.reduce((acc: string[], key: string) => {
-    const node = mapTree[key as keyof Tree];
-    if (node && node.children) {
-      acc.push(...node.children);
-    }
-    return acc;
-  }, []);
-  const rootKeys = keys.filter((key) => !allChildren.includes(key));
+  const allChildren: DiscriminatedItem[] = keys.reduce(
+    (acc: DiscriminatedItem[], key: string) => {
+      const node = mapTree[key as keyof Tree];
+      if (node && node.length) {
+        acc.push(...node);
+      }
+      return acc;
+    },
+    [],
+  );
+
+  const rootKeys = keys.filter(
+    (key) => !allChildren.find((ele) => ele.id === key),
+  );
 
   const buildTree = (nodeId: string) => {
     const node = data.find((ele) => ele.id === nodeId);
     if (mapTree[nodeId]) {
       if (node) {
         const nodeCopy = JSON.parse(JSON.stringify(node));
-        nodeCopy.children = mapTree[nodeId].children.map((childId) =>
-          buildTree(childId),
+        nodeCopy.children = mapTree[nodeId].map((childId) =>
+          buildTree(childId.id),
         );
         return nodeCopy;
       }
@@ -206,9 +209,7 @@ const buildItemsTree = (data: DiscriminatedItem[]) => {
   return tree;
 };
 
-export const getNodeTree = (
-  data: (DiscriminatedItem & { name: string })[],
-): TreeNode => {
+export const getNodeTree = (data: DiscriminatedItem[]): TreeNode => {
   const res = data.filter((ele) => ele.type === ItemType.FOLDER);
 
   const rootItemTree = buildItemsTree(res);

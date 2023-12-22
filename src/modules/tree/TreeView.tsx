@@ -4,7 +4,6 @@ import AccessibleTreeView, {
   flattenTree,
 } from 'react-accessible-treeview';
 
-// import { IFlatMetadata } from 'react-accessible-treeview/dist/TreeView/utils';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FolderIcon from '@mui/icons-material/Folder';
@@ -17,9 +16,11 @@ import { DiscriminatedItem, Triggers, UUID } from '@graasp/sdk';
 import { GRAASP_MENU_ITEMS } from '@/config/constants';
 import { mutations } from '@/config/queryClient';
 import { SHOW_MORE_ITEMS_ID, buildTreeItemClass } from '@/config/selectors';
+import { PLAYER } from '@/langs/constants';
 import { getNodeTree } from '@/utils/item';
 
 import './style.css';
+import { usePlayerTranslation } from '@/config/i18n';
 
 const MAX_NUM_ITEMS = 10;
 
@@ -27,7 +28,7 @@ type Props = {
   id: string;
   header?: string;
   items?: DiscriminatedItem[];
-  initialExpendedItems?: string[];
+  initialExpandedItemIds?: string[];
   selectedId?: string;
   onTreeItemSelect?: (value: string) => void;
   isLoading?: boolean;
@@ -59,16 +60,11 @@ const RenderedNode = ({
     display="flex"
     sx={{ alignItems: 'center' }}
   >
-    {isBranch &&
-      (isExpanded ? (
-        <IconButton sx={{ padding: 0 }}>
-          <ExpandMoreIcon />
-        </IconButton>
-      ) : (
-        <IconButton sx={{ padding: 0 }}>
-          <ChevronRightIcon />
-        </IconButton>
-      ))}
+    {isBranch && (
+      <IconButton sx={{ padding: 0 }}>
+        {isExpanded ? <ExpandMoreIcon /> : <ChevronRightIcon />}
+      </IconButton>
+    )}
     <Typography
       component="button"
       sx={{
@@ -79,7 +75,7 @@ const RenderedNode = ({
         border: 'none',
         cursor: 'pointer',
       }}
-      onClick={() => onSelect(element?.id as UUID)}
+      onClick={() => onSelect(element.id as UUID)}
     >
       <FolderIcon fontSize="small" />
       {element.name}
@@ -101,6 +97,7 @@ const TreeView = ({
   const itemsToShow = items?.filter((item) =>
     onlyShowContainerItems ? GRAASP_MENU_ITEMS.includes(item.type) : true,
   );
+  const { t } = usePlayerTranslation();
 
   if (isLoading) {
     return <Skeleton variant="text" />;
@@ -119,7 +116,7 @@ const TreeView = ({
     showAll ? itemsToShow?.length : MAX_NUM_ITEMS,
   );
 
-  const res = Object.values(getNodeTree(itemsToShow || []))?.[0];
+  const res = Object.values(getNodeTree(itemsToShow || []))[0];
 
   return (
     <Box id={id}>
@@ -150,7 +147,7 @@ const TreeView = ({
             onClick={() => setShowAll(true)}
             size="small"
           >
-            Show More...
+            {t(PLAYER.SHOW_MORE)}
           </Button>
         )}
     </Box>
