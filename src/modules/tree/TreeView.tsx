@@ -14,13 +14,13 @@ import { deepPurple } from '@mui/material/colors';
 import { DiscriminatedItem, Triggers, UUID } from '@graasp/sdk';
 
 import { GRAASP_MENU_ITEMS } from '@/config/constants';
+import { usePlayerTranslation } from '@/config/i18n';
 import { mutations } from '@/config/queryClient';
 import { SHOW_MORE_ITEMS_ID, buildTreeItemClass } from '@/config/selectors';
 import { PLAYER } from '@/langs/constants';
 import { getNodeTree } from '@/utils/item';
 
 import './style.css';
-import { usePlayerTranslation } from '@/config/i18n';
 
 const MAX_NUM_ITEMS = 10;
 
