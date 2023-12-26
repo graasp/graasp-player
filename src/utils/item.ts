@@ -131,45 +131,41 @@ export const paginationContentFilter = (
     .filter((i) => i.type !== ItemType.FOLDER)
     .filter((i) => !i.settings?.isPinned);
 
-// interface Node {
-//   children: ;
-// }
-
 interface Tree {
   [nodeId: string]: DiscriminatedItem[];
 }
 
 const createMapTree = (data: DiscriminatedItem[]) => {
   const childrenTreeMap: Tree = {};
-  // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < data.length; i++) {
-    const ele = data[i];
+  // eslint-disable-next-line no-plusplus, no-restricted-syntax
+  for (const ele of data) {
     const parents = getParentsIdsFromPath(ele.path, { ignoreSelf: true });
     const lastParent = parents[parents.length - 1];
+
     if (lastParent) {
-      if (childrenTreeMap[lastParent]) {
-        childrenTreeMap[lastParent] = [...childrenTreeMap[lastParent], ele];
-      } else {
-        childrenTreeMap[lastParent] = [ele];
-      }
+      childrenTreeMap[lastParent] = [
+        ...(childrenTreeMap[lastParent] || []),
+        ele,
+      ];
     }
   }
   return childrenTreeMap;
 };
 
-type ItemWithChildren = DiscriminatedItem & {
-  children: ItemWithChildren[];
+type PartialItemWithChildren = { id: string; name: string } & {
+  children?: PartialItemWithChildren[];
 };
 
 interface TreeNode {
-  [nodeId: string]: ItemWithChildren;
+  [nodeId: string]: PartialItemWithChildren;
 }
 
 // handle item children tree
 const buildItemsTree = (data: DiscriminatedItem[]) => {
   const tree: TreeNode = {};
   if (data.length === 1) {
-    tree[data[0].id] = { ...data[0], children: [] };
+    // this for non children one item as tree map build based on children to parent relation
+    tree[data[0].id] = { id: data[0].id, name: data[0].name, children: [] };
   }
   const mapTree: Tree = createMapTree(data);
   const keys = Object.keys(mapTree);
@@ -177,33 +173,32 @@ const buildItemsTree = (data: DiscriminatedItem[]) => {
     (acc: DiscriminatedItem[], key: string) => {
       const node = mapTree[key as keyof Tree];
       if (node && node.length) {
-        acc.push(...node);
+        return acc.concat(...node);
       }
       return acc;
     },
     [],
   );
 
-  const rootKeys = keys.filter(
-    (key) => !allChildren.find((ele) => ele.id === key),
-  );
+  // not a child
+  const rootKeys = data.filter((ele) => allChildren.indexOf(ele) === -1);
 
-  const buildTree = (nodeId: string) => {
-    const node = data.find((ele) => ele.id === nodeId);
-    if (mapTree[nodeId]) {
-      if (node) {
-        const nodeCopy = JSON.parse(JSON.stringify(node));
-        nodeCopy.children = mapTree[nodeId].map((childId) =>
-          buildTree(childId.id),
-        );
-        return nodeCopy;
-      }
+  const buildTree = (node: DiscriminatedItem) => {
+    if (mapTree[node.id]) {
+      const entry: PartialItemWithChildren = {
+        id: node.id,
+        name: node.name,
+        children: mapTree[node.id].map((child) => buildTree(child)),
+      };
+      return entry;
     }
-    return node;
+    // we suppose you will always have a value so you should at least console here in case of errors
+    console.error('node.id should have been in the map');
+    return { id: node.id, name: node.name };
   };
 
   rootKeys.forEach((ele) => {
-    tree[ele] = buildTree(ele);
+    tree[ele.id] = buildTree(ele);
   });
 
   return tree;

@@ -75,7 +75,13 @@ const RenderedNode = ({
         border: 'none',
         cursor: 'pointer',
       }}
-      onClick={() => onSelect(element.id as UUID)}
+      onClick={(e) => {
+        // to prevent folding expanded elements
+        if (isExpanded) {
+          e.preventDefault();
+        }
+        onSelect(element.id as UUID);
+      }}
     >
       <FolderIcon fontSize="small" />
       {element.name}
