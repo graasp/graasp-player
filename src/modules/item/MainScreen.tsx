@@ -18,9 +18,8 @@ import SideContent from '@/modules/rightPanel/SideContent';
 import Item from './Item';
 import ItemNavigation from './ItemNavigation';
 
-const MainScreen = (): JSX.Element => {
+const MainScreen = ({ open }: { open: boolean }): JSX.Element => {
   const rootId = useParams()[ROOT_ID_PATH];
-
   const { focusedItemId } = useItemContext();
   const mainId = focusedItemId || rootId;
   const { data: item, isLoading, isError } = hooks.useItem(mainId);
@@ -52,7 +51,7 @@ const MainScreen = (): JSX.Element => {
 
   return (
     <Main
-      open={Boolean(rootId)}
+      open={open && Boolean(rootId)}
       context={Context.Player}
       sidebar={<ItemNavigation />}
       headerLeftContent={

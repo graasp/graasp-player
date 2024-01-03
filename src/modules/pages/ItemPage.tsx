@@ -13,9 +13,10 @@ import MainScreen from '../item/MainScreen';
 const { useItem, useItemLoginSchemaType, useCurrentMember } = hooks;
 
 const ItemScreenWrapper = (rootId: string) => {
+  const { isMobile } = useMobileView();
   const ItemScreen = (): JSX.Element => (
     <ItemContextProvider rootId={rootId}>
-      <MainScreen />
+      <MainScreen open={!isMobile} />
       <PlayerCookiesBanner />
     </ItemContextProvider>
   );
