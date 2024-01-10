@@ -43,9 +43,16 @@ const Node = ({
   >
     {/* icon type for root level items */}
     {level === 1 && element.metadata?.type && (
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error type is not well defined
-      <ItemIcon sx={{ width: 17 }} alt="icon" type={element.metadata.type} />
+      <ItemIcon
+        sx={{ width: 17 }}
+        alt="icon"
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error type is not well defined
+        type={element.metadata.type}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error type is not well defined
+        extra={element.metadata.extra}
+      />
     )}
     {level !== 1 && isBranch && (
       <IconButton
