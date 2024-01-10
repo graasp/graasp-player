@@ -1,59 +1,48 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
 
 import { Divider, Skeleton, Stack, styled } from '@mui/material';
 
-import { Context } from '@graasp/sdk';
-import { COMMON } from '@graasp/translations';
-import { Main, MainMenu } from '@graasp/ui';
+import { Context, DiscriminatedItem } from '@graasp/sdk';
+import { Button, Main, MainMenu } from '@graasp/ui';
 
-import { useCommonTranslation } from '@/config/i18n';
+import { usePlayerTranslation } from '@/config/i18n';
 import { buildMainPath } from '@/config/paths';
 import { hooks } from '@/config/queryClient';
-import {
-  HOME_NAVIGATION_STACK_ID,
-  MY_ITEMS_ID,
-  SHARED_ITEMS_ID,
-} from '@/config/selectors';
+import { HOME_NAVIGATION_STACK_ID, MY_ITEMS_ID } from '@/config/selectors';
+import { PLAYER } from '@/langs/constants';
 import PlayerCookiesBanner from '@/modules/cookies/PlayerCookiesBanner';
 import HeaderNavigation from '@/modules/header/HeaderNavigation';
 import HeaderRightContent from '@/modules/header/HeaderRightContent';
 import ItemGrid from '@/modules/main/ItemGrid';
 import TreeView from '@/modules/tree/TreeView';
-import { isHidden } from '@/utils/item';
 
 const StyledDivider = styled(Divider)(({ theme }) => ({
   margin: theme.spacing(2, 0),
 }));
 
-const { useOwnItems, useSharedItems, useItemsTags } = hooks;
+const { useAccessibleItems } = hooks;
+
+const PAGE_SIZE = 20;
 
 const HomePage = (): JSX.Element => {
-  const { t } = useCommonTranslation();
+  const { t } = usePlayerTranslation();
   const navigate = useNavigate();
 
-  const { data: ownItems, isLoading: isLoadingOwnItems } = useOwnItems();
+  const [page, setPage] = useState(1);
+  const [allItems, setAllItems] = useState<DiscriminatedItem[]>([]);
 
-  const { data: sharedItems, isLoading: isLoadingSharedItems } =
-    useSharedItems();
-  const { data: sharedItemsTags, isLoading: isLoadingSharedTags } =
-    useItemsTags(sharedItems?.map(({ id }) => id));
+  const { data: accessibleItems, isLoading: isLoadingAccessibleItems } =
+    useAccessibleItems({}, { page, pageSize: PAGE_SIZE });
 
-  const shared = sharedItems?.filter(
-    (item) =>
-      !isLoadingSharedTags && !isHidden(item, sharedItemsTags?.data?.[item.id]),
-  );
+  const allPagesItems = allItems.concat(accessibleItems?.data ?? []);
 
   const renderContent = () => (
     <Stack m={2} divider={<StyledDivider variant="middle" flexItem />}>
       <ItemGrid
-        title={t(COMMON.USER_OWN_ITEMS)}
-        isLoading={isLoadingOwnItems}
-        items={ownItems}
-      />
-      <ItemGrid
-        title={t(COMMON.USER_SHARED_WITH_ITEMS)}
-        isLoading={isLoadingSharedItems}
-        items={sharedItems}
+        title={t(PLAYER.RECENT_ITEMS_TITLE)}
+        isLoading={isLoadingAccessibleItems}
+        items={allPagesItems}
       />
     </Stack>
   );
@@ -61,11 +50,11 @@ const HomePage = (): JSX.Element => {
   const renderOwnItemsMenu = () => {
     const rootOwnId = 'own';
 
-    if (isLoadingOwnItems) {
+    if (isLoadingAccessibleItems) {
       return <Skeleton />;
     }
 
-    if (!ownItems?.length) {
+    if (!accessibleItems?.data?.length) {
       return null;
     }
 
@@ -73,47 +62,36 @@ const HomePage = (): JSX.Element => {
       <MainMenu>
         <TreeView
           id={MY_ITEMS_ID}
-          header={t(COMMON.USER_OWN_ITEMS)}
-          items={ownItems}
+          header={t(PLAYER.RECENT_ITEMS_TITLE)}
+          rootItems={allPagesItems}
+          items={allPagesItems}
           onTreeItemSelect={(payload) => {
             if (payload !== rootOwnId) {
               navigate(buildMainPath({ rootId: payload }));
             }
           }}
-          onlyShowContainerItems
         />
       </MainMenu>
     );
   };
 
-  const renderSharedItemsMenu = () => {
-    const rootSharedId = 'shared';
-
-    if (isLoadingSharedItems) {
-      return <Skeleton />;
-    }
-
-    if (!shared?.length) {
-      return null;
-    }
-
-    return (
-      <MainMenu>
-        <TreeView
-          id={SHARED_ITEMS_ID}
-          header={t(COMMON.USER_SHARED_WITH_ITEMS)}
-          items={shared}
-          initialExpandedItemIds={[]}
-          onTreeItemSelect={(payload) => {
-            if (payload !== rootSharedId) {
-              navigate(buildMainPath({ rootId: payload }));
-            }
-          }}
-          onlyShowContainerItems
-        />
-      </MainMenu>
+  const showMoreButton =
+    accessibleItems?.totalCount &&
+    page * PAGE_SIZE < accessibleItems.totalCount ? (
+      <Button
+        sx={{ mx: 2 }}
+        variant="text"
+        onClick={() => {
+          setAllItems(allPagesItems);
+          setPage(page + 1);
+        }}
+      >
+        {t(PLAYER.SHOW_MORE)}
+      </Button>
+    ) : (
+      // eslint-disable-next-line react/jsx-no-useless-fragment
+      <></>
     );
-  };
 
   return (
     <Main
@@ -127,7 +105,6 @@ const HomePage = (): JSX.Element => {
             divider={<Divider variant="middle" flexItem />}
           >
             {renderOwnItemsMenu()}
-            {renderSharedItemsMenu()}
           </Stack>
         </>
       }
@@ -135,6 +112,7 @@ const HomePage = (): JSX.Element => {
       headerRightContent={<HeaderRightContent />}
     >
       {renderContent()}
+      {showMoreButton}
       <PlayerCookiesBanner />
     </Main>
   );

@@ -1,12 +1,5 @@
 import { DiscriminatedItem, ItemTag, ItemTagType, ItemType } from '@graasp/sdk';
 
-/**
- * @deprecated
- */
-export const transformIdForPath = (id: string): string =>
-  // eslint-disable-next-line no-useless-escape
-  id.replace(/\-/g, '_');
-
 export const getParentsIdsFromPath = (
   path: string,
   { ignoreSelf = false } = {},
@@ -30,36 +23,6 @@ export const getParentsIdsFromPath = (
   const ids = p.replace(/_/g, '-').split('.');
   return ids;
 };
-
-export const buildPath = ({
-  prefix,
-  ids,
-}: {
-  prefix: string;
-  ids: string[];
-}): string => `${prefix}${ids.map((id) => transformIdForPath(id)).join('.')}`;
-
-// export const getItemById = (items: , id) =>
-//   items.find(({ id: thisId }) => id === thisId);
-
-// export const getItemsById = (items, ids) =>
-//   items.filter(({ id: thisId }) => ids.includes(thisId));
-
-// export const getDirectParentId = (path) => {
-//   const ids = getParentsIdsFromPath(path);
-//   const parentIdx = ids.length - 2;
-//   if (parentIdx < 0) {
-//     return null;
-//   }
-//   return ids[parentIdx];
-// };
-
-// export const isChild = (id) => {
-//   const reg = new RegExp(`${transformIdForPath(id)}(?=\\.[^\\.]*$)`);
-//   return ({ path }) => path.match(reg);
-// };
-
-// export const getChildren = (items, id) => items.filter(isChild(id));
 
 export const isError = (error?: { statusCode: number }): boolean =>
   Boolean(error?.statusCode);
@@ -97,30 +60,6 @@ export const isHidden = (
   return false;
 };
 
-export const areItemsEqual = (
-  i1: DiscriminatedItem,
-  i2: DiscriminatedItem,
-): boolean => {
-  if (!i1 && !i2) return true;
-
-  if (!i1 || !i2) return false;
-
-  return i1.updatedAt === i2.updatedAt;
-};
-
-export const isUrlValid = (str: string): boolean => {
-  const pattern = new RegExp(
-    '^(https?:\\/\\/)+' + // protocol
-      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-      '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-      '(\\#[-a-z\\d_]*)?$',
-    'i',
-  ); // fragment locator
-  return Boolean(str && pattern.test(str));
-};
-
 export const stripHtml = (str?: string | null): string | undefined =>
   str?.replace(/<[^>]*>?/gm, '');
 
@@ -130,83 +69,3 @@ export const paginationContentFilter = (
   items
     .filter((i) => i.type !== ItemType.FOLDER)
     .filter((i) => !i.settings?.isPinned);
-
-interface Tree {
-  [nodeId: string]: DiscriminatedItem[];
-}
-
-const createMapTree = (data: DiscriminatedItem[]) => {
-  const childrenTreeMap: Tree = {};
-  // eslint-disable-next-line no-plusplus, no-restricted-syntax
-  for (const ele of data) {
-    const parents = getParentsIdsFromPath(ele.path, { ignoreSelf: true });
-    const lastParent = parents[parents.length - 1];
-
-    if (lastParent) {
-      childrenTreeMap[lastParent] = [
-        ...(childrenTreeMap[lastParent] || []),
-        ele,
-      ];
-    }
-  }
-  return childrenTreeMap;
-};
-
-type PartialItemWithChildren = { id: string; name: string } & {
-  children?: PartialItemWithChildren[];
-};
-
-interface TreeNode {
-  [nodeId: string]: PartialItemWithChildren;
-}
-
-// handle item children tree
-const buildItemsTree = (data: DiscriminatedItem[]) => {
-  const tree: TreeNode = {};
-  if (data.length === 1) {
-    // this for non children one item as tree map build based on children to parent relation
-    tree[data[0].id] = { id: data[0].id, name: data[0].name, children: [] };
-  }
-  const mapTree: Tree = createMapTree(data);
-  const keys = Object.keys(mapTree);
-  const allChildren: DiscriminatedItem[] = keys.reduce(
-    (acc: DiscriminatedItem[], key: string) => {
-      const node = mapTree[key as keyof Tree];
-      if (node && node.length) {
-        return acc.concat(...node);
-      }
-      return acc;
-    },
-    [],
-  );
-
-  // not a child
-  const rootKeys = data.filter((ele) => allChildren.indexOf(ele) === -1);
-
-  const buildTree = (node: DiscriminatedItem) => {
-    if (mapTree[node.id]) {
-      const entry: PartialItemWithChildren = {
-        id: node.id,
-        name: node.name,
-        children: mapTree[node.id].map((child) => buildTree(child)),
-      };
-      return entry;
-    }
-    // we suppose you will always have a value so you should at least console here in case of errors
-    console.error('node.id should have been in the map');
-    return { id: node.id, name: node.name };
-  };
-
-  rootKeys.forEach((ele) => {
-    tree[ele.id] = buildTree(ele);
-  });
-
-  return tree;
-};
-
-export const getNodeTree = (data: DiscriminatedItem[]): TreeNode => {
-  const res = data.filter((ele) => ele.type === ItemType.FOLDER);
-
-  const rootItemTree = buildItemsTree(res);
-  return rootItemTree;
-};
