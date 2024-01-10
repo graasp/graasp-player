@@ -119,7 +119,7 @@ describe('Main Screen', () => {
 
         expectFolderButtonLayout(FOLDER_WITH_SUBFOLDER_ITEM.items[1]);
       });
-      it.only('Display Folder without childrenOrder', () => {
+      it('Display Folder without childrenOrder', () => {
         const parent = FOLDER_WITHOUT_CHILDREN_ORDER.items[0];
         cy.visit(buildMainPath({ rootId: parent.id }));
 
