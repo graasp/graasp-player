@@ -1,10 +1,15 @@
+import { buildSignInPath } from '@graasp/sdk';
+
 import { HOME_PATH } from '../../src/config/paths';
 import {
   HEADER_MEMBER_MENU_BUTTON_ID,
   HEADER_MEMBER_MENU_SEE_PROFILE_BUTTON_ID,
   HEADER_MEMBER_MENU_SIGN_OUT_BUTTON_ID,
 } from '../../src/config/selectors';
-import { SIGN_IN_PATH } from '../support/constants';
+
+const SIGN_IN_PATH = buildSignInPath({
+  host: Cypress.env('AUTHENTICATION_HOST'),
+});
 
 // catch hook warning from react
 Cypress.on('uncaught:exception', (err) => {

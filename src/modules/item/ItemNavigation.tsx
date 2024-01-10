@@ -1,7 +1,9 @@
+import { useParams } from 'react-router-dom';
+
 import { Alert } from '@mui/material';
 
 import { FAILURE_MESSAGES } from '@graasp/translations';
-import { MainMenu, useShortenURLParams } from '@graasp/ui';
+import { MainMenu } from '@graasp/ui';
 
 import { useMessagesTranslation } from '@/config/i18n';
 import { ROOT_ID_PATH } from '@/config/paths';
@@ -14,7 +16,7 @@ import { isHidden } from '@/utils/item';
 const { useItem, useDescendants, useItemsTags } = hooks;
 
 const ItemNavigation = (): JSX.Element | null => {
-  const rootId = useShortenURLParams(ROOT_ID_PATH);
+  const rootId = useParams()[ROOT_ID_PATH];
 
   const { t: translateMessage } = useMessagesTranslation();
   const { setFocusedItemId } = useItemContext();
@@ -53,7 +55,6 @@ const ItemNavigation = (): JSX.Element | null => {
             (ele) => !isHidden(ele, itemsTags?.data?.[ele.id]),
           )}
           firstLevelStyle={{ fontWeight: 'bold' }}
-          initialExpandedItemIds={[rootId]}
           onTreeItemSelect={setFocusedItemId}
           isLoading={rootItemIsLoading}
         />

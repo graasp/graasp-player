@@ -95,6 +95,8 @@ const HomePage = (): JSX.Element => {
         {t(PLAYER.SHOW_MORE)}
       </Button>
     ) : (
+      // todo: this should be null, but Main component does not allow it, because the typing there is dumb
+      // replace with null once Main accepts null as valid components
       // eslint-disable-next-line react/jsx-no-useless-fragment
       <></>
     );

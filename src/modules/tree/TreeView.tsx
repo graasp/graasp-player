@@ -1,13 +1,22 @@
-import AccessibleTreeView, { flattenTree } from 'react-accessible-treeview';
+import AccessibleTreeView, {
+  INode,
+  INodeRendererProps,
+  flattenTree,
+} from 'react-accessible-treeview';
 
 import { Box, SxProps, Typography } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
 
-import { DiscriminatedItem, Triggers } from '@graasp/sdk';
+import {
+  DiscriminatedItem,
+  ItemType,
+  Triggers,
+  UnionOfConst,
+} from '@graasp/sdk';
 
 import { GRAASP_MENU_ITEMS } from '@/config/constants';
 import { mutations } from '@/config/queryClient';
-import { getItemTree } from '@/utils/tree';
+import { ItemMetaData, getItemTree } from '@/utils/tree';
 
 import Node from './Node';
 
@@ -16,8 +25,6 @@ type Props = {
   header?: string;
   rootItems: DiscriminatedItem[];
   items?: DiscriminatedItem[];
-  initialExpandedItemIds?: string[];
-  selectedId?: string;
   onTreeItemSelect?: (value: string) => void;
   isLoading?: boolean;
   onlyShowContainerItems?: boolean;
@@ -54,7 +61,28 @@ const TreeView = ({
     onTreeItemSelect?.(value);
   };
 
+  const nodeRenderer = ({
+    element,
+    getNodeProps,
+    isBranch,
+    isSelected,
+    isExpanded,
+    level,
+  }: INodeRendererProps) => (
+    <Node
+      element={element as INode<ItemMetaData>}
+      getNodeProps={getNodeProps}
+      isBranch={isBranch}
+      isSelected={isSelected}
+      isExpanded={isExpanded}
+      level={level}
+      firstLevelStyle={firstLevelStyle}
+      onSelect={onSelect}
+    />
+  );
+
   const tree = Object.values(getItemTree(itemsToShow || [], rootItems));
+
   return (
     <Box
       id={id}
@@ -74,23 +102,13 @@ const TreeView = ({
         </Typography>
       )}
       <AccessibleTreeView
-        defaultExpandedIds={[rootItems[0].id]}
-        data={flattenTree({
+        defaultExpandedIds={[rootItems[0]?.id]}
+        data={flattenTree<{ type: UnionOfConst<typeof ItemType> }>({
           // here there's should be a root item for all children which basically gonna be an empty name
           name: '',
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-expect-error
           children: tree,
         })}
-        // eslint-disable-next-line react/no-unstable-nested-components
-        nodeRenderer={(props) => (
-          <Node
-            // eslint-disable-next-line react/jsx-props-no-spreading
-            {...props}
-            firstLevelStyle={firstLevelStyle}
-            onSelect={onSelect}
-          />
-        )}
+        nodeRenderer={nodeRenderer}
       />
     </Box>
   );

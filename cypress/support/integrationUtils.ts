@@ -23,7 +23,6 @@ import {
   buildFileId,
   buildTreeItemClass,
 } from '../../src/config/selectors';
-import { LOAD_FOLDER_CONTENT_PAUSE } from './constants';
 
 export const expectLinkViewScreenLayout = ({
   id,
@@ -98,11 +97,7 @@ export const expectDocumentViewScreenLayout = ({
 };
 
 export const expectFolderButtonLayout = ({ name }: { name: string }): void => {
-  // mainmenu
-  const menu = cy.get(`#${MAIN_MENU_ID}`);
-  cy.wait(100);
-  menu.click();
-  menu.get(`#${MAIN_MENU_ID}`).contains(name);
+  cy.get(`#${MAIN_MENU_ID}`).contains(name);
 };
 
 export const expectFolderLayout = ({
@@ -144,7 +139,6 @@ export const expectFolderLayout = ({
     .forEach(({ id }) => {
       // click in mainmenu
       cy.get(`.${buildTreeItemClass(id)}`).click();
-      cy.wait(LOAD_FOLDER_CONTENT_PAUSE);
 
       expectFolderLayout({ rootId: id, items });
     });

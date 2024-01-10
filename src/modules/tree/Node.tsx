@@ -1,4 +1,4 @@
-import { INode } from 'react-accessible-treeview';
+import type { IBranchProps, INode, LeafProps } from 'react-accessible-treeview';
 
 import { Box, IconButton, Typography } from '@mui/material';
 import { deepPurple } from '@mui/material/colors';
@@ -7,19 +7,20 @@ import { UUID } from '@graasp/sdk';
 import { ItemIcon } from '@graasp/ui';
 
 import { buildTreeItemClass } from '@/config/selectors';
+import { ItemMetaData } from '@/utils/tree';
 
 // Props here is passed from TreeView react-accessible-treeview component
-interface NodeProps {
-  element: INode;
+export type NodeProps = {
+  element: INode<ItemMetaData>;
   isBranch: boolean;
   isExpanded: boolean;
   level: number;
   isSelected: boolean;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  getNodeProps: () => any;
+  getNodeProps: () => IBranchProps | LeafProps;
   onSelect: (id: UUID) => void;
   firstLevelStyle?: object;
-}
+};
+
 const Node = ({
   element,
   isBranch,
@@ -46,12 +47,8 @@ const Node = ({
       <ItemIcon
         sx={{ width: 17 }}
         alt="icon"
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error type is not well defined
         type={element.metadata.type}
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error type is not well defined
-        extra={element.metadata.extra}
+        mimetype={element.metadata.mimetype}
       />
     )}
     {level !== 1 && isBranch && (

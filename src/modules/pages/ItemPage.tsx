@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import { ItemLoginAuthorization, useShortenURLParams } from '@graasp/ui';
+import { ItemLoginAuthorization } from '@graasp/ui';
 
 import { HOME_PATH, ROOT_ID_PATH } from '@/config/paths';
 import { hooks, mutations } from '@/config/queryClient';
@@ -29,7 +29,7 @@ const ItemPage = (): JSX.Element | null => {
   const { mutate: signOut } = useSignOut();
   const { mutate: itemLoginSignIn } = usePostItemLogin();
 
-  const rootId = useShortenURLParams(ROOT_ID_PATH);
+  const rootId = useParams()[ROOT_ID_PATH];
 
   const navigate = useNavigate();
 

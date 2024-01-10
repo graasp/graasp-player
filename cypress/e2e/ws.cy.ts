@@ -8,10 +8,12 @@ import {
 import { FOLDER_WITH_SUBFOLDER_ITEM } from '../fixtures/items';
 import { expectFolderButtonLayout } from '../support/integrationUtils';
 
-Cypress.on('uncaught:exception', () => false);
-
-function beforeWs(visitRoute: string, wsClientStub: MockWebSocket) {
-  cy.setCookie('session', 'somecookie');
+function beforeWs(
+  visitRoute: string,
+  wsClientStub: MockWebSocket,
+  sampleData: Parameters<Cypress.Chainable['setUpApi']>[0],
+) {
+  cy.setUpApi(sampleData);
   cy.visit(visitRoute, {
     onBeforeLoad: (win) => {
       cy.stub(win, 'WebSocket').callsFake(() => wsClientStub);
@@ -30,12 +32,15 @@ describe('Websocket interactions', () => {
 
   beforeEach(() => {
     client = new MockWebSocket();
-    cy.setUpApi(FOLDER_WITH_SUBFOLDER_ITEM);
   });
 
   it('Displays create child update', () => {
     const parent = FOLDER_WITH_SUBFOLDER_ITEM.items[0];
-    beforeWs(buildMainPath({ rootId: parent.id }), client);
+    beforeWs(
+      buildMainPath({ rootId: parent.id }),
+      client,
+      FOLDER_WITH_SUBFOLDER_ITEM,
+    );
 
     cy.get(`.${FOLDER_NAME_TITLE_CLASS}`)
       .should('contain', parent.name)
@@ -57,11 +62,17 @@ describe('Websocket interactions', () => {
           },
         });
       });
+    // this fails because the websockets update is not pushed to the get descendants cache.
+    // expectFolderButtonLayout(newChild);
   });
 
   it('Displays remove child update', () => {
     const parent = FOLDER_WITH_SUBFOLDER_ITEM.items[0];
-    beforeWs(buildMainPath({ rootId: parent.id }), client);
+    beforeWs(
+      buildMainPath({ rootId: parent.id }),
+      client,
+      FOLDER_WITH_SUBFOLDER_ITEM,
+    );
 
     // button should exist
     cy.get(`#${buildFolderButtonId(newChild.id)}`)
