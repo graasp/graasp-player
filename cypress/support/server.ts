@@ -1,7 +1,9 @@
 import { API_ROUTES } from '@graasp/query-client';
+import { buildGetAccessibleItems } from '@graasp/query-client/dist/api/routes';
 import {
   ChatMessage,
   DiscriminatedItem,
+  HttpMethod,
   ItemTag,
   ItemTagType,
   Member,
@@ -162,6 +164,32 @@ export const mockGetSharedItems = ({
       return reply(shared);
     },
   ).as('getSharedItems');
+};
+
+export const mockGetAccessibleItems = (items: DiscriminatedItem[]): void => {
+  cy.intercept(
+    {
+      method: HttpMethod.GET,
+      url: new RegExp(`${API_HOST}/${buildGetAccessibleItems({}, {})}`),
+    },
+    ({ url, reply }) => {
+      const params = new URL(url).searchParams;
+
+      const page = parseInt(params.get('page') ?? '1', 10);
+      const pageSize = parseInt(params.get('pageSize') ?? '10', 10);
+
+      // as { page: number; pageSize: number };
+
+      // warning: we don't check memberships
+      const root = items.filter(isRootItem);
+
+      // todo: filter
+
+      const result = root.slice((page - 1) * pageSize, page * pageSize);
+
+      reply({ data: result, totalCount: root.length });
+    },
+  ).as('getAccessibleItems');
 };
 
 export const mockGetCurrentMember = (

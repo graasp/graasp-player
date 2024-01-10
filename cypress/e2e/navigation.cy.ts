@@ -3,8 +3,6 @@ import { PermissionLevel } from '@graasp/sdk';
 import { buildMainPath } from '@/config/paths';
 import {
   MAIN_MENU_ID,
-  MY_ITEMS_ID,
-  SHARED_ITEMS_ID,
   SHOW_MORE_ITEMS_ID,
   buildTreeItemClass,
 } from '@/config/selectors';
@@ -30,13 +28,9 @@ describe('Navigation', () => {
     });
     cy.visit('/');
 
-    cy.wait(['@getCurrentMember', '@getOwnItems', '@getSharedItems']);
+    cy.wait(['@getCurrentMember', '@getAccessibleItems']);
 
-    cy.get(`#${MY_ITEMS_ID} #${SHOW_MORE_ITEMS_ID}`).click();
-
-    cy.get(`#${SHARED_ITEMS_ID} #${SHOW_MORE_ITEMS_ID}`).click({
-      force: true,
-    });
+    cy.get(`#${SHOW_MORE_ITEMS_ID}`).click();
   });
 
   it('Expand folder when navigating', () => {

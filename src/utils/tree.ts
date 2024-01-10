@@ -48,10 +48,14 @@ const buildItemsTree = (
 
   const buildTree = (node: DiscriminatedItem) => {
     if (node.type === ItemType.FOLDER && mapTree[node.id]) {
-      // sort by children order
-      const children = node.extra.folder.childrenOrder
-        .map((id) => mapTree[node.id].find(({ id: childId }) => childId === id))
-        .filter(Boolean) as DiscriminatedItem[];
+      // sort by children order or default to all if not defined
+      const children = node.extra.folder.childrenOrder?.length
+        ? (node.extra.folder.childrenOrder
+            .map((id) =>
+              mapTree[node.id].find(({ id: childId }) => childId === id),
+            )
+            .filter(Boolean) as DiscriminatedItem[])
+        : mapTree[node.id];
 
       const entry: PartialItemWithChildren = {
         id: node.id,
@@ -77,7 +81,6 @@ export const getItemTree = (
   rootItems: DiscriminatedItem[],
 ): TreeNode => {
   const res = data.filter((ele) => ele.type === ItemType.FOLDER);
-
   const rootItemTree = buildItemsTree(res, rootItems);
   return rootItemTree;
 };

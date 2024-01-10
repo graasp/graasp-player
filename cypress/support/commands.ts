@@ -8,6 +8,7 @@ import {
   mockAuthPage,
   mockDefaultDownloadFile,
   mockDeleteAppData,
+  mockGetAccessibleItems,
   mockGetAppData,
   mockGetAppLink,
   mockGetChildren,
@@ -47,6 +48,7 @@ Cypress.Commands.add(
     }
     mockGetOwnItems({ items, currentMember });
     mockGetSharedItems({ items, currentMember });
+    mockGetAccessibleItems(items);
     mockGetItem(
       { items, currentMember },
       getItemError || getCurrentMemberError,

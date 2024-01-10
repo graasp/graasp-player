@@ -9,7 +9,11 @@ import { Button, Main, MainMenu } from '@graasp/ui';
 import { usePlayerTranslation } from '@/config/i18n';
 import { buildMainPath } from '@/config/paths';
 import { hooks } from '@/config/queryClient';
-import { HOME_NAVIGATION_STACK_ID, MY_ITEMS_ID } from '@/config/selectors';
+import {
+  HOME_NAVIGATION_STACK_ID,
+  MY_ITEMS_ID,
+  SHOW_MORE_ITEMS_ID,
+} from '@/config/selectors';
 import { PLAYER } from '@/langs/constants';
 import PlayerCookiesBanner from '@/modules/cookies/PlayerCookiesBanner';
 import HeaderNavigation from '@/modules/header/HeaderNavigation';
@@ -61,6 +65,7 @@ const HomePage = (): JSX.Element => {
     return (
       <MainMenu>
         <TreeView
+          sx={{ mt: 1 }}
           id={MY_ITEMS_ID}
           header={t(PLAYER.RECENT_ITEMS_TITLE)}
           rootItems={allPagesItems}
@@ -79,6 +84,7 @@ const HomePage = (): JSX.Element => {
     accessibleItems?.totalCount &&
     page * PAGE_SIZE < accessibleItems.totalCount ? (
       <Button
+        id={SHOW_MORE_ITEMS_ID}
         sx={{ mx: 2 }}
         variant="text"
         onClick={() => {

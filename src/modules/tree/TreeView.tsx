@@ -1,6 +1,6 @@
 import AccessibleTreeView, { flattenTree } from 'react-accessible-treeview';
 
-import { Box, Typography } from '@mui/material';
+import { Box, SxProps, Typography } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
 
 import { DiscriminatedItem, Triggers } from '@graasp/sdk';
@@ -22,6 +22,7 @@ type Props = {
   isLoading?: boolean;
   onlyShowContainerItems?: boolean;
   firstLevelStyle?: object;
+  sx?: SxProps;
 };
 
 const TreeView = ({
@@ -33,6 +34,7 @@ const TreeView = ({
   isLoading = false,
   onlyShowContainerItems = true,
   firstLevelStyle,
+  sx = {},
 }: Props): JSX.Element => {
   const { mutate: triggerAction } = mutations.usePostItemAction();
 
@@ -53,7 +55,6 @@ const TreeView = ({
   };
 
   const res = Object.values(getItemTree(itemsToShow || [], rootItems));
-
   return (
     <Box
       id={id}
@@ -64,6 +65,7 @@ const TreeView = ({
           paddingInlineStart: 'unset',
           paddingLeft: '17px',
         },
+        ...sx,
       }}
     >
       {header && (
