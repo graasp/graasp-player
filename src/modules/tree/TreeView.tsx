@@ -54,7 +54,7 @@ const TreeView = ({
     onTreeItemSelect?.(value);
   };
 
-  const res = Object.values(getItemTree(itemsToShow || [], rootItems));
+  const tree = Object.values(getItemTree(itemsToShow || [], rootItems));
   return (
     <Box
       id={id}
@@ -78,7 +78,9 @@ const TreeView = ({
         data={flattenTree({
           // here there's should be a root item for all children which basically gonna be an empty name
           name: '',
-          children: res,
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-expect-error
+          children: tree,
         })}
         // eslint-disable-next-line react/no-unstable-nested-components
         nodeRenderer={(props) => (

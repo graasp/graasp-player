@@ -4,6 +4,7 @@ import { Box, IconButton, Typography } from '@mui/material';
 import { deepPurple } from '@mui/material/colors';
 
 import { UUID } from '@graasp/sdk';
+import { ItemIcon } from '@graasp/ui';
 
 import { buildTreeItemClass } from '@/config/selectors';
 
@@ -36,9 +37,16 @@ const Node = ({
     display="flex"
     sx={{
       width: '100%',
+      pl: 1,
       background: isSelected ? deepPurple[50] : 'none',
     }}
   >
+    {/* icon type for root level items */}
+    {level === 1 && element.metadata?.type && (
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error type is not well defined
+      <ItemIcon sx={{ width: 17 }} alt="icon" type={element.metadata.type} />
+    )}
     {level !== 1 && isBranch && (
       <IconButton
         sx={{
@@ -92,6 +100,8 @@ const Node = ({
         border: 'none',
         cursor: 'pointer',
         width: '100%',
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
       }}
       onClick={(e) => {
         // to prevent folding expanded elements by clicking the name

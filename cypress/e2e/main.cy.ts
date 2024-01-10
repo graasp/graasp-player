@@ -10,7 +10,10 @@ import {
   PDF_ITEM_DEFAULT,
   VIDEO_ITEM_DEFAULT,
 } from '../fixtures/files';
-import { FOLDER_WITH_SUBFOLDER_ITEM } from '../fixtures/items';
+import {
+  FOLDER_WITHOUT_CHILDREN_ORDER,
+  FOLDER_WITH_SUBFOLDER_ITEM,
+} from '../fixtures/items';
 import {
   GRAASP_LINK_ITEM,
   GRAASP_LINK_ITEM_IFRAME_ONLY,
@@ -44,6 +47,7 @@ describe('Main Screen', () => {
           GRAASP_DOCUMENT_ITEM,
           GRAASP_APP_ITEM,
           ...FOLDER_WITH_SUBFOLDER_ITEM.items,
+          ...FOLDER_WITHOUT_CHILDREN_ORDER.items,
         ],
       });
     });
@@ -114,6 +118,12 @@ describe('Main Screen', () => {
         cy.get(`.${FOLDER_NAME_TITLE_CLASS}`).should('contain', parent.name);
 
         expectFolderButtonLayout(FOLDER_WITH_SUBFOLDER_ITEM.items[1]);
+      });
+      it.only('Display Folder without childrenOrder', () => {
+        const parent = FOLDER_WITHOUT_CHILDREN_ORDER.items[0];
+        cy.visit(buildMainPath({ rootId: parent.id }));
+
+        cy.get(`.${FOLDER_NAME_TITLE_CLASS}`).should('contain', parent.name);
       });
     });
   });

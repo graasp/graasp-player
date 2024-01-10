@@ -389,3 +389,23 @@ export const HOME_FOLDERS: { items: MockItem[] } = {
     },
   ],
 };
+
+export const FOLDER_WITHOUT_CHILDREN_ORDER: { items: MockItem[] } = {
+  items: [
+    {
+      ...DEFAULT_FOLDER_ITEM,
+      id: 'ecafbd2a-5688-11eb-ae93-0242ac130122',
+      name: 'parent folder',
+      path: 'ecafbd2a_5688_11eb_ae93_0242ac130122',
+      extra: {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        [ItemType.FOLDER]: {},
+      },
+      settings: {
+        isPinned: false,
+        showChatbox: false,
+      },
+    },
+  ],
+};

@@ -26,7 +26,11 @@ const createMapTree = (data: DiscriminatedItem[]) => {
   return childrenTreeMap;
 };
 
-type PartialItemWithChildren = { id: string; name: string } & {
+type PartialItemWithChildren = {
+  id: string;
+  name: string;
+  metadata: DiscriminatedItem;
+} & {
   children?: PartialItemWithChildren[];
 };
 
@@ -42,14 +46,19 @@ const buildItemsTree = (
   const tree: TreeNode = {};
   if (data.length === 1) {
     // this for non children one item as tree map build based on children to parent relation
-    tree[data[0].id] = { id: data[0].id, name: data[0].name, children: [] };
+    tree[data[0].id] = {
+      id: data[0].id,
+      name: data[0].name,
+      metadata: data[0],
+      children: [],
+    };
   }
   const mapTree = createMapTree(data);
 
   const buildTree = (node: DiscriminatedItem) => {
     if (node.type === ItemType.FOLDER && mapTree[node.id]) {
       // sort by children order or default to all if not defined
-      const children = node.extra.folder.childrenOrder?.length
+      const children = node.extra.folder?.childrenOrder?.length
         ? (node.extra.folder.childrenOrder
             .map((id) =>
               mapTree[node.id].find(({ id: childId }) => childId === id),
@@ -60,12 +69,13 @@ const buildItemsTree = (
       const entry: PartialItemWithChildren = {
         id: node.id,
         name: node.name,
+        metadata: node,
         children: children.map((child) => buildTree(child)),
       };
       return entry;
     }
     // root items are not in the map
-    return { id: node.id, name: node.name };
+    return { id: node.id, name: node.name, metadata: node };
   };
 
   rootItems.forEach((ele) => {
