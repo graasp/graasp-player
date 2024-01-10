@@ -1,11 +1,7 @@
 import { PermissionLevel } from '@graasp/sdk';
 
 import { buildMainPath } from '@/config/paths';
-import {
-  MAIN_MENU_ID,
-  SHOW_MORE_ITEMS_ID,
-  buildTreeItemClass,
-} from '@/config/selectors';
+import { SHOW_MORE_ITEMS_ID, buildTreeItemClass } from '@/config/selectors';
 
 import {
   FOLDER_WITH_SUBFOLDER_ITEM,
@@ -21,6 +17,7 @@ const sharedItems = generateLotsOfFoldersOnHome({
     { memberId: MEMBERS.ANNA.id, permission: PermissionLevel.Read },
   ],
 });
+
 describe('Navigation', () => {
   it('Show navigation on Home', () => {
     cy.setUpApi({
@@ -40,9 +37,6 @@ describe('Navigation', () => {
 
     const child = FOLDER_WITH_SUBFOLDER_ITEM.items[1];
     const childOfChild = FOLDER_WITH_SUBFOLDER_ITEM.items[3];
-    cy.wait(1000);
-    const menu = cy.get(`#${MAIN_MENU_ID}`);
-    menu.click();
     cy.get(`.${buildTreeItemClass(child.id)}`).click();
     cy.get(`.${buildTreeItemClass(childOfChild.id)}`);
   });
