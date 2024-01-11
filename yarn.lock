@@ -1240,9 +1240,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/chatbox@npm:3.0.1":
-  version: 3.0.1
-  resolution: "@graasp/chatbox@npm:3.0.1"
+"@graasp/chatbox@npm:3.0.2":
+  version: 3.0.2
+  resolution: "@graasp/chatbox@npm:3.0.2"
   dependencies:
     "@emotion/react": "npm:^11.11.1"
     "@emotion/styled": "npm:^11.11.0"
@@ -1252,12 +1252,12 @@ __metadata:
     "@mui/icons-material": "npm:^5.15.1"
     "@mui/material": "npm:^5.15.1"
     cypress: "npm:^13.6.1"
+    date-fns: "npm:^3.2.0"
     lodash.groupby: "npm:^4.6.0"
-    moment: "npm:^2.29.4"
     prism-react-renderer: "npm:^2.3.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
-    react-i18next: "npm:^13.5.0"
+    react-i18next: "npm:^14.0.0"
     react-markdown: "npm:^9.0.1"
     react-mentions: "npm:^4.4.10"
     react-query: "npm:^3.39.3"
@@ -1274,11 +1274,12 @@ __metadata:
     "@mui/icons-material": ^5.11.11
     "@mui/lab": ^5.0.0-alpha.121
     "@mui/material": ^5.11.11
+    date-fns: ^3.2.0
     i18next: ^23.10.0
     react: "*"
     react-dom: "*"
-    react-i18next: ^13.0.0
-  checksum: 7962cd7a00e301a76add5e67fbfcd2a84a82656981b6925e7543ac51bac67373e0a2905b6ba6333fe2eb8d1d4ba053c9aaf96693bef621cb1cfb932a24c4b6f3
+    react-i18next: ^13.0.0 || ^14.0.0
+  checksum: cb54a06a328ad3d6b03fbc1a913e59770ac513ba87a2f137d083a5cec460acfadb557b5c85f983dd474fbbe223f531bbc7307d997ab6c0b90f0deb49b96e416a
   languageName: node
   linkType: hard
 
@@ -1295,12 +1296,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/query-client@npm:2.2.1":
-  version: 2.2.1
-  resolution: "@graasp/query-client@npm:2.2.1"
+"@graasp/query-client@npm:2.2.2":
+  version: 2.2.2
+  resolution: "@graasp/query-client@npm:2.2.2"
   dependencies:
-    "@graasp/sdk": "npm:3.3.0"
-    "@graasp/translations": "npm:1.21.1"
+    "@graasp/sdk": "npm:3.4.0"
+    "@graasp/translations": "npm:1.22.1"
     axios: "npm:0.27.2"
     crypto-js: "npm:4.2.0"
     http-status-codes: "npm:2.3.0"
@@ -1309,20 +1310,7 @@ __metadata:
     uuid: "npm:9.0.1"
   peerDependencies:
     react: ^17.0.0 || ^18.0.0
-  checksum: bad1c3a4163f38e45f0f64d8beb28eb6ca6fd4cf123d971be9421a6012d0d2860c71cc0c71b14bf7d46ea3afe73355a32823e037d0216caa8154905d0d408f8f
-  languageName: node
-  linkType: hard
-
-"@graasp/sdk@github:graasp/graasp-sdk#364-getmimetype":
-  version: 3.3.0
-  resolution: "@graasp/sdk@https://github.com/graasp/graasp-sdk.git#commit=425463f3597407a0e2548a8f7a673bf291373df2"
-  dependencies:
-    "@graasp/etherpad-api": "npm:2.1.1"
-    date-fns: "npm:2.30.0"
-    js-cookie: "npm:3.0.5"
-    uuid: "npm:9.0.1"
-    validator: "npm:13.11.0"
-  checksum: 926070f4edaed4ddf61837e1d356ec583aac007a9dcf3108456f82c1b820b9aed9d61579683f4d959c1815be4c981df46f9f1a9ef4414efa83a8fbe361a5cf32
+  checksum: c9cf136645e5f3c57318ecc847aaec3cb2908e86ec06fce96029aa7d6abd7e3cd7b77aa55c3836697b5317ee9c716126b99f80fba754abe61b22f8fd0aba720b
   languageName: node
   linkType: hard
 
@@ -1361,6 +1349,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@graasp/translations@npm:1.22.1":
+  version: 1.22.1
+  resolution: "@graasp/translations@npm:1.22.1"
+  dependencies:
+    i18next: "npm:23.7.16"
+  checksum: 29043007a9926ff54236101c41ceb92eead09d8ce99edf46943790171f3275fb2cc1acd552bfa605247c42b4866bbf1f83dd889da3f571d388eca5f2dd598e17
+  languageName: node
+  linkType: hard
+
 "@graasp/translations@npm:^1.21.1":
   version: 1.22.0
   resolution: "@graasp/translations@npm:1.22.0"
@@ -1370,11 +1367,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/ui@github:graasp/graasp-ui#add-mimetype-option":
-  version: 4.2.0
-  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=872886a5e204d826ca417db3b6b2ba4e78a62fa2"
+"@graasp/ui@npm:4.3.0":
+  version: 4.3.0
+  resolution: "@graasp/ui@npm:4.3.0"
   dependencies:
-    "@graasp/sdk": "github:graasp/graasp-sdk#364-getmimetype"
+    "@graasp/sdk": "npm:3.4.0"
     http-status-codes: "npm:2.3.0"
     katex: "npm:0.16.9"
     lodash.truncate: "npm:4.4.2"
@@ -1390,9 +1387,9 @@ __metadata:
     "@emotion/cache": ~11.10.7 || ~11.11.0
     "@emotion/react": ~11.10.6 || ~11.11.0
     "@emotion/styled": ~11.10.6 || ~11.11.0
-    "@mui/icons-material": ~5.11.9 || ~5.13.0 || ~5.14.0
+    "@mui/icons-material": ~5.11.9 || ~5.13.0 || ~5.14.0 || ~5.15.0
     "@mui/lab": ~5.0.0-alpha.120
-    "@mui/material": ~5.11.9 || ~5.13.0 || ~5.14.0
+    "@mui/material": ~5.11.9 || ~5.13.0 || ~5.14.0 || ~5.15.0
     ag-grid-community: 29.3.5
     ag-grid-react: 29.3.5
     i18next: ^22.4.15 || ^23.0.0
@@ -1407,7 +1404,7 @@ __metadata:
       optional: true
     ag-grid-react:
       optional: true
-  checksum: f69971423137243ea87d8a322641f96ff0df9be4bf9f4ce6d67ae6cbf6db8417e0093478cc589c0e45bd1b19a4f4438b7baedbf8b3ad3d1cb9762a6563ede3e3
+  checksum: 5538861e5d4d58e6105bb0e84d03238eecbc28bf5c2112557ed7ca5725a3025a4c09e06f4f050b9805595256c5227081696c12a90fc0e266fb8801d4c895d28d
   languageName: node
   linkType: hard
 
@@ -4141,7 +4138,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:3.2.0":
+"date-fns@npm:3.2.0, date-fns@npm:^3.2.0":
   version: 3.2.0
   resolution: "date-fns@npm:3.2.0"
   checksum: 2f36cb9165a066ae90c0b6f0c25b3c70eb75bc52e64ba6dd8680964ebda144851a244ff4ed0b2afb4a6bab796a1af6a0e6c7c2814529d04c72fa434f931d4e81
@@ -5712,11 +5709,11 @@ __metadata:
     "@emotion/cache": "npm:11.11.0"
     "@emotion/react": "npm:11.11.1"
     "@emotion/styled": "npm:11.11.0"
-    "@graasp/chatbox": "npm:3.0.1"
-    "@graasp/query-client": "npm:2.2.1"
+    "@graasp/chatbox": "npm:3.0.2"
+    "@graasp/query-client": "npm:2.2.2"
     "@graasp/sdk": "npm:3.4.0"
     "@graasp/translations": "npm:1.21.1"
-    "@graasp/ui": "github:graasp/graasp-ui#add-mimetype-option"
+    "@graasp/ui": "npm:4.3.0"
     "@mui/icons-material": "npm:5.14.19"
     "@mui/lab": "npm:5.0.0-alpha.151"
     "@mui/material": "npm:5.14.19"
@@ -6075,6 +6072,15 @@ __metadata:
   dependencies:
     "@babel/runtime": "npm:^7.23.2"
   checksum: 1127bc17f94459d40bd9aaa0350e9786d3853eb82449aabb4514e187fafc752c76a3f52c6be1c2722bfdadaa74f0d26b4f7dd04528ba6b2de7e34f5c6c019c21
+  languageName: node
+  linkType: hard
+
+"i18next@npm:23.7.16":
+  version: 23.7.16
+  resolution: "i18next@npm:23.7.16"
+  dependencies:
+    "@babel/runtime": "npm:^7.23.2"
+  checksum: 77e74c07a73316f6fb6678a5a3e8ce58a6e66be457dd1ccd23941e9fc57ad8e1da55193fa6328c70b86073337b776cd267f3c13c6309f548b3116f27a1e41787
   languageName: node
   linkType: hard
 
@@ -8060,13 +8066,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"moment@npm:^2.29.4":
-  version: 2.30.1
-  resolution: "moment@npm:2.30.1"
-  checksum: ae42d876d4ec831ef66110bdc302c0657c664991e45cf2afffc4b0f6cd6d251dde11375c982a5c0564ccc0fa593fc564576ddceb8c8845e87c15f58aa6baca69
-  languageName: node
-  linkType: hard
-
 "ms@npm:2.1.2":
   version: 2.1.2
   resolution: "ms@npm:2.1.2"
@@ -8903,7 +8902,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:13.5.0, react-i18next@npm:^13.5.0":
+"react-i18next@npm:13.5.0":
   version: 13.5.0
   resolution: "react-i18next@npm:13.5.0"
   dependencies:
@@ -8918,6 +8917,24 @@ __metadata:
     react-native:
       optional: true
   checksum: 903b486d112cd0aa40bdc3afaefd0c32b91c0a1e3e3561367c8d91ddc0fbad9945f1d630c3ddcd4764795fc00e0887252e2d337256a825caf3a86de038f6b2db
+  languageName: node
+  linkType: hard
+
+"react-i18next@npm:^14.0.0":
+  version: 14.0.0
+  resolution: "react-i18next@npm:14.0.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.22.5"
+    html-parse-stringify: "npm:^3.0.1"
+  peerDependencies:
+    i18next: ">= 23.2.3"
+    react: ">= 16.8.0"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: e445768c576c5993e723375c030071e720abacc830c1810acfcec5c27185cba95affb11c0f71bb551ce98d30f6723e179de7f771487b1a1a6a9077821c5ec1f9
   languageName: node
   linkType: hard
 
