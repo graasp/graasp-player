@@ -1,1 +1,12 @@
-{}
+{
+  "GRAASP_PLAYER": "Giocatore di Graasp",
+  "SHOW_CHAT_TOOLTIP": "Mostra chat",
+  "HIDE_CHAT_TOOLTIP": "Nascondi chat",
+  "SHOW_PINNED_ITEMS_TOOLTIP": "Mostra elementi appuntati",
+  "HIDE_PINNED_ITEMS_TOOLTIP": "Nascondi gli elementi appuntati",
+  "PINNED_ITEMS": "Elementi appuntati",
+  "LOAD_MORE": "Carica di più",
+  "HIDDEN_WRAPPER_TOOLTIP": "Questo elemento è nascosto, puoi vederlo perché hai accesso di amministrazione o scrittura, gli utenti con accesso di lettura non lo vedranno",
+  "SHOW_MORE": "Mostra di più...",
+  "RECENT_ITEMS_TITLE": "Elementi più recenti"
+}
