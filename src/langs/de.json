@@ -2,5 +2,11 @@
   "GRAASP_PLAYER": "Graasp Player",
   "SHOW_CHAT_TOOLTIP": "Chat anzeigen",
   "HIDE_CHAT_TOOLTIP": "Chat verstecken",
-  "LOAD_MORE": "Mehr laden"
+  "SHOW_PINNED_ITEMS_TOOLTIP": "Angepinnte Elemente anzeigen",
+  "HIDE_PINNED_ITEMS_TOOLTIP": "Angeheftete Elemente ausblenden",
+  "PINNED_ITEMS": "Angepinnte Elemente",
+  "LOAD_MORE": "Mehr laden",
+  "HIDDEN_WRAPPER_TOOLTIP": "Dieses Element ist ausgeblendet. Sie können es sehen, weil Sie Administrator- oder Schreibzugriff haben. Benutzer mit Lesezugriff sehen es nicht",
+  "SHOW_MORE": "Zeig mehr...",
+  "RECENT_ITEMS_TITLE": "Neueste Artikel"
 }
