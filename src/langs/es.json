@@ -1,0 +1,12 @@
+{
+  "GRAASP_PLAYER": "Jugador de agarre",
+  "SHOW_CHAT_TOOLTIP": "Mostrar chat",
+  "HIDE_CHAT_TOOLTIP": "Ocultar chat",
+  "SHOW_PINNED_ITEMS_TOOLTIP": "Mostrar elementos fijados",
+  "HIDE_PINNED_ITEMS_TOOLTIP": "Ocultar elementos fijados",
+  "PINNED_ITEMS": "Artículos fijados",
+  "LOAD_MORE": "Carga más",
+  "HIDDEN_WRAPPER_TOOLTIP": "Este elemento está oculto, puedes verlo porque tienes acceso de administrador o de escritura, los usuarios con acceso de lectura no lo verán",
+  "SHOW_MORE": "Mostrar más...",
+  "RECENT_ITEMS_TITLE": "Artículos más recientes"
+}
