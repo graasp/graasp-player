@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/graasp/graasp-player/compare/v2.2.0...v2.3.0) (2024-01-11)
+
+
+### Features
+
+* treeview component ([#421](https://github.com/graasp/graasp-player/issues/421)) ([d6104ec](https://github.com/graasp/graasp-player/commit/d6104ecc3b39dbc4e3c3bcb32a2ddda530484d6d))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @graasp/query-client to v2.1.1 ([#429](https://github.com/graasp/graasp-player/issues/429)) ([210ff5f](https://github.com/graasp/graasp-player/commit/210ff5ff5a992372f1c0da254ff671757d279a69))
+* **deps:** update dependency @graasp/translations to v1.21.1 ([#428](https://github.com/graasp/graasp-player/issues/428)) ([198afd2](https://github.com/graasp/graasp-player/commit/198afd29dc59ea3645e9215be88f67e48765e1f6))
+* **deps:** update dependency @graasp/ui to v4.1.1 ([#431](https://github.com/graasp/graasp-player/issues/431)) ([f5343ab](https://github.com/graasp/graasp-player/commit/f5343ab0eb4e0d98125fa1a2b009c4e9e37857db))
+* **deps:** update dependency @sentry/react to v7.85.0 ([#417](https://github.com/graasp/graasp-player/issues/417)) ([9af3ce5](https://github.com/graasp/graasp-player/commit/9af3ce5d9c1f99d416f4d7a2fed528435b610f21))
+* **deps:** update dependency @sentry/react to v7.92.0 ([#434](https://github.com/graasp/graasp-player/issues/434)) ([c617088](https://github.com/graasp/graasp-player/commit/c617088c7e82a3d233146281b9c30069a8e027d6))
+* **deps:** update react-router monorepo to v6.20.1 ([#426](https://github.com/graasp/graasp-player/issues/426)) ([b960668](https://github.com/graasp/graasp-player/commit/b960668343e8092f793d481efa10a652d719db94))
+* udpate release-please condition ([851087d](https://github.com/graasp/graasp-player/commit/851087d6d72ba423987b2763d4c29957d036c755))
+* update chatbox ([#444](https://github.com/graasp/graasp-player/issues/444)) ([a021c98](https://github.com/graasp/graasp-player/commit/a021c9873281b81e5e0b15d0dae8f7aca66d2b12))
+
 ## [2.2.0](https://github.com/graasp/graasp-player/compare/v2.1.0...v2.2.0) (2023-12-01)
 
 
