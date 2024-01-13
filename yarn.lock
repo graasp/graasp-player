@@ -3625,10 +3625,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:2.3.3":
-  version: 2.3.3
-  resolution: "classnames@npm:2.3.3"
-  checksum: 3b9732dde0acdb9f8a6680eab54b34e567e9049769046aeeca270220fee806e0320e8c32bc2223b1a6f3fef7982ce98055719ff2a3d0183775ccc5646de39451
+"classnames@npm:2.5.1":
+  version: 2.5.1
+  resolution: "classnames@npm:2.5.1"
+  checksum: 58eb394e8817021b153bb6e7d782cfb667e4ab390cb2e9dac2fc7c6b979d1cc2b2a733093955fc5c94aa79ef5c8c89f11ab77780894509be6afbb91dddd79d15
   languageName: node
   linkType: hard
 
@@ -5727,7 +5727,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:6.18.1"
     "@typescript-eslint/parser": "npm:6.18.1"
     "@vitejs/plugin-react": "npm:^4.2.0"
-    classnames: "npm:2.3.3"
+    classnames: "npm:2.5.1"
     commitlint: "npm:18.4.4"
     concurrently: "npm:8.2.2"
     cypress: "npm:13.6.2"
