@@ -5748,7 +5748,7 @@ __metadata:
     lodash.truncate: "npm:4.4.2"
     prettier: "npm:3.1.1"
     react: "npm:18.2.0"
-    react-accessible-treeview: "npm:2.8.0"
+    react-accessible-treeview: "npm:2.8.3"
     react-dom: "npm:18.2.0"
     react-ga4: "npm:2.1.0"
     react-i18next: "npm:13.5.0"
@@ -8847,15 +8847,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-accessible-treeview@npm:2.8.0":
-  version: 2.8.0
-  resolution: "react-accessible-treeview@npm:2.8.0"
+"react-accessible-treeview@npm:2.8.3":
+  version: 2.8.3
+  resolution: "react-accessible-treeview@npm:2.8.3"
   peerDependencies:
     classnames: ^2.2.6
     prop-types: ^15.7.2
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 413b49bf797472b457359e286c4bfb07ebe31876b0f775822ac2205950311b2ef72ab6f98ce40ce379d28a0c27244b3b53559128065622a39d361a2c738b5a98
+  checksum: 97de182a2ea21d3d9abeca1e81080802e5df0ec1fcad06b891e15da1535a810bcb5d7a8c32bd18e05a97725ccfed068ddb1c5ea062aeba6bf6e82b3238b8ba89
   languageName: node
   linkType: hard
 
