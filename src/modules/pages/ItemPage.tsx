@@ -27,10 +27,9 @@ const ItemScreenWrapper = (rootId: string) => {
   return ItemScreen;
 };
 
-const { usePostItemLogin, useSignOut } = mutations;
+const { usePostItemLogin } = mutations;
 
 const ItemPage = (): JSX.Element | null => {
-  const { mutate: signOut } = useSignOut();
   const { mutate: itemLoginSignIn } = usePostItemLogin();
 
   const rootId = useParams()[ROOT_ID_PATH];
@@ -46,18 +45,11 @@ const ItemPage = (): JSX.Element | null => {
 
   const Component = ItemLoginAuthorization({
     signIn: itemLoginSignIn,
-    // todo: change type in UI
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    signOut,
     // this is because the itemId can not be undefined in ui
     itemId: rootId,
     useCurrentMember,
     useItem,
     ForbiddenContent,
-    // todo: change type in UI
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     useItemLoginSchemaType,
   })(ItemScreenWrapper(rootId));
   return <Component />;
