@@ -1,7 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { useMediaQuery, useTheme } from '@mui/material';
-
 import { ItemLoginAuthorization } from '@graasp/ui';
 
 import { HOME_PATH, ROOT_ID_PATH } from '@/config/paths';
@@ -15,11 +13,9 @@ import MainScreen from '../item/MainScreen';
 const { useItem, useItemLoginSchemaType, useCurrentMember } = hooks;
 
 const ItemScreenWrapper = (rootId: string) => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const ItemScreen = (): JSX.Element => (
     <ItemContextProvider rootId={rootId}>
-      <MainScreen open={!isMobile} />
+      <MainScreen />
       <PlayerCookiesBanner />
     </ItemContextProvider>
   );
