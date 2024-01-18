@@ -36,7 +36,7 @@
     "@emotion/react": "11.11.1",
     "@emotion/styled": "11.11.0",
     "@graasp/chatbox": "3.0.2",
-    "@graasp/query-client": "2.2.2",
+    "@graasp/query-client": "2.2.3",
     "@graasp/sdk": "3.4.1",
     "@graasp/translations": "1.21.1",
     "@graasp/ui": "4.3.0",
