@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/graasp/graasp-player/compare/v2.3.0...v2.4.0) (2024-01-18)
+
+
+### Features
+
+* **ui:** responsive design improvements ([#442](https://github.com/graasp/graasp-player/issues/442)) ([72b306d](https://github.com/graasp/graasp-player/commit/72b306d817bad7a763e28e91d1ec0b1189402158))
+
+
+### Bug Fixes
+
+* **ar:** update ([#457](https://github.com/graasp/graasp-player/issues/457)) ([c442213](https://github.com/graasp/graasp-player/commit/c442213cdb83aa62e963d236a98d69bcbbbc78f1))
+* **build:** add build workflow ([#459](https://github.com/graasp/graasp-player/issues/459)) ([f2ef922](https://github.com/graasp/graasp-player/commit/f2ef9221d2f247f9a4c6ddc019c1abe6c0267fbb))
+* **deps:** update dependency @graasp/sdk to v3.4.1 ([#467](https://github.com/graasp/graasp-player/issues/467)) ([7cad553](https://github.com/graasp/graasp-player/commit/7cad55345b4a7f9b7e64b20c77b8df33aaabdbb2))
+* **deps:** update dependency @sentry/react to v7.93.0 ([#462](https://github.com/graasp/graasp-player/issues/462)) ([5b19523](https://github.com/graasp/graasp-player/commit/5b19523aefce86397eb07dff0f75c7c94e98ed78))
+* **deps:** update dependency classnames to v2.3.3 ([f3f27dd](https://github.com/graasp/graasp-player/commit/f3f27ddee488573c30ae9ccce9733cd16b4e8abb))
+* **deps:** update dependency classnames to v2.5.1 ([#463](https://github.com/graasp/graasp-player/issues/463)) ([a8ae6f3](https://github.com/graasp/graasp-player/commit/a8ae6f3e83d7208cb35c19272d30a48c4d547ed2))
+* **deps:** update dependency react-accessible-treeview to v2.8.3 ([ed15db4](https://github.com/graasp/graasp-player/commit/ed15db449131db695066452fc40e091e8ff25320))
+* **deps:** update dependency stylis to v4.3.1 ([076aad7](https://github.com/graasp/graasp-player/commit/076aad7f865f5b35586f4525df88a7dd13b4a182))
+* **deps:** update react-router monorepo to v6.21.2 ([#438](https://github.com/graasp/graasp-player/issues/438)) ([a1f7c57](https://github.com/graasp/graasp-player/commit/a1f7c5738e6f6b5202d387db5f8c359a7fadd792))
+* **de:** update ([#456](https://github.com/graasp/graasp-player/issues/456)) ([89d932e](https://github.com/graasp/graasp-player/commit/89d932ec2273ca2413d7470b5b8e4e0b251c596c))
+* **es:** add spanish ([#454](https://github.com/graasp/graasp-player/issues/454)) ([ae058ce](https://github.com/graasp/graasp-player/commit/ae058cea6e7c425fc127b9c0096cb07300a69394))
+* **fr:** update ([#455](https://github.com/graasp/graasp-player/issues/455)) ([a0e4267](https://github.com/graasp/graasp-player/commit/a0e4267c3626e83b87cf72b77538a71346272fd7))
+
 ## [2.3.0](https://github.com/graasp/graasp-player/compare/v2.2.0...v2.3.0) (2024-01-11)
 
 
