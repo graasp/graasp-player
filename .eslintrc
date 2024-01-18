@@ -7,10 +7,7 @@
     "plugin:react-hooks/recommended",
     "eslint:recommended"
   ],
-  "plugins": [
-    "@typescript-eslint",
-    "react-hooks"
-  ],
+  "plugins": ["@typescript-eslint", "react-hooks"],
   "env": {
     "browser": true,
     "node": true,
@@ -43,9 +40,7 @@
     "react/react-in-jsx-scope": "off",
     // note you must disable the base rule as it can report incorrect errors
     "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": [
-      "error"
-    ],
+    "@typescript-eslint/no-use-before-define": ["error"],
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",
@@ -64,12 +59,7 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".js",
-          ".jsx",
-          ".ts",
-          ".tsx"
-        ]
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     ],
     "import/no-named-as-default": 0,
@@ -86,16 +76,11 @@
       }
     ],
     "no-restricted-syntax": "off",
-    "react/state-in-constructor": [
-      "error",
-      "never"
-    ],
+    "react/state-in-constructor": ["error", "never"],
     "no-console": [
       1,
       {
-        "allow": [
-          "error"
-        ]
+        "allow": ["error", "info"]
       }
     ],
     "import/no-extraneous-dependencies": [
@@ -107,15 +92,12 @@
     "react/prop-types": "off", // Since we do not use prop-types
     "react/require-default-props": "off", // Since we do not use prop-types
     // disable the rule for all files
-    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-function-return-type": "off"
   },
   "overrides": [
     {
       // enable the rule specifically for TypeScript files
-      "files": [
-        "*.ts",
-        "*.tsx"
-      ],
+      "files": ["*.ts", "*.tsx"],
       "rules": {
         "@typescript-eslint/explicit-module-boundary-types": [
           "error",
@@ -127,46 +109,25 @@
     },
     {
       // enable the rule specifically for src files
-      "files": [
-        "src/**/*.js",
-        "src/**/*.tsx",
-        "src/**/*.ts"
-      ],
+      "files": ["src/**/*.js", "src/**/*.tsx", "src/**/*.ts"],
       "rules": {
-        "no-restricted-syntax": [
-          "error"
-        ]
+        "no-restricted-syntax": ["error"]
       }
     }
   ],
   "settings": {
-    "import/extensions": [
-      ".js",
-      ".jsx",
-      ".ts",
-      ".tsx"
-    ],
+    "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
     "import/parsers": {
-      "@typescript-eslint/parser": [
-        ".ts",
-        ".tsx"
-      ]
+      "@typescript-eslint/parser": [".ts", ".tsx"]
     },
     "import/resolver": {
       "typescript": {
         "alwaysTryTypes": true
       },
       "node": {
-        "extensions": [
-          ".js",
-          ".jsx",
-          ".ts",
-          ".tsx"
-        ]
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
   },
-  "ignorePatterns": [
-    "node_modules/*"
-  ]
+  "ignorePatterns": ["node_modules/*"]
 }

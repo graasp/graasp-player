@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import ReactGA from 'react-ga4';
 import {
   Navigate,
   Route,
@@ -8,11 +7,11 @@ import {
   useSearchParams,
 } from 'react-router-dom';
 
-import { hasAcceptedCookies, saveUrlForRedirection } from '@graasp/sdk';
+import { saveUrlForRedirection } from '@graasp/sdk';
 import { CustomInitialLoader, withAuthorization } from '@graasp/ui';
 
 import { SIGN_IN_PATH } from '@/config/constants';
-import { DOMAIN, GA_MEASUREMENT_ID } from '@/config/env';
+import { DOMAIN } from '@/config/env';
 import { HOME_PATH, buildMainPath } from '@/config/paths';
 import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
 import HomePage from '@/modules/pages/HomePage';
@@ -23,22 +22,17 @@ export const App = (): JSX.Element => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { data: currentMember, isLoading } = useCurrentMemberContext();
 
-  useEffect(() => {
-    // REACTGA
-    // Send pageview with a custom path
-    if (GA_MEASUREMENT_ID && hasAcceptedCookies()) {
-      ReactGA.initialize(GA_MEASUREMENT_ID);
-      ReactGA.send('pageview');
-    }
-
-    // remove cross domain tracking query params
-    // eslint-disable-next-line no-console
-    console.log('removing google cross site tracking params after load');
-    // eslint-disable-next-line no-console
-    console.log(searchParams);
-    searchParams.delete('_gl');
-    setSearchParams(searchParams);
-  }, [location]);
+  useEffect(
+    () => {
+      if (searchParams.get('_gl'))
+        // remove cross domain tracking query params
+        console.info('Removing cross site tracking params');
+      searchParams.delete('_gl');
+      setSearchParams(searchParams);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [searchParams],
+  );
 
   if (isLoading) {
     return <CustomInitialLoader />;
