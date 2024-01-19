@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.1](https://github.com/graasp/graasp-player/compare/v2.4.0...v2.4.1) (2024-01-19)
+
+
+### Bug Fixes
+
+* add return in `ItemGrid` ([#479](https://github.com/graasp/graasp-player/issues/479)) ([7e4e6f3](https://github.com/graasp/graasp-player/commit/7e4e6f34c9bcacdd3837cc9db9fbd9259f8475bf))
+* **deps:** update dependency @graasp/chatbox to v3.0.3 ([4b1b40b](https://github.com/graasp/graasp-player/commit/4b1b40b692d7925e12e58126c43ba351227c2733))
+* **deps:** update dependency @graasp/query-client to v2.2.3 ([#469](https://github.com/graasp/graasp-player/issues/469)) ([2525c42](https://github.com/graasp/graasp-player/commit/2525c42c73f6913abc58615a4d9d6ef882175bc5))
+* return all children for navigation ([#480](https://github.com/graasp/graasp-player/issues/480)) ([78e38ad](https://github.com/graasp/graasp-player/commit/78e38ad6df37501e36a8b86f7870eb30a4833f86))
+
 ## [2.4.0](https://github.com/graasp/graasp-player/compare/v2.3.0...v2.4.0) (2024-01-18)
 
 
