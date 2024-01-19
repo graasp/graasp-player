@@ -13,7 +13,7 @@ type Props = {
 
 const ItemGrid = ({ isLoading, items, title }: Props): JSX.Element | null => {
   if (isLoading) {
-    <LoadingItemsIndicator />;
+    return <LoadingItemsIndicator />;
   }
 
   if (!items?.length) {
