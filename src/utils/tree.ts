@@ -3,6 +3,7 @@ import {
   ItemType,
   UnionOfConst,
   getMimetype,
+  sortChildrenWith,
 } from '@graasp/sdk';
 
 import { getParentsIdsFromPath } from './item';
@@ -65,13 +66,10 @@ const buildItemsTree = (
   const buildTree = (node: DiscriminatedItem) => {
     if (node.type === ItemType.FOLDER && mapTree[node.id]) {
       // sort by children order or default to all if not defined
-      const children = node.extra.folder?.childrenOrder?.length
-        ? (node.extra.folder.childrenOrder
-            .map((id) =>
-              mapTree[node.id].find(({ id: childId }) => childId === id),
-            )
-            .filter(Boolean) as DiscriminatedItem[])
-        : mapTree[node.id];
+      const children = sortChildrenWith(
+        mapTree[node.id] ?? [],
+        node.extra.folder?.childrenOrder,
+      );
 
       const entry: PartialItemWithChildren = {
         id: node.id,
