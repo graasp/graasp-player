@@ -1240,9 +1240,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/chatbox@npm:3.0.2":
-  version: 3.0.2
-  resolution: "@graasp/chatbox@npm:3.0.2"
+"@graasp/chatbox@npm:3.0.3":
+  version: 3.0.3
+  resolution: "@graasp/chatbox@npm:3.0.3"
   dependencies:
     "@emotion/react": "npm:^11.11.1"
     "@emotion/styled": "npm:^11.11.0"
@@ -1275,11 +1275,11 @@ __metadata:
     "@mui/lab": ^5.0.0-alpha.121
     "@mui/material": ^5.11.11
     date-fns: ^3.2.0
-    i18next: ^23.10.0
+    i18next: ^23.7.0
     react: "*"
     react-dom: "*"
     react-i18next: ^13.0.0 || ^14.0.0
-  checksum: cb54a06a328ad3d6b03fbc1a913e59770ac513ba87a2f137d083a5cec460acfadb557b5c85f983dd474fbbe223f531bbc7307d997ab6c0b90f0deb49b96e416a
+  checksum: f16344dc568964daa8047f51d0e1ce1c65862781c347ca7b60ac6a672cb4eaa41c06a345dba7aaef0816a27a1c45a3699ed9a7e7d28afa1fbccb1b5a4d3428aa
   languageName: node
   linkType: hard
 
@@ -5774,7 +5774,7 @@ __metadata:
     "@emotion/cache": "npm:11.11.0"
     "@emotion/react": "npm:11.11.1"
     "@emotion/styled": "npm:11.11.0"
-    "@graasp/chatbox": "npm:3.0.2"
+    "@graasp/chatbox": "npm:3.0.3"
     "@graasp/query-client": "npm:2.2.3"
     "@graasp/sdk": "npm:3.4.1"
     "@graasp/translations": "npm:1.21.1"
