@@ -113,6 +113,57 @@ export const FOLDER_WITH_SUBFOLDER_ITEM: { items: MockItem[] } = {
     },
   ],
 };
+export const FOLDER_WITH_SUBFOLDER_ITEM_AND_PARTIAL_ORDER: {
+  items: MockItem[];
+} = {
+  items: [
+    {
+      ...DEFAULT_FOLDER_ITEM,
+      id: 'ecafbd2a-5688-11eb-ae93-0242ac130002',
+      name: 'parent folder',
+      path: 'ecafbd2a_5688_11eb_ae93_0242ac130002',
+      extra: {
+        [ItemType.FOLDER]: {
+          childrenOrder: ['fdf09f5a-5688-11eb-ae93-0242ac130003'],
+        },
+      },
+      settings: {
+        isPinned: false,
+        showChatbox: false,
+      },
+    },
+    {
+      ...DEFAULT_FOLDER_ITEM,
+      id: 'fdf09f5a-5688-11eb-ae93-0242ac130003',
+      name: 'child folder 1',
+      path: 'ecafbd2a_5688_11eb_ae93_0242ac130002.fdf09f5a_5688_11eb_ae93_0242ac130003',
+      settings: {
+        isPinned: true,
+        showChatbox: false,
+      },
+    },
+    {
+      ...DEFAULT_FOLDER_ITEM,
+      id: 'fdf09f5a-5688-11eb-ae93-0242ac130004',
+      name: 'child folder 2',
+      path: 'ecafbd2a_5688_11eb_ae93_0242ac130002.fdf09f5a_5688_11eb_ae93_0242ac130004',
+      settings: {
+        isPinned: false,
+        showChatbox: false,
+      },
+    },
+    {
+      ...DEFAULT_FOLDER_ITEM,
+      id: 'fdf09f5a-5688-11eb-ae93-0242ac130005',
+      name: 'child of child folder 1',
+      path: 'ecafbd2a_5688_11eb_ae93_0242ac130002.fdf09f5a_5688_11eb_ae93_0242ac130003.fdf09f5a_5688_11eb_ae93_0242ac130005',
+      settings: {
+        isPinned: true,
+        showChatbox: false,
+      },
+    },
+  ],
+};
 
 export const FOLDER_WITH_PINNED_ITEMS: { items: MockItem[] } = {
   items: [
