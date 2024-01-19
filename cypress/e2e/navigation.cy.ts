@@ -5,6 +5,7 @@ import { SHOW_MORE_ITEMS_ID, buildTreeItemClass } from '@/config/selectors';
 
 import {
   FOLDER_WITH_SUBFOLDER_ITEM,
+  FOLDER_WITH_SUBFOLDER_ITEM_AND_PARTIAL_ORDER,
   generateLotsOfFoldersOnHome,
 } from '../fixtures/items';
 import { MEMBERS } from '../fixtures/members';
@@ -38,6 +39,17 @@ describe('Navigation', () => {
     const child = FOLDER_WITH_SUBFOLDER_ITEM.items[1];
     const childOfChild = FOLDER_WITH_SUBFOLDER_ITEM.items[3];
     cy.get(`.${buildTreeItemClass(child.id)}`).click();
-    cy.get(`.${buildTreeItemClass(childOfChild.id)}`);
+    cy.get(`.${buildTreeItemClass(childOfChild.id)}`).should('be.visible');
+  });
+
+  it('show all folders for partial order', () => {
+    cy.setUpApi({ items: FOLDER_WITH_SUBFOLDER_ITEM_AND_PARTIAL_ORDER.items });
+    const parent = FOLDER_WITH_SUBFOLDER_ITEM_AND_PARTIAL_ORDER.items[0];
+    cy.visit(buildMainPath({ rootId: parent.id }));
+
+    const child = FOLDER_WITH_SUBFOLDER_ITEM_AND_PARTIAL_ORDER.items[1];
+    const child1 = FOLDER_WITH_SUBFOLDER_ITEM_AND_PARTIAL_ORDER.items[2];
+    cy.get(`.${buildTreeItemClass(child.id)}`).should('be.visible');
+    cy.get(`.${buildTreeItemClass(child1.id)}`).should('be.visible');
   });
 });

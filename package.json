@@ -37,7 +37,7 @@
     "@emotion/styled": "11.11.0",
     "@graasp/chatbox": "3.0.3",
     "@graasp/query-client": "2.2.3",
-    "@graasp/sdk": "3.4.1",
+    "@graasp/sdk": "github:graasp/graasp-sdk#377-sort-children",
     "@graasp/translations": "1.21.1",
     "@graasp/ui": "4.3.0",
     "@mui/icons-material": "5.14.19",

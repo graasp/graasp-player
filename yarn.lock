@@ -1314,6 +1314,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@graasp/sdk@github:graasp/graasp-sdk#377-sort-children":
+  version: 3.4.1
+  resolution: "@graasp/sdk@https://github.com/graasp/graasp-sdk.git#commit=5323db685c9240c8d7e75f318254bcc8ab59ccf2"
+  dependencies:
+    date-fns: "npm:3.2.0"
+    js-cookie: "npm:3.0.5"
+    uuid: "npm:9.0.1"
+    validator: "npm:13.11.0"
+  checksum: 3c750d0727f0aa13be9b7ad2cf01d65c3afd460df74f86a3a6ac55f8603b212843c4bb4cee825d4ce83f8db915691561a49df8b740ddac01a90ab4e8d2b2eefd
+  languageName: node
+  linkType: hard
+
 "@graasp/sdk@npm:3.3.0, @graasp/sdk@npm:^3.3.0":
   version: 3.3.0
   resolution: "@graasp/sdk@npm:3.3.0"
@@ -5776,7 +5788,7 @@ __metadata:
     "@emotion/styled": "npm:11.11.0"
     "@graasp/chatbox": "npm:3.0.3"
     "@graasp/query-client": "npm:2.2.3"
-    "@graasp/sdk": "npm:3.4.1"
+    "@graasp/sdk": "github:graasp/graasp-sdk#377-sort-children"
     "@graasp/translations": "npm:1.21.1"
     "@graasp/ui": "npm:4.3.0"
     "@mui/icons-material": "npm:5.14.19"
