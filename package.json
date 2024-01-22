@@ -37,7 +37,7 @@
     "@emotion/styled": "11.11.0",
     "@graasp/chatbox": "3.0.3",
     "@graasp/query-client": "2.2.3",
-    "@graasp/sdk": "github:graasp/graasp-sdk#377-sort-children",
+    "@graasp/sdk": "3.5.0",
     "@graasp/translations": "1.21.1",
     "@graasp/ui": "4.3.0",
     "@mui/icons-material": "5.14.19",
@@ -94,6 +94,9 @@
     "vite": "^5.0.4",
     "vite-plugin-checker": "^0.6.2",
     "vite-plugin-istanbul": "5.0.0"
+  },
+  "resolutions": {
+    "@graasp/sdk": "3.5.0"
   },
   "packageManager": "yarn@4.0.2"
 }

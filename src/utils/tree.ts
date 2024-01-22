@@ -68,7 +68,7 @@ const buildItemsTree = (
       // sort by children order or default to all if not defined
       const children = sortChildrenWith(
         mapTree[node.id] ?? [],
-        node.extra.folder?.childrenOrder,
+        node.extra.folder.childrenOrder ?? [],
       );
 
       const entry: PartialItemWithChildren = {
