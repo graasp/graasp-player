@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.2](https://github.com/graasp/graasp-player/compare/v2.4.1...v2.4.2) (2024-01-22)
+
+
+### Bug Fixes
+
+* handle undefined childrenOrder ([#483](https://github.com/graasp/graasp-player/issues/483)) ([b2470fc](https://github.com/graasp/graasp-player/commit/b2470fcce3ebd68c1bcc7d0f8c29305c6051371d))
+* remove google cross site tracking query params after load ([#472](https://github.com/graasp/graasp-player/issues/472)) ([005221d](https://github.com/graasp/graasp-player/commit/005221d27235035d197bc8dee7b7baba6922b541))
+
 ## [2.4.1](https://github.com/graasp/graasp-player/compare/v2.4.0...v2.4.1) (2024-01-19)
 
 
