@@ -1,18 +1,13 @@
 import { Link } from 'react-router-dom';
 
-import {
-  Stack,
-  Typography,
-  styled,
-  useMediaQuery,
-  useTheme,
-} from '@mui/material';
+import { Stack, Typography, styled } from '@mui/material';
 
 import {
   GraaspLogo,
   Platform,
   PlatformSwitch,
   defaultHostsMapper,
+  useMobileView,
   usePlatformNavigation,
 } from '@graasp/ui';
 
@@ -51,8 +46,8 @@ export const HeaderNavigation = ({
   topItemName = '',
 }: HeaderNavigationProps): JSX.Element => {
   const getNavigationEvents = usePlatformNavigation(platformsHostsMap, rootId);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const { isMobile } = useMobileView();
+
   const platformProps = {
     [Platform.Builder]: {
       id: APP_NAVIGATION_PLATFORM_SWITCH_BUTTON_IDS[Platform.Builder],

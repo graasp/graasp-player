@@ -2,16 +2,10 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
-import {
-  Alert,
-  Skeleton,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from '@mui/material';
+import { Alert, Skeleton, Typography } from '@mui/material';
 
 import { Context } from '@graasp/sdk';
-import { Main } from '@graasp/ui';
+import { Main, useMobileView } from '@graasp/ui';
 
 import { ROOT_ID_PATH } from '@/config/paths';
 import { hooks } from '@/config/queryClient';
@@ -25,8 +19,8 @@ import Item from './Item';
 import ItemNavigation from './ItemNavigation';
 
 const MainScreen = (): JSX.Element => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const { isMobile } = useMobileView();
+
   const rootId = useParams()[ROOT_ID_PATH];
   const { focusedItemId } = useItemContext();
   const mainId = focusedItemId || rootId;
