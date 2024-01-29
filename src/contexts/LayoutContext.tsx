@@ -1,5 +1,7 @@
 import { createContext, useContext, useMemo, useState } from 'react';
 
+import { useMobileView } from '@graasp/ui';
+
 type LayoutContextType = {
   isPinnedMenuOpen: boolean;
   setIsPinnedMenuOpen: (state: boolean) => void;
@@ -19,7 +21,9 @@ type Props = {
 };
 
 export const LayoutContextProvider = ({ children }: Props): JSX.Element => {
-  const [isPinnedMenuOpen, setIsPinnedMenuOpen] = useState<boolean>(true);
+  const { isMobile } = useMobileView();
+
+  const [isPinnedMenuOpen, setIsPinnedMenuOpen] = useState<boolean>(!isMobile);
   const [isChatboxMenuOpen, setIsChatboxMenuOpen] = useState<boolean>(false);
 
   const value = useMemo(
