@@ -1,7 +1,11 @@
 import { PermissionLevel } from '@graasp/sdk';
 
 import { buildMainPath } from '@/config/paths';
-import { SHOW_MORE_ITEMS_ID, buildTreeItemClass } from '@/config/selectors';
+import {
+  HOME_PAGE_PAGINATION_ID,
+  buildHomePaginationId,
+  buildTreeItemClass,
+} from '@/config/selectors';
 
 import {
   FOLDER_WITH_SUBFOLDER_ITEM,
@@ -27,8 +31,8 @@ describe('Navigation', () => {
     cy.visit('/');
 
     cy.wait(['@getCurrentMember', '@getAccessibleItems']);
-
-    cy.get(`#${SHOW_MORE_ITEMS_ID}`).click();
+    cy.get(`#${HOME_PAGE_PAGINATION_ID}`).scrollIntoView().should('be.visible');
+    cy.get(`#${buildHomePaginationId(2)}`).click();
   });
 
   it('Expand folder when navigating', () => {
@@ -38,8 +42,11 @@ describe('Navigation', () => {
 
     const child = FOLDER_WITH_SUBFOLDER_ITEM.items[1];
     const childOfChild = FOLDER_WITH_SUBFOLDER_ITEM.items[3];
-    cy.get(`.${buildTreeItemClass(child.id)}`).click();
-    cy.get(`.${buildTreeItemClass(childOfChild.id)}`).should('be.visible');
+    // we need to to use the `:visible` meta selector because there are 2 navigations (one for mobile hidden, and one for desktop)
+    cy.get(`.${buildTreeItemClass(child.id)}:visible`).click();
+    cy.get(`.${buildTreeItemClass(childOfChild.id)}:visible`).should(
+      'be.visible',
+    );
   });
 
   it('show all folders for partial order', () => {

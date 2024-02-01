@@ -138,7 +138,8 @@ export const expectFolderLayout = ({
     .filter(({ type }) => type === ItemType.FOLDER)
     .forEach(({ id }) => {
       // click in mainmenu
-      cy.get(`.${buildTreeItemClass(id)}`).click();
+      // there are two because of th two menus
+      cy.get(`.${buildTreeItemClass(id)}:visible`).click();
 
       expectFolderLayout({ rootId: id, items });
     });

@@ -5,6 +5,10 @@ import { ToastContainer } from 'react-toastify';
 import { CssBaseline, GlobalStyles } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 
+// todo: set locale based on member local using
+// https://mui.com/material-ui/customization/theming/#api
+// and https://mui.com/material-ui/guides/localization/#locale-text
+// with the deepMerge util function
 import { theme } from '@graasp/ui';
 
 import { SHOW_NOTIFICATIONS } from '@/config/env';
@@ -36,7 +40,9 @@ const Root = (): JSX.Element => (
         </Router>
       </ThemeProvider>
     </I18nextProvider>
-    {import.meta.env.DEV && <ReactQueryDevtools />}
+    {import.meta.env.DEV && import.meta.env.MODE !== 'test' && (
+      <ReactQueryDevtools />
+    )}
   </QueryClientProvider>
 );
 

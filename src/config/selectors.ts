@@ -48,6 +48,10 @@ export const OWN_ITEMS_GRID_ID = 'ownItemsGrid';
 export const buildMemberAvatarClass = (id?: string): string =>
   `memberAvatar-${id}`;
 
+export const HOME_PAGE_PAGINATION_ID = 'honmePagePagination';
+export const buildHomePaginationId = (page: number | null): string =>
+  `homePagination-${page}`;
+
 export const APP_NAVIGATION_PLATFORM_SWITCH_ID = 'appNavigationPlatformSwitch';
 export const APP_NAVIGATION_PLATFORM_SWITCH_BUTTON_IDS = {
   [Platform.Builder]: 'appNavigationPlatformSwitchButtonBuilder',

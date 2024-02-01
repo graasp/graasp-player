@@ -1,9 +1,13 @@
 import { useState } from 'react';
 
-import { Pagination, Stack } from '@mui/material';
+import { Pagination, PaginationItem, Stack } from '@mui/material';
 
 import { usePlayerTranslation } from '@/config/i18n';
 import { hooks } from '@/config/queryClient';
+import {
+  HOME_PAGE_PAGINATION_ID,
+  buildHomePaginationId,
+} from '@/config/selectors';
 import { PLAYER } from '@/langs/constants';
 import PlayerCookiesBanner from '@/modules/cookies/PlayerCookiesBanner';
 import ItemGrid from '@/modules/main/ItemGrid';
@@ -28,8 +32,13 @@ const HomePage = (): JSX.Element => {
         items={accessibleItems?.data}
       />
       <Pagination
+        id={HOME_PAGE_PAGINATION_ID}
         count={Math.floor((accessibleItems?.totalCount ?? 0) / PAGE_SIZE) + 1}
         page={page}
+        renderItem={(props) => (
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          <PaginationItem {...props} id={buildHomePaginationId(props.page)} />
+        )}
         onChange={(_, newPage) => setPage(newPage)}
       />
       <PlayerCookiesBanner />
