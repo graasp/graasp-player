@@ -17,6 +17,8 @@ import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
 import HomePage from '@/modules/pages/HomePage';
 import ItemPage from '@/modules/pages/ItemPage';
 
+import PageWrapper from './modules/layout/PageWrapper';
+
 export const App = (): JSX.Element => {
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -50,9 +52,11 @@ export const App = (): JSX.Element => {
 
   return (
     <Routes>
-      <Route path={buildMainPath()} element={<ItemPage />} />
-      <Route path={HOME_PATH} element={<HomePageWithAuthorization />} />
-      <Route element={<Navigate to={HOME_PATH} />} />
+      <Route element={<PageWrapper />}>
+        <Route path={buildMainPath()} element={<ItemPage />} />
+        <Route path={HOME_PATH} element={<HomePageWithAuthorization />} />
+        <Route path="*" element={<Navigate to={HOME_PATH} />} />
+      </Route>
     </Routes>
   );
 };

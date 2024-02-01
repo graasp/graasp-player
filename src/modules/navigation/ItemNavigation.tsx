@@ -10,12 +10,12 @@ import { ROOT_ID_PATH } from '@/config/paths';
 import { hooks } from '@/config/queryClient';
 import { MAIN_MENU_ID, TREE_VIEW_ID } from '@/config/selectors';
 import { useItemContext } from '@/contexts/ItemContext';
-import TreeView from '@/modules/tree/TreeView';
+import TreeView from '@/modules/navigation/tree/TreeView';
 import { isHidden } from '@/utils/item';
 
 const { useItem, useDescendants, useItemsTags } = hooks;
 
-const ItemNavigation = (): JSX.Element | null => {
+const DrawerNavigation = (): JSX.Element | null => {
   const rootId = useParams()[ROOT_ID_PATH];
 
   const { t: translateMessage } = useMessagesTranslation();
@@ -47,7 +47,6 @@ const ItemNavigation = (): JSX.Element | null => {
   if (isSuccess)
     return (
       <MainMenu id={MAIN_MENU_ID}>
-        <div style={{ height: '15px' }} />
         <TreeView
           id={TREE_VIEW_ID}
           rootItems={[rootItem]}
@@ -63,4 +62,4 @@ const ItemNavigation = (): JSX.Element | null => {
   return null;
 };
 
-export default ItemNavigation;
+export default DrawerNavigation;

@@ -5,12 +5,12 @@ import { DiscriminatedItem } from '@graasp/sdk';
 import { hooks } from '@/config/queryClient';
 
 type Props = {
-  rootId: string;
+  rootId?: string;
   children: JSX.Element | JSX.Element[];
 };
 
 type ItemContextType = {
-  rootId: string;
+  rootId?: string;
   focusedItemId?: string;
   setFocusedItemId: (id: string) => void;
   rootItem?: DiscriminatedItem;
@@ -24,7 +24,9 @@ type ItemContextType = {
 const ItemContext = React.createContext<ItemContextType>({
   rootId: '',
   focusedItemId: '',
-  setFocusedItemId: () => null,
+  setFocusedItemId: (id: string) => {
+    console.error(`Called setFocusedItemId(${id}) without a matching Provider`);
+  },
   isRootItemLoading: true,
   isRootItemError: false,
   isDescendantsLoading: true,
@@ -42,7 +44,7 @@ const ItemContextProvider = ({ children, rootId }: Props): JSX.Element => {
     data: descendants,
     isLoading: isDescendantsLoading,
     isError: isDescendantsError,
-  } = hooks.useDescendants({ id: rootId, enabled: true });
+  } = hooks.useDescendants({ id: rootId || '', enabled: true });
 
   const value = useMemo(
     () => ({

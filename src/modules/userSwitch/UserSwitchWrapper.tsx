@@ -25,7 +25,7 @@ type Props = {
 
 const UserSwitchWrapper = ({
   ButtonContent,
-  preserveUrl = false,
+  preserveUrl = true,
 }: Props): JSX.Element => {
   const { data: member, isLoading = true } = useCurrentMemberContext();
   const { mutate: useSignOutMutation } = useSignOut();

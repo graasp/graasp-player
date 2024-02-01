@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 
 import { DiscriminatedItem } from '@graasp/sdk';
 
@@ -20,7 +20,7 @@ const ItemGrid = ({ isLoading, items, title }: Props): JSX.Element | null => {
     return null;
   }
   return (
-    <>
+    <Box width="100%">
       <Typography variant="h4" mb={1}>
         {title}
       </Typography>
@@ -31,7 +31,7 @@ const ItemGrid = ({ isLoading, items, title }: Props): JSX.Element | null => {
           </Grid>
         ))}
       </Grid>
-    </>
+    </Box>
   );
 };
 

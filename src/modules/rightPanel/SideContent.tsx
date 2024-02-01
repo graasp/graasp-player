@@ -58,7 +58,7 @@ type Props = {
   content: JSX.Element;
 };
 
-const SideContent = ({ content, item }: Props): JSX.Element => {
+const SideContent = ({ content, item }: Props): JSX.Element | null => {
   const { descendants, rootId } = useItemContext();
 
   const {
@@ -71,6 +71,10 @@ const SideContent = ({ content, item }: Props): JSX.Element => {
   const { t } = usePlayerTranslation();
   const settings = item.settings ?? {};
   const isFolder = item.type === ItemType.FOLDER;
+
+  if (!rootId) {
+    return null;
+  }
 
   /* This removes the parents that are higher than the perform root element
   Ex: if we are in item 6 and the root is 3, when splitting the path we get [ 1, 2, 3, 4, 5, 6 ].
