@@ -1283,9 +1283,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/query-client@github:graasp/graasp-query-client#allow-descendents-id-to-be-undefined":
-  version: 2.4.1
-  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=17bfec081fc025d6f52d419024565aa31f0a4e93"
+"@graasp/query-client@npm:2.4.2":
+  version: 2.4.2
+  resolution: "@graasp/query-client@npm:2.4.2"
   dependencies:
     "@graasp/sdk": "npm:3.6.0"
     "@graasp/translations": "npm:1.23.0"
@@ -1298,7 +1298,7 @@ __metadata:
     uuid: "npm:9.0.1"
   peerDependencies:
     react: ^17.0.0 || ^18.0.0
-  checksum: 054c0682559cec0aaba6e1c61e38d99628451bfa6d231cb31979121f5288bbf9799f28a4a3113ce0f6acab59d80930b2019b855bae2299aa82d8d7d69381d24e
+  checksum: cfe0b679fd574b487a97ef1e764f40a056be732cbb44393aabda55ea4eba3ee83d823d45945973eb974aa41ec903b67326749e9c1cfbcdfc246638864ce4cf81
   languageName: node
   linkType: hard
 
@@ -5657,7 +5657,7 @@ __metadata:
     "@emotion/react": "npm:11.11.1"
     "@emotion/styled": "npm:11.11.0"
     "@graasp/chatbox": "npm:3.0.3"
-    "@graasp/query-client": "github:graasp/graasp-query-client#allow-descendents-id-to-be-undefined"
+    "@graasp/query-client": "npm:2.4.2"
     "@graasp/sdk": "npm:3.5.0"
     "@graasp/translations": "npm:1.21.1"
     "@graasp/ui": "npm:4.5.0"
