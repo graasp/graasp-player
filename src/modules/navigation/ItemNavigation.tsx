@@ -21,7 +21,7 @@ const DrawerNavigation = (): JSX.Element | null => {
   const { t: translateMessage } = useMessagesTranslation();
   const { setFocusedItemId } = useItemContext();
 
-  const { data: descendants } = useDescendants({ id: rootId || '' });
+  const { data: descendants } = useDescendants({ id: rootId ?? '' });
   const { data: itemsTags } = useItemsTags(descendants?.map(({ id }) => id));
 
   const {

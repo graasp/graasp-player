@@ -81,7 +81,7 @@ const TreeView = ({
     />
   );
 
-  const tree = Object.values(getItemTree(itemsToShow || [], rootItems));
+  const tree = Object.values(getItemTree(itemsToShow ?? [], rootItems));
 
   return (
     <Box

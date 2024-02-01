@@ -44,7 +44,7 @@ const ItemContextProvider = ({ children, rootId }: Props): JSX.Element => {
     data: descendants,
     isLoading: isDescendantsLoading,
     isError: isDescendantsError,
-  } = hooks.useDescendants({ id: rootId || '', enabled: true });
+  } = hooks.useDescendants({ id: rootId ?? '', enabled: true });
 
   const value = useMemo(
     () => ({
