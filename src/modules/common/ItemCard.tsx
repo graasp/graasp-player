@@ -6,7 +6,12 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
-import { DiscriminatedItem, ItemType, Triggers, formatDate } from '@graasp/sdk';
+import {
+  DiscriminatedItem,
+  Triggers,
+  formatDate,
+  getMimetype,
+} from '@graasp/sdk';
 import { ItemIcon } from '@graasp/ui';
 
 import { usePlayerTranslation } from '@/config/i18n';
@@ -24,10 +29,7 @@ type Props = {
 const SimpleCard = ({ item, isHidden = false }: Props): JSX.Element => {
   const { i18n } = usePlayerTranslation();
   const link = buildMainPath({ rootId: item.id });
-  const extra =
-    item.type === ItemType.LOCAL_FILE || item.type === ItemType.S3_FILE
-      ? item.extra
-      : undefined;
+  const mimetype = getMimetype(item.extra);
 
   const { mutate: triggerAction } = mutations.usePostItemAction();
   const handleCardClick = () => {
@@ -45,7 +47,7 @@ const SimpleCard = ({ item, isHidden = false }: Props): JSX.Element => {
             {hasThumbnail ? (
               <ItemThumbnail item={item} />
             ) : (
-              <ItemIcon type={item.type} extra={extra} alt={item.name} />
+              <ItemIcon type={item.type} mimetype={mimetype} alt={item.name} />
             )}
             <Stack minWidth={0}>
               <Typography

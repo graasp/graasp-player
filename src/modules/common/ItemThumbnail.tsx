@@ -2,8 +2,9 @@ import {
   DiscriminatedItem,
   ThumbnailSize,
   ThumbnailSizeType,
+  getMimetype,
 } from '@graasp/sdk';
-import { Thumbnail } from '@graasp/ui';
+import { ItemIcon, Thumbnail } from '@graasp/ui';
 
 import { hooks } from '@/config/queryClient';
 
@@ -33,6 +34,14 @@ const ItemThumbnail = ({
   if (isLoading) {
     return <Thumbnail alt="loading icon" isLoading />;
   }
-  return null;
+
+  // fallback to item icon
+  return (
+    <ItemIcon
+      type={item.type}
+      mimetype={getMimetype(item.extra)}
+      alt={item.name}
+    />
+  );
 };
 export default ItemThumbnail;
