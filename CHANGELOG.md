@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.3](https://github.com/graasp/graasp-player/compare/v2.4.2...v2.4.3) (2024-02-02)
+
+
+### Bug Fixes
+
+* **deps:** update react-router monorepo to v6.21.3 ([7e597d3](https://github.com/graasp/graasp-player/commit/7e597d30b91a92cfd186349008b3714647da1de4))
+* set pinned side content isopen default value to false ([#486](https://github.com/graasp/graasp-player/issues/486)) ([8bfe067](https://github.com/graasp/graasp-player/commit/8bfe067ae3d67f221c1413221f5be4ed7e0340f3))
+* some translations ([cbe0ad9](https://github.com/graasp/graasp-player/commit/cbe0ad992bf21b45cc9e25403cc1e596cd23f8bb))
+* update main component and refactor ([#491](https://github.com/graasp/graasp-player/issues/491)) ([cbe0ad9](https://github.com/graasp/graasp-player/commit/cbe0ad992bf21b45cc9e25403cc1e596cd23f8bb))
+
 ## [2.4.2](https://github.com/graasp/graasp-player/compare/v2.4.1...v2.4.2) (2024-01-22)
 
 
