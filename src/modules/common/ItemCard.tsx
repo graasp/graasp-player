@@ -6,13 +6,7 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
-import {
-  DiscriminatedItem,
-  Triggers,
-  formatDate,
-  getMimetype,
-} from '@graasp/sdk';
-import { ItemIcon } from '@graasp/ui';
+import { DiscriminatedItem, Triggers, formatDate } from '@graasp/sdk';
 
 import { usePlayerTranslation } from '@/config/i18n';
 import { mutations } from '@/config/queryClient';
@@ -29,7 +23,6 @@ type Props = {
 const SimpleCard = ({ item, isHidden = false }: Props): JSX.Element => {
   const { i18n } = usePlayerTranslation();
   const link = buildMainPath({ rootId: item.id });
-  const mimetype = getMimetype(item.extra);
 
   const { mutate: triggerAction } = mutations.usePostItemAction();
   const handleCardClick = () => {
@@ -37,18 +30,12 @@ const SimpleCard = ({ item, isHidden = false }: Props): JSX.Element => {
     triggerAction({ itemId: item.id, payload: { type: Triggers.ItemView } });
   };
 
-  const { hasThumbnail } = item.settings;
-
   return (
     <Card style={isHidden ? HIDDEN_STYLE : undefined}>
       <CardActionArea component={Link} to={link} onClick={handleCardClick}>
         <CardContent>
           <Stack direction="row" alignItems="center" spacing={2}>
-            {hasThumbnail ? (
-              <ItemThumbnail item={item} />
-            ) : (
-              <ItemIcon type={item.type} mimetype={mimetype} alt={item.name} />
-            )}
+            <ItemThumbnail item={item} />
             <Stack minWidth={0}>
               <Typography
                 variant="h5"
