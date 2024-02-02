@@ -9,6 +9,7 @@ import { AUTH } from '@graasp/translations';
 import { Button } from '@graasp/ui';
 
 import { useAuthTranslation } from '@/config/i18n';
+import { PLAYER } from '@/langs/constants';
 import UserSwitchWrapper from '@/modules/userSwitch/UserSwitchWrapper';
 
 const ItemForbiddenScreen: FC = () => {
@@ -34,18 +35,10 @@ const ItemForbiddenScreen: FC = () => {
         <IconButton size="large">
           <BlockIcon />
         </IconButton>
-        {
-          // todo: add translations
-          t('You cannot access this item')
-        }
+        {t(PLAYER.ERROR_ACCESSING_ITEM)}
       </Typography>
       <Typography variant="body1">
-        {
-          // todo: add translations
-          t(
-            'Your current account does not have the rights to access this item.',
-          )
-        }
+        {t(PLAYER.ERROR_ACCESSING_ITEM_HELPER)}
       </Typography>
       <UserSwitchWrapper ButtonContent={ButtonContent} preserveUrl />
     </Stack>
