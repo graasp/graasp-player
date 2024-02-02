@@ -35,6 +35,7 @@ const HomePage = (): JSX.Element => {
         id={HOME_PAGE_PAGINATION_ID}
         count={Math.floor((accessibleItems?.totalCount ?? 0) / PAGE_SIZE) + 1}
         page={page}
+        // use the render prop to add a unique id that we can use for tests
         renderItem={(props) => (
           // eslint-disable-next-line react/jsx-props-no-spreading
           <PaginationItem {...props} id={buildHomePaginationId(props.page)} />

@@ -48,7 +48,7 @@ export const OWN_ITEMS_GRID_ID = 'ownItemsGrid';
 export const buildMemberAvatarClass = (id?: string): string =>
   `memberAvatar-${id}`;
 
-export const HOME_PAGE_PAGINATION_ID = 'honmePagePagination';
+export const HOME_PAGE_PAGINATION_ID = 'homePagePagination';
 export const buildHomePaginationId = (page: number | null): string =>
   `homePagination-${page}`;
 
