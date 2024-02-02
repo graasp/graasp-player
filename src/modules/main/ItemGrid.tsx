@@ -1,4 +1,5 @@
-import { Box, Grid, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
+import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 
 import { DiscriminatedItem } from '@graasp/sdk';
 
@@ -20,18 +21,18 @@ const ItemGrid = ({ isLoading, items, title }: Props): JSX.Element | null => {
     return null;
   }
   return (
-    <Box width="100%">
-      <Typography variant="h4" mb={1}>
+    <Stack direction="column" width="100%">
+      <Typography variant="h4" component="h1" mb={1}>
         {title}
       </Typography>
-      <Grid container spacing={3} justifyItems="center">
+      <Grid2 container spacing={3} justifyItems="center">
         {items?.map((item) => (
-          <Grid key={item.id} item lg={3} md={4} sm={6}>
+          <Grid2 key={item.id} xs={12} sm={6} md={4} xl={2}>
             <ItemCard item={item} />
-          </Grid>
+          </Grid2>
         ))}
-      </Grid>
-    </Box>
+      </Grid2>
+    </Stack>
   );
 };
 

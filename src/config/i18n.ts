@@ -21,5 +21,4 @@ i18n.addResourceBundle('ar', PLAYER_NAMESPACE, ar);
 export const usePlayerTranslation = () => useTranslation(PLAYER_NAMESPACE);
 export const useCommonTranslation = () => useTranslation(namespaces.common);
 export const useMessagesTranslation = () => useTranslation(namespaces.messages);
-export const useAuthTranslation = () => useTranslation(namespaces.auth);
 export default i18n;

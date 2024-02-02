@@ -12,5 +12,6 @@
   "DRAWER_ARIAL_LABEL": "Open drawer",
   "ERROR_FETCHING_ITEM": "There was an error fetching the requested item",
   "ERROR_ACCESSING_ITEM": "You cannot access this item",
-  "ERROR_ACCESSING_ITEM_HELPER": "Your current account does not have the rights to access this item."
+  "ERROR_ACCESSING_ITEM_HELPER": "Your current account does not have the rights to access this item.",
+  "SIGN_IN_BUTTON_TEXT": "Sign In"
 }

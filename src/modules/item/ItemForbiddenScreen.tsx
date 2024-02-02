@@ -1,24 +1,20 @@
-import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import BlockIcon from '@mui/icons-material/Block';
 import { IconButton, Stack, Typography } from '@mui/material';
 
-import { AUTH } from '@graasp/translations';
 import { Button } from '@graasp/ui';
 
-import { useAuthTranslation } from '@/config/i18n';
 import { PLAYER } from '@/langs/constants';
 import UserSwitchWrapper from '@/modules/userSwitch/UserSwitchWrapper';
 
-const ItemForbiddenScreen: FC = () => {
-  const { t: translateAuth } = useAuthTranslation();
+const ItemForbiddenScreen = (): JSX.Element => {
   const { t } = useTranslation();
 
   const ButtonContent = (
     <Button variant="outlined" startIcon={<AccountCircleIcon />}>
-      {translateAuth(AUTH.SWITCH_ACCOUNT_TEXT)}
+      {t(PLAYER.SIGN_IN_BUTTON_TEXT)}
     </Button>
   );
 
