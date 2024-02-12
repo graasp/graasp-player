@@ -24,15 +24,15 @@ import { FAILURE_MESSAGES } from '@graasp/translations';
 import {
   AppItem,
   Button,
-  DocumentItem,
   EtherpadItem,
   FileItem,
   H5PItem,
   ItemSkeleton,
   LinkItem,
-  TextEditor,
+  TextDisplay,
   withCollapse,
 } from '@graasp/ui';
+import { DocumentItem } from '@graasp/ui/text-editor';
 
 import {
   DEFAULT_RESIZABLE_SETTING,
@@ -392,7 +392,7 @@ const Item = ({
     data: children = [],
     isLoading: isChildrenLoading,
     isError: isChildrenError,
-  } = useChildren(id, {
+  } = useChildren(id, undefined, {
     enabled: isFolder,
     getUpdates: isFolder,
   });
@@ -461,7 +461,7 @@ const Item = ({
             <Typography className={FOLDER_NAME_TITLE_CLASS} variant="h5">
               {item.name}
             </Typography>
-            <TextEditor value={item.description ?? undefined} />
+            <TextDisplay content={item.description ?? ''} />
 
             {childrenPaginated?.pages.map((page) => (
               <Fragment key={page.pageNumber}>
