@@ -1,3 +1,7 @@
+import 'katex/dist/katex.min.css';
+import 'react-quill/dist/quill.snow.css';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { I18nextProvider } from 'react-i18next';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
