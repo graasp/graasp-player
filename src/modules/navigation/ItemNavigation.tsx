@@ -43,7 +43,7 @@ const DrawerNavigation = (): JSX.Element | null => {
   }
 
   if (isLoading) {
-    <Skeleton variant="text" />;
+    return <Skeleton variant="text" />;
   }
 
   if (isError) {
