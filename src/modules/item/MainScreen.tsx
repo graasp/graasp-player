@@ -40,7 +40,6 @@ const MainScreen = (): JSX.Element | null => {
   }
 
   if (isError) {
-    // todo: add this to translations
     return <Alert severity="error">{t(PLAYER.ERROR_FETCHING_ITEM)}</Alert>;
   }
 

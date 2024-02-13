@@ -1,16 +1,17 @@
 import { useTranslation } from 'react-i18next';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import BlockIcon from '@mui/icons-material/Block';
-import { IconButton, Stack, Typography } from '@mui/material';
+import { Stack } from '@mui/material';
 
-import { Button } from '@graasp/ui';
+import { Button, ForbiddenContent } from '@graasp/ui';
 
+import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
 import { PLAYER } from '@/langs/constants';
 import UserSwitchWrapper from '@/modules/userSwitch/UserSwitchWrapper';
 
 const ItemForbiddenScreen = (): JSX.Element => {
   const { t } = useTranslation();
+  const { data: member } = useCurrentMemberContext();
 
   const ButtonContent = (
     <Button variant="outlined" startIcon={<AccountCircleIcon />}>
@@ -21,21 +22,16 @@ const ItemForbiddenScreen = (): JSX.Element => {
   return (
     <Stack
       direction="column"
+      height="100%"
       justifyContent="center"
       alignItems="center"
-      textAlign="center"
-      margin="auto"
-      height="100%"
+      spacing={2}
     >
-      <Typography variant="h4">
-        <IconButton size="large">
-          <BlockIcon />
-        </IconButton>
-        {t(PLAYER.ERROR_ACCESSING_ITEM)}
-      </Typography>
-      <Typography variant="body1">
-        {t(PLAYER.ERROR_ACCESSING_ITEM_HELPER)}
-      </Typography>
+      <ForbiddenContent
+        memberId={member?.id}
+        title={t(PLAYER.ERROR_ACCESSING_ITEM)}
+        authenticatedText={t(PLAYER.ERROR_ACCESSING_ITEM_HELPER)}
+      />
       <UserSwitchWrapper ButtonContent={ButtonContent} preserveUrl />
     </Stack>
   );

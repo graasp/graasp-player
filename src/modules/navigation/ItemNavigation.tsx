@@ -1,13 +1,13 @@
 import { useParams } from 'react-router-dom';
 
-import { Alert } from '@mui/material';
+import { Alert, Skeleton } from '@mui/material';
 
 import { FAILURE_MESSAGES } from '@graasp/translations';
 import { MainMenu } from '@graasp/ui';
 
 import { useMessagesTranslation } from '@/config/i18n';
 import { ROOT_ID_PATH } from '@/config/paths';
-import { hooks } from '@/config/queryClient';
+import { axios, hooks } from '@/config/queryClient';
 import { MAIN_MENU_ID, TREE_VIEW_ID } from '@/config/selectors';
 import { useItemContext } from '@/contexts/ItemContext';
 import TreeView from '@/modules/navigation/tree/TreeView';
@@ -24,27 +24,9 @@ const DrawerNavigation = (): JSX.Element | null => {
   const { data: descendants } = useDescendants({ id: rootId ?? '' });
   const { data: itemsTags } = useItemsTags(descendants?.map(({ id }) => id));
 
-  const {
-    data: rootItem,
-    isLoading: rootItemIsLoading,
-    isError: rootItemIsError,
-    isSuccess,
-  } = useItem(rootId);
+  const { data: rootItem, isLoading, isError, error } = useItem(rootId);
 
-  // display nothing when no item is defined
-  if (!rootId) {
-    return null;
-  }
-
-  if (rootItemIsError) {
-    return (
-      <Alert severity="error">
-        {translateMessage(FAILURE_MESSAGES.UNEXPECTED_ERROR)}
-      </Alert>
-    );
-  }
-
-  if (isSuccess)
+  if (rootItem) {
     return (
       <MainMenu id={MAIN_MENU_ID}>
         <TreeView
@@ -55,10 +37,27 @@ const DrawerNavigation = (): JSX.Element | null => {
           )}
           firstLevelStyle={{ fontWeight: 'bold' }}
           onTreeItemSelect={setFocusedItemId}
-          isLoading={rootItemIsLoading}
         />
       </MainMenu>
     );
+  }
+
+  if (isLoading) {
+    <Skeleton variant="text" />;
+  }
+
+  if (isError) {
+    // this is an expected error that can occur if user does not have access to the item
+    if (axios.isAxiosError(error) && error.response?.status === 403) {
+      return null;
+    }
+    return (
+      <Alert severity="error">
+        {translateMessage(FAILURE_MESSAGES.UNEXPECTED_ERROR)}
+      </Alert>
+    );
+  }
+
   return null;
 };
 
