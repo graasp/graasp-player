@@ -11,5 +11,7 @@
   "RECENT_ITEMS_TITLE": "Éléments les plus récents",
   "DRAWER_ARIAL_LABEL": "Ouvrir le tiroir",
   "ERROR_FETCHING_ITEM": "Une erreur s'est produite lors de la récupération de l'élément",
+  "ERROR_ACCESSING_ITEM": "Vous ne pouvez pas accéder à cet élément",
+  "ERROR_ACCESSING_ITEM_HELPER": "Votre compte actuel n'a pas les droits pour accéder à cet élément.",
   "SIGN_IN_BUTTON_TEXT": "Se connecter avec un autre compte"
 }
