@@ -1,8 +1,7 @@
 /// <reference types="./src/env"/>
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
-import { visualizer } from 'rollup-plugin-visualizer';
-import { PluginOption, UserConfigExport, defineConfig, loadEnv } from 'vite';
+import { UserConfigExport, defineConfig, loadEnv } from 'vite';
 import checker from 'vite-plugin-checker';
 import istanbul from 'vite-plugin-istanbul';
 
@@ -46,25 +45,11 @@ export default ({ mode }: { mode: string }): UserConfigExport => {
         forceBuildInstrument: mode === 'test',
         checkProd: true,
       }),
-      ...(mode === 'dev'
-        ? [
-            visualizer({
-              template: 'treemap', // or sunburst
-              open: true,
-              gzipSize: true,
-              brotliSize: true,
-              filename: 'analice.html',
-            }) as PluginOption,
-          ]
-        : []),
     ],
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src'),
       },
-    },
-    define: {
-      'process.env.REACT_APP_GRAASP_ASSETS_URL': `"${process.env.VITE_GRAASP_ASSETS_URL}"`,
     },
   });
 };
