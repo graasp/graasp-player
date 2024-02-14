@@ -1,16 +1,15 @@
-import { useTranslation } from 'react-i18next';
-
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Stack } from '@mui/material';
 
 import { Button, ForbiddenContent } from '@graasp/ui';
 
+import { usePlayerTranslation } from '@/config/i18n';
 import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
 import { PLAYER } from '@/langs/constants';
 import UserSwitchWrapper from '@/modules/userSwitch/UserSwitchWrapper';
 
 const ItemForbiddenScreen = (): JSX.Element => {
-  const { t } = useTranslation();
+  const { t } = usePlayerTranslation();
   const { data: member } = useCurrentMemberContext();
 
   const ButtonContent = (
