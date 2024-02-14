@@ -4,6 +4,7 @@ import {
   PermissionLevel,
   buildPathFromIds,
 } from '@graasp/sdk';
+import { DEFAULT_LANG } from '@graasp/translations';
 
 import { v4 } from 'uuid';
 
@@ -32,6 +33,7 @@ export const DEFAULT_FOLDER_ITEM: MockItem = {
   createdAt: new Date().toISOString(),
   updatedAt: new Date().toISOString(),
   type: ItemType.FOLDER,
+  lang: DEFAULT_LANG,
   settings: {
     isPinned: false,
     showChatbox: false,
@@ -205,6 +207,49 @@ export const FOLDER_WITH_PINNED_ITEMS: { items: MockItem[] } = {
         isPinned: true,
         showChatbox: false,
       },
+    },
+  ],
+};
+
+export const PINNED_AND_HIDDEN_ITEM: { items: MockItem[] } = {
+  items: [
+    {
+      ...DEFAULT_FOLDER_ITEM,
+      id: 'ecafbd2a-5688-11eb-ae93-0242ac130005',
+      name: 'parent folder',
+      path: 'ecafbd2a_5688_11eb_ae93_0242ac130005',
+      settings: {
+        isPinned: false,
+        showChatbox: false,
+      },
+    },
+    {
+      ...DEFAULT_FOLDER_ITEM,
+      id: 'fdf09f5a-5688-11eb-ae93-0242ac130007',
+      name: 'PINNED & hidden',
+      path: 'ecafbd2a_5688_11eb_ae93_0242ac130005.fdf09f5a_5688_11eb_ae93_0242ac130007',
+      settings: {
+        isPinned: true,
+        showChatbox: false,
+      },
+      tags: [mockItemTag({ type: ItemTagType.Hidden })],
+    },
+    {
+      id: 'fdf09f5a-5688-11eb-ae93-0242ac130008',
+      name: 'Normal child',
+      description: 'I am a normal item',
+
+      type: ItemType.DOCUMENT,
+      extra: { [ItemType.DOCUMENT]: { content: 'hello' } },
+      path: 'ecafbd2a_5688_11eb_ae93_0242ac130005.fdf09f5a_5688_11eb_ae93_0242ac130008',
+      settings: {
+        isPinned: false,
+        showChatbox: false,
+      },
+      lang: DEFAULT_LANG,
+      creator: CURRENT_USER,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     },
   ],
 };

@@ -35,6 +35,7 @@ export default ({ mode }: { mode: string }): UserConfigExport => {
       checker({
         typescript: true,
         eslint: { lintCommand: 'eslint "./**/*.{ts,tsx}"' },
+        overlay: { initialIsOpen: false },
       }),
       react(),
       istanbul({
