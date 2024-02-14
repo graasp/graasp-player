@@ -8,5 +8,10 @@
   "LOAD_MORE": "Carica di più",
   "HIDDEN_WRAPPER_TOOLTIP": "Questo elemento è nascosto, puoi vederlo perché hai accesso di amministrazione o scrittura, gli utenti con accesso di lettura non lo vedranno",
   "SHOW_MORE": "Mostra di più...",
-  "RECENT_ITEMS_TITLE": "Elementi più recenti"
+  "RECENT_ITEMS_TITLE": "Elementi più recenti",
+  "DRAWER_ARIAL_LABEL": "Aprire il cassetto",
+  "ERROR_FETCHING_ITEM": "Si è verificato un errore durante il recupero dell'articolo richiesto",
+  "ERROR_ACCESSING_ITEM": "Non puoi accedere a questo elemento",
+  "ERROR_ACCESSING_ITEM_HELPER": "Il tuo conto corrente non ha i diritti per accedere a questo elemento.",
+  "SIGN_IN_BUTTON_TEXT": "Registrazione"
 }
