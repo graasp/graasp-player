@@ -104,7 +104,7 @@ describe('Pinned and hidden children', () => {
     cy.visit(buildMainPath({ rootId: parent.id }));
 
     // check that the document is shown
-    cy.get(`${buildDocumentId(normalDocument.id)}`);
+    cy.get(`#${buildDocumentId(normalDocument.id)}`);
     // check that the pinned icon is not shown
     cy.get(`#${ITEM_PINNED_ID}`).should('not.exist');
   });

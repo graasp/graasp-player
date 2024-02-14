@@ -41,7 +41,7 @@ jobs:
 
       #  use the Cypress GitHub Action to run Cypress tests within the chrome browser
       - name: Cypress run
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         with:
           install: false
           start: yarn preview:test
