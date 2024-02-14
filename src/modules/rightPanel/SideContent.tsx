@@ -3,9 +3,10 @@ import PushPinIcon from '@mui/icons-material/PushPin';
 import { Grid, Stack, Tooltip, styled } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
-import { DiscriminatedItem, ItemType } from '@graasp/sdk';
+import { DiscriminatedItem, ItemTagType, ItemType } from '@graasp/sdk';
 
 import { usePlayerTranslation } from '@/config/i18n';
+import { hooks } from '@/config/queryClient';
 import { useItemContext } from '@/contexts/ItemContext';
 import { useLayoutContext } from '@/contexts/LayoutContext';
 import { PLAYER } from '@/langs/constants';
@@ -60,6 +61,7 @@ type Props = {
 
 const SideContent = ({ content, item }: Props): JSX.Element | null => {
   const { descendants, rootId } = useItemContext();
+  const { data: tags } = hooks.useItemsTags(descendants?.map(({ id }) => id));
 
   const {
     isPinnedMenuOpen,
@@ -91,7 +93,12 @@ const SideContent = ({ content, item }: Props): JSX.Element | null => {
   );
 
   const pinnedCount =
-    descendants?.filter(({ settings: s }) => s.isPinned)?.length || 0;
+    descendants?.filter(
+      ({ id, settings: s }) =>
+        s.isPinned &&
+        // do not count hidden items as they are not displayed
+        !tags?.data?.[id].some(({ type }) => type === ItemTagType.Hidden),
+    )?.length || 0;
 
   const toggleChatOpen = () => {
     setIsChatboxMenuOpen(!isChatboxMenuOpen);
