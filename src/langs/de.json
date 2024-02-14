@@ -8,5 +8,10 @@
   "LOAD_MORE": "Mehr laden",
   "HIDDEN_WRAPPER_TOOLTIP": "Dieses Element ist ausgeblendet. Sie können es sehen, weil Sie Administrator- oder Schreibzugriff haben. Benutzer mit Lesezugriff sehen es nicht",
   "SHOW_MORE": "Zeig mehr...",
-  "RECENT_ITEMS_TITLE": "Neueste Artikel"
+  "RECENT_ITEMS_TITLE": "Neueste Artikel",
+  "DRAWER_ARIAL_LABEL": "Offene Schublade",
+  "ERROR_FETCHING_ITEM": "Beim Abrufen des angeforderten Artikels ist ein Fehler aufgetreten",
+  "ERROR_ACCESSING_ITEM": "Sie können nicht auf dieses Element zugreifen",
+  "ERROR_ACCESSING_ITEM_HELPER": "Ihr aktuelles Konto verfügt nicht über die Rechte, auf diesen Artikel zuzugreifen.",
+  "SIGN_IN_BUTTON_TEXT": "Anmelden"
 }
