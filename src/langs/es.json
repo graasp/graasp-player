@@ -1,5 +1,5 @@
 {
-  "GRAASP_PLAYER": "Jugador de agarre",
+  "GRAASP_PLAYER": "Jugador de Graasp",
   "SHOW_CHAT_TOOLTIP": "Mostrar chat",
   "HIDE_CHAT_TOOLTIP": "Ocultar chat",
   "SHOW_PINNED_ITEMS_TOOLTIP": "Mostrar elementos fijados",
@@ -8,5 +8,10 @@
   "LOAD_MORE": "Carga más",
   "HIDDEN_WRAPPER_TOOLTIP": "Este elemento está oculto, puedes verlo porque tienes acceso de administrador o de escritura, los usuarios con acceso de lectura no lo verán",
   "SHOW_MORE": "Mostrar más...",
-  "RECENT_ITEMS_TITLE": "Artículos más recientes"
+  "RECENT_ITEMS_TITLE": "Artículos más recientes",
+  "DRAWER_ARIAL_LABEL": "Abrir cajón",
+  "ERROR_FETCHING_ITEM": "Se produjo un error al obtener el artículo solicitado.",
+  "ERROR_ACCESSING_ITEM": "No puedes acceder a este artículo",
+  "ERROR_ACCESSING_ITEM_HELPER": "Su cuenta actual no tiene derechos para acceder a este artículo.",
+  "SIGN_IN_BUTTON_TEXT": "Inicio de sesión"
 }
