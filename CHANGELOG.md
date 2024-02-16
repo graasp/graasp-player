@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/graasp/graasp-player/compare/v2.4.3...v2.5.0) (2024-02-16)
+
+
+### Features
+
+* translate es.json via GitLocalize ([#521](https://github.com/graasp/graasp-player/issues/521)) ([7f5e656](https://github.com/graasp/graasp-player/commit/7f5e6568d434396c6be8e1ce6fd5765dd1ca5086))
+
+
+### Bug Fixes
+
+* add timestamp in html ([d83ebe7](https://github.com/graasp/graasp-player/commit/d83ebe774802b674d0ea0a9e85bfe1b9e3f5aab3))
+* **deps:** update dependency @graasp/ui to v4.5.1 ([#493](https://github.com/graasp/graasp-player/issues/493)) ([0d21d0e](https://github.com/graasp/graasp-player/commit/0d21d0ecce29d63a8b80df5d55adca258dd98c64))
+* **deps:** update dependency @graasp/ui to v4.6.1 ([#505](https://github.com/graasp/graasp-player/issues/505)) ([67584d0](https://github.com/graasp/graasp-player/commit/67584d05f84af00be6a69770140b7c40c3b6c972))
+* **deps:** update dependency react-toastify to v10 ([#476](https://github.com/graasp/graasp-player/issues/476)) ([17339dc](https://github.com/graasp/graasp-player/commit/17339dc9c96c85e83a876b5302b85772dde9587d))
+* **de:** update ([#519](https://github.com/graasp/graasp-player/issues/519)) ([0be42f6](https://github.com/graasp/graasp-player/commit/0be42f6ed9e1487c6a0cbd8dfa373cda58b89c2f))
+* filter hidden from pinned ([#517](https://github.com/graasp/graasp-player/issues/517)) ([0ad13ee](https://github.com/graasp/graasp-player/commit/0ad13ee8f512309f99d080598f3ff396e3e22dfb))
+* **fr:** translations ([#513](https://github.com/graasp/graasp-player/issues/513)) ([32bb431](https://github.com/graasp/graasp-player/commit/32bb431ac132cef08c4d752d673020f1426231e8))
+* item forbidden screen and favicon ([#515](https://github.com/graasp/graasp-player/issues/515)) ([9b21c30](https://github.com/graasp/graasp-player/commit/9b21c30845b64adcd2298ac009a44e5992f81ce3))
+* **it:** update translations ([#518](https://github.com/graasp/graasp-player/issues/518)) ([a4414db](https://github.com/graasp/graasp-player/commit/a4414db656fb7564c86cc68be805decad683b09f))
+* update deps ([9c784d1](https://github.com/graasp/graasp-player/commit/9c784d1895d82a359c789140d6f2493ba972f4cb))
+* update with new UI ([#508](https://github.com/graasp/graasp-player/issues/508)) ([37c8475](https://github.com/graasp/graasp-player/commit/37c847525f2a8a6759305e9ab0c940c24f6580d7))
+* use thumbnails and display date on cards ([#498](https://github.com/graasp/graasp-player/issues/498)) ([1caa453](https://github.com/graasp/graasp-player/commit/1caa453a23eed01beeb5548a2797af0eb797c9d1))
+
 ## [2.4.3](https://github.com/graasp/graasp-player/compare/v2.4.2...v2.4.3) (2024-02-02)
 
 
