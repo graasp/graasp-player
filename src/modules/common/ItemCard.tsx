@@ -6,7 +6,7 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
-import { DiscriminatedItem, Triggers, formatDate } from '@graasp/sdk';
+import { ActionTriggers, DiscriminatedItem, formatDate } from '@graasp/sdk';
 
 import { usePlayerTranslation } from '@/config/i18n';
 import { mutations } from '@/config/queryClient';
@@ -27,7 +27,10 @@ const SimpleCard = ({ item, isHidden = false }: Props): JSX.Element => {
   const { mutate: triggerAction } = mutations.usePostItemAction();
   const handleCardClick = () => {
     // trigger player Action for item view
-    triggerAction({ itemId: item.id, payload: { type: Triggers.ItemView } });
+    triggerAction({
+      itemId: item.id,
+      payload: { type: ActionTriggers.ItemView },
+    });
   };
 
   return (

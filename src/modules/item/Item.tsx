@@ -5,19 +5,19 @@ import { Alert, Box, Container, Skeleton, Typography } from '@mui/material';
 
 import { Api } from '@graasp/query-client';
 import {
+  ActionTriggers,
   AppItemType,
   Context,
   DiscriminatedItem,
   DocumentItemType,
-  EmbeddedLinkItemType,
   EtherpadItemType,
   H5PItemType,
   ItemType,
+  LinkItemType,
   LocalFileItemType,
   PermissionLevel,
   S3FileItemType,
   ShortcutItemType,
-  Triggers,
 } from '@graasp/sdk';
 import { DEFAULT_LANG, FAILURE_MESSAGES } from '@graasp/translations';
 import {
@@ -126,7 +126,7 @@ const FileContent = ({ item }: FileContentProps) => {
   const onDownloadClick = useCallback(() => {
     triggerAction({
       itemId: item.id,
-      payload: { type: Triggers.ItemDownload },
+      payload: { type: ActionTriggers.ItemDownload },
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [item.id]);
@@ -162,13 +162,16 @@ const FileContent = ({ item }: FileContentProps) => {
   return fileItem;
 };
 
-const LinkContent = ({ item }: { item: EmbeddedLinkItemType }): JSX.Element => {
+const LinkContent = ({ item }: { item: LinkItemType }): JSX.Element => {
   const { data: member } = useCurrentMemberContext();
 
   const { mutate: triggerAction } = mutations.usePostItemAction();
   const handleLinkClick = () => {
     // trigger player Action for link click
-    triggerAction({ itemId: item.id, payload: { type: Triggers.LinkOpen } });
+    triggerAction({
+      itemId: item.id,
+      payload: { type: ActionTriggers.LinkOpen },
+    });
   };
   const linkItem = (
     <LinkItem

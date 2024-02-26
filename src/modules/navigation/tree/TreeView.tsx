@@ -8,9 +8,9 @@ import { Box, SxProps, Typography } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
 
 import {
+  ActionTriggers,
   DiscriminatedItem,
   ItemType,
-  Triggers,
   UnionOfConst,
 } from '@graasp/sdk';
 
@@ -56,7 +56,10 @@ const TreeView = ({
   // types based on TreeView types
   const onSelect = (value: string) => {
     // trigger player Action for item view
-    triggerAction({ itemId: value, payload: { type: Triggers.ItemView } });
+    triggerAction({
+      itemId: value,
+      payload: { type: ActionTriggers.ItemView },
+    });
 
     onTreeItemSelect?.(value);
   };
