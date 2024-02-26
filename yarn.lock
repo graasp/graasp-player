@@ -6257,7 +6257,7 @@ __metadata:
     eslint-plugin-react-hooks: "npm:4.6.0"
     http-status-codes: "npm:2.3.0"
     husky: "npm:9.0.11"
-    i18next: "npm:23.9.0"
+    i18next: "npm:23.10.0"
     katex: "npm:0.16.9"
     lodash.truncate: "npm:4.4.2"
     prettier: "npm:3.2.5"
@@ -6568,21 +6568,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"i18next@npm:23.10.0":
+  version: 23.10.0
+  resolution: "i18next@npm:23.10.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.23.2"
+  checksum: 10/d32293a40650783ac746ce476d220ac3285133de729b2c1da0e7c91bc396ec6728629e84ea4c06311ae37dc6b7984ca962d5b296deb58cf713ba477a2edbd0ea
+  languageName: node
+  linkType: hard
+
 "i18next@npm:23.7.16":
   version: 23.7.16
   resolution: "i18next@npm:23.7.16"
   dependencies:
     "@babel/runtime": "npm:^7.23.2"
   checksum: 10/77e74c07a73316f6fb6678a5a3e8ce58a6e66be457dd1ccd23941e9fc57ad8e1da55193fa6328c70b86073337b776cd267f3c13c6309f548b3116f27a1e41787
-  languageName: node
-  linkType: hard
-
-"i18next@npm:23.9.0":
-  version: 23.9.0
-  resolution: "i18next@npm:23.9.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.23.2"
-  checksum: 10/7b91f22560a07b2e3f874de30ce3f875cd19beb4657b0f4ac2f805554f9c44bea3552b6cf933f64c83baa1e9a0d8f85110711b4e96354b3b4d79c039b6b7373f
   languageName: node
   linkType: hard
 
