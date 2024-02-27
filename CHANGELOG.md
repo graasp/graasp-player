@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.1](https://github.com/graasp/graasp-player/compare/v2.5.0...v2.5.1) (2024-02-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v23.9.0 ([#501](https://github.com/graasp/graasp-player/issues/501)) ([642d359](https://github.com/graasp/graasp-player/commit/642d359aecc72058ad480d43c3e430c78081cecf))
+* **deps:** update react-router monorepo to v6.22.1 ([#522](https://github.com/graasp/graasp-player/issues/522)) ([23c1793](https://github.com/graasp/graasp-player/commit/23c17935cf55f755aac67335ea815abf3032775a))
+* update esm packages ([#535](https://github.com/graasp/graasp-player/issues/535)) ([7c37b19](https://github.com/graasp/graasp-player/commit/7c37b19516ca74dd3175233b886d8605eebe0936))
+
 ## [2.5.0](https://github.com/graasp/graasp-player/compare/v2.4.3...v2.5.0) (2024-02-16)
 
 
