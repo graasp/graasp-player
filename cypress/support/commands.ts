@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import { COOKIE_KEYS, ChatMessage, Member } from '@graasp/sdk';
+import { ChatMessage, CookieKeys, Member } from '@graasp/sdk';
 
 import { CURRENT_USER, MEMBERS } from '../fixtures/members';
 import { MockItem } from '../fixtures/mockTypes';
@@ -43,8 +43,8 @@ Cypress.Commands.add(
     getCurrentMemberError = false,
   } = {}) => {
     if (currentMember) {
-      cy.setCookie(COOKIE_KEYS.SESSION_KEY, 'somecookie');
-      cy.setCookie(COOKIE_KEYS.ACCEPT_COOKIES_KEY, 'true');
+      cy.setCookie(CookieKeys.Session, 'somecookie');
+      cy.setCookie(CookieKeys.AcceptCookies, 'true');
     }
     mockGetOwnItems({ items, currentMember });
     mockGetSharedItems({ items, currentMember });

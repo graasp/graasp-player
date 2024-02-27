@@ -386,13 +386,13 @@ const Item = ({
   const { ref, inView } = useInView();
   const { t: translatePlayer } = usePlayerTranslation();
   const { t: translateMessage } = useMessagesTranslation();
-  const { data: item, isLoading, isError } = useItem(id);
+  const { data: item, isInitialLoading: isLoadingItem, isError } = useItem(id);
 
   // fetch children if item is folder
   const isFolder = Boolean(item?.type === ItemType.FOLDER);
   const {
     data: children = [],
-    isLoading: isChildrenLoading,
+    isInitialLoading: isChildrenLoading,
     isError: isChildrenError,
   } = useChildren(id, undefined, {
     enabled: isFolder,
@@ -401,7 +401,7 @@ const Item = ({
 
   const {
     data: childrenPaginated,
-    isLoading: isChildrenPaginatedLoading,
+    isInitialLoading: isChildrenPaginatedLoading,
     isError: isChildrenPaginatedError,
     refetch: refetchChildrenPaginated,
     hasNextPage,
@@ -423,7 +423,7 @@ const Item = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView, children]);
 
-  if (isLoading || isChildrenLoading || isChildrenPaginatedLoading) {
+  if (isLoadingItem || isChildrenLoading || isChildrenPaginatedLoading) {
     return (
       <ItemSkeleton
         itemType={item?.type ?? ItemType.FOLDER}

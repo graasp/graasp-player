@@ -51,7 +51,8 @@ describe('Header', () => {
       cy.wait('@getCurrentMember');
       cy.get(`#${HEADER_MEMBER_MENU_BUTTON_ID}`).click();
       cy.get(`#${HEADER_MEMBER_MENU_SIGN_OUT_BUTTON_ID}`).click();
-      cy.url().should('equal', SIGN_IN_PATH);
+      // url also contains redirection
+      cy.url().should('contain', SIGN_IN_PATH);
     });
 
     // todo: not available since cookie is httpOnly

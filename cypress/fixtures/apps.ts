@@ -1,4 +1,9 @@
-import { AppItemType, ItemTagType, ItemType } from '@graasp/sdk';
+import {
+  AppItemFactory,
+  AppItemType,
+  ItemTagType,
+  ItemType,
+} from '@graasp/sdk';
 
 import { APP_NAME } from './apps/apps';
 import { DEFAULT_FOLDER_ITEM } from './items';
@@ -8,15 +13,12 @@ import { mockItemTag } from './tags';
 
 // mock an app with the graasp link
 // eslint-disable-next-line import/prefer-default-export
-export const GRAASP_APP_ITEM: AppItemType = {
+export const GRAASP_APP_ITEM: AppItemType = AppItemFactory({
   id: 'baefbd2a-5688-11eb-ae91-0242ac130002',
-  type: ItemType.APP,
   name: 'graasp app',
   description: 'a description for graasp app',
   path: 'baefbd2a_5688_11eb_ae93_0242ac130002',
   creator: CURRENT_USER,
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
   extra: {
     app: { url: 'https://graasp.eu' },
   },
@@ -24,7 +26,7 @@ export const GRAASP_APP_ITEM: AppItemType = {
     isPinned: false,
     showChatbox: false,
   },
-};
+});
 
 const API_HOST = Cypress.env('API_HOST');
 
@@ -61,7 +63,7 @@ export const GRAASP_APP_CHILDREN_ITEM = {
   creator: CURRENT_USER.id,
 };
 
-export const APP_USING_CONTEXT_ITEM: MockItem = {
+export const APP_USING_CONTEXT_ITEM: MockItem = AppItemFactory({
   id: 'ecafbd2a-5688-12eb-ae91-0272ac130002',
   path: 'ecafbd2a_5688_12eb_ae91_0272ac130002',
   name: 'my app',
@@ -74,25 +76,21 @@ export const APP_USING_CONTEXT_ITEM: MockItem = {
     },
   },
   creator: CURRENT_USER,
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
-};
+});
 
 export const PUBLIC_APP_USING_CONTEXT_ITEM: MockItem = {
-  id: 'ecafbd2a-5688-12eb-ae91-0272ac130003',
-  path: 'ecafbd2a_5688_12eb_ae91_0272ac130003',
-  name: 'my app',
-  description: 'my app description',
-  type: ItemType.APP,
-  settings: {},
-  extra: {
-    [ItemType.APP]: {
-      url: `${API_HOST}/${buildAppItemLinkForTest('app.html')}`,
+  ...AppItemFactory({
+    id: 'ecafbd2a-5688-12eb-ae91-0272ac130003',
+    path: 'ecafbd2a_5688_12eb_ae91_0272ac130003',
+    name: 'my app',
+    description: 'my app description',
+    extra: {
+      [ItemType.APP]: {
+        url: `${API_HOST}/${buildAppItemLinkForTest('app.html')}`,
+      },
     },
-  },
-  creator: MEMBERS.BOB,
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
+    creator: MEMBERS.BOB,
+  }),
   tags: [mockItemTag({ type: ItemTagType.Public })],
 };
 

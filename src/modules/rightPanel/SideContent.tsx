@@ -189,7 +189,7 @@ const SideContent = ({ content, item }: Props): JSX.Element | null => {
     <div>
       {displayChatbox()}
       {displayPinnedItems()}
-      <Grid>
+      <Grid id="contentGrid">
         <StyledMain
           isShifted={isChatboxMenuOpen || (isPinnedMenuOpen && pinnedCount > 0)}
         >

@@ -1,5 +1,4 @@
 import { API_ROUTES } from '@graasp/query-client';
-import { buildGetAccessibleItems } from '@graasp/query-client/dist/api/routes';
 import {
   ChatMessage,
   DiscriminatedItem,
@@ -45,6 +44,7 @@ const {
   buildGetItemTagsRoute,
   buildGetMembersBy,
   buildGetMembersRoute,
+  buildGetAccessibleItems,
   GET_CURRENT_MEMBER_ROUTE,
   GET_OWN_ITEMS_ROUTE,
   SHARED_ITEM_WITH_ROUTE,
@@ -169,7 +169,7 @@ export const mockGetSharedItems = ({
 export const mockGetAccessibleItems = (items: DiscriminatedItem[]): void => {
   cy.intercept(
     {
-      method: HttpMethod.GET,
+      method: HttpMethod.Get,
       url: new RegExp(`${API_HOST}/${buildGetAccessibleItems({}, {})}`),
     },
     ({ url, reply }) => {

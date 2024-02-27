@@ -2,15 +2,15 @@ import {
   AppItemType,
   DiscriminatedItem,
   DocumentItemType,
-  EmbeddedLinkItemType,
   ItemType,
+  LinkItemType,
   LocalFileItemType,
   MimeTypes,
   S3FileItemType,
   appendQueryParamToUrl,
   getDocumentExtra,
-  getEmbeddedLinkExtra,
   getFileExtra,
+  getLinkExtra,
   getParentFromPath,
   getS3FileExtra,
 } from '@graasp/sdk';
@@ -28,8 +28,8 @@ export const expectLinkViewScreenLayout = ({
   id,
   extra,
   settings,
-}: EmbeddedLinkItemType): void => {
-  const { url, html } = getEmbeddedLinkExtra(extra) || {};
+}: LinkItemType): void => {
+  const { url, html } = getLinkExtra(extra) || {};
 
   // embedded element
   if (html) {

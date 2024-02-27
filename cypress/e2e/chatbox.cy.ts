@@ -4,7 +4,6 @@ import {
   ITEM_CHATBOX_ID,
   PANEL_CLOSE_BUTTON_SELECTOR,
 } from '../../src/config/selectors';
-import { LOAD_CHATBOX_PAUSE } from '../fixtures/constants';
 import { GRAASP_DOCUMENT_ITEM_WITH_CHAT_BOX } from '../fixtures/documents';
 import { ITEM_WITHOUT_CHAT_BOX, ITEM_WITH_CHAT_BOX } from '../fixtures/items';
 import { expectDocumentViewScreenLayout } from '../support/integrationUtils';
@@ -29,8 +28,6 @@ describe('Chatbox', () => {
 
     cy.get(`#${ITEM_CHATBOX_BUTTON_ID}`).click();
 
-    cy.wait(LOAD_CHATBOX_PAUSE);
-
     cy.get(`#${ITEM_CHATBOX_ID}`).should('be.visible');
   });
 
@@ -43,7 +40,6 @@ describe('Chatbox', () => {
 
     cy.get(`#${ITEM_CHATBOX_BUTTON_ID}`).click();
 
-    cy.wait(LOAD_CHATBOX_PAUSE);
     cy.get(`#${ITEM_CHATBOX_ID}`).should('be.visible');
 
     cy.get(PANEL_CLOSE_BUTTON_SELECTOR).click();
