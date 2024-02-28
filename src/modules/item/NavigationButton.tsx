@@ -2,7 +2,7 @@ import { useParams } from 'react-router';
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { Box } from '@mui/material';
+import { AppBar, Box, Toolbar } from '@mui/material';
 
 import { ActionTriggers, DiscriminatedItem, ItemType } from '@graasp/sdk';
 import { Button } from '@graasp/ui';
@@ -18,6 +18,7 @@ const NavigationButton = ({
   const { rootId } = useParams();
   const { setFocusedItemId } = useItemContext();
   const { mutate: triggerAction } = mutations.usePostItemAction();
+  const { data: rootItem } = hooks.useItem(rootId);
 
   const { data: descendants, isLoading } = hooks.useDescendants({
     // not correct but enabled
@@ -29,6 +30,7 @@ const NavigationButton = ({
     return null;
   }
 
+  const prevRoot: DiscriminatedItem | null = rootItem || null;
   let prev: DiscriminatedItem | null = null;
   let next: DiscriminatedItem | null = null;
 
@@ -45,7 +47,7 @@ const NavigationButton = ({
       return null;
     }
 
-    prev = folderHierarchy[idx - 1];
+    prev = idx === 0 ? prevRoot : folderHierarchy[idx - 1];
     next = folderHierarchy[idx + 1];
   }
 
@@ -55,42 +57,40 @@ const NavigationButton = ({
   };
 
   return (
-    <Box
-      flexDirection="row"
-      sx={{ mt: 3 }}
-      display="flex"
-      justifyContent="space-between"
-    >
-      {prev ? (
-        <Button
-          variant="outlined"
-          startIcon={<ArrowBackIcon />}
-          onClick={() => {
-            if (prev && prev.id) {
-              handleClickNavigationButton(prev.id);
-            }
-          }}
-        >
-          {prev.name}
-        </Button>
-      ) : (
-        <p />
-      )}
-      {next ? (
-        <Button
-          endIcon={<ArrowForwardIcon />}
-          onClick={() => {
-            if (next && next.id) {
-              handleClickNavigationButton(next.id);
-            }
-          }}
-        >
-          {next.name}
-        </Button>
-      ) : (
-        <p />
-      )}
-    </Box>
+    <AppBar position="fixed" color="secondary" sx={{ top: 'auto', bottom: 0 }}>
+      <Toolbar>
+        {prev ? (
+          <Button
+            variant="outlined"
+            startIcon={<ArrowBackIcon />}
+            onClick={() => {
+              if (prev && prev.id) {
+                handleClickNavigationButton(prev.id);
+              }
+            }}
+          >
+            {prev.name}
+          </Button>
+        ) : (
+          <p />
+        )}
+        <Box sx={{ flexGrow: 1 }} />
+        {next ? (
+          <Button
+            endIcon={<ArrowForwardIcon />}
+            onClick={() => {
+              if (next && next.id) {
+                handleClickNavigationButton(next.id);
+              }
+            }}
+          >
+            {next.name}
+          </Button>
+        ) : (
+          <p />
+        )}
+      </Toolbar>
+    </AppBar>
   );
 };
 
