@@ -4,7 +4,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Box } from '@mui/material';
 
-import { DiscriminatedItem, ItemType, Triggers } from '@graasp/sdk';
+import { ActionTriggers, DiscriminatedItem, ItemType } from '@graasp/sdk';
 import { Button } from '@graasp/ui';
 
 import { hooks, mutations } from '@/config/queryClient';
@@ -50,7 +50,7 @@ const NavigationButton = ({
   }
 
   const handleClickNavigationButton = (itemId: string) => {
-    triggerAction({ itemId, payload: { type: Triggers.ItemView } });
+    triggerAction({ itemId, payload: { type: ActionTriggers.ItemView } });
     setFocusedItemId(itemId);
   };
 
@@ -65,7 +65,11 @@ const NavigationButton = ({
         <Button
           variant="outlined"
           startIcon={<ArrowBackIcon />}
-          onClick={() => handleClickNavigationButton(prev.id)}
+          onClick={() => {
+            if (prev && prev.id) {
+              handleClickNavigationButton(prev.id);
+            }
+          }}
         >
           {prev.name}
         </Button>
@@ -75,7 +79,11 @@ const NavigationButton = ({
       {next ? (
         <Button
           endIcon={<ArrowForwardIcon />}
-          onClick={() => handleClickNavigationButton(next.id)}
+          onClick={() => {
+            if (next && next.id) {
+              handleClickNavigationButton(next.id);
+            }
+          }}
         >
           {next.name}
         </Button>
