@@ -93,10 +93,12 @@ const TreeView = ({
   const itemTree = getItemTree(itemsToShow ?? [], rootItems);
   const tree = Object.values(itemTree);
 
+  const defaultExpandedIds = rootItems[0]?.id ? [rootItems[0]?.id] : [];
+
   const selectedIds = focusedItemId ? [focusedItemId] : [];
   const expandedIds = focusedItem
     ? getIdsFromPath(focusedItem?.path)
-    : [rootItems[0]?.id];
+    : defaultExpandedIds;
 
   return (
     <Box
@@ -117,7 +119,7 @@ const TreeView = ({
         </Typography>
       )}
       <AccessibleTreeView
-        defaultExpandedIds={[rootItems[0]?.id]}
+        defaultExpandedIds={defaultExpandedIds}
         data={flattenTree<{ type: UnionOfConst<typeof ItemType> }>({
           // here there should be a root item for all children which basically is gonna be an empty name
           name: '',
