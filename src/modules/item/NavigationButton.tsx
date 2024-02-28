@@ -4,10 +4,11 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Box } from '@mui/material';
 
-import { DiscriminatedItem, ItemType } from '@graasp/sdk';
+import { DiscriminatedItem, ItemType, Triggers } from '@graasp/sdk';
 import { Button } from '@graasp/ui';
 
-import { hooks } from '@/config/queryClient';
+import { hooks, mutations } from '@/config/queryClient';
+import { useItemContext } from '@/contexts/ItemContext';
 
 const NavigationButton = ({
   item,
@@ -15,6 +16,8 @@ const NavigationButton = ({
   item: DiscriminatedItem;
 }): JSX.Element | null => {
   const { rootId } = useParams();
+  const { setFocusedItemId } = useItemContext();
+  const { mutate: triggerAction } = mutations.usePostItemAction();
 
   const { data: descendants, isLoading } = hooks.useDescendants({
     // not correct but enabled
@@ -26,10 +29,10 @@ const NavigationButton = ({
     return null;
   }
 
-  let prev = null;
-  let next = null;
+  let prev: DiscriminatedItem | null = null;
+  let next: DiscriminatedItem | null = null;
 
-  const folderHierarchy = descendants?.filter(
+  const folderHierarchy: DiscriminatedItem[] | undefined = descendants?.filter(
     ({ type }) => type === ItemType.FOLDER,
   );
 
@@ -45,17 +48,35 @@ const NavigationButton = ({
     prev = folderHierarchy[idx - 1];
     next = folderHierarchy[idx + 1];
   }
+
+  const handleClickNavigationButton = (itemId: string) => {
+    triggerAction({ itemId, payload: { type: Triggers.ItemView } });
+    setFocusedItemId(itemId);
+  };
+
   return (
-    <Box flexDirection="row" display="flex" justifyContent="space-between">
+    <Box
+      flexDirection="row"
+      sx={{ mt: 3 }}
+      display="flex"
+      justifyContent="space-between"
+    >
       {prev ? (
-        <Button sx={{}} variant="outlined" startIcon={<ArrowBackIcon />}>
+        <Button
+          variant="outlined"
+          startIcon={<ArrowBackIcon />}
+          onClick={() => handleClickNavigationButton(prev.id)}
+        >
           {prev.name}
         </Button>
       ) : (
         <p />
       )}
       {next ? (
-        <Button sx={{}} endIcon={<ArrowForwardIcon />}>
+        <Button
+          endIcon={<ArrowForwardIcon />}
+          onClick={() => handleClickNavigationButton(next.id)}
+        >
           {next.name}
         </Button>
       ) : (

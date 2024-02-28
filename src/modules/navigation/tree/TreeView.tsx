@@ -12,10 +12,12 @@ import {
   DiscriminatedItem,
   ItemType,
   UnionOfConst,
+  getIdsFromPath,
 } from '@graasp/sdk';
 
 import { GRAASP_MENU_ITEMS } from '@/config/constants';
-import { mutations } from '@/config/queryClient';
+import { hooks, mutations } from '@/config/queryClient';
+import { useItemContext } from '@/contexts/ItemContext';
 import { ItemMetaData, getItemTree } from '@/utils/tree';
 
 import Node from './Node';
@@ -48,6 +50,10 @@ const TreeView = ({
   const itemsToShow = items?.filter((item) =>
     onlyShowContainerItems ? GRAASP_MENU_ITEMS.includes(item.type) : true,
   );
+
+  const { focusedItemId } = useItemContext();
+
+  const { data: focusedItem } = hooks.useItem(focusedItemId);
 
   if (isLoading) {
     return <Skeleton variant="text" />;
@@ -84,7 +90,13 @@ const TreeView = ({
     />
   );
 
-  const tree = Object.values(getItemTree(itemsToShow ?? [], rootItems));
+  const itemTree = getItemTree(itemsToShow ?? [], rootItems);
+  const tree = Object.values(itemTree);
+
+  const selectedIds = focusedItemId ? [focusedItemId] : [];
+  const expandedIds = focusedItem
+    ? getIdsFromPath(focusedItem?.path)
+    : [rootItems[0]?.id];
 
   return (
     <Box
@@ -107,11 +119,13 @@ const TreeView = ({
       <AccessibleTreeView
         defaultExpandedIds={[rootItems[0]?.id]}
         data={flattenTree<{ type: UnionOfConst<typeof ItemType> }>({
-          // here there's should be a root item for all children which basically gonna be an empty name
+          // here there should be a root item for all children which basically is gonna be an empty name
           name: '',
           children: tree,
         })}
         nodeRenderer={nodeRenderer}
+        selectedIds={selectedIds}
+        expandedIds={expandedIds}
       />
     </Box>
   );

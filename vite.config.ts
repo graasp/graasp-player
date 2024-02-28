@@ -15,7 +15,7 @@ export default ({ mode }: { mode: string }): UserConfigExport => {
   };
 
   return defineConfig({
-    base: '',
+    base: '/',
     server: {
       port: parseInt(process.env.VITE_PORT, 10),
       open: true,
