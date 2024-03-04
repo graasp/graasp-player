@@ -1,13 +1,21 @@
 import { Fragment, useCallback, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-import { Alert, Box, Container, Skeleton, Typography } from '@mui/material';
+import {
+  Alert,
+  Box,
+  Container,
+  Skeleton,
+  Stack,
+  Typography,
+} from '@mui/material';
 
 import { Api } from '@graasp/query-client';
 import {
   ActionTriggers,
   AppItemType,
   Context,
+  DescriptionPlacement,
   DiscriminatedItem,
   DocumentItemType,
   EtherpadItemType,
@@ -460,10 +468,19 @@ const Item = ({
       <>
         {!showPinnedOnly && (
           <>
-            <Typography className={FOLDER_NAME_TITLE_CLASS} variant="h5">
-              {item.name}
-            </Typography>
-            <TextDisplay content={item.description ?? ''} />
+            <Stack
+              direction={
+                item.settings.descriptionPlacement ===
+                DescriptionPlacement.ABOVE
+                  ? 'column-reverse'
+                  : 'column'
+              }
+            >
+              <Typography className={FOLDER_NAME_TITLE_CLASS} variant="h5">
+                {item.name}
+              </Typography>
+              <TextDisplay content={item.description ?? ''} />
+            </Stack>
 
             {childrenPaginated?.pages.map((page) => (
               <Fragment key={page.pageNumber}>
