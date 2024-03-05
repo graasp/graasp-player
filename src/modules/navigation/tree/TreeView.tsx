@@ -93,11 +93,11 @@ const TreeView = ({
   const itemTree = getItemTree(itemsToShow ?? [], rootItems);
   const tree = Object.values(itemTree);
 
-  const defaultExpandedIds = rootItems[0]?.id ? [rootItems[0]?.id] : [];
+  const defaultExpandedIds = rootItems[0]?.id ? [rootItems[0].id] : [];
 
   const selectedIds = focusedItemId ? [focusedItemId] : [];
   const expandedIds = focusedItem
-    ? getIdsFromPath(focusedItem?.path)
+    ? getIdsFromPath(focusedItem.path)
     : defaultExpandedIds;
 
   return (
