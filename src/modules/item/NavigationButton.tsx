@@ -38,6 +38,7 @@ const NavigationButton = ({
     ({ type }) => type === ItemType.FOLDER,
   );
 
+  // when focusing on the root item
   if (item.id === rootId && folderHierarchy?.length) {
     [next] = folderHierarchy;
   } else {
