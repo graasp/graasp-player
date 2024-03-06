@@ -15,7 +15,6 @@ import {
   ActionTriggers,
   AppItemType,
   Context,
-  DescriptionPlacement,
   DiscriminatedItem,
   DocumentItemType,
   EtherpadItemType,
@@ -468,14 +467,7 @@ const Item = ({
       <>
         {!showPinnedOnly && (
           <>
-            <Stack
-              direction={
-                item.settings.descriptionPlacement ===
-                DescriptionPlacement.ABOVE
-                  ? 'column-reverse'
-                  : 'column'
-              }
-            >
+            <Stack direction="column">
               <Typography className={FOLDER_NAME_TITLE_CLASS} variant="h5">
                 {item.name}
               </Typography>
