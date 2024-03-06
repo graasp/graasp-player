@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.6.0](https://github.com/graasp/graasp-player/compare/v2.5.1...v2.6.0) (2024-03-06)
+
+
+### Features
+
+* remove the description above the folder title ([#549](https://github.com/graasp/graasp-player/issues/549)) ([d99325c](https://github.com/graasp/graasp-player/commit/d99325c9aa767796feb19eb288e98c5225a3f281))
+* update ui to update the description's position ([#541](https://github.com/graasp/graasp-player/issues/541)) ([8e59a30](https://github.com/graasp/graasp-player/commit/8e59a30fb4f84efebb56582d3bfaf4e8ebf9a1a0))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @emotion/react to v11.11.4 ([#538](https://github.com/graasp/graasp-player/issues/538)) ([22de687](https://github.com/graasp/graasp-player/commit/22de6870d07e92169a1034d0682aa328a5115bc2))
+* **deps:** update dependency @graasp/sdk to v4.1.0 ([#531](https://github.com/graasp/graasp-player/issues/531)) ([f0730a4](https://github.com/graasp/graasp-player/commit/f0730a4a4682e992f5e573b22a55d9ced36bba18))
+* **deps:** update dependency @graasp/ui to v4.8.4 ([#540](https://github.com/graasp/graasp-player/issues/540)) ([613e55d](https://github.com/graasp/graasp-player/commit/613e55d64c8e642ee1c6143cbad6d8d58526d5ca))
+* **deps:** update dependency @sentry/react to v7.105.0 ([#511](https://github.com/graasp/graasp-player/issues/511)) ([ca1f4b0](https://github.com/graasp/graasp-player/commit/ca1f4b06f9988dd5c0e7fb233a2454ce54be7c84))
+* **deps:** update react-router monorepo to v6.22.2 ([#539](https://github.com/graasp/graasp-player/issues/539)) ([a7e50e5](https://github.com/graasp/graasp-player/commit/a7e50e5ab9f85f4e52dc82376011b3ab38432112))
+
 ## [2.5.1](https://github.com/graasp/graasp-player/compare/v2.5.0...v2.5.1) (2024-02-27)
 
 
