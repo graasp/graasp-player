@@ -1,6 +1,6 @@
 import { Link, Outlet, useParams } from 'react-router-dom';
 
-import { Typography, styled } from '@mui/material';
+import { Typography, styled, useTheme } from '@mui/material';
 
 import { Context } from '@graasp/sdk';
 import {
@@ -8,6 +8,7 @@ import {
   Platform,
   PlatformSwitch,
   defaultHostsMapper,
+  useMobileView,
   usePlatformNavigation,
 } from '@graasp/ui';
 
@@ -52,7 +53,8 @@ const LinkComponent = ({
 
 const PageWrapper = (): JSX.Element => {
   const { t } = usePlayerTranslation();
-
+  const theme = useTheme();
+  const { isMobile } = useMobileView();
   const { rootId } = useParams();
   const { data: item } = hooks.useItem();
   const getNavigationEvents = usePlatformNavigation(platformsHostsMap, rootId);
@@ -90,6 +92,16 @@ const PageWrapper = (): JSX.Element => {
             selected={Platform.Player}
             platformsProps={platformProps}
             disabledColor="#999"
+            color={
+              isMobile
+                ? theme.palette.primary.main
+                : theme.palette.secondary.main
+            }
+            accentColor={
+              isMobile
+                ? theme.palette.secondary.main
+                : theme.palette.primary.main
+            }
           />
         }
         headerLeftContent={<Typography noWrap>{item?.name}</Typography>}
