@@ -10,6 +10,8 @@ import { Button } from '@graasp/ui';
 import { hooks, mutations } from '@/config/queryClient';
 import { useItemContext } from '@/contexts/ItemContext';
 
+import isArray from 'lodash.isarray';
+
 const NavigationButton = ({
   item,
 }: {
@@ -26,29 +28,40 @@ const NavigationButton = ({
     enabled: Boolean(rootId),
   });
 
-  if (isLoading) {
-    return null;
-  }
-
   const prevRoot: DiscriminatedItem | null = rootItem || null;
   let prev: DiscriminatedItem | null = null;
   let next: DiscriminatedItem | null = null;
 
-  const folderHierarchy: DiscriminatedItem[] | undefined = descendants?.filter(
+  // if there are no descendants then there is no need to navigate
+  if (!isArray(descendants)) {
+    return null;
+  }
+
+  if (isLoading) {
+    return null;
+  }
+
+  // we only navigate through folders
+  const folderHierarchy: DiscriminatedItem[] = descendants.filter(
     ({ type }) => type === ItemType.FOLDER,
   );
 
   // when focusing on the root item
-  if (item.id === rootId && folderHierarchy?.length) {
+  if (item.id === rootId && folderHierarchy.length) {
+    // there is no previous and the nex in the first item in the hierarchy
     [next] = folderHierarchy;
+  // when focusing on the descendants
   } else {
-    const idx = folderHierarchy?.findIndex(({ id }) => id === item.id) ?? -1;
+    const idx = folderHierarchy.findIndex(({ id }) => id === item.id) ?? -1;
 
-    if (!folderHierarchy || idx < 0) {
+    // if index is not found, then do not show navigation
+    if (idx < 0) {
       return null;
     }
 
+    // if index is 0, previous is root
     prev = idx === 0 ? prevRoot : folderHierarchy[idx - 1];
+    // if you reach the end, next will be undefined and not show
     next = folderHierarchy[idx + 1];
   }
 

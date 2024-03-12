@@ -2613,6 +2613,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash.isarray@npm:^4":
+  version: 4.0.9
+  resolution: "@types/lodash.isarray@npm:4.0.9"
+  dependencies:
+    "@types/lodash": "npm:*"
+  checksum: 10/0007453046f3ccf5c9a25fcec5fab3e1d0a1fa547e26009cf50c9b758332c8372a8ea60446b9847e56af2bff7be72c91092e92826896c213da7657e56006fc8d
+  languageName: node
+  linkType: hard
+
 "@types/lodash.truncate@npm:^4.4.9":
   version: 4.4.9
   resolution: "@types/lodash.truncate@npm:4.4.9"
@@ -6416,6 +6425,7 @@ __metadata:
     "@sentry/react": "npm:7.105.0"
     "@trivago/prettier-plugin-sort-imports": "npm:4.3.0"
     "@types/katex": "npm:^0.16.7"
+    "@types/lodash.isarray": "npm:^4"
     "@types/lodash.truncate": "npm:^4.4.9"
     "@types/node": "npm:^20.11.20"
     "@types/react": "npm:18.2.60"
@@ -6444,6 +6454,7 @@ __metadata:
     husky: "npm:9.0.11"
     i18next: "npm:23.10.0"
     katex: "npm:0.16.9"
+    lodash.isarray: "npm:4.0.0"
     lodash.truncate: "npm:4.4.2"
     prettier: "npm:3.2.5"
     react: "npm:18.2.0"
@@ -7816,6 +7827,13 @@ __metadata:
   version: 4.6.0
   resolution: "lodash.groupby@npm:4.6.0"
   checksum: 10/98bd04e58ce4cebb2273010352508b5ea12025e94fcfd70c84c8082ef3b0689178e8e6dd53bff919f525fae9bd67b4aba228d606b75a967f30e84ec9610b5de1
+  languageName: node
+  linkType: hard
+
+"lodash.isarray@npm:4.0.0":
+  version: 4.0.0
+  resolution: "lodash.isarray@npm:4.0.0"
+  checksum: 10/88aeb6b9af3e19ad9bfd38cf03b50991a0cd2862965214ef3047f55fd7df27aa731ff9c6aca0899e4a8a90180d5c0c4f936949adcc224f3929e95a1918362123
   languageName: node
   linkType: hard
 
