@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0](https://github.com/graasp/graasp-player/compare/v2.6.0...v2.7.0) (2024-03-12)
+
+
+### Features
+
+* show next-prev buttons ([#441](https://github.com/graasp/graasp-player/issues/441)) ([0647864](https://github.com/graasp/graasp-player/commit/064786487f8451722263b0bc47b943c5b40dba6c))
+
+
+### Bug Fixes
+
+* fix platform switch mobile colors ([#556](https://github.com/graasp/graasp-player/issues/556)) ([bb3e5bd](https://github.com/graasp/graasp-player/commit/bb3e5bd8e92eaec90b453705523d40b02ea2d404))
+
 ## [2.6.0](https://github.com/graasp/graasp-player/compare/v2.5.1...v2.6.0) (2024-03-06)
 
 
