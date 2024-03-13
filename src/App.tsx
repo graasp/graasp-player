@@ -50,9 +50,11 @@ export const App = (): JSX.Element => {
   };
   const HomePageWithAuthorization = withAuthorization(HomePage, props);
 
+  const fullscreen = Boolean(searchParams.get('fullscreen') === 'true');
+
   return (
     <Routes>
-      <Route element={<PageWrapper />}>
+      <Route element={<PageWrapper fullscreen={fullscreen} />}>
         <Route path={buildMainPath()} element={<ItemPage />} />
         <Route path={HOME_PATH} element={<HomePageWithAuthorization />} />
         <Route path="*" element={<Navigate to={HOME_PATH} />} />

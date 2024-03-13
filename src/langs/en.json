@@ -2,6 +2,8 @@
   "GRAASP_PLAYER": "Graasp Player",
   "SHOW_CHAT_TOOLTIP": "Show chat",
   "HIDE_CHAT_TOOLTIP": "Hide chat",
+  "EXIT_FULLSCREEN_TOOLTIP": "Exit fullscreen",
+  "ENTER_FULLSCREEN_TOOLTIP": "Enter fullscreen",
   "SHOW_PINNED_ITEMS_TOOLTIP": "Show pinned items",
   "HIDE_PINNED_ITEMS_TOOLTIP": "Hide pinned items",
   "PINNED_ITEMS": "Pinned items",

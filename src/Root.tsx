@@ -26,7 +26,15 @@ import { CurrentMemberContextProvider } from '@/contexts/CurrentMemberContext';
 
 import App from './App';
 
-const globalStyles = <GlobalStyles styles={{ p: { fontSize: '1rem' } }} />;
+const globalStyles = (
+  <GlobalStyles
+    styles={{
+      p: { fontSize: '1rem' },
+      // required for fullscreen
+      '::backdrop': { backgroundColor: 'white' },
+    }}
+  />
+);
 
 const Root = (): JSX.Element => (
   <QueryClientProvider client={queryClient}>

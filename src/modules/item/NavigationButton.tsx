@@ -71,7 +71,12 @@ const NavigationButton = ({
   };
 
   return (
-    <AppBar position="fixed" color="secondary" sx={{ top: 'auto', bottom: 0 }}>
+    // z-index is 998 because cookie banner is 999
+    <AppBar
+      position="fixed"
+      color="secondary"
+      sx={{ top: 'auto', bottom: 0, zIndex: 998 }}
+    >
       <Toolbar>
         {prev ? (
           <Button

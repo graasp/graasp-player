@@ -7,6 +7,8 @@ type LayoutContextType = {
   setIsPinnedMenuOpen: (state: boolean) => void;
   isChatboxMenuOpen: boolean;
   setIsChatboxMenuOpen: (state: boolean) => void;
+  isFullscreen: boolean;
+  setIsFullscreen: (state: boolean) => void;
 };
 
 const LayoutContext = createContext<LayoutContextType>({
@@ -14,6 +16,8 @@ const LayoutContext = createContext<LayoutContextType>({
   setIsPinnedMenuOpen: () => null,
   isChatboxMenuOpen: false,
   setIsChatboxMenuOpen: () => null,
+  isFullscreen: false,
+  setIsFullscreen: () => null,
 });
 
 type Props = {
@@ -25,6 +29,7 @@ export const LayoutContextProvider = ({ children }: Props): JSX.Element => {
 
   const [isPinnedMenuOpen, setIsPinnedMenuOpen] = useState<boolean>(!isMobile);
   const [isChatboxMenuOpen, setIsChatboxMenuOpen] = useState<boolean>(false);
+  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
 
   useEffect(() => {
     setIsPinnedMenuOpen(!isMobile);
@@ -36,12 +41,16 @@ export const LayoutContextProvider = ({ children }: Props): JSX.Element => {
       setIsPinnedMenuOpen,
       isChatboxMenuOpen,
       setIsChatboxMenuOpen,
+      isFullscreen,
+      setIsFullscreen,
     }),
     [
       isPinnedMenuOpen,
       setIsPinnedMenuOpen,
       isChatboxMenuOpen,
       setIsChatboxMenuOpen,
+      isFullscreen,
+      setIsFullscreen,
     ],
   );
 

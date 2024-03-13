@@ -1,4 +1,9 @@
+import Fullscreen from 'react-fullscreen-crossbrowser';
+import { useSearchParams } from 'react-router-dom';
+
 import ForumIcon from '@mui/icons-material/Forum';
+import EnterFullscreenIcon from '@mui/icons-material/Fullscreen';
+import ExitFullscreenIcon from '@mui/icons-material/FullscreenExit';
 import PushPinIcon from '@mui/icons-material/PushPin';
 import { Grid, Stack, Tooltip, styled } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
@@ -22,6 +27,7 @@ import { DRAWER_WIDTH, FLOATING_BUTTON_Z_INDEX } from '../../config/constants';
 import {
   CHATBOX_DRAWER_ID,
   ITEM_CHATBOX_BUTTON_ID,
+  ITEM_FULLSCREEN_BUTTON_ID,
   ITEM_PINNED_BUTTON_ID,
   ITEM_PINNED_ID,
 } from '../../config/selectors';
@@ -66,12 +72,15 @@ type Props = {
 const SideContent = ({ content, item }: Props): JSX.Element | null => {
   const { descendants, rootId } = useItemContext();
   const { data: tags } = hooks.useItemsTags(descendants?.map(({ id }) => id));
+  const [searchParams] = useSearchParams();
 
   const {
     isPinnedMenuOpen,
     setIsPinnedMenuOpen,
     isChatboxMenuOpen,
     setIsChatboxMenuOpen,
+    isFullscreen,
+    setIsFullscreen,
   } = useLayoutContext();
 
   const { t } = usePlayerTranslation();
@@ -114,6 +123,10 @@ const SideContent = ({ content, item }: Props): JSX.Element | null => {
     setIsChatboxMenuOpen(false);
   };
 
+  const toggleFullscreen = () => {
+    setIsFullscreen(!isFullscreen);
+  };
+
   const displayPinButton = () => {
     if (!pinnedCount) return null;
 
@@ -129,6 +142,34 @@ const SideContent = ({ content, item }: Props): JSX.Element | null => {
           onClick={togglePinnedOpen}
         >
           <PushPinIcon />
+        </StyledIconButton>
+      </Tooltip>
+    );
+  };
+
+  const displayFullscreenButton = () => {
+    // todo: add this to settings (?)
+    const fullscreen = Boolean(searchParams.get('fullscreen') === 'true');
+    if (!fullscreen) return null;
+
+    return (
+      <Tooltip
+        title={
+          isFullscreen
+            ? t(PLAYER.EXIT_FULLSCREEN_TOOLTIP)
+            : t(PLAYER.ENTER_FULLSCREEN_TOOLTIP)
+        }
+      >
+        <StyledIconButton
+          id={ITEM_FULLSCREEN_BUTTON_ID}
+          aria-label={
+            isFullscreen
+              ? t(PLAYER.EXIT_FULLSCREEN_TOOLTIP)
+              : t(PLAYER.ENTER_FULLSCREEN_TOOLTIP)
+          }
+          onClick={toggleFullscreen}
+        >
+          {isFullscreen ? <ExitFullscreenIcon /> : <EnterFullscreenIcon />}
         </StyledIconButton>
       </Tooltip>
     );
@@ -190,13 +231,18 @@ const SideContent = ({ content, item }: Props): JSX.Element | null => {
   };
 
   return (
-    <div>
+    <Fullscreen
+      enabled={isFullscreen}
+      onChange={(isFullscreenEnabled) => setIsFullscreen(isFullscreenEnabled)}
+    >
       {displayChatbox()}
       {displayPinnedItems()}
       <Grid id="contentGrid">
         <StyledMain
           isShifted={isChatboxMenuOpen || (isPinnedMenuOpen && pinnedCount > 0)}
         >
+          {displayFullscreenButton()}
+
           {displayChatButton()}
 
           {displayPinButton()}
@@ -204,7 +250,7 @@ const SideContent = ({ content, item }: Props): JSX.Element | null => {
           {content}
         </StyledMain>
       </Grid>
-    </div>
+    </Fullscreen>
   );
 };
 

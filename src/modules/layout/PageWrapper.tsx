@@ -51,7 +51,11 @@ const LinkComponent = ({
   children: JSX.Element;
 }): JSX.Element => <StyledLink to={HOME_PATH}>{children}</StyledLink>;
 
-const PageWrapper = (): JSX.Element => {
+type PageWrapperProps = {
+  fullscreen: boolean;
+};
+
+const PageWrapper = ({ fullscreen }: PageWrapperProps): JSX.Element => {
   const { t } = usePlayerTranslation();
   const theme = useTheme();
   const { isMobile } = useMobileView();
@@ -77,6 +81,14 @@ const PageWrapper = (): JSX.Element => {
       ...getNavigationEvents(Platform.Analytics),
     },
   };
+
+  if (fullscreen) {
+    return (
+      <ItemContextProvider rootId={rootId}>
+        <Outlet />
+      </ItemContextProvider>
+    );
+  }
 
   return (
     <ItemContextProvider rootId={rootId}>

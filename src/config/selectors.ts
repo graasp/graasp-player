@@ -10,6 +10,8 @@ export const buildDocumentId = (id: string): string => `document-${id}`;
 export const buildAppId = (id: string): string => `app-${id}`;
 export const FOLDER_NAME_TITLE_CLASS = `folderNameTitle`;
 
+export const ITEM_FULLSCREEN_BUTTON_ID = 'itemFullscreenButton';
+
 export const ITEM_CHATBOX_ID = 'chatbox';
 export const ITEM_CHATBOX_BUTTON_ID = 'itemChatboxButton';
 
