@@ -3,7 +3,12 @@ import PushPinIcon from '@mui/icons-material/PushPin';
 import { Grid, Stack, Tooltip, styled } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
-import { DiscriminatedItem, ItemTagType, ItemType } from '@graasp/sdk';
+import {
+  DiscriminatedItem,
+  ItemTagType,
+  ItemType,
+  getIdsFromPath,
+} from '@graasp/sdk';
 
 import { usePlayerTranslation } from '@/config/i18n';
 import { hooks } from '@/config/queryClient';
@@ -20,7 +25,6 @@ import {
   ITEM_PINNED_BUTTON_ID,
   ITEM_PINNED_ID,
 } from '../../config/selectors';
-import { getParentsIdsFromPath } from '../../utils/item';
 import SideDrawer from './SideDrawer';
 
 const StyledMain = styled('div', {
@@ -82,7 +86,7 @@ const SideContent = ({ content, item }: Props): JSX.Element | null => {
   Ex: if we are in item 6 and the root is 3, when splitting the path we get [ 1, 2, 3, 4, 5, 6 ].
   However the student cannot go higher than element 3, so we remove the element before 3, this
   gives us [ 3, 4, 5, 6], which is the visible range of the student. */
-  const parents = getParentsIdsFromPath(item.path || item.id);
+  const parents = getIdsFromPath(item.path);
   const parentsIds = parents.slice(
     parents.indexOf(rootId),
     /* When splitting the path, it returns the current element in the array.

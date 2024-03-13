@@ -7,10 +7,10 @@ import { AppBar, Box, Toolbar } from '@mui/material';
 import { ActionTriggers, DiscriminatedItem, ItemType } from '@graasp/sdk';
 import { Button } from '@graasp/ui';
 
+import isArray from 'lodash.isarray';
+
 import { hooks, mutations } from '@/config/queryClient';
 import { useItemContext } from '@/contexts/ItemContext';
-
-import isArray from 'lodash.isarray';
 
 const NavigationButton = ({
   item,
@@ -50,7 +50,7 @@ const NavigationButton = ({
   if (item.id === rootId && folderHierarchy.length) {
     // there is no previous and the nex in the first item in the hierarchy
     [next] = folderHierarchy;
-  // when focusing on the descendants
+    // when focusing on the descendants
   } else {
     const idx = folderHierarchy.findIndex(({ id }) => id === item.id) ?? -1;
 

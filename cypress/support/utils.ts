@@ -1,6 +1,6 @@
 import { ChatMessage } from '@graasp/sdk';
 
-import { MockItem } from '../fixtures/items';
+import { MockItem } from '../fixtures/mockTypes';
 
 // use simple id format for tests
 export const ID_FORMAT = '(?=.*[0-9])(?=.*[a-zA-Z])([a-z0-9-]+)';

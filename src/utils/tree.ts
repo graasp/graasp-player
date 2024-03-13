@@ -3,10 +3,8 @@ import {
   ItemType,
   UnionOfConst,
   getMimetype,
-  sortChildrenWith,
+  getParentFromPath,
 } from '@graasp/sdk';
-
-import { getParentsIdsFromPath } from './item';
 
 type ItemIdToDirectChildren = {
   [nodeId: string]: DiscriminatedItem[];
@@ -18,11 +16,10 @@ type ItemIdToDirectChildren = {
  */
 const createMapTree = (data: DiscriminatedItem[]): ItemIdToDirectChildren =>
   data.reduce<ItemIdToDirectChildren>((treeMap, elem) => {
-    const parentIds = getParentsIdsFromPath(elem.path, { ignoreSelf: true });
-    if (parentIds.length) {
-      const lastParentId = parentIds[parentIds.length - 1];
+    const parentId = getParentFromPath(elem.path);
+    if (parentId) {
       // eslint-disable-next-line no-param-reassign
-      treeMap[lastParentId] = (treeMap[lastParentId] ?? []).concat([elem]);
+      treeMap[parentId] = (treeMap[parentId] ?? []).concat([elem]);
     }
     return treeMap;
   }, {});
@@ -65,11 +62,7 @@ const buildItemsTree = (
 
   const buildTree = (node: DiscriminatedItem) => {
     if (node.type === ItemType.FOLDER && mapTree[node.id]) {
-      // sort by children order or default to all if not defined
-      const children = sortChildrenWith(
-        mapTree[node.id] ?? [],
-        node.extra.folder?.childrenOrder ?? [],
-      );
+      const children = mapTree[node.id] ?? [];
 
       const entry: PartialItemWithChildren = {
         id: node.id,
