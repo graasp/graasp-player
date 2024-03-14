@@ -8,5 +8,10 @@
   "LOAD_MORE": "تحميل المزيد",
   "HIDDEN_WRAPPER_TOOLTIP": "هذا العنصر مخفي، يمكنك رؤيته لأن لديك حق الوصول للمسؤول أو للكتابة، ولن يتمكن المستخدمون الذين لديهم حق الوصول للقراءة من رؤيته",
   "SHOW_MORE": "أظهر المزيد...",
-  "RECENT_ITEMS_TITLE": "أحدث العناصر"
+  "RECENT_ITEMS_TITLE": "أحدث العناصر",
+  "DRAWER_ARIAL_LABEL": "درج مفتوح",
+  "ERROR_FETCHING_ITEM": "حدث خطأ أثناء جلب العنصر المطلوب",
+  "ERROR_ACCESSING_ITEM": "لا يمكنك الوصول إلى هذا العنصر",
+  "ERROR_ACCESSING_ITEM_HELPER": "حسابك الحالي ليس لديه حقوق الوصول إلى هذا العنصر.",
+  "SIGN_IN_BUTTON_TEXT": "تسجيل الدخول"
 }
