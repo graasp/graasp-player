@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.8.0](https://github.com/graasp/graasp-player/compare/v2.7.0...v2.8.0) (2024-03-15)
+
+
+### Features
+
+* allow fullscreen mode ([#560](https://github.com/graasp/graasp-player/issues/560)) ([fd230cc](https://github.com/graasp/graasp-player/commit/fd230cc44084aaf69dbe8a8db7e4fbed720709e4))
+
+
+### Bug Fixes
+
+* **arabic:** update translations ([#561](https://github.com/graasp/graasp-player/issues/561)) ([e702f3b](https://github.com/graasp/graasp-player/commit/e702f3bce25f4eafb8e98989174ff2422e62e631))
+* **deps:** update dependency @graasp/translations to v1.25.3 ([#563](https://github.com/graasp/graasp-player/issues/563)) ([27c75ec](https://github.com/graasp/graasp-player/commit/27c75eca2d8446e2a3de02cb8095925266a0a51b))
+* **deps:** update dependency @sentry/react to v7.107.0 ([#555](https://github.com/graasp/graasp-player/issues/555)) ([ded05b3](https://github.com/graasp/graasp-player/commit/ded05b3b8bf4bec0f6cc8068f6e1a7c6f293d988))
+* **deps:** update dependency i18next to v23.10.1 ([#554](https://github.com/graasp/graasp-player/issues/554)) ([355bb20](https://github.com/graasp/graasp-player/commit/355bb2085f01cb4135f0c6589581a925d33347eb))
+* **deps:** update dependency react-i18next to v14.1.0 ([#552](https://github.com/graasp/graasp-player/issues/552)) ([47abebb](https://github.com/graasp/graasp-player/commit/47abebb9327a6468460dd2bbd22549bb5dcd41ca))
+* **deps:** update react-router monorepo to v6.22.3 ([#553](https://github.com/graasp/graasp-player/issues/553)) ([5f385b1](https://github.com/graasp/graasp-player/commit/5f385b1c02f953db82c9132c0166670d4549925f))
+
 ## [2.7.0](https://github.com/graasp/graasp-player/compare/v2.6.0...v2.7.0) (2024-03-12)
 
 
