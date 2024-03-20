@@ -15,6 +15,8 @@ import { ThemeProvider } from '@mui/material/styles';
 // with the deepMerge util function
 import { theme } from '@graasp/ui';
 
+import { ErrorBoundary } from '@sentry/react';
+
 import { SHOW_NOTIFICATIONS } from '@/config/env';
 import i18n from '@/config/i18n';
 import {
@@ -25,6 +27,7 @@ import {
 import { CurrentMemberContextProvider } from '@/contexts/CurrentMemberContext';
 
 import App from './App';
+import FallbackComponent from './modules/errors/FallbackComponent';
 
 const globalStyles = (
   <GlobalStyles
@@ -46,9 +49,11 @@ const Root = (): JSX.Element => (
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Router>
-          <CurrentMemberContextProvider>
-            <App />
-          </CurrentMemberContextProvider>
+          <ErrorBoundary fallback={<FallbackComponent />}>
+            <CurrentMemberContextProvider>
+              <App />
+            </CurrentMemberContextProvider>
+          </ErrorBoundary>
         </Router>
       </ThemeProvider>
     </I18nextProvider>
