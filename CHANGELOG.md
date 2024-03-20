@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.8.1](https://github.com/graasp/graasp-player/compare/v2.8.0...v2.8.1) (2024-03-20)
+
+
+### Bug Fixes
+
+* add error boundary and fallback component ([#574](https://github.com/graasp/graasp-player/issues/574)) ([1c50dc6](https://github.com/graasp/graasp-player/commit/1c50dc669cfb5b63c8d987d9fc4fdac48b122719))
+* navigation crash on expand non-present parent ids ([#573](https://github.com/graasp/graasp-player/issues/573)) ([9215ecc](https://github.com/graasp/graasp-player/commit/9215ecce37feb84b87b133b66938faa7995730b8))
+
 ## [2.8.0](https://github.com/graasp/graasp-player/compare/v2.7.0...v2.8.0) (2024-03-15)
 
 
