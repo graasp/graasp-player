@@ -11,7 +11,7 @@ import { ActionTriggers, DiscriminatedItem, formatDate } from '@graasp/sdk';
 import { usePlayerTranslation } from '@/config/i18n';
 import { mutations } from '@/config/queryClient';
 
-import { buildMainPath } from '../../config/paths';
+import { buildContentPagePath } from '../../config/paths';
 import { HIDDEN_STYLE } from './HiddenWrapper';
 import ItemThumbnail from './ItemThumbnail';
 
@@ -22,7 +22,7 @@ type Props = {
 
 const SimpleCard = ({ item, isHidden = false }: Props): JSX.Element => {
   const { i18n } = usePlayerTranslation();
-  const link = buildMainPath({ rootId: item.id });
+  const link = buildContentPagePath({ rootId: item.id, itemId: item.id });
 
   const { mutate: triggerAction } = mutations.usePostItemAction();
   const handleCardClick = () => {

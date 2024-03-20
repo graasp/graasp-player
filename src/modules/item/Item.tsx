@@ -60,7 +60,7 @@ import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
 import { PLAYER } from '@/langs/constants';
 import { isHidden, paginationContentFilter } from '@/utils/item';
 
-import NavigationButton from './NavigationButton';
+import PageNavigation from './NavigationIsland';
 import PinnedFolderItem from './PinnedFolderItem';
 
 const {
@@ -490,9 +490,7 @@ const Item = ({
               </Fragment>
             ))}
             {showLoadMoreButton}
-            {!hasNextPage && !isFetchingNextPage && (
-              <NavigationButton item={item} />
-            )}
+            <PageNavigation />
           </>
         )}
 

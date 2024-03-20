@@ -55,7 +55,10 @@ export const App = (): JSX.Element => {
   return (
     <Routes>
       <Route element={<PageWrapper fullscreen={fullscreen} />}>
-        <Route path={buildMainPath()} element={<ItemPage />} />
+        <Route path={buildMainPath()} element={<ItemPage />}>
+          <Route index element={<ItemPage />} />
+          <Route path=":itemId" element={<ItemPage />} />
+        </Route>
         <Route path={HOME_PATH} element={<HomePageWithAuthorization />} />
         <Route path="*" element={<Navigate to={HOME_PATH} />} />
       </Route>

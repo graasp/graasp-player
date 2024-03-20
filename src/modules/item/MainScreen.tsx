@@ -3,9 +3,8 @@ import { useParams } from 'react-router-dom';
 
 import { Alert, Skeleton, Typography } from '@mui/material';
 
-import { ROOT_ID_PATH } from '@/config/paths';
+import { ITEM_PARAM } from '@/config/paths';
 import { hooks } from '@/config/queryClient';
-import { useItemContext } from '@/contexts/ItemContext';
 import { LayoutContextProvider } from '@/contexts/LayoutContext';
 import { PLAYER } from '@/langs/constants';
 import SideContent from '@/modules/rightPanel/SideContent';
@@ -13,14 +12,12 @@ import SideContent from '@/modules/rightPanel/SideContent';
 import Item from './Item';
 
 const MainScreen = (): JSX.Element | null => {
-  const rootId = useParams()[ROOT_ID_PATH];
-  const { focusedItemId } = useItemContext();
-  const mainId = focusedItemId || rootId;
-  const { data: item, isLoading, isError } = hooks.useItem(mainId);
+  const itemId = useParams()[ITEM_PARAM];
+  const { data: item, isLoading, isError } = hooks.useItem(itemId);
   const { t } = useTranslation();
 
-  const content = rootId ? (
-    <Item id={mainId} />
+  const content = itemId ? (
+    <Item id={itemId} />
   ) : (
     <Typography align="center" variant="h4">
       {t('No item defined.')}

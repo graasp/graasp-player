@@ -1,23 +1,45 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import {
+  Dispatch,
+  SetStateAction,
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 
 import { useMobileView } from '@graasp/ui';
 
 type LayoutContextType = {
-  isPinnedMenuOpen: boolean;
-  setIsPinnedMenuOpen: (state: boolean) => void;
-  isChatboxMenuOpen: boolean;
-  setIsChatboxMenuOpen: (state: boolean) => void;
+  isPinnedOpen: boolean;
+  setIsPinnedOpen: Dispatch<SetStateAction<boolean>>;
+  isChatboxOpen: boolean;
+  setIsChatboxOpen: Dispatch<SetStateAction<boolean>>;
   isFullscreen: boolean;
-  setIsFullscreen: (state: boolean) => void;
+  setIsFullscreen: Dispatch<SetStateAction<boolean>>;
+  toggleChatbox: () => void;
+  togglePinned: () => void;
 };
 
 const LayoutContext = createContext<LayoutContextType>({
-  isPinnedMenuOpen: true,
-  setIsPinnedMenuOpen: () => null,
-  isChatboxMenuOpen: false,
-  setIsChatboxMenuOpen: () => null,
+  isPinnedOpen: true,
+  setIsPinnedOpen: () => {
+    throw new Error('No context');
+  },
+  isChatboxOpen: false,
+  setIsChatboxOpen: () => {
+    throw new Error('No context');
+  },
   isFullscreen: false,
-  setIsFullscreen: () => null,
+  setIsFullscreen: () => {
+    throw new Error('No context');
+  },
+  toggleChatbox: () => {
+    throw new Error('No context');
+  },
+  togglePinned: () => {
+    throw new Error('No context');
+  },
 });
 
 type Props = {
@@ -27,33 +49,46 @@ type Props = {
 export const LayoutContextProvider = ({ children }: Props): JSX.Element => {
   const { isMobile } = useMobileView();
 
-  const [isPinnedMenuOpen, setIsPinnedMenuOpen] = useState<boolean>(!isMobile);
-  const [isChatboxMenuOpen, setIsChatboxMenuOpen] = useState<boolean>(false);
+  const [isPinnedOpen, setIsPinnedOpen] = useState<boolean>(!isMobile);
+  const [isChatboxOpen, setIsChatboxOpen] = useState<boolean>(false);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
 
   useEffect(() => {
-    setIsPinnedMenuOpen(!isMobile);
+    setIsPinnedOpen(!isMobile);
   }, [isMobile]);
 
   const value = useMemo(
     () => ({
-      isPinnedMenuOpen,
-      setIsPinnedMenuOpen,
-      isChatboxMenuOpen,
-      setIsChatboxMenuOpen,
+      isPinnedOpen,
+      setIsPinnedOpen,
+      isChatboxOpen,
+      setIsChatboxOpen,
       isFullscreen,
       setIsFullscreen,
+      toggleChatbox: () => {
+        setIsChatboxOpen((prev) => !prev);
+        if (isPinnedOpen) {
+          // close the pinned items
+          setIsPinnedOpen(false);
+        }
+      },
+      togglePinned: () => {
+        setIsPinnedOpen((prev) => !prev);
+        if (isChatboxOpen) {
+          // close the chatbox items
+          setIsChatboxOpen(false);
+        }
+      },
     }),
     [
-      isPinnedMenuOpen,
-      setIsPinnedMenuOpen,
-      isChatboxMenuOpen,
-      setIsChatboxMenuOpen,
+      isPinnedOpen,
+      setIsPinnedOpen,
+      isChatboxOpen,
+      setIsChatboxOpen,
       isFullscreen,
       setIsFullscreen,
     ],
   );
-
   return (
     <LayoutContext.Provider value={value}>{children}</LayoutContext.Provider>
   );

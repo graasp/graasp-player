@@ -3,6 +3,7 @@ import AccessibleTreeView, {
   INodeRendererProps,
   flattenTree,
 } from 'react-accessible-treeview';
+import { useParams } from 'react-router-dom';
 
 import { Box, SxProps, Typography } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
@@ -17,7 +18,6 @@ import {
 
 import { GRAASP_MENU_ITEMS } from '@/config/constants';
 import { hooks, mutations } from '@/config/queryClient';
-import { useItemContext } from '@/contexts/ItemContext';
 import { ItemMetaData, getItemTree } from '@/utils/tree';
 
 import Node from './Node';
@@ -46,14 +46,12 @@ const TreeView = ({
   sx = {},
 }: Props): JSX.Element => {
   const { mutate: triggerAction } = mutations.usePostItemAction();
-
+  const { itemId } = useParams();
   const itemsToShow = items?.filter((item) =>
     onlyShowContainerItems ? GRAASP_MENU_ITEMS.includes(item.type) : true,
   );
 
-  const { focusedItemId } = useItemContext();
-
-  const { data: focusedItem } = hooks.useItem(focusedItemId);
+  const { data: focusedItem } = hooks.useItem(itemId);
 
   if (isLoading) {
     return <Skeleton variant="text" />;
@@ -95,14 +93,14 @@ const TreeView = ({
 
   const defaultExpandedIds = rootItems[0]?.id ? [rootItems[0].id] : [];
 
-  const selectedIds = focusedItemId ? [focusedItemId] : [];
+  const selectedIds = itemId ? [itemId] : [];
   const expandedIds = focusedItem
     ? getIdsFromPath(focusedItem.path)
     : defaultExpandedIds;
 
   // need to filter the expandedIds to only include items that are present in the tree
   // we should not include parents that are above the current player root
-  const availableItemIds = itemsToShow?.map(({ id: itemId }) => itemId);
+  const availableItemIds = itemsToShow?.map(({ id: elemId }) => elemId);
   // filter the items to expand to only keep the ones that are present in the tree.
   // if there are no items in the tree we short circuit the filtering
   const accessibleExpandedItems = availableItemIds?.length

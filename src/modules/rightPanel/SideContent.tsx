@@ -1,10 +1,8 @@
 import Fullscreen from 'react-fullscreen-crossbrowser';
-import { useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 
-import ForumIcon from '@mui/icons-material/Forum';
 import EnterFullscreenIcon from '@mui/icons-material/Fullscreen';
 import ExitFullscreenIcon from '@mui/icons-material/FullscreenExit';
-import PushPinIcon from '@mui/icons-material/PushPin';
 import { Grid, Stack, Tooltip, styled } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
@@ -17,7 +15,6 @@ import {
 
 import { usePlayerTranslation } from '@/config/i18n';
 import { hooks } from '@/config/queryClient';
-import { useItemContext } from '@/contexts/ItemContext';
 import { useLayoutContext } from '@/contexts/LayoutContext';
 import { PLAYER } from '@/langs/constants';
 import Chatbox from '@/modules/chatbox/Chatbox';
@@ -26,9 +23,7 @@ import Item from '@/modules/item/Item';
 import { DRAWER_WIDTH, FLOATING_BUTTON_Z_INDEX } from '../../config/constants';
 import {
   CHATBOX_DRAWER_ID,
-  ITEM_CHATBOX_BUTTON_ID,
   ITEM_FULLSCREEN_BUTTON_ID,
-  ITEM_PINNED_BUTTON_ID,
   ITEM_PINNED_ID,
 } from '../../config/selectors';
 import SideDrawer from './SideDrawer';
@@ -70,15 +65,16 @@ type Props = {
 };
 
 const SideContent = ({ content, item }: Props): JSX.Element | null => {
-  const { descendants, rootId } = useItemContext();
-  const { data: tags } = hooks.useItemsTags(descendants?.map(({ id }) => id));
+  const { itemId, rootId } = useParams();
+  const { data: children } = hooks.useChildren(itemId);
+  const { data: tags } = hooks.useItemsTags(children?.map(({ id }) => id));
   const [searchParams] = useSearchParams();
 
   const {
-    isPinnedMenuOpen,
-    setIsPinnedMenuOpen,
-    isChatboxMenuOpen,
-    setIsChatboxMenuOpen,
+    toggleChatbox,
+    togglePinned,
+    isChatboxOpen,
+    isPinnedOpen,
     isFullscreen,
     setIsFullscreen,
   } = useLayoutContext();
@@ -106,45 +102,15 @@ const SideContent = ({ content, item }: Props): JSX.Element | null => {
   );
 
   const pinnedCount =
-    descendants?.filter(
+    children?.filter(
       ({ id, settings: s }) =>
         s.isPinned &&
         // do not count hidden items as they are not displayed
-        !tags?.data?.[id].some(({ type }) => type === ItemTagType.Hidden),
+        !tags?.data?.[id]?.some(({ type }) => type === ItemTagType.Hidden),
     )?.length || 0;
-
-  const toggleChatOpen = () => {
-    setIsChatboxMenuOpen(!isChatboxMenuOpen);
-    setIsPinnedMenuOpen(false);
-  };
-
-  const togglePinnedOpen = () => {
-    setIsPinnedMenuOpen(!isPinnedMenuOpen);
-    setIsChatboxMenuOpen(false);
-  };
 
   const toggleFullscreen = () => {
     setIsFullscreen(!isFullscreen);
-  };
-
-  const displayPinButton = () => {
-    if (!pinnedCount) return null;
-
-    return (
-      <Tooltip title={t(PLAYER.PINNED_ITEMS)}>
-        <StyledIconButton
-          id={ITEM_PINNED_BUTTON_ID}
-          aria-label={
-            isPinnedMenuOpen
-              ? t(PLAYER.HIDE_PINNED_ITEMS_TOOLTIP)
-              : t(PLAYER.SHOW_PINNED_ITEMS_TOOLTIP)
-          }
-          onClick={togglePinnedOpen}
-        >
-          <PushPinIcon />
-        </StyledIconButton>
-      </Tooltip>
-    );
   };
 
   const displayFullscreenButton = () => {
@@ -175,26 +141,6 @@ const SideContent = ({ content, item }: Props): JSX.Element | null => {
     );
   };
 
-  const displayChatButton = () => {
-    if (!settings?.showChatbox) return null;
-
-    return (
-      <Tooltip title={t('Chat')}>
-        <StyledIconButton
-          id={ITEM_CHATBOX_BUTTON_ID}
-          aria-label={
-            isChatboxMenuOpen
-              ? t(PLAYER.HIDE_CHAT_TOOLTIP)
-              : t(PLAYER.SHOW_CHAT_TOOLTIP)
-          }
-          onClick={toggleChatOpen}
-        >
-          <ForumIcon />
-        </StyledIconButton>
-      </Tooltip>
-    );
-  };
-
   const displayChatbox = () => {
     if (!settings?.showChatbox) return null;
 
@@ -202,8 +148,8 @@ const SideContent = ({ content, item }: Props): JSX.Element | null => {
       <div id={CHATBOX_DRAWER_ID}>
         <SideDrawer
           title={t('Chat')}
-          onClose={toggleChatOpen}
-          open={isChatboxMenuOpen}
+          onClose={toggleChatbox}
+          open={isChatboxOpen}
         >
           <Chatbox item={item} />
         </SideDrawer>
@@ -217,8 +163,8 @@ const SideContent = ({ content, item }: Props): JSX.Element | null => {
     return (
       <SideDrawer
         title={t(PLAYER.PINNED_ITEMS)}
-        onClose={togglePinnedOpen}
-        open={isPinnedMenuOpen}
+        onClose={togglePinned}
+        open={isPinnedOpen}
       >
         {/* show parents pinned items */}
         <Stack id={ITEM_PINNED_ID} spacing={2} mt={1}>
@@ -239,13 +185,9 @@ const SideContent = ({ content, item }: Props): JSX.Element | null => {
       {displayPinnedItems()}
       <Grid id="contentGrid">
         <StyledMain
-          isShifted={isChatboxMenuOpen || (isPinnedMenuOpen && pinnedCount > 0)}
+          isShifted={isChatboxOpen || (isPinnedOpen && pinnedCount > 0)}
         >
           {displayFullscreenButton()}
-
-          {displayChatButton()}
-
-          {displayPinButton()}
 
           {content}
         </StyledMain>

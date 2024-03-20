@@ -28,7 +28,7 @@ import { ItemContextProvider } from '@/contexts/ItemContext';
 import { PLAYER } from '@/langs/constants';
 
 import HomeNavigation from '../navigation/HomeNavigation';
-import ItemNavigation from '../navigation/ItemNavigation';
+import ItemStructureNavigation from '../navigation/ItemNavigation';
 import UserSwitchWrapper from '../userSwitch/UserSwitchWrapper';
 
 // small converter for HOST_MAP into a usePlatformNavigation mapper
@@ -95,7 +95,9 @@ const PageWrapper = ({ fullscreen }: PageWrapperProps): JSX.Element => {
       <Main
         open={Boolean(rootId)}
         context={Context.Player}
-        drawerContent={rootId ? <ItemNavigation /> : <HomeNavigation />}
+        drawerContent={
+          rootId ? <ItemStructureNavigation /> : <HomeNavigation />
+        }
         drawerOpenAriaLabel={t(PLAYER.DRAWER_ARIAL_LABEL)}
         LinkComponent={LinkComponent}
         PlatformComponent={
