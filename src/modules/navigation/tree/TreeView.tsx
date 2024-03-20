@@ -100,10 +100,12 @@ const TreeView = ({
     ? getIdsFromPath(focusedItem.path)
     : defaultExpandedIds;
 
-  // const availableItemIds = itemsToShow?.map(({ id: itemId }) => itemId);
-  // const accessibleExpandedItems = expandedIds.filter((e) =>
-  //   availableItemIds?.includes(e),
-  // );
+  // need to filter the expandedIds to only include items that are present in the tree
+  // we should not include parents that are above the current player root
+  const availableItemIds = itemsToShow?.map(({ id: itemId }) => itemId);
+  const accessibleExpandedItems = expandedIds.filter((e) =>
+    availableItemIds?.includes(e),
+  );
 
   return (
     <Box
@@ -132,7 +134,7 @@ const TreeView = ({
         })}
         nodeRenderer={nodeRenderer}
         selectedIds={selectedIds}
-        expandedIds={expandedIds}
+        expandedIds={accessibleExpandedItems}
       />
     </Box>
   );
