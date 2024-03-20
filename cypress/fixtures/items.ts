@@ -113,6 +113,18 @@ export const FOLDER_WITH_SUBFOLDER_ITEM: { items: MockItem[] } = {
         showChatbox: false,
       },
     },
+    {
+      ...DEFAULT_FOLDER_ITEM,
+      id: 'fdf09f5a-5688-11eb-ae93-0242ac130006',
+      name: 'document inside of child folder',
+      type: 'document',
+      extra: { document: { content: 'hello I am a document' } },
+      path: 'ecafbd2a_5688_11eb_ae93_0242ac130002.fdf09f5a_5688_11eb_ae93_0242ac130003.fdf09f5a_5688_11eb_ae93_0242ac130005.fdf09f5a_5688_11eb_ae93_0242ac130006',
+      settings: {
+        isPinned: true,
+        showChatbox: false,
+      },
+    },
   ],
 };
 export const FOLDER_WITH_SUBFOLDER_ITEM_AND_PARTIAL_ORDER: {

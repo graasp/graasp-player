@@ -100,6 +100,11 @@ const TreeView = ({
     ? getIdsFromPath(focusedItem.path)
     : defaultExpandedIds;
 
+  // const availableItemIds = itemsToShow?.map(({ id: itemId }) => itemId);
+  // const accessibleExpandedItems = expandedIds.filter((e) =>
+  //   availableItemIds?.includes(e),
+  // );
+
   return (
     <Box
       id={id}

@@ -59,4 +59,17 @@ describe('Navigation', () => {
     cy.get(`.${buildTreeItemClass(child.id)}`).should('be.visible');
     cy.get(`.${buildTreeItemClass(child1.id)}`).should('be.visible');
   });
+
+  it('navigate successfully when opening child as root', () => {
+    cy.setUpApi({ items: FOLDER_WITH_SUBFOLDER_ITEM.items });
+    const child = FOLDER_WITH_SUBFOLDER_ITEM.items[1];
+    cy.visit(buildMainPath({ rootId: child.id }));
+
+    const childOfChild = FOLDER_WITH_SUBFOLDER_ITEM.items[3];
+    // we need to to use the `:visible` meta selector because there are 2 navigations (one for mobile hidden, and one for desktop)
+    cy.get(`.${buildTreeItemClass(child.id)}:visible`).click();
+    cy.get(`.${buildTreeItemClass(childOfChild.id)}:visible`).should(
+      'be.visible',
+    );
+  });
 });
