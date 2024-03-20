@@ -103,9 +103,11 @@ const TreeView = ({
   // need to filter the expandedIds to only include items that are present in the tree
   // we should not include parents that are above the current player root
   const availableItemIds = itemsToShow?.map(({ id: itemId }) => itemId);
-  const accessibleExpandedItems = expandedIds.filter((e) =>
-    availableItemIds?.includes(e),
-  );
+  // filter the items to expand to only keep the ones that are present in the tree.
+  // if there are no items in the tree we short circuit the filtering
+  const accessibleExpandedItems = availableItemIds?.length
+    ? expandedIds.filter((e) => availableItemIds?.includes(e))
+    : [];
 
   return (
     <Box
