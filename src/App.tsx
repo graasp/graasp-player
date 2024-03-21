@@ -4,20 +4,33 @@ import {
   Route,
   Routes,
   useLocation,
+  useParams,
   useSearchParams,
 } from 'react-router-dom';
+
+import { Alert } from '@mui/material';
 
 import { saveUrlForRedirection } from '@graasp/sdk';
 import { CustomInitialLoader, withAuthorization } from '@graasp/ui';
 
 import { SIGN_IN_PATH } from '@/config/constants';
 import { DOMAIN } from '@/config/env';
-import { HOME_PATH, buildMainPath } from '@/config/paths';
+import { HOME_PATH, buildContentPagePath, buildMainPath } from '@/config/paths';
 import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
 import HomePage from '@/modules/pages/HomePage';
 import ItemPage from '@/modules/pages/ItemPage';
 
 import PageWrapper from './modules/layout/PageWrapper';
+
+const RedirectToRootContentPage = () => {
+  const { rootId } = useParams();
+  if (rootId) {
+    return (
+      <Navigate to={buildContentPagePath({ rootId, itemId: rootId })} replace />
+    );
+  }
+  return <Alert>Item is not valid</Alert>;
+};
 
 export const App = (): JSX.Element => {
   const location = useLocation();
@@ -55,8 +68,8 @@ export const App = (): JSX.Element => {
   return (
     <Routes>
       <Route element={<PageWrapper fullscreen={fullscreen} />}>
-        <Route path={buildMainPath()} element={<ItemPage />}>
-          <Route index element={<ItemPage />} />
+        <Route path={buildMainPath()}>
+          <Route index element={<RedirectToRootContentPage />} />
           <Route path=":itemId" element={<ItemPage />} />
         </Route>
         <Route path={HOME_PATH} element={<HomePageWithAuthorization />} />

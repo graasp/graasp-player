@@ -1,4 +1,4 @@
-import { buildMainPath } from '../../src/config/paths';
+import { buildContentPagePath, buildMainPath } from '../../src/config/paths';
 import {
   ITEM_PINNED_BUTTON_ID,
   ITEM_PINNED_ID,
@@ -27,10 +27,10 @@ describe('Pinned Items', () => {
     it('Pinned button should toggle sidebar visibility', () => {
       const parent = FOLDER_WITH_SUBFOLDER_ITEM.items[0];
 
-      cy.visit(buildMainPath({ rootId: parent.id }));
+      cy.visit(buildContentPagePath({ rootId: parent.id, itemId: parent.id }));
 
       cy.wait('@getChildren');
-      cy.get(`#${ITEM_PINNED_BUTTON_ID}`).should('exist');
+      cy.get(`#${ITEM_PINNED_BUTTON_ID}`).should('be.visible');
       cy.get(`#${ITEM_PINNED_ID}`).should('be.visible');
 
       cy.get(`#${ITEM_PINNED_BUTTON_ID}`).click();
@@ -40,7 +40,7 @@ describe('Pinned Items', () => {
     it('Parent folder should display pinned children', () => {
       const parent = FOLDER_WITH_PINNED_ITEMS.items[0];
       const pinned = FOLDER_WITH_PINNED_ITEMS.items[2];
-      cy.visit(buildMainPath({ rootId: parent.id }));
+      cy.visit(buildContentPagePath({ rootId: parent.id, itemId: parent.id }));
 
       cy.get(`#${ITEM_PINNED_ID} #${buildFolderButtonId(pinned.id)}`).should(
         'contain',

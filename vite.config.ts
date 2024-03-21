@@ -18,7 +18,7 @@ export default ({ mode }: { mode: string }): UserConfigExport => {
     base: '/',
     server: {
       port: parseInt(process.env.VITE_PORT, 10),
-      open: true,
+      open: mode === 'development',
       watch: {
         ignored: ['**/coverage/**'],
       },

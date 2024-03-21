@@ -3,7 +3,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ChatIcon from '@mui/icons-material/Forum';
+import ChatClosedIcon from '@mui/icons-material/ForumOutlined';
 import PinIcon from '@mui/icons-material/PushPin';
+import OutlinedPinIcon from '@mui/icons-material/PushPinOutlined';
 import { Box, Button, IconButton, Stack } from '@mui/material';
 
 import {
@@ -47,7 +49,7 @@ const ChatButton = (): JSX.Element | null => {
           : t(PLAYER.SHOW_CHAT_TOOLTIP)
       }
     >
-      <ChatIcon />
+      {isChatboxOpen ? <ChatIcon /> : <ChatClosedIcon />}
     </IconButton>
   );
 };
@@ -78,7 +80,7 @@ const PinnedItemsButton = (): JSX.Element | null => {
             : t(PLAYER.SHOW_PINNED_ITEMS_TOOLTIP)
         }
       >
-        <PinIcon />
+        {isPinnedOpen ? <PinIcon /> : <OutlinedPinIcon />}
       </IconButton>
     );
   }
@@ -181,7 +183,7 @@ const NavigationIslandBox = (): JSX.Element => (
   <Box
     // set some background and shadow
     bgcolor="white"
-    boxShadow="0px 0px 20px 2px #ddd"
+    boxShadow="0px 0px 20px 2px #0003"
     border="1px solid #eee"
     // add an asymmetrical border radius
     borderRadius="16px 16px 0px 0px"
