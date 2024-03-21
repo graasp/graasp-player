@@ -87,7 +87,6 @@ const PinnedItemsButton = (): JSX.Element | null => {
 
 const PreviousNextButtons = (): JSX.Element | null => {
   const { rootId, itemId } = useParams();
-  // const { setFocusedItemId } = useItemContext();
   const navigate = useNavigate();
   const { mutate: triggerAction } = mutations.usePostItemAction();
   const { data: rootItem } = hooks.useItem(rootId);
@@ -140,7 +139,6 @@ const PreviousNextButtons = (): JSX.Element | null => {
       itemId: newItemId,
       payload: { type: ActionTriggers.ItemView },
     });
-    // setFocusedItemId(newItemId);
     navigate(buildContentPagePath({ rootId, itemId: newItemId }));
   };
 
@@ -152,7 +150,7 @@ const PreviousNextButtons = (): JSX.Element | null => {
           startIcon={<ArrowBackIcon />}
           sx={{ textTransform: 'unset' }}
           onClick={() => {
-            if (prev && prev.id) {
+            if (prev?.id) {
               handleClickNavigationButton(prev.id);
             }
           }}
@@ -167,7 +165,7 @@ const PreviousNextButtons = (): JSX.Element | null => {
           endIcon={<ArrowForwardIcon />}
           sx={{ textTransform: 'unset' }}
           onClick={() => {
-            if (next && next.id) {
+            if (next?.id) {
               handleClickNavigationButton(next.id);
             }
           }}
