@@ -1,4 +1,4 @@
-import { buildMainPath } from '../../src/config/paths';
+import { buildContentPagePath } from '../../src/config/paths';
 import {
   FOLDER_NAME_TITLE_CLASS,
   MAIN_MENU_ID,
@@ -55,19 +55,19 @@ describe('Main Screen', () => {
     describe('Links', () => {
       it('Website link', () => {
         const { id } = GRAASP_LINK_ITEM;
-        cy.visit(buildMainPath({ rootId: id }));
+        cy.visit(buildContentPagePath({ rootId: id, itemId: id }));
 
         expectLinkViewScreenLayout(GRAASP_LINK_ITEM);
       });
       it('Website link as iframe', () => {
         const { id } = GRAASP_LINK_ITEM_IFRAME_ONLY;
-        cy.visit(buildMainPath({ rootId: id }));
+        cy.visit(buildContentPagePath({ rootId: id, itemId: id }));
 
         expectLinkViewScreenLayout(GRAASP_LINK_ITEM_IFRAME_ONLY);
       });
       it('Youtube link', () => {
         const { id } = YOUTUBE_LINK_ITEM;
-        cy.visit(buildMainPath({ rootId: id }));
+        cy.visit(buildContentPagePath({ rootId: id, itemId: id }));
 
         expectLinkViewScreenLayout(YOUTUBE_LINK_ITEM);
       });
@@ -76,19 +76,19 @@ describe('Main Screen', () => {
     describe('Files', () => {
       it('Image', () => {
         const { id } = IMAGE_ITEM_DEFAULT;
-        cy.visit(buildMainPath({ rootId: id }));
+        cy.visit(buildContentPagePath({ rootId: id, itemId: id }));
 
         expectFileViewScreenLayout(IMAGE_ITEM_DEFAULT);
       });
       it('Video', () => {
         const { id } = VIDEO_ITEM_DEFAULT;
-        cy.visit(buildMainPath({ rootId: id }));
+        cy.visit(buildContentPagePath({ rootId: id, itemId: id }));
 
         expectFileViewScreenLayout(VIDEO_ITEM_DEFAULT);
       });
       it('Pdf', () => {
         const { id } = PDF_ITEM_DEFAULT;
-        cy.visit(buildMainPath({ rootId: id }));
+        cy.visit(buildContentPagePath({ rootId: id, itemId: id }));
 
         expectFileViewScreenLayout(PDF_ITEM_DEFAULT);
       });
@@ -96,7 +96,12 @@ describe('Main Screen', () => {
 
     describe('Documents', () => {
       it('Graasp Document', () => {
-        cy.visit(buildMainPath({ rootId: GRAASP_DOCUMENT_ITEM.id }));
+        cy.visit(
+          buildContentPagePath({
+            rootId: GRAASP_DOCUMENT_ITEM.id,
+            itemId: GRAASP_DOCUMENT_ITEM.id,
+          }),
+        );
 
         expectDocumentViewScreenLayout(GRAASP_DOCUMENT_ITEM);
       });
@@ -104,7 +109,12 @@ describe('Main Screen', () => {
 
     describe('Apps', () => {
       it('App', () => {
-        cy.visit(buildMainPath({ rootId: GRAASP_APP_ITEM.id }));
+        cy.visit(
+          buildContentPagePath({
+            rootId: GRAASP_APP_ITEM.id,
+            itemId: GRAASP_APP_ITEM.id,
+          }),
+        );
 
         expectAppViewScreenLayout(GRAASP_APP_ITEM);
       });
@@ -113,7 +123,9 @@ describe('Main Screen', () => {
     describe('Folders', () => {
       it('Display sub Folder', () => {
         const parent = FOLDER_WITH_SUBFOLDER_ITEM.items[0];
-        cy.visit(buildMainPath({ rootId: parent.id }));
+        cy.visit(
+          buildContentPagePath({ rootId: parent.id, itemId: parent.id }),
+        );
 
         cy.get(`.${FOLDER_NAME_TITLE_CLASS}`).should('contain', parent.name);
 
@@ -121,7 +133,9 @@ describe('Main Screen', () => {
       });
       it('Display Folder without childrenOrder', () => {
         const parent = FOLDER_WITHOUT_CHILDREN_ORDER.items[0];
-        cy.visit(buildMainPath({ rootId: parent.id }));
+        cy.visit(
+          buildContentPagePath({ rootId: parent.id, itemId: parent.id }),
+        );
 
         cy.get(`.${FOLDER_NAME_TITLE_CLASS}`).should('contain', parent.name);
       });
@@ -133,7 +147,7 @@ describe('Main Screen', () => {
       cy.setUpApi(STATIC_ELECTRICITY);
       const parentFolder = STATIC_ELECTRICITY.items[0];
       const rootId = parentFolder.id;
-      cy.visit(buildMainPath({ rootId }));
+      cy.visit(buildContentPagePath({ rootId, itemId: rootId }));
 
       expectFolderLayout({ rootId, items: STATIC_ELECTRICITY.items });
     });
@@ -144,14 +158,14 @@ describe('Main Screen', () => {
       });
       const parentFolder = STATIC_ELECTRICITY.items[0];
       const rootId = parentFolder.id;
-      cy.visit(buildMainPath({ rootId }));
+      cy.visit(buildContentPagePath({ rootId, itemId: rootId }));
       cy.get(`#${MAIN_MENU_ID}`).should('not.exist');
     });
     it(`Display ${PUBLIC_STATIC_ELECTRICITY.items[0].name}`, () => {
       cy.setUpApi({ ...PUBLIC_STATIC_ELECTRICITY, currentMember: MEMBERS.BOB });
       const parentFolder = PUBLIC_STATIC_ELECTRICITY.items[0];
       const rootId = parentFolder.id;
-      cy.visit(buildMainPath({ rootId }));
+      cy.visit(buildContentPagePath({ rootId, itemId: rootId }));
 
       expectFolderLayout({ rootId, items: PUBLIC_STATIC_ELECTRICITY.items });
     });

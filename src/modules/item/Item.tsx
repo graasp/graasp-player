@@ -60,7 +60,7 @@ import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
 import { PLAYER } from '@/langs/constants';
 import { isHidden, paginationContentFilter } from '@/utils/item';
 
-import PageNavigation from './NavigationIsland';
+import NavigationIsland from './NavigationIsland';
 import PinnedFolderItem from './PinnedFolderItem';
 
 const {
@@ -361,7 +361,13 @@ const ItemContent = ({ item }: ItemContentProps) => {
   }
 };
 
-const ItemContentWrapper = ({ item }: { item: DiscriminatedItem }) => {
+const ItemContentWrapper = ({
+  item,
+  showIsland = false,
+}: {
+  item: DiscriminatedItem;
+  showIsland?: boolean;
+}) => {
   const { data: itemTags } = useItemTags(item.id);
   const isItemHidden = isHidden(item, itemTags);
 
@@ -369,7 +375,12 @@ const ItemContentWrapper = ({ item }: { item: DiscriminatedItem }) => {
   if (isItemHidden) {
     return null;
   }
-  return <ItemContent item={item} />;
+  return (
+    <>
+      <ItemContent item={item} />
+      {showIsland && <NavigationIsland />}
+    </>
+  );
 };
 
 type Props = {
@@ -490,7 +501,7 @@ const Item = ({
               </Fragment>
             ))}
             {showLoadMoreButton}
-            <PageNavigation />
+            <NavigationIsland />
           </>
         )}
 
@@ -507,7 +518,7 @@ const Item = ({
   }
 
   // executed when item is a single child that is not a folder
-  return <ItemContentWrapper item={item} />;
+  return <ItemContentWrapper item={item} showIsland />;
 };
 
 export default Item;

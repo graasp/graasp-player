@@ -1,4 +1,4 @@
-import { buildMainPath } from '../../src/config/paths';
+import { buildContentPagePath } from '../../src/config/paths';
 import { buildDocumentId } from '../../src/config/selectors';
 import {
   FOLDER_WITH_HIDDEN_ITEMS,
@@ -13,7 +13,7 @@ describe('Hidden Items', () => {
     });
 
     const parent = FOLDER_WITH_HIDDEN_ITEMS.items[0];
-    cy.visit(buildMainPath({ rootId: parent.id }));
+    cy.visit(buildContentPagePath({ rootId: parent.id, itemId: parent.id }));
 
     // hidden document should not be displayed
     cy.get(`#${buildDocumentId(FOLDER_WITH_HIDDEN_ITEMS.items[1].id)}`).should(
@@ -31,7 +31,7 @@ describe('Hidden Items', () => {
     });
 
     const parent = FOLDER_WITH_HIDDEN_ITEMS.items[0];
-    cy.visit(buildMainPath({ rootId: parent.id }));
+    cy.visit(buildContentPagePath({ rootId: parent.id, itemId: parent.id }));
 
     cy.get(`#${buildDocumentId(FOLDER_WITH_HIDDEN_ITEMS.items[1].id)}`).should(
       'be.visible',
@@ -49,7 +49,7 @@ describe('Hidden Items', () => {
     });
 
     const parent = FOLDER_WITH_HIDDEN_ITEMS.items[0];
-    cy.visit(buildMainPath({ rootId: parent.id }));
+    cy.visit(buildContentPagePath({ rootId: parent.id, itemId: parent.id }));
 
     cy.get(`#${buildDocumentId(FOLDER_WITH_HIDDEN_ITEMS.items[1].id)}`).should(
       'be.visible',
@@ -67,7 +67,7 @@ describe('Hidden Items', () => {
     });
 
     const parent = PUBLIC_FOLDER_WITH_HIDDEN_ITEMS.items[0];
-    cy.visit(buildMainPath({ rootId: parent.id }));
+    cy.visit(buildContentPagePath({ rootId: parent.id, itemId: parent.id }));
 
     cy.get(
       `#${buildDocumentId(PUBLIC_FOLDER_WITH_HIDDEN_ITEMS.items[1].id)}`,

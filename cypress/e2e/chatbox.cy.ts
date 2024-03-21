@@ -1,4 +1,5 @@
-import { buildMainPath } from '../../src/config/paths';
+import { buildContentPagePath } from '@/config/paths';
+
 import {
   ITEM_CHATBOX_BUTTON_ID,
   ITEM_CHATBOX_ID,
@@ -20,24 +21,25 @@ describe('Chatbox', () => {
   });
 
   it('Chatbox button should toggle chatbox visibility', () => {
-    cy.visit(buildMainPath({ rootId: ITEM_WITH_CHAT_BOX.id }));
+    const { id } = ITEM_WITH_CHAT_BOX;
+    cy.visit(buildContentPagePath({ rootId: id, itemId: id }));
 
     cy.wait('@getCurrentMember');
-    cy.get(`#${ITEM_CHATBOX_BUTTON_ID}`).should('exist');
-    cy.get(`#${ITEM_CHATBOX_ID}`).should('not.exist');
 
-    cy.get(`#${ITEM_CHATBOX_BUTTON_ID}`).click();
+    // chatbox is closed by default
+    cy.get(`#${ITEM_CHATBOX_ID}`).should('not.be.visible');
+    cy.get(`#${ITEM_CHATBOX_BUTTON_ID}`).should('be.visible').click();
 
     cy.get(`#${ITEM_CHATBOX_ID}`).should('be.visible');
   });
 
   it('Side panel button should hide chatbox', () => {
-    cy.visit(buildMainPath({ rootId: ITEM_WITH_CHAT_BOX.id }));
+    const { id } = ITEM_WITH_CHAT_BOX;
+    cy.visit(buildContentPagePath({ rootId: id, itemId: id }));
 
     cy.wait('@getCurrentMember');
-    cy.get(`#${ITEM_CHATBOX_BUTTON_ID}`).should('exist');
-    cy.get(`#${ITEM_CHATBOX_ID}`).should('not.be.exist');
-
+    cy.get(`#${ITEM_CHATBOX_ID}`).should('not.be.visible');
+    cy.get(`#${ITEM_CHATBOX_BUTTON_ID}`).should('be.visible');
     cy.get(`#${ITEM_CHATBOX_BUTTON_ID}`).click();
 
     cy.get(`#${ITEM_CHATBOX_ID}`).should('be.visible');
@@ -47,7 +49,8 @@ describe('Chatbox', () => {
   });
 
   it('Disabled chatbox should not have button', () => {
-    cy.visit(buildMainPath({ rootId: ITEM_WITHOUT_CHAT_BOX.id }));
+    const { id } = ITEM_WITH_CHAT_BOX;
+    cy.visit(buildContentPagePath({ rootId: id, itemId: id }));
 
     cy.wait('@getCurrentMember');
     cy.get(`#${ITEM_CHATBOX_BUTTON_ID}`).should('not.exist');
@@ -55,9 +58,11 @@ describe('Chatbox', () => {
   });
 
   it('Chatbox button is clickable on document', () => {
+    const { id } = GRAASP_DOCUMENT_ITEM_WITH_CHAT_BOX;
     cy.visit(
-      buildMainPath({
-        rootId: GRAASP_DOCUMENT_ITEM_WITH_CHAT_BOX.id,
+      buildContentPagePath({
+        rootId: id,
+        itemId: id,
       }),
     );
     cy.wait('@getCurrentMember');

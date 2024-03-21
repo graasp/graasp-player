@@ -1,6 +1,6 @@
 import 'cypress-iframe';
 
-import { buildMainPath } from '@/config/paths';
+import { buildContentPagePath } from '@/config/paths';
 
 import {
   APP_USING_CONTEXT_ITEM,
@@ -25,7 +25,7 @@ describe('Apps', () => {
   it('App should request context', () => {
     const { id, name } = APP_USING_CONTEXT_ITEM;
     cy.setUpApi({ items: [APP_USING_CONTEXT_ITEM] });
-    cy.visit(buildMainPath({ rootId: id }));
+    cy.visit(buildContentPagePath({ rootId: id, itemId: id }));
 
     cy.wait(3000);
     const iframeSelector = `iframe[title="${name}"]`;
@@ -70,7 +70,7 @@ describe('Public Apps', () => {
       currentMember: null,
     });
 
-    cy.visit(buildMainPath({ rootId: id }));
+    cy.visit(buildContentPagePath({ rootId: id, itemId: id }));
   });
 
   it('Public App should request context', () => {

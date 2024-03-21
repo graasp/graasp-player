@@ -1,4 +1,4 @@
-import { buildMainPath } from '@/config/paths';
+import { buildContentPagePath } from '@/config/paths';
 import { buildCollapsibleId } from '@/config/selectors';
 
 import { FOLDER_WITH_COLLAPSIBLE_SHORTCUT_ITEMS } from '../fixtures/items';
@@ -12,7 +12,7 @@ describe('Collapsible', () => {
 
   it('Shows a collapsible wrapper around a collapsible shortcut', () => {
     const parent = FOLDER_WITH_COLLAPSIBLE_SHORTCUT_ITEMS.items[1];
-    cy.visit(buildMainPath({ rootId: parent.id }));
+    cy.visit(buildContentPagePath({ rootId: parent.id, itemId: parent.id }));
     const collapsedShortcut = FOLDER_WITH_COLLAPSIBLE_SHORTCUT_ITEMS.items[2];
     // collapsible document should show as collapsed
     cy.get(`#${buildCollapsibleId(collapsedShortcut.id)}`)
