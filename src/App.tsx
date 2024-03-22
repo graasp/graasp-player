@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import {
+  Link,
   Navigate,
   Route,
   Routes,
@@ -8,7 +9,7 @@ import {
   useSearchParams,
 } from 'react-router-dom';
 
-import { Alert } from '@mui/material';
+import { Alert, Button, Stack, Typography } from '@mui/material';
 
 import { saveUrlForRedirection } from '@graasp/sdk';
 import { CustomInitialLoader, withAuthorization } from '@graasp/ui';
@@ -20,16 +21,28 @@ import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
 import HomePage from '@/modules/pages/HomePage';
 import ItemPage from '@/modules/pages/ItemPage';
 
+import { usePlayerTranslation } from './config/i18n';
+import { PLAYER } from './langs/constants';
 import PageWrapper from './modules/layout/PageWrapper';
 
 const RedirectToRootContentPage = () => {
   const { rootId } = useParams();
+  const { t } = usePlayerTranslation();
   if (rootId) {
     return (
       <Navigate to={buildContentPagePath({ rootId, itemId: rootId })} replace />
     );
   }
-  return <Alert>Item is not valid</Alert>;
+  return (
+    <Alert>
+      <Stack>
+        <Typography>{t(PLAYER.ITEM_ID_NOT_VALID)}</Typography>
+        <Button component={Link} to="/">
+          {t(PLAYER.GO_TO_HOME)}
+        </Button>
+      </Stack>
+    </Alert>
+  );
 };
 
 export const App = (): JSX.Element => {

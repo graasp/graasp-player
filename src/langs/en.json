@@ -18,5 +18,7 @@
   "SIGN_IN_BUTTON_TEXT": "Sign In",
   "FALLBACK_TITLE": "Oops",
   "FALLBACK_TEXT": "Something went wrong. Please try again. If the issue persists contact us.",
-  "FALLBACK_RELOAD_PAGE": "Reload page"
+  "FALLBACK_RELOAD_PAGE": "Reload page",
+  "ITEM_ID_NOT_VALID": "Item Id is not valid, please check it again. Click on the button below to go back to Home.",
+  "GO_TO_HOME": "Go to Home"
 }
