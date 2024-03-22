@@ -55,6 +55,32 @@ export const ITEM_WITH_CHAT_BOX: MockItem = {
   },
 };
 
+export const DOCUMENT_WITH_CHAT_BOX: MockItem = {
+  ...DEFAULT_FOLDER_ITEM,
+  id: 'ecafbd2a-5688-11eb-ae93-0242ac130002',
+  name: 'parent folder',
+  path: 'ecafbd2a_5688_11eb_ae93_0242ac130002',
+  type: 'document',
+  extra: { document: { content: 'hello this is a document' } },
+  settings: {
+    isPinned: false,
+    showChatbox: true,
+  },
+};
+
+export const DOCUMENT_WITHOUT_CHAT_BOX: MockItem = {
+  ...DEFAULT_FOLDER_ITEM,
+  id: 'ecafbd2a-5688-11eb-ae93-0242ac130002',
+  name: 'parent folder',
+  path: 'ecafbd2a_5688_11eb_ae93_0242ac130002',
+  type: 'document',
+  extra: { document: { content: 'hello this is a document with no chatbox' } },
+  settings: {
+    isPinned: false,
+    showChatbox: false,
+  },
+};
+
 export const ITEM_WITHOUT_CHAT_BOX: MockItem = {
   ...DEFAULT_FOLDER_ITEM,
   id: 'fdf09f5a-5688-11eb-ae93-0242ac130003',
