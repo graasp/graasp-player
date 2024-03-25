@@ -68,6 +68,10 @@ const PreviousNextButtons = (): JSX.Element | null => {
     navigate(buildContentPagePath({ rootId, itemId: newItemId }));
   };
 
+  if (!prev && !next) {
+    return null;
+  }
+
   return (
     <Stack direction="row" spacing={1}>
       {prev && (
