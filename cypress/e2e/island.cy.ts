@@ -22,6 +22,6 @@ describe('Island', () => {
       items: [item],
     });
     cy.visit(buildContentPagePath({ rootId: item.id, itemId: item.id }));
-    cy.get(`#${ITEM_CHATBOX_BUTTON_ID}`).should('be.visible');
+    cy.get(`#${ITEM_CHATBOX_BUTTON_ID}`).should('not.exist');
   });
 });
