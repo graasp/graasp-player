@@ -10,7 +10,7 @@ import { ITEM_CHATBOX_BUTTON_ID } from '@/config/selectors';
 import { useLayoutContext } from '@/contexts/LayoutContext';
 import { PLAYER } from '@/langs/constants';
 
-const ChatButton = (): JSX.Element | null => {
+const useChatButton = (): { chatButton: JSX.Element | false } => {
   const { t } = usePlayerTranslation();
   const { itemId } = useParams();
   const { data: item } = hooks.useItem(itemId);
@@ -18,22 +18,25 @@ const ChatButton = (): JSX.Element | null => {
 
   // do not show chatbox button is chatbox setting is not enabled
   if (!item?.settings?.showChatbox) {
-    return null;
+    return { chatButton: false };
   }
 
-  return (
-    <IconButton
-      id={ITEM_CHATBOX_BUTTON_ID}
-      color="primary"
-      onClick={toggleChatbox}
-      aria-label={
-        isChatboxOpen
-          ? t(PLAYER.HIDE_CHAT_TOOLTIP)
-          : t(PLAYER.SHOW_CHAT_TOOLTIP)
-      }
-    >
-      {isChatboxOpen ? <ChatIcon /> : <ChatClosedIcon />}
-    </IconButton>
-  );
+  return {
+    chatButton: (
+      <IconButton
+        key="chatButton"
+        id={ITEM_CHATBOX_BUTTON_ID}
+        color="primary"
+        onClick={toggleChatbox}
+        aria-label={
+          isChatboxOpen
+            ? t(PLAYER.HIDE_CHAT_TOOLTIP)
+            : t(PLAYER.SHOW_CHAT_TOOLTIP)
+        }
+      >
+        {isChatboxOpen ? <ChatIcon /> : <ChatClosedIcon />}
+      </IconButton>
+    ),
+  };
 };
-export default ChatButton;
+export default useChatButton;

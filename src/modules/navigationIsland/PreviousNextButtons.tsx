@@ -2,7 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { Button, Stack } from '@mui/material';
+import { Button } from '@mui/material';
 
 import { ActionTriggers, DiscriminatedItem, ItemType } from '@graasp/sdk';
 
@@ -11,7 +11,10 @@ import isArray from 'lodash.isarray';
 import { buildContentPagePath } from '@/config/paths';
 import { hooks, mutations } from '@/config/queryClient';
 
-const PreviousNextButtons = (): JSX.Element | null => {
+const usePreviousNextButtons = (): {
+  previousButton: JSX.Element | false;
+  nextButton: JSX.Element | false;
+} => {
   const { rootId, itemId } = useParams();
   const navigate = useNavigate();
   const { mutate: triggerAction } = mutations.usePostItemAction();
@@ -29,11 +32,11 @@ const PreviousNextButtons = (): JSX.Element | null => {
 
   // if there are no descendants then there is no need to navigate
   if (!isArray(descendants)) {
-    return null;
+    return { previousButton: false, nextButton: false };
   }
 
   if (isLoading) {
-    return null;
+    return { previousButton: false, nextButton: false };
   }
 
   // we only navigate through folders
@@ -51,7 +54,7 @@ const PreviousNextButtons = (): JSX.Element | null => {
 
     // if index is not found, then do not show navigation
     if (idx < 0) {
-      return null;
+      return { previousButton: false, nextButton: false };
     }
 
     // if index is 0, previous is root
@@ -69,41 +72,41 @@ const PreviousNextButtons = (): JSX.Element | null => {
   };
 
   if (!prev && !next) {
-    return null;
+    return { previousButton: false, nextButton: false };
   }
 
-  return (
-    <Stack direction="row" spacing={1}>
-      {prev && (
-        <Button
-          variant="outlined"
-          startIcon={<ArrowBackIcon />}
-          sx={{ textTransform: 'unset' }}
-          onClick={() => {
-            if (prev?.id) {
-              handleClickNavigationButton(prev.id);
-            }
-          }}
-        >
-          {prev.name}
-        </Button>
-      )}
+  return {
+    previousButton: prev != null && (
+      <Button
+        key="previousButton"
+        variant="outlined"
+        startIcon={<ArrowBackIcon />}
+        sx={{ textTransform: 'unset' }}
+        onClick={() => {
+          if (prev?.id) {
+            handleClickNavigationButton(prev.id);
+          }
+        }}
+      >
+        {prev.name}
+      </Button>
+    ),
 
-      {next && (
-        <Button
-          variant="contained"
-          endIcon={<ArrowForwardIcon />}
-          sx={{ textTransform: 'unset' }}
-          onClick={() => {
-            if (next?.id) {
-              handleClickNavigationButton(next.id);
-            }
-          }}
-        >
-          {next.name}
-        </Button>
-      )}
-    </Stack>
-  );
+    nextButton: next != null && (
+      <Button
+        key="nextButton"
+        variant="contained"
+        endIcon={<ArrowForwardIcon />}
+        sx={{ textTransform: 'unset' }}
+        onClick={() => {
+          if (next?.id) {
+            handleClickNavigationButton(next.id);
+          }
+        }}
+      >
+        {next.name}
+      </Button>
+    ),
+  };
 };
-export default PreviousNextButtons;
+export default usePreviousNextButtons;

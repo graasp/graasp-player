@@ -12,7 +12,7 @@ import { ITEM_PINNED_BUTTON_ID } from '@/config/selectors';
 import { useLayoutContext } from '@/contexts/LayoutContext';
 import { PLAYER } from '@/langs/constants';
 
-const PinnedItemsButton = (): JSX.Element | null => {
+const usePinnedItemsButton = (): { pinnedButton: JSX.Element | false } => {
   const { t } = usePlayerTranslation();
   const { togglePinned, isPinnedOpen } = useLayoutContext();
   const { itemId } = useParams();
@@ -27,21 +27,24 @@ const PinnedItemsButton = (): JSX.Element | null => {
     )?.length || 0;
 
   if (pinnedCount > 0) {
-    return (
-      <IconButton
-        id={ITEM_PINNED_BUTTON_ID}
-        color="primary"
-        onClick={togglePinned}
-        aria-label={
-          isPinnedOpen
-            ? t(PLAYER.HIDE_PINNED_ITEMS_TOOLTIP)
-            : t(PLAYER.SHOW_PINNED_ITEMS_TOOLTIP)
-        }
-      >
-        {isPinnedOpen ? <PinIcon /> : <OutlinedPinIcon />}
-      </IconButton>
-    );
+    return {
+      pinnedButton: (
+        <IconButton
+          key="pinnedButton"
+          id={ITEM_PINNED_BUTTON_ID}
+          color="primary"
+          onClick={togglePinned}
+          aria-label={
+            isPinnedOpen
+              ? t(PLAYER.HIDE_PINNED_ITEMS_TOOLTIP)
+              : t(PLAYER.SHOW_PINNED_ITEMS_TOOLTIP)
+          }
+        >
+          {isPinnedOpen ? <PinIcon /> : <OutlinedPinIcon />}
+        </IconButton>
+      ),
+    };
   }
-  return null;
+  return { pinnedButton: false };
 };
-export default PinnedItemsButton;
+export default usePinnedItemsButton;

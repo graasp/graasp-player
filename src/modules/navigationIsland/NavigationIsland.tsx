@@ -1,14 +1,18 @@
 import { Box, Stack } from '@mui/material';
 
-import ChatButton from './ChatButton';
-import PinnedItemsButton from './PinnedItemsButton';
-import PreviousNextButtons from './PreviousNextButtons';
+import useChatButton from './ChatButton';
+import usePinnedItemsButton from './PinnedItemsButton';
+import usePreviousNextButtons from './PreviousNextButtons';
 
 const NavigationIslandBox = (): JSX.Element | null => {
+  const { previousButton, nextButton } = usePreviousNextButtons();
+  const { chatButton } = useChatButton();
+  const { pinnedButton } = usePinnedItemsButton();
   const navigationItems = [
-    <PreviousNextButtons />,
-    <ChatButton />,
-    <PinnedItemsButton />,
+    previousButton,
+    nextButton,
+    chatButton,
+    pinnedButton,
   ].filter(Boolean);
 
   if (navigationItems.length) {
