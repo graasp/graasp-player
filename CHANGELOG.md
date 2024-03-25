@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.9.0](https://github.com/graasp/graasp-player/compare/v2.8.1...v2.9.0) (2024-03-25)
+
+
+### Features
+
+* create navigation island ([#576](https://github.com/graasp/graasp-player/issues/576)) ([76d5e21](https://github.com/graasp/graasp-player/commit/76d5e210542e9dcd751b8fe04b2f5bbe9bec9176))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @graasp/sdk to v4.2.1 ([#568](https://github.com/graasp/graasp-player/issues/568)) ([db5fb18](https://github.com/graasp/graasp-player/commit/db5fb1810fd01a3015c6cd17f5ecaa531b6da34c))
+* **deps:** update dependency @graasp/ui to v4.11.0 ([#569](https://github.com/graasp/graasp-player/issues/569)) ([850e64d](https://github.com/graasp/graasp-player/commit/850e64dfe8664c1a444356d18353432f3749d037))
+* **deps:** update dependency @sentry/react to v7.108.0 ([#580](https://github.com/graasp/graasp-player/issues/580)) ([4103f19](https://github.com/graasp/graasp-player/commit/4103f19525aefdaf4cf379e5657b7c0977f970fb))
+
 ## [2.8.1](https://github.com/graasp/graasp-player/compare/v2.8.0...v2.8.1) (2024-03-20)
 
 
