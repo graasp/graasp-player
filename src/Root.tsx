@@ -43,7 +43,7 @@ const Root = (): JSX.Element => (
   <QueryClientProvider client={queryClient}>
     <I18nextProvider i18n={i18n}>
       {SHOW_NOTIFICATIONS && (
-        <ToastContainer position="bottom-right" theme="colored" />
+        <ToastContainer stacked position="bottom-right" theme="colored" />
       )}
       {globalStyles}
       <ThemeProvider theme={theme}>
