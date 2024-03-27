@@ -54,6 +54,8 @@ export const HOME_PAGE_PAGINATION_ID = 'homePagePagination';
 export const buildHomePaginationId = (page: number | null): string =>
   `homePagination-${page}`;
 
+export const USER_SWITCH_SIGN_IN_BUTTON_ID = 'userSwitchSignInButton';
+
 export const APP_NAVIGATION_PLATFORM_SWITCH_ID = 'appNavigationPlatformSwitch';
 export const APP_NAVIGATION_PLATFORM_SWITCH_BUTTON_IDS = {
   [Platform.Builder]: 'appNavigationPlatformSwitchButtonBuilder',
