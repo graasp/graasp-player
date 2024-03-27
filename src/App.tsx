@@ -11,11 +11,10 @@ import {
 
 import { Alert, Button, Stack, Typography } from '@mui/material';
 
-import { saveUrlForRedirection } from '@graasp/sdk';
+import { buildSignInPath, saveUrlForRedirection } from '@graasp/sdk';
 import { CustomInitialLoader, withAuthorization } from '@graasp/ui';
 
-import { SIGN_IN_PATH } from '@/config/constants';
-import { DOMAIN } from '@/config/env';
+import { AUTHENTICATION_HOST, DOMAIN } from '@/config/env';
 import { HOME_PATH, buildContentPagePath, buildMainPath } from '@/config/paths';
 import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
 import HomePage from '@/modules/pages/HomePage';
@@ -68,7 +67,11 @@ export const App = (): JSX.Element => {
 
   const props = {
     currentMember,
-    redirectionLink: SIGN_IN_PATH,
+    redirectionLink: buildSignInPath({
+      host: AUTHENTICATION_HOST,
+      // allows to go back to this page after login
+      redirectionUrl: window.location.href,
+    }),
     onRedirect: () => {
       // save current url for later redirection after sign in
       saveUrlForRedirection(location.pathname, DOMAIN);
