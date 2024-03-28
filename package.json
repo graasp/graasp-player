@@ -41,7 +41,7 @@
     "@graasp/translations": "1.25.3",
     "@graasp/ui": "4.12.1",
     "@mui/icons-material": "5.15.14",
-    "@mui/lab": "5.0.0-alpha.151",
+    "@mui/lab": "5.0.0-alpha.169",
     "@mui/material": "5.15.14",
     "@sentry/react": "7.108.0",
     "classnames": "2.5.1",
