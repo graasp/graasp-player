@@ -16,7 +16,10 @@ const usePinnedItemsButton = (): { pinnedButton: JSX.Element | false } => {
   const { t } = usePlayerTranslation();
   const { togglePinned, isPinnedOpen } = useLayoutContext();
   const { itemId } = useParams();
-  const { data: children } = hooks.useChildren(itemId);
+  const { data: item } = hooks.useItem(itemId);
+  const { data: children } = hooks.useChildren(itemId, undefined, {
+    enabled: !!item,
+  });
   const { data: tags } = hooks.useItemsTags(children?.map(({ id }) => id));
   const pinnedCount =
     children?.filter(

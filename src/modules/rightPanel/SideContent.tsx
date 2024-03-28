@@ -65,8 +65,10 @@ type Props = {
 };
 
 const SideContent = ({ content, item }: Props): JSX.Element | null => {
-  const { itemId, rootId } = useParams();
-  const { data: children } = hooks.useChildren(itemId);
+  const { rootId } = useParams();
+  const { data: children } = hooks.useChildren(item.id, undefined, {
+    enabled: !!item,
+  });
   const { data: tags } = hooks.useItemsTags(children?.map(({ id }) => id));
   const [searchParams] = useSearchParams();
 
