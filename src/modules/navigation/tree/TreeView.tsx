@@ -6,7 +6,6 @@ import AccessibleTreeView, {
 import { useParams } from 'react-router-dom';
 
 import { Box, SxProps, Typography } from '@mui/material';
-import Skeleton from '@mui/material/Skeleton';
 
 import {
   ActionTriggers,
@@ -15,6 +14,8 @@ import {
   UnionOfConst,
   getIdsFromPath,
 } from '@graasp/sdk';
+
+import { ErrorBoundary } from '@sentry/react';
 
 import { GRAASP_MENU_ITEMS } from '@/config/constants';
 import { hooks, mutations } from '@/config/queryClient';
@@ -28,7 +29,6 @@ type Props = {
   rootItems: DiscriminatedItem[];
   items?: DiscriminatedItem[];
   onTreeItemSelect?: (value: string) => void;
-  isLoading?: boolean;
   onlyShowContainerItems?: boolean;
   firstLevelStyle?: object;
   sx?: SxProps;
@@ -40,7 +40,6 @@ const TreeView = ({
   items,
   rootItems,
   onTreeItemSelect,
-  isLoading = false,
   onlyShowContainerItems = true,
   firstLevelStyle,
   sx = {},
@@ -52,10 +51,6 @@ const TreeView = ({
   );
 
   const { data: focusedItem } = hooks.useItem(itemId);
-
-  if (isLoading) {
-    return <Skeleton variant="text" />;
-  }
 
   // types based on TreeView types
   const onSelect = (value: string) => {
@@ -108,35 +103,37 @@ const TreeView = ({
     : [];
 
   return (
-    <Box
-      id={id}
-      sx={{
-        ml: -1,
-        '.tree, .tree-node, .tree-node-group': {
-          listStyle: 'none',
-          paddingInlineStart: 'unset',
-          paddingLeft: '17px',
-        },
-        ...sx,
-      }}
-    >
-      {header && (
-        <Typography sx={{ ml: 2, fontWeight: 'bold' }} variant="body1">
-          {header}
-        </Typography>
-      )}
-      <AccessibleTreeView
-        defaultExpandedIds={defaultExpandedIds}
-        data={flattenTree<{ type: UnionOfConst<typeof ItemType> }>({
-          // here there should be a root item for all children which basically is gonna be an empty name
-          name: '',
-          children: tree,
-        })}
-        nodeRenderer={nodeRenderer}
-        selectedIds={selectedIds}
-        expandedIds={accessibleExpandedItems}
-      />
-    </Box>
+    <ErrorBoundary fallback={<p>hello</p>}>
+      <Box
+        id={id}
+        sx={{
+          ml: -1,
+          '.tree, .tree-node, .tree-node-group': {
+            listStyle: 'none',
+            paddingInlineStart: 'unset',
+            paddingLeft: '17px',
+          },
+          ...sx,
+        }}
+      >
+        {header && (
+          <Typography sx={{ ml: 2, fontWeight: 'bold' }} variant="body1">
+            {header}
+          </Typography>
+        )}
+        <AccessibleTreeView
+          defaultExpandedIds={defaultExpandedIds}
+          data={flattenTree<{ type: UnionOfConst<typeof ItemType> }>({
+            // here there should be a root item for all children which basically is gonna be an empty name
+            name: '',
+            children: tree,
+          })}
+          nodeRenderer={nodeRenderer}
+          selectedIds={selectedIds}
+          expandedIds={accessibleExpandedItems}
+        />
+      </Box>
+    </ErrorBoundary>
   );
 };
 

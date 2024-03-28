@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { Alert, Skeleton } from '@mui/material';
+import { Alert } from '@mui/material';
 
 import { FAILURE_MESSAGES } from '@graasp/translations';
 import { MainMenu } from '@graasp/ui';
@@ -11,6 +11,8 @@ import { axios, hooks } from '@/config/queryClient';
 import { MAIN_MENU_ID, TREE_VIEW_ID } from '@/config/selectors';
 import TreeView from '@/modules/navigation/tree/TreeView';
 import { isHidden } from '@/utils/item';
+
+import LoadingTree from './tree/LoadingTree';
 
 const { useItem, useDescendants, useItemsTags } = hooks;
 
@@ -24,7 +26,6 @@ const DrawerNavigation = (): JSX.Element | null => {
   const { data: itemsTags } = useItemsTags(descendants?.map(({ id }) => id));
 
   const { data: rootItem, isLoading, isError, error } = useItem(rootId);
-
   const handleNavigationOnClick = (newItemId: string) => {
     navigate(buildContentPagePath({ rootId, itemId: newItemId }));
   };
@@ -46,7 +47,7 @@ const DrawerNavigation = (): JSX.Element | null => {
   }
 
   if (isLoading) {
-    return <Skeleton variant="text" />;
+    return <LoadingTree />;
   }
 
   if (isError) {

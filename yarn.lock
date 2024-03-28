@@ -1506,9 +1506,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/query-client@npm:3.0.1":
-  version: 3.0.1
-  resolution: "@graasp/query-client@npm:3.0.1"
+"@graasp/query-client@npm:3.2.0":
+  version: 3.2.0
+  resolution: "@graasp/query-client@npm:3.2.0"
   dependencies:
     "@tanstack/react-query": "npm:4.36.1"
     "@tanstack/react-query-devtools": "npm:4.36.1"
@@ -1519,13 +1519,13 @@ __metadata:
     "@graasp/sdk": ^4.0.0
     "@graasp/translations": ^1.23.0
     react: ^18.0.0
-  checksum: 10/f4a343d47157e1d79fdbfb423e38d8670e8b289528b30671b6cfafa87f9d99c116fdb385e46b75bcd8cb3e6fa4c258a15ec1c542a9d47ba8ca4b02b2a3eae045
+  checksum: 10/58a27034f5c7fb4cd2530f3d15d5a22259e28f9d8fa028e2e3a93a10bbf7f5916b3f126d5b85a7a1c256103d9f26802751112ee74ba1cff4484676ad55940797
   languageName: node
   linkType: hard
 
-"@graasp/sdk@npm:4.3.1":
-  version: 4.3.1
-  resolution: "@graasp/sdk@npm:4.3.1"
+"@graasp/sdk@github:graasp/graasp-sdk#add-better-pdf-building-function":
+  version: 4.2.1
+  resolution: "@graasp/sdk@https://github.com/graasp/graasp-sdk.git#commit=4d510b50effe1995c0def25823d05975706b9de3"
   dependencies:
     "@faker-js/faker": "npm:8.4.1"
     js-cookie: "npm:3.0.5"
@@ -1533,7 +1533,7 @@ __metadata:
   peerDependencies:
     date-fns: ^3
     uuid: ^9
-  checksum: 10/d2715dde95901fbe67eb788f324d212f556c9ea607cb2041e6d7f9a12e41dc21d25a867ca92add5cd3cf8407daf2efa7e5c1f08f2e95f8db956018ff44275a33
+  checksum: 10/a05bf3a35aef3d7550804df811d53cc807f51c07da04cefa4e168e8a51db0f63ff27a2547f74906a1cab57d52181c81751bdcc08c7f976ea8267a00f8ff62a8d
   languageName: node
   linkType: hard
 
@@ -1546,9 +1546,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/ui@npm:4.12.1":
+"@graasp/ui@github:graasp/graasp-ui#allow-component-in-card-description":
   version: 4.12.1
-  resolution: "@graasp/ui@npm:4.12.1"
+  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=a283969d9e947633837616ad9c81a261f2788428"
   dependencies:
     "@ag-grid-community/client-side-row-model": "npm:31.1.1"
     "@ag-grid-community/react": "npm:^31.1.1"
@@ -1580,7 +1580,7 @@ __metadata:
     react-router-dom: ^6.11.0
     stylis: ^4.1.3
     stylis-plugin-rtl: ^2.1.1
-  checksum: 10/a7593f588d50798f0daf43a05dc332d3c4604dc3d50a2beb66f652d402a02deff6ab341f4bdb9a52eeb6f17d6c209d9ec409022a961deea185cd3452a5bf7ae9
+  checksum: 10/dbcd3d500d5e15d7078b67347b1cc580529971e86dfc70e368d580d45d64582a4ecd70b7216fef7c4b10b893f3891822c253c96dd76300dcd3420889084a1b37
   languageName: node
   linkType: hard
 
@@ -6904,10 +6904,10 @@ __metadata:
     "@emotion/react": "npm:11.11.4"
     "@emotion/styled": "npm:11.11.0"
     "@graasp/chatbox": "npm:3.1.0"
-    "@graasp/query-client": "npm:3.0.1"
-    "@graasp/sdk": "npm:4.3.1"
+    "@graasp/query-client": "npm:3.2.0"
+    "@graasp/sdk": "github:graasp/graasp-sdk#add-better-pdf-building-function"
     "@graasp/translations": "npm:1.25.3"
-    "@graasp/ui": "npm:4.12.1"
+    "@graasp/ui": "github:graasp/graasp-ui#allow-component-in-card-description"
     "@mui/icons-material": "npm:5.15.14"
     "@mui/lab": "npm:5.0.0-alpha.151"
     "@mui/material": "npm:5.15.14"
