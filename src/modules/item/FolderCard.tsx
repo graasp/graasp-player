@@ -16,10 +16,10 @@ const StyledLink = styled(Link)(() => ({
 type Props = {
   item: DiscriminatedItem;
   id?: string;
-  keepRoot?: boolean;
+  replaceRoot?: boolean;
 };
 
-const FolderCard = ({ id, item, keepRoot = true }: Props): JSX.Element => {
+const FolderCard = ({ id, item, replaceRoot = false }: Props): JSX.Element => {
   const { rootId } = useParams();
   const { id: itemId, description, name } = item;
   const { data: thumbnail } = hooks.useItemThumbnailUrl({
@@ -29,7 +29,10 @@ const FolderCard = ({ id, item, keepRoot = true }: Props): JSX.Element => {
 
   return (
     <StyledLink
-      to={buildContentPagePath({ rootId: keepRoot ? rootId : itemId, itemId })}
+      to={buildContentPagePath({
+        rootId: replaceRoot ? itemId : rootId,
+        itemId,
+      })}
     >
       <GraaspCard
         description={<TextDisplay content={description ?? ''} />}

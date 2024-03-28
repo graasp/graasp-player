@@ -302,7 +302,7 @@ const ItemContent = ({ item }: ItemContentProps) => {
   switch (item.type) {
     case ItemType.FOLDER: {
       const folderButton = (
-        <FolderCard id={buildFolderButtonId(item.id)} item={item} />
+        <FolderCard id={buildFolderButtonId(item.id)} item={item} replaceRoot />
       );
       return folderButton;
 
@@ -425,45 +425,40 @@ const FolderContent = ({
       </Container>
     );
 
+  if (showPinnedOnly) {
+    return children
+      ?.filter((i) => showPinnedOnly === (i.settings?.isPinned || false))
+      ?.map((thisItem) => (
+        <ItemContentWrapper key={thisItem.id} item={thisItem} />
+      ));
+  }
   // render each children recursively
   return (
-    <>
-      {!showPinnedOnly && (
-        <Box pb={7}>
-          <Stack direction="column">
-            <Typography className={FOLDER_NAME_TITLE_CLASS} variant="h5">
-              {item.name}
-            </Typography>
-            <TextDisplay content={item.description ?? ''} />
-          </Stack>
+    <Box pb={7}>
+      <Stack direction="column">
+        <Typography className={FOLDER_NAME_TITLE_CLASS} variant="h5">
+          {item.name}
+        </Typography>
+        <TextDisplay content={item.description ?? ''} />
+      </Stack>
 
-          {childrenPaginated?.pages.map((page) => (
-            <Fragment key={page.pageNumber}>
-              {page.data.map((thisItem) => (
-                <Box
-                  key={thisItem.id}
-                  textAlign="center"
-                  marginTop={(theme) => theme.spacing(1)}
-                  marginBottom={(theme) => theme.spacing(1)}
-                >
-                  <ItemContentWrapper item={thisItem} />
-                </Box>
-              ))}
-            </Fragment>
-          ))}
-          {showLoadMoreButton}
-          <NavigationIsland />
-        </Box>
-      )}
-      {showPinnedOnly &&
-        children
-          ?.filter((i) => showPinnedOnly === (i.settings?.isPinned || false))
-          ?.map((thisItem) => (
-            <Container key={thisItem.id}>
+      {childrenPaginated?.pages.map((page) => (
+        <Fragment key={page.pageNumber}>
+          {page.data.map((thisItem) => (
+            <Box
+              key={thisItem.id}
+              textAlign="center"
+              marginTop={(theme) => theme.spacing(1)}
+              marginBottom={(theme) => theme.spacing(1)}
+            >
               <ItemContentWrapper item={thisItem} />
-            </Container>
+            </Box>
           ))}
-    </>
+        </Fragment>
+      ))}
+      {showLoadMoreButton}
+      <NavigationIsland />
+    </Box>
   );
 };
 
