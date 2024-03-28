@@ -18,6 +18,7 @@ import {
   DiscriminatedItem,
   DocumentItemType,
   EtherpadItemType,
+  FolderItemType,
   H5PItemType,
   ItemType,
   LinkItemType,
@@ -61,7 +62,7 @@ import { PLAYER } from '@/langs/constants';
 import { isHidden, paginationContentFilter } from '@/utils/item';
 
 import NavigationIsland from '../navigationIsland/NavigationIsland';
-import PinnedFolderItem from './PinnedFolderItem';
+import FolderCard from './FolderCard';
 
 const {
   useEtherpad,
@@ -301,7 +302,7 @@ const ItemContent = ({ item }: ItemContentProps) => {
   switch (item.type) {
     case ItemType.FOLDER: {
       const folderButton = (
-        <PinnedFolderItem id={buildFolderButtonId(item.id)} item={item} />
+        <FolderCard id={buildFolderButtonId(item.id)} item={item} />
       );
       return folderButton;
 
@@ -372,6 +373,100 @@ const ItemContentWrapper = ({ item }: { item: DiscriminatedItem }) => {
   return <ItemContent item={item} />;
 };
 
+type FolderContentProps = {
+  item: FolderItemType;
+  showPinnedOnly?: boolean;
+};
+const FolderContent = ({
+  item,
+  showPinnedOnly = false,
+}: FolderContentProps) => {
+  const { ref, inView } = useInView();
+  const { t: translatePlayer } = usePlayerTranslation();
+
+  // this should be fetched only when the item is a folder
+  const { data: children = [], isInitialLoading: isChildrenLoading } =
+    useChildren(item.id, undefined, {
+      getUpdates: true,
+    });
+
+  const {
+    data: childrenPaginated,
+    refetch: refetchChildrenPaginated,
+    hasNextPage,
+    isFetchingNextPage,
+    fetchNextPage,
+  } = useChildrenPaginated(item.id, children, {
+    enabled: Boolean(!showPinnedOnly && children && !isChildrenLoading),
+    filterFunction: paginationContentFilter,
+  });
+
+  useEffect(() => {
+    if (children) {
+      refetchChildrenPaginated();
+    }
+
+    if (inView) {
+      fetchNextPage();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView, children]);
+
+  const showLoadMoreButton =
+    !hasNextPage || isFetchingNextPage ? null : (
+      <Container ref={ref}>
+        <Button
+          disabled={!hasNextPage || isFetchingNextPage}
+          onClick={() => fetchNextPage()}
+          fullWidth
+        >
+          {translatePlayer(PLAYER.LOAD_MORE)}
+        </Button>
+      </Container>
+    );
+
+  // render each children recursively
+  return (
+    <>
+      {!showPinnedOnly && (
+        <Box pb={7}>
+          <Stack direction="column">
+            <Typography className={FOLDER_NAME_TITLE_CLASS} variant="h5">
+              {item.name}
+            </Typography>
+            <TextDisplay content={item.description ?? ''} />
+          </Stack>
+
+          {childrenPaginated?.pages.map((page) => (
+            <Fragment key={page.pageNumber}>
+              {page.data.map((thisItem) => (
+                <Box
+                  key={thisItem.id}
+                  textAlign="center"
+                  marginTop={(theme) => theme.spacing(1)}
+                  marginBottom={(theme) => theme.spacing(1)}
+                >
+                  <ItemContentWrapper item={thisItem} />
+                </Box>
+              ))}
+            </Fragment>
+          ))}
+          {showLoadMoreButton}
+          <NavigationIsland />
+        </Box>
+      )}
+      {showPinnedOnly &&
+        children
+          ?.filter((i) => showPinnedOnly === (i.settings?.isPinned || false))
+          ?.map((thisItem) => (
+            <Container key={thisItem.id}>
+              <ItemContentWrapper item={thisItem} />
+            </Container>
+          ))}
+    </>
+  );
+};
+
 type Props = {
   /**
    * Id of the parent item for which the page is displayed
@@ -390,48 +485,18 @@ const Item = ({
   id,
   isChildren = false,
   showPinnedOnly = false,
-}: Props): JSX.Element | null => {
-  const { ref, inView } = useInView();
-  const { t: translatePlayer } = usePlayerTranslation();
+}: Props): JSX.Element | false => {
   const { t: translateMessage } = useMessagesTranslation();
   const { data: item, isInitialLoading: isLoadingItem, isError } = useItem(id);
 
-  // fetch children if item is folder
-  const isFolder = Boolean(item?.type === ItemType.FOLDER);
-  const {
-    data: children = [],
-    isInitialLoading: isChildrenLoading,
-    isError: isChildrenError,
-  } = useChildren(id, undefined, {
-    enabled: isFolder,
-    getUpdates: isFolder,
-  });
-
-  const {
-    data: childrenPaginated,
-    isInitialLoading: isChildrenPaginatedLoading,
-    isError: isChildrenPaginatedError,
-    refetch: refetchChildrenPaginated,
-    hasNextPage,
-    isFetchingNextPage,
-    fetchNextPage,
-  } = useChildrenPaginated(id, children, {
-    enabled: Boolean(!showPinnedOnly && children && !isChildrenLoading),
-    filterFunction: paginationContentFilter,
-  });
-
-  useEffect(() => {
-    if (children) {
-      refetchChildrenPaginated();
+  if (item && item.type === ItemType.FOLDER) {
+    if (isChildren) {
+      return <ItemContentWrapper item={item} />;
     }
+    return <FolderContent item={item} showPinnedOnly={showPinnedOnly} />;
+  }
 
-    if (inView) {
-      fetchNextPage();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inView, children]);
-
-  if (isLoadingItem || isChildrenLoading || isChildrenPaginatedLoading) {
+  if (isLoadingItem) {
     return (
       <ItemSkeleton
         itemType={item?.type ?? ItemType.FOLDER}
@@ -441,78 +506,24 @@ const Item = ({
     );
   }
 
-  if (isError || !item || isChildrenError || isChildrenPaginatedError) {
+  if (item) {
+    // executed when item is a single child that is not a folder
+    return (
+      <>
+        <ItemContentWrapper item={item} />
+        <NavigationIsland />
+      </>
+    );
+  }
+
+  if (isError || !item) {
     return (
       <Alert severity="error">
         {translateMessage(FAILURE_MESSAGES.UNEXPECTED_ERROR)}
       </Alert>
     );
   }
-
-  if (item.type === ItemType.FOLDER) {
-    const showLoadMoreButton =
-      !hasNextPage || isFetchingNextPage ? null : (
-        <Container ref={ref}>
-          <Button
-            disabled={!hasNextPage || isFetchingNextPage}
-            onClick={() => fetchNextPage()}
-            fullWidth
-          >
-            {translatePlayer(PLAYER.LOAD_MORE)}
-          </Button>
-        </Container>
-      );
-
-    // render each children recursively
-    return (
-      <>
-        {!showPinnedOnly && (
-          <>
-            <Stack direction="column">
-              <Typography className={FOLDER_NAME_TITLE_CLASS} variant="h5">
-                {item.name}
-              </Typography>
-              <TextDisplay content={item.description ?? ''} />
-            </Stack>
-
-            {childrenPaginated?.pages.map((page) => (
-              <Fragment key={page.pageNumber}>
-                {page.data.map((thisItem) => (
-                  <Box
-                    key={thisItem.id}
-                    textAlign="center"
-                    marginTop={(theme) => theme.spacing(1)}
-                    marginBottom={(theme) => theme.spacing(1)}
-                  >
-                    <ItemContentWrapper item={thisItem} />
-                  </Box>
-                ))}
-              </Fragment>
-            ))}
-            {showLoadMoreButton}
-            <NavigationIsland />
-          </>
-        )}
-
-        {showPinnedOnly &&
-          children
-            ?.filter((i) => showPinnedOnly === (i.settings?.isPinned || false))
-            ?.map((thisItem) => (
-              <Container key={thisItem.id}>
-                <ItemContentWrapper item={thisItem} />
-              </Container>
-            ))}
-      </>
-    );
-  }
-
-  // executed when item is a single child that is not a folder
-  return (
-    <>
-      <ItemContentWrapper item={item} />
-      <NavigationIsland />
-    </>
-  );
+  return false;
 };
 
 export default Item;
