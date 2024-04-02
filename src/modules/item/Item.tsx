@@ -442,15 +442,10 @@ const FolderContent = ({
         <TextDisplay content={item.description ?? ''} />
       </Stack>
 
-      {childrenPaginated?.pages.map((page) => (
+      {childrenPaginated?.pages?.map((page) => (
         <Fragment key={page.pageNumber}>
           {page.data.map((thisItem) => (
-            <Box
-              key={thisItem.id}
-              textAlign="center"
-              marginTop={(theme) => theme.spacing(1)}
-              marginBottom={(theme) => theme.spacing(1)}
-            >
+            <Box key={thisItem.id} textAlign="center" mt={1} mb={1}>
               <ItemContentWrapper item={thisItem} />
             </Box>
           ))}
@@ -472,10 +467,6 @@ type Props = {
   showPinnedOnly?: boolean;
 };
 
-/**
- *
- * @returns
- */
 const Item = ({
   id,
   isChildren = false,
