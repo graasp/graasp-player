@@ -1523,9 +1523,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/sdk@github:graasp/graasp-sdk#add-better-pdf-building-function":
-  version: 4.2.1
-  resolution: "@graasp/sdk@https://github.com/graasp/graasp-sdk.git#commit=4d510b50effe1995c0def25823d05975706b9de3"
+"@graasp/sdk@npm:4.4.0":
+  version: 4.4.0
+  resolution: "@graasp/sdk@npm:4.4.0"
   dependencies:
     "@faker-js/faker": "npm:8.4.1"
     js-cookie: "npm:3.0.5"
@@ -1533,7 +1533,7 @@ __metadata:
   peerDependencies:
     date-fns: ^3
     uuid: ^9
-  checksum: 10/a05bf3a35aef3d7550804df811d53cc807f51c07da04cefa4e168e8a51db0f63ff27a2547f74906a1cab57d52181c81751bdcc08c7f976ea8267a00f8ff62a8d
+  checksum: 10/12c52bca82bc3302ef76747434f80cb4a65b60d64e1fdffffdd729feead573878e6a7434837bebc6b2d930ebe761bb74f6d46e5291b134558df610d57c4c59de
   languageName: node
   linkType: hard
 
@@ -1546,9 +1546,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/ui@github:graasp/graasp-ui#allow-component-in-card-description":
-  version: 4.12.1
-  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=a283969d9e947633837616ad9c81a261f2788428"
+"@graasp/ui@npm:4.13.0":
+  version: 4.13.0
+  resolution: "@graasp/ui@npm:4.13.0"
   dependencies:
     "@ag-grid-community/client-side-row-model": "npm:31.1.1"
     "@ag-grid-community/react": "npm:^31.1.1"
@@ -1580,7 +1580,7 @@ __metadata:
     react-router-dom: ^6.11.0
     stylis: ^4.1.3
     stylis-plugin-rtl: ^2.1.1
-  checksum: 10/dbcd3d500d5e15d7078b67347b1cc580529971e86dfc70e368d580d45d64582a4ecd70b7216fef7c4b10b893f3891822c253c96dd76300dcd3420889084a1b37
+  checksum: 10/2edb4c73072d313dd3b6d59252c28c2a5d653bae599cddb1591a83040d0f8c0de6486f95f62bb451d374c506d07d62f77f1c2771c47617a05b70c8d032d661b4
   languageName: node
   linkType: hard
 
@@ -6905,9 +6905,9 @@ __metadata:
     "@emotion/styled": "npm:11.11.0"
     "@graasp/chatbox": "npm:3.1.0"
     "@graasp/query-client": "npm:3.2.0"
-    "@graasp/sdk": "github:graasp/graasp-sdk#add-better-pdf-building-function"
+    "@graasp/sdk": "npm:4.4.0"
     "@graasp/translations": "npm:1.25.3"
-    "@graasp/ui": "github:graasp/graasp-ui#allow-component-in-card-description"
+    "@graasp/ui": "npm:4.13.0"
     "@mui/icons-material": "npm:5.15.14"
     "@mui/lab": "npm:5.0.0-alpha.151"
     "@mui/material": "npm:5.15.14"
