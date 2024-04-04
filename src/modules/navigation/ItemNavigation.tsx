@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { Alert } from '@mui/material';
@@ -19,6 +20,11 @@ const { useItem, useDescendants, useItemsTags } = hooks;
 const DrawerNavigation = (): JSX.Element | null => {
   const rootId = useParams()[ROOT_ID_PATH];
   const navigate = useNavigate();
+  const [prevRootId, setPrevRootId] = useState(rootId);
+
+  useEffect(() => {
+    setPrevRootId(rootId);
+  }, [rootId]);
 
   const { t: translateMessage } = useMessagesTranslation();
 
@@ -29,6 +35,14 @@ const DrawerNavigation = (): JSX.Element | null => {
   const handleNavigationOnClick = (newItemId: string) => {
     navigate(buildContentPagePath({ rootId, itemId: newItemId }));
   };
+
+  // on root change, we need to destroy the tree
+  // since it keeps the same data on reload despite prop changes
+  // we cannot rely on isLoading because the data is taken from the cache
+  // bc of our query client optimization
+  if (prevRootId !== rootId) {
+    return <LoadingTree />;
+  }
 
   if (rootItem) {
     return (
