@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.10.0](https://github.com/graasp/graasp-player/compare/v2.9.0...v2.10.0) (2024-04-04)
+
+
+### Features
+
+* improve player ([#596](https://github.com/graasp/graasp-player/issues/596)) ([5bbfc97](https://github.com/graasp/graasp-player/commit/5bbfc974bef44028322a4824321adedc3d9df6ac))
+
+
+### Bug Fixes
+
+* add redirection url on home page authorization ([#594](https://github.com/graasp/graasp-player/issues/594)) ([b7fdc4d](https://github.com/graasp/graasp-player/commit/b7fdc4d1dac5f49a296e6ef3e1784ed3a5db562c))
+* **deps:** update dependency @graasp/sdk to v4.3.1 ([#587](https://github.com/graasp/graasp-player/issues/587)) ([7ccd224](https://github.com/graasp/graasp-player/commit/7ccd224ff75aca880ef40b24cd9d9a92717893eb))
+* **deps:** update dependency @graasp/ui to v4.12.1 ([#588](https://github.com/graasp/graasp-player/issues/588)) ([39b2c40](https://github.com/graasp/graasp-player/commit/39b2c406337a78d3d2dafb0bbee46029b419cd79))
+* fix shortcut navigation crash ([#603](https://github.com/graasp/graasp-player/issues/603)) ([863939a](https://github.com/graasp/graasp-player/commit/863939a95728624b5f5dce9e3550434e1ffbebc2))
+* notifs should stack ([#593](https://github.com/graasp/graasp-player/issues/593)) ([bac7043](https://github.com/graasp/graasp-player/commit/bac7043d133e5cb6ecefd548c42265c56f97ef2a))
+
 ## [2.9.0](https://github.com/graasp/graasp-player/compare/v2.8.1...v2.9.0) (2024-03-25)
 
 
