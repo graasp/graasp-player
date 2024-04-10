@@ -28,7 +28,7 @@ const UserSwitchWrapper = ({
   preserveUrl = true,
 }: Props): JSX.Element => {
   const { data: member, isLoading = true } = useCurrentMemberContext();
-  const { mutate: useSignOutMutation } = useSignOut();
+  const { mutateAsync: useSignOutMutation } = useSignOut();
 
   const redirectUrl = new URL(SIGN_IN_PATH);
   if (preserveUrl) {
