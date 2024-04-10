@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.10.0](https://github.com/graasp/graasp-player/compare/v2.9.0...v2.10.0) (2024-04-04)
+
+
+### Features
+
+* improve player ([#596](https://github.com/graasp/graasp-player/issues/596)) ([5bbfc97](https://github.com/graasp/graasp-player/commit/5bbfc974bef44028322a4824321adedc3d9df6ac))
+
+
+### Bug Fixes
+
+* add redirection url on home page authorization ([#594](https://github.com/graasp/graasp-player/issues/594)) ([b7fdc4d](https://github.com/graasp/graasp-player/commit/b7fdc4d1dac5f49a296e6ef3e1784ed3a5db562c))
+* **deps:** update dependency @graasp/sdk to v4.3.1 ([#587](https://github.com/graasp/graasp-player/issues/587)) ([7ccd224](https://github.com/graasp/graasp-player/commit/7ccd224ff75aca880ef40b24cd9d9a92717893eb))
+* **deps:** update dependency @graasp/ui to v4.12.1 ([#588](https://github.com/graasp/graasp-player/issues/588)) ([39b2c40](https://github.com/graasp/graasp-player/commit/39b2c406337a78d3d2dafb0bbee46029b419cd79))
+* fix shortcut navigation crash ([#603](https://github.com/graasp/graasp-player/issues/603)) ([863939a](https://github.com/graasp/graasp-player/commit/863939a95728624b5f5dce9e3550434e1ffbebc2))
+* notifs should stack ([#593](https://github.com/graasp/graasp-player/issues/593)) ([bac7043](https://github.com/graasp/graasp-player/commit/bac7043d133e5cb6ecefd548c42265c56f97ef2a))
+
+## [2.9.0](https://github.com/graasp/graasp-player/compare/v2.8.1...v2.9.0) (2024-03-25)
+
+
+### Features
+
+* create navigation island ([#576](https://github.com/graasp/graasp-player/issues/576)) ([76d5e21](https://github.com/graasp/graasp-player/commit/76d5e210542e9dcd751b8fe04b2f5bbe9bec9176))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @graasp/sdk to v4.2.1 ([#568](https://github.com/graasp/graasp-player/issues/568)) ([db5fb18](https://github.com/graasp/graasp-player/commit/db5fb1810fd01a3015c6cd17f5ecaa531b6da34c))
+* **deps:** update dependency @graasp/ui to v4.11.0 ([#569](https://github.com/graasp/graasp-player/issues/569)) ([850e64d](https://github.com/graasp/graasp-player/commit/850e64dfe8664c1a444356d18353432f3749d037))
+* **deps:** update dependency @sentry/react to v7.108.0 ([#580](https://github.com/graasp/graasp-player/issues/580)) ([4103f19](https://github.com/graasp/graasp-player/commit/4103f19525aefdaf4cf379e5657b7c0977f970fb))
+
 ## [2.8.1](https://github.com/graasp/graasp-player/compare/v2.8.0...v2.8.1) (2024-03-20)
 
 

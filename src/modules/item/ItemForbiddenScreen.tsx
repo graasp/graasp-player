@@ -4,6 +4,7 @@ import { Stack } from '@mui/material';
 import { Button, ForbiddenContent } from '@graasp/ui';
 
 import { usePlayerTranslation } from '@/config/i18n';
+import { USER_SWITCH_SIGN_IN_BUTTON_ID } from '@/config/selectors';
 import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
 import { PLAYER } from '@/langs/constants';
 import UserSwitchWrapper from '@/modules/userSwitch/UserSwitchWrapper';
@@ -13,7 +14,12 @@ const ItemForbiddenScreen = (): JSX.Element => {
   const { data: member } = useCurrentMemberContext();
 
   const ButtonContent = (
-    <Button variant="outlined" startIcon={<AccountCircleIcon />}>
+    <Button
+      className="toto"
+      id={USER_SWITCH_SIGN_IN_BUTTON_ID}
+      variant="outlined"
+      startIcon={<AccountCircleIcon />}
+    >
       {t(PLAYER.SIGN_IN_BUTTON_TEXT)}
     </Button>
   );

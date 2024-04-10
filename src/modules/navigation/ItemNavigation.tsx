@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { Alert, Skeleton } from '@mui/material';
+import { Alert } from '@mui/material';
 
 import { FAILURE_MESSAGES } from '@graasp/translations';
 import { MainMenu } from '@graasp/ui';
@@ -12,11 +13,18 @@ import { MAIN_MENU_ID, TREE_VIEW_ID } from '@/config/selectors';
 import TreeView from '@/modules/navigation/tree/TreeView';
 import { isHidden } from '@/utils/item';
 
+import LoadingTree from './tree/LoadingTree';
+
 const { useItem, useDescendants, useItemsTags } = hooks;
 
 const DrawerNavigation = (): JSX.Element | null => {
   const rootId = useParams()[ROOT_ID_PATH];
   const navigate = useNavigate();
+  const [prevRootId, setPrevRootId] = useState(rootId);
+
+  useEffect(() => {
+    setPrevRootId(rootId);
+  }, [rootId]);
 
   const { t: translateMessage } = useMessagesTranslation();
 
@@ -24,10 +32,17 @@ const DrawerNavigation = (): JSX.Element | null => {
   const { data: itemsTags } = useItemsTags(descendants?.map(({ id }) => id));
 
   const { data: rootItem, isLoading, isError, error } = useItem(rootId);
-
   const handleNavigationOnClick = (newItemId: string) => {
     navigate(buildContentPagePath({ rootId, itemId: newItemId }));
   };
+
+  // on root change, we need to destroy the tree
+  // since it keeps the same data on reload despite prop changes
+  // we cannot rely on isLoading because the data is taken from the cache
+  // bc of our query client optimization
+  if (prevRootId !== rootId) {
+    return <LoadingTree />;
+  }
 
   if (rootItem) {
     return (
@@ -46,7 +61,7 @@ const DrawerNavigation = (): JSX.Element | null => {
   }
 
   if (isLoading) {
-    return <Skeleton variant="text" />;
+    return <LoadingTree />;
   }
 
   if (isError) {

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Box, Button, Skeleton } from '@mui/material';
+import { Box, Button } from '@mui/material';
 
 import { DiscriminatedItem } from '@graasp/sdk';
 import { MainMenu } from '@graasp/ui';
@@ -12,6 +12,7 @@ import { hooks } from '@/config/queryClient';
 import { MY_ITEMS_ID, SHOW_MORE_ITEMS_ID } from '@/config/selectors';
 import { PLAYER } from '@/langs/constants';
 
+import LoadingTree from './tree/LoadingTree';
 import TreeView from './tree/TreeView';
 
 const PAGE_SIZE = 20;
@@ -64,7 +65,7 @@ const HomeNavigation = (): JSX.Element | null => {
   }
 
   if (isLoadingAccessibleItems) {
-    return <Skeleton />;
+    return <LoadingTree />;
   }
 
   return null;

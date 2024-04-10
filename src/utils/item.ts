@@ -1,4 +1,10 @@
-import { DiscriminatedItem, ItemTag, ItemTagType, ItemType } from '@graasp/sdk';
+import {
+  DiscriminatedItem,
+  ItemTag,
+  ItemTagType,
+  ItemType,
+  PackedItem,
+} from '@graasp/sdk';
 
 export const isError = (error?: { statusCode: number }): boolean =>
   Boolean(error?.statusCode);
@@ -39,9 +45,7 @@ export const isHidden = (
 export const stripHtml = (str?: string | null): string | undefined =>
   str?.replace(/<[^>]*>?/gm, '');
 
-export const paginationContentFilter = (
-  items: DiscriminatedItem[],
-): DiscriminatedItem[] =>
+export const paginationContentFilter = (items: PackedItem[]): PackedItem[] =>
   items
     .filter((i) => i.type !== ItemType.FOLDER)
     .filter((i) => !i.settings?.isPinned);
