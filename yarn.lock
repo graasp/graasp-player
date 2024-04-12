@@ -1523,9 +1523,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/sdk@npm:4.4.0":
-  version: 4.4.0
-  resolution: "@graasp/sdk@npm:4.4.0"
+"@graasp/sdk@npm:4.7.1":
+  version: 4.7.1
+  resolution: "@graasp/sdk@npm:4.7.1"
   dependencies:
     "@faker-js/faker": "npm:8.4.1"
     js-cookie: "npm:3.0.5"
@@ -1533,7 +1533,7 @@ __metadata:
   peerDependencies:
     date-fns: ^3
     uuid: ^9
-  checksum: 10/12c52bca82bc3302ef76747434f80cb4a65b60d64e1fdffffdd729feead573878e6a7434837bebc6b2d930ebe761bb74f6d46e5291b134558df610d57c4c59de
+  checksum: 10/182e2a33fbdf7ed2cac7fbdf5a01378a059415a753345cca501d2ddda4985b9448c81bb2931a7157dc34cd613412c5da42da38cb037e9a46438755707e4ea2aa
   languageName: node
   linkType: hard
 
@@ -6905,7 +6905,7 @@ __metadata:
     "@emotion/styled": "npm:11.11.0"
     "@graasp/chatbox": "npm:3.1.0"
     "@graasp/query-client": "npm:3.3.0"
-    "@graasp/sdk": "npm:4.4.0"
+    "@graasp/sdk": "npm:4.7.1"
     "@graasp/translations": "npm:1.25.3"
     "@graasp/ui": "npm:4.14.1"
     "@mui/icons-material": "npm:5.15.14"
