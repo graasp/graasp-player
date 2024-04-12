@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.10.1](https://github.com/graasp/graasp-player/compare/v2.10.0...v2.10.1) (2024-04-12)
+
+
+### Bug Fixes
+
+* add nunito font in index ([af9e33b](https://github.com/graasp/graasp-player/commit/af9e33b269e36158e79d778a5b34c55634a847e6))
+* **deps:** update dependency @emotion/styled to v11.11.5 ([#598](https://github.com/graasp/graasp-player/issues/598)) ([8ea81a6](https://github.com/graasp/graasp-player/commit/8ea81a6640e83a6d66f13d0eed534e77f286a4fb))
+* **deps:** update dependency @graasp/query-client to v3.3.0 ([#584](https://github.com/graasp/graasp-player/issues/584)) ([3f0e75d](https://github.com/graasp/graasp-player/commit/3f0e75d131267218ef2157487c2c3ba6a10c2ca1))
+* **deps:** update dependency @graasp/query-client to v3.4.1 ([#613](https://github.com/graasp/graasp-player/issues/613)) ([8e2199f](https://github.com/graasp/graasp-player/commit/8e2199f2566b4331e4b65685392fc83a2fced8d1))
+* **deps:** update dependency @graasp/sdk to v4.7.1 ([#595](https://github.com/graasp/graasp-player/issues/595)) ([2c12dcc](https://github.com/graasp/graasp-player/commit/2c12dcc9ecdf97ca58eb1e1e00a3d6e8945775ad))
+* **deps:** update dependency @graasp/ui to v4.14.1 ([#604](https://github.com/graasp/graasp-player/issues/604)) ([0c49e6a](https://github.com/graasp/graasp-player/commit/0c49e6a3fec436df2bf841adb3808d218256eeff))
+* **deps:** update dependency @graasp/ui to v4.14.2 ([#611](https://github.com/graasp/graasp-player/issues/611)) ([5054f79](https://github.com/graasp/graasp-player/commit/5054f79c7806b70fd02f1dda43964ccd99530e29))
+* **deps:** update dependency @sentry/react to v7.110.0 ([#597](https://github.com/graasp/graasp-player/issues/597)) ([bde63a6](https://github.com/graasp/graasp-player/commit/bde63a674f5af9d90c1d7bc3bf828304662fb1a2))
+* **deps:** update dependency i18next to v23.11.1 ([#607](https://github.com/graasp/graasp-player/issues/607)) ([93a8e43](https://github.com/graasp/graasp-player/commit/93a8e438aace070f7b5923e31049ce9bb16fe1e3))
+* **deps:** update dependency katex to v0.16.10 ([#586](https://github.com/graasp/graasp-player/issues/586)) ([6492574](https://github.com/graasp/graasp-player/commit/6492574f0048bf10eee5b0c524ff5288dde06511))
+* **deps:** update dependency react-intersection-observer to v9.8.2 ([#612](https://github.com/graasp/graasp-player/issues/612)) ([7886044](https://github.com/graasp/graasp-player/commit/7886044257619c16b7ba7597538e4dc448a097e5))
+* **deps:** update mui (non-major) ([#424](https://github.com/graasp/graasp-player/issues/424)) ([2e5904a](https://github.com/graasp/graasp-player/commit/2e5904ac354f6a908debd8dfbb5295c0bb74792c))
+* hide full screen icon on mobile ([#610](https://github.com/graasp/graasp-player/issues/610)) ([db530bc](https://github.com/graasp/graasp-player/commit/db530bc13278329f9f310df9c9caf93b5f315743))
+* rename chatbox title ([#602](https://github.com/graasp/graasp-player/issues/602)) ([22a99cd](https://github.com/graasp/graasp-player/commit/22a99cd84b374aaae809e47b87d6fd27026f771b))
+* use mutateAsync for signout ([#608](https://github.com/graasp/graasp-player/issues/608)) ([8f59dcd](https://github.com/graasp/graasp-player/commit/8f59dcdc4f402941d126ef992b3a3dee2e4e1f4c))
+
 ## [2.10.0](https://github.com/graasp/graasp-player/compare/v2.9.0...v2.10.0) (2024-04-04)
 
 
