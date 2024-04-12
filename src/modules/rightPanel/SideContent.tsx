@@ -27,6 +27,7 @@ import {
   ITEM_PINNED_ID,
 } from '../../config/selectors';
 import SideDrawer from './SideDrawer';
+import { useMobileView } from '@graasp/ui';
 
 const StyledMain = styled('div', {
   shouldForwardProp: (propName) => propName !== 'isShifted',
@@ -66,6 +67,7 @@ type Props = {
 
 const SideContent = ({ content, item }: Props): JSX.Element | null => {
   const { rootId } = useParams();
+  const { isMobile } = useMobileView();
   const { data: children } = hooks.useChildren(item.id, undefined, {
     enabled: !!item,
   });
@@ -118,7 +120,7 @@ const SideContent = ({ content, item }: Props): JSX.Element | null => {
   const displayFullscreenButton = () => {
     // todo: add this to settings (?)
     const fullscreen = Boolean(searchParams.get('fullscreen') === 'true');
-    if (!fullscreen) return null;
+    if (isMobile || !fullscreen) return null;
 
     return (
       <Tooltip
