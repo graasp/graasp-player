@@ -384,7 +384,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/cli@npm:^19.2.1":
+"@commitlint/cli@npm:^19.2.2":
   version: 19.2.2
   resolution: "@commitlint/cli@npm:19.2.2"
   dependencies:
@@ -2647,23 +2647,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*":
+"@types/react@npm:*, @types/react@npm:18.2.78":
   version: 18.2.78
   resolution: "@types/react@npm:18.2.78"
   dependencies:
     "@types/prop-types": "npm:*"
     csstype: "npm:^3.0.2"
   checksum: 10/a4bf8104c580fab40535cc6058425ac6a47c19b8dad45b566cdb38aaafa3ffa1f24e7b65ec95e391a6c18ccf4a33738a591c1f723c00300f13d61fc456a1eb8d
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:18.2.77":
-  version: 18.2.77
-  resolution: "@types/react@npm:18.2.77"
-  dependencies:
-    "@types/prop-types": "npm:*"
-    csstype: "npm:^3.0.2"
-  checksum: 10/80d7ad9cf13e15895a857c66f5b0c1ce758c1e7580a76936d8d1b19c71e4485fa4b35d762a1de98de4eb91506cbc8507582c9a979f357b6f5f75f86009d8ca07
   languageName: node
   linkType: hard
 
@@ -4009,15 +3999,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commitlint@npm:19.2.1":
-  version: 19.2.1
-  resolution: "commitlint@npm:19.2.1"
+"commitlint@npm:19.2.2":
+  version: 19.2.2
+  resolution: "commitlint@npm:19.2.2"
   dependencies:
-    "@commitlint/cli": "npm:^19.2.1"
+    "@commitlint/cli": "npm:^19.2.2"
     "@commitlint/types": "npm:^19.0.3"
   bin:
     commitlint: cli.js
-  checksum: 10/920349607ba67b689adbe227098b4a857df7d498a7a3a586e45277d1a6d0bb3114e96e339ebeb64609417956497d65dba145993fdb762d91a75a26a5355ec09c
+  checksum: 10/fee3fd582e10401eaeabcf46a5daf5a141f3a877c8683d130d5eb11b0d0ea50f3d6edd8f249c680d6f4032e4b718fa05e0984e1c9d69a60acb747e81d146593e
   languageName: node
   linkType: hard
 
@@ -6215,14 +6205,14 @@ __metadata:
     "@types/lodash.isarray": "npm:^4.0.9"
     "@types/lodash.truncate": "npm:^4.4.9"
     "@types/node": "npm:^20.12.7"
-    "@types/react": "npm:18.2.77"
+    "@types/react": "npm:18.2.78"
     "@types/react-dom": "npm:^18.2.25"
     "@types/uuid": "npm:9.0.8"
     "@typescript-eslint/eslint-plugin": "npm:7.6.0"
     "@typescript-eslint/parser": "npm:7.6.0"
     "@vitejs/plugin-react": "npm:^4.2.1"
     classnames: "npm:2.5.1"
-    commitlint: "npm:19.2.1"
+    commitlint: "npm:19.2.2"
     concurrently: "npm:8.2.2"
     cypress: "npm:13.7.3"
     cypress-iframe: "npm:1.0.1"
