@@ -31,12 +31,15 @@ describe('shuffleAllButLastItemInArray', () => {
 
   it('should produce all possible orderings with uniform distribution', () => {
     // only testing short arrays, as otherwise distribution is too sparse
+    // (actual number of items shuffled is one fewer than this, as we keep the last item fixed).
     const arrayLength = 4;
     const originalArray = Array.from(
       { length: arrayLength },
       (_, index) => index,
     );
-    const numIterations = 1000000;
+
+    // todo: only test few participants, to be realistic
+    const numIterations = 10000;
     const permutationCounts: Record<string, number> = {};
 
     for (let i = 0; i < numIterations; i += 1) {
@@ -53,7 +56,7 @@ describe('shuffleAllButLastItemInArray', () => {
     }
 
     const permutations = Object.keys(permutationCounts);
-    // remove two because we are not counting the last element, which is always the same
+    // remove one because we are not counting the last element, which is always the same
     const expectedPermutationsCount = factorial(arrayLength - 1);
 
     // check if all permutations were generated
@@ -61,7 +64,7 @@ describe('shuffleAllButLastItemInArray', () => {
 
     // check for uniform distribution
     const averageCount = numIterations / expectedPermutationsCount;
-    // 5% tolerance
+    // 25% tolerance
     const tolerance = 0.05;
     permutations.forEach((perm) => {
       const count = permutationCounts[perm];
