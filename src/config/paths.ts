@@ -6,4 +6,12 @@ export const buildMainPath = ({ rootId = `:${ROOT_ID_PATH}` } = {}): string =>
 export const buildContentPagePath = ({
   rootId = `:${ROOT_ID_PATH}`,
   itemId = `:${ITEM_PARAM}`,
-} = {}): string => `/${rootId}/${itemId}`;
+  searchParams = '',
+} = {}): string => {
+  let url = `/${rootId}/${itemId}`;
+  // append search parameters if present
+  if (searchParams) {
+    url = `${url}?${searchParams}`;
+  }
+  return url;
+};
