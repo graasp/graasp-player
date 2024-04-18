@@ -35,11 +35,13 @@ export default ({ mode }: { mode: string }): UserConfigExport => {
       outDir: 'build',
     },
     plugins: [
-      checker({
-        typescript: true,
-        eslint: { lintCommand: 'eslint "./**/*.{ts,tsx}"' },
-        overlay: { initialIsOpen: false },
-      }),
+      mode !== 'test'
+        ? checker({
+            typescript: true,
+            eslint: { lintCommand: 'eslint "./**/*.{ts,tsx}"' },
+            overlay: { initialIsOpen: false },
+          })
+        : undefined,
       react(),
       istanbul({
         include: 'src/*',
