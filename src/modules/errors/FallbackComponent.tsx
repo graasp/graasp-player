@@ -17,9 +17,10 @@ const FallbackComponent = (): JSX.Element => {
       alignItems="center"
       height="100svh"
       spacing={4}
+      p={2}
     >
       <Box>
-        <Typography variant="h1" fontSize="6em">
+        <Typography variant="display" color="primary">
           {translateBuilder(PLAYER.FALLBACK_TITLE)}
         </Typography>
         <Typography>{translateBuilder(PLAYER.FALLBACK_TEXT)}</Typography>
@@ -39,10 +40,10 @@ const FallbackComponent = (): JSX.Element => {
         sx={{
           display: 'flex',
           width: '100%',
-          maxWidth: '10em',
+          maxWidth: '8em',
+          maxHeight: '8em',
           aspectRatio: 1,
           height: 'auto',
-          maxHeight: '10em',
         }}
       />
     </Stack>

@@ -5,6 +5,7 @@ import {
   Alert,
   Box,
   Container,
+  Divider,
   Skeleton,
   Stack,
   Typography,
@@ -26,6 +27,8 @@ import {
   PermissionLevel,
   S3FileItemType,
   ShortcutItemType,
+  ThumbnailSize,
+  formatDate,
 } from '@graasp/sdk';
 import { DEFAULT_LANG, FAILURE_MESSAGES } from '@graasp/translations';
 import {
@@ -37,6 +40,7 @@ import {
   ItemSkeleton,
   LinkItem,
   TextDisplay,
+  Thumbnail,
   withCollapse,
 } from '@graasp/ui';
 import { DocumentItem } from '@graasp/ui/text-editor';
@@ -71,6 +75,7 @@ const {
   useFileContentUrl,
   useItemTags,
   useChildrenPaginated,
+  useItemThumbnailUrl,
 } = hooks;
 
 type EtherpadContentProps = {
@@ -269,7 +274,7 @@ const H5PContent = ({ item }: { item: H5PItemType }): JSX.Element => {
   return (
     <H5PItem
       itemId={item.id}
-      itemName={item.name}
+      itemName={item.displayName}
       contentId={contentId}
       integrationUrl={H5P_INTEGRATION_URL}
       showCollapse={item.settings?.isCollapsible}
@@ -382,13 +387,17 @@ const FolderContent = ({
   showPinnedOnly = false,
 }: FolderContentProps) => {
   const { ref, inView } = useInView();
-  const { t: translatePlayer } = usePlayerTranslation();
+  const { t: translatePlayer, i18n } = usePlayerTranslation();
 
   // this should be fetched only when the item is a folder
   const { data: children = [], isInitialLoading: isChildrenLoading } =
     useChildren(item.id, undefined, {
       getUpdates: true,
     });
+  const { data: thumbnailSrc } = useItemThumbnailUrl({
+    id: item.id,
+    size: ThumbnailSize.Medium,
+  });
 
   const {
     data: childrenPaginated,
@@ -434,26 +443,62 @@ const FolderContent = ({
   }
   // render each children recursively
   return (
-    <Box pb={7}>
-      <Stack direction="column">
-        <Typography className={FOLDER_NAME_TITLE_CLASS} variant="h5">
-          {item.name}
-        </Typography>
-        <TextDisplay content={item.description ?? ''} />
-      </Stack>
+    <>
+      <Stack
+        direction="column"
+        pb={7}
+        spacing={2}
+        maxWidth="1000px"
+        margin="auto"
+      >
+        <Stack direction="column" spacing={2}>
+          <Stack direction="row" spacing={2} alignItems="center">
+            <Thumbnail
+              maxWidth="96px"
+              maxHeight="96px"
+              url={thumbnailSrc}
+              alt={item.displayName}
+              sx={{ borderRadius: 5 }}
+            />
+            <Stack>
+              <Typography className={FOLDER_NAME_TITLE_CLASS} variant="h2">
+                {item.displayName}
+              </Typography>
+              <Typography variant="caption">
+                {translatePlayer(PLAYER.ITEM_TITLE_CREATED_AT, {
+                  date: formatDate(item.createdAt, {
+                    locale: i18n.language,
+                  }),
+                })}
+              </Typography>
+              <Typography variant="caption">
+                {translatePlayer(PLAYER.ITEM_TITLE_UPDATED_AT, {
+                  date: formatDate(item.updatedAt, {
+                    locale: i18n.language,
+                  }),
+                })}
+              </Typography>
+            </Stack>
+          </Stack>
+          <TextDisplay content={item.description ?? ''} />
+        </Stack>
+        <Divider flexItem />
 
-      {childrenPaginated?.pages?.map((page) => (
-        <Fragment key={page.pageNumber}>
-          {page.data.map((thisItem) => (
-            <Box key={thisItem.id} textAlign="center" mt={1} mb={1}>
-              <ItemContentWrapper item={thisItem} />
-            </Box>
+        <Stack direction="column" spacing={2}>
+          {childrenPaginated?.pages?.map((page) => (
+            <Fragment key={page.pageNumber}>
+              {page.data.map((thisItem) => (
+                <Box key={thisItem.id} textAlign="center" mt={1} mb={1}>
+                  <ItemContentWrapper item={thisItem} />
+                </Box>
+              ))}
+            </Fragment>
           ))}
-        </Fragment>
-      ))}
-      {showLoadMoreButton}
+        </Stack>
+        {showLoadMoreButton}
+      </Stack>
       <NavigationIsland />
-    </Box>
+    </>
   );
 };
 

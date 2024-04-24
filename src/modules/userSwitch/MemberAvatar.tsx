@@ -5,7 +5,7 @@ import { Avatar } from '@graasp/ui';
 import { AVATAR_ICON_HEIGHT } from '@/config/constants';
 import { useCommonTranslation } from '@/config/i18n';
 import { hooks } from '@/config/queryClient';
-import { buildMemberAvatarClass } from '@/config/selectors';
+import { buildMemberAvatarId } from '@/config/selectors';
 
 type Props = {
   member?: Member | null;
@@ -24,8 +24,8 @@ const MemberAvatar = ({ member }: Props): JSX.Element => {
 
   return (
     <Avatar
+      id={buildMemberAvatarId(member?.id)}
       isLoading={isLoadingAvatar || isFetchingAvatar}
-      className={buildMemberAvatarClass(member?.id)}
       alt={member?.name || t(COMMON.AVATAR_DEFAULT_ALT)}
       component="avatar"
       variant="circular"

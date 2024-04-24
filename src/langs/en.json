@@ -21,5 +21,7 @@
   "FALLBACK_RELOAD_PAGE": "Reload page",
   "ITEM_ID_NOT_VALID": "Item Id is not valid, please check it again. Click on the button below to go back to Home.",
   "GO_TO_HOME": "Go to Home",
-  "ITEM_CHATBOX_TITLE": "\"{{name}}\" Chat"
+  "ITEM_CHATBOX_TITLE": "\"{{name}}\" Chat",
+  "ITEM_TITLE_CREATED_AT": "Created: {{date}}",
+  "ITEM_TITLE_UPDATED_AT": "Updated: {{date}}"
 }

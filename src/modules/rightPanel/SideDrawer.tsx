@@ -1,6 +1,6 @@
 import { Divider, Drawer, Toolbar, Typography, styled } from '@mui/material';
 
-import { DrawerHeader } from '@graasp/ui';
+import { DEFAULT_BACKGROUND_COLOR, DrawerHeader } from '@graasp/ui';
 
 import { DRAWER_WIDTH } from '../../config/constants';
 
@@ -10,6 +10,7 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
   '& .MuiDrawer-paper': {
     width: DRAWER_WIDTH,
     padding: theme.spacing(1),
+    backgroundColor: DEFAULT_BACKGROUND_COLOR,
   },
 }));
 
