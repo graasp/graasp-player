@@ -12,15 +12,13 @@ import { usePlayerTranslation } from '@/config/i18n';
 import { mutations } from '@/config/queryClient';
 
 import { buildContentPagePath } from '../../config/paths';
-import { HIDDEN_STYLE } from './HiddenWrapper';
 import ItemThumbnail from './ItemThumbnail';
 
 type Props = {
   item: DiscriminatedItem;
-  isHidden?: boolean;
 };
 
-const SimpleCard = ({ item, isHidden = false }: Props): JSX.Element => {
+const SimpleCard = ({ item }: Props): JSX.Element => {
   const { i18n } = usePlayerTranslation();
   const link = buildContentPagePath({ rootId: item.id, itemId: item.id });
 
@@ -34,7 +32,7 @@ const SimpleCard = ({ item, isHidden = false }: Props): JSX.Element => {
   };
 
   return (
-    <Card style={isHidden ? HIDDEN_STYLE : undefined}>
+    <Card>
       <CardActionArea component={Link} to={link} onClick={handleCardClick}>
         <CardContent>
           <Stack direction="row" alignItems="center" spacing={2}>
@@ -48,7 +46,7 @@ const SimpleCard = ({ item, isHidden = false }: Props): JSX.Element => {
                 overflow="hidden"
                 noWrap
               >
-                {item.name}
+                {item.displayName}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 {formatDate(item.updatedAt, { locale: i18n.language })}

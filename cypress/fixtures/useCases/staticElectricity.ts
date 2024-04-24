@@ -256,3 +256,4 @@ PUBLIC_STATIC_ELECTRICITY.items = PUBLIC_STATIC_ELECTRICITY.items.map(
   },
 );
 PUBLIC_STATIC_ELECTRICITY.items[0].name = 'public static electricity';
+PUBLIC_STATIC_ELECTRICITY.items[0].displayName = 'public static electricity';

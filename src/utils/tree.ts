@@ -53,7 +53,7 @@ const buildItemsTree = (
     // this for non children one item as tree map build based on children to parent relation
     tree[data[0].id] = {
       id: data[0].id,
-      name: data[0].name,
+      name: data[0].displayName,
       metadata: { type: data[0].type, mimetype: getMimetype(data[0].extra) },
       children: [],
     };
@@ -66,7 +66,7 @@ const buildItemsTree = (
 
       const entry: PartialItemWithChildren = {
         id: node.id,
-        name: node.name,
+        name: node.displayName,
         metadata: { type: node.type },
         children: children.map((child) => buildTree(child)),
       };
@@ -75,7 +75,7 @@ const buildItemsTree = (
     // root items are not in the map
     return {
       id: node.id,
-      name: node.name,
+      name: node.displayName,
       metadata: {
         type: node.type,
         mimetype: getMimetype(node.extra),

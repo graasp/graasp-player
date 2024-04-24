@@ -44,7 +44,7 @@ describe('Pinned Items', () => {
 
       cy.get(`#${ITEM_PINNED_ID} #${buildFolderButtonId(pinned.id)}`).should(
         'contain',
-        pinned.name,
+        pinned.displayName,
       );
     });
 
@@ -56,7 +56,7 @@ describe('Pinned Items', () => {
       cy.wait('@getChildren');
       cy.get(`#${ITEM_PINNED_ID} #${buildFolderButtonId(pinned.id)}`).should(
         'contain',
-        pinned.name,
+        pinned.displayName,
       );
     });
 
@@ -85,7 +85,7 @@ describe('Pinned Items', () => {
       cy.wait('@getChildren');
       cy.get(`#${ITEM_PINNED_ID} #${buildFolderButtonId(pinned.id)}`).should(
         'contain',
-        pinned.name,
+        pinned.displayName,
       );
     });
   });

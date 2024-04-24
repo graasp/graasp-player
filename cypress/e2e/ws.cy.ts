@@ -43,7 +43,7 @@ describe('Websocket interactions', () => {
     );
 
     cy.get(`.${FOLDER_NAME_TITLE_CLASS}`)
-      .should('contain', parent.name)
+      .should('contain', parent.displayName)
       .then(() => {
         expectFolderButtonLayout(FOLDER_WITH_SUBFOLDER_ITEM.items[1]);
 

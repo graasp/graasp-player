@@ -127,7 +127,10 @@ describe('Main Screen', () => {
           buildContentPagePath({ rootId: parent.id, itemId: parent.id }),
         );
 
-        cy.get(`.${FOLDER_NAME_TITLE_CLASS}`).should('contain', parent.name);
+        cy.get(`.${FOLDER_NAME_TITLE_CLASS}`).should(
+          'contain',
+          parent.displayName,
+        );
 
         expectFolderButtonLayout(FOLDER_WITH_SUBFOLDER_ITEM.items[1]);
       });
@@ -137,7 +140,10 @@ describe('Main Screen', () => {
           buildContentPagePath({ rootId: parent.id, itemId: parent.id }),
         );
 
-        cy.get(`.${FOLDER_NAME_TITLE_CLASS}`).should('contain', parent.name);
+        cy.get(`.${FOLDER_NAME_TITLE_CLASS}`).should(
+          'contain',
+          parent.displayName,
+        );
       });
     });
   });
