@@ -14,11 +14,14 @@ export default ({ mode }: { mode: string }): UserConfigExport => {
     ...loadEnv(mode, process.cwd()),
   };
 
+  // this defines if we should automatically open the browser
+  const shouldOpen = process.env.BROWSER && process.env.BROWSER !== 'none';
+
   return defineConfig({
     base: '/',
     server: {
       port: parseInt(process.env.VITE_PORT, 10),
-      open: mode === 'development',
+      open: shouldOpen,
       watch: {
         ignored: ['**/coverage/**'],
       },
@@ -26,7 +29,7 @@ export default ({ mode }: { mode: string }): UserConfigExport => {
     preview: {
       port: parseInt(process.env.VITE_PORT, 10),
       strictPort: true,
-      open: mode !== 'test',
+      open: shouldOpen,
     },
     build: {
       outDir: 'build',
