@@ -1,15 +1,14 @@
 import { useNavigate, useParams } from 'react-router-dom';
 
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { Button } from '@mui/material';
-
 import { ActionTriggers, DiscriminatedItem, ItemType } from '@graasp/sdk';
 
 import isArray from 'lodash.isarray';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import { buildContentPagePath } from '@/config/paths';
 import { hooks, mutations } from '@/config/queryClient';
+
+import { NavigationButton } from './CustomButtons';
 
 const usePreviousNextButtons = (): {
   previousButton: JSX.Element | false;
@@ -50,7 +49,7 @@ const usePreviousNextButtons = (): {
     [next] = folderHierarchy;
     // when focusing on the descendants
   } else {
-    const idx = folderHierarchy.findIndex(({ id }) => id === itemId) ?? -1;
+    const idx = folderHierarchy.findIndex(({ id }) => id === itemId);
 
     // if index is not found, then do not show navigation
     if (idx < 0) {
@@ -59,8 +58,10 @@ const usePreviousNextButtons = (): {
 
     // if index is 0, previous is root
     prev = idx === 0 ? prevRoot : folderHierarchy[idx - 1];
-    // if you reach the end, next will be undefined and not show
-    next = folderHierarchy[idx + 1];
+    // check if the next element is inside the bounds of folderHierarchy, of not, next will simply stay null
+    if (idx + 1 < folderHierarchy.length) {
+      next = folderHierarchy[idx + 1];
+    }
   }
 
   const handleClickNavigationButton = (newItemId: string) => {
@@ -71,41 +72,42 @@ const usePreviousNextButtons = (): {
     navigate(buildContentPagePath({ rootId, itemId: newItemId }));
   };
 
-  if (!prev && !next) {
-    return { previousButton: false, nextButton: false };
-  }
+  // should we display both buttons if they are disabled ?
+  // if (!prev && !next) {
+  //   return { previousButton: false, nextButton: false };
+  // }
 
   return {
-    previousButton: prev != null && (
-      <Button
+    previousButton: (
+      <NavigationButton
+        disabled={!prev}
         key="previousButton"
-        variant="outlined"
-        startIcon={<ArrowBackIcon />}
-        sx={{ textTransform: 'unset' }}
+        // variant="outlined"
         onClick={() => {
           if (prev?.id) {
             handleClickNavigationButton(prev.id);
           }
         }}
       >
-        {prev.name}
-      </Button>
+        <ChevronLeft />
+      </NavigationButton>
     ),
 
-    nextButton: next != null && (
-      <Button
+    nextButton: (
+      <NavigationButton
+        disabled={!next}
         key="nextButton"
-        variant="contained"
-        endIcon={<ArrowForwardIcon />}
-        sx={{ textTransform: 'unset' }}
+        // variant="contained"
+        // endIcon={<ArrowForwardIcon />}
+        // sx={{ textTransform: 'unset' }}
         onClick={() => {
           if (next?.id) {
             handleClickNavigationButton(next.id);
           }
         }}
       >
-        {next.name}
-      </Button>
+        <ChevronRight />
+      </NavigationButton>
     ),
   };
 };

@@ -1,16 +1,16 @@
 import { useParams } from 'react-router-dom';
 
-import PinIcon from '@mui/icons-material/PushPin';
-import OutlinedPinIcon from '@mui/icons-material/PushPinOutlined';
-import { IconButton } from '@mui/material';
-
 import { ItemTagType } from '@graasp/sdk';
+
+import { Pin, PinOff } from 'lucide-react';
 
 import { usePlayerTranslation } from '@/config/i18n';
 import { hooks } from '@/config/queryClient';
 import { ITEM_PINNED_BUTTON_ID } from '@/config/selectors';
 import { useLayoutContext } from '@/contexts/LayoutContext';
 import { PLAYER } from '@/langs/constants';
+
+import { ToolButton } from './CustomButtons';
 
 const usePinnedItemsButton = (): { pinnedButton: JSX.Element | false } => {
   const { t } = usePlayerTranslation();
@@ -29,25 +29,22 @@ const usePinnedItemsButton = (): { pinnedButton: JSX.Element | false } => {
         !tags?.data?.[id].some(({ type }) => type === ItemTagType.Hidden),
     )?.length || 0;
 
-  if (pinnedCount > 0) {
-    return {
-      pinnedButton: (
-        <IconButton
-          key="pinnedButton"
-          id={ITEM_PINNED_BUTTON_ID}
-          color="primary"
-          onClick={togglePinned}
-          aria-label={
-            isPinnedOpen
-              ? t(PLAYER.HIDE_PINNED_ITEMS_TOOLTIP)
-              : t(PLAYER.SHOW_PINNED_ITEMS_TOOLTIP)
-          }
-        >
-          {isPinnedOpen ? <PinIcon /> : <OutlinedPinIcon />}
-        </IconButton>
-      ),
-    };
-  }
-  return { pinnedButton: false };
+  return {
+    pinnedButton: (
+      <ToolButton
+        disabled={pinnedCount <= 0}
+        key="pinnedButton"
+        id={ITEM_PINNED_BUTTON_ID}
+        onClick={togglePinned}
+        aria-label={
+          isPinnedOpen
+            ? t(PLAYER.HIDE_PINNED_ITEMS_TOOLTIP)
+            : t(PLAYER.SHOW_PINNED_ITEMS_TOOLTIP)
+        }
+      >
+        {isPinnedOpen ? <PinOff /> : <Pin />}
+      </ToolButton>
+    ),
+  };
 };
 export default usePinnedItemsButton;
