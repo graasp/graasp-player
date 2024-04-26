@@ -465,13 +465,6 @@ const FolderContent = ({
                 {item.displayName}
               </Typography>
               <Typography variant="caption">
-                {translatePlayer(PLAYER.ITEM_TITLE_CREATED_AT, {
-                  date: formatDate(item.createdAt, {
-                    locale: i18n.language,
-                  }),
-                })}
-              </Typography>
-              <Typography variant="caption">
                 {translatePlayer(PLAYER.ITEM_TITLE_UPDATED_AT, {
                   date: formatDate(item.updatedAt, {
                     locale: i18n.language,

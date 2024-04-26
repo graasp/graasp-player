@@ -20,8 +20,8 @@ const NavigationIslandBox = (): JSX.Element | null => {
       <Box
         // set some background and shadow
         bgcolor="white"
-        boxShadow="0px 0px 20px 2px #0003"
-        border="1px solid #eee"
+        box-shadow="0px 2.909px 5.818px 0px rgba(0, 0, 0, 0.15)"
+        // border="1px solid #eee"
         // add an asymmetrical border radius
         borderRadius="16px 16px 0px 0px"
         // position the island on the bottom of the page
