@@ -33,10 +33,12 @@ const NavigationIslandBox = (): JSX.Element | null => {
       p={1}
     >
       <Stack direction="row" flexGrow={1} gap={10} p={1}>
-        <Stack direction="row" gap={2}>
-          {previousButton}
-          {nextButton}
-        </Stack>
+        {previousButton && nextButton && (
+          <Stack direction="row" gap={2}>
+            {previousButton}
+            {nextButton}
+          </Stack>
+        )}
         <Stack direction="row" gap={2}>
           {chatButton}
           {pinnedButton}

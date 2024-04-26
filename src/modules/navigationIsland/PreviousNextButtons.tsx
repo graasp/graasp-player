@@ -73,9 +73,9 @@ const usePreviousNextButtons = (): {
   };
 
   // should we display both buttons if they are disabled ?
-  // if (!prev && !next) {
-  //   return { previousButton: false, nextButton: false };
-  // }
+  if (!prev && !next) {
+    return { previousButton: false, nextButton: false };
+  }
 
   return {
     previousButton: (

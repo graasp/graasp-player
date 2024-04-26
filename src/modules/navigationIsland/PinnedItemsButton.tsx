@@ -29,6 +29,9 @@ const usePinnedItemsButton = (): { pinnedButton: JSX.Element | false } => {
         !tags?.data?.[id].some(({ type }) => type === ItemTagType.Hidden),
     )?.length || 0;
 
+  // we should show the icon as open if there are pinned items and the drawer is open
+  const isOpen = isPinnedOpen && pinnedCount > 0;
+
   return {
     pinnedButton: (
       <ToolButton
@@ -37,12 +40,12 @@ const usePinnedItemsButton = (): { pinnedButton: JSX.Element | false } => {
         id={ITEM_PINNED_BUTTON_ID}
         onClick={togglePinned}
         aria-label={
-          isPinnedOpen
+          isOpen
             ? t(PLAYER.HIDE_PINNED_ITEMS_TOOLTIP)
             : t(PLAYER.SHOW_PINNED_ITEMS_TOOLTIP)
         }
       >
-        {isPinnedOpen ? <PinOff /> : <Pin />}
+        {isOpen ? <PinOff /> : <Pin />}
       </ToolButton>
     ),
   };

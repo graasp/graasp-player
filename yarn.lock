@@ -1274,7 +1274,7 @@ __metadata:
 
 "@graasp/ui@github:graasp/graasp-ui#folder-card":
   version: 4.15.3
-  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=0a2d49ddcbdd87ae48c1e57dab48d2f65c4f25b5"
+  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=21ce24e718bea04f2801b14674cba2ad0a68781b"
   dependencies:
     "@ag-grid-community/client-side-row-model": "npm:31.2.1"
     "@ag-grid-community/react": "npm:^31.1.1"
@@ -1307,7 +1307,7 @@ __metadata:
     react-router-dom: ^6.11.0
     stylis: ^4.1.3
     stylis-plugin-rtl: ^2.1.1
-  checksum: 10/5c01c80147c5abdcf6a20eb455ee3a551ae68e212bcb915d0535d6df954f27862b5fb3142ba678dcd763982eea86b25b21c821457751bf0a5f6bf12b610ee0e1
+  checksum: 10/ab1a60d5a8ff150c24f8eeacbaf8452c23fb7a713bbd50846626c69a10a53f7b171db5cf3d4ea74b869eea3b9a72a002f916a439d8217fca6da15617015d6c3b
   languageName: node
   linkType: hard
 

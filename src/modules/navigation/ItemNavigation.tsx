@@ -28,7 +28,9 @@ const DrawerNavigation = (): JSX.Element | null => {
 
   const { t: translateMessage } = useMessagesTranslation();
 
-  const { data: descendants } = useDescendants({ id: rootId ?? '' });
+  const { data: descendants, isInitialLoading: isLoadingTree } = useDescendants(
+    { id: rootId ?? '' },
+  );
   const { data: itemsTags } = useItemsTags(descendants?.map(({ id }) => id));
 
   const { data: rootItem, isLoading, isError, error } = useItem(rootId);
@@ -45,19 +47,24 @@ const DrawerNavigation = (): JSX.Element | null => {
   }
 
   if (rootItem) {
-    return (
-      <MainMenu id={MAIN_MENU_ID}>
-        <TreeView
-          id={TREE_VIEW_ID}
-          rootItems={[rootItem]}
-          items={[rootItem, ...(descendants || [])].filter(
-            (ele) => !isHidden(ele, itemsTags?.data?.[ele.id]),
-          )}
-          firstLevelStyle={{ fontWeight: 'bold' }}
-          onTreeItemSelect={handleNavigationOnClick}
-        />
-      </MainMenu>
-    );
+    if (descendants) {
+      return (
+        <MainMenu id={MAIN_MENU_ID}>
+          <TreeView
+            id={TREE_VIEW_ID}
+            rootItems={[rootItem]}
+            items={[rootItem, ...(descendants || [])].filter(
+              (ele) => !isHidden(ele, itemsTags?.data?.[ele.id]),
+            )}
+            firstLevelStyle={{ fontWeight: 'bold' }}
+            onTreeItemSelect={handleNavigationOnClick}
+          />
+        </MainMenu>
+      );
+    }
+    if (isLoadingTree) {
+      return <LoadingTree />;
+    }
   }
 
   if (isLoading) {
