@@ -44,14 +44,12 @@ export const expectLinkViewScreenLayout = ({
 
   if (!html) {
     if (settings?.showLinkButton ?? DEFAULT_LINK_SHOW_BUTTON) {
-      cy.get('[data-testid="OpenInNewIcon"]')
-        .scrollIntoView()
-        .should('be.visible');
+      cy.get('[data-testid="OpenInNewIcon"]').scrollIntoView();
+      cy.get('[data-testid="OpenInNewIcon"]').should('be.visible');
     } else {
       // button should not be shown when the setting is false
-      cy.get('[data-testid="OpenInNewIcon"]')
-        .scrollIntoView()
-        .should('not.exist');
+      cy.get('[data-testid="OpenInNewIcon"]').scrollIntoView();
+      cy.get('[data-testid="OpenInNewIcon"]').should('not.exist');
     }
   }
 };
