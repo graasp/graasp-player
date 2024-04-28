@@ -1249,17 +1249,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/sdk@npm:4.7.2":
-  version: 4.7.2
-  resolution: "@graasp/sdk@npm:4.7.2"
+"@graasp/sdk@github:graasp/graasp-sdk#fix-item-factory-path":
+  version: 4.8.0
+  resolution: "@graasp/sdk@https://github.com/graasp/graasp-sdk.git#commit=fa7c39ca2e7a515737446a73671225bf2f091c9f"
   dependencies:
     "@faker-js/faker": "npm:8.4.1"
+    filesize: "npm:10.1.1"
     js-cookie: "npm:3.0.5"
     validator: "npm:13.11.0"
   peerDependencies:
     date-fns: ^3
     uuid: ^9
-  checksum: 10/f37de1eb4fb02fa748a00e630f8f133d937fd9eb0aa0016a6e071fa37a44d1599be61ff8754a03f77bb5996f9aebf8e6c969fdb52f4463111c71f6ce6d1fcb38
+  checksum: 10/ff9ee4ce57c3d9f0f7086d3ae968a1f1f29e43e1ae9aacaadec392c42d813cfff73b3b1991ee4271da227250c60abdf213ffd0d17de4cd478c1579d941c5b8b1
   languageName: node
   linkType: hard
 
@@ -5680,6 +5681,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"filesize@npm:10.1.1":
+  version: 10.1.1
+  resolution: "filesize@npm:10.1.1"
+  checksum: 10/3d4d05930ec3de16d9cb8c8f4061df1218d3eac4d69521deb3f768cbe7451ff82fe4af3bbf562e1f3a491b96c42e445d65af3cefec90a5deff0ec302dda42ede
+  languageName: node
+  linkType: hard
+
 "fill-range@npm:^7.0.1":
   version: 7.0.1
   resolution: "fill-range@npm:7.0.1"
@@ -6207,7 +6215,7 @@ __metadata:
     "@emotion/styled": "npm:11.11.5"
     "@graasp/chatbox": "npm:3.1.0"
     "@graasp/query-client": "npm:3.4.1"
-    "@graasp/sdk": "npm:4.7.2"
+    "@graasp/sdk": "github:graasp/graasp-sdk#fix-item-factory-path"
     "@graasp/translations": "npm:1.26.0"
     "@graasp/ui": "github:graasp/graasp-ui#folder-card"
     "@mui/icons-material": "npm:5.15.15"
