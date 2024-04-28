@@ -44,7 +44,7 @@ describe('Pinned Items', () => {
 
       cy.get(`#${ITEM_PINNED_ID} #${buildFolderButtonId(pinned.id)}`).should(
         'contain',
-        pinned.displayName,
+        pinned.name,
       );
     });
 
@@ -56,7 +56,7 @@ describe('Pinned Items', () => {
       cy.wait('@getChildren');
       cy.get(`#${ITEM_PINNED_ID} #${buildFolderButtonId(pinned.id)}`).should(
         'contain',
-        pinned.displayName,
+        pinned.name,
       );
     });
 
@@ -65,7 +65,7 @@ describe('Pinned Items', () => {
       cy.visit(buildMainPath({ rootId: parent.id }));
 
       cy.wait(['@getChildren']);
-      cy.get(`#${ITEM_PINNED_BUTTON_ID}`).should('not.exist');
+      cy.get(`#${ITEM_PINNED_BUTTON_ID}`).should('be.disabled');
       cy.get(`#${ITEM_PINNED_ID}`).should('not.exist');
     });
   });
@@ -85,7 +85,7 @@ describe('Pinned Items', () => {
       cy.wait('@getChildren');
       cy.get(`#${ITEM_PINNED_ID} #${buildFolderButtonId(pinned.id)}`).should(
         'contain',
-        pinned.displayName,
+        pinned.name,
       );
     });
   });
