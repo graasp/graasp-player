@@ -196,7 +196,8 @@ const DocumentContent = ({ item }: { item: DocumentItemType }): JSX.Element => {
   const documentItem = (
     <DocumentItem
       id={buildDocumentId(item.id)}
-      item={item}
+      showTitle
+      item={{ ...item, name: item.displayName }}
       showCollapse={item.settings?.isCollapsible}
     />
   );

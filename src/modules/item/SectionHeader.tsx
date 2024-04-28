@@ -26,12 +26,12 @@ const SectionHeader = ({ item }: SectionHeaderProps): JSX.Element => {
           maxWidth="96px"
           maxHeight="96px"
           url={thumbnailSrc}
-          alt={item.displayName}
+          alt={item.name}
           sx={{ borderRadius: 5 }}
         />
         <Stack>
           <Typography className={FOLDER_NAME_TITLE_CLASS} variant="h2">
-            {item.displayName}
+            {item.name}
           </Typography>
           <Typography variant="caption">
             {t(PLAYER.ITEM_TITLE_UPDATED_AT, {

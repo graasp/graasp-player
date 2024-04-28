@@ -23,6 +23,7 @@ export const DEFAULT_FOLDER_ITEM: MockItem = {
   description: '',
   id: '',
   name: '',
+  displayName: 'default Display Name',
   path: '',
   extra: {
     [ItemType.FOLDER]: {
@@ -275,8 +276,8 @@ export const PINNED_AND_HIDDEN_ITEM: { items: MockItem[] } = {
     {
       id: 'fdf09f5a-5688-11eb-ae93-0242ac130008',
       name: 'Normal child',
+      displayName: 'Normal child',
       description: 'I am a normal item',
-
       type: ItemType.DOCUMENT,
       extra: { [ItemType.DOCUMENT]: { content: 'hello' } },
       path: 'ecafbd2a_5688_11eb_ae93_0242ac130005.fdf09f5a_5688_11eb_ae93_0242ac130008',
@@ -375,6 +376,7 @@ export const FOLDER_WITH_COLLAPSIBLE_SHORTCUT_ITEMS: { items: MockItem[] } = {
       ...DEFAULT_FOLDER_ITEM,
       id: 'ecafbd2a-5688-11eb-ae93-0242ac130008',
       name: 'parent folder',
+      displayName: 'parent folder',
       path: 'ecafbd2a_5688_11eb_ae93_0242ac130008',
       settings: {
         isPinned: false,
@@ -384,10 +386,12 @@ export const FOLDER_WITH_COLLAPSIBLE_SHORTCUT_ITEMS: { items: MockItem[] } = {
     // shortcut with collapse enabled
     {
       ...GRAASP_DOCUMENT_ITEM_VISIBLE,
+      id: 'ecafbd2a-5688-11eb-ae93-0242ac130012',
       name: 'Shortcut to original document',
+      path: 'ecafbd2a_5688_11eb_ae93_0242ac130008.ecafbd2a_5688_11eb_ae93_0242ac130012',
       type: ItemType.SHORTCUT,
       extra: {
-        [ItemType.SHORTCUT]: { target: 'ecafbd2a-5688-12eb-ae91-0242ac130002' },
+        [ItemType.SHORTCUT]: { target: GRAASP_DOCUMENT_ITEM.id },
       },
       settings: { isCollapsible: true },
     },

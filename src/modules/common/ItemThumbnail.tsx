@@ -25,7 +25,7 @@ const ItemThumbnail = ({
     <ItemIcon
       type={item.type}
       mimetype={getMimetype(item.extra)}
-      alt={item.displayName}
+      alt={item.name}
       iconSrc={thumbnailSrc}
       sx={{ borderRadius: 1 }}
     />
