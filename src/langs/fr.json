@@ -3,6 +3,7 @@
   "SHOW_CHAT_TOOLTIP": "Montrer le chat",
   "HIDE_CHAT_TOOLTIP": "Cacher le chat",
   "EXIT_FULLSCREEN_TOOLTIP": "Sortir du plein écran",
+  "ENTER_FULLSCREEN_TOOLTIP": "Passer en mode plein écran",
   "SHOW_PINNED_ITEMS_TOOLTIP": "Montrer les éléments épinglés",
   "HIDE_PINNED_ITEMS_TOOLTIP": "Cacher les éléments épinglés",
   "PINNED_ITEMS": "Éléments épinglés",
@@ -15,5 +16,12 @@
   "ERROR_ACCESSING_ITEM": "Vous ne pouvez pas accéder à cet élément",
   "ERROR_ACCESSING_ITEM_HELPER": "Votre compte actuel n'a pas les droits pour accéder à cet élément.",
   "SIGN_IN_BUTTON_TEXT": "Se connecter avec un autre compte",
-  "ITEM_CHATBOX_TITLE": "Discussion pour \"{{name}}\""
+  "FALLBACK_TITLE": "Oops",
+  "FALLBACK_TEXT": "Quelque chose s'est mal passé. Veuillez réessayer. Si le problème persiste, contactez-nous.",
+  "FALLBACK_RELOAD_PAGE": "Rafraîchir la page",
+  "ITEM_ID_NOT_VALID": "L'identifiant de l'article n'est pas valide, veuillez le vérifier à nouveau. Cliquez sur le bouton ci-dessous pour revenir à l'accueil.",
+  "GO_TO_HOME": "Aller à la maison",
+  "ITEM_CHATBOX_TITLE": "Discussion pour \"{{name}}\"",
+  "ITEM_TITLE_CREATED_AT": "Créé : {{date}}",
+  "ITEM_TITLE_UPDATED_AT": "Mise à jour : {{date}}"
 }
