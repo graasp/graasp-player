@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.11.1](https://github.com/graasp/graasp-player/compare/v2.11.0...v2.11.1) (2024-04-29)
+
+
+### Bug Fixes
+
+* **french:** udpate trans ([#647](https://github.com/graasp/graasp-player/issues/647)) ([7c28897](https://github.com/graasp/graasp-player/commit/7c28897dc7d4ec53eb964b4964655811b832bfdc))
+* **german:** update translations ([#648](https://github.com/graasp/graasp-player/issues/648)) ([7fe793b](https://github.com/graasp/graasp-player/commit/7fe793b8d8fe3887c843f4f69bbb45b8f1548617))
+* remove title from document ([#645](https://github.com/graasp/graasp-player/issues/645)) ([aebee9f](https://github.com/graasp/graasp-player/commit/aebee9f34fda26b342f63a5d146c68d6959e6c3b))
+
 ## [2.11.0](https://github.com/graasp/graasp-player/compare/v2.10.1...v2.11.0) (2024-04-29)
 
 
