@@ -1,4 +1,5 @@
 import { Fragment, useCallback, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import { useInView } from 'react-intersection-observer';
 
 import { Alert, Box, Container, Divider, Skeleton, Stack } from '@mui/material';
@@ -456,6 +457,9 @@ const FolderContent = ({
   // render each children recursively
   return (
     <>
+      <Helmet>
+        <title>{item.name}</title>
+      </Helmet>
       <Stack
         direction="column"
         pb={7}
