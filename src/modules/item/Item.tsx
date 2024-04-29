@@ -199,7 +199,9 @@ const DocumentContent = ({ item }: { item: DocumentItemType }): JSX.Element => {
   const documentItem = (
     <DocumentItem
       id={buildDocumentId(item.id)}
-      showTitle
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
+      showTitle={item.settings?.showTitle}
       item={{ ...item, name: item.displayName }}
       showCollapse={item.settings?.isCollapsible}
     />
