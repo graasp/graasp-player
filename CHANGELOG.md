@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.11.0](https://github.com/graasp/graasp-player/compare/v2.10.1...v2.11.0) (2024-04-29)
+
+
+### Features
+
+* add container and header for folders ([#640](https://github.com/graasp/graasp-player/issues/640)) ([91b45e1](https://github.com/graasp/graasp-player/commit/91b45e1ce7e9f8813009f466620b8557e188acc7))
+
+
+### Bug Fixes
+
+* add linting to workflows and update dependencies ([f52f77f](https://github.com/graasp/graasp-player/commit/f52f77f0cc7a6d5a967fa576e9f7c614fdba86ba))
+* **deps:** update dependency @graasp/sdk to v4.7.2 ([#620](https://github.com/graasp/graasp-player/issues/620)) ([40ef83c](https://github.com/graasp/graasp-player/commit/40ef83c03bc244e9daf87dc386bfebce02b4000d))
+* **deps:** update dependency @graasp/translations to v1.26.0 ([#617](https://github.com/graasp/graasp-player/issues/617)) ([353d286](https://github.com/graasp/graasp-player/commit/353d2865cfa451f00e9e59bf82102ed4b95c643e))
+* **deps:** update dependency @graasp/ui to v4.15.0 ([#621](https://github.com/graasp/graasp-player/issues/621)) ([c007f9a](https://github.com/graasp/graasp-player/commit/c007f9aa3b87e44221bf7bf725635b6fcffe36a1))
+* **deps:** update dependency @sentry/react to v7.110.1 ([#618](https://github.com/graasp/graasp-player/issues/618)) ([5855ed8](https://github.com/graasp/graasp-player/commit/5855ed835ca743e56408726bda32d272d3f80590))
+* **deps:** update dependency i18next to v23.11.2 ([#616](https://github.com/graasp/graasp-player/issues/616)) ([79b028b](https://github.com/graasp/graasp-player/commit/79b028b81a4cf817c9aa8d9cc86733cbd03870af))
+
 ## [2.10.1](https://github.com/graasp/graasp-player/compare/v2.10.0...v2.10.1) (2024-04-12)
 
 
