@@ -2,6 +2,8 @@
   "GRAASP_PLAYER": "Graasp Player",
   "SHOW_CHAT_TOOLTIP": "Chat anzeigen",
   "HIDE_CHAT_TOOLTIP": "Chat verstecken",
+  "EXIT_FULLSCREEN_TOOLTIP": "Vollbild beenden",
+  "ENTER_FULLSCREEN_TOOLTIP": "Vollbildmodus aktivieren",
   "SHOW_PINNED_ITEMS_TOOLTIP": "Angepinnte Elemente anzeigen",
   "HIDE_PINNED_ITEMS_TOOLTIP": "Angeheftete Elemente ausblenden",
   "PINNED_ITEMS": "Angepinnte Elemente",
@@ -13,5 +15,13 @@
   "ERROR_FETCHING_ITEM": "Beim Abrufen des angeforderten Artikels ist ein Fehler aufgetreten",
   "ERROR_ACCESSING_ITEM": "Sie können nicht auf dieses Element zugreifen",
   "ERROR_ACCESSING_ITEM_HELPER": "Ihr aktuelles Konto verfügt nicht über die Rechte, auf diesen Artikel zuzugreifen.",
-  "SIGN_IN_BUTTON_TEXT": "Anmelden"
+  "SIGN_IN_BUTTON_TEXT": "Anmelden",
+  "FALLBACK_TITLE": "Hoppla",
+  "FALLBACK_TEXT": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut. Wenn das Problem weiterhin besteht, kontaktieren Sie uns.",
+  "FALLBACK_RELOAD_PAGE": "Seite neuladen",
+  "ITEM_ID_NOT_VALID": "Die Artikel-ID ist ungültig. Bitte überprüfen Sie sie noch einmal. Klicken Sie auf die Schaltfläche unten, um zur Startseite zurückzukehren.",
+  "GO_TO_HOME": "Zur Startseite",
+  "ITEM_CHATBOX_TITLE": "\"{{name}}\" Chat",
+  "ITEM_TITLE_CREATED_AT": "Erstellt: {{date}}",
+  "ITEM_TITLE_UPDATED_AT": "Neues Datum}}"
 }
