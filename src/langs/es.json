@@ -2,6 +2,8 @@
   "GRAASP_PLAYER": "Jugador de Graasp",
   "SHOW_CHAT_TOOLTIP": "Mostrar chat",
   "HIDE_CHAT_TOOLTIP": "Ocultar chat",
+  "EXIT_FULLSCREEN_TOOLTIP": "Salir de pantalla completa",
+  "ENTER_FULLSCREEN_TOOLTIP": "Ingrese a pantalla completa",
   "SHOW_PINNED_ITEMS_TOOLTIP": "Mostrar elementos fijados",
   "HIDE_PINNED_ITEMS_TOOLTIP": "Ocultar elementos fijados",
   "PINNED_ITEMS": "Artículos fijados",
@@ -13,5 +15,13 @@
   "ERROR_FETCHING_ITEM": "Se produjo un error al obtener el artículo solicitado.",
   "ERROR_ACCESSING_ITEM": "No puedes acceder a este artículo",
   "ERROR_ACCESSING_ITEM_HELPER": "Su cuenta actual no tiene derechos para acceder a este artículo.",
-  "SIGN_IN_BUTTON_TEXT": "Inicio de sesión"
+  "SIGN_IN_BUTTON_TEXT": "Inicio de sesión",
+  "FALLBACK_TITLE": "Ups",
+  "FALLBACK_TEXT": "Algo salió mal. Inténtalo de nuevo. Si el problema persiste contáctenos.",
+  "FALLBACK_RELOAD_PAGE": "Recargar página",
+  "ITEM_ID_NOT_VALID": "El ID del artículo no es válido, verifíquelo nuevamente. Haga clic en el botón de abajo para volver a Inicio.",
+  "GO_TO_HOME": "Ir a casa",
+  "ITEM_CHATBOX_TITLE": "Chat \"{{nombre}}\"",
+  "ITEM_TITLE_CREATED_AT": "Fecha de creación}}",
+  "ITEM_TITLE_UPDATED_AT": "Fecha actualizada}}"
 }
