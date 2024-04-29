@@ -8,6 +8,7 @@ export const MY_ITEMS_ID = 'myItems';
 export const buildFileId = (id: string): string => `file-${id}`;
 export const buildDocumentId = (id: string): string => `document-${id}`;
 export const buildAppId = (id: string): string => `app-${id}`;
+export const buildLinkItemId = (id: string): string => `link-${id}`;
 export const FOLDER_NAME_TITLE_CLASS = `folderNameTitle`;
 
 export const ITEM_FULLSCREEN_BUTTON_ID = 'itemFullscreenButton';

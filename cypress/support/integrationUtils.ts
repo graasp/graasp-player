@@ -21,6 +21,7 @@ import {
   buildAppId,
   buildDocumentId,
   buildFileId,
+  buildLinkItemId,
   buildTreeItemClass,
 } from '../../src/config/selectors';
 
@@ -44,12 +45,19 @@ export const expectLinkViewScreenLayout = ({
 
   if (!html) {
     if (settings?.showLinkButton ?? DEFAULT_LINK_SHOW_BUTTON) {
-      cy.get('[data-testid="OpenInNewIcon"]').scrollIntoView();
-      cy.get('[data-testid="OpenInNewIcon"]').should('be.visible');
+      cy.get(`#${buildLinkItemId(id)}`).scrollIntoView();
+      if (settings?.isCollapsible) {
+        cy.get(`#${buildLinkItemId(id)}`).click();
+      }
+      cy.get(`#${buildLinkItemId(id)} [data-testid="OpenInNewIcon"]`).should(
+        'be.visible',
+      );
     } else {
       // button should not be shown when the setting is false
-      cy.get('[data-testid="OpenInNewIcon"]').scrollIntoView();
-      cy.get('[data-testid="OpenInNewIcon"]').should('not.exist');
+      cy.get(`#${buildLinkItemId(id)}`).scrollIntoView();
+      cy.get(`#${buildLinkItemId(id)} [data-testid="OpenInNewIcon"]`).should(
+        'not.exist',
+      );
     }
   }
 };

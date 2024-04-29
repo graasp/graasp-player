@@ -50,6 +50,7 @@ import {
   buildDocumentId,
   buildFileId,
   buildFolderButtonId,
+  buildLinkItemId,
 } from '@/config/selectors';
 import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
 import { PLAYER } from '@/langs/constants';
@@ -177,16 +178,18 @@ const LinkContent = ({ item }: { item: LinkItemType }): JSX.Element => {
     });
   };
   const linkItem = (
-    <LinkItem
-      item={item}
-      height={SCREEN_MAX_HEIGHT}
-      memberId={member?.id}
-      isResizable
-      showButton={item.settings?.showLinkButton}
-      showIframe={item.settings?.showLinkIframe}
-      showCollapse={item.settings?.isCollapsible}
-      onClick={handleLinkClick}
-    />
+    <Box id={buildLinkItemId(item.id)}>
+      <LinkItem
+        item={item}
+        height={SCREEN_MAX_HEIGHT}
+        memberId={member?.id}
+        isResizable
+        showButton={item.settings?.showLinkButton}
+        showIframe={item.settings?.showLinkIframe}
+        showCollapse={item.settings?.isCollapsible}
+        onClick={handleLinkClick}
+      />
+    </Box>
   );
 
   return linkItem;
