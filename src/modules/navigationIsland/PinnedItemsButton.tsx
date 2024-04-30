@@ -40,29 +40,29 @@ const usePinnedItemsButton = (): { pinnedButton: JSX.Element | false } => {
   // we should show the icon as open if there are pinned items and the drawer is open
   const isOpen = isPinnedOpen && pinnedCount > 0;
 
+  const isDisabled = pinnedCount <= 0;
+  const tooltip = canWrite
+    ? t(PLAYER.NAVIGATION_ISLAND_PINNED_BUTTON_HELPER_TEXT_WRITERS)
+    : t(PLAYER.NAVIGATION_ISLAND_PINNED_BUTTON_HELPER_TEXT_READERS);
+
   return {
     pinnedButton: (
-      <Tooltip
-        title={
-          canWrite
-            ? t(PLAYER.NAVIGATION_ISLAND_PINNED_BUTTON_HELPER_TEXT_WRITERS)
-            : t(PLAYER.NAVIGATION_ISLAND_PINNED_BUTTON_HELPER_TEXT_READERS)
-        }
-        arrow
-      >
-        <ToolButton
-          disabled={pinnedCount <= 0}
-          key="pinnedButton"
-          id={ITEM_PINNED_BUTTON_ID}
-          onClick={togglePinned}
-          aria-label={
-            isOpen
-              ? t(PLAYER.HIDE_PINNED_ITEMS_TOOLTIP)
-              : t(PLAYER.SHOW_PINNED_ITEMS_TOOLTIP)
-          }
-        >
-          {isOpen ? <PinOff /> : <Pin />}
-        </ToolButton>
+      <Tooltip title={isDisabled ? tooltip : undefined} arrow>
+        <span>
+          <ToolButton
+            disabled={isDisabled}
+            key="pinnedButton"
+            id={ITEM_PINNED_BUTTON_ID}
+            onClick={togglePinned}
+            aria-label={
+              isOpen
+                ? t(PLAYER.HIDE_PINNED_ITEMS_TOOLTIP)
+                : t(PLAYER.SHOW_PINNED_ITEMS_TOOLTIP)
+            }
+          >
+            {isOpen ? <PinOff /> : <Pin />}
+          </ToolButton>
+        </span>
       </Tooltip>
     ),
   };
