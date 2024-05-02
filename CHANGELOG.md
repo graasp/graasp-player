@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.11.2](https://github.com/graasp/graasp-player/compare/v2.11.1...v2.11.2) (2024-05-02)
+
+
+### Bug Fixes
+
+* add tooltips on disabled navigation buttons ([#661](https://github.com/graasp/graasp-player/issues/661)) ([5905829](https://github.com/graasp/graasp-player/commit/590582952cc99860be77987867a86ca9074c9738))
+* **deps:** update dependency @graasp/query-client to v3.5.0 ([#637](https://github.com/graasp/graasp-player/issues/637)) ([0e49754](https://github.com/graasp/graasp-player/commit/0e49754f2df50c9f3415016aba5a03299a25d6d6))
+* **deps:** update dependency @graasp/query-client to v3.6.0 ([#663](https://github.com/graasp/graasp-player/issues/663)) ([fd7e0cb](https://github.com/graasp/graasp-player/commit/fd7e0cbfb7498f7ef5b55608699c4c211d288232))
+* **deps:** update dependency @graasp/sdk to v4.9.0 ([#666](https://github.com/graasp/graasp-player/issues/666)) ([36fdc1d](https://github.com/graasp/graasp-player/commit/36fdc1da253e2f08519d0a52d8f61c6d3b69f1b3))
+* **deps:** update dependency @graasp/translations to v1.27.0 ([#634](https://github.com/graasp/graasp-player/issues/634)) ([9eb80bf](https://github.com/graasp/graasp-player/commit/9eb80bf99356f7f2a301dab941f8390807124dba))
+* **deps:** update dependency @sentry/react to v7.112.2 ([#632](https://github.com/graasp/graasp-player/issues/632)) ([58df44a](https://github.com/graasp/graasp-player/commit/58df44acde2d9c77998d442f60f6b7a2b1239016))
+* **deps:** update dependency i18next to v23.11.3 ([#643](https://github.com/graasp/graasp-player/issues/643)) ([f5b9a51](https://github.com/graasp/graasp-player/commit/f5b9a51a49ba4b1c2acaa28a17a93ddb265d8c0c))
+* **deps:** update dependency react-accessible-treeview to v2.9.0 ([#654](https://github.com/graasp/graasp-player/issues/654)) ([1cb33d2](https://github.com/graasp/graasp-player/commit/1cb33d2adc4f4c9bc73ad7f285a5cd27985a8d85))
+* **deps:** update dependency react-i18next to v14.1.1 ([#644](https://github.com/graasp/graasp-player/issues/644)) ([c7b8e42](https://github.com/graasp/graasp-player/commit/c7b8e42a8408cc819442b49e590f2e5716f4d6e4))
+* **deps:** update dependency stylis to v4.3.2 ([#652](https://github.com/graasp/graasp-player/issues/652)) ([3927349](https://github.com/graasp/graasp-player/commit/39273494a661253e4911c7ad1cc3aea522bd9f19))
+* **deps:** update react-router monorepo to v6.23.0 ([#659](https://github.com/graasp/graasp-player/issues/659)) ([856b7b6](https://github.com/graasp/graasp-player/commit/856b7b6b3e827c98e8a0d12cf466ecf97b983f57))
+* **spanish:** update translations ([#650](https://github.com/graasp/graasp-player/issues/650)) ([e6d449b](https://github.com/graasp/graasp-player/commit/e6d449b5bc03451a3f93628c7318fd9646cc29e8))
+
 ## [2.11.1](https://github.com/graasp/graasp-player/compare/v2.11.0...v2.11.1) (2024-04-29)
 
 
