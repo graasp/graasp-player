@@ -306,21 +306,10 @@ const FolderButtonContent = ({ item }: { item: FolderItemType }) => {
       name={item.name}
       thumbnail={thumbnail}
       description={
-        <Box
-          sx={{
-            height: '1lh',
-            display: '-webkit-box',
-            overflow: 'hidden',
-            // number of lines to show
-            WebkitLineClamp: 1,
-            WebkitBoxOrient: 'vertical',
-            '& > p': {
-              margin: 0,
-            },
-          }}
-        >
+        // to not display the default empty description we check it here
+        item.description && item.description !== '<p><br></p>' ? (
           <TextDisplay content={item.description ?? ''} />
-        </Box>
+        ) : undefined
       }
       to={buildMainPath({ rootId: item.id })}
     />
