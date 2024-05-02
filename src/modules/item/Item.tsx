@@ -19,6 +19,7 @@ import {
   PermissionLevel,
   S3FileItemType,
   ShortcutItemType,
+  ThumbnailSize,
 } from '@graasp/sdk';
 import { DEFAULT_LANG, FAILURE_MESSAGES } from '@graasp/translations';
 import {
@@ -294,6 +295,38 @@ const ShortcutContent = ({ item }: { item: ShortcutItemType }): JSX.Element => {
   );
 };
 
+const FolderButtonContent = ({ item }: { item: FolderItemType }) => {
+  const { data: thumbnail } = hooks.useItemThumbnailUrl({
+    id: item.id,
+    size: ThumbnailSize.Medium,
+  });
+  return (
+    <FolderCard
+      id={buildFolderButtonId(item.id)}
+      name={item.name}
+      thumbnail={thumbnail}
+      description={
+        <Box
+          sx={{
+            height: '1lh',
+            display: '-webkit-box',
+            overflow: 'hidden',
+            // number of lines to show
+            WebkitLineClamp: 1,
+            WebkitBoxOrient: 'vertical',
+            '& > p': {
+              margin: 0,
+            },
+          }}
+        >
+          <TextDisplay content={item.description ?? ''} />
+        </Box>
+      }
+      to={buildMainPath({ rootId: item.id })}
+    />
+  );
+};
+
 type ItemContentProps = {
   item: DiscriminatedItem;
 };
@@ -301,55 +334,7 @@ type ItemContentProps = {
 const ItemContent = ({ item }: ItemContentProps) => {
   switch (item.type) {
     case ItemType.FOLDER: {
-      const folderButton = (
-        <FolderCard
-          id={buildFolderButtonId(item.id)}
-          name={item.name}
-          description={
-            <Box
-              sx={{
-                height: '1lh',
-                display: '-webkit-box',
-                overflow: 'hidden',
-                // number of lines to show
-                WebkitLineClamp: 1,
-                WebkitBoxOrient: 'vertical',
-                '& > p': {
-                  margin: 0,
-                },
-              }}
-            >
-              <TextDisplay content={item.description ?? ''} />
-            </Box>
-          }
-          to={buildMainPath({ rootId: item.id })}
-        />
-      );
-      return folderButton;
-
-      // todo: check that the folders are displayed as expected.
-      // in case everything is okay, remove the following
-
-      // // display children shortcut pinned folders
-      // if (isShortcut && isShortcutPinned) {
-      //   return folderButton;
-      // }
-
-      // // do not display shortcut folders if they are not pinned
-      // if (isShortcut && !isShortcutPinned) {
-      //   return null;
-      // }
-
-      // // // do not display children folders if they are not pinned
-      // // if (!item.settings?.isPinned) {
-      // //   return null;
-      // // }
-
-      // // only display children folders if they are pinned
-      // if (item.settings?.isPinned) {
-      //   return folderButton;
-      // }
-      // break;
+      return <FolderButtonContent item={item} />;
     }
     case ItemType.LINK: {
       return <LinkContent item={item} />;
