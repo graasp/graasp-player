@@ -6271,7 +6271,7 @@ __metadata:
     lucide-react: "npm:0.374.0"
     prettier: "npm:3.2.5"
     react: "npm:18.2.0"
-    react-accessible-treeview: "npm:2.8.3"
+    react-accessible-treeview: "npm:2.9.0"
     react-dom: "npm:18.2.0"
     react-fullscreen-crossbrowser: "npm:1.1.3"
     react-ga4: "npm:2.1.0"
@@ -9587,15 +9587,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-accessible-treeview@npm:2.8.3":
-  version: 2.8.3
-  resolution: "react-accessible-treeview@npm:2.8.3"
+"react-accessible-treeview@npm:2.9.0":
+  version: 2.9.0
+  resolution: "react-accessible-treeview@npm:2.9.0"
   peerDependencies:
     classnames: ^2.2.6
     prop-types: ^15.7.2
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10/97de182a2ea21d3d9abeca1e81080802e5df0ec1fcad06b891e15da1535a810bcb5d7a8c32bd18e05a97725ccfed068ddb1c5ea062aeba6bf6e82b3238b8ba89
+  checksum: 10/3e575ec5b95f86dd70f505ef2dfc6f67a960785b97c2b91bffb7bf53de8891e8230b3ee5e579b5f719cd905baa8d5df675d2f18bef8e9e1753a475bb486b7bfb
   languageName: node
   linkType: hard
 
