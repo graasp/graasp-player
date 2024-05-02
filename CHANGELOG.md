@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.11.3](https://github.com/graasp/graasp-player/compare/v2.11.2...v2.11.3) (2024-05-02)
+
+
+### Bug Fixes
+
+* broken use case test ([89fedf9](https://github.com/graasp/graasp-player/commit/89fedf981bbe2e44f6267a9a952ee959b92efa33))
+* **deps:** update dependency react-intersection-observer to v9.10.1 ([#656](https://github.com/graasp/graasp-player/issues/656)) ([f1f3045](https://github.com/graasp/graasp-player/commit/f1f30452ecf2a12bd554e116f8b2f4c68520d39a))
+* **deps:** update mui (non-major) to v5.15.16 ([#665](https://github.com/graasp/graasp-player/issues/665)) ([7cfb578](https://github.com/graasp/graasp-player/commit/7cfb5782ec101c4e7cbf6b96c76e3c756fa42fd8))
+* **deps:** update react monorepo to v18.3.1 ([#658](https://github.com/graasp/graasp-player/issues/658)) ([d703af4](https://github.com/graasp/graasp-player/commit/d703af41e62edc2b0759cf2c673a16c0da22bd14))
+* display folder thumbnails on shortcuts ([#670](https://github.com/graasp/graasp-player/issues/670)) ([4688822](https://github.com/graasp/graasp-player/commit/4688822015132516352894194e5226d6240c0d53))
+* **german:** translations ([#671](https://github.com/graasp/graasp-player/issues/671)) ([c7bbedc](https://github.com/graasp/graasp-player/commit/c7bbedc5dc363eebaad99a67453140b51c5c757f))
+
 ## [2.11.2](https://github.com/graasp/graasp-player/compare/v2.11.1...v2.11.2) (2024-05-02)
 
 
