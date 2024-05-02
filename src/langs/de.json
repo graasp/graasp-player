@@ -23,5 +23,5 @@
   "GO_TO_HOME": "Zur Startseite",
   "ITEM_CHATBOX_TITLE": "\"{{name}}\" Chat",
   "ITEM_TITLE_CREATED_AT": "Erstellt: {{date}}",
-  "ITEM_TITLE_UPDATED_AT": "Neues Datum}}"
+  "ITEM_TITLE_UPDATED_AT": "Aktualisiert: {{date}}"
 }
