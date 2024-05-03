@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.12.0](https://github.com/graasp/graasp-player/compare/v2.11.3...v2.12.0) (2024-05-03)
+
+
+### Features
+
+* support shuffling children ([#629](https://github.com/graasp/graasp-player/issues/629)) ([2868e52](https://github.com/graasp/graasp-player/commit/2868e52928c6a528e29d2815dfbf5173d6c11d2d))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @sentry/react to v7.113.0 ([#668](https://github.com/graasp/graasp-player/issues/668)) ([002ad93](https://github.com/graasp/graasp-player/commit/002ad933ed28c91957b15005ef4ac689e8264ef3))
+* **deps:** update dependency lucide-react to v0.377.0 ([#653](https://github.com/graasp/graasp-player/issues/653)) ([3e64bc3](https://github.com/graasp/graasp-player/commit/3e64bc398fa4297fd5d35ede8cc6c72ad07eabf2))
+
 ## [2.11.3](https://github.com/graasp/graasp-player/compare/v2.11.2...v2.11.3) (2024-05-02)
 
 
