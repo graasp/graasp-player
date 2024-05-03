@@ -79,6 +79,39 @@ describe('Shuffle', () => {
         });
     });
 
+    it('displays item with children shuffled when redirected', () => {
+      const root = FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS.items[0];
+      cy.visit(
+        buildContentPagePath({
+          rootId: root.id,
+          itemId: '',
+          searchParams: 'shuffle=true',
+        }),
+      );
+
+      cy.get(`.${FOLDER_NAME_TITLE_CLASS}`).should('contain', root.name);
+
+      expectFolderLayout({
+        rootId: root.id,
+        items: FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS.items,
+      });
+
+      // shuffled order is always the same for a given member + item id
+      const shuffledOrder = [2, 4, 5, 3, 1];
+
+      cy.get(`.${buildTreeItemClass(root.id)}`)
+        .siblings(`ul.${TREE_NODE_GROUP_CLASS}:first`)
+        .children('li')
+        .each(($li, index) => {
+          // assert the text of each li matches the expected order
+          cy.wrap($li).should(
+            'have.text',
+            FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS.items[shuffledOrder[index]]
+              .name,
+          );
+        });
+    });
+
     it('displays item with children shuffled in the same order on a second visit', () => {
       const root = FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS.items[0];
       cy.visit(
