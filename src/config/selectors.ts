@@ -64,3 +64,5 @@ export const APP_NAVIGATION_PLATFORM_SWITCH_BUTTON_IDS = {
   [Platform.Library]: 'appNavigationPlatformSwitchButtonLibrary',
   [Platform.Analytics]: 'appNavigationPlatformSwitchButtonAnalytics',
 };
+
+export const TREE_NODE_GROUP_CLASS = 'tree-node-group';

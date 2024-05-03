@@ -34,12 +34,10 @@ const DrawerNavigation = (): JSX.Element | null => {
 
   const { t: translateMessage } = useMessagesTranslation();
 
-  let { data: descendants } = useDescendants(
-    { id: rootId ?? '' },
-  );
-  const { isInitialLoading: isLoadingTree } = useDescendants(
-    { id: rootId ?? '' },
-  );
+  let { data: descendants } = useDescendants({ id: rootId ?? '' });
+  const { isInitialLoading: isLoadingTree } = useDescendants({
+    id: rootId ?? '',
+  });
   const { data: itemsTags } = useItemsTags(descendants?.map(({ id }) => id));
 
   const { data: rootItem, isLoading, isError, error } = useItem(rootId);
@@ -62,10 +60,13 @@ const DrawerNavigation = (): JSX.Element | null => {
   }
 
   if (shuffle) {
-    const baseId = rootId || '';
-    const memberId = member?.id || '';
+    const baseId = rootId ?? '';
+    const memberId = member?.id ?? '';
     const combinedUuids = combineUuids(baseId, memberId);
-    descendants = shuffleAllButLastItemInArray(descendants || [], combinedUuids);
+    descendants = shuffleAllButLastItemInArray(
+      descendants || [],
+      combinedUuids,
+    );
   }
 
   if (rootItem) {
@@ -75,7 +76,7 @@ const DrawerNavigation = (): JSX.Element | null => {
           <TreeView
             id={TREE_VIEW_ID}
             rootItems={[rootItem]}
-            items={[rootItem, ...(descendants)].filter(
+            items={[rootItem, ...descendants].filter(
               (ele) => !isHidden(ele, itemsTags?.data?.[ele.id]),
             )}
             firstLevelStyle={{ fontWeight: 'bold' }}
