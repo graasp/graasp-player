@@ -66,7 +66,7 @@ const HomePage = (): JSX.Element => {
   return (
     <>
       <Helmet>
-        <title>Player items</title>
+        <title> {t(PLAYER.HOME_PAGE_TITLE)}</title>
       </Helmet>
       <Stack m={2} direction="column" alignItems="center" spacing={4}>
         <Stack direction="column" width="100%">

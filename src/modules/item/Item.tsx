@@ -1,5 +1,4 @@
 import { Fragment, useCallback, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
 import { useInView } from 'react-intersection-observer';
 import { useParams } from 'react-router-dom';
 
@@ -59,6 +58,7 @@ import { PLAYER } from '@/langs/constants';
 import { isHidden, paginationContentFilter } from '@/utils/item';
 
 import NavigationIsland from '../navigationIsland/NavigationIsland';
+import PageTitle from './PageTitle';
 import SectionHeader from './SectionHeader';
 
 const {
@@ -507,20 +507,12 @@ const Item = ({
 
   if (item && item.type === ItemType.FOLDER) {
     if (isChildren) {
-      return (
-        <>
-          <ItemContentWrapper item={item} />;
-        </>
-      );
+      return <ItemContentWrapper item={item} />;
     }
 
     return (
       <>
-        <Helmet>
-          <title>
-            {rootId !== id ? `${root?.name} | ` : ''} {item.name}
-          </title>
-        </Helmet>
+        <PageTitle titlePage={{ rootId, root, item }} />
         <FolderContent item={item} showPinnedOnly={showPinnedOnly} />
       </>
     );
