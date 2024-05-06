@@ -23,5 +23,9 @@
   "GO_TO_HOME": "Ir a casa",
   "ITEM_CHATBOX_TITLE": "Chat \"{{nombre}}\"",
   "ITEM_TITLE_CREATED_AT": "Fecha de creación}}",
-  "ITEM_TITLE_UPDATED_AT": "Fecha actualizada}}"
+  "ITEM_TITLE_UPDATED_AT": "Fecha actualizada}}",
+  "NAVIGATION_ISLAND_CHAT_BUTTON_HELPER_TEXT_READERS": "El chatbox no ha sido habilitado para este artículo.",
+  "NAVIGATION_ISLAND_CHAT_BUTTON_HELPER_TEXT_WRITERS": "Para habilitar el cuadro de chat, vaya a la configuración del elemento en el Constructor y active la configuración 'Mostrar chat en el reproductor'.",
+  "NAVIGATION_ISLAND_PINNED_BUTTON_HELPER_TEXT_READERS": "No hay elementos fijados para esta página.",
+  "NAVIGATION_ISLAND_PINNED_BUTTON_HELPER_TEXT_WRITERS": "Para agregar elementos a la sección fijada, configúrelos como fijados en la interfaz del Generador."
 }
