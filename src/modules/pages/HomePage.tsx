@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
 
 import { Pagination, PaginationItem, Stack, Typography } from '@mui/material';
 import Grid2 from '@mui/material/Unstable_Grid2';
@@ -63,31 +64,36 @@ const HomePage = (): JSX.Element => {
   );
 
   return (
-    <Stack m={2} direction="column" alignItems="center" spacing={4}>
-      <Stack direction="column" width="100%">
-        <Typography variant="h4" component="h1" mb={1}>
-          {t(PLAYER.RECENT_ITEMS_TITLE)}
-        </Typography>
-        <Grid2 container spacing={3} justifyItems="center">
-          <DisplayItems
-            items={accessibleItems?.data}
-            isLoading={isInitialLoading}
-          />
-        </Grid2>
+    <>
+      <Helmet>
+        <title>Player items</title>
+      </Helmet>
+      <Stack m={2} direction="column" alignItems="center" spacing={4}>
+        <Stack direction="column" width="100%">
+          <Typography variant="h4" component="h1" mb={1}>
+            {t(PLAYER.RECENT_ITEMS_TITLE)}
+          </Typography>
+          <Grid2 container spacing={3} justifyItems="center">
+            <DisplayItems
+              items={accessibleItems?.data}
+              isLoading={isInitialLoading}
+            />
+          </Grid2>
+        </Stack>
+        <Pagination
+          id={HOME_PAGE_PAGINATION_ID}
+          count={Math.ceil((accessibleItems?.totalCount ?? 0) / PAGE_SIZE)}
+          page={page}
+          // use the render prop to add a unique id that we can use for tests
+          renderItem={(props) => (
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            <PaginationItem {...props} id={buildHomePaginationId(props.page)} />
+          )}
+          onChange={(_, newPage) => setPage(newPage)}
+        />
+        <PlayerCookiesBanner />
       </Stack>
-      <Pagination
-        id={HOME_PAGE_PAGINATION_ID}
-        count={Math.ceil((accessibleItems?.totalCount ?? 0) / PAGE_SIZE)}
-        page={page}
-        // use the render prop to add a unique id that we can use for tests
-        renderItem={(props) => (
-          // eslint-disable-next-line react/jsx-props-no-spreading
-          <PaginationItem {...props} id={buildHomePaginationId(props.page)} />
-        )}
-        onChange={(_, newPage) => setPage(newPage)}
-      />
-      <PlayerCookiesBanner />
-    </Stack>
+    </>
   );
 };
 

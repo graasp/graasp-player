@@ -1,6 +1,7 @@
 import { Fragment, useCallback, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useInView } from 'react-intersection-observer';
+import { useParams } from 'react-router-dom';
 
 import { Alert, Box, Container, Divider, Skeleton, Stack } from '@mui/material';
 
@@ -455,11 +456,9 @@ const FolderContent = ({
       ));
   }
   // render each children recursively
+
   return (
     <>
-      <Helmet>
-        <title>{item.name}</title>
-      </Helmet>
       <Stack
         direction="column"
         pb={7}
@@ -503,12 +502,28 @@ const Item = ({
 }: Props): JSX.Element | false => {
   const { t: translateMessage } = useMessagesTranslation();
   const { data: item, isInitialLoading: isLoadingItem, isError } = useItem(id);
+  const { rootId } = useParams();
+  const { data: root } = useItem(rootId);
 
   if (item && item.type === ItemType.FOLDER) {
     if (isChildren) {
-      return <ItemContentWrapper item={item} />;
+      return (
+        <>
+          <ItemContentWrapper item={item} />;
+        </>
+      );
     }
-    return <FolderContent item={item} showPinnedOnly={showPinnedOnly} />;
+
+    return (
+      <>
+        <Helmet>
+          <title>
+            {rootId !== id ? `${root?.name} | ` : ''} {item.name}
+          </title>
+        </Helmet>
+        <FolderContent item={item} showPinnedOnly={showPinnedOnly} />
+      </>
+    );
   }
 
   if (isLoadingItem) {
