@@ -2,6 +2,8 @@
   "GRAASP_PLAYER": "Giocatore di Graasp",
   "SHOW_CHAT_TOOLTIP": "Mostra chat",
   "HIDE_CHAT_TOOLTIP": "Nascondi chat",
+  "EXIT_FULLSCREEN_TOOLTIP": "Esci dalla modalità schermo intero",
+  "ENTER_FULLSCREEN_TOOLTIP": "Entra a schermo intero",
   "SHOW_PINNED_ITEMS_TOOLTIP": "Mostra elementi appuntati",
   "HIDE_PINNED_ITEMS_TOOLTIP": "Nascondi gli elementi appuntati",
   "PINNED_ITEMS": "Elementi appuntati",
@@ -13,5 +15,17 @@
   "ERROR_FETCHING_ITEM": "Si è verificato un errore durante il recupero dell'articolo richiesto",
   "ERROR_ACCESSING_ITEM": "Non puoi accedere a questo elemento",
   "ERROR_ACCESSING_ITEM_HELPER": "Il tuo conto corrente non ha i diritti per accedere a questo elemento.",
-  "SIGN_IN_BUTTON_TEXT": "Registrazione"
+  "SIGN_IN_BUTTON_TEXT": "Registrazione",
+  "FALLBACK_TITLE": "Ops",
+  "FALLBACK_TEXT": "Qualcosa è andato storto. Per favore riprova. Se il problema persiste contattaci.",
+  "FALLBACK_RELOAD_PAGE": "Ricarica la pagina",
+  "ITEM_ID_NOT_VALID": "L'ID articolo non è valido, controllalo di nuovo. Clicca sul pulsante qui sotto per tornare alla Home.",
+  "GO_TO_HOME": "Vai a casa",
+  "ITEM_CHATBOX_TITLE": "\"{{nome}}\" Chatta",
+  "ITEM_TITLE_CREATED_AT": "Data di Creazione}}",
+  "ITEM_TITLE_UPDATED_AT": "Data aggiornata}}",
+  "NAVIGATION_ISLAND_CHAT_BUTTON_HELPER_TEXT_READERS": "La chatbox non è stata abilitata per questo elemento.",
+  "NAVIGATION_ISLAND_CHAT_BUTTON_HELPER_TEXT_WRITERS": "Per abilitare la chat, vai nelle impostazioni dell'elemento nel Builder e attiva l'impostazione \"Mostra chat nel lettore\".",
+  "NAVIGATION_ISLAND_PINNED_BUTTON_HELPER_TEXT_READERS": "Non ci sono elementi fissati per questa pagina.",
+  "NAVIGATION_ISLAND_PINNED_BUTTON_HELPER_TEXT_WRITERS": "Per aggiungere elementi alla sezione bloccata, impostali come bloccati nell'interfaccia di Builder."
 }
