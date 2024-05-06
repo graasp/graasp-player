@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 
 import { ActionTriggers, DiscriminatedItem, ItemType } from '@graasp/sdk';
 
@@ -7,6 +7,8 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import { buildContentPagePath } from '@/config/paths';
 import { hooks, mutations } from '@/config/queryClient';
+import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext.tsx';
+import { combineUuids, shuffleAllButLastItemInArray } from '@/utils/shuffle.ts';
 
 import { NavigationButton } from './CustomButtons';
 
@@ -15,9 +17,13 @@ const usePreviousNextButtons = (): {
   nextButton: JSX.Element | false;
 } => {
   const { rootId, itemId } = useParams();
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { data: member } = useCurrentMemberContext();
   const { mutate: triggerAction } = mutations.usePostItemAction();
   const { data: rootItem } = hooks.useItem(rootId);
+
+  const shuffle = Boolean(searchParams.get('shuffle') === 'true');
 
   const { data: descendants, isLoading } = hooks.useDescendants({
     // not correct but enabled
@@ -39,9 +45,20 @@ const usePreviousNextButtons = (): {
   }
 
   // we only navigate through folders
-  const folderHierarchy: DiscriminatedItem[] = descendants.filter(
+  let folderHierarchy: DiscriminatedItem[] = descendants.filter(
     ({ type }) => type === ItemType.FOLDER,
   );
+
+  if (shuffle) {
+    // seed for shuffling is consistent for member + root (base) item combination
+    const baseId = rootId || '';
+    const memberId = member?.id || '';
+    const combinedUuids = combineUuids(baseId, memberId);
+    folderHierarchy = shuffleAllButLastItemInArray(
+      folderHierarchy,
+      combinedUuids,
+    );
+  }
 
   // when focusing on the root item
   if (itemId === rootId && folderHierarchy.length) {
@@ -69,7 +86,13 @@ const usePreviousNextButtons = (): {
       itemId: newItemId,
       payload: { type: ActionTriggers.ItemView },
     });
-    navigate(buildContentPagePath({ rootId, itemId: newItemId }));
+    navigate(
+      buildContentPagePath({
+        rootId,
+        itemId: newItemId,
+        searchParams: searchParams.toString(),
+      }),
+    );
   };
 
   // should we display both buttons if they are disabled ?

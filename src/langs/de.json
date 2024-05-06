@@ -23,5 +23,9 @@
   "GO_TO_HOME": "Zur Startseite",
   "ITEM_CHATBOX_TITLE": "\"{{name}}\" Chat",
   "ITEM_TITLE_CREATED_AT": "Erstellt: {{date}}",
-  "ITEM_TITLE_UPDATED_AT": "Neues Datum}}"
+  "ITEM_TITLE_UPDATED_AT": "Aktualisiert: {{date}}",
+  "NAVIGATION_ISLAND_CHAT_BUTTON_HELPER_TEXT_READERS": "Die Chatbox wurde für dieses Element nicht aktiviert.",
+  "NAVIGATION_ISLAND_CHAT_BUTTON_HELPER_TEXT_WRITERS": "Um die Chatbox zu aktivieren, gehen Sie in die Elementeinstellungen im Builder und aktivieren Sie die Einstellung „Chat im Player anzeigen“.",
+  "NAVIGATION_ISLAND_PINNED_BUTTON_HELPER_TEXT_READERS": "Für diese Seite sind keine Elemente angeheftet.",
+  "NAVIGATION_ISLAND_PINNED_BUTTON_HELPER_TEXT_WRITERS": "Um Elemente zum angehefteten Abschnitt hinzuzufügen, legen Sie sie in der Builder-Oberfläche als angeheftet fest."
 }

@@ -49,9 +49,9 @@ export const expectLinkViewScreenLayout = ({
       if (settings?.isCollapsible) {
         cy.get(`#${buildLinkItemId(id)}`).click();
       }
-      cy.get(`#${buildLinkItemId(id)} [data-testid="OpenInNewIcon"]`).should(
-        'be.visible',
-      );
+      cy.get(`#${buildLinkItemId(id)} [data-testid="OpenInNewIcon"]`)
+        .scrollIntoView()
+        .should('be.visible');
     } else {
       // button should not be shown when the setting is false
       cy.get(`#${buildLinkItemId(id)}`).scrollIntoView();

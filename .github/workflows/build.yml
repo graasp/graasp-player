@@ -39,3 +39,7 @@ jobs:
           VITE_GRAASP_AUTH_HOST: http://localhost:3001
           VITE_GRAASP_BUILDER_HOST: http://localhost:3111
           VITE_SHOW_NOTIFICATIONS: true
+
+      - name: Unit tests
+        run: yarn test:unit
+        shell: bash
