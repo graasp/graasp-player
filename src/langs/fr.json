@@ -20,8 +20,10 @@
   "FALLBACK_TEXT": "Quelque chose s'est mal passé. Veuillez réessayer. Si le problème persiste, contactez-nous.",
   "FALLBACK_RELOAD_PAGE": "Rafraîchir la page",
   "ITEM_ID_NOT_VALID": "L'identifiant de l'article n'est pas valide, veuillez le vérifier à nouveau. Cliquez sur le bouton ci-dessous pour revenir à l'accueil.",
-  "GO_TO_HOME": "Aller à la maison",
+  "GO_TO_HOME": "Aller à la page d'accueil",
   "ITEM_CHATBOX_TITLE": "Discussion pour \"{{name}}\"",
   "ITEM_TITLE_CREATED_AT": "Créé : {{date}}",
-  "ITEM_TITLE_UPDATED_AT": "Mise à jour : {{date}}"
+  "ITEM_TITLE_UPDATED_AT": "Mise à jour : {{date}}",
+  "NAVIGATION_ISLAND_CHAT_BUTTON_HELPER_TEXT_READERS": "La discussion n'a pas été activée pour cet élément.",
+  "NAVIGATION_ISLAND_CHAT_BUTTON_HELPER_TEXT_WRITERS": "Pour activer la discussion, allez dans les paramètres de l'élément dans le Builder et activez le paramètre « Afficher le chat dans le lecteur »."
 }
