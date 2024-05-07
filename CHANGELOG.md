@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.12.1](https://github.com/graasp/graasp-player/compare/v2.12.0...v2.12.1) (2024-05-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lucide-react to v0.378.0 ([#675](https://github.com/graasp/graasp-player/issues/675)) ([2e5b19a](https://github.com/graasp/graasp-player/commit/2e5b19a7edd1d4ead74f0c6be511174080326b22))
+* **french:** translations ([#686](https://github.com/graasp/graasp-player/issues/686)) ([cfdda83](https://github.com/graasp/graasp-player/commit/cfdda8370c030982c729c2f3c50a9f2d397eabc6))
+* **italian:** translations ([#687](https://github.com/graasp/graasp-player/issues/687)) ([ff86786](https://github.com/graasp/graasp-player/commit/ff86786e9dba44473d08813a28a24b15498537c5))
+* keep search params when redirecting ([#679](https://github.com/graasp/graasp-player/issues/679)) ([11114de](https://github.com/graasp/graasp-player/commit/11114de5f582110820e11b52e4c04c6783d85b92))
+* **spanish:** translations ([#685](https://github.com/graasp/graasp-player/issues/685)) ([c96ab94](https://github.com/graasp/graasp-player/commit/c96ab94e5a23498e5d31c88b77b33fc3ed9ba91f))
+
 ## [2.12.0](https://github.com/graasp/graasp-player/compare/v2.11.3...v2.12.0) (2024-05-03)
 
 
