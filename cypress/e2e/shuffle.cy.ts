@@ -8,6 +8,7 @@ import {
 import {
   ANOTHER_FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS,
   FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS,
+  YET_ANOTHER_FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS,
 } from '../fixtures/items.ts';
 import { MEMBERS } from '../fixtures/members.ts';
 import { expectFolderLayout } from '../support/integrationUtils.ts';
@@ -64,7 +65,12 @@ describe('Shuffle', () => {
       });
 
       // shuffled order is always the same for a given member + item id
-      const shuffledOrder = [2, 4, 5, 3, 1];
+      const shuffledOrder = [2, 4, 1, 3, 5];
+
+      // last should always be last
+      expect(shuffledOrder[shuffledOrder.length - 1]).to.equal(
+        shuffledOrder.length,
+      );
 
       cy.get(`.${buildTreeItemClass(root.id)}`)
         .siblings(`ul.${TREE_NODE_GROUP_CLASS}:first`)
@@ -97,7 +103,12 @@ describe('Shuffle', () => {
       });
 
       // shuffled order is always the same for a given member + item id
-      const shuffledOrder = [2, 4, 5, 3, 1];
+      const shuffledOrder = [2, 4, 1, 3, 5];
+
+      // last should always be last
+      expect(shuffledOrder[shuffledOrder.length - 1]).to.equal(
+        shuffledOrder.length,
+      );
 
       cy.get(`.${buildTreeItemClass(root.id)}`)
         .siblings(`ul.${TREE_NODE_GROUP_CLASS}:first`)
@@ -130,7 +141,12 @@ describe('Shuffle', () => {
       });
 
       // shuffled order is always the same for a given member + item id
-      const shuffledOrder = [2, 4, 5, 3, 1];
+      const shuffledOrder = [2, 4, 1, 3, 5];
+
+      // last should always be last
+      expect(shuffledOrder[shuffledOrder.length - 1]).to.equal(
+        shuffledOrder.length,
+      );
 
       cy.get(`.${buildTreeItemClass(root.id)}`)
         .siblings(`ul.${TREE_NODE_GROUP_CLASS}:first`)
@@ -163,8 +179,13 @@ describe('Shuffle', () => {
       });
 
       // shuffled order is always the same for a given member + item id
-      // this is the value for the other item: [ 2, 4, 5, 3, 1 ]
+      // this is the value for the other item: [2, 4, 1, 3, 5]
       const shuffledOrder = [1, 4, 3, 2, 5];
+
+      // last should always be last
+      expect(shuffledOrder[shuffledOrder.length - 1]).to.equal(
+        shuffledOrder.length,
+      );
 
       cy.get(`.${buildTreeItemClass(root.id)}`)
         .siblings(`ul.${TREE_NODE_GROUP_CLASS}:first`)
@@ -210,8 +231,13 @@ describe('Shuffle', () => {
       });
 
       // shuffled order is always the same for a given member + item id
-      // this is the value for Anna: [2, 4, 5, 3, 1]
-      const shuffledOrder = [1, 5, 3, 4, 2];
+      // this is the value for Anna: [2, 4, 1, 3, 5]
+      const shuffledOrder = [1, 2, 3, 4, 5];
+
+      // last should always be last
+      expect(shuffledOrder[shuffledOrder.length - 1]).to.equal(
+        shuffledOrder.length,
+      );
 
       cy.get(`.${buildTreeItemClass(root.id)}`)
         .siblings(`ul.${TREE_NODE_GROUP_CLASS}:first`)
@@ -244,9 +270,14 @@ describe('Shuffle', () => {
       });
 
       // shuffled order is always the same for a given member + item id
-      // this is the value for the other item: [1, 5, 3, 4, 2]
-      // and this is the value for Anna for this item: [ 1, 4, 3, 2, 5 ]
+      // this is the value for the other item: [1, 2, 3, 4, 5]
+      // and this is the value for Anna for this item: [1, 4, 3, 2, 5]
       const shuffledOrder = [3, 4, 2, 1, 5];
+
+      // last should always be last
+      expect(shuffledOrder[shuffledOrder.length - 1]).to.equal(
+        shuffledOrder.length,
+      );
 
       cy.get(`.${buildTreeItemClass(root.id)}`)
         .siblings(`ul.${TREE_NODE_GROUP_CLASS}:first`)
@@ -256,6 +287,141 @@ describe('Shuffle', () => {
           cy.wrap($li).should(
             'have.text',
             ANOTHER_FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS.items[
+              shuffledOrder[index]
+            ].name,
+          );
+        });
+    });
+  });
+
+  describe('Cedric', () => {
+    beforeEach(() => {
+      cy.setUpApi({
+        currentMember: MEMBERS.CEDRIC,
+        items: [
+          ...YET_ANOTHER_FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS.items,
+          ...ANOTHER_FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS.items,
+          ...FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS.items,
+        ],
+      });
+    });
+
+    it('displays item with children shuffled differently for a different user', () => {
+      const root = FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS.items[0];
+      cy.visit(
+        buildContentPagePath({
+          rootId: root.id,
+          itemId: root.id,
+          searchParams: 'shuffle=true',
+        }),
+      );
+
+      cy.get(`.${FOLDER_NAME_TITLE_CLASS}`).should('contain', root.name);
+
+      expectFolderLayout({
+        rootId: root.id,
+        items: FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS.items,
+      });
+
+      // shuffled order is always the same for a given member + item id
+      // this is the value for Anna: [2, 4, 1, 3, 5]
+      // and this is the value for Bob: [1, 2, 3, 4, 5]
+      const shuffledOrder = [3, 2, 1, 4, 5];
+
+      // last should always be last
+      expect(shuffledOrder[shuffledOrder.length - 1]).to.equal(
+        shuffledOrder.length,
+      );
+
+      cy.get(`.${buildTreeItemClass(root.id)}`)
+        .siblings(`ul.${TREE_NODE_GROUP_CLASS}:first`)
+        .children('li')
+        .each(($li, index) => {
+          // assert the text of each li matches the expected order
+          cy.wrap($li).should(
+            'have.text',
+            FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS.items[shuffledOrder[index]]
+              .name,
+          );
+        });
+    });
+
+    it('displays item with children shuffled differently for a different user and different item', () => {
+      const root = ANOTHER_FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS.items[0];
+      cy.visit(
+        buildContentPagePath({
+          rootId: root.id,
+          itemId: root.id,
+          searchParams: 'shuffle=true',
+        }),
+      );
+
+      cy.get(`.${FOLDER_NAME_TITLE_CLASS}`).should('contain', root.name);
+
+      expectFolderLayout({
+        rootId: root.id,
+        items: ANOTHER_FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS.items,
+      });
+
+      // shuffled order is always the same for a given member + item id
+      // this is the value for the other item: [3, 4, 2, 1, 5]
+      const shuffledOrder = [3, 2, 1, 4, 5];
+
+      // last should always be last
+      expect(shuffledOrder[shuffledOrder.length - 1]).to.equal(
+        shuffledOrder.length,
+      );
+
+      cy.get(`.${buildTreeItemClass(root.id)}`)
+        .siblings(`ul.${TREE_NODE_GROUP_CLASS}:first`)
+        .children('li')
+        .each(($li, index) => {
+          // assert the text of each li matches the expected order
+          cy.wrap($li).should(
+            'have.text',
+            ANOTHER_FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS.items[
+              shuffledOrder[index]
+            ].name,
+          );
+        });
+    });
+
+    it('displays item with children shuffled differently for a different user and another different item', () => {
+      const root =
+        YET_ANOTHER_FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS.items[0];
+      cy.visit(
+        buildContentPagePath({
+          rootId: root.id,
+          itemId: root.id,
+          searchParams: 'shuffle=true',
+        }),
+      );
+
+      cy.get(`.${FOLDER_NAME_TITLE_CLASS}`).should('contain', root.name);
+
+      expectFolderLayout({
+        rootId: root.id,
+        items: YET_ANOTHER_FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS.items,
+      });
+
+      // shuffled order is always the same for a given member + item id
+      // this is the value for the first other item: [3, 4, 2, 1, 5]
+      // and this is the value for the second other item: [3, 2, 1, 4, 5]
+      const shuffledOrder = [3, 4, 1, 2, 5];
+
+      // last should always be last
+      expect(shuffledOrder[shuffledOrder.length - 1]).to.equal(
+        shuffledOrder.length,
+      );
+
+      cy.get(`.${buildTreeItemClass(root.id)}`)
+        .siblings(`ul.${TREE_NODE_GROUP_CLASS}:first`)
+        .children('li')
+        .each(($li, index) => {
+          // assert the text of each li matches the expected order
+          cy.wrap($li).should(
+            'have.text',
+            YET_ANOTHER_FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS.items[
               shuffledOrder[index]
             ].name,
           );

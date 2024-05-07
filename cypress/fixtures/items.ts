@@ -623,30 +623,6 @@ export const FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS: { items: MockItem[] } = {
         showChatbox: false,
       },
     },
-
-    // descendants
-    {
-      ...DEFAULT_FOLDER_ITEM,
-      id: 'fdf09f5a-5688-11eb-ae93-0242ac130005',
-      name: 'child of child folder 2',
-      path: 'ecafbd2a_5688_11eb_ae93_0242ac130002.fdf09f5a_5688_11eb_ae93_0242ac130003.fdf09f5a_5688_11eb_ae93_0242ac130005',
-      settings: {
-        isPinned: true,
-        showChatbox: false,
-      },
-    },
-    {
-      ...DEFAULT_FOLDER_ITEM,
-      id: 'fdf09f5a-5688-11eb-ae93-0242ac130006',
-      name: 'document inside of child folder',
-      type: 'document',
-      extra: { document: { content: 'hello I am a document' } },
-      path: 'ecafbd2a_5688_11eb_ae93_0242ac130002.fdf09f5a_5688_11eb_ae93_0242ac130003.fdf09f5a_5688_11eb_ae93_0242ac130005.fdf09f5a_5688_11eb_ae93_0242ac130006',
-      settings: {
-        isPinned: true,
-        showChatbox: false,
-      },
-    },
   ],
 };
 
@@ -727,13 +703,41 @@ export const ANOTHER_FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS: {
         showChatbox: false,
       },
     },
+  ],
+};
 
-    // descendants
+export const YET_ANOTHER_FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS: {
+  items: MockItem[];
+} = {
+  items: [
+    // root
     {
       ...DEFAULT_FOLDER_ITEM,
-      id: 'fdf09f5a-5688-11eb-ae93-0242ac130005',
-      name: 'child of child folder 2',
-      path: 'acafbd2a_5688_11eb_ae93_0242ac130002.fdf09f5a_5688_11eb_ae93_0242ac130003.fdf09f5a_5688_11eb_ae93_0242ac130005',
+      id: 'acafbd2a-5688-11eb-ae93-0242ac130012',
+      name: 'parent folder',
+      path: 'acafbd2a_5688_11eb_ae93_0242ac130012',
+      extra: {
+        [ItemType.FOLDER]: {
+          childrenOrder: [
+            'fdf09f5a-5688-11eb-ae93-0242ac130013',
+            'fdf09f5a-5688-11eb-ae93-0242ac130014',
+            'fdf09f5a-5688-11eb-ae93-0242ac130017',
+            'fdf09f5a-5688-11eb-ae93-0242ac130018',
+            'fdf09f5a-5688-11eb-ae93-0242ac130019',
+          ],
+        },
+      },
+      settings: {
+        isPinned: false,
+        showChatbox: false,
+      },
+    },
+    // children (need to be in order to respect test)
+    {
+      ...DEFAULT_FOLDER_ITEM,
+      id: 'fdf09f5a-5688-11eb-ae93-0242ac130013',
+      name: 'child folder 1',
+      path: 'acafbd2a_5688_11eb_ae93_0242ac130012.fdf09f5a_5688_11eb_ae93_0242ac130013',
       settings: {
         isPinned: true,
         showChatbox: false,
@@ -741,13 +745,41 @@ export const ANOTHER_FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS: {
     },
     {
       ...DEFAULT_FOLDER_ITEM,
-      id: 'fdf09f5a-5688-11eb-ae93-0242ac130006',
-      name: 'document inside of child folder',
-      type: 'document',
-      extra: { document: { content: 'hello I am a document' } },
-      path: 'acafbd2a_5688_11eb_ae93_0242ac130002.fdf09f5a_5688_11eb_ae93_0242ac130003.fdf09f5a_5688_11eb_ae93_0242ac130005.fdf09f5a_5688_11eb_ae93_0242ac130006',
+      id: 'fdf09f5a-5688-11eb-ae93-0242ac130014',
+      name: 'child folder 2',
+      path: 'acafbd2a_5688_11eb_ae93_0242ac130012.fdf09f5a_5688_11eb_ae93_0242ac130014',
       settings: {
-        isPinned: true,
+        isPinned: false,
+        showChatbox: false,
+      },
+    },
+    {
+      ...DEFAULT_FOLDER_ITEM,
+      id: 'fdf09f5a-5688-11eb-ae93-0242ac130017',
+      name: 'child folder 3',
+      path: 'acafbd2a_5688_11eb_ae93_0242ac130012.fdf09f5a-5688-11eb-ae93-0242ac130017',
+      settings: {
+        isPinned: false,
+        showChatbox: false,
+      },
+    },
+    {
+      ...DEFAULT_FOLDER_ITEM,
+      id: 'fdf09f5a-5688-11eb-ae93-0242ac130018',
+      name: 'child folder 4',
+      path: 'acafbd2a_5688_11eb_ae93_0242ac130012.fdf09f5a-5688-11eb-ae93-0242ac130018',
+      settings: {
+        isPinned: false,
+        showChatbox: false,
+      },
+    },
+    {
+      ...DEFAULT_FOLDER_ITEM,
+      id: 'fdf09f5a-5688-11eb-ae93-0242ac130019',
+      name: 'child folder 5',
+      path: 'acafbd2a_5688_11eb_ae93_0242ac130012.fdf09f5a-5688-11eb-ae93-0242ac130019',
+      settings: {
+        isPinned: false,
         showChatbox: false,
       },
     },
