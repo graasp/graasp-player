@@ -3,7 +3,6 @@ import { describe, expect, it } from 'vitest';
 
 import {
   combineUuids,
-  factorial,
   getRandomValue,
   shuffleAllButLastItemInArray,
 } from '@/utils/shuffle.ts';
