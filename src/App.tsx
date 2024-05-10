@@ -26,10 +26,19 @@ import PageWrapper from './modules/layout/PageWrapper';
 
 const RedirectToRootContentPage = () => {
   const { rootId } = useParams();
+  const [searchParams] = useSearchParams();
   const { t } = usePlayerTranslation();
+
   if (rootId) {
     return (
-      <Navigate to={buildContentPagePath({ rootId, itemId: rootId })} replace />
+      <Navigate
+        to={buildContentPagePath({
+          rootId,
+          itemId: rootId,
+          searchParams: searchParams.toString(),
+        })}
+        replace
+      />
     );
   }
   return (
