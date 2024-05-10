@@ -24,5 +24,9 @@
   "ITEM_CHATBOX_TITLE": "Discussion pour \"{{name}}\"",
   "ITEM_TITLE_CREATED_AT": "Créé : {{date}}",
   "ITEM_TITLE_UPDATED_AT": "Mise à jour : {{date}}",
-  "HOME_PAGE_TITLE": "Éléments les plus récents"
+  "HOME_PAGE_TITLE": "Éléments les plus récents",
+  "NAVIGATION_ISLAND_CHAT_BUTTON_HELPER_TEXT_READERS": "La discussion n'a pas été activée pour cet élément.",
+  "NAVIGATION_ISLAND_CHAT_BUTTON_HELPER_TEXT_WRITERS": "Pour activer la discussion, allez dans les paramètres de l'élément dans le Builder et activez le paramètre « Afficher le chat dans le lecteur ».",
+  "NAVIGATION_ISLAND_PINNED_BUTTON_HELPER_TEXT_READERS": "Il n'y a aucun élément épinglé pour cette page.",
+  "NAVIGATION_ISLAND_PINNED_BUTTON_HELPER_TEXT_WRITERS": "Pour ajouter des éléments à la section épinglée, définissez-les comme épinglés dans l'interface Builder."
 }
