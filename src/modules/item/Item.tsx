@@ -1,4 +1,5 @@
 import { Fragment, useCallback, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import { useInView } from 'react-intersection-observer';
 import { useParams } from 'react-router-dom';
 
@@ -59,7 +60,6 @@ import { PLAYER } from '@/langs/constants';
 import { isHidden, paginationContentFilter } from '@/utils/item';
 
 import NavigationIsland from '../navigationIsland/NavigationIsland';
-import PageTitle from './PageTitle';
 import SectionHeader from './SectionHeader';
 
 const {
@@ -430,7 +430,6 @@ const FolderContent = ({
       ));
   }
   // render each children recursively
-
   return (
     <>
       <Stack
@@ -459,6 +458,27 @@ const FolderContent = ({
   );
 };
 
+type PageTitleProps = {
+  item: { id: string; name: string };
+};
+const PageTitle = ({ item }: PageTitleProps): JSX.Element => {
+  const { rootId } = useParams();
+  const { data: root } = useItem(rootId);
+
+  const title = (() => {
+    if (rootId !== item.id) {
+      return `${item.name} | ${root?.name}`;
+    }
+    return item.name;
+  })();
+
+  return (
+    <Helmet>
+      <title>{title}</title>
+    </Helmet>
+  );
+};
+
 type Props = {
   /**
    * Id of the parent item for which the page is displayed
@@ -476,8 +496,6 @@ const Item = ({
 }: Props): JSX.Element | false => {
   const { t: translateMessage } = useMessagesTranslation();
   const { data: item, isInitialLoading: isLoadingItem, isError } = useItem(id);
-  const { rootId } = useParams();
-  const { data: root } = useItem(rootId);
 
   if (item && item.type === ItemType.FOLDER) {
     if (isChildren) {
@@ -486,7 +504,7 @@ const Item = ({
 
     return (
       <>
-        <PageTitle titlePage={{ rootId, root, item }} />
+        <PageTitle item={item} />
         <FolderContent item={item} showPinnedOnly={showPinnedOnly} />
       </>
     );

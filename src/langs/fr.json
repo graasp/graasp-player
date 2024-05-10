@@ -24,5 +24,5 @@
   "ITEM_CHATBOX_TITLE": "Discussion pour \"{{name}}\"",
   "ITEM_TITLE_CREATED_AT": "Créé : {{date}}",
   "ITEM_TITLE_UPDATED_AT": "Mise à jour : {{date}}",
-  "HOME_PAGE_TITLE": "Éléments de Player"
+  "HOME_PAGE_TITLE": "Éléments les plus récents"
 }
