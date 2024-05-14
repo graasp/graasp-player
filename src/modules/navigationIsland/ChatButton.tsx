@@ -16,9 +16,19 @@ import { ToolButton } from './CustomButtons';
 
 const useChatButton = (): { chatButton: JSX.Element | false } => {
   const { t } = usePlayerTranslation();
-  const { itemId } = useParams();
+  const { itemId, rootId } = useParams();
   const { data: item } = hooks.useItem(itemId);
+  const { data: descendants } = hooks.useDescendants({ id: rootId });
   const { toggleChatbox, isChatboxOpen } = useLayoutContext();
+
+  const chatEnabledItems = descendants?.filter(
+    ({ settings }) => settings.showChatbox,
+  );
+  // disable the chat button if there are no items with the chat enabled
+  if ((chatEnabledItems ?? []).length <= 0) {
+    return { chatButton: false };
+  }
+
   const canWrite = item?.permission
     ? PermissionLevelCompare.gte(item?.permission, PermissionLevel.Write)
     : false;

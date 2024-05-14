@@ -15,7 +15,7 @@ const NavigationIslandBox = (): JSX.Element | null => {
       bgcolor="white"
       boxShadow="0px 3px 6px 0px rgba(0, 0, 0, 0.25)"
       // add an asymmetrical border radius
-      borderRadius="12px 12px 0px 0px"
+      borderRadius="16px 16px 0px 0px"
       // position the island on the bottom of the page
       position="fixed"
       bottom={0}
@@ -33,12 +33,12 @@ const NavigationIslandBox = (): JSX.Element | null => {
     >
       <Stack direction="row" flexGrow={1} gap={10}>
         {previousButton && nextButton && (
-          <Stack direction="row" gap={2}>
+          <Stack direction="row" gap={1}>
             {previousButton}
             {nextButton}
           </Stack>
         )}
-        <Stack direction="row" gap={2}>
+        <Stack direction="row" gap={1}>
           {chatButton}
           {pinnedButton}
         </Stack>
