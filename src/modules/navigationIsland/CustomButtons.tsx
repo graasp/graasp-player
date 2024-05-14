@@ -4,13 +4,13 @@ const baseStyle = (theme: Theme) => ({
   // remove default button borders
   border: 'unset',
   // set padding for icon
-  padding: '12px',
+  padding: '8px',
   // transition smoothly between colors
   transition: 'all ease 100ms',
   // round the corners
   borderRadius: theme.spacing(1),
-  // set a fixed height 12 + 12 for padding + 24 for the icon height
-  height: '48px',
+  // set a fixed height 8 + 8 for padding + 24 for the icon height
+  height: '40px',
   '&:disabled svg': {
     color: 'gray',
   },

@@ -2,11 +2,7 @@ import { useParams } from 'react-router-dom';
 
 import { Tooltip } from '@mui/material';
 
-import {
-  ItemTagType,
-  PermissionLevel,
-  PermissionLevelCompare,
-} from '@graasp/sdk';
+import { PermissionLevel, PermissionLevelCompare } from '@graasp/sdk';
 
 import { Pin, PinOff } from 'lucide-react';
 
@@ -21,26 +17,31 @@ import { ToolButton } from './CustomButtons';
 const usePinnedItemsButton = (): { pinnedButton: JSX.Element | false } => {
   const { t } = usePlayerTranslation();
   const { togglePinned, isPinnedOpen } = useLayoutContext();
-  const { itemId } = useParams();
+  const { rootId, itemId } = useParams();
   const { data: item } = hooks.useItem(itemId);
   const { data: children } = hooks.useChildren(itemId, undefined, {
     enabled: !!item,
   });
-  const { data: tags } = hooks.useItemsTags(children?.map(({ id }) => id));
-  const pinnedCount =
-    children?.filter(
-      ({ id, settings: s }) =>
-        s.isPinned &&
-        // do not count hidden items as they are not displayed
-        !tags?.data?.[id].some(({ type }) => type === ItemTagType.Hidden),
-    )?.length || 0;
+  const { data: descendants } = hooks.useDescendants({ id: rootId });
+  const childrenPinnedCount =
+    children?.filter(({ settings: s, hidden }) => s.isPinned && !hidden)
+      ?.length || 0;
+  const allPinnedCount =
+    descendants?.filter(({ settings: s, hidden }) => s.isPinned && !hidden)
+      ?.length || 0;
+
+  // don't show the button if there are no items pinned in all descendants
+  if (allPinnedCount <= 0) {
+    return { pinnedButton: false };
+  }
+
   const canWrite = item?.permission
     ? PermissionLevelCompare.gte(item?.permission, PermissionLevel.Write)
     : false;
   // we should show the icon as open if there are pinned items and the drawer is open
-  const isOpen = isPinnedOpen && pinnedCount > 0;
+  const isOpen = isPinnedOpen && childrenPinnedCount > 0;
 
-  const isDisabled = pinnedCount <= 0;
+  const isDisabled = childrenPinnedCount <= 0;
   const tooltip = canWrite
     ? t(PLAYER.NAVIGATION_ISLAND_PINNED_BUTTON_HELPER_TEXT_WRITERS)
     : t(PLAYER.NAVIGATION_ISLAND_PINNED_BUTTON_HELPER_TEXT_READERS);

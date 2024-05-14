@@ -17,6 +17,7 @@ import {
   ItemType,
   LinkItemType,
   LocalFileItemType,
+  PackedItem,
   PermissionLevel,
   S3FileItemType,
   ShortcutItemType,
@@ -56,7 +57,7 @@ import {
 } from '@/config/selectors';
 import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
 import { PLAYER } from '@/langs/constants';
-import { isHidden, paginationContentFilter } from '@/utils/item';
+import { paginationContentFilter } from '@/utils/item';
 
 import NavigationIsland from '../navigationIsland/NavigationIsland';
 import SectionHeader from './SectionHeader';
@@ -67,7 +68,6 @@ const {
   useItem,
   useChildren,
   useFileContentUrl,
-  useItemTags,
   useChildrenPaginated,
 } = hooks;
 
@@ -359,12 +359,9 @@ const ItemContent = ({ item }: ItemContentProps) => {
   }
 };
 
-const ItemContentWrapper = ({ item }: { item: DiscriminatedItem }) => {
-  const { data: itemTags } = useItemTags(item.id);
-  const isItemHidden = isHidden(item, itemTags);
-
+const ItemContentWrapper = ({ item }: { item: PackedItem }) => {
   // An item the user has access to can be hidden (write, admin) so we hide it in player
-  if (isItemHidden) {
+  if (item.hidden) {
     return null;
   }
   return <ItemContent item={item} />;

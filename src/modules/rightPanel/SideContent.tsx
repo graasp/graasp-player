@@ -6,12 +6,7 @@ import ExitFullscreenIcon from '@mui/icons-material/FullscreenExit';
 import { Grid, Stack, Tooltip, styled } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
-import {
-  DiscriminatedItem,
-  ItemTagType,
-  ItemType,
-  getIdsFromPath,
-} from '@graasp/sdk';
+import { DiscriminatedItem, ItemType, getIdsFromPath } from '@graasp/sdk';
 import { useMobileView } from '@graasp/ui';
 
 import { usePlayerTranslation } from '@/config/i18n';
@@ -71,7 +66,6 @@ const SideContent = ({ content, item }: Props): JSX.Element | null => {
   const { data: children } = hooks.useChildren(item.id, undefined, {
     enabled: !!item,
   });
-  const { data: tags } = hooks.useItemsTags(children?.map(({ id }) => id));
   const [searchParams] = useSearchParams();
 
   const {
@@ -106,12 +100,8 @@ const SideContent = ({ content, item }: Props): JSX.Element | null => {
   );
 
   const pinnedCount =
-    children?.filter(
-      ({ id, settings: s }) =>
-        s.isPinned &&
-        // do not count hidden items as they are not displayed
-        !tags?.data?.[id]?.some(({ type }) => type === ItemTagType.Hidden),
-    )?.length || 0;
+    children?.filter(({ settings: s, hidden }) => s.isPinned && !hidden)
+      ?.length || 0;
 
   const toggleFullscreen = () => {
     setIsFullscreen(!isFullscreen);

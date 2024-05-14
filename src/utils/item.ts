@@ -42,9 +42,6 @@ export const isHidden = (
   return false;
 };
 
-export const stripHtml = (str?: string | null): string | undefined =>
-  str?.replace(/<[^>]*>?/gm, '');
-
 export const paginationContentFilter = (items: PackedItem[]): PackedItem[] =>
   items
     .filter((i) => i.type !== ItemType.FOLDER)

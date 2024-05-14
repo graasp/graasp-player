@@ -12,12 +12,11 @@ import { axios, hooks } from '@/config/queryClient';
 import { MAIN_MENU_ID, TREE_VIEW_ID } from '@/config/selectors';
 import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext.tsx';
 import TreeView from '@/modules/navigation/tree/TreeView';
-import { isHidden } from '@/utils/item';
 import { combineUuids, shuffleAllButLastItemInArray } from '@/utils/shuffle.ts';
 
 import LoadingTree from './tree/LoadingTree';
 
-const { useItem, useDescendants, useItemsTags } = hooks;
+const { useItem, useDescendants } = hooks;
 
 const DrawerNavigation = (): JSX.Element | null => {
   const rootId = useParams()[ROOT_ID_PATH];
@@ -38,7 +37,6 @@ const DrawerNavigation = (): JSX.Element | null => {
   const { isInitialLoading: isLoadingTree } = useDescendants({
     id: rootId ?? '',
   });
-  const { data: itemsTags } = useItemsTags(descendants?.map(({ id }) => id));
 
   const { data: rootItem, isLoading, isError, error } = useItem(rootId);
   const handleNavigationOnClick = (newItemId: string) => {
@@ -76,9 +74,7 @@ const DrawerNavigation = (): JSX.Element | null => {
           <TreeView
             id={TREE_VIEW_ID}
             rootItems={[rootItem]}
-            items={[rootItem, ...descendants].filter(
-              (ele) => !isHidden(ele, itemsTags?.data?.[ele.id]),
-            )}
+            items={[rootItem, ...descendants].filter((ele) => !ele.hidden)}
             firstLevelStyle={{ fontWeight: 'bold' }}
             onTreeItemSelect={handleNavigationOnClick}
           />

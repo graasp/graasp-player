@@ -27,7 +27,6 @@ const ItemThumbnail = ({
       mimetype={getMimetype(item.extra)}
       alt={item.name}
       iconSrc={thumbnailSrc}
-      sx={{ borderRadius: 1 }}
     />
   );
 };

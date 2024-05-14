@@ -45,7 +45,7 @@ const Node = ({
     {/* icon type for root level items */}
     {level === 1 && element.metadata?.type && (
       <ItemIcon
-        sx={{ width: 17 }}
+        size="17px"
         alt="icon"
         type={element.metadata.type}
         mimetype={element.metadata.mimetype}
