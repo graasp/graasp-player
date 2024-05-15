@@ -147,6 +147,7 @@ const FileContent = ({ item }: FileContentProps) => {
       />
     );
   }
+
   if (isFileError) {
     return (
       <Alert severity="error">
@@ -154,7 +155,8 @@ const FileContent = ({ item }: FileContentProps) => {
       </Alert>
     );
   }
-  const fileItem = (
+
+  return (
     <FileItem
       id={buildFileId(item.id)}
       item={item}
@@ -165,8 +167,6 @@ const FileContent = ({ item }: FileContentProps) => {
       onClick={onDownloadClick}
     />
   );
-
-  return fileItem;
 };
 
 const LinkContent = ({ item }: { item: LinkItemType }): JSX.Element => {
@@ -180,9 +180,11 @@ const LinkContent = ({ item }: { item: LinkItemType }): JSX.Element => {
       payload: { type: ActionTriggers.LinkOpen },
     });
   };
-  const linkItem = (
+
+  return (
     <Box id={buildLinkItemId(item.id)}>
       <LinkItem
+        id={item.id}
         item={item}
         height={SCREEN_MAX_HEIGHT}
         memberId={member?.id}
@@ -194,24 +196,18 @@ const LinkContent = ({ item }: { item: LinkItemType }): JSX.Element => {
       />
     </Box>
   );
-
-  return linkItem;
 };
 
-const DocumentContent = ({ item }: { item: DocumentItemType }): JSX.Element => {
-  const documentItem = (
-    <DocumentItem
-      id={buildDocumentId(item.id)}
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      showTitle={item.settings?.showTitle}
-      item={{ ...item, name: item.displayName }}
-      showCollapse={item.settings?.isCollapsible}
-    />
-  );
-
-  return documentItem;
-};
+const DocumentContent = ({ item }: { item: DocumentItemType }): JSX.Element => (
+  <DocumentItem
+    id={buildDocumentId(item.id)}
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    showTitle={item.settings?.showTitle}
+    item={{ ...item, name: item.displayName }}
+    showCollapse={item.settings?.isCollapsible}
+  />
+);
 
 const AppContent = ({ item }: { item: AppItemType }): JSX.Element => {
   const {

@@ -43,12 +43,15 @@ const NavigationIslandBox = (): JSX.Element | false => {
             {nextButton}
           </Stack>
         )}
-        {chatButton && pinnedButton && (
-          <Stack direction="row" gap={1}>
-            {chatButton}
-            {pinnedButton}
-          </Stack>
-        )}
+        {
+          // if one of the button is present, show the stack
+          (chatButton || pinnedButton) && (
+            <Stack direction="row" gap={1}>
+              {chatButton}
+              {pinnedButton}
+            </Stack>
+          )
+        }
       </Stack>
     </Box>
   );
