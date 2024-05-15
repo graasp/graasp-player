@@ -1,9 +1,4 @@
-import {
-  ItemTagType,
-  ItemType,
-  PermissionLevel,
-  buildPathFromIds,
-} from '@graasp/sdk';
+import { ItemType, PermissionLevel, buildPathFromIds } from '@graasp/sdk';
 import { DEFAULT_LANG } from '@graasp/translations';
 
 import { v4 } from 'uuid';
@@ -17,7 +12,7 @@ import {
 } from './documents';
 import { CURRENT_USER, MEMBERS } from './members';
 import { MockItem } from './mockTypes';
-import { mockItemTag } from './tags';
+import { mockHiddenTag, mockPublicTag } from './tags';
 
 export const DEFAULT_FOLDER_ITEM: MockItem = {
   description: '',
@@ -25,6 +20,7 @@ export const DEFAULT_FOLDER_ITEM: MockItem = {
   name: '',
   displayName: 'default Display Name',
   path: '',
+  type: ItemType.FOLDER,
   extra: {
     [ItemType.FOLDER]: {
       childrenOrder: [],
@@ -33,7 +29,6 @@ export const DEFAULT_FOLDER_ITEM: MockItem = {
   creator: CURRENT_USER,
   createdAt: new Date().toISOString(),
   updatedAt: new Date().toISOString(),
-  type: ItemType.FOLDER,
   lang: DEFAULT_LANG,
   settings: {
     isPinned: false,
@@ -100,6 +95,7 @@ export const FOLDER_WITH_SUBFOLDER_ITEM: { items: MockItem[] } = {
       id: 'ecafbd2a-5688-11eb-ae93-0242ac130002',
       name: 'parent folder',
       path: 'ecafbd2a_5688_11eb_ae93_0242ac130002',
+      type: ItemType.FOLDER,
       extra: {
         [ItemType.FOLDER]: {
           childrenOrder: [],
@@ -271,7 +267,7 @@ export const PINNED_AND_HIDDEN_ITEM: { items: MockItem[] } = {
         isPinned: true,
         showChatbox: false,
       },
-      tags: [mockItemTag({ type: ItemTagType.Hidden })],
+      hidden: mockHiddenTag(),
     },
     {
       id: 'fdf09f5a-5688-11eb-ae93-0242ac130008',
@@ -304,7 +300,7 @@ export const PUBLIC_FOLDER_WITH_PINNED_ITEMS: { items: MockItem[] } = {
         isPinned: false,
         showChatbox: false,
       },
-      tags: [mockItemTag({ type: ItemTagType.Public })],
+      public: mockPublicTag(),
     },
     {
       ...DEFAULT_FOLDER_ITEM,
@@ -324,7 +320,7 @@ export const PUBLIC_FOLDER_WITH_PINNED_ITEMS: { items: MockItem[] } = {
           icons: [],
         },
       },
-      tags: [mockItemTag({ type: ItemTagType.Public })],
+      public: mockPublicTag(),
     },
     {
       ...DEFAULT_FOLDER_ITEM,
@@ -335,7 +331,7 @@ export const PUBLIC_FOLDER_WITH_PINNED_ITEMS: { items: MockItem[] } = {
         isPinned: true,
         showChatbox: false,
       },
-      tags: [mockItemTag({ type: ItemTagType.Public })],
+      public: mockPublicTag(),
     },
   ],
 };
@@ -363,7 +359,7 @@ export const FOLDER_WITH_HIDDEN_ITEMS: { items: MockItem[] } = {
         isPinned: false,
         showChatbox: false,
       },
-      tags: [mockItemTag({ type: ItemTagType.Hidden })],
+      hidden: mockHiddenTag(),
     },
   ],
 };
@@ -409,7 +405,7 @@ export const PUBLIC_FOLDER_WITH_HIDDEN_ITEMS: { items: MockItem[] } = {
         isPinned: false,
         showChatbox: false,
       },
-      tags: [mockItemTag({ type: ItemTagType.Public })],
+      public: mockPublicTag(),
     },
     GRAASP_DOCUMENT_ITEM_PUBLIC_VISIBLE,
     GRAASP_DOCUMENT_ITEM_PUBLIC_HIDDEN,

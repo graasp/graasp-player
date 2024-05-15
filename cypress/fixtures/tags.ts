@@ -5,7 +5,6 @@ import { v4 } from 'uuid';
 import { CURRENT_USER } from './members';
 import { MockItemTag } from './mockTypes';
 
-// eslint-disable-next-line import/prefer-default-export
 export const mockItemTag = ({
   creator = CURRENT_USER,
   type,
@@ -15,6 +14,10 @@ export const mockItemTag = ({
 }): MockItemTag => ({
   id: v4(),
   type,
-  createdAt: new Date(),
+  createdAt: new Date().toISOString(),
   creator,
 });
+export const mockHiddenTag = (creator?: Member): MockItemTag =>
+  mockItemTag({ creator, type: ItemTagType.Hidden });
+export const mockPublicTag = (creator?: Member): MockItemTag =>
+  mockItemTag({ creator, type: ItemTagType.Public });
