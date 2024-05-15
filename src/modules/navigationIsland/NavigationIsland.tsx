@@ -43,10 +43,12 @@ const NavigationIslandBox = (): JSX.Element | false => {
             {nextButton}
           </Stack>
         )}
-        <Stack direction="row" gap={1}>
-          {chatButton}
-          {pinnedButton}
-        </Stack>
+        {chatButton && pinnedButton && (
+          <Stack direction="row" gap={1}>
+            {chatButton}
+            {pinnedButton}
+          </Stack>
+        )}
       </Stack>
     </Box>
   );
