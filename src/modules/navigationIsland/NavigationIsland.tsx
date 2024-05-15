@@ -4,10 +4,15 @@ import useChatButton from './ChatButton';
 import usePinnedItemsButton from './PinnedItemsButton';
 import usePreviousNextButtons from './PreviousNextButtons';
 
-const NavigationIslandBox = (): JSX.Element | null => {
+const NavigationIslandBox = (): JSX.Element | false => {
   const { previousButton, nextButton } = usePreviousNextButtons();
   const { chatButton } = useChatButton();
   const { pinnedButton } = usePinnedItemsButton();
+
+  // if all buttons are disabled do not show the island at all
+  if (!chatButton && !pinnedButton && !previousButton && !nextButton) {
+    return false;
+  }
 
   return (
     <Box

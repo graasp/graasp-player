@@ -1,7 +1,6 @@
 import {
   DocumentItemFactory,
   DocumentItemType,
-  ItemTagType,
   ItemType,
   PermissionLevel,
   buildDocumentExtra,
@@ -9,7 +8,7 @@ import {
 
 import { CURRENT_USER, MEMBERS } from './members';
 import { MockItem } from './mockTypes';
-import { mockItemTag } from './tags';
+import { mockHiddenTag, mockPublicTag } from './tags';
 
 export const GRAASP_DOCUMENT_ITEM: DocumentItemType = DocumentItemFactory({
   id: 'ecafbd2a-5688-12eb-ae91-0242ac130002',
@@ -59,7 +58,7 @@ export const GRAASP_DOCUMENT_ITEM_HIDDEN: MockItem = {
       showChatbox: false,
     },
   }),
-  tags: [mockItemTag({ type: ItemTagType.Hidden })],
+  hidden: mockHiddenTag(),
   memberships: [{ memberId: MEMBERS.BOB.id, permission: PermissionLevel.Read }],
 };
 
@@ -78,7 +77,7 @@ export const GRAASP_DOCUMENT_ITEM_PUBLIC_VISIBLE: MockItem = {
       showChatbox: false,
     },
   }),
-  tags: [mockItemTag({ type: ItemTagType.Public })],
+  public: mockPublicTag(),
 };
 
 export const GRAASP_DOCUMENT_ITEM_PUBLIC_HIDDEN: MockItem = {
@@ -97,10 +96,8 @@ export const GRAASP_DOCUMENT_ITEM_PUBLIC_HIDDEN: MockItem = {
       showChatbox: false,
     },
   }),
-  tags: [
-    mockItemTag({ type: ItemTagType.Public }),
-    mockItemTag({ type: ItemTagType.Hidden }),
-  ],
+  hidden: mockHiddenTag(),
+  public: mockPublicTag(),
 };
 
 export const GRAASP_DOCUMENT_ITEM_WITH_CHAT_BOX: DocumentItemType =
