@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.13.0](https://github.com/graasp/graasp-player/compare/v2.12.1...v2.13.0) (2024-05-16)
+
+
+### Features
+
+* provide dynamic title for pages ([#649](https://github.com/graasp/graasp-player/issues/649)) ([15158f1](https://github.com/graasp/graasp-player/commit/15158f1e8ffee29227b6872c38eddab0b1b24563))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @graasp/translations to v1.28.0 ([#676](https://github.com/graasp/graasp-player/issues/676)) ([7ef4802](https://github.com/graasp/graasp-player/commit/7ef48020a89fa162d164c81e54bd0bcf0b2cef3f))
+* **deps:** update dependency @sentry/react to v7.114.0 ([#692](https://github.com/graasp/graasp-player/issues/692)) ([0bd4bf6](https://github.com/graasp/graasp-player/commit/0bd4bf6789e6f847a392e203904bd8581e9c77c2))
+* **deps:** update dependency react-intersection-observer to v9.10.2 ([#681](https://github.com/graasp/graasp-player/issues/681)) ([8973652](https://github.com/graasp/graasp-player/commit/897365272d38a79d3b24db8aecb9a39fe9afbfdc))
+* fix or remove tests that were failing ([#690](https://github.com/graasp/graasp-player/issues/690)) ([f84ceea](https://github.com/graasp/graasp-player/commit/f84ceea99a2f3046466c0fe67d9015debbd02eb2))
+* reduce island size hide buttons ([#699](https://github.com/graasp/graasp-player/issues/699)) ([22c9e65](https://github.com/graasp/graasp-player/commit/22c9e65725f2d62fe07022e4c5826fe5f61f0187))
+* update deps ([#702](https://github.com/graasp/graasp-player/issues/702)) ([f722ff3](https://github.com/graasp/graasp-player/commit/f722ff34786401716bfdb420deec15f74475f167))
+
 ## [2.12.1](https://github.com/graasp/graasp-player/compare/v2.12.0...v2.12.1) (2024-05-07)
 
 
