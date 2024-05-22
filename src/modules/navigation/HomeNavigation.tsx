@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { Box, Button } from '@mui/material';
 
@@ -21,6 +21,7 @@ const HomeNavigation = (): JSX.Element | null => {
   const { t } = usePlayerTranslation();
 
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const [page, setPage] = useState(1);
   const [allItems, setAllItems] = useState<DiscriminatedItem[]>([]);
@@ -41,7 +42,10 @@ const HomeNavigation = (): JSX.Element | null => {
             items={allPagesItems}
             onTreeItemSelect={(payload) => {
               if (payload !== 'own') {
-                navigate(buildMainPath({ rootId: payload }));
+                navigate({
+                  pathname: buildMainPath({ rootId: payload }),
+                  search: searchParams.toString(),
+                });
               }
             }}
           />

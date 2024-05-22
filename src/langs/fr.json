@@ -28,5 +28,8 @@
   "NAVIGATION_ISLAND_CHAT_BUTTON_HELPER_TEXT_READERS": "La discussion n'a pas été activée pour cet élément.",
   "NAVIGATION_ISLAND_CHAT_BUTTON_HELPER_TEXT_WRITERS": "Pour activer la discussion, allez dans les paramètres de l'élément dans le Builder et activez le paramètre « Afficher le chat dans le lecteur ».",
   "NAVIGATION_ISLAND_PINNED_BUTTON_HELPER_TEXT_READERS": "Il n'y a aucun élément épinglé pour cette page.",
-  "NAVIGATION_ISLAND_PINNED_BUTTON_HELPER_TEXT_WRITERS": "Pour ajouter des éléments à la section épinglée, définissez-les comme épinglés dans l'interface Builder."
+  "NAVIGATION_ISLAND_PINNED_BUTTON_HELPER_TEXT_WRITERS": "Pour ajouter des éléments à la section épinglée, définissez-les comme épinglés dans l'interface Builder.",
+  "MAP_BUTTON_TEXT": "Voir {{name}} sur la Carte",
+  "MAP_BUTTON_DISABLED_TEXT": "Cet élément n'a pas de localisation",
+  "FROM_SHORTCUT_BUTTON_TEXT": "Retourner sur {{name}}"
 }

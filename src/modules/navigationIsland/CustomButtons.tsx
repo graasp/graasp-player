@@ -11,11 +11,15 @@ const baseStyle = (theme: Theme) => ({
   borderRadius: theme.spacing(1),
   // set a fixed height 8 + 8 for padding + 24 for the icon height
   height: '40px',
+  '&:hover': {
+    cursor: 'pointer',
+  },
   '&:disabled svg': {
     color: 'gray',
   },
   '&:disabled': {
     backgroundColor: '#e9e9e9',
+    cursor: 'default',
   },
 });
 export const NavigationButton = styled('button')(({ theme }) => ({

@@ -1,6 +1,7 @@
 import { Fragment, useCallback, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useInView } from 'react-intersection-observer';
+import { useSearchParams } from 'react-router-dom';
 
 import { Alert, Box, Container, Divider, Skeleton, Stack } from '@mui/material';
 
@@ -60,6 +61,7 @@ import { PLAYER } from '@/langs/constants';
 import { paginationContentFilter } from '@/utils/item';
 
 import NavigationIsland from '../navigationIsland/NavigationIsland';
+import FromShortcutButton from './FromShortcutButton';
 import SectionHeader from './SectionHeader';
 import usePageTitle from './usePageTitle';
 
@@ -294,10 +296,14 @@ const ShortcutContent = ({ item }: { item: ShortcutItemType }): JSX.Element => {
 };
 
 const FolderButtonContent = ({ item }: { item: FolderItemType }) => {
+  const [searchParams] = useSearchParams();
   const { data: thumbnail } = hooks.useItemThumbnailUrl({
     id: item.id,
     size: ThumbnailSize.Medium,
   });
+  searchParams.set('from', window.location.pathname);
+  searchParams.set('fromName', item.name);
+
   return (
     <FolderCard
       id={buildFolderButtonId(item.id)}
@@ -309,7 +315,10 @@ const FolderButtonContent = ({ item }: { item: FolderItemType }) => {
           <TextDisplay content={item.description ?? ''} />
         ) : undefined
       }
-      to={buildMainPath({ rootId: item.id })}
+      to={{
+        pathname: buildMainPath({ rootId: item.id }),
+        search: searchParams.toString(),
+      }}
     />
   );
 };
@@ -446,6 +455,7 @@ const FolderContent = ({
         </Stack>
         {showLoadMoreButton}
       </Stack>
+      <FromShortcutButton />
       <NavigationIsland />
     </>
   );

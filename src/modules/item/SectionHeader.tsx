@@ -21,25 +21,32 @@ const SectionHeader = ({ item }: SectionHeaderProps): JSX.Element => {
   });
   return (
     <Stack direction="column" spacing={2}>
-      <Stack direction="row" spacing={2} alignItems="center">
-        <Thumbnail
-          maxWidth="96px"
-          maxHeight="96px"
-          url={thumbnailSrc}
-          alt={item.name}
-          sx={{ borderRadius: 5 }}
-        />
+      <Stack
+        direction="row"
+        spacing={2}
+        alignItems="center"
+        justifyContent="space-between"
+      >
         <Stack>
-          <Typography className={FOLDER_NAME_TITLE_CLASS} variant="h2">
-            {item.name}
-          </Typography>
-          <Typography variant="caption">
-            {t(PLAYER.ITEM_TITLE_UPDATED_AT, {
-              date: formatDate(item.updatedAt, {
-                locale: i18n.language,
-              }),
-            })}
-          </Typography>
+          <Thumbnail
+            maxWidth="96px"
+            maxHeight="96px"
+            url={thumbnailSrc}
+            alt={item.name}
+            sx={{ borderRadius: 5 }}
+          />
+          <Stack>
+            <Typography className={FOLDER_NAME_TITLE_CLASS} variant="h2">
+              {item.name}
+            </Typography>
+            <Typography variant="caption">
+              {t(PLAYER.ITEM_TITLE_UPDATED_AT, {
+                date: formatDate(item.updatedAt, {
+                  locale: i18n.language,
+                }),
+              })}
+            </Typography>
+          </Stack>
         </Stack>
       </Stack>
       <TextDisplay content={item.description ?? ''} />
