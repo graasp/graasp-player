@@ -12,7 +12,13 @@ const NavigationIslandBox = (): JSX.Element | false => {
   const { pinnedButton } = usePinnedItemsButton();
 
   // if all buttons are disabled do not show the island at all
-  if (!chatButton && !pinnedButton && !previousButton && !nextButton) {
+  if (
+    !chatButton &&
+    !pinnedButton &&
+    !previousButton &&
+    !nextButton &&
+    !geolocationButton
+  ) {
     return false;
   }
 
