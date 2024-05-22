@@ -5,7 +5,9 @@ import { Button, Stack } from '@mui/material';
 import { DoorOpenIcon } from 'lucide-react';
 
 import { usePlayerTranslation } from '@/config/i18n';
+import { BACK_TO_SHORTCUT_ID } from '@/config/selectors';
 import { PLAYER } from '@/langs/constants';
+import { ID_FORMAT } from '@/utils/item';
 
 const FromShortcutButton = (): JSX.Element | null => {
   const [searchParams] = useSearchParams();
@@ -13,7 +15,12 @@ const FromShortcutButton = (): JSX.Element | null => {
   const fromUrl = searchParams.get('from');
   const fromName = searchParams.get('fromName');
 
-  if (!fromUrl || !fromName || !fromUrl.startsWith(window.location.origin)) {
+  if (
+    !fromUrl ||
+    !fromName ||
+    // should match player item url
+    !new RegExp(`/${ID_FORMAT}/${ID_FORMAT}`).exec(fromUrl)?.length
+  ) {
     return null;
   }
 
@@ -21,6 +28,7 @@ const FromShortcutButton = (): JSX.Element | null => {
     return (
       <Stack direction="column" justifyContent="center" alignItems="center">
         <Button
+          id={BACK_TO_SHORTCUT_ID}
           component={Link}
           to={fromUrl}
           variant="outlined"

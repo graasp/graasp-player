@@ -8,6 +8,7 @@ import { MapPinIcon } from 'lucide-react';
 
 import { usePlayerTranslation } from '@/config/i18n';
 import { hooks } from '@/config/queryClient';
+import { ITEM_MAP_BUTTON_ID } from '@/config/selectors';
 import { PLAYER } from '@/langs/constants';
 
 import { ToolButton } from './CustomButtons';
@@ -41,7 +42,7 @@ const useGeolocationButton = (): { geolocationButton: JSX.Element | false } => {
     : t(PLAYER.MAP_BUTTON_TEXT, { name: geoloc.item.name });
 
   const component = (
-    <span>
+    <span id={ITEM_MAP_BUTTON_ID}>
       <ToolButton key="chatButton" disabled={isDisabled} aria-label={tooltip}>
         <MapPinIcon />
       </ToolButton>

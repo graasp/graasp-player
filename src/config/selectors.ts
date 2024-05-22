@@ -66,3 +66,5 @@ export const APP_NAVIGATION_PLATFORM_SWITCH_BUTTON_IDS = {
 };
 
 export const TREE_NODE_GROUP_CLASS = 'tree-node-group';
+export const BACK_TO_SHORTCUT_ID = 'backToButtonShortcut';
+export const ITEM_MAP_BUTTON_ID = 'item-map-button';

@@ -4,18 +4,17 @@ import {
   DiscriminatedItem,
   HttpMethod,
   ItemTag,
-  ItemTagType,
   Member,
   PermissionLevel,
-  PermissionLevelCompare,
   ResultOf,
-  isChildOf,
+  getIdsFromPath,
   isDescendantOf,
   isRootItem,
 } from '@graasp/sdk';
 
 import { StatusCodes } from 'http-status-codes';
 
+import { ID_FORMAT } from '../../src/utils/item';
 import {
   buildAppApiAccessTokenRoute,
   buildAppItemLinkForTest,
@@ -29,8 +28,9 @@ import {
   DEFAULT_PATCH,
   DEFAULT_POST,
   EMAIL_FORMAT,
-  ID_FORMAT,
+  checkMemberHasAccess,
   getChatMessagesById,
+  getChildren,
   getItemById,
   parseStringToRegExp,
 } from './utils';
@@ -49,71 +49,13 @@ const {
   GET_OWN_ITEMS_ROUTE,
   SHARED_ITEM_WITH_ROUTE,
   SIGN_OUT_ROUTE,
+  buildGetItemGeolocationRoute,
 } = API_ROUTES;
 
 const API_HOST = Cypress.env('API_HOST');
 
 export const isError = (error?: { statusCode: number }): boolean =>
   Boolean(error?.statusCode);
-
-const checkMemberHasAccess = ({
-  item,
-  items,
-  member,
-}: {
-  item: MockItem;
-  items: MockItem[];
-  member: Member | null;
-}) => {
-  // mock membership
-  const { creator } = item;
-  const haveWriteMembership =
-    creator?.id === member?.id ||
-    items.find(
-      (i) =>
-        item.path.startsWith(i.path) &&
-        i.memberships?.find(
-          ({ memberId, permission }) =>
-            memberId === member?.id &&
-            PermissionLevelCompare.gte(permission, PermissionLevel.Write),
-        ),
-    );
-  const haveReadMembership =
-    items.find(
-      (i) =>
-        item.path.startsWith(i.path) &&
-        i.memberships?.find(
-          ({ memberId, permission }) =>
-            memberId === member?.id &&
-            PermissionLevelCompare.lt(permission, PermissionLevel.Write),
-        ),
-    ) ?? false;
-
-  const isHidden =
-    items.find(
-      (i) =>
-        item.path.startsWith(i.path) &&
-        i?.tags?.find(({ type }) => type === ItemTagType.Hidden),
-    ) ?? false;
-  const isPublic =
-    items.find(
-      (i) =>
-        item.path.startsWith(i.path) &&
-        i?.tags?.find(({ type }) => type === ItemTagType.Public),
-    ) ?? false;
-  // user is more than a reader so he can access the item
-  if (isHidden && haveWriteMembership) {
-    return undefined;
-  }
-  if (!isHidden && (haveWriteMembership || haveReadMembership)) {
-    return undefined;
-  }
-  // item is public and not hidden
-  if (!isHidden && isPublic) {
-    return undefined;
-  }
-  return { statusCode: StatusCodes.FORBIDDEN };
-};
 
 export const mockGetOwnItems = ({
   items,
@@ -347,11 +289,7 @@ export const mockGetChildren = (
       if (isError(error)) {
         return reply(error);
       }
-      const children = items.filter(
-        (newItem) =>
-          isChildOf(newItem.path, item.path) &&
-          checkMemberHasAccess({ item: newItem, items, member }) === undefined,
-      );
+      const children = getChildren(items, item, member);
       return reply(children);
     },
   ).as('getChildren');
@@ -734,4 +672,69 @@ export const mockPatchAppData = (shouldThrowError: boolean): void => {
       return reply({ data: 'patch app data' });
     },
   ).as('patchAppData');
+};
+
+export const mockGetItemGeolocation = (items: MockItem[]): void => {
+  cy.intercept(
+    {
+      method: DEFAULT_GET.method,
+      url: new RegExp(
+        `${API_HOST}/${buildGetItemGeolocationRoute(ID_FORMAT)}$`,
+      ),
+    },
+    ({ reply, url }) => {
+      const itemId = url.slice(API_HOST.length).split('/')[2];
+      const item = items.find(({ id }) => id === itemId);
+
+      if (!item) {
+        return reply({ statusCode: StatusCodes.NOT_FOUND });
+      }
+
+      if (item?.geolocation) {
+        return reply(item?.geolocation);
+      }
+
+      const parentIds = getIdsFromPath(item.path);
+      // suppose return only one
+      const geolocs = items
+        .filter((i) => parentIds.includes(i.id))
+        .filter(Boolean)
+        .map((i) => i.geolocation);
+
+      if (geolocs.length) {
+        return reply(geolocs[0]!);
+      }
+
+      return reply({ statusCode: StatusCodes.NOT_FOUND });
+    },
+  ).as('getItemGeolocation');
+};
+
+export const mockGetItemsInMap = (
+  items: MockItem[],
+  currentMember: Member | null,
+): void => {
+  cy.intercept(
+    {
+      method: DEFAULT_GET.method,
+      url: new RegExp(`${API_HOST}/items/geolocation`),
+    },
+    ({ reply, url }) => {
+      const itemId = new URL(url).searchParams.get('parentItemId');
+      const item = items.find(({ id }) => id === itemId);
+
+      if (!item) {
+        return reply({ statusCode: StatusCodes.NOT_FOUND });
+      }
+
+      const children = getChildren(items, item, currentMember);
+
+      const geolocs = [
+        item?.geolocation,
+        ...children.map((c) => c.geolocation),
+      ].filter(Boolean);
+
+      return reply(geolocs);
+    },
+  ).as('getItemsInMap');
 };

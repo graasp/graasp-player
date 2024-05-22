@@ -16,8 +16,10 @@ import {
   mockGetDescendants,
   mockGetItem,
   mockGetItemChat,
+  mockGetItemGeolocation,
   mockGetItemMembershipsForItem,
   mockGetItemTags,
+  mockGetItemsInMap,
   mockGetItemsTags,
   mockGetLoginSchemaType,
   mockGetMemberBy,
@@ -82,6 +84,9 @@ Cypress.Commands.add(
     mockPostAppData(getAppLinkError);
     mockPatchAppData(getAppLinkError);
     mockDeleteAppData(getAppLinkError);
+
+    mockGetItemGeolocation(items);
+    mockGetItemsInMap(items, currentMember);
   },
 );
 

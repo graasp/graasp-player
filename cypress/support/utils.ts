@@ -1,9 +1,15 @@
-import { ChatMessage } from '@graasp/sdk';
+import {
+  ChatMessage,
+  ItemTagType,
+  Member,
+  PermissionLevel,
+  PermissionLevelCompare,
+  isChildOf,
+} from '@graasp/sdk';
+
+import { StatusCodes } from 'http-status-codes';
 
 import { MockItem } from '../fixtures/mockTypes';
-
-// use simple id format for tests
-export const ID_FORMAT = '(?=.*[0-9])(?=.*[a-zA-Z])([a-z0-9-]+)';
 
 /**
  * Parse characters of a given string to return a correct regex string
@@ -83,3 +89,82 @@ export const failOnError = (res: { ok: boolean; statusText: string }) => {
 
   return res;
 };
+
+export const checkMemberHasAccess = ({
+  item,
+  items,
+  member,
+}: {
+  item: MockItem;
+  items: MockItem[];
+  member: Member | null;
+}): undefined | { statusCode: number } => {
+  if (
+    // @ts-expect-error move to packed item
+    item.permission &&
+    // @ts-expect-error move to packed item
+    PermissionLevelCompare.gte(item.permission, PermissionLevel.Read)
+  ) {
+    return undefined;
+  }
+
+  // mock membership
+  const { creator } = item;
+  const haveWriteMembership =
+    creator?.id === member?.id ||
+    items.find(
+      (i) =>
+        item.path.startsWith(i.path) &&
+        i.memberships?.find(
+          ({ memberId, permission }) =>
+            memberId === member?.id &&
+            PermissionLevelCompare.gte(permission, PermissionLevel.Write),
+        ),
+    );
+  const haveReadMembership =
+    items.find(
+      (i) =>
+        item.path.startsWith(i.path) &&
+        i.memberships?.find(
+          ({ memberId, permission }) =>
+            memberId === member?.id &&
+            PermissionLevelCompare.lt(permission, PermissionLevel.Write),
+        ),
+    ) ?? false;
+
+  const isHidden =
+    items.find(
+      (i) =>
+        item.path.startsWith(i.path) &&
+        i?.tags?.find(({ type }) => type === ItemTagType.Hidden),
+    ) ?? false;
+  const isPublic =
+    items.find(
+      (i) =>
+        item.path.startsWith(i.path) &&
+        i?.tags?.find(({ type }) => type === ItemTagType.Public),
+    ) ?? false;
+  // user is more than a reader so he can access the item
+  if (isHidden && haveWriteMembership) {
+    return undefined;
+  }
+  if (!isHidden && (haveWriteMembership || haveReadMembership)) {
+    return undefined;
+  }
+  // item is public and not hidden
+  if (!isHidden && isPublic) {
+    return undefined;
+  }
+  return { statusCode: StatusCodes.FORBIDDEN };
+};
+
+export const getChildren = (
+  items: MockItem[],
+  item: MockItem,
+  member: Member | null,
+): MockItem[] =>
+  items.filter(
+    (newItem) =>
+      isChildOf(newItem.path, item.path) &&
+      checkMemberHasAccess({ item: newItem, items, member }) === undefined,
+  );

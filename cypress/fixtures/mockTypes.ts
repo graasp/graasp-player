@@ -1,4 +1,9 @@
-import { ItemTag, PackedItem, PermissionLevel } from '@graasp/sdk';
+import {
+  ItemGeolocation,
+  ItemTag,
+  PackedItem,
+  PermissionLevel,
+} from '@graasp/sdk';
 
 export type MockItemTag = Omit<ItemTag, 'item'>;
 export type MockItem = Omit<PackedItem, 'permission' | 'hidden' | 'public'> & {
@@ -9,4 +14,5 @@ export type MockItem = Omit<PackedItem, 'permission' | 'hidden' | 'public'> & {
   memberships?: { memberId: string; permission: PermissionLevel }[];
   hidden?: MockItemTag;
   public?: MockItemTag;
+  geolocation?: Partial<ItemGeolocation>;
 };
