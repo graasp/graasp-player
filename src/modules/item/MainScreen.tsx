@@ -1,10 +1,13 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
 import { Alert, Skeleton, Typography } from '@mui/material';
 
+import { ActionTriggers } from '@graasp/sdk';
+
 import { ITEM_PARAM } from '@/config/paths';
-import { hooks } from '@/config/queryClient';
+import { hooks, mutations } from '@/config/queryClient';
 import { LayoutContextProvider } from '@/contexts/LayoutContext';
 import { PLAYER } from '@/langs/constants';
 import SideContent from '@/modules/rightPanel/SideContent';
@@ -15,6 +18,7 @@ const MainScreen = (): JSX.Element | null => {
   const itemId = useParams()[ITEM_PARAM];
   const { data: item, isLoading, isError } = hooks.useItem(itemId);
   const { t } = useTranslation();
+  const { mutate: triggerAction } = mutations.usePostItemAction();
 
   const content = itemId ? (
     <Item id={itemId} />
@@ -23,6 +27,15 @@ const MainScreen = (): JSX.Element | null => {
       {t('No item defined.')}
     </Typography>
   );
+
+  useEffect(() => {
+    if (itemId && item) {
+      triggerAction({
+        itemId,
+        payload: { type: ActionTriggers.ItemView },
+      });
+    }
+  }, [itemId, item, triggerAction]);
 
   if (item) {
     return (

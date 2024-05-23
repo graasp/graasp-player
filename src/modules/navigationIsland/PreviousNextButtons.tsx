@@ -1,12 +1,12 @@
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 
-import { ActionTriggers, DiscriminatedItem, ItemType } from '@graasp/sdk';
+import { DiscriminatedItem, ItemType } from '@graasp/sdk';
 
 import isArray from 'lodash.isarray';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import { buildContentPagePath } from '@/config/paths';
-import { hooks, mutations } from '@/config/queryClient';
+import { hooks } from '@/config/queryClient';
 import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext.tsx';
 import { combineUuids, shuffleAllButLastItemInArray } from '@/utils/shuffle.ts';
 
@@ -20,7 +20,6 @@ const usePreviousNextButtons = (): {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { data: member } = useCurrentMemberContext();
-  const { mutate: triggerAction } = mutations.usePostItemAction();
   const { data: rootItem } = hooks.useItem(rootId);
 
   const shuffle = Boolean(searchParams.get('shuffle') === 'true');
@@ -82,10 +81,6 @@ const usePreviousNextButtons = (): {
   }
 
   const handleClickNavigationButton = (newItemId: string) => {
-    triggerAction({
-      itemId: newItemId,
-      payload: { type: ActionTriggers.ItemView },
-    });
     navigate(
       buildContentPagePath({
         rootId,
