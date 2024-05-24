@@ -31,5 +31,5 @@
   "NAVIGATION_ISLAND_PINNED_BUTTON_HELPER_TEXT_WRITERS": "Pour ajouter des éléments à la section épinglée, définissez-les comme épinglés dans l'interface Builder.",
   "MAP_BUTTON_TEXT": "Voir {{name}} sur la Carte",
   "MAP_BUTTON_DISABLED_TEXT": "Cet élément n'a pas de localisation",
-  "FROM_SHORTCUT_BUTTON_TEXT": "Retourner sur {{name}}"
+  "FROM_SHORTCUT_BUTTON_TEXT": "Retourner vers {{name}}"
 }

@@ -27,11 +27,42 @@ describe('Shortcuts', () => {
 
     // click on folder shortcut
     cy.get(`#${buildFolderButtonId(toShortcut.id)}`).click();
-    cy.url().should('contain', parentItem.id).should('contain', 'from');
+    cy.url().should('contain', parentItem.id).and('contain', 'from');
 
     // go back to origin
     cy.get(`#${BACK_TO_SHORTCUT_ID}`).click();
     cy.url().should('contain', parentItem.id);
+  });
+
+  it('Keep other params from shortcut navigation like shuffle', () => {
+    const parentItem = PackedFolderItemFactory({ name: 'parent item' });
+    const toShortcut = PackedFolderItemFactory({ name: 'target folder' });
+    const shortcut = PackedShortcutItemFactory({
+      name: 'shortcut',
+      parentItem,
+      settings: {},
+      extra: { shortcut: { target: toShortcut.id } },
+    });
+    cy.setUpApi({ items: [parentItem, shortcut, toShortcut] });
+
+    cy.visit(
+      buildContentPagePath({
+        rootId: parentItem.id,
+        itemId: parentItem.id,
+        searchParams: 'fullscreen=true',
+      }),
+    );
+
+    // click on folder shortcut
+    cy.get(`#${buildFolderButtonId(toShortcut.id)}`).click();
+    cy.url()
+      .should('contain', parentItem.id)
+      .and('contain', 'from')
+      .and('contain', 'fullscreen=true');
+
+    // go back to origin
+    cy.get(`#${BACK_TO_SHORTCUT_ID}`).click();
+    cy.url().should('contain', parentItem.id).and('contain', 'fullscreen=true');
   });
 
   it('No from name does not show button', () => {
@@ -70,7 +101,7 @@ describe('Shortcuts', () => {
     cy.get(`#${BACK_TO_SHORTCUT_ID}`).should('not.exist');
   });
 
-  it.only('Hacking from url with external url is safe', () => {
+  it('Hacking from url with external url is safe', () => {
     const parentItem = PackedFolderItemFactory({ name: 'parent item' });
     cy.setUpApi({ items: [parentItem] });
 

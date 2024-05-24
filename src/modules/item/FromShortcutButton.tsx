@@ -24,13 +24,18 @@ const FromShortcutButton = (): JSX.Element | null => {
     return null;
   }
 
+  // keep params, remove from values
+  const newSearchParams = new URLSearchParams(searchParams.toString());
+  newSearchParams.delete('fromName');
+  newSearchParams.delete('from');
+
   if (fromUrl) {
     return (
       <Stack direction="column" justifyContent="center" alignItems="center">
         <Button
           id={BACK_TO_SHORTCUT_ID}
           component={Link}
-          to={fromUrl}
+          to={{ pathname: fromUrl, search: newSearchParams.toString() }}
           variant="outlined"
           startIcon={<DoorOpenIcon />}
           color="warning"

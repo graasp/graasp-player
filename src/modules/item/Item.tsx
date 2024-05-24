@@ -301,8 +301,10 @@ const FolderButtonContent = ({ item }: { item: FolderItemType }) => {
     id: item.id,
     size: ThumbnailSize.Medium,
   });
-  searchParams.set('from', window.location.pathname);
-  searchParams.set('fromName', item.name);
+
+  const newSearchParams = new URLSearchParams(searchParams.toString());
+  newSearchParams.set('from', window.location.pathname);
+  newSearchParams.set('fromName', item.name);
 
   return (
     <FolderCard
@@ -317,7 +319,7 @@ const FolderButtonContent = ({ item }: { item: FolderItemType }) => {
       }
       to={{
         pathname: buildMainPath({ rootId: item.id }),
-        search: searchParams.toString(),
+        search: newSearchParams.toString(),
       }}
     />
   );

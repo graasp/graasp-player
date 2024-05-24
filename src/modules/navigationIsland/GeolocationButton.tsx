@@ -43,7 +43,7 @@ const useGeolocationButton = (): { geolocationButton: JSX.Element | false } => {
 
   const component = (
     <span id={ITEM_MAP_BUTTON_ID}>
-      <ToolButton key="chatButton" disabled={isDisabled} aria-label={tooltip}>
+      <ToolButton key="mapButton" disabled={isDisabled} aria-label={tooltip}>
         <MapPinIcon />
       </ToolButton>
     </span>

@@ -38,7 +38,7 @@
     "@emotion/styled": "11.11.5",
     "@graasp/chatbox": "3.1.0",
     "@graasp/query-client": "3.8.0",
-    "@graasp/sdk": "github:graasp/graasp-sdk#qs-for-host-manager",
+    "@graasp/sdk": "4.12.0",
     "@graasp/translations": "1.28.0",
     "@graasp/ui": "4.18.2",
     "@mui/icons-material": "5.15.17",
