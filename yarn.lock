@@ -1095,9 +1095,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/sdk@github:graasp/graasp-sdk#qs-for-host-manager":
-  version: 4.10.1
-  resolution: "@graasp/sdk@https://github.com/graasp/graasp-sdk.git#commit=12051a8a0c3270e42d157c436d6c8c0ab659867d"
+"@graasp/sdk@npm:4.12.0":
+  version: 4.12.0
+  resolution: "@graasp/sdk@npm:4.12.0"
   dependencies:
     "@faker-js/faker": "npm:8.4.1"
     filesize: "npm:10.1.2"
@@ -1106,7 +1106,7 @@ __metadata:
   peerDependencies:
     date-fns: ^3
     uuid: ^9
-  checksum: 10/9877ce43eb8b4e36a7f024f60cf956f9c23032316754a8d058ce70bfcef0f1b1ce37bc868e5be0cf3de8aaa7b43d8e0a932c21396e90d5884a8754ec29d3f3d9
+  checksum: 10/10f37882a6d926d0fd1e8e26edaa312a6ef12d69df98e909f4841d7873a4e15a0b45eb04f3cb6e79eb112b6e37bc1e5993591e81a13ddf8eef96c6db57f6b826
   languageName: node
   linkType: hard
 
@@ -6028,7 +6028,7 @@ __metadata:
     "@emotion/styled": "npm:11.11.5"
     "@graasp/chatbox": "npm:3.1.0"
     "@graasp/query-client": "npm:3.8.0"
-    "@graasp/sdk": "github:graasp/graasp-sdk#qs-for-host-manager"
+    "@graasp/sdk": "npm:4.12.0"
     "@graasp/translations": "npm:1.28.0"
     "@graasp/ui": "npm:4.18.2"
     "@mui/icons-material": "npm:5.15.17"
