@@ -57,6 +57,7 @@ import {
   buildLinkItemId,
 } from '@/config/selectors';
 import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
+import { useItemContext } from '@/contexts/ItemContext';
 import { PLAYER } from '@/langs/constants';
 import { paginationContentFilter } from '@/utils/item';
 
@@ -297,6 +298,7 @@ const ShortcutContent = ({ item }: { item: ShortcutItemType }): JSX.Element => {
 
 const FolderButtonContent = ({ item }: { item: FolderItemType }) => {
   const [searchParams] = useSearchParams();
+  const { rootItem } = useItemContext();
   const { data: thumbnail } = hooks.useItemThumbnailUrl({
     id: item.id,
     size: ThumbnailSize.Medium,
@@ -304,8 +306,9 @@ const FolderButtonContent = ({ item }: { item: FolderItemType }) => {
 
   const newSearchParams = new URLSearchParams(searchParams.toString());
   newSearchParams.set('from', window.location.pathname);
-  newSearchParams.set('fromName', item.name);
-
+  if (rootItem) {
+    newSearchParams.set('fromName', rootItem.name);
+  }
   return (
     <FolderCard
       id={buildFolderButtonId(item.id)}

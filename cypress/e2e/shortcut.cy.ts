@@ -27,10 +27,14 @@ describe('Shortcuts', () => {
 
     // click on folder shortcut
     cy.get(`#${buildFolderButtonId(toShortcut.id)}`).click();
-    cy.url().should('contain', parentItem.id).and('contain', 'from');
+    cy.url()
+      .should('contain', parentItem.id)
+      .and('contain', 'from')
+      .and('contain', 'parent+item')
+      .and('contain', 'fromName');
 
     // go back to origin
-    cy.get(`#${BACK_TO_SHORTCUT_ID}`).click();
+    cy.get(`#${BACK_TO_SHORTCUT_ID}`).scrollIntoView().click();
     cy.url().should('contain', parentItem.id);
   });
 
@@ -58,10 +62,12 @@ describe('Shortcuts', () => {
     cy.url()
       .should('contain', parentItem.id)
       .and('contain', 'from')
+      .and('contain', 'parent+item')
+      .and('contain', 'fromName')
       .and('contain', 'fullscreen=true');
 
     // go back to origin
-    cy.get(`#${BACK_TO_SHORTCUT_ID}`).click();
+    cy.get(`#${BACK_TO_SHORTCUT_ID}`).scrollIntoView().click();
     cy.url().should('contain', parentItem.id).and('contain', 'fullscreen=true');
   });
 
