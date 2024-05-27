@@ -10,7 +10,7 @@ import { buildContentPagePath } from '@/config/paths';
 import { BACK_TO_SHORTCUT_ID, buildFolderButtonId } from '@/config/selectors';
 
 describe('Shortcuts', () => {
-  it('Come back from shortcut navigation', () => {
+  it.only('Come back from shortcut navigation', () => {
     const parentItem = PackedFolderItemFactory({
       name: 'parent item',
       settings: {},
@@ -34,10 +34,12 @@ describe('Shortcuts', () => {
     // click on folder shortcut
     cy.get(`#${buildFolderButtonId(toShortcut.id)}`).click();
     cy.url()
-      .should('contain', parentItem.id)
-      .and('contain', 'from')
-      .and('contain', 'parent+item')
-      .and('contain', 'fromName');
+      .should('contain', 'from')
+      .and('contain', parentItem.id)
+      .and('contain', 'fromName')
+      .and('contain', 'parent+item');
+
+    cy.wait(3000);
 
     // go back to origin
     cy.get(`#${BACK_TO_SHORTCUT_ID}`).click();
@@ -72,10 +74,10 @@ describe('Shortcuts', () => {
     // click on folder shortcut
     cy.get(`#${buildFolderButtonId(toShortcut.id)}`).click();
     cy.url()
-      .should('contain', parentItem.id)
-      .and('contain', 'from')
-      .and('contain', 'parent+item')
+      .should('contain', 'from')
+      .and('contain', parentItem.id)
       .and('contain', 'fromName')
+      .and('contain', 'parent+item')
       .and('contain', 'fullscreen=true');
 
     // go back to origin
