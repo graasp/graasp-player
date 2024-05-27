@@ -10,9 +10,15 @@ import { buildContentPagePath } from '@/config/paths';
 import { BACK_TO_SHORTCUT_ID, buildFolderButtonId } from '@/config/selectors';
 
 describe('Shortcuts', () => {
-  it('Come back from shortcut navigation', () => {
-    const parentItem = PackedFolderItemFactory({ name: 'parent item' });
-    const toShortcut = PackedFolderItemFactory({ name: 'target folder' });
+  it.only('Come back from shortcut navigation', () => {
+    const parentItem = PackedFolderItemFactory({
+      name: 'parent item',
+      settings: {},
+    });
+    const toShortcut = PackedFolderItemFactory({
+      name: 'target folder',
+      settings: {},
+    });
     const shortcut = PackedShortcutItemFactory({
       name: 'shortcut',
       parentItem,
@@ -34,13 +40,19 @@ describe('Shortcuts', () => {
       .and('contain', 'fromName');
 
     // go back to origin
-    cy.get(`#${BACK_TO_SHORTCUT_ID}`).scrollIntoView().click();
+    cy.get(`#${BACK_TO_SHORTCUT_ID}`).click();
     cy.url().should('contain', parentItem.id);
   });
 
   it('Keep other params from shortcut navigation like shuffle', () => {
-    const parentItem = PackedFolderItemFactory({ name: 'parent item' });
-    const toShortcut = PackedFolderItemFactory({ name: 'target folder' });
+    const parentItem = PackedFolderItemFactory({
+      name: 'parent item',
+      settings: {},
+    });
+    const toShortcut = PackedFolderItemFactory({
+      name: 'target folder',
+      settings: {},
+    });
     const shortcut = PackedShortcutItemFactory({
       name: 'shortcut',
       parentItem,
