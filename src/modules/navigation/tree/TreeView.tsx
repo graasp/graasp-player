@@ -8,7 +8,6 @@ import { useParams } from 'react-router-dom';
 import { Box, SxProps, Typography } from '@mui/material';
 
 import {
-  ActionTriggers,
   DiscriminatedItem,
   ItemType,
   UnionOfConst,
@@ -18,7 +17,7 @@ import {
 import { ErrorBoundary } from '@sentry/react';
 
 import { GRAASP_MENU_ITEMS } from '@/config/constants';
-import { hooks, mutations } from '@/config/queryClient';
+import { hooks } from '@/config/queryClient';
 import { ItemMetaData, getItemTree } from '@/utils/tree';
 
 import Node from './Node';
@@ -44,7 +43,6 @@ const TreeView = ({
   firstLevelStyle,
   sx = {},
 }: Props): JSX.Element => {
-  const { mutate: triggerAction } = mutations.usePostItemAction();
   const { itemId } = useParams();
   const itemsToShow = items?.filter((item) =>
     onlyShowContainerItems ? GRAASP_MENU_ITEMS.includes(item.type) : true,
@@ -54,12 +52,6 @@ const TreeView = ({
 
   // types based on TreeView types
   const onSelect = (value: string) => {
-    // trigger player Action for item view
-    triggerAction({
-      itemId: value,
-      payload: { type: ActionTriggers.ItemView },
-    });
-
     onTreeItemSelect?.(value);
   };
 

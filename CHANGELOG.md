@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.14.0](https://github.com/graasp/graasp-player/compare/v2.13.0...v2.14.0) (2024-05-27)
+
+
+### Features
+
+* call trigger view action on item page mounting ([#718](https://github.com/graasp/graasp-player/issues/718)) ([49aa17c](https://github.com/graasp/graasp-player/commit/49aa17c586550c138d16214d3cf01a9c9671e02f))
+
 ## [2.13.0](https://github.com/graasp/graasp-player/compare/v2.12.1...v2.13.0) (2024-05-16)
 
 
