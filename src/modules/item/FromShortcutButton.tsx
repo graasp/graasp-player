@@ -21,11 +21,7 @@ const FromShortcutButton = (): JSX.Element | null => {
     // should match player item url
     !new RegExp(`/${ID_FORMAT}`).exec(fromUrl)?.length
   ) {
-    return (
-      <strong>
-        {fromUrl} {fromName}
-      </strong>
-    );
+    return null;
   }
 
   // keep params, remove from values
