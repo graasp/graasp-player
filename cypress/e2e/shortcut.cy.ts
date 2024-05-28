@@ -10,7 +10,7 @@ import { buildContentPagePath } from '@/config/paths';
 import { BACK_TO_SHORTCUT_ID, buildFolderButtonId } from '@/config/selectors';
 
 describe('Shortcuts', () => {
-  it.only('Come back from shortcut navigation', () => {
+  it('Come back from shortcut navigation', () => {
     const parentItem = PackedFolderItemFactory({
       name: 'parent item',
       settings: {},
