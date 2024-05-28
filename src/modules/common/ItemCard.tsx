@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { Stack } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
@@ -26,7 +26,15 @@ const SimpleCard = ({ item }: Props): JSX.Element => {
       <CardActionArea component={Link} to={link}>
         <CardContent>
           <Stack direction="row" alignItems="center" spacing={2}>
-            <ItemThumbnail item={item} />
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              // do not allow icons to shrink
+              flexShrink={0}
+            >
+              <ItemThumbnail item={item} />
+            </Box>
             <Stack minWidth={0}>
               <Typography
                 variant="h5"

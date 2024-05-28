@@ -36,6 +36,7 @@ const Node = ({
     {...getNodeProps()}
     className={`${buildTreeItemClass(element.id as string)}`}
     display="flex"
+    alignItems="center"
     sx={{
       width: '100%',
       pl: 1,
