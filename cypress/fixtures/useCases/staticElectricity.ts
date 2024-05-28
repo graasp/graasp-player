@@ -87,6 +87,7 @@ export const STATIC_ELECTRICITY: {
         thumbnails: [],
         icons: [],
       }),
+      settings: { showLinkIframe: true },
     }),
     DocumentItemFactory({
       id: 'gcefbd4e-5688-11eb-fe32-0542bc120002',
@@ -107,9 +108,10 @@ export const STATIC_ELECTRICITY: {
       extra: buildLinkExtra({
         url: 'https://www.dailymotion.com/embed/video/xgh289?autoplay=1',
         thumbnails: [],
-        html: '',
+        html: '<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 57.5%;"><iframe src="https://geo.dailymotion.com/player.html?video=xgh289&amp;&amp;" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen scrolling="no" allow="encrypted-media"></iframe></div>',
         icons: [],
       }),
+      settings: { showLinkIframe: true },
     }),
     FolderItemFactory({
       id: 'gcafbd2a-4218-31eb-fe32-0542bc120002',
@@ -186,6 +188,7 @@ export const STATIC_ELECTRICITY: {
         thumbnails: [],
         icons: [],
       }),
+      settings: { showLinkIframe: true },
     }),
     FolderItemFactory({
       id: 'gfbfed2a-4218-31eb-fe32-0542bc120002',
@@ -237,9 +240,10 @@ export const STATIC_ELECTRICITY: {
       extra: buildLinkExtra({
         url: 'https://www.youtube.com/watch?v=9HS08L1EIjQ',
         thumbnails: [],
-        html: '',
+        html: '<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 75%;"><iframe src="https://www.youtube.com/embed/9HS08L1EIjQ?feature=oembed" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen scrolling="no" allow="encrypted-media; accelerometer; clipboard-write; gyroscope; picture-in-picture"></iframe></div>',
         icons: [],
       }),
+      settings: { showLinkIframe: true },
     }),
   ],
 };
@@ -250,7 +254,7 @@ PUBLIC_STATIC_ELECTRICITY.items = PUBLIC_STATIC_ELECTRICITY.items.map(
   (item) => {
     const newItem = {
       ...item,
-      tags: [...(item?.tags ?? []), mockItemTag({ type: ItemTagType.Public })],
+      public: mockItemTag({ type: ItemTagType.Public }),
     };
     return newItem;
   },

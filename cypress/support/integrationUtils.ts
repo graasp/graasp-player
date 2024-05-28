@@ -49,13 +49,13 @@ export const expectLinkViewScreenLayout = ({
       if (settings?.isCollapsible) {
         cy.get(`#${buildLinkItemId(id)}`).click();
       }
-      cy.get(`#${buildLinkItemId(id)} [data-testid="OpenInNewIcon"]`)
+      cy.get('[data-testid="fancy-link-card"]')
         .scrollIntoView()
         .should('be.visible');
     } else {
       // button should not be shown when the setting is false
       cy.get(`#${buildLinkItemId(id)}`).scrollIntoView();
-      cy.get(`#${buildLinkItemId(id)} [data-testid="OpenInNewIcon"]`).should(
+      cy.get(`#${buildLinkItemId(id)} [data-testid="fancy-link-card"]`).should(
         'not.exist',
       );
     }
