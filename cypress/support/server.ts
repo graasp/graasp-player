@@ -426,10 +426,10 @@ export const mockGetItemTags = (
       }
 
       const itemTags = items
-        .filter((i) => item.path.startsWith(i.path) && Boolean(i.tags))
+        .filter((i) => item.path.startsWith(i.path) && (i.public || i.hidden))
         .map(
           (i) =>
-            i.tags?.map((t) => ({
+            [i.public, i.hidden].filter(Boolean).map((t) => ({
               ...t,
               item: i as DiscriminatedItem,
             })) as ItemTag[],
@@ -466,7 +466,9 @@ export const mockGetItemsTags = (
                   ...acc,
                   data: {
                     ...acc.data,
-                    [item.id]: item.tags?.map((t) => ({ item, ...t })) ?? [],
+                    [item.id]: ([item.public, item.hidden]
+                      .filter(Boolean)
+                      .map((t) => ({ item, ...t })) ?? []) as ItemTag[],
                   },
                 };
           },
