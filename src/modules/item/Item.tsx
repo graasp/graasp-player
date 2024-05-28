@@ -46,7 +46,7 @@ import {
 } from '@/config/constants';
 import { API_HOST, H5P_INTEGRATION_URL } from '@/config/env';
 import { useMessagesTranslation, usePlayerTranslation } from '@/config/i18n';
-import { buildMainPath } from '@/config/paths';
+import { buildContentPagePath } from '@/config/paths';
 import { axios, hooks, mutations } from '@/config/queryClient';
 import {
   buildAppId,
@@ -321,7 +321,7 @@ const FolderButtonContent = ({ item }: { item: FolderItemType }) => {
         ) : undefined
       }
       to={{
-        pathname: buildMainPath({ rootId: item.id }),
+        pathname: buildContentPagePath({ rootId: item.id, itemId: item.id }),
         search: newSearchParams.toString(),
       }}
     />
