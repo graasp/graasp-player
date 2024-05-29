@@ -1,6 +1,5 @@
 import {
   ChatMessage,
-  ItemTagType,
   Member,
   PermissionLevel,
   PermissionLevelCompare,
@@ -133,17 +132,9 @@ export const checkMemberHasAccess = ({
     ) ?? false;
 
   const isHidden =
-    items.find(
-      (i) =>
-        item.path.startsWith(i.path) &&
-        i?.tags?.find(({ type }) => type === ItemTagType.Hidden),
-    ) ?? false;
+    items.find((i) => item.path.startsWith(i.path) && i?.hidden) ?? false;
   const isPublic =
-    items.find(
-      (i) =>
-        item.path.startsWith(i.path) &&
-        i?.tags?.find(({ type }) => type === ItemTagType.Public),
-    ) ?? false;
+    items.find((i) => item.path.startsWith(i.path) && i?.public) ?? false;
   // user is more than a reader so he can access the item
   if (isHidden && haveWriteMembership) {
     return undefined;
