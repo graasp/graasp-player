@@ -1,5 +1,7 @@
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 
+import { CircularProgress, Skeleton } from '@mui/material';
+
 import { DiscriminatedItem, ItemType } from '@graasp/sdk';
 
 import isArray from 'lodash.isarray';
@@ -15,7 +17,6 @@ import { NavigationButton } from './CustomButtons';
 const usePreviousNextButtons = (): {
   previousButton: JSX.Element | false;
   nextButton: JSX.Element | false;
-  isLoading: boolean;
 } => {
   const { rootId, itemId } = useParams();
   const [searchParams] = useSearchParams();
@@ -25,11 +26,28 @@ const usePreviousNextButtons = (): {
 
   const shuffle = Boolean(searchParams.get('shuffle') === 'true');
 
-  const { data: descendants, isLoading } = hooks.useDescendants({
+  const { data: descendants, isInitialLoading } = hooks.useDescendants({
     // not correct but enabled
     id: rootId ?? '',
     enabled: Boolean(rootId),
   });
+
+  if (isInitialLoading) {
+    return {
+      previousButton: (
+        <NavigationButton disabled>
+          <CircularProgress size={20} />
+        </NavigationButton>
+      ),
+      nextButton: (
+        <Skeleton variant="rounded">
+          <NavigationButton disabled>
+            <ChevronRight />
+          </NavigationButton>
+        </Skeleton>
+      ),
+    };
+  }
 
   const prevRoot: DiscriminatedItem | null = rootItem || null;
   let prev: DiscriminatedItem | null = null;
@@ -37,11 +55,7 @@ const usePreviousNextButtons = (): {
 
   // if there are no descendants then there is no need to navigate
   if (!isArray(descendants)) {
-    return { previousButton: false, nextButton: false, isLoading };
-  }
-
-  if (isLoading) {
-    return { previousButton: false, nextButton: false, isLoading };
+    return { previousButton: false, nextButton: false };
   }
 
   // we only navigate through folders
@@ -70,7 +84,7 @@ const usePreviousNextButtons = (): {
 
     // if index is not found, then do not show navigation
     if (idx < 0) {
-      return { previousButton: false, nextButton: false, isLoading };
+      return { previousButton: false, nextButton: false };
     }
 
     // if index is 0, previous is root
@@ -93,11 +107,10 @@ const usePreviousNextButtons = (): {
 
   // should we display both buttons if they are disabled ?
   if (!prev && !next) {
-    return { previousButton: false, nextButton: false, isLoading };
+    return { previousButton: false, nextButton: false };
   }
 
   return {
-    isLoading,
     previousButton: (
       <NavigationButton
         disabled={!prev}
