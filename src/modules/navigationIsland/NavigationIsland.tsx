@@ -45,20 +45,6 @@ const NavigationIslandBox = (): JSX.Element | false => {
       p={1}
     >
       <Stack direction="row" flexGrow={1} gap={10}>
-        {/* {isLoading && (
-          <Stack direction="row" gap={1}>
-            <Skeleton variant="rounded">
-              <NavigationButton>
-                <ChevronRight />
-              </NavigationButton>
-            </Skeleton>
-            <Skeleton variant="rounded">
-              <NavigationButton>
-                <ChevronRight />
-              </NavigationButton>
-            </Skeleton>
-          </Stack>
-        )} */}
         {previousButton && nextButton && (
           <Stack direction="row" gap={1}>
             {previousButton}

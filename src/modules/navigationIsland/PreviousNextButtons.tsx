@@ -111,7 +111,6 @@ const usePreviousNextButtons = (): {
       <NavigationButton
         disabled={!prev}
         key="previousButton"
-        // variant="outlined"
         onClick={() => {
           if (prev?.id) {
             handleClickNavigationButton(prev.id);
@@ -126,9 +125,6 @@ const usePreviousNextButtons = (): {
       <NavigationButton
         disabled={!next}
         key="nextButton"
-        // variant="contained"
-        // endIcon={<ArrowForwardIcon />}
-        // sx={{ textTransform: 'unset' }}
         onClick={() => {
           if (next?.id) {
             handleClickNavigationButton(next.id);
