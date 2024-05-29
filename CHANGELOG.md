@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.15.1](https://github.com/graasp/graasp-player/compare/v2.15.0...v2.15.1) (2024-05-29)
+
+
+### Bug Fixes
+
+* udpate ui for link display ([#722](https://github.com/graasp/graasp-player/issues/722)) ([b2ee316](https://github.com/graasp/graasp-player/commit/b2ee3168c4a27b1543602b82046d68a930179f71))
+
 ## [2.15.0](https://github.com/graasp/graasp-player/compare/v2.14.0...v2.15.0) (2024-05-29)
 
 
