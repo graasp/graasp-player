@@ -20,7 +20,7 @@ const baseStyle = (theme: Theme) => ({
   },
   '&:disabled': {
     backgroundColor: '#e9e9e9',
-    cursor: 'default',
+    cursor: 'not-allowed',
   },
 });
 export const NavigationButton = styled('button')(({ theme }) => ({
@@ -31,6 +31,16 @@ export const NavigationButton = styled('button')(({ theme }) => ({
   },
   '&:hover:not(:disabled)': {
     backgroundColor: '#BFB4FF',
+  },
+}));
+
+export const LoadingButton = styled('button')(({ theme }) => ({
+  ...baseStyle(theme),
+  animation: `skeletonAnimation 2s ease-in-out 0.5s infinite`,
+  '@keyframes skeletonAnimation': {
+    '0%': { opacity: 1 },
+    '50%': { opacity: 0.4 },
+    '100%': { opacity: 1 },
   },
 }));
 

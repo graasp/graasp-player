@@ -1,7 +1,5 @@
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 
-import { CircularProgress, Skeleton } from '@mui/material';
-
 import { DiscriminatedItem, ItemType } from '@graasp/sdk';
 
 import isArray from 'lodash.isarray';
@@ -12,7 +10,7 @@ import { hooks } from '@/config/queryClient';
 import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext.tsx';
 import { combineUuids, shuffleAllButLastItemInArray } from '@/utils/shuffle.ts';
 
-import { NavigationButton } from './CustomButtons';
+import { LoadingButton, NavigationButton } from './CustomButtons';
 
 const usePreviousNextButtons = (): {
   previousButton: JSX.Element | false;
@@ -35,16 +33,14 @@ const usePreviousNextButtons = (): {
   if (isInitialLoading) {
     return {
       previousButton: (
-        <NavigationButton disabled>
-          <CircularProgress size={20} />
-        </NavigationButton>
+        <LoadingButton disabled>
+          <ChevronLeft />
+        </LoadingButton>
       ),
       nextButton: (
-        <Skeleton variant="rounded">
-          <NavigationButton disabled>
-            <ChevronRight />
-          </NavigationButton>
-        </Skeleton>
+        <LoadingButton disabled>
+          <ChevronRight />
+        </LoadingButton>
       ),
     };
   }
