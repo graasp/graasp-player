@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.15.0](https://github.com/graasp/graasp-player/compare/v2.14.0...v2.15.0) (2024-05-29)
+
+
+### Features
+
+* add shortcut previous button and map button ([#716](https://github.com/graasp/graasp-player/issues/716)) ([4777616](https://github.com/graasp/graasp-player/commit/4777616ec2a24699c62a691add45adedd313ebbc))
+* add skeleton for navigation buttons ([#726](https://github.com/graasp/graasp-player/issues/726)) ([ab36f59](https://github.com/graasp/graasp-player/commit/ab36f594c938b879905a79db6d7568e931fb1c1d))
+
 ## [2.14.0](https://github.com/graasp/graasp-player/compare/v2.13.0...v2.14.0) (2024-05-27)
 
 
