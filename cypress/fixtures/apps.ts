@@ -1,15 +1,10 @@
-import {
-  AppItemFactory,
-  AppItemType,
-  ItemTagType,
-  ItemType,
-} from '@graasp/sdk';
+import { AppItemFactory, AppItemType, ItemType } from '@graasp/sdk';
 
 import { APP_NAME } from './apps/apps';
 import { DEFAULT_FOLDER_ITEM } from './items';
 import { CURRENT_USER, MEMBERS } from './members';
 import { MockItem } from './mockTypes';
-import { mockItemTag } from './tags';
+import { mockPublicTag } from './tags';
 
 // mock an app with the graasp link
 // eslint-disable-next-line import/prefer-default-export
@@ -91,7 +86,7 @@ export const PUBLIC_APP_USING_CONTEXT_ITEM: MockItem = {
     },
     creator: MEMBERS.BOB,
   }),
-  tags: [mockItemTag({ type: ItemTagType.Public })],
+  public: mockPublicTag(),
 };
 
 export const GRAASP_APP_ITEMS_FIXTURE = [

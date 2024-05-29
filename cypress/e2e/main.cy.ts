@@ -1,3 +1,5 @@
+import { DiscriminatedItem } from '@graasp/sdk';
+
 import { buildContentPagePath } from '../../src/config/paths';
 import {
   FOLDER_NAME_TITLE_CLASS,
@@ -149,7 +151,10 @@ describe('Main Screen', () => {
       const rootId = parentFolder.id;
       cy.visit(buildContentPagePath({ rootId, itemId: rootId }));
 
-      expectFolderLayout({ rootId, items: STATIC_ELECTRICITY.items });
+      expectFolderLayout({
+        rootId,
+        items: STATIC_ELECTRICITY.items as DiscriminatedItem[],
+      });
     });
     it(`Cannot display ${STATIC_ELECTRICITY.items[0].name} if does not have membership`, () => {
       cy.setUpApi({
@@ -167,7 +172,10 @@ describe('Main Screen', () => {
       const rootId = parentFolder.id;
       cy.visit(buildContentPagePath({ rootId, itemId: rootId }));
 
-      expectFolderLayout({ rootId, items: PUBLIC_STATIC_ELECTRICITY.items });
+      expectFolderLayout({
+        rootId,
+        items: PUBLIC_STATIC_ELECTRICITY.items as DiscriminatedItem[],
+      });
     });
   });
 
