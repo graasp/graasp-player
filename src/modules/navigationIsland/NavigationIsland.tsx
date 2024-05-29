@@ -1,23 +1,18 @@
-import { Box, Skeleton, Stack } from '@mui/material';
-
-import { ChevronRight } from 'lucide-react';
+import { Box, Stack } from '@mui/material';
 
 import useChatButton from './ChatButton';
-import { NavigationButton } from './CustomButtons';
 import useGeolocationButton from './GeolocationButton';
 import usePinnedItemsButton from './PinnedItemsButton';
 import usePreviousNextButtons from './PreviousNextButtons';
 
 const NavigationIslandBox = (): JSX.Element | false => {
-  const { previousButton, nextButton, isLoading } = usePreviousNextButtons();
+  const { previousButton, nextButton } = usePreviousNextButtons();
   const { chatButton } = useChatButton();
   const { geolocationButton } = useGeolocationButton();
   const { pinnedButton } = usePinnedItemsButton();
 
   // if all buttons are disabled do not show the island at all
-  // loading will show skeleton buttons
   if (
-    !isLoading &&
     !chatButton &&
     !pinnedButton &&
     !previousButton &&
@@ -50,20 +45,6 @@ const NavigationIslandBox = (): JSX.Element | false => {
       p={1}
     >
       <Stack direction="row" flexGrow={1} gap={10}>
-        {isLoading && (
-          <Stack direction="row" gap={1}>
-            <Skeleton variant="rounded">
-              <NavigationButton>
-                <ChevronRight />
-              </NavigationButton>
-            </Skeleton>
-            <Skeleton variant="rounded">
-              <NavigationButton>
-                <ChevronRight />
-              </NavigationButton>
-            </Skeleton>
-          </Stack>
-        )}
         {previousButton && nextButton && (
           <Stack direction="row" gap={1}>
             {previousButton}

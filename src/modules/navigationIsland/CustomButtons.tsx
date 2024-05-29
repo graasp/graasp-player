@@ -11,6 +11,7 @@ const baseStyle = (theme: Theme) => ({
   borderRadius: theme.spacing(1),
   // set a fixed height 8 + 8 for padding + 24 for the icon height
   height: '40px',
+  width: '40px',
   '&:hover': {
     cursor: 'pointer',
   },
@@ -19,7 +20,7 @@ const baseStyle = (theme: Theme) => ({
   },
   '&:disabled': {
     backgroundColor: '#e9e9e9',
-    cursor: 'default',
+    cursor: 'not-allowed',
   },
 });
 export const NavigationButton = styled('button')(({ theme }) => ({
@@ -30,6 +31,16 @@ export const NavigationButton = styled('button')(({ theme }) => ({
   },
   '&:hover:not(:disabled)': {
     backgroundColor: '#BFB4FF',
+  },
+}));
+
+export const LoadingButton = styled('button')(({ theme }) => ({
+  ...baseStyle(theme),
+  animation: `skeletonAnimation 2s ease-in-out 0.5s infinite`,
+  '@keyframes skeletonAnimation': {
+    '0%': { opacity: 1 },
+    '50%': { opacity: 0.4 },
+    '100%': { opacity: 1 },
   },
 }));
 
