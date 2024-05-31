@@ -1,6 +1,6 @@
 import { Link, Outlet, useParams } from 'react-router-dom';
 
-import { Typography, styled, useTheme } from '@mui/material';
+import { Box, Typography, styled, useTheme } from '@mui/material';
 
 import { Context } from '@graasp/sdk';
 import {
@@ -85,7 +85,15 @@ const PageWrapper = ({ fullscreen }: PageWrapperProps): JSX.Element => {
   if (fullscreen) {
     return (
       <ItemContextProvider rootId={rootId}>
-        <Outlet />
+        {/* necessary for item login screen to be centered */}
+        <Box
+          height="100vh"
+          overflow="auto"
+          display="flex"
+          flexDirection="column"
+        >
+          <Outlet />
+        </Box>
       </ItemContextProvider>
     );
   }
