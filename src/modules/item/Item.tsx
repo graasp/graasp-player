@@ -229,7 +229,6 @@ const AppContent = ({ item }: { item: AppItemType }): JSX.Element => {
         requestApiAccessToken={(payload) =>
           Api.requestApiAccessToken(payload, { API_HOST, axios })
         }
-        // height={SCREEN_MAX_HEIGHT}
         isResizable={item.settings?.isResizable || DEFAULT_RESIZABLE_SETTING}
         contextPayload={{
           apiHost: API_HOST,
