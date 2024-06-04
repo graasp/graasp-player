@@ -1,7 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { Box } from '@mui/material';
-
 import { ItemLoginAuthorization } from '@graasp/ui';
 
 import { HOME_PATH, ITEM_PARAM } from '@/config/paths';
@@ -46,11 +44,7 @@ const ItemPage = (): JSX.Element | null => {
     useItemLoginSchemaType,
   })(ItemScreenWrapper);
 
-  return (
-    <Box height="100%">
-      <Component />
-    </Box>
-  );
+  return <Component />;
 };
 
 export default ItemPage;
