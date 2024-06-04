@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.15.2](https://github.com/graasp/graasp-player/compare/v2.15.1...v2.15.2) (2024-06-04)
+
+
+### Bug Fixes
+
+* app resizing issue ([#737](https://github.com/graasp/graasp-player/issues/737)) ([908586e](https://github.com/graasp/graasp-player/commit/908586e97b277a5b0082358d208696e027aaabea))
+* **deps:** update dependency @sentry/react to v7.116.0 ([#709](https://github.com/graasp/graasp-player/issues/709)) ([cab9085](https://github.com/graasp/graasp-player/commit/cab90858acc358dcd726c7a16409936b90ccfa07))
+* **deps:** update dependency i18next to v23.11.5 ([#700](https://github.com/graasp/graasp-player/issues/700)) ([b49fd8e](https://github.com/graasp/graasp-player/commit/b49fd8e6e885de685525712d012f61a8f84e8585))
+* **deps:** update dependency lucide-react to v0.379.0 ([#713](https://github.com/graasp/graasp-player/issues/713)) ([40ec2b1](https://github.com/graasp/graasp-player/commit/40ec2b17c8d3dd2c3db4de8df12acd0f61e117fd))
+* revert geoloc button ([#740](https://github.com/graasp/graasp-player/issues/740)) ([b3e7a34](https://github.com/graasp/graasp-player/commit/b3e7a34aaff24d996c4cbf61816f6047b6c1bf8f))
+* set item login screen at center for normal and fullscreen ([#734](https://github.com/graasp/graasp-player/issues/734)) ([dffb92a](https://github.com/graasp/graasp-player/commit/dffb92a5c25aaa61b793c02f8f553927b2cff80e))
+
 ## [2.15.1](https://github.com/graasp/graasp-player/compare/v2.15.0...v2.15.1) (2024-05-29)
 
 
