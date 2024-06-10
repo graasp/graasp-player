@@ -513,7 +513,10 @@ const Item = ({
     return (
       <>
         <ItemContentWrapper item={item} />
-        <NavigationIsland />
+        {
+          // only render the island when the item is not a children
+          isChildren ? <NavigationIsland /> : false
+        }
       </>
     );
   }
