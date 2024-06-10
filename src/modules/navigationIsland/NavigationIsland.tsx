@@ -1,5 +1,7 @@
 import { Box, Stack } from '@mui/material';
 
+import { NAVIGATION_ISLAND_CY } from '@/config/selectors';
+
 import useChatButton from './ChatButton';
 // import useGeolocationButton from './GeolocationButton';
 import usePinnedItemsButton from './PinnedItemsButton';
@@ -24,6 +26,7 @@ const NavigationIslandBox = (): JSX.Element | false => {
 
   return (
     <Box
+      data-cy={NAVIGATION_ISLAND_CY}
       // set some background and shadow
       bgcolor="white"
       boxShadow="0px 3px 6px 0px rgba(0, 0, 0, 0.25)"

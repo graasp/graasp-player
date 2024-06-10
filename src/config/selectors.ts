@@ -37,6 +37,9 @@ export const buildTreeItemClass = (id: string): string => `buildTreeItem-${id}`;
 export const buildTreeShortcutItemClass = (id: string): string =>
   `buildTreeShortcutItem-${id}`;
 
+export const buildDataCyWrapper = (dataCy: string): string =>
+  `[data-cy="${dataCy}"]`;
+
 export const HEADER_MEMBER_MENU_BUTTON_ID = 'headerMemberMenuButton';
 export const HEADER_MEMBER_MENU_SEE_PROFILE_BUTTON_ID =
   'headerMemberMenuSeeProfileButton';
@@ -64,6 +67,8 @@ export const APP_NAVIGATION_PLATFORM_SWITCH_BUTTON_IDS = {
   [Platform.Library]: 'appNavigationPlatformSwitchButtonLibrary',
   [Platform.Analytics]: 'appNavigationPlatformSwitchButtonAnalytics',
 };
+
+export const NAVIGATION_ISLAND_CY = 'navigationIsland';
 
 export const TREE_NODE_GROUP_CLASS = 'tree-node-group';
 export const BACK_TO_SHORTCUT_ID = 'backToButtonShortcut';

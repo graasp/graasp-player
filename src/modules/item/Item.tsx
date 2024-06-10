@@ -515,7 +515,7 @@ const Item = ({
         <ItemContentWrapper item={item} />
         {
           // only render the island when the item is not a children
-          isChildren ? <NavigationIsland /> : false
+          isChildren ? false : <NavigationIsland />
         }
       </>
     );

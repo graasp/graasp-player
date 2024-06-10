@@ -1,15 +1,23 @@
-import { PackedFolderItemFactory } from '@graasp/sdk';
+import {
+  DocumentItemExtra,
+  PackedFolderItemFactory,
+  getDocumentExtra,
+} from '@graasp/sdk';
 
 import { buildContentPagePath } from '@/config/paths';
 import {
   ITEM_CHATBOX_BUTTON_ID,
   ITEM_MAP_BUTTON_ID,
+  NAVIGATION_ISLAND_CY,
+  buildDataCyWrapper,
+  buildDocumentId,
   buildTreeItemClass,
 } from '@/config/selectors';
 
 import {
   DOCUMENT_WITHOUT_CHAT_BOX,
   DOCUMENT_WITH_CHAT_BOX,
+  getFolderWithShortcutFixture,
 } from '../fixtures/items';
 
 describe('Island', () => {
@@ -110,5 +118,20 @@ describe('Island', () => {
         .should('be.visible')
         .should('be.disabled');
     });
+  });
+
+  it('Shows only one island when folder contains shortcut', () => {
+    const items = getFolderWithShortcutFixture();
+    const parent = items[0];
+    const documentTarget = items[1];
+    cy.setUpApi({ items });
+    cy.visit(buildContentPagePath({ rootId: parent.id, itemId: parent.id }));
+    cy.get(`#${buildDocumentId(documentTarget.id)}`).should(
+      'contain',
+      getDocumentExtra(documentTarget.extra as DocumentItemExtra).content,
+    );
+    cy.get(buildDataCyWrapper(NAVIGATION_ISLAND_CY))
+      .should('be.visible')
+      .and('have.length', 1);
   });
 });

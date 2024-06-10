@@ -1,4 +1,11 @@
-import { ItemType, PermissionLevel, buildPathFromIds } from '@graasp/sdk';
+import {
+  DocumentItemFactory,
+  FolderItemFactory,
+  ItemType,
+  PermissionLevel,
+  ShortcutItemFactory,
+  buildPathFromIds,
+} from '@graasp/sdk';
 import { DEFAULT_LANG } from '@graasp/translations';
 
 import { v4 } from 'uuid';
@@ -362,6 +369,30 @@ export const FOLDER_WITH_HIDDEN_ITEMS: { items: MockItem[] } = {
       hidden: mockHiddenTag(),
     },
   ],
+};
+
+export const getFolderWithShortcutFixture = (): MockItem[] => {
+  const parent = FolderItemFactory({ name: 'Lesson', creator: CURRENT_USER });
+  const child = FolderItemFactory({
+    parentItem: parent,
+    name: 'Part 1',
+    creator: CURRENT_USER,
+  });
+  const documentItem = DocumentItemFactory({
+    extra: { document: { content: 'I am a document' } },
+    creator: CURRENT_USER,
+  });
+  return [
+    parent,
+    documentItem,
+    child,
+    DocumentItemFactory({ parentItem: parent, creator: CURRENT_USER }),
+    ShortcutItemFactory({
+      parentItem: parent,
+      creator: CURRENT_USER,
+      extra: { shortcut: { target: documentItem.id } },
+    }),
+  ];
 };
 
 export const FOLDER_WITH_COLLAPSIBLE_SHORTCUT_ITEMS: { items: MockItem[] } = {
