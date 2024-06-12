@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.15.3](https://github.com/graasp/graasp-player/compare/v2.15.2...v2.15.3) (2024-06-12)
+
+
+### Bug Fixes
+
+* app max height ([#746](https://github.com/graasp/graasp-player/issues/746)) ([99e22a2](https://github.com/graasp/graasp-player/commit/99e22a2e917b5819b9ccac0e5e827fd0b2e4fd49))
+* duplicated island ([#742](https://github.com/graasp/graasp-player/issues/742)) ([06c115f](https://github.com/graasp/graasp-player/commit/06c115f282665b9fc51cdd9936f31f65af1eff12))
+
 ## [2.15.2](https://github.com/graasp/graasp-player/compare/v2.15.1...v2.15.2) (2024-06-04)
 
 
