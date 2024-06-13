@@ -23,6 +23,13 @@ import {
 import { MEMBERS } from '../fixtures/members';
 import { MockItem, MockItemTag } from '../fixtures/mockTypes';
 import {
+  ACCOUNT_HOST,
+  ANALYTICS_HOST,
+  API_HOST,
+  AUTH_HOST,
+  BUILDER_HOST,
+} from './env';
+import {
   DEFAULT_DELETE,
   DEFAULT_GET,
   DEFAULT_PATCH,
@@ -51,8 +58,6 @@ const {
   SIGN_OUT_ROUTE,
   buildGetItemGeolocationRoute,
 } = API_ROUTES;
-
-const API_HOST = Cypress.env('API_HOST');
 
 export const isError = (error?: { statusCode: number }): boolean =>
   Boolean(error?.statusCode);
@@ -529,6 +534,30 @@ export const mockSignOut = (): void => {
   ).as('signOut');
 };
 
+export const mockBuilder = (): void => {
+  cy.intercept(
+    {
+      method: DEFAULT_GET.method,
+      url: new RegExp(`${BUILDER_HOST}`),
+    },
+    ({ reply }) => {
+      reply(redirectionReply);
+    },
+  ).as('builder');
+};
+
+export const mockAnalytics = (): void => {
+  cy.intercept(
+    {
+      method: DEFAULT_GET.method,
+      url: new RegExp(ANALYTICS_HOST),
+    },
+    ({ reply }) => {
+      reply(redirectionReply);
+    },
+  ).as('analytics');
+};
+
 export const mockGetMembers = (members: Member[]): void => {
   cy.intercept(
     {
@@ -559,7 +588,7 @@ export const mockProfilePage = (): void => {
   cy.intercept(
     {
       method: DEFAULT_GET.method,
-      url: Cypress.env('ACCOUNT_HOST'),
+      url: new RegExp(ACCOUNT_HOST),
     },
     ({ reply }) => {
       reply(redirectionReply);
@@ -571,7 +600,7 @@ export const mockAuthPage = (): void => {
   cy.intercept(
     {
       method: DEFAULT_GET.method,
-      url: new RegExp(`${Cypress.env('AUTHENTICATION_HOST')}`),
+      url: new RegExp(AUTH_HOST),
     },
     ({ reply }) => {
       reply(redirectionReply);

@@ -6,9 +6,10 @@ import {
   HEADER_MEMBER_MENU_SEE_PROFILE_BUTTON_ID,
   HEADER_MEMBER_MENU_SIGN_OUT_BUTTON_ID,
 } from '../../src/config/selectors';
+import { ACCOUNT_HOST, AUTH_HOST } from '../support/env';
 
 const SIGN_IN_PATH = buildSignInPath({
-  host: Cypress.env('AUTHENTICATION_HOST'),
+  host: AUTH_HOST,
 });
 
 // catch hook warning from react
@@ -30,7 +31,7 @@ describe('Header', () => {
       cy.get(`#${HEADER_MEMBER_MENU_BUTTON_ID}`).click();
       cy.get(`#${HEADER_MEMBER_MENU_SEE_PROFILE_BUTTON_ID}`).click();
       cy.wait('@goToMemberProfile');
-      cy.url().should('contain', Cypress.env('ACCOUNT_HOST'));
+      cy.url().should('contain', ACCOUNT_HOST);
     });
 
     // todo: not available currently because cookie is httpOnly

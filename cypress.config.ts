@@ -8,16 +8,17 @@ export default defineConfig({
     runMode: 2,
   },
   env: {
-    GRAASP_COMPOSE_HOST:
+    GRAASP_BUILDER_HOST:
       process.env.VITE_GRAASP_BUILDER_HOST || 'http://localhost:3111',
     GRAASP_LIBRARY_HOST:
       process.env.VITE_GRAASP_LIBRARY_HOST || 'http://localhost:3005',
     GRAASP_ANALYTICS_HOST:
       process.env.VITE_GRAASP_ANALYTICS_HOST || 'http://localhost:3012',
-    API_HOST: process.env.VITE_GRAASP_API_HOST || 'http://localhost:3000',
-    AUTHENTICATION_HOST:
+    GRAASP_API_HOST:
+      process.env.VITE_GRAASP_API_HOST || 'http://localhost:3000',
+    GRAASP_AUTH_HOST:
       process.env.VITE_GRAASP_AUTH_HOST || 'http://localhost:3001',
-    ACCOUNT_HOST:
+    GRAASP_ACCOUNT_HOST:
       process.env.VITE_GRAASP_ACCOUNT_HOST || 'http://localhost:3114',
   },
   e2e: {

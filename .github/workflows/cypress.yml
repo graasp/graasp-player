@@ -3,7 +3,7 @@ name: Cypress CI
 on:
   push:
     branches:
-      - "main"
+      - 'main'
   pull_request:
   merge_group:
 
@@ -39,6 +39,7 @@ jobs:
           VITE_GRAASP_API_HOST: http://localhost:3636
           VITE_GRAASP_AUTH_HOST: http://localhost:3001
           VITE_GRAASP_BUILDER_HOST: http://localhost:3111
+          VITE_GRAASP_ANALYTICS_HOST: http://localhost:3113
           VITE_SHOW_NOTIFICATIONS: false
 
       #  use the Cypress GitHub Action to run Cypress tests within the chrome browser
@@ -58,6 +59,7 @@ jobs:
           VITE_GRAASP_API_HOST: http://localhost:3636
           VITE_GRAASP_AUTH_HOST: http://localhost:3001
           VITE_GRAASP_BUILDER_HOST: http://localhost:3111
+          VITE_GRAASP_ANALYTICS_HOST: http://localhost:3113
           VITE_SHOW_NOTIFICATIONS: false
 
       # after the test run completes

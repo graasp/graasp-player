@@ -4,8 +4,10 @@ import { ChatMessage, CookieKeys, Member } from '@graasp/sdk';
 import { CURRENT_USER, MEMBERS } from '../fixtures/members';
 import { MockItem } from '../fixtures/mockTypes';
 import {
+  mockAnalytics,
   mockAppApiAccessToken,
   mockAuthPage,
+  mockBuilder,
   mockDefaultDownloadFile,
   mockDeleteAppData,
   mockGetAccessibleItems,
@@ -73,10 +75,12 @@ Cypress.Commands.add(
 
     mockDefaultDownloadFile({ items, currentMember });
 
+    mockBuilder();
+    mockAnalytics();
     mockSignOut();
+    mockProfilePage();
 
     mockGetMembers(members);
-    mockProfilePage();
     mockAuthPage();
     mockGetAppLink(getAppLinkError);
     mockAppApiAccessToken(getAppLinkError);

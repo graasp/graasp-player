@@ -59,9 +59,9 @@ const PageWrapper = ({ fullscreen }: PageWrapperProps): JSX.Element => {
   const { t } = usePlayerTranslation();
   const theme = useTheme();
   const { isMobile } = useMobileView();
-  const { rootId } = useParams();
+  const { rootId, itemId } = useParams();
   const { data: item } = hooks.useItem();
-  const getNavigationEvents = usePlatformNavigation(platformsHostsMap, rootId);
+  const getNavigationEvents = usePlatformNavigation(platformsHostsMap, itemId);
 
   const platformProps = {
     [Platform.Builder]: {

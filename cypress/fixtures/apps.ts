@@ -1,5 +1,6 @@
 import { AppItemFactory, AppItemType, ItemType } from '@graasp/sdk';
 
+import { API_HOST } from '../support/env';
 import { APP_NAME } from './apps/apps';
 import { DEFAULT_FOLDER_ITEM } from './items';
 import { CURRENT_USER, MEMBERS } from './members';
@@ -22,8 +23,6 @@ export const GRAASP_APP_ITEM: AppItemType = AppItemFactory({
     showChatbox: false,
   },
 });
-
-const API_HOST = Cypress.env('API_HOST');
 
 export const buildAppApiAccessTokenRoute = (id: string): string =>
   `app-items/${id}/api-access-token`;
