@@ -52,7 +52,7 @@ describe('Island', () => {
     });
 
     // temporarily disable
-    it.skip('Show map button for parent geolocation', () => {
+    it('Show map button for parent geolocation', () => {
       const parentItem = PackedFolderItemFactory({ settings: {} });
       const child = PackedFolderItemFactory({ parentItem, settings: {} });
       const geolocation = { lat: 0, lng: 0, item: parentItem };
@@ -85,7 +85,7 @@ describe('Island', () => {
     });
 
     // temporarily disable
-    it.skip('Show map button for child geolocation', () => {
+    it('Show map button for child geolocation', () => {
       const parentItem = PackedFolderItemFactory({ settings: {} });
       const child1 = PackedFolderItemFactory({ parentItem, settings: {} });
       const child2 = PackedFolderItemFactory({ parentItem, settings: {} });
