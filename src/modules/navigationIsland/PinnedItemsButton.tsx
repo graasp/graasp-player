@@ -17,26 +17,18 @@ import { ToolButton } from './CustomButtons';
 const usePinnedItemsButton = (): { pinnedButton: JSX.Element | false } => {
   const { t } = usePlayerTranslation();
   const { togglePinned, isPinnedOpen } = useLayoutContext();
-  const { rootId, itemId } = useParams();
+  const { itemId } = useParams();
   const { data: item } = hooks.useItem(itemId);
   const { data: children } = hooks.useChildren(itemId, undefined, {
     enabled: !!item,
   });
-  // this call is an issue for the optimization we are looking to accomplish with the useDescendants
-  // as it relies on the full tree
-  const { data: descendants } = hooks.useDescendants({
-    id: rootId,
-    showHidden: false,
-  });
+
   const childrenPinnedCount =
     children?.filter(({ settings: s, hidden }) => s.isPinned && !hidden)
       ?.length || 0;
-  const allPinnedCount =
-    descendants?.filter(({ settings: s, hidden }) => s.isPinned && !hidden)
-      ?.length || 0;
 
   // don't show the button if there are no items pinned in all descendants
-  if (allPinnedCount <= 0) {
+  if (childrenPinnedCount <= 0) {
     return { pinnedButton: false };
   }
 

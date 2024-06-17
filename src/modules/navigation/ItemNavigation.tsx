@@ -33,13 +33,13 @@ const DrawerNavigation = (): JSX.Element | null => {
 
   const { t: translateMessage } = useMessagesTranslation();
 
-  // shuffling requires to have a let here, but this is not clean, refactor to use const as soon as possible
-  // eslint-disable-next-line prefer-const
-  let { data: descendants, isInitialLoading: isLoadingTree } = useDescendants({
-    id: rootId ?? '',
-    // remove hidden
-    showHidden: false,
-  });
+  const { data: descendants, isInitialLoading: isLoadingTree } = useDescendants(
+    {
+      id: rootId ?? '',
+      // remove hidden
+      showHidden: false,
+    },
+  );
 
   const { data: rootItem, isLoading, isError, error } = useItem(rootId);
   const handleNavigationOnClick = (newItemId: string) => {
@@ -60,12 +60,13 @@ const DrawerNavigation = (): JSX.Element | null => {
     return <LoadingTree />;
   }
 
+  let shuffledDescendants = [...(descendants || [])];
   if (shuffle) {
     const baseId = rootId ?? '';
     const memberId = member?.id ?? '';
     const combinedUuids = combineUuids(baseId, memberId);
-    descendants = shuffleAllButLastItemInArray(
-      descendants || [],
+    shuffledDescendants = shuffleAllButLastItemInArray(
+      shuffledDescendants,
       combinedUuids,
     );
   }
@@ -77,7 +78,7 @@ const DrawerNavigation = (): JSX.Element | null => {
           <TreeView
             id={TREE_VIEW_ID}
             rootItems={[rootItem]}
-            items={[rootItem, ...descendants]}
+            items={[rootItem, ...shuffledDescendants]}
             firstLevelStyle={{ fontWeight: 'bold' }}
             onTreeItemSelect={handleNavigationOnClick}
           />
