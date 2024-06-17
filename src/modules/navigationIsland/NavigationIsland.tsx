@@ -3,14 +3,14 @@ import { Box, Stack } from '@mui/material';
 import { NAVIGATION_ISLAND_CY } from '@/config/selectors';
 
 import useChatButton from './ChatButton';
-// import useGeolocationButton from './GeolocationButton';
+import useGeolocationButton from './GeolocationButton';
 import usePinnedItemsButton from './PinnedItemsButton';
 import usePreviousNextButtons from './PreviousNextButtons';
 
 const NavigationIslandBox = (): JSX.Element | false => {
   const { previousButton, nextButton } = usePreviousNextButtons();
   const { chatButton } = useChatButton();
-  // const { geolocationButton } = useGeolocationButton();
+  const { geolocationButton } = useGeolocationButton();
   const { pinnedButton } = usePinnedItemsButton();
 
   // if all buttons are disabled do not show the island at all
@@ -18,8 +18,8 @@ const NavigationIslandBox = (): JSX.Element | false => {
     !chatButton &&
     !pinnedButton &&
     !previousButton &&
-    !nextButton
-    // && !geolocationButton
+    !nextButton &&
+    !geolocationButton
   ) {
     return false;
   }
@@ -56,12 +56,11 @@ const NavigationIslandBox = (): JSX.Element | false => {
         )}
         {
           // if one of the button is present, show the stack
-          (chatButton || pinnedButton) && (
-            // || geolocationButton
+          (chatButton || pinnedButton || geolocationButton) && (
             <Stack direction="row" gap={1}>
               {chatButton}
               {pinnedButton}
-              {/* {geolocationButton} */}
+              {geolocationButton}
             </Stack>
           )
         }
