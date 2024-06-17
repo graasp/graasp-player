@@ -44,7 +44,7 @@
     "@mui/icons-material": "5.15.20",
     "@mui/lab": "5.0.0-alpha.170",
     "@mui/material": "5.15.20",
-    "@sentry/react": "7.116.0",
+    "@sentry/react": "7.117.0",
     "classnames": "2.5.1",
     "date-fns": "3.6.0",
     "i18next": "23.11.5",
