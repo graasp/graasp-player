@@ -22,7 +22,12 @@ const usePinnedItemsButton = (): { pinnedButton: JSX.Element | false } => {
   const { data: children } = hooks.useChildren(itemId, undefined, {
     enabled: !!item,
   });
-  const { data: descendants } = hooks.useDescendants({ id: rootId });
+  // this call is an issue for the optimization we are looking to accomplish with the useDescendants
+  // as it relies on the full tree
+  const { data: descendants } = hooks.useDescendants({
+    id: rootId,
+    showHidden: false,
+  });
   const childrenPinnedCount =
     children?.filter(({ settings: s, hidden }) => s.isPinned && !hidden)
       ?.length || 0;

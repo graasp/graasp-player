@@ -1,7 +1,7 @@
 import { Fragment, useCallback, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useInView } from 'react-intersection-observer';
-import { useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 
 import { Alert, Box, Container, Divider, Skeleton, Stack } from '@mui/material';
 
@@ -57,7 +57,6 @@ import {
   buildLinkItemId,
 } from '@/config/selectors';
 import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
-import { useItemContext } from '@/contexts/ItemContext';
 import { PLAYER } from '@/langs/constants';
 import { paginationContentFilter } from '@/utils/item';
 
@@ -297,7 +296,8 @@ const ShortcutContent = ({ item }: { item: ShortcutItemType }): JSX.Element => {
 
 const FolderButtonContent = ({ item }: { item: FolderItemType }) => {
   const [searchParams] = useSearchParams();
-  const { rootItem } = useItemContext();
+  const { itemId } = useParams();
+  const { data: currentDisplayedItem } = useItem(itemId);
   const { data: thumbnail } = hooks.useItemThumbnailUrl({
     id: item.id,
     size: ThumbnailSize.Medium,
@@ -305,8 +305,8 @@ const FolderButtonContent = ({ item }: { item: FolderItemType }) => {
 
   const newSearchParams = new URLSearchParams(searchParams.toString());
   newSearchParams.set('from', window.location.pathname);
-  if (rootItem) {
-    newSearchParams.set('fromName', rootItem.name);
+  if (currentDisplayedItem) {
+    newSearchParams.set('fromName', currentDisplayedItem.name);
   }
   return (
     <FolderCard

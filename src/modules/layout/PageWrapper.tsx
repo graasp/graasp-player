@@ -24,7 +24,6 @@ import {
   APP_NAVIGATION_PLATFORM_SWITCH_BUTTON_IDS,
   APP_NAVIGATION_PLATFORM_SWITCH_ID,
 } from '@/config/selectors';
-import { ItemContextProvider } from '@/contexts/ItemContext';
 import { PLAYER } from '@/langs/constants';
 
 import HomeNavigation from '../navigation/HomeNavigation';
@@ -84,54 +83,39 @@ const PageWrapper = ({ fullscreen }: PageWrapperProps): JSX.Element => {
 
   if (fullscreen) {
     return (
-      <ItemContextProvider rootId={rootId}>
-        {/* necessary for item login screen to be centered */}
-        <Box
-          height="100vh"
-          overflow="auto"
-          display="flex"
-          flexDirection="column"
-        >
-          <Outlet />
-        </Box>
-      </ItemContextProvider>
+      /* necessary for item login screen to be centered */
+      <Box height="100vh" overflow="auto" display="flex" flexDirection="column">
+        <Outlet />
+      </Box>
     );
   }
 
   return (
-    <ItemContextProvider rootId={rootId}>
-      <Main
-        open={Boolean(rootId)}
-        context={Context.Player}
-        drawerContent={
-          rootId ? <ItemStructureNavigation /> : <HomeNavigation />
-        }
-        drawerOpenAriaLabel={t(PLAYER.DRAWER_ARIAL_LABEL)}
-        LinkComponent={LinkComponent}
-        PlatformComponent={
-          <PlatformSwitch
-            id={APP_NAVIGATION_PLATFORM_SWITCH_ID}
-            selected={Platform.Player}
-            platformsProps={platformProps}
-            disabledColor="#999"
-            color={
-              isMobile
-                ? theme.palette.primary.main
-                : theme.palette.secondary.main
-            }
-            accentColor={
-              isMobile
-                ? theme.palette.secondary.main
-                : theme.palette.primary.main
-            }
-          />
-        }
-        headerLeftContent={<Typography noWrap>{item?.displayName}</Typography>}
-        headerRightContent={<UserSwitchWrapper />}
-      >
-        <Outlet />
-      </Main>
-    </ItemContextProvider>
+    <Main
+      open={Boolean(rootId)}
+      context={Context.Player}
+      drawerContent={rootId ? <ItemStructureNavigation /> : <HomeNavigation />}
+      drawerOpenAriaLabel={t(PLAYER.DRAWER_ARIAL_LABEL)}
+      LinkComponent={LinkComponent}
+      PlatformComponent={
+        <PlatformSwitch
+          id={APP_NAVIGATION_PLATFORM_SWITCH_ID}
+          selected={Platform.Player}
+          platformsProps={platformProps}
+          disabledColor="#999"
+          color={
+            isMobile ? theme.palette.primary.main : theme.palette.secondary.main
+          }
+          accentColor={
+            isMobile ? theme.palette.secondary.main : theme.palette.primary.main
+          }
+        />
+      }
+      headerLeftContent={<Typography noWrap>{item?.displayName}</Typography>}
+      headerRightContent={<UserSwitchWrapper />}
+    >
+      <Outlet />
+    </Main>
   );
 };
 export default PageWrapper;

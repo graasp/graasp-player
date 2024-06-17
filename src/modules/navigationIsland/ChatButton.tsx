@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 
 import { Tooltip } from '@mui/material';
 
-import { PermissionLevel, PermissionLevelCompare } from '@graasp/sdk';
+import { ItemType, PermissionLevel, PermissionLevelCompare } from '@graasp/sdk';
 
 import { MessageSquareOff, MessageSquareText } from 'lucide-react';
 
@@ -19,7 +19,12 @@ const useChatButton = (): { chatButton: JSX.Element | false } => {
   const { itemId, rootId } = useParams();
   const { data: item } = hooks.useItem(itemId);
   const { data: root } = hooks.useItem(rootId);
-  const { data: descendants } = hooks.useDescendants({ id: rootId });
+  const { data: descendants } = hooks.useDescendants({
+    id: rootId,
+    // only fetch folder descendants as this is what the button will show
+    types: [ItemType.FOLDER],
+    showHidden: false,
+  });
   const { toggleChatbox, isChatboxOpen } = useLayoutContext();
 
   const chatEnabledItems = descendants?.filter(

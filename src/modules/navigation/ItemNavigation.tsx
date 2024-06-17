@@ -33,9 +33,12 @@ const DrawerNavigation = (): JSX.Element | null => {
 
   const { t: translateMessage } = useMessagesTranslation();
 
-  let { data: descendants } = useDescendants({ id: rootId ?? '' });
-  const { isInitialLoading: isLoadingTree } = useDescendants({
+  // shuffling requires to have a let here, but this is not clean, refactor to use const as soon as possible
+  // eslint-disable-next-line prefer-const
+  let { data: descendants, isInitialLoading: isLoadingTree } = useDescendants({
     id: rootId ?? '',
+    // remove hidden
+    showHidden: false,
   });
 
   const { data: rootItem, isLoading, isError, error } = useItem(rootId);
@@ -74,7 +77,7 @@ const DrawerNavigation = (): JSX.Element | null => {
           <TreeView
             id={TREE_VIEW_ID}
             rootItems={[rootItem]}
-            items={[rootItem, ...descendants].filter((ele) => !ele.hidden)}
+            items={[rootItem, ...descendants]}
             firstLevelStyle={{ fontWeight: 'bold' }}
             onTreeItemSelect={handleNavigationOnClick}
           />

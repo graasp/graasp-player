@@ -25,8 +25,9 @@ const usePreviousNextButtons = (): {
   const shuffle = Boolean(searchParams.get('shuffle') === 'true');
 
   const { data: descendants, isInitialLoading } = hooks.useDescendants({
-    // not correct but enabled
-    id: rootId ?? '',
+    id: rootId,
+    types: [ItemType.FOLDER],
+    showHidden: false,
     enabled: Boolean(rootId),
   });
 
@@ -54,10 +55,7 @@ const usePreviousNextButtons = (): {
     return { previousButton: false, nextButton: false };
   }
 
-  // we only navigate through folders
-  let folderHierarchy: DiscriminatedItem[] = descendants.filter(
-    ({ type }) => type === ItemType.FOLDER,
-  );
+  let folderHierarchy = descendants;
 
   if (shuffle) {
     // seed for shuffling is consistent for member + root (base) item combination
