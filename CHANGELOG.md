@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.15.4](https://github.com/graasp/graasp-player/compare/v2.15.3...v2.15.4) (2024-06-25)
+
+
+### Bug Fixes
+
+* add geolocation button back ([#752](https://github.com/graasp/graasp-player/issues/752)) ([4b72b5b](https://github.com/graasp/graasp-player/commit/4b72b5b47ad64baab7cc0bfb397dc702fb41941e))
+* add tests ([#748](https://github.com/graasp/graasp-player/issues/748)) ([ef18743](https://github.com/graasp/graasp-player/commit/ef18743cfb94573d77b2ce150b5ad70f74471073))
+* **deps:** update dependency @graasp/sdk to v4.14.0 ([#765](https://github.com/graasp/graasp-player/issues/765)) ([6c11594](https://github.com/graasp/graasp-player/commit/6c11594071f5fc36dc3d2239e2a2fcad1c0b663c))
+* **deps:** update dependency @sentry/react to v7.117.0 ([#753](https://github.com/graasp/graasp-player/issues/753)) ([326aec3](https://github.com/graasp/graasp-player/commit/326aec35c80b392c14f0f65300d0ae780483f7a9))
+* **deps:** update dependency @sentry/react to v7.118.0 ([#764](https://github.com/graasp/graasp-player/issues/764)) ([230ec0d](https://github.com/graasp/graasp-player/commit/230ec0d4f9e322e52d71520c95a38f12d6702e7c))
+* **deps:** update dependency lucide-react to v0.395.0 ([#733](https://github.com/graasp/graasp-player/issues/733)) ([a84f2f7](https://github.com/graasp/graasp-player/commit/a84f2f70375681ab81c244d04a26d9970b933c6f))
+* **deps:** update dependency react-accessible-treeview to v2.9.1 ([#750](https://github.com/graasp/graasp-player/issues/750)) ([5efa466](https://github.com/graasp/graasp-player/commit/5efa466bf19d733a49295685763db40b2bf18568))
+* **deps:** update dependency react-i18next to v14.1.2 ([#730](https://github.com/graasp/graasp-player/issues/730)) ([d8f5f38](https://github.com/graasp/graasp-player/commit/d8f5f383594c7fd03870c3c61a070b878aaa1ec6))
+* **deps:** update dependency react-intersection-observer to v9.10.3 ([#745](https://github.com/graasp/graasp-player/issues/745)) ([e4610ac](https://github.com/graasp/graasp-player/commit/e4610ac2ada767aa96f89fad6eed93eb1f53b346))
+* **deps:** update dependency uuid to v10 ([#756](https://github.com/graasp/graasp-player/issues/756)) ([65a0540](https://github.com/graasp/graasp-player/commit/65a0540d55d9de8ea5a7639b8718803bd245941c))
+* **deps:** update graasp packages ([#744](https://github.com/graasp/graasp-player/issues/744)) ([70e8fb5](https://github.com/graasp/graasp-player/commit/70e8fb5b4adf4db4bfc791a4febe9d4a11873c6b))
+* **deps:** update graasp packages ([#754](https://github.com/graasp/graasp-player/issues/754)) ([1be1882](https://github.com/graasp/graasp-player/commit/1be1882ceb9d14629896f7394021b38b4e842b18))
+* **deps:** update graasp packages (patch) ([#757](https://github.com/graasp/graasp-player/issues/757)) ([b52a771](https://github.com/graasp/graasp-player/commit/b52a771772e34fadf58ea9aee356142c31351d9b))
+* **deps:** update mui (non-major) to v5.15.20 ([#694](https://github.com/graasp/graasp-player/issues/694)) ([f27b4fe](https://github.com/graasp/graasp-player/commit/f27b4fe92ad308b5790f942424c4b876d191ab33))
+* update release-please workflow ([1e2e4f1](https://github.com/graasp/graasp-player/commit/1e2e4f14543939d083d00604fe7d0cc44fe4b452))
+* use params in descendants ([#755](https://github.com/graasp/graasp-player/issues/755)) ([7002711](https://github.com/graasp/graasp-player/commit/7002711be3421683ec859e3378448032e51adaac))
+
 ## [2.15.3](https://github.com/graasp/graasp-player/compare/v2.15.2...v2.15.3) (2024-06-12)
 
 
