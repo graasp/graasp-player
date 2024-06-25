@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { initReactI18next, useTranslation } from 'react-i18next';
 
-import { namespaces } from '@graasp/translations';
-import buildI18n from '@graasp/translations/dist/i18n';
+import { buildI18n, namespaces } from '@graasp/translations';
 
 import ar from '../langs/ar.json';
 import de from '../langs/de.json';
