@@ -438,27 +438,23 @@ const FolderContent = ({
   // render each children recursively
   return (
     <>
-      <Stack
-        direction="column"
-        pb={7}
-        spacing={2}
-        maxWidth="1000px"
-        margin="auto"
-      >
-        <SectionHeader item={item} />
-        <Divider flexItem />
+      <Container maxWidth="lg">
+        <Stack direction="column" pb={7} spacing={2} margin="auto">
+          <SectionHeader item={item} />
+          <Divider flexItem />
 
-        <Stack direction="column" spacing={2}>
-          {childrenPaginated?.pages?.map((page) => (
-            <Fragment key={page.pageNumber}>
-              {page.data.map((thisItem) => (
-                <ItemContentWrapper key={thisItem.id} item={thisItem} />
-              ))}
-            </Fragment>
-          ))}
+          <Stack direction="column" spacing={2}>
+            {childrenPaginated?.pages?.map((page) => (
+              <Fragment key={page.pageNumber}>
+                {page.data.map((thisItem) => (
+                  <ItemContentWrapper key={thisItem.id} item={thisItem} />
+                ))}
+              </Fragment>
+            ))}
+          </Stack>
+          {showLoadMoreButton}
         </Stack>
-        {showLoadMoreButton}
-      </Stack>
+      </Container>
       <FromShortcutButton />
       <NavigationIsland />
     </>
