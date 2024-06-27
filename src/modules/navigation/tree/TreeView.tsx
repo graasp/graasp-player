@@ -21,6 +21,7 @@ import { hooks } from '@/config/queryClient';
 import { ItemMetaData, getItemTree } from '@/utils/tree';
 
 import Node from './Node';
+import TreeErrorBoundary from './TreeErrorBoundary';
 
 type Props = {
   id: string;
@@ -95,7 +96,7 @@ const TreeView = ({
     : [];
 
   return (
-    <ErrorBoundary fallback={<p>hello</p>}>
+    <ErrorBoundary fallback={<TreeErrorBoundary />}>
       <Box
         id={id}
         sx={{

@@ -2,6 +2,7 @@ import { Platform } from '@graasp/ui';
 
 export const MAIN_MENU_ID = 'mainMenu';
 export const TREE_VIEW_ID = 'treeView';
+export const TREE_FALLBACK_RELOAD_BUTTON_ID = 'treeViewReloadButton';
 export const SHOW_MORE_ITEMS_ID = 'showMoreItems';
 export const HOME_NAVIGATION_STACK_ID = 'homeNavigation';
 export const MY_ITEMS_ID = 'myItems';

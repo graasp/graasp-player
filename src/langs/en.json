@@ -29,6 +29,7 @@
   "NAVIGATION_ISLAND_CHAT_BUTTON_HELPER_TEXT_WRITERS": "To enable the chatbox, go in the item settings in the Builder and activate the 'Show Chat in Player' setting.",
   "NAVIGATION_ISLAND_PINNED_BUTTON_HELPER_TEXT_READERS": "There are no items pinned for this page.",
   "NAVIGATION_ISLAND_PINNED_BUTTON_HELPER_TEXT_WRITERS": "To add items to the pinned section, set them as pinned in the Builder interface.",
+  "TREE_NAVIGATION_RELOAD_TEXT": "Reload me!",
   "MAP_BUTTON_TEXT": "See {{name}} on Map",
   "MAP_BUTTON_DISABLED_TEXT": "This item does not have a geolocation",
   "FROM_SHORTCUT_BUTTON_TEXT": "Back to {{name}}"

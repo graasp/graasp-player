@@ -1,8 +1,14 @@
-import { PermissionLevel } from '@graasp/sdk';
+import {
+  FolderItemFactory,
+  LinkItemFactory,
+  PermissionLevel,
+} from '@graasp/sdk';
 
-import { buildMainPath } from '@/config/paths';
+import { buildContentPagePath, buildMainPath } from '@/config/paths';
 import {
   HOME_PAGE_PAGINATION_ID,
+  TREE_FALLBACK_RELOAD_BUTTON_ID,
+  TREE_VIEW_ID,
   buildHomePaginationId,
   buildTreeItemClass,
 } from '@/config/selectors';
@@ -12,7 +18,7 @@ import {
   FOLDER_WITH_SUBFOLDER_ITEM_AND_PARTIAL_ORDER,
   generateLotsOfFoldersOnHome,
 } from '../fixtures/items';
-import { MEMBERS } from '../fixtures/members';
+import { CURRENT_USER, MEMBERS } from '../fixtures/members';
 
 const items = generateLotsOfFoldersOnHome({ folderCount: 20 });
 const sharedItems = generateLotsOfFoldersOnHome({
@@ -49,7 +55,7 @@ describe('Navigation', () => {
     );
   });
 
-  it('show all folders for partial order', () => {
+  it('Show all folders for partial order', () => {
     cy.setUpApi({ items: FOLDER_WITH_SUBFOLDER_ITEM_AND_PARTIAL_ORDER.items });
     const parent = FOLDER_WITH_SUBFOLDER_ITEM_AND_PARTIAL_ORDER.items[0];
     cy.visit(buildMainPath({ rootId: parent.id }));
@@ -60,7 +66,7 @@ describe('Navigation', () => {
     cy.get(`.${buildTreeItemClass(child1.id)}`).should('be.visible');
   });
 
-  it('navigate successfully when opening child as root', () => {
+  it('Navigate successfully when opening child as root', () => {
     cy.setUpApi({ items: FOLDER_WITH_SUBFOLDER_ITEM.items });
     const child = FOLDER_WITH_SUBFOLDER_ITEM.items[1];
     cy.visit(buildMainPath({ rootId: child.id }));
@@ -71,5 +77,45 @@ describe('Navigation', () => {
     cy.get(`.${buildTreeItemClass(childOfChild.id)}:visible`).should(
       'be.visible',
     );
+  });
+});
+
+describe('Internal navigation', () => {
+  it('Open a /:rootId link works', () => {
+    const firstCourse = FolderItemFactory({
+      name: 'Parent',
+      creator: CURRENT_USER,
+    });
+    const target = FolderItemFactory({ name: 'Target', creator: CURRENT_USER });
+    const url = new URL(target.id, window.location.origin).toString();
+    const link = LinkItemFactory({
+      name: 'Link to target',
+      extra: {
+        embeddedLink: {
+          url,
+        },
+      },
+      settings: { isCollapsible: false },
+      parentItem: firstCourse,
+      creator: CURRENT_USER,
+    });
+    cy.setUpApi({
+      items: [target, firstCourse, link],
+    });
+    cy.visit(
+      buildContentPagePath({ rootId: firstCourse.id, itemId: firstCourse.id }),
+    );
+    cy.get('h2').should('contain', firstCourse.name);
+    cy.get(`#${link.id}`).click();
+
+    cy.url().should('contain', url);
+    // wait for page to stabilize
+    cy.wait(2000);
+    cy.get('h2').should('contain', target.name);
+
+    // since the tree view crashes, expect the reload button
+    cy.get(`#${TREE_FALLBACK_RELOAD_BUTTON_ID}`).click();
+
+    cy.get(`#${TREE_VIEW_ID}`).should('contain', target.name);
   });
 });

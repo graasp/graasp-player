@@ -20,3 +20,14 @@ import './commands';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+/**
+ * this is here because the accessible-tree-view component crashes
+ * when requesting a node that is not in its tree, since it keeps a state internally
+ */
+// eslint-disable-next-line consistent-return
+Cypress.on('uncaught:exception', (err): false | void => {
+  if (err.message.includes('Node with id')) {
+    return false;
+  }
+});
