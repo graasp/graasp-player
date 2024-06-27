@@ -65,9 +65,16 @@ export const expectLinkViewScreenLayout = ({
 export const expectAppViewScreenLayout = ({ id, extra }: AppItemType): void => {
   const { url } = extra.app;
 
-  const appUrl = appendQueryParamToUrl(url, { itemId: id });
+  const appUrl = new URL(appendQueryParamToUrl(url, { itemId: id }));
 
-  cy.get(`iframe#${buildAppId(id)}`).should('have.attr', 'src', appUrl);
+  // remove timestamp query-param from the url
+  appUrl.searchParams.delete('ts');
+
+  cy.get(`iframe#${buildAppId(id)}`).should(
+    'have.attr',
+    'src',
+    appUrl.toString(),
+  );
 };
 
 export const expectFileViewScreenLayout = ({
