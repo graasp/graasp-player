@@ -8215,15 +8215,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucide-react@npm:0.397.0":
-  version: 0.397.0
-  resolution: "lucide-react@npm:0.397.0"
-  peerDependencies:
-    react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10/7b64919d3f25046cd53ed3bfdcf4adf00d54d92a6f2a5d200b0fb70ec74864789e76fbb3c1e58121d2f8dc9b75cbc16a26b3d2dd4d73772516a19399b2e39396
-  languageName: node
-  linkType: hard
-
 "lucide-react@npm:0.399.0":
   version: 0.399.0
   resolution: "lucide-react@npm:0.399.0"
