@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.15.5](https://github.com/graasp/graasp-player/compare/v2.15.4...v2.15.5) (2024-06-28)
+
+
+### Bug Fixes
+
+* allow users to refresh the page when navigation crashes ([#774](https://github.com/graasp/graasp-player/issues/774)) ([7d092dd](https://github.com/graasp/graasp-player/commit/7d092ddb5771d276cbce90c1d30b998f8aa98e6c))
+* container width and image sizing ([#772](https://github.com/graasp/graasp-player/issues/772)) ([81fcc24](https://github.com/graasp/graasp-player/commit/81fcc24388ed1a96d12bbde0ea42e40bcc423e38))
+* **deps:** update dependency @graasp/translations to v1.30.3 ([#775](https://github.com/graasp/graasp-player/issues/775)) ([7ea3c6b](https://github.com/graasp/graasp-player/commit/7ea3c6bba285d4626f213d51e7643fe0ed3d8829))
+* **deps:** update dependency lucide-react to v0.397.0 ([#766](https://github.com/graasp/graasp-player/issues/766)) ([b94e183](https://github.com/graasp/graasp-player/commit/b94e183840cfc27b18550964dbb4cfdb923ff06b))
+* **deps:** update dependency lucide-react to v0.399.0 ([#777](https://github.com/graasp/graasp-player/issues/777)) ([7a042b9](https://github.com/graasp/graasp-player/commit/7a042b924f55a9379151808181872021f4ef5be8))
+* **deps:** update react-router monorepo to v6.24.0 ([#770](https://github.com/graasp/graasp-player/issues/770)) ([1acf710](https://github.com/graasp/graasp-player/commit/1acf7103926f2d03d6592c73bcda747ff44d7aed))
+* release-please workflow permissions ([0ded58a](https://github.com/graasp/graasp-player/commit/0ded58a82c964c75364a9869f301f3449eae3dd8))
+
 ## [2.15.4](https://github.com/graasp/graasp-player/compare/v2.15.3...v2.15.4) (2024-06-25)
 
 
