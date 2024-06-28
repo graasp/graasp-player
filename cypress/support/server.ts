@@ -51,7 +51,6 @@ const {
   buildGetItemTagsRoute,
   buildGetMembersBy,
   buildGetMembersRoute,
-  buildGetAccessibleItems,
   GET_CURRENT_MEMBER_ROUTE,
   GET_OWN_ITEMS_ROUTE,
   SHARED_ITEM_WITH_ROUTE,
@@ -117,7 +116,7 @@ export const mockGetAccessibleItems = (items: DiscriminatedItem[]): void => {
   cy.intercept(
     {
       method: HttpMethod.Get,
-      url: new RegExp(`${API_HOST}/${buildGetAccessibleItems({}, {})}`),
+      url: new RegExp(`${API_HOST}/items/accessible`),
     },
     ({ url, reply }) => {
       const params = new URL(url).searchParams;

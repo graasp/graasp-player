@@ -443,7 +443,7 @@ const FolderContent = ({
           <SectionHeader item={item} />
           <Divider flexItem />
 
-          <Stack direction="column" spacing={2}>
+          <Stack direction="column" gap={4}>
             {childrenPaginated?.pages?.map((page) => (
               <Fragment key={page.pageNumber}>
                 {page.data.map((thisItem) => (
