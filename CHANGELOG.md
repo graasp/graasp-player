@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.15.6](https://github.com/graasp/graasp-player/compare/v2.15.5...v2.15.6) (2024-07-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @graasp/sdk to v4.15.1 ([#780](https://github.com/graasp/graasp-player/issues/780)) ([9059413](https://github.com/graasp/graasp-player/commit/90594132617ab26b1bfd0cff3bcd04a891c38d8b))
+* **deps:** update dependency @graasp/translations to v1.31.0 ([#768](https://github.com/graasp/graasp-player/issues/768)) ([b697b96](https://github.com/graasp/graasp-player/commit/b697b96a4de72623a19ab53fe83a830499b329f9))
+* **deps:** update mui (non-major) to v5.15.21 ([#779](https://github.com/graasp/graasp-player/issues/779)) ([686f655](https://github.com/graasp/graasp-player/commit/686f6555b5fa37947824c62fcc975e5af4000167))
+* update ui and dependencies ([#778](https://github.com/graasp/graasp-player/issues/778)) ([0110b0e](https://github.com/graasp/graasp-player/commit/0110b0ea0dd085a41fdae4e1ac07df9becab089b))
+
 ## [2.15.5](https://github.com/graasp/graasp-player/compare/v2.15.4...v2.15.5) (2024-06-28)
 
 
