@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.15.7](https://github.com/graasp/graasp-player/compare/v2.15.6...v2.15.7) (2024-07-02)
+
+
+### Bug Fixes
+
+* etherpad height ([df1291f](https://github.com/graasp/graasp-player/commit/df1291f74e9bbab3e11269d6450c1d0b7ce42011))
+
 ## [2.15.6](https://github.com/graasp/graasp-player/compare/v2.15.5...v2.15.6) (2024-07-01)
 
 
