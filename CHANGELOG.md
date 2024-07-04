@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.15.7](https://github.com/graasp/graasp-player/compare/v2.15.6...v2.15.7) (2024-07-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @graasp/query-client to v3.15.0 ([#783](https://github.com/graasp/graasp-player/issues/783)) ([8e3ad4c](https://github.com/graasp/graasp-player/commit/8e3ad4cad90a2d3a1c29d2db01c2b80930e66879))
+* **deps:** update dependency @graasp/ui to v4.20.3 ([#791](https://github.com/graasp/graasp-player/issues/791)) ([8f04f2d](https://github.com/graasp/graasp-player/commit/8f04f2d18b34b9f45a865bf3b295a56d2907a71c))
+* **deps:** update dependency katex to v0.16.11 ([#789](https://github.com/graasp/graasp-player/issues/789)) ([c675a9c](https://github.com/graasp/graasp-player/commit/c675a9cd08f277aeb01ac78987b1824b81c52054))
+* **deps:** update dependency lucide-react to v0.400.0 ([#787](https://github.com/graasp/graasp-player/issues/787)) ([bb1437d](https://github.com/graasp/graasp-player/commit/bb1437da68066b3eb94d7ae1fb87cf7a7f061020))
+* **deps:** update react-router monorepo to v6.24.1 ([#790](https://github.com/graasp/graasp-player/issues/790)) ([ac65f1d](https://github.com/graasp/graasp-player/commit/ac65f1da56224fd322691557ec37f84847c84747))
+* etherpad height ([df1291f](https://github.com/graasp/graasp-player/commit/df1291f74e9bbab3e11269d6450c1d0b7ce42011))
+
 ## [2.15.6](https://github.com/graasp/graasp-player/compare/v2.15.5...v2.15.6) (2024-07-01)
 
 
