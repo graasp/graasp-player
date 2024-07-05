@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.15.8](https://github.com/graasp/graasp-player/compare/v2.15.7...v2.15.8) (2024-07-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @graasp/sdk to v4.16.0 ([#793](https://github.com/graasp/graasp-player/issues/793)) ([2cdd84f](https://github.com/graasp/graasp-player/commit/2cdd84fbccee26feaa97cb77a25a3a35127178da))
+* **deps:** update dependency @graasp/translations to v1.31.1 ([#792](https://github.com/graasp/graasp-player/issues/792)) ([8ee063b](https://github.com/graasp/graasp-player/commit/8ee063b6bc25e4579d849c8f59b0c26b95507550))
+
 ## [2.15.7](https://github.com/graasp/graasp-player/compare/v2.15.6...v2.15.7) (2024-07-04)
 
 
