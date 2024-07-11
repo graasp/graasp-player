@@ -1,7 +1,8 @@
 {
-  "GRAASP_PLAYER": "مشغل چراسپ ",
+  "GRAASP_PLAYER": "مشغل graasp ",
   "SHOW_CHAT_TOOLTIP": "إظهار الدردشة",
   "HIDE_CHAT_TOOLTIP": "إخفاء الدردشة",
+  "EXIT_FULLSCREEN_TOOLTIP": "الخروج من ملء الشاشة ",
   "SHOW_PINNED_ITEMS_TOOLTIP": "إظهار العناصر المثبتة",
   "HIDE_PINNED_ITEMS_TOOLTIP": "إخفاء العناصر المثبتة",
   "PINNED_ITEMS": "العناصر المثبتة",
@@ -9,9 +10,16 @@
   "HIDDEN_WRAPPER_TOOLTIP": "هذا العنصر مخفي، يمكنك رؤيته لأن لديك حق الوصول للمسؤول أو للكتابة، ولن يتمكن المستخدمون الذين لديهم حق الوصول للقراءة من رؤيته",
   "SHOW_MORE": "أظهر المزيد...",
   "RECENT_ITEMS_TITLE": "أحدث العناصر",
-  "DRAWER_ARIAL_LABEL": "درج مفتوح",
+  "DRAWER_ARIAL_LABEL": "افتح الواجهة",
   "ERROR_FETCHING_ITEM": "حدث خطأ أثناء جلب العنصر المطلوب",
   "ERROR_ACCESSING_ITEM": "لا يمكنك الوصول إلى هذا العنصر",
   "ERROR_ACCESSING_ITEM_HELPER": "حسابك الحالي ليس لديه حقوق الوصول إلى هذا العنصر.",
-  "SIGN_IN_BUTTON_TEXT": "تسجيل الدخول"
+  "SIGN_IN_BUTTON_TEXT": "تسجيل الدخول",
+  "FALLBACK_TITLE": "عفواً",
+  "ITEM_CHATBOX_TITLE": "\"{{name}}\" دردشة",
+  "ITEM_TITLE_CREATED_AT": "تاريخ الإنشاء: {{date}}",
+  "ITEM_TITLE_UPDATED_AT": "تاريخ التحديث: {{date}}",
+  "NAVIGATION_ISLAND_CHAT_BUTTON_HELPER_TEXT_READERS": "لم يتم تفعيل مربع الدردشة لهذا العنصر.",
+  "NAVIGATION_ISLAND_CHAT_BUTTON_HELPER_TEXT_WRITERS": "لتفعيل مربع الدردشة، انتقل إلى إعدادات العنصر في Builder وقم بتنشيط إعداد \"إظهار الدردشة في المشغل\".",
+  "TREE_NAVIGATION_RELOAD_TEXT": "أعد التحميل !"
 }
