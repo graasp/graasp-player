@@ -49,9 +49,9 @@ const {
   buildGetItemMembershipsForItemsRoute,
   buildGetItemRoute,
   buildGetItemTagsRoute,
-  buildGetMembersBy,
-  buildGetMembersRoute,
-  GET_CURRENT_MEMBER_ROUTE,
+  buildGetMembersByEmailRoute,
+  buildGetMembersByIdRoute,
+  buildGetCurrentMemberRoute,
   GET_OWN_ITEMS_ROUTE,
   SHARED_ITEM_WITH_ROUTE,
   SIGN_OUT_ROUTE,
@@ -145,7 +145,7 @@ export const mockGetCurrentMember = (
   cy.intercept(
     {
       method: DEFAULT_GET.method,
-      url: `${API_HOST}/${GET_CURRENT_MEMBER_ROUTE}`,
+      url: `${API_HOST}/${buildGetCurrentMemberRoute()}`,
     },
     ({ reply }) => {
       // simulate member accessing without log in
@@ -343,7 +343,7 @@ export const mockGetMemberBy = (
     {
       method: DEFAULT_GET.method,
       url: new RegExp(
-        `${API_HOST}/${parseStringToRegExp(buildGetMembersBy([EMAIL_FORMAT]))}`,
+        `${API_HOST}/${parseStringToRegExp(buildGetMembersByEmailRoute([EMAIL_FORMAT]))}`,
       ),
     },
     ({ reply, url }) => {
@@ -561,7 +561,7 @@ export const mockGetMembers = (members: Member[]): void => {
   cy.intercept(
     {
       method: DEFAULT_GET.method,
-      url: `${API_HOST}/${buildGetMembersRoute([''])}*`,
+      url: `${API_HOST}/${buildGetMembersByIdRoute([''])}*`,
     },
     ({ url, reply }) => {
       const memberIds = new URLSearchParams(url).getAll('id');
