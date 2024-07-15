@@ -3,6 +3,7 @@ import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 
 import { Alert } from '@mui/material';
 
+import { ItemType } from '@graasp/sdk';
 import { FAILURE_MESSAGES } from '@graasp/translations';
 import { MainMenu } from '@graasp/ui';
 
@@ -36,6 +37,7 @@ const DrawerNavigation = (): JSX.Element | null => {
   const { data: descendants, isInitialLoading: isLoadingTree } = useDescendants(
     {
       id: rootId ?? '',
+      types: [ItemType.FOLDER],
       // remove hidden
       showHidden: false,
     },
