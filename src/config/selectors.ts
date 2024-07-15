@@ -12,6 +12,10 @@ export const buildAppId = (id: string): string => `app-${id}`;
 export const buildLinkItemId = (id: string): string => `link-${id}`;
 export const FOLDER_NAME_TITLE_CLASS = `folderNameTitle`;
 
+export const ITEM_LOGIN_USERNAME_INPUT_ID = 'itemLoginInput';
+export const ITEM_LOGIN_SIGN_IN_BUTTON_ID = 'itemLoginSignInButton';
+export const ITEM_LOGIN_PASSWORD_INPUT_ID = 'itemLoginPasswordInput';
+
 export const ITEM_FULLSCREEN_BUTTON_ID = 'itemFullscreenButton';
 
 export const ITEM_CHATBOX_ID = 'chatbox';
