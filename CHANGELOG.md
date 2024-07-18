@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.16.0](https://github.com/graasp/graasp-player/compare/v2.15.8...v2.16.0) (2024-07-18)
+
+
+### Features
+
+* update arabic translation ([#808](https://github.com/graasp/graasp-player/issues/808)) ([c4b1af9](https://github.com/graasp/graasp-player/commit/c4b1af90b355de488b8b2b4b2b2249ad8000337a))
+
+
+### Bug Fixes
+
+* **deps:** update dependency lucide-react to v0.402.0 ([#799](https://github.com/graasp/graasp-player/issues/799)) ([d1abc4c](https://github.com/graasp/graasp-player/commit/d1abc4cf719cf106143627917587b25558eeb7cd))
+* **deps:** update graasp packages (patch) ([#795](https://github.com/graasp/graasp-player/issues/795)) ([65e6bda](https://github.com/graasp/graasp-player/commit/65e6bdaec2d007d1028959c20404820e2e3926d6))
+* **deps:** update mui (non-major) to v5.16.0 ([#797](https://github.com/graasp/graasp-player/issues/797)) ([65bcc74](https://github.com/graasp/graasp-player/commit/65bcc740baedf2e20f0b73aa346aad4c85e4afdc))
+* only ask for folders in descendants ([#812](https://github.com/graasp/graasp-player/issues/812)) ([f3c4e2b](https://github.com/graasp/graasp-player/commit/f3c4e2b2c7ff6657daa56f64372ac4171a4c17bf))
+
 ## [2.15.8](https://github.com/graasp/graasp-player/compare/v2.15.7...v2.15.8) (2024-07-05)
 
 
