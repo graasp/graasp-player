@@ -47,7 +47,7 @@
     "@sentry/react": "7.118.0",
     "classnames": "2.5.1",
     "date-fns": "3.6.0",
-    "i18next": "23.11.5",
+    "i18next": "23.12.2",
     "katex": "0.16.11",
     "lodash.isarray": "4.0.0",
     "lodash.truncate": "4.4.2",
