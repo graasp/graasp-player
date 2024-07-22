@@ -6872,7 +6872,7 @@ __metadata:
     katex: "npm:0.16.11"
     lodash.isarray: "npm:4.0.0"
     lodash.truncate: "npm:4.4.2"
-    lucide-react: "npm:0.413.0"
+    lucide-react: "npm:0.414.0"
     prettier: "npm:3.3.3"
     react: "npm:18.3.1"
     react-accessible-treeview: "npm:2.9.1"
@@ -8435,12 +8435,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucide-react@npm:0.413.0":
-  version: 0.413.0
-  resolution: "lucide-react@npm:0.413.0"
+"lucide-react@npm:0.414.0":
+  version: 0.414.0
+  resolution: "lucide-react@npm:0.414.0"
   peerDependencies:
     react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10/3ec3fd02061bf81900739a54b798ac46ea921713d9f2cf59f4c86896531a562ab331e813de0b8a5f42c91ed3f59780cefb5c08b5d0aa1c484171c81a3edc478b
+  checksum: 10/d2524481f14f690e15add2a517d5bcda1432029ae212e82fa8e8624bec0501f8131514d0a03519a60d9d543252f33d8ab0e7a592dee365ec9cc49fe403d5ff1b
   languageName: node
   linkType: hard
 
