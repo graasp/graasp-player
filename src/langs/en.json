@@ -32,5 +32,8 @@
   "TREE_NAVIGATION_RELOAD_TEXT": "Reload me!",
   "MAP_BUTTON_TEXT": "See {{name}} on Map",
   "MAP_BUTTON_DISABLED_TEXT": "This item does not have a geolocation",
-  "FROM_SHORTCUT_BUTTON_TEXT": "Back to {{name}}"
+  "FROM_SHORTCUT_BUTTON_TEXT": "Back to {{name}}",
+  "ENROLL_SCREEN_TITLE": "Enroll to {{name}}",
+  "ENROLL_SCREEN_DESCRIPTION": "This resource allows access with your Graasp account. To access this course, simply click Enroll",
+  "ENROLL_BUTTON_TEXT": "Enroll"
 }

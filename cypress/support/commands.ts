@@ -38,6 +38,7 @@ Cypress.Commands.add(
   'setUpApi',
   ({
     items = [],
+    itemLogins = [],
     chatMessages = [],
     members = Object.values(MEMBERS),
     currentMember = CURRENT_USER,
@@ -47,7 +48,6 @@ Cypress.Commands.add(
     getCurrentMemberError = false,
   } = {}) => {
     if (currentMember) {
-      cy.setCookie(CookieKeys.Session, 'somecookie');
       cy.setCookie(CookieKeys.AcceptCookies, 'true');
     }
     mockGetOwnItems({ items, currentMember });
@@ -63,7 +63,7 @@ Cypress.Commands.add(
     mockGetItemTags(items, currentMember);
 
     mockGetItemsTags(items, currentMember);
-    mockGetLoginSchemaType(items, currentMember);
+    mockGetLoginSchemaType(itemLogins, currentMember);
 
     mockGetChildren(items, currentMember);
 
@@ -125,6 +125,7 @@ declare global {
     interface Chainable {
       setUpApi({
         items,
+        itemLogins,
         members,
         chatMessages,
         currentMember,
@@ -135,6 +136,7 @@ declare global {
         getAppLinkError,
       }?: {
         items?: MockItem[];
+        itemLogins?: { [key: string]: string };
         members?: Member[];
         chatMessages?: ChatMessage[];
         currentMember?: Member | null;

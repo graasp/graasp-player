@@ -1563,9 +1563,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/ui@npm:4.21.0":
-  version: 4.21.0
-  resolution: "@graasp/ui@npm:4.21.0"
+"@graasp/ui@github:graasp/graasp-ui#improve-item-login":
+  version: 4.20.3
+  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=8858c39d46c733ffbfe795693d1968508b84a0f3"
   dependencies:
     "@ag-grid-community/client-side-row-model": "npm:31.3.2"
     "@ag-grid-community/react": "npm:^31.3.2"
@@ -1573,9 +1573,9 @@ __metadata:
     "@storybook/react-vite": "npm:8.1.11"
     http-status-codes: "npm:2.3.0"
     interweave: "npm:13.1.0"
-    katex: "npm:0.16.11"
+    katex: "npm:0.16.10"
     lodash.truncate: "npm:4.4.2"
-    lucide-react: "npm:0.402.0"
+    lucide-react: "npm:0.400.0"
     react-cookie-consent: "npm:9.0.0"
     react-dnd: "npm:16.0.1"
     react-dnd-html5-backend: "npm:16.0.1"
@@ -1589,9 +1589,9 @@ __metadata:
     "@emotion/styled": ~11.10.6 || ~11.11.0
     "@graasp/sdk": ^4.14.0
     "@graasp/translations": ^1.23.0
-    "@mui/icons-material": ~5.14.0 || ~5.15.0 || ~5.16.0
+    "@mui/icons-material": ~5.14.0 || ~5.15.0
     "@mui/lab": ~5.0.0-alpha.150
-    "@mui/material": ~5.14.0 || ~5.15.0 || ~5.16.0
+    "@mui/material": ~5.14.0 || ~5.15.0
     i18next: ^22.4.15 || ^23.0.0
     react: ^18.0.0
     react-dom: ^18.0.0
@@ -1599,7 +1599,7 @@ __metadata:
     react-router-dom: ^6.11.0
     stylis: ^4.1.3
     stylis-plugin-rtl: ^2.1.1
-  checksum: 10/6a8778ae27ebb534204a44e1f97b08fdba6d7524fe3417fd7eaab8f4cf66e19800a38812f0b10c8796c885d6cabc5823bed137aebfbf36f29308ac7f04525314
+  checksum: 10/13ffd4c439b5c19c69cf23e7ec64c0069ff4b2e545f2c670a5304664112b1763bde298d24e49f01ad82acc56283278133f5aa6f70e9fc2bb8a51a3e478f62099
   languageName: node
   linkType: hard
 
@@ -6758,7 +6758,7 @@ __metadata:
     "@graasp/query-client": "npm:3.16.0"
     "@graasp/sdk": "npm:4.20.0"
     "@graasp/translations": "npm:1.32.0"
-    "@graasp/ui": "npm:4.21.0"
+    "@graasp/ui": "github:graasp/graasp-ui#improve-item-login"
     "@mui/icons-material": "npm:5.16.4"
     "@mui/lab": "npm:5.0.0-alpha.172"
     "@mui/material": "npm:5.16.4"
@@ -8016,6 +8016,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"katex@npm:0.16.10":
+  version: 0.16.10
+  resolution: "katex@npm:0.16.10"
+  dependencies:
+    commander: "npm:^8.3.0"
+  bin:
+    katex: cli.js
+  checksum: 10/367034012311c695791de4553b3e4c7a9f36d126a0cae17b97f4e8832ced2559961f9fa6d39e0116e1374013e12ac8af159eb014678f06b4acf5e547292ea3e5
+  languageName: node
+  linkType: hard
+
 "katex@npm:0.16.11":
   version: 0.16.11
   resolution: "katex@npm:0.16.11"
@@ -8351,12 +8362,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucide-react@npm:0.402.0":
-  version: 0.402.0
-  resolution: "lucide-react@npm:0.402.0"
+"lucide-react@npm:0.400.0":
+  version: 0.400.0
+  resolution: "lucide-react@npm:0.400.0"
   peerDependencies:
     react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10/fe8a7d5b65e469ee9f376e65942a1cb66aa39fc650265be4153e0f0235a0a5b09cdb03e8f51ed1f2319bdf91e1ae0859c61fe3a25c68e08ecb289a692bf52a17
+  checksum: 10/6ed8234119658fee998945f39e31d78f4fa05df5216eb1d269fc211c84a382928e4e4705f75ce85dcb056d493e9cf7810303d08c56eb40dce5066c3182ec5e7f
   languageName: node
   linkType: hard
 
