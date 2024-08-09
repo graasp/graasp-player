@@ -1,33 +1,21 @@
-import { Member, MemberType } from '@graasp/sdk';
+import { Member, MemberFactory } from '@graasp/sdk';
 
 export const MEMBERS: { [key: string]: Member } = {
-  ANNA: {
+  ANNA: MemberFactory({
     id: 'anna-id',
     name: 'anna',
     email: 'anna@email.com',
-    type: MemberType.Individual,
-    extra: {},
-    createdAt: new Date(Date.parse('2022-02-04T13:45:56Z')),
-    updatedAt: new Date(Date.parse('2022-02-04T13:45:56Z')),
-  },
-  BOB: {
+  }),
+  BOB: MemberFactory({
     id: 'bob-id',
     name: 'bob',
     email: 'bob@email.com',
-    type: MemberType.Individual,
-    extra: {},
-    createdAt: new Date(Date.parse('2022-02-04T13:45:56Z')),
-    updatedAt: new Date(Date.parse('2022-02-04T13:45:56Z')),
-  },
-  CEDRIC: {
+  }),
+  CEDRIC: MemberFactory({
     id: 'cedric-id',
     name: 'cedric',
     email: 'cedric@email.com',
-    type: MemberType.Individual,
-    extra: {},
-    createdAt: new Date(Date.parse('2022-02-04T13:45:56Z')),
-    updatedAt: new Date(Date.parse('2022-02-04T13:45:56Z')),
-  },
+  }),
 };
 
 export const CURRENT_USER = MEMBERS.ANNA;
