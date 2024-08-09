@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.17.0](https://github.com/graasp/graasp-player/compare/v2.16.0...v2.17.0) (2024-08-09)
+
+
+### Features
+
+* trigger un/collapse action ([#829](https://github.com/graasp/graasp-player/issues/829)) ([536a0c0](https://github.com/graasp/graasp-player/commit/536a0c0022619ab7443dca14154f2d1bee09b19f))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @mui/lab to v5.0.0-alpha.172 ([#796](https://github.com/graasp/graasp-player/issues/796)) ([ac0177f](https://github.com/graasp/graasp-player/commit/ac0177f0bd2b0485fada43198e5ec682ca8f0b81))
+* **deps:** update dependency lucide-react to v0.414.0 ([#803](https://github.com/graasp/graasp-player/issues/803)) ([4d8c205](https://github.com/graasp/graasp-player/commit/4d8c205143d72ba0cd673b1ae487b47fd0386b2d))
+* **deps:** update graasp packages ([#807](https://github.com/graasp/graasp-player/issues/807)) ([253a2ed](https://github.com/graasp/graasp-player/commit/253a2edccde6e7f4b9b456144d904436454e5475))
+* update deps ([#816](https://github.com/graasp/graasp-player/issues/816)) ([103a6fb](https://github.com/graasp/graasp-player/commit/103a6fb7e37cfbb6eeb90cc85b67ddb156b5c0e7))
+
 ## [2.16.0](https://github.com/graasp/graasp-player/compare/v2.15.8...v2.16.0) (2024-07-18)
 
 
