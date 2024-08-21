@@ -33,8 +33,8 @@
     "cypress:run": "env-cmd -f ./.env.test cypress run --browser chrome"
   },
   "dependencies": {
-    "@emotion/cache": "11.13.0",
-    "@emotion/react": "11.13.0",
+    "@emotion/cache": "11.13.1",
+    "@emotion/react": "11.13.3",
     "@emotion/styled": "11.13.0",
     "@graasp/chatbox": "3.1.0",
     "@graasp/query-client": "3.16.0",
