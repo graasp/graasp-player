@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.18.0](https://github.com/graasp/graasp-player/compare/v2.17.0...v2.18.0) (2024-09-12)
+
+
+### Features
+
+* update for item login ([#832](https://github.com/graasp/graasp-player/issues/832)) ([6fb2ecf](https://github.com/graasp/graasp-player/commit/6fb2ecf602d46a570faacb24344f9d23fe1916fc))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @graasp/ui to v4.27.0 ([#842](https://github.com/graasp/graasp-player/issues/842)) ([9dc4cc9](https://github.com/graasp/graasp-player/commit/9dc4cc91cb386a5aa7c0487d23d477ef22247713))
+* **deps:** update dependency @mui/lab to v5.0.0-alpha.173 ([#821](https://github.com/graasp/graasp-player/issues/821)) ([01925f4](https://github.com/graasp/graasp-player/commit/01925f4d61f0aeacf251d2d9893b582216d63422))
+* **deps:** update dependency lucide-react to v0.440.0 ([#843](https://github.com/graasp/graasp-player/issues/843)) ([f5f5436](https://github.com/graasp/graasp-player/commit/f5f5436fb29e7d6f6962870b1adeeeb37f870e8b))
+* **deps:** update dependency stylis to v4.3.3 ([#834](https://github.com/graasp/graasp-player/issues/834)) ([15aa25a](https://github.com/graasp/graasp-player/commit/15aa25a3ec23d011d6f4090571e695a3783a8686))
+* udpate ui ([#825](https://github.com/graasp/graasp-player/issues/825)) ([1344fef](https://github.com/graasp/graasp-player/commit/1344fef750e33d43d307a2c8a83aad6cde0aa99c))
+* update deps ([c0d075a](https://github.com/graasp/graasp-player/commit/c0d075a82fdb72eac450f69850b779c1000ddbe7))
+
 ## [2.17.0](https://github.com/graasp/graasp-player/compare/v2.16.0...v2.17.0) (2024-08-09)
 
 
