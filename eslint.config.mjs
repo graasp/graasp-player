@@ -3,6 +3,7 @@ import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
+import cypressEslint from 'eslint-plugin-cypress';
 import reactHooks from 'eslint-plugin-react-hooks';
 import globals from 'globals';
 import path from 'node:path';
@@ -46,12 +47,12 @@ export default [
     plugins: {
       '@typescript-eslint': fixupPluginRules(typescriptEslint),
       'react-hooks': fixupPluginRules(reactHooks),
+      cypress: fixupConfigRules(cypressEslint),
     },
 
     languageOptions: {
       globals: {
         ...globals.browser,
-        ...globals.node,
         ...globals.mocha,
         ...globals.jest,
         cy: true,
@@ -128,7 +129,7 @@ export default [
         },
       ],
 
-      'import/no-named-as-default': 0,
+      'import/no-named-as-default': 'off',
 
       'react/static-property-placement': [
         'error',
@@ -147,7 +148,7 @@ export default [
       'react/state-in-constructor': ['error', 'never'],
 
       'no-console': [
-        1,
+        'error',
         {
           allow: ['error', 'info'],
         },
