@@ -423,7 +423,11 @@ const ItemContent = ({ item }: ItemContentProps) => {
   }
 };
 
-const ItemContentWrapper = ({ item }: { item: PackedItem }) => {
+export const ItemContentWrapper = ({
+  item,
+}: {
+  item: PackedItem;
+}): JSX.Element | null => {
   // An item the user has access to can be hidden (write, admin) so we hide it in player
   if (item.hidden) {
     return null;

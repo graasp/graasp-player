@@ -6,7 +6,7 @@ import ExitFullscreenIcon from '@mui/icons-material/FullscreenExit';
 import { Grid, Stack, Tooltip, styled } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
-import { DiscriminatedItem, ItemType, getIdsFromPath } from '@graasp/sdk';
+import { DiscriminatedItem } from '@graasp/sdk';
 import { useMobileView } from '@graasp/ui';
 
 import { usePlayerTranslation } from '@/config/i18n';
@@ -14,7 +14,7 @@ import { hooks } from '@/config/queryClient';
 import { useLayoutContext } from '@/contexts/LayoutContext';
 import { PLAYER } from '@/langs/constants';
 import Chatbox from '@/modules/chatbox/Chatbox';
-import Item from '@/modules/item/Item';
+import { ItemContentWrapper } from '@/modules/item/Item';
 
 import { DRAWER_WIDTH, FLOATING_BUTTON_Z_INDEX } from '../../config/constants';
 import {
@@ -79,29 +79,15 @@ const SideContent = ({ content, item }: Props): JSX.Element | null => {
 
   const { t } = usePlayerTranslation();
   const settings = item.settings ?? {};
-  const isFolder = item.type === ItemType.FOLDER;
 
   if (!rootId) {
     return null;
   }
 
-  /* This removes the parents that are higher than the perform root element
-  Ex: if we are in item 6 and the root is 3, when splitting the path we get [ 1, 2, 3, 4, 5, 6 ].
-  However the student cannot go higher than element 3, so we remove the element before 3, this
-  gives us [ 3, 4, 5, 6], which is the visible range of the student. */
-  const parents = getIdsFromPath(item.path);
-  const parentsIds = parents.slice(
-    parents.indexOf(rootId),
-    /* When splitting the path, it returns the current element in the array.
-    However because we use the item components, if the item is not a folder it will be rendered
-    pinned or not. Because we just loop over the parents to get their pinned items.
-    If the item is a folder, we can keep it in the path to show the items that are pinned in it */
-    isFolder ? parents.length : -1,
+  const pinnedItems = children?.filter(
+    ({ settings: s, hidden }) => s.isPinned && !hidden,
   );
-
-  const pinnedCount =
-    children?.filter(({ settings: s, hidden }) => s.isPinned && !hidden)
-      ?.length || 0;
+  const pinnedCount = pinnedItems?.length || 0;
 
   const toggleFullscreen = () => {
     setIsFullscreen(!isFullscreen);
@@ -154,22 +140,23 @@ const SideContent = ({ content, item }: Props): JSX.Element | null => {
   };
 
   const displayPinnedItems = () => {
-    if (!pinnedCount) return null;
-
-    return (
-      <SideDrawer
-        title={t(PLAYER.PINNED_ITEMS)}
-        onClose={togglePinned}
-        open={isPinnedOpen}
-      >
-        {/* show parents pinned items */}
-        <Stack id={ITEM_PINNED_ID} gap={2} mt={1} pb={9}>
-          {parentsIds.map((i) => (
-            <Item key={i} id={i} showPinnedOnly />
-          ))}
-        </Stack>
-      </SideDrawer>
-    );
+    if (pinnedItems?.length) {
+      return (
+        <SideDrawer
+          title={t(PLAYER.PINNED_ITEMS)}
+          onClose={togglePinned}
+          open={isPinnedOpen}
+        >
+          {/* show parents pinned items */}
+          <Stack id={ITEM_PINNED_ID} gap={2} mt={1} pb={9}>
+            {pinnedItems.map((pinnedItem) => (
+              <ItemContentWrapper item={pinnedItem} />
+            ))}
+          </Stack>
+        </SideDrawer>
+      );
+    }
+    return null;
   };
 
   return (

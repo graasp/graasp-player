@@ -111,7 +111,7 @@ describe('Pinned and hidden children', () => {
   });
 });
 
-describe.only('Pinned should not be inherited', () => {
+describe('Pinned should not be inherited', () => {
   beforeEach(() => {
     cy.setUpApi({
       items: PINNED_ITEMS_SHOULD_NOT_INHERIT,
@@ -138,7 +138,7 @@ describe.only('Pinned should not be inherited', () => {
         itemId: child1.id,
       }),
     );
-    cy.get(`#${ITEM_PINNED_ID}`).should('not.be.visible');
+    cy.get(`#${ITEM_PINNED_ID}`).should('not.exist');
 
     // child folder 2
     cy.visit(
@@ -152,6 +152,6 @@ describe.only('Pinned should not be inherited', () => {
       .should('be.visible')
       .and('contain.text', 'I am pinned from child 2');
     // don't show the parent pinned item
-    cy.get(`#${buildDocumentId(rootDocument.id)}`).should('not.be.visible');
+    cy.get(`#${buildDocumentId(rootDocument.id)}`).should('not.exist');
   });
 });
