@@ -2,13 +2,11 @@ import { Skeleton, Stack, Typography } from '@mui/material';
 
 const LoadingTree = (): JSX.Element => (
   <Stack p={1}>
-    {Array.from(['elem 1', 'elem 2', 'elem 3', 'elem 4', 'elem 5']).map(
-      (el) => (
-        <Typography key={el}>
-          <Skeleton variant="text" />
-        </Typography>
-      ),
-    )}
+    {['elem 1', 'elem 2', 'elem 3', 'elem 4', 'elem 5'].map((el) => (
+      <Typography key={el}>
+        <Skeleton variant="text" />
+      </Typography>
+    ))}
   </Stack>
 );
 export default LoadingTree;

@@ -147,7 +147,7 @@ const SideContent = ({ content, item }: Props): JSX.Element | null => {
           onClose={togglePinned}
           open={isPinnedOpen}
         >
-          {/* show parents pinned items */}
+          {/* show children pinned items */}
           <Stack id={ITEM_PINNED_ID} gap={2} mt={1} pb={9}>
             {pinnedItems.map((pinnedItem) => (
               <ItemContentWrapper item={pinnedItem} />
