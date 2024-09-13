@@ -16,7 +16,6 @@ import { CURRENT_USER } from '../members';
 import { MockItem } from '../mockTypes';
 import { mockItemTag } from '../tags';
 
-// eslint-disable-next-line import/prefer-default-export
 export const STATIC_ELECTRICITY: {
   items: MockItem[];
 } = {

@@ -90,7 +90,6 @@ const buildItemsTree = (
   return tree;
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export const getItemTree = (
   data: DiscriminatedItem[],
   rootItems: DiscriminatedItem[],

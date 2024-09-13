@@ -8,7 +8,6 @@ import { MockItem } from './mockTypes';
 import { mockPublicTag } from './tags';
 
 // mock an app with the graasp link
-// eslint-disable-next-line import/prefer-default-export
 export const GRAASP_APP_ITEM: AppItemType = AppItemFactory({
   id: 'baefbd2a-5688-11eb-ae91-0242ac130002',
   name: 'graasp app',

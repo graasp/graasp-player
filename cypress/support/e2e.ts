@@ -13,7 +13,6 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 // Import commands.js using ES2015 syntax:
-// eslint-disable-next-line import/no-extraneous-dependencies
 import '@cypress/code-coverage/support';
 
 import './commands';
