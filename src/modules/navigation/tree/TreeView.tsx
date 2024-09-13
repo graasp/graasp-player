@@ -17,7 +17,6 @@ import {
 import { ErrorBoundary } from '@sentry/react';
 
 import { GRAASP_MENU_ITEMS } from '@/config/constants';
-import { hooks } from '@/config/queryClient';
 import { ItemMetaData, getItemTree } from '@/utils/tree';
 
 import Node from './Node';
@@ -48,8 +47,7 @@ const TreeView = ({
   const itemsToShow = items?.filter((item) =>
     onlyShowContainerItems ? GRAASP_MENU_ITEMS.includes(item.type) : true,
   );
-
-  const { data: focusedItem } = hooks.useItem(itemId);
+  const focusedItem = itemsToShow?.find((i) => i.id === itemId);
 
   // types based on TreeView types
   const onSelect = (value: string) => {

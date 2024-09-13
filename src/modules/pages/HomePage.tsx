@@ -74,7 +74,7 @@ const HomePage = (): JSX.Element => {
 
   const [page, setPage] = useState(1);
 
-  const { data: accessibleItems, isInitialLoading } = useAccessibleItems(
+  const { data: accessibleItems, isLoading } = useAccessibleItems(
     {},
     { page, pageSize: PAGE_SIZE },
   );
@@ -90,10 +90,7 @@ const HomePage = (): JSX.Element => {
             {t(PLAYER.RECENT_ITEMS_TITLE)}
           </Typography>
           <Grid2 container spacing={3} justifyItems="center">
-            <DisplayItems
-              items={accessibleItems?.data}
-              isLoading={isInitialLoading}
-            />
+            <DisplayItems items={accessibleItems?.data} isLoading={isLoading} />
           </Grid2>
         </Stack>
         <Pagination

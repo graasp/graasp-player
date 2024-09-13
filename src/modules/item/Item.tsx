@@ -448,10 +448,13 @@ const FolderContent = ({
   const { t: translatePlayer } = usePlayerTranslation();
 
   // this should be fetched only when the item is a folder
-  const { data: children = [], isInitialLoading: isChildrenLoading } =
-    useChildren(item.id, undefined, {
+  const { data: children = [], isLoading: isChildrenLoading } = useChildren(
+    item.id,
+    undefined,
+    {
       getUpdates: true,
-    });
+    },
+  );
 
   const {
     data: childrenPaginated,
@@ -537,7 +540,7 @@ const Item = ({
   showPinnedOnly = false,
 }: Props): JSX.Element | null => {
   const { t: translateMessage } = useMessagesTranslation();
-  const { data: item, isInitialLoading: isLoadingItem, isError } = useItem(id);
+  const { data: item, isLoading: isLoadingItem, isError } = useItem(id);
   const title = usePageTitle();
   if (item && item.type === ItemType.FOLDER) {
     if (isChildren) {
@@ -557,7 +560,7 @@ const Item = ({
   if (isLoadingItem) {
     return (
       <ItemSkeleton
-        itemType={item?.type ?? ItemType.FOLDER}
+        itemType={ItemType.FOLDER}
         isChildren={isChildren}
         screenMaxHeight={SCREEN_MAX_HEIGHT}
       />

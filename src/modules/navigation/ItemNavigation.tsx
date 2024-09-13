@@ -34,14 +34,12 @@ const DrawerNavigation = (): JSX.Element | null => {
 
   const { t: translateMessage } = useMessagesTranslation();
 
-  const { data: descendants, isInitialLoading: isLoadingTree } = useDescendants(
-    {
-      id: rootId ?? '',
-      types: [ItemType.FOLDER],
-      // remove hidden
-      showHidden: false,
-    },
-  );
+  const { data: descendants, isLoading: isLoadingTree } = useDescendants({
+    id: rootId ?? '',
+    types: [ItemType.FOLDER],
+    // remove hidden
+    showHidden: false,
+  });
 
   const { data: rootItem, isLoading, isError, error } = useItem(rootId);
   const handleNavigationOnClick = (newItemId: string) => {

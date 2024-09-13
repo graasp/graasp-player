@@ -24,14 +24,14 @@ const usePreviousNextButtons = (): {
 
   const shuffle = Boolean(searchParams.get('shuffle') === 'true');
 
-  const { data: descendants, isInitialLoading } = hooks.useDescendants({
+  const { data: descendants, isLoading } = hooks.useDescendants({
     id: rootId,
     types: [ItemType.FOLDER],
     showHidden: false,
     enabled: Boolean(rootId),
   });
 
-  if (isInitialLoading) {
+  if (isLoading) {
     return {
       previousButton: (
         <LoadingButton disabled>

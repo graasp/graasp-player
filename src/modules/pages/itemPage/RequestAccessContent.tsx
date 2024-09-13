@@ -25,7 +25,7 @@ export const RequestAccessContent = ({
   const {
     mutate: requestMembership,
     isSuccess,
-    isLoading,
+    isPending,
   } = mutations.useRequestMembership();
   const { data: request } = hooks.useOwnMembershipRequest(itemId);
 
@@ -64,7 +64,7 @@ export const RequestAccessContent = ({
       <LoadingButton
         id={REQUEST_MEMBERSHIP_BUTTON_ID}
         disabled={isSuccess}
-        loading={isLoading}
+        loading={isPending}
         endIcon={isSuccess ? <Check /> : null}
         onClick={() => {
           requestMembership({ id: itemId });
