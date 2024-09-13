@@ -112,7 +112,7 @@ export const mockGetSharedItems = ({
   ).as('getSharedItems');
 };
 
-export const mockGetAccessibleItems = (items: DiscriminatedItem[]): void => {
+export const mockGetAccessibleItems = (items: MockItem[]): void => {
   cy.intercept(
     {
       method: HttpMethod.Get,

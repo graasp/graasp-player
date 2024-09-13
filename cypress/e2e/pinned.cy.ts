@@ -9,6 +9,7 @@ import {
   FOLDER_WITH_PINNED_ITEMS,
   FOLDER_WITH_SUBFOLDER_ITEM,
   PINNED_AND_HIDDEN_ITEM,
+  PINNED_ITEMS_SHOULD_NOT_INHERIT,
   PUBLIC_FOLDER_WITH_PINNED_ITEMS,
 } from '../fixtures/items';
 import { MEMBERS } from '../fixtures/members';
@@ -107,5 +108,50 @@ describe('Pinned and hidden children', () => {
     cy.get(`#${buildDocumentId(normalDocument.id)}`);
     // check that the pinned icon is not shown
     cy.get(`#${ITEM_PINNED_ID}`).should('not.exist');
+  });
+});
+
+describe.only('Pinned should not be inherited', () => {
+  beforeEach(() => {
+    cy.setUpApi({
+      items: PINNED_ITEMS_SHOULD_NOT_INHERIT,
+    });
+  });
+  it('Shows only current level pins', () => {
+    const parent = PINNED_ITEMS_SHOULD_NOT_INHERIT[0];
+    const rootDocument = PINNED_ITEMS_SHOULD_NOT_INHERIT[1];
+    const child1 = PINNED_ITEMS_SHOULD_NOT_INHERIT[2];
+    const child2 = PINNED_ITEMS_SHOULD_NOT_INHERIT[3];
+    cy.visit(
+      buildContentPagePath({
+        rootId: parent.id,
+        itemId: parent.id,
+      }),
+    );
+
+    cy.get(`#${buildDocumentId(rootDocument.id)}`).should('be.visible');
+
+    // child folder 1
+    cy.visit(
+      buildContentPagePath({
+        rootId: parent.id,
+        itemId: child1.id,
+      }),
+    );
+    cy.get(`#${ITEM_PINNED_ID}`).should('not.be.visible');
+
+    // child folder 2
+    cy.visit(
+      buildContentPagePath({
+        rootId: parent.id,
+        itemId: child2.id,
+      }),
+    );
+    // pinned items should be open and contain the pinned item from child 2
+    cy.get(`#${ITEM_PINNED_ID}`)
+      .should('be.visible')
+      .and('contain.text', 'I am pinned from child 2');
+    // don't show the parent pinned item
+    cy.get(`#${buildDocumentId(rootDocument.id)}`).should('not.be.visible');
   });
 });

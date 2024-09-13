@@ -29,9 +29,7 @@ export const DEFAULT_FOLDER_ITEM: MockItem = {
   path: '',
   type: ItemType.FOLDER,
   extra: {
-    [ItemType.FOLDER]: {
-      childrenOrder: [],
-    },
+    [ItemType.FOLDER]: {},
   },
   creator: CURRENT_USER,
   createdAt: new Date().toISOString(),
@@ -104,9 +102,7 @@ export const FOLDER_WITH_SUBFOLDER_ITEM: { items: MockItem[] } = {
       path: 'ecafbd2a_5688_11eb_ae93_0242ac130002',
       type: ItemType.FOLDER,
       extra: {
-        [ItemType.FOLDER]: {
-          childrenOrder: [],
-        },
+        [ItemType.FOLDER]: {},
       },
       settings: {
         isPinned: false,
@@ -167,9 +163,7 @@ export const FOLDER_WITH_SUBFOLDER_ITEM_AND_PARTIAL_ORDER: {
       name: 'parent folder',
       path: 'ecafbd2a_5688_11eb_ae93_0242ac130002',
       extra: {
-        [ItemType.FOLDER]: {
-          childrenOrder: ['fdf09f5a-5688-11eb-ae93-0242ac130003'],
-        },
+        [ItemType.FOLDER]: {},
       },
       settings: {
         isPinned: false,
@@ -252,6 +246,55 @@ export const FOLDER_WITH_PINNED_ITEMS: { items: MockItem[] } = {
     },
   ],
 };
+
+const getPinnedElementWithoutInheritance = (): MockItem[] => {
+  const parent = FolderItemFactory({
+    name: 'Parent folder',
+    creator: CURRENT_USER,
+  });
+  const children = [
+    DocumentItemFactory({
+      name: 'pinned from root',
+      extra: { document: { content: 'I am pinned from parent' } },
+      settings: { isPinned: true },
+      parentItem: parent,
+      creator: CURRENT_USER,
+    }),
+    FolderItemFactory({
+      name: 'child folder 1',
+      settings: { isPinned: false },
+      parentItem: parent,
+      creator: CURRENT_USER,
+    }),
+    FolderItemFactory({
+      name: 'child folder 2',
+      settings: { isPinned: false },
+      parentItem: parent,
+      creator: CURRENT_USER,
+    }),
+  ];
+  const childrenOfChildren = [
+    DocumentItemFactory({
+      name: 'text in children 1',
+      extra: { document: { content: 'Not pinned' } },
+      settings: { isPinned: false },
+      parentItem: children[1],
+      creator: CURRENT_USER,
+    }),
+    DocumentItemFactory({
+      name: 'pinned text in children 2',
+      extra: { document: { content: 'I am pinned from child 2' } },
+      parentItem: children[2],
+      settings: { isPinned: true },
+      creator: CURRENT_USER,
+    }),
+  ];
+  const items = [parent, ...children, ...childrenOfChildren];
+  return items;
+};
+
+export const PINNED_ITEMS_SHOULD_NOT_INHERIT =
+  getPinnedElementWithoutInheritance();
 
 export const PINNED_AND_HIDDEN_ITEM: { items: MockItem[] } = {
   items: [
@@ -563,8 +606,6 @@ export const FOLDER_WITHOUT_CHILDREN_ORDER: { items: MockItem[] } = {
       name: 'parent folder',
       path: 'ecafbd2a_5688_11eb_ae93_0242ac130122',
       extra: {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
         [ItemType.FOLDER]: {},
       },
       settings: {
