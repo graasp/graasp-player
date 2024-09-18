@@ -38,7 +38,10 @@ export default ({ mode }: { mode: string }): UserConfigExport => {
       mode !== 'test'
         ? checker({
             typescript: true,
-            eslint: { lintCommand: 'eslint "./**/*.{ts,tsx}"' },
+            eslint: {
+              useFlatConfig: true,
+              lintCommand: 'eslint "./**/*.{ts,tsx}"',
+            },
             overlay: { initialIsOpen: false },
           })
         : undefined,
