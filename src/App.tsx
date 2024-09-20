@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
+import { Trans } from 'react-i18next';
 import {
   Link,
   Navigate,
+  Outlet,
   Route,
   Routes,
   useLocation,
@@ -12,7 +14,11 @@ import {
 import { Alert, Button, Stack, Typography } from '@mui/material';
 
 import { buildSignInPath, saveUrlForRedirection } from '@graasp/sdk';
-import { CustomInitialLoader, withAuthorization } from '@graasp/ui';
+import {
+  CustomInitialLoader,
+  PreventGuestWrapper,
+  SignedInWrapper,
+} from '@graasp/ui';
 
 import { AUTHENTICATION_HOST, DOMAIN } from '@/config/env';
 import { HOME_PATH, buildContentPagePath, buildMainPath } from '@/config/paths';
@@ -21,6 +27,8 @@ import HomePage from '@/modules/pages/HomePage';
 import ItemPage from '@/modules/pages/ItemPage';
 
 import { usePlayerTranslation } from './config/i18n';
+import { mutations } from './config/queryClient';
+import { PREVENT_GUEST_MESSAGE_ID } from './config/selectors';
 import { PLAYER } from './langs/constants';
 import PageWrapper from './modules/layout/PageWrapper';
 
@@ -56,7 +64,9 @@ const RedirectToRootContentPage = () => {
 export const App = (): JSX.Element => {
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
-  const { data: currentMember, isLoading } = useCurrentMemberContext();
+  const { data: currentAccount, isLoading } = useCurrentMemberContext();
+  const { mutate: signOut } = mutations.useSignOut();
+  const { t } = usePlayerTranslation();
 
   useEffect(
     () => {
@@ -74,20 +84,6 @@ export const App = (): JSX.Element => {
     return <CustomInitialLoader />;
   }
 
-  const props = {
-    currentMember,
-    redirectionLink: buildSignInPath({
-      host: AUTHENTICATION_HOST,
-      // allows to go back to this page after login
-      redirectionUrl: window.location.href,
-    }),
-    onRedirect: () => {
-      // save current url for later redirection after sign in
-      saveUrlForRedirection(location.pathname, DOMAIN);
-    },
-  };
-  const HomePageWithAuthorization = withAuthorization(HomePage, props);
-
   const fullscreen = Boolean(searchParams.get('fullscreen') === 'true');
 
   return (
@@ -97,7 +93,46 @@ export const App = (): JSX.Element => {
           <Route index element={<RedirectToRootContentPage />} />
           <Route path=":itemId" element={<ItemPage />} />
         </Route>
-        <Route path={HOME_PATH} element={<HomePageWithAuthorization />} />
+        <Route
+          element={
+            // redirect to sign in if not signed in
+            <SignedInWrapper
+              currentAccount={currentAccount}
+              redirectionLink={buildSignInPath({
+                host: AUTHENTICATION_HOST,
+                redirectionUrl: window.location.href,
+              })}
+              onRedirect={() => {
+                // save current url for later redirection after sign in
+                saveUrlForRedirection(location.pathname, DOMAIN);
+              }}
+            >
+              <PreventGuestWrapper
+                id={PREVENT_GUEST_MESSAGE_ID}
+                currentAccount={currentAccount}
+                buttonText={t(PLAYER.GUEST_SIGN_OUT_BUTTON)}
+                onButtonClick={() => signOut()}
+                errorText={t(PLAYER.ERROR_MESSAGE)}
+                text={
+                  <Trans
+                    t={t}
+                    i18nKey={PLAYER.GUEST_LIMITATION_TEXT}
+                    values={{
+                      name: currentAccount?.name,
+                    }}
+                    components={{ 1: <strong /> }}
+                  />
+                }
+              >
+                <Outlet />
+              </PreventGuestWrapper>
+            </SignedInWrapper>
+          }
+        >
+          <Route path={HOME_PATH} element={<HomePage />} />
+        </Route>
+
+        {/* Default redirect  */}
         <Route path="*" element={<Navigate to={HOME_PATH} />} />
       </Route>
     </Routes>

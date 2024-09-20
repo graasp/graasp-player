@@ -52,65 +52,12 @@ const {
   buildGetMembersByEmailRoute,
   buildGetMembersByIdRoute,
   buildGetCurrentMemberRoute,
-  GET_OWN_ITEMS_ROUTE,
-  SHARED_ITEM_WITH_ROUTE,
   SIGN_OUT_ROUTE,
   buildGetItemGeolocationRoute,
 } = API_ROUTES;
 
 export const isError = (error?: { statusCode: number }): boolean =>
   Boolean(error?.statusCode);
-
-export const mockGetOwnItems = ({
-  items,
-  currentMember,
-}: {
-  items: MockItem[];
-  currentMember: Member | null;
-}): void => {
-  cy.intercept(
-    {
-      method: DEFAULT_GET.method,
-      url: `${API_HOST}/${GET_OWN_ITEMS_ROUTE}`,
-    },
-    ({ reply }) => {
-      if (!currentMember) {
-        return reply({ statusCode: StatusCodes.UNAUTHORIZED, body: null });
-      }
-      const own = items.filter(
-        ({ creator, path }) =>
-          creator?.id === currentMember.id && !path.includes('.'),
-      );
-      return reply(own);
-    },
-  ).as('getOwnItems');
-};
-
-export const mockGetSharedItems = ({
-  items,
-  currentMember,
-}: {
-  items: MockItem[];
-  currentMember: Member | null;
-}): void => {
-  cy.intercept(
-    {
-      method: DEFAULT_GET.method,
-      url: `${API_HOST}/${SHARED_ITEM_WITH_ROUTE}`,
-    },
-    ({ reply }) => {
-      if (!currentMember) {
-        return reply({ statusCode: StatusCodes.UNAUTHORIZED, body: null });
-      }
-      const shared = items.filter(
-        ({ memberships, path }) =>
-          memberships?.find((m) => m.memberId === currentMember.id) &&
-          isRootItem({ path }),
-      );
-      return reply(shared);
-    },
-  ).as('getSharedItems');
-};
 
 export const mockGetAccessibleItems = (items: MockItem[]): void => {
   cy.intercept(

@@ -7,6 +7,7 @@ import { Alert, Box, Container, Divider, Skeleton, Stack } from '@mui/material';
 
 import { Api } from '@graasp/query-client';
 import {
+  AccountType,
   ActionTriggers,
   AppItemType,
   Context,
@@ -262,7 +263,12 @@ const AppContent = ({ item }: { item: AppItemType }): JSX.Element => {
       },
     });
   };
-  if (member || isSuccessMember)
+  if (member || isSuccessMember) {
+    const memberLang =
+      member && member?.type === AccountType.Individual
+        ? member.extra?.lang
+        : DEFAULT_LANG;
+
     return (
       <AppItem
         frameId={buildAppId(item.id)}
@@ -275,16 +281,17 @@ const AppContent = ({ item }: { item: AppItemType }): JSX.Element => {
         contextPayload={{
           apiHost: API_HOST,
           settings: item.settings,
-          lang: item.lang || member?.extra?.lang || DEFAULT_LANG,
+          lang: item.lang ?? memberLang,
           permission: PermissionLevel.Read,
           context: Context.Player,
-          memberId: member?.id,
+          accountId: member?.id,
           itemId: item.id,
         }}
         showCollapse={item.settings?.isCollapsible}
         onCollapse={onCollapse}
       />
     );
+  }
 
   if (isLoadingMember) {
     return (

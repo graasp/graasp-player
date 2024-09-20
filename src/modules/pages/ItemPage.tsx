@@ -11,19 +11,14 @@ import MainScreen from '../item/MainScreen';
 
 const { useItem, useItemLoginSchemaType, useCurrentMember } = hooks;
 
-const ItemScreenWrapper = () => (
-  <>
-    <MainScreen />
-    <PlayerCookiesBanner />
-  </>
-);
-
 const { usePostItemLogin } = mutations;
 
 const ItemPage = (): JSX.Element | null => {
-  const { mutate: itemLoginSignIn } = usePostItemLogin();
-
   const itemId = useParams()[ITEM_PARAM];
+  const { mutate: itemLoginSignIn } = usePostItemLogin();
+  const { data: currentAccount } = useCurrentMember();
+  const { data: item } = useItem(itemId);
+  const { data: itemLoginSchemaType } = useItemLoginSchemaType({ itemId });
 
   const navigate = useNavigate();
 
@@ -34,17 +29,20 @@ const ItemPage = (): JSX.Element | null => {
     return null;
   }
 
-  const Component = ItemLoginAuthorization({
-    signIn: itemLoginSignIn,
-    // this is because the itemId can not be undefined in ui
-    itemId,
-    useCurrentMember,
-    useItem,
-    ForbiddenContent,
-    useItemLoginSchemaType,
-  })(ItemScreenWrapper);
-
-  return <Component />;
+  return (
+    <ItemLoginAuthorization
+      signIn={itemLoginSignIn}
+      // this is because the itemId can not be undefined in ui
+      itemId={itemId}
+      currentAccount={currentAccount}
+      item={item}
+      itemLoginSchemaType={itemLoginSchemaType}
+      ForbiddenContent={ForbiddenContent}
+    >
+      <MainScreen />
+      <PlayerCookiesBanner />
+    </ItemLoginAuthorization>
+  );
 };
 
 export default ItemPage;

@@ -74,3 +74,5 @@ export const NAVIGATION_ISLAND_CY = 'navigationIsland';
 export const TREE_NODE_GROUP_CLASS = 'tree-node-group';
 export const BACK_TO_SHORTCUT_ID = 'backToButtonShortcut';
 export const ITEM_MAP_BUTTON_ID = 'itemMapButton';
+
+export const PREVENT_GUEST_MESSAGE_ID = 'prevent-guests';

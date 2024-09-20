@@ -1,5 +1,7 @@
 import { createContext, useContext, useEffect } from 'react';
 
+import { AccountType } from '@graasp/sdk';
+
 import i18n from '@/config/i18n';
 import { hooks } from '@/config/queryClient';
 
@@ -20,7 +22,10 @@ export const CurrentMemberContextProvider = ({
   const query = useCurrentMember();
 
   // update language depending on user setting
-  const lang = query.data?.extra?.lang;
+  const lang =
+    query.data && query.data?.type === AccountType.Individual
+      ? query.data?.extra?.lang
+      : undefined;
   useEffect(() => {
     if (lang !== i18n.language) {
       i18n.changeLanguage(lang);

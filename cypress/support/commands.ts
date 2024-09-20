@@ -26,8 +26,6 @@ import {
   mockGetLoginSchemaType,
   mockGetMemberBy,
   mockGetMembers,
-  mockGetOwnItems,
-  mockGetSharedItems,
   mockPatchAppData,
   mockPostAppData,
   mockProfilePage,
@@ -50,8 +48,6 @@ Cypress.Commands.add(
       cy.setCookie(CookieKeys.Session, 'somecookie');
       cy.setCookie(CookieKeys.AcceptCookies, 'true');
     }
-    mockGetOwnItems({ items, currentMember });
-    mockGetSharedItems({ items, currentMember });
     mockGetAccessibleItems(items);
     mockGetItem(
       { items, currentMember },
