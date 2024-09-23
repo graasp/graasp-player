@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.18.1](https://github.com/graasp/graasp-player/compare/v2.18.0...v2.18.1) (2024-09-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency date-fns to v4 ([#854](https://github.com/graasp/graasp-player/issues/854)) ([7bd267a](https://github.com/graasp/graasp-player/commit/7bd267a19fdbffd0060e64d42165cf810e9e0faf))
+* eslint@v9 error with vite-plugin-checker ([#855](https://github.com/graasp/graasp-player/issues/855)) ([232ebe9](https://github.com/graasp/graasp-player/commit/232ebe9bec2c545dd244fce1bf0dd6c882df426c))
+* pins should not be inherited ([#849](https://github.com/graasp/graasp-player/issues/849)) ([6b1cbec](https://github.com/graasp/graasp-player/commit/6b1cbecdf4b38371ba9d82f734f985951caeaeb7))
+* update deps ([7d5c98b](https://github.com/graasp/graasp-player/commit/7d5c98b9079671e4cc03bec8b4db6a70669e46a3))
+* update eslint to v9 ([#851](https://github.com/graasp/graasp-player/issues/851)) ([e5ba8e7](https://github.com/graasp/graasp-player/commit/e5ba8e729d770c7ed9211ac88cab97e049a892a2))
+* update for new account ([#857](https://github.com/graasp/graasp-player/issues/857)) ([9bb5287](https://github.com/graasp/graasp-player/commit/9bb528776e4f5ad68355972abdb8af1d0401a11b))
+
 ## [2.18.0](https://github.com/graasp/graasp-player/compare/v2.17.0...v2.18.0) (2024-09-12)
 
 
