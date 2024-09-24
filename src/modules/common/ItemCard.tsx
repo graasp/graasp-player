@@ -6,7 +6,7 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
-import { DiscriminatedItem, ItemType, formatDate } from '@graasp/sdk';
+import { ItemType, PackedItem, formatDate } from '@graasp/sdk';
 
 import { usePlayerTranslation } from '@/config/i18n';
 
@@ -14,7 +14,7 @@ import { buildContentPagePath } from '../../config/paths';
 import ItemThumbnail from './ItemThumbnail';
 
 type Props = {
-  item: DiscriminatedItem;
+  item: PackedItem;
 };
 
 const SimpleCard = ({ item }: Props): JSX.Element => {

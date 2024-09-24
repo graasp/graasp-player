@@ -1,25 +1,20 @@
 import {
-  DiscriminatedItem,
+  PackedItem,
   ThumbnailSize,
-  ThumbnailSizeType,
+  ThumbnailsBySize,
   getMimetype,
 } from '@graasp/sdk';
 import { ItemIcon } from '@graasp/ui';
 
-import { hooks } from '@/config/queryClient';
-
 type Props = {
-  item: DiscriminatedItem;
-  size?: ThumbnailSizeType;
+  item: PackedItem;
+  size?: keyof ThumbnailsBySize;
 };
 const ItemThumbnail = ({
   item,
-  size = ThumbnailSize.Small,
+  size = ThumbnailSize.Medium,
 }: Props): JSX.Element | null => {
-  const { data: thumbnailSrc } = hooks.useItemThumbnailUrl({
-    id: item.id,
-    size,
-  });
+  const thumbnailSrc = item.thumbnails?.[size];
 
   return (
     <ItemIcon

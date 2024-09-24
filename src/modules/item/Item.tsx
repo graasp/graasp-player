@@ -11,10 +11,8 @@ import {
   ActionTriggers,
   AppItemType,
   Context,
-  DiscriminatedItem,
   DocumentItemType,
   EtherpadItemType,
-  FolderItemType,
   H5PItemType,
   ItemType,
   LinkItemType,
@@ -23,7 +21,6 @@ import {
   PermissionLevel,
   S3FileItemType,
   ShortcutItemType,
-  ThumbnailSize,
 } from '@graasp/sdk';
 import { DEFAULT_LANG, FAILURE_MESSAGES } from '@graasp/translations';
 import {
@@ -356,14 +353,11 @@ const ShortcutContent = ({ item }: { item: ShortcutItemType }): JSX.Element => {
   );
 };
 
-const FolderButtonContent = ({ item }: { item: FolderItemType }) => {
+const FolderButtonContent = ({ item }: { item: PackedItem }) => {
   const [searchParams] = useSearchParams();
   const { itemId } = useParams();
   const { data: currentDisplayedItem } = useItem(itemId);
-  const { data: thumbnail } = hooks.useItemThumbnailUrl({
-    id: item.id,
-    size: ThumbnailSize.Medium,
-  });
+  const thumbnail = item.thumbnails?.medium;
 
   const newSearchParams = new URLSearchParams(searchParams.toString());
   newSearchParams.set('from', window.location.pathname);
@@ -390,7 +384,7 @@ const FolderButtonContent = ({ item }: { item: FolderItemType }) => {
 };
 
 type ItemContentProps = {
-  item: DiscriminatedItem;
+  item: PackedItem;
 };
 
 const ItemContent = ({ item }: ItemContentProps) => {
@@ -443,7 +437,7 @@ export const ItemContentWrapper = ({
 };
 
 type FolderContentProps = {
-  item: FolderItemType;
+  item: PackedItem;
   showPinnedOnly?: boolean;
 };
 const FolderContent = ({

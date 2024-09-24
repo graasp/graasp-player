@@ -1,24 +1,20 @@
 import { Stack, Typography } from '@mui/material';
 
-import { FolderItemType, ThumbnailSize, formatDate } from '@graasp/sdk';
+import { PackedItem, formatDate } from '@graasp/sdk';
 import { TextDisplay, Thumbnail } from '@graasp/ui';
 
 import { usePlayerTranslation } from '@/config/i18n';
-import { hooks } from '@/config/queryClient';
 import { FOLDER_NAME_TITLE_CLASS } from '@/config/selectors';
 import { PLAYER } from '@/langs/constants';
 
-const { useItemThumbnailUrl } = hooks;
 type SectionHeaderProps = {
-  item: FolderItemType;
+  item: PackedItem;
 };
 
 const SectionHeader = ({ item }: SectionHeaderProps): JSX.Element => {
   const { t, i18n } = usePlayerTranslation();
-  const { data: thumbnailSrc } = useItemThumbnailUrl({
-    id: item.id,
-    size: ThumbnailSize.Medium,
-  });
+  const thumbnailSrc = item.thumbnails?.medium;
+
   return (
     <Stack direction="column" spacing={2}>
       <Stack direction="row" spacing={2} alignItems="center">
