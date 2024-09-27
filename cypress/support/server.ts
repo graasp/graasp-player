@@ -433,19 +433,15 @@ export const mockGetItemsTags = (
   ).as('getItemsTags');
 };
 
-export const mockGetLoginSchemaType = (
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  itemLogins: { [key: string]: string },
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  member: Member | null,
-): void => {
+export const mockGetLoginSchemaType = (itemLogins: {
+  [key: string]: string;
+}): void => {
   cy.intercept(
     {
       method: DEFAULT_GET.method,
       url: new RegExp(`${API_HOST}/${buildGetItemLoginSchemaRoute(ID_FORMAT)}`),
     },
     ({ reply, url }) => {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const itemId = url.slice(API_HOST.length).split('/')[2];
 
       // todo: add response for itemLoginSchemaType

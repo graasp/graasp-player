@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Container, Stack, Typography, styled } from '@mui/material';
 
 import { ItemLoginSchemaType } from '@graasp/sdk';
-import { Button, CustomInitialLoader } from '@graasp/ui';
+import { Button, CustomInitialLoader, ItemLoginWrapper } from '@graasp/ui';
 
 import { usePlayerTranslation } from '@/config/i18n';
 import { HOME_PATH } from '@/config/paths';
@@ -109,13 +109,15 @@ const ItemPage = (): JSX.Element | null => {
     }
 
     return (
-      <ItemLoginScreen
+      <ItemLoginWrapper
         itemId={itemId}
         signIn={itemLoginSignIn}
         itemLoginSchemaType={itemLoginSchemaType}
         usernameInputId={ITEM_LOGIN_USERNAME_INPUT_ID}
         signInButtonId={ITEM_LOGIN_SIGN_IN_BUTTON_ID}
         passwordInputId={ITEM_LOGIN_PASSWORD_INPUT_ID}
+        enrollContent={<EnrollScreen />}
+        // requestAccessContent={<Reque}
       />
     );
   }
