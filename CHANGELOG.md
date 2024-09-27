@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.19.0](https://github.com/graasp/graasp-player/compare/v2.18.1...v2.19.0) (2024-09-27)
+
+
+### Features
+
+* use Thumbnails from PackedItem ([#859](https://github.com/graasp/graasp-player/issues/859)) ([6c5c1f3](https://github.com/graasp/graasp-player/commit/6c5c1f34727f65f5ea36b31672714a9b1bb5c04a))
+
 ## [2.18.1](https://github.com/graasp/graasp-player/compare/v2.18.0...v2.18.1) (2024-09-23)
 
 
