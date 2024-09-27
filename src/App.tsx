@@ -24,7 +24,7 @@ import { AUTHENTICATION_HOST, DOMAIN } from '@/config/env';
 import { HOME_PATH, buildContentPagePath, buildMainPath } from '@/config/paths';
 import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
 import HomePage from '@/modules/pages/HomePage';
-import ItemPage from '@/modules/pages/ItemPage';
+import ItemPage from '@/modules/pages/itemPage/ItemPage';
 
 import { usePlayerTranslation } from './config/i18n';
 import { mutations } from './config/queryClient';

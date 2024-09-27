@@ -37,5 +37,14 @@
   "GUEST_SIGN_OUT_BUTTON": "Log out and Create a Graasp account",
   "ENROLL_SCREEN_TITLE": "Enroll to {{name}}",
   "ENROLL_SCREEN_DESCRIPTION": "This resource allows access with your Graasp account. To access this course, simply click Enroll",
-  "ENROLL_BUTTON_TEXT": "Enroll"
+  "ENROLL_BUTTON_TEXT": "Enroll",
+  "REQUEST_ACCESS_PENDING_TITLE": "Your access request is pending",
+  "REQUEST_ACCESS_PENDING_DESCRIPTION": "An admin needs to approve your request for you to access this item.",
+  "REQUEST_ACCESS_TITLE": "Request access to this item",
+  "REQUEST_ACCESS_BUTTON": "Request access",
+  "REQUEST_ACCESS_SENT_BUTTON": "Request sent",
+  "ENROLL_TITLE": "Enroll to this item",
+  "ENROLL_BUTTON": "Enroll",
+  "ENROLL_DESCRIPTION": "Click on the button below to enroll and access this item.",
+  "ITEM_LOGIN_HELPER_SIGN_OUT": "You're logged in as {{email}}"
 }
