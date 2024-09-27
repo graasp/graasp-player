@@ -6,6 +6,7 @@ import { CircleUser } from 'lucide-react';
 
 import { usePlayerTranslation } from '@/config/i18n';
 import { mutations } from '@/config/queryClient';
+import { ENROLL_BUTTON_SELECTOR } from '@/config/selectors';
 import { PLAYER } from '@/langs/constants';
 
 // eslint-disable-next-line import/prefer-default-export
@@ -30,7 +31,7 @@ export const EnrollContent = ({ itemId }: { itemId: string }): JSX.Element => {
         {translatePlayer(PLAYER.ENROLL_DESCRIPTION)}
       </Typography>
       <Button
-        // dataCy={ENROLL_BUTTON_SELECTOR}
+        dataCy={ENROLL_BUTTON_SELECTOR}
         onClick={() => {
           enroll({ itemId });
         }}

@@ -80,3 +80,6 @@ export const BACK_TO_SHORTCUT_ID = 'backToButtonShortcut';
 export const ITEM_MAP_BUTTON_ID = 'itemMapButton';
 
 export const PREVENT_GUEST_MESSAGE_ID = 'prevent-guests';
+export const ENROLL_BUTTON_SELECTOR = 'enrollButton';
+export const REQUEST_MEMBERSHIP_BUTTON_ID = 'requestMembershipButton';
+export const FORBIDDEN_CONTENT_ID = 'forbiddenContent';

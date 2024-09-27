@@ -11,6 +11,7 @@ import { Check, Lock } from 'lucide-react';
 
 import { usePlayerTranslation } from '@/config/i18n';
 import { hooks, mutations } from '@/config/queryClient';
+import { REQUEST_MEMBERSHIP_BUTTON_ID } from '@/config/selectors';
 import { PLAYER } from '@/langs/constants';
 
 // eslint-disable-next-line import/prefer-default-export
@@ -63,13 +64,14 @@ export const RequestAccessContent = ({
         {translatePlayer(PLAYER.REQUEST_ACCESS_TITLE)}
       </Typography>
       <LoadingButton
-        // id={REQUEST_MEMBERSHIP_BUTTON_ID}
+        id={REQUEST_MEMBERSHIP_BUTTON_ID}
         disabled={isSuccess}
         loading={isLoading}
         endIcon={isSuccess ? <Check /> : null}
         onClick={async () => {
           await requestMembership({ id: itemId });
         }}
+        variant="contained"
       >
         {isSuccess
           ? translatePlayer(PLAYER.REQUEST_ACCESS_SENT_BUTTON)

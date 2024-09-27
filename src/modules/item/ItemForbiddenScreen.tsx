@@ -4,7 +4,10 @@ import { Stack } from '@mui/material';
 import { Button, ForbiddenContent } from '@graasp/ui';
 
 import { usePlayerTranslation } from '@/config/i18n';
-import { USER_SWITCH_SIGN_IN_BUTTON_ID } from '@/config/selectors';
+import {
+  FORBIDDEN_CONTENT_ID,
+  USER_SWITCH_SIGN_IN_BUTTON_ID,
+} from '@/config/selectors';
 import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
 import { PLAYER } from '@/langs/constants';
 import UserSwitchWrapper from '@/modules/userSwitch/UserSwitchWrapper';
@@ -33,6 +36,7 @@ const ItemForbiddenScreen = (): JSX.Element => {
       spacing={2}
     >
       <ForbiddenContent
+        id={FORBIDDEN_CONTENT_ID}
         memberId={member?.id}
         title={t(PLAYER.ERROR_ACCESSING_ITEM)}
         authenticatedText={t(PLAYER.ERROR_ACCESSING_ITEM_HELPER)}
