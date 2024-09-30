@@ -13,8 +13,8 @@ import { combineUuids, shuffleAllButLastItemInArray } from '@/utils/shuffle.ts';
 import { LoadingButton, NavigationButton } from './CustomButtons';
 
 const usePreviousNextButtons = (): {
-  previousButton: JSX.Element | false;
-  nextButton: JSX.Element | false;
+  previousButton: JSX.Element | null;
+  nextButton: JSX.Element | null;
 } => {
   const { rootId, itemId } = useParams();
   const [searchParams] = useSearchParams();
@@ -52,7 +52,7 @@ const usePreviousNextButtons = (): {
 
   // if there are no descendants then there is no need to navigate
   if (!isArray(descendants)) {
-    return { previousButton: false, nextButton: false };
+    return { previousButton: null, nextButton: null };
   }
 
   let folderHierarchy = descendants;
@@ -78,7 +78,7 @@ const usePreviousNextButtons = (): {
 
     // if index is not found, then do not show navigation
     if (idx < 0) {
-      return { previousButton: false, nextButton: false };
+      return { previousButton: null, nextButton: null };
     }
 
     // if index is 0, previous is root
@@ -101,7 +101,7 @@ const usePreviousNextButtons = (): {
 
   // should we display both buttons if they are disabled ?
   if (!prev && !next) {
-    return { previousButton: false, nextButton: false };
+    return { previousButton: null, nextButton: null };
   }
 
   return {

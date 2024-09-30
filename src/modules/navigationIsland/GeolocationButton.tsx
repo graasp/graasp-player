@@ -15,7 +15,7 @@ import { ToolButton } from './CustomButtons';
 
 const cm = ClientHostManager.getInstance();
 
-const useGeolocationButton = (): { geolocationButton: JSX.Element | false } => {
+const useGeolocationButton = (): { geolocationButton: JSX.Element | null } => {
   const { t } = usePlayerTranslation();
   // get inherited geoloc
   const { itemId, rootId } = useParams();
@@ -26,7 +26,7 @@ const useGeolocationButton = (): { geolocationButton: JSX.Element | false } => {
   const { data: geoloc } = hooks.useItemGeolocation(item?.id);
 
   if (!allGeoloc?.length) {
-    return { geolocationButton: false };
+    return { geolocationButton: null };
   }
 
   const url = geoloc

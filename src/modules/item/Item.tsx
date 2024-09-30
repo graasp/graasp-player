@@ -535,7 +535,7 @@ const Item = ({
   id,
   isChildren = false,
   showPinnedOnly = false,
-}: Props): JSX.Element | false => {
+}: Props): JSX.Element | null => {
   const { t: translateMessage } = useMessagesTranslation();
   const { data: item, isInitialLoading: isLoadingItem, isError } = useItem(id);
   const title = usePageTitle();
@@ -584,7 +584,7 @@ const Item = ({
       </Alert>
     );
   }
-  return false;
+  return null;
 };
 
 export default Item;

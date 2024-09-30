@@ -14,7 +14,7 @@ import { PLAYER } from '@/langs/constants';
 
 import { ToolButton } from './CustomButtons';
 
-const useChatButton = (): { chatButton: JSX.Element | false } => {
+const useChatButton = (): { chatButton: JSX.Element | null } => {
   const { t } = usePlayerTranslation();
   const { itemId, rootId } = useParams();
   const { data: item } = hooks.useItem(itemId);
@@ -64,6 +64,6 @@ const useChatButton = (): { chatButton: JSX.Element | false } => {
     };
   }
   // disable the chat button if there are no items with the chat enabled
-  return { chatButton: false };
+  return { chatButton: null };
 };
 export default useChatButton;

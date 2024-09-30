@@ -7,7 +7,7 @@ import useGeolocationButton from './GeolocationButton';
 import usePinnedItemsButton from './PinnedItemsButton';
 import usePreviousNextButtons from './PreviousNextButtons';
 
-const NavigationIslandBox = (): JSX.Element | false => {
+const NavigationIslandBox = (): JSX.Element | null => {
   const { previousButton, nextButton } = usePreviousNextButtons();
   const { chatButton } = useChatButton();
   const { geolocationButton } = useGeolocationButton();
@@ -21,7 +21,7 @@ const NavigationIslandBox = (): JSX.Element | false => {
     !nextButton &&
     !geolocationButton
   ) {
-    return false;
+    return null;
   }
 
   return (

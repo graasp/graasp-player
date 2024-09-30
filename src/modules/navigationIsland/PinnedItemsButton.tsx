@@ -14,7 +14,7 @@ import { PLAYER } from '@/langs/constants';
 
 import { ToolButton } from './CustomButtons';
 
-const usePinnedItemsButton = (): { pinnedButton: JSX.Element | false } => {
+const usePinnedItemsButton = (): { pinnedButton: JSX.Element | null } => {
   const { t } = usePlayerTranslation();
   const { togglePinned, isPinnedOpen } = useLayoutContext();
   const { itemId } = useParams();
@@ -29,7 +29,7 @@ const usePinnedItemsButton = (): { pinnedButton: JSX.Element | false } => {
 
   // don't show the button if there are no items pinned in all descendants
   if (childrenPinnedCount <= 0) {
-    return { pinnedButton: false };
+    return { pinnedButton: null };
   }
 
   const canWrite = item?.permission

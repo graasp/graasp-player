@@ -35,7 +35,7 @@ const DisplayItems = ({
 }: {
   items?: PackedItem[];
   isLoading: boolean;
-}): JSX.Element[] | false => {
+}): JSX.Element[] | null => {
   if (items) {
     return items.map((item) => (
       <GridWrapper key={item.id}>
@@ -50,7 +50,7 @@ const DisplayItems = ({
       </GridWrapper>
     ));
   }
-  return false;
+  return null;
 };
 
 const HomePage = (): JSX.Element => {
