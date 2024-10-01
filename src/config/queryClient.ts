@@ -15,7 +15,6 @@ const {
 } = configureQueryClient({
   API_HOST,
   DOMAIN,
-  // todo: improve types
   notifier,
   enableWebsocket: true,
   defaultQueryOptions: {

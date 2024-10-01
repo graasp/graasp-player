@@ -14,7 +14,6 @@ import { hooks, mutations } from '@/config/queryClient';
 import { REQUEST_MEMBERSHIP_BUTTON_ID } from '@/config/selectors';
 import { PLAYER } from '@/langs/constants';
 
-// eslint-disable-next-line import/prefer-default-export
 export const RequestAccessContent = ({
   member,
   itemId,
@@ -24,7 +23,7 @@ export const RequestAccessContent = ({
 }): JSX.Element => {
   const { t: translatePlayer } = usePlayerTranslation();
   const {
-    mutateAsync: requestMembership,
+    mutate: requestMembership,
     isSuccess,
     isLoading,
   } = mutations.useRequestMembership();
@@ -38,7 +37,6 @@ export const RequestAccessContent = ({
         alignItems="center"
         height="100%"
         gap={2}
-        // data-cy={MEMBERSHIP_REQUEST_PENDING_SCREEN_SELECTOR}
       >
         <Lock size={40} />
         <Typography variant="h3">
@@ -68,8 +66,8 @@ export const RequestAccessContent = ({
         disabled={isSuccess}
         loading={isLoading}
         endIcon={isSuccess ? <Check /> : null}
-        onClick={async () => {
-          await requestMembership({ id: itemId });
+        onClick={() => {
+          requestMembership({ id: itemId });
         }}
         variant="contained"
       >

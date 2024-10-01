@@ -32,7 +32,7 @@ describe('Item page', () => {
       );
     });
 
-    it.only('Should redirect to auth with url parameter', () => {
+    it('Should redirect to auth with url parameter', () => {
       cy.get(`#${USER_SWITCH_SIGN_IN_BUTTON_ID}`).should('be.visible').click();
       cy.get(`[role="menuitem"]:visible`).click();
       cy.url().should('include', `?url=`);

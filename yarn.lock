@@ -5969,6 +5969,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:8.6.0"
     "@typescript-eslint/parser": "npm:8.6.0"
     "@vitejs/plugin-react": "npm:^4.3.1"
+    axios: "npm:1.7.7"
     classnames: "npm:2.5.1"
     commitlint: "npm:19.5.0"
     concurrently: "npm:9.0.1"

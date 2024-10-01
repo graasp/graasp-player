@@ -1,29 +1,45 @@
 import { toast } from 'react-toastify';
 
-import { Notifier } from '@graasp/query-client';
+import { Notifier, routines } from '@graasp/query-client';
+import { FAILURE_MESSAGES } from '@graasp/translations';
 
-// import { FAILURE_MESSAGES, SUCCESS_MESSAGES } from '@graasp/translations';
+import axios from 'axios';
+
+import i18n from './i18n';
+
+const { requestMembershipRoutine } = routines;
+
+export const getErrorMessageFromPayload = (
+  payload?: Parameters<Notifier>[0]['payload'],
+): string => {
+  if (payload?.error && axios.isAxiosError(payload.error)) {
+    return (
+      payload.error.response?.data.message ?? FAILURE_MESSAGES.UNEXPECTED_ERROR
+    );
+  }
+
+  return payload?.error?.message ?? FAILURE_MESSAGES.UNEXPECTED_ERROR;
+};
 
 const notifier: Notifier = ({ type, payload }) => {
-  const message = null;
+  let message = null;
   switch (type) {
     // error messages
-
+    case requestMembershipRoutine.FAILURE: {
+      message = getErrorMessageFromPayload(payload);
+      break;
+    }
     // progress messages
     default:
   }
 
   // error notification
   if (payload?.error && message) {
-    // todo: can't use translation hooks inside this function
-    // const translatedMessage =
-    //   t(message) || t(FAILURE_MESSAGES.UNEXPECTED_ERROR);
-    toast.error(message);
+    toast.error(i18n.t(message) || i18n.t(FAILURE_MESSAGES.UNEXPECTED_ERROR));
   }
   // success notification
   else if (message) {
-    // const translatedMessage = t(message) || t(SUCCESS_MESSAGES.DEFAULT_SUCCESS);
-    toast.success(message);
+    toast.success(i18n.t(message));
   }
 };
 export default notifier;

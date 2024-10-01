@@ -41,12 +41,14 @@ const DisplayItems = ({
 }: {
   items?: PackedItem[];
   isLoading: boolean;
-}): JSX.Element[] | null => {
+}): JSX.Element[] | JSX.Element | null => {
+  const { t } = usePlayerTranslation();
+
   if (items) {
     if (!items.length) {
       return (
         <Alert severity="info" sx={{ m: 1, width: '100%' }}>
-          You have no elements.
+          {t(PLAYER.HOME_EMPTY)}
         </Alert>
       );
     }

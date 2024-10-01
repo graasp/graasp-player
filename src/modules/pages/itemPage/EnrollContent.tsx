@@ -9,7 +9,6 @@ import { mutations } from '@/config/queryClient';
 import { ENROLL_BUTTON_SELECTOR } from '@/config/selectors';
 import { PLAYER } from '@/langs/constants';
 
-// eslint-disable-next-line import/prefer-default-export
 export const EnrollContent = ({ itemId }: { itemId: string }): JSX.Element => {
   const { t: translatePlayer } = usePlayerTranslation();
 

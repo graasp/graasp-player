@@ -105,7 +105,7 @@ export default [
       'no-use-before-define': 'off',
       '@typescript-eslint/no-use-before-define': ['error'],
       'no-unused-vars': 'off',
-
+      'import/prefer-default-export': 'off',
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
