@@ -278,7 +278,7 @@ const AppContent = ({ item }: { item: AppItemType }): JSX.Element => {
         contextPayload={{
           apiHost: API_HOST,
           settings: item.settings,
-          lang: memberLang,
+          lang: item.lang ?? memberLang,
           permission: PermissionLevel.Read,
           context: Context.Player,
           accountId: member?.id,

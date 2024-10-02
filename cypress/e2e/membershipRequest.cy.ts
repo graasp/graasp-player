@@ -1,4 +1,7 @@
-import { PackedFolderItemFactory } from '@graasp/sdk';
+import {
+  CompleteMembershipRequest,
+  PackedFolderItemFactory,
+} from '@graasp/sdk';
 
 import { buildContentPagePath } from '@/config/paths';
 import {
@@ -7,17 +10,18 @@ import {
 } from '@/config/selectors';
 import { ID_FORMAT } from '@/utils/item';
 
+import { CURRENT_USER } from '../fixtures/members';
 import { API_HOST } from '../support/env';
-import { DEFAULT_GET, DEFAULT_POST } from '../support/utils';
+import { DEFAULT_POST } from '../support/utils';
 
-const item = PackedFolderItemFactory();
+const item = PackedFolderItemFactory({}, { permission: null });
 
 describe('Membership Request', () => {
   describe('Logged out', () => {
     beforeEach(() => {
       cy.setUpApi({
         currentMember: null,
-        items: [{ ...item, permission: null }],
+        items: [item],
       });
     });
 
@@ -31,23 +35,11 @@ describe('Membership Request', () => {
   describe('Logged in', () => {
     beforeEach(() => {
       cy.setUpApi({
-        items: [{ ...item, permission: null }],
+        items: [item],
       });
     });
 
     it('Request membership', () => {
-      cy.intercept(
-        {
-          method: DEFAULT_GET.method,
-          url: new RegExp(
-            `${API_HOST}/items/${ID_FORMAT}/memberships/requests$`,
-          ),
-        },
-        ({ reply }) => {
-          reply([]);
-        },
-      );
-
       cy.intercept(
         {
           method: DEFAULT_POST.method,
@@ -56,7 +48,11 @@ describe('Membership Request', () => {
           ),
         },
         ({ reply }) => {
-          reply('ok');
+          reply({
+            member: CURRENT_USER,
+            item,
+            createdAt: Date.now().toString(),
+          } as CompleteMembershipRequest);
         },
       ).as('request');
 

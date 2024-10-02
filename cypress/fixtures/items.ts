@@ -705,15 +705,7 @@ export const ANOTHER_FOLDER_WITH_FIVE_ORDERED_SUBFOLDER_ITEMS: {
       name: 'parent folder',
       path: 'acafbd2a_5688_11eb_ae93_0242ac130002',
       extra: {
-        [ItemType.FOLDER]: {
-          childrenOrder: [
-            'fdf09f5a-5688-11eb-ae93-0242ac130003',
-            'fdf09f5a-5688-11eb-ae93-0242ac130004',
-            'fdf09f5a-5688-11eb-ae93-0242ac130007',
-            'fdf09f5a-5688-11eb-ae93-0242ac130008',
-            'fdf09f5a-5688-11eb-ae93-0242ac130009',
-          ],
-        },
+        [ItemType.FOLDER]: {},
       },
       settings: {
         isPinned: false,
