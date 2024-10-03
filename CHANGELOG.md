@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.20.0](https://github.com/graasp/graasp-player/compare/v2.19.0...v2.20.0) (2024-10-03)
+
+
+### Features
+
+* **deps:** update TanStack Query to v5 ([#848](https://github.com/graasp/graasp-player/issues/848)) ([19cd78a](https://github.com/graasp/graasp-player/commit/19cd78a3985f44e2b020f4e334960ba370b99e13))
+
+
+### Bug Fixes
+
+* add enroll page and handle logged in member ([#826](https://github.com/graasp/graasp-player/issues/826)) ([fc928a3](https://github.com/graasp/graasp-player/commit/fc928a349636fd63b189a3f21c33a444ad41e51b))
+* **deps:** update dependency @graasp/ui to v5.2.1 ([#865](https://github.com/graasp/graasp-player/issues/865)) ([2822c03](https://github.com/graasp/graasp-player/commit/2822c03e11c4633705908881aa19c00930d278ef))
+* **deps:** update dependency lucide-react to v0.446.0 ([#858](https://github.com/graasp/graasp-player/issues/858)) ([90c8828](https://github.com/graasp/graasp-player/commit/90c8828695a0f87a0de69df010312077af562e32))
+* **deps:** update dependency lucide-react to v0.447.0 ([#863](https://github.com/graasp/graasp-player/issues/863)) ([8336932](https://github.com/graasp/graasp-player/commit/833693241a77f78ff169a81fa5597aca96c48016))
+* remove usage of `false` in component return ([#861](https://github.com/graasp/graasp-player/issues/861)) ([36d56a3](https://github.com/graasp/graasp-player/commit/36d56a3f6f75bf38744e264827590d264668c472))
+
 ## [2.19.0](https://github.com/graasp/graasp-player/compare/v2.18.1...v2.19.0) (2024-09-27)
 
 
