@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.20.1](https://github.com/graasp/graasp-player/compare/v2.20.0...v2.20.1) (2024-10-08)
+
+
+### Bug Fixes
+
+* add analytics host to readme ([c2fbfe0](https://github.com/graasp/graasp-player/commit/c2fbfe081d74e4c56070799e9bbd7baef9cc5938))
+
 ## [2.20.0](https://github.com/graasp/graasp-player/compare/v2.19.0...v2.20.0) (2024-10-03)
 
 
