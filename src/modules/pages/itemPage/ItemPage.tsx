@@ -25,12 +25,14 @@ const ItemPage = (): JSX.Element | null => {
   const { mutate: itemLoginSignIn } = mutations.usePostItemLogin();
   const {
     data: item,
-    isLoading: isItemLoading,
+    isFetching: isItemLoading,
     error: itemError,
   } = useItem(itemId);
-  const { data: itemLoginSchemaType, isLoading: isLoadingItemLoginSchemaType } =
-    useItemLoginSchemaType({ itemId });
-  const { data: currentAccount, isLoading: isLoadingMember } =
+  const {
+    data: itemLoginSchemaType,
+    isFetching: isLoadingItemLoginSchemaType,
+  } = useItemLoginSchemaType({ itemId });
+  const { data: currentAccount, isFetching: isLoadingMember } =
     useCurrentMember();
 
   if (!itemId) {
