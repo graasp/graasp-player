@@ -50,7 +50,7 @@ describe('Platform switch', () => {
     // go to child
     cy.visit(buildContentPagePath({ rootId: parent.id, itemId: child.id }));
   });
-  ['Builder', 'Analytics'].forEach((platform) => {
+  ['builder', 'analytics'].forEach((platform) => {
     it(platform, () => {
       cy.get(`[data-testid="${platform}"]`).click();
       cy.wait(`@${platform.toLowerCase()}`);
