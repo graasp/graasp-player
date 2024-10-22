@@ -31,6 +31,7 @@ import { mutations } from './config/queryClient';
 import { PREVENT_GUEST_MESSAGE_ID } from './config/selectors';
 import { PLAYER } from './langs/constants';
 import PageWrapper from './modules/layout/PageWrapper';
+import { AutoLogin } from './modules/pages/AutoLogin';
 
 const RedirectToRootContentPage = () => {
   const { rootId } = useParams();
@@ -91,7 +92,10 @@ export const App = (): JSX.Element => {
       <Route element={<PageWrapper fullscreen={fullscreen} />}>
         <Route path={buildMainPath()}>
           <Route index element={<RedirectToRootContentPage />} />
-          <Route path=":itemId" element={<ItemPage />} />
+          <Route path=":itemId">
+            <Route index element={<ItemPage />} />
+            <Route path="autoLogin" element={<AutoLogin />} />
+          </Route>
         </Route>
         <Route
           element={
