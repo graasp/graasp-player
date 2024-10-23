@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.21.0](https://github.com/graasp/graasp-player/compare/v2.20.0...v2.21.0) (2024-10-23)
+
+
+### Features
+
+* add auto login ([#876](https://github.com/graasp/graasp-player/issues/876)) ([705976b](https://github.com/graasp/graasp-player/commit/705976b25279d53ed576dc83a85dfbfee625cc59))
+
+
+### Bug Fixes
+
+* add analytics host to readme ([c2fbfe0](https://github.com/graasp/graasp-player/commit/c2fbfe081d74e4c56070799e9bbd7baef9cc5938))
+* **deps:** update dependency @graasp/ui to v5.3.1 ([#873](https://github.com/graasp/graasp-player/issues/873)) ([a4bfbf8](https://github.com/graasp/graasp-player/commit/a4bfbf834a986d144e9b74dbee6311fecb303a72))
+* **deps:** update dependency i18next to v23.16.2 ([#878](https://github.com/graasp/graasp-player/issues/878)) ([0e00fa6](https://github.com/graasp/graasp-player/commit/0e00fa6c3e37f3946d7cd81617203b3619eff71d))
+* **deps:** update dependency react-i18next to v15.1.0 ([#879](https://github.com/graasp/graasp-player/issues/879)) ([c409404](https://github.com/graasp/graasp-player/commit/c40940472574a1dcd066f5d2b1500df374edfdcf))
+* update deps ([#875](https://github.com/graasp/graasp-player/issues/875)) ([dfc8f14](https://github.com/graasp/graasp-player/commit/dfc8f14a9309675d7aa6bc974e1c7745db72a1b9))
+
 ## [2.20.0](https://github.com/graasp/graasp-player/compare/v2.19.0...v2.20.0) (2024-10-03)
 
 
