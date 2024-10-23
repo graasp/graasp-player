@@ -36,7 +36,7 @@ Cypress.Commands.add(
   'setUpApi',
   ({
     items = [],
-    itemLogins = [],
+    itemLogins = {},
     chatMessages = [],
     members = Object.values(MEMBERS),
     currentMember = CURRENT_USER,
@@ -59,7 +59,7 @@ Cypress.Commands.add(
     mockGetItemTags(items, currentMember);
 
     mockGetItemsTags(items, currentMember);
-    mockGetLoginSchemaType(itemLogins, currentMember);
+    mockGetLoginSchemaType(itemLogins);
 
     mockGetChildren(items, currentMember);
 

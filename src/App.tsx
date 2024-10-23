@@ -21,7 +21,12 @@ import {
 } from '@graasp/ui';
 
 import { AUTHENTICATION_HOST, DOMAIN } from '@/config/env';
-import { HOME_PATH, buildContentPagePath, buildMainPath } from '@/config/paths';
+import {
+  AUTO_LOGIN_PATH,
+  HOME_PATH,
+  buildContentPagePath,
+  buildMainPath,
+} from '@/config/paths';
 import { useCurrentMemberContext } from '@/contexts/CurrentMemberContext';
 import HomePage from '@/modules/pages/HomePage';
 import ItemPage from '@/modules/pages/itemPage/ItemPage';
@@ -94,7 +99,7 @@ export const App = (): JSX.Element => {
           <Route index element={<RedirectToRootContentPage />} />
           <Route path=":itemId">
             <Route index element={<ItemPage />} />
-            <Route path="autoLogin" element={<AutoLogin />} />
+            <Route path={AUTO_LOGIN_PATH} element={<AutoLogin />} />
           </Route>
         </Route>
         <Route

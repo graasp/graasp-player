@@ -83,3 +83,7 @@ export const PREVENT_GUEST_MESSAGE_ID = 'prevent-guests';
 export const ENROLL_BUTTON_SELECTOR = 'enrollButton';
 export const REQUEST_MEMBERSHIP_BUTTON_ID = 'requestMembershipButton';
 export const FORBIDDEN_CONTENT_ID = 'forbiddenContent';
+
+export const AUTO_LOGIN_CONTAINER_ID = 'autoLoginContainer';
+export const AUTO_LOGIN_ERROR_CONTAINER_ID = 'autoLoginErrorContainer';
+export const AUTO_LOGIN_NO_ITEM_LOGIN_ERROR_ID = 'autoLoginNoItemLoginError';
