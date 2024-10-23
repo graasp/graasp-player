@@ -12,7 +12,7 @@ import { ItemLoginSchemaType } from '@graasp/sdk';
 import { Button } from '@graasp/ui';
 
 import { usePlayerTranslation } from '@/config/i18n';
-import { buildContentPagePath } from '@/config/paths';
+import { HOME_PATH, buildContentPagePath } from '@/config/paths';
 import { hooks, mutations } from '@/config/queryClient';
 import {
   AUTO_LOGIN_CONTAINER_ID,
@@ -54,7 +54,7 @@ export const AutoLogin = (): JSX.Element => {
         <Alert severity="error">
           {t(PLAYER.AUTO_LOGIN_MISSING_REQUIRED_PARAMETER_USERNAME)}
         </Alert>
-        <Button onClick={() => navigate('/')}>
+        <Button onClick={() => navigate(HOME_PATH)}>
           {t(PLAYER.AUTO_LOGIN_GO_TO_HOME)}
         </Button>
       </Wrapper>
@@ -62,7 +62,7 @@ export const AutoLogin = (): JSX.Element => {
   }
 
   if (!itemId) {
-    return <Navigate to="/" />;
+    return <Navigate to={HOME_PATH} />;
   }
 
   // link used for the content
