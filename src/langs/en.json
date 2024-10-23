@@ -51,7 +51,7 @@
   "AUTO_LOGIN_ALREADY_LOGGED_IN": "You are already logged in with another account",
   "AUTO_LOGIN_SIGN_OUT_AND_BACK_IN": "Sign Out and Log Back In",
   "AUTO_LOGIN_GO_TO_HOME": "Go to Home",
-  "AUTO_LOGIN_WELCOME_TITLE": "Welcome to this study!",
+  "AUTO_LOGIN_WELCOME_TITLE": "Welcome!",
   "AUTO_LOGIN_START_BUTTON": "Start",
   "AUTO_LOGIN_MISSING_REQUIRED_PARAMETER_USERNAME": "Missing required parameter username"
 }
