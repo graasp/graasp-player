@@ -3,7 +3,7 @@ import { useParams, useSearchParams } from 'react-router-dom';
 
 import EnterFullscreenIcon from '@mui/icons-material/Fullscreen';
 import ExitFullscreenIcon from '@mui/icons-material/FullscreenExit';
-import { Grid, Stack, Tooltip, styled } from '@mui/material';
+import { Stack, Tooltip, styled } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
 import { DiscriminatedItem } from '@graasp/sdk';
@@ -166,7 +166,7 @@ const SideContent = ({ content, item }: Props): JSX.Element | null => {
     >
       {displayChatbox()}
       {displayPinnedItems()}
-      <Grid id="contentGrid">
+      <Stack id="contentGrid">
         <StyledMain
           isShifted={isChatboxOpen || (isPinnedOpen && pinnedCount > 0)}
         >
@@ -174,7 +174,7 @@ const SideContent = ({ content, item }: Props): JSX.Element | null => {
 
           {content}
         </StyledMain>
-      </Grid>
+      </Stack>
     </Fullscreen>
   );
 };

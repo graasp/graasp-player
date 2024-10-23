@@ -1,14 +1,14 @@
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { Helmet } from 'react-helmet';
 
 import {
   Alert,
+  Grid2 as Grid,
   Pagination,
   PaginationItem,
   Stack,
   Typography,
 } from '@mui/material';
-import Grid2 from '@mui/material/Unstable_Grid2';
 
 import { PackedItem } from '@graasp/sdk';
 
@@ -29,10 +29,8 @@ const { useAccessibleItems } = hooks;
 // should be a multiple of 6 to create full pages that split into 2, 3 and 6 columns
 const PAGE_SIZE = 24;
 
-const GridWrapper = ({ children }: { children: JSX.Element }): JSX.Element => (
-  <Grid2 xs={12} sm={6} md={4} xl={2}>
-    {children}
-  </Grid2>
+const GridWrapper = ({ children }: { children: ReactNode }): JSX.Element => (
+  <Grid size={{ xs: 12, sm: 6, md: 4, xl: 2 }}>{children}</Grid>
 );
 
 const DisplayItems = ({
@@ -41,7 +39,7 @@ const DisplayItems = ({
 }: {
   items?: PackedItem[];
   isLoading: boolean;
-}): JSX.Element[] | JSX.Element | null => {
+}): ReactNode | null => {
   const { t } = usePlayerTranslation();
 
   if (items) {
@@ -89,9 +87,9 @@ const HomePage = (): JSX.Element => {
           <Typography variant="h4" component="h1" mb={1}>
             {t(PLAYER.RECENT_ITEMS_TITLE)}
           </Typography>
-          <Grid2 container spacing={3} justifyItems="center">
+          <Grid container spacing={3} justifyItems="center">
             <DisplayItems items={accessibleItems?.data} isLoading={isLoading} />
-          </Grid2>
+          </Grid>
         </Stack>
         <Pagination
           id={HOME_PAGE_PAGINATION_ID}
