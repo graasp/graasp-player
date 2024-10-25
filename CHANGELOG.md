@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.21.1](https://github.com/graasp/graasp-player/compare/v2.21.0...v2.21.1) (2024-10-25)
+
+
+### Bug Fixes
+
+* update mui version to v6 ([#880](https://github.com/graasp/graasp-player/issues/880)) ([d2a9356](https://github.com/graasp/graasp-player/commit/d2a93565d490ef6e6b498838b40e376bd4258a6b))
+
 ## [2.21.0](https://github.com/graasp/graasp-player/compare/v2.20.0...v2.21.0) (2024-10-23)
 
 
