@@ -1,7 +1,6 @@
 import { API_ROUTES } from '@graasp/query-client';
 import {
   ChatMessage,
-  DiscriminatedItem,
   HttpMethod,
   ItemTag,
   Member,
@@ -21,7 +20,7 @@ import {
   buildGetAppData,
 } from '../fixtures/apps';
 import { MEMBERS } from '../fixtures/members';
-import { MockItem, MockItemTag } from '../fixtures/mockTypes';
+import { MockItem } from '../fixtures/mockTypes';
 import {
   ACCOUNT_HOST,
   ANALYTICS_HOST,
@@ -48,7 +47,6 @@ const {
   buildGetItemLoginSchemaRoute,
   buildGetItemMembershipsForItemsRoute,
   buildGetItemRoute,
-  buildGetItemTagsRoute,
   buildGetMembersByEmailRoute,
   buildGetMembersByIdRoute,
   buildGetCurrentMemberRoute,
@@ -349,48 +347,6 @@ export const mockDefaultDownloadFile = (
       return reply({ fixture: item.filefixture });
     },
   ).as('downloadFile');
-};
-
-export const mockGetItemTags = (
-  items: MockItem[],
-  member: Member | null,
-): void => {
-  cy.intercept(
-    {
-      method: DEFAULT_GET.method,
-      url: new RegExp(`${API_HOST}/${buildGetItemTagsRoute(ID_FORMAT)}$`),
-    },
-    ({ reply, url }) => {
-      const itemId = url.slice(API_HOST.length).split('/')[2];
-      const item = items.find(({ id }) => id === itemId);
-
-      // item does not exist in db
-      if (!item) {
-        return reply({
-          statusCode: StatusCodes.NOT_FOUND,
-        });
-      }
-
-      const error = checkMemberHasAccess({ item, items, member });
-      if (isError(error)) {
-        return reply(error);
-      }
-
-      const itemTags = items
-        .filter((i) => item.path.startsWith(i.path) && (i.public || i.hidden))
-        .map(
-          (i) =>
-            [i.public, i.hidden].filter(Boolean).map((t) => ({
-              ...t,
-              item: i as DiscriminatedItem,
-            })) as ItemTag[],
-        );
-      const result =
-        itemTags.reduce<MockItemTag[]>((acc, tags) => [...acc, ...tags], []) ||
-        [];
-      return reply(result);
-    },
-  ).as('getItemTags');
 };
 
 export const mockGetItemsTags = (

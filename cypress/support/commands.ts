@@ -20,7 +20,6 @@ import {
   mockGetItemChat,
   mockGetItemGeolocation,
   mockGetItemMembershipsForItem,
-  mockGetItemTags,
   mockGetItemsInMap,
   mockGetItemsTags,
   mockGetLoginSchemaType,
@@ -55,8 +54,6 @@ Cypress.Commands.add(
     );
     mockGetItemChat({ chatMessages });
     mockGetItemMembershipsForItem(items, currentMember);
-
-    mockGetItemTags(items, currentMember);
 
     mockGetItemsTags(items, currentMember);
     mockGetLoginSchemaType(itemLogins);
