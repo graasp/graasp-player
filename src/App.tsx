@@ -94,56 +94,56 @@ export const App = (): JSX.Element => {
 
   return (
     <Routes>
-      <Route element={<PageWrapper fullscreen={fullscreen} />}>
-        <Route path={buildMainPath()}>
-          <Route index element={<RedirectToRootContentPage />} />
-          <Route path=":itemId">
-            <Route index element={<ItemPage />} />
-            <Route path={AUTO_LOGIN_PATH} element={<AutoLogin />} />
-          </Route>
+      <Route path={buildMainPath()}>
+        <Route index element={<RedirectToRootContentPage />} />
+        <Route path=":itemId" element={<PageWrapper fullscreen={fullscreen} />}>
+          <Route index element={<ItemPage />} />
+          <Route path={AUTO_LOGIN_PATH} element={<AutoLogin />} />
         </Route>
-        <Route
-          element={
-            // redirect to sign in if not signed in
-            <SignedInWrapper
+      </Route>
+      <Route
+        element={
+          // redirect to sign in if not signed in
+          <SignedInWrapper
+            currentAccount={currentAccount}
+            redirectionLink={buildSignInPath({
+              host: AUTHENTICATION_HOST,
+              redirectionUrl: window.location.href,
+            })}
+            onRedirect={() => {
+              // save current url for later redirection after sign in
+              saveUrlForRedirection(location.pathname, DOMAIN);
+            }}
+          >
+            <PreventGuestWrapper
+              id={PREVENT_GUEST_MESSAGE_ID}
               currentAccount={currentAccount}
-              redirectionLink={buildSignInPath({
-                host: AUTHENTICATION_HOST,
-                redirectionUrl: window.location.href,
-              })}
-              onRedirect={() => {
-                // save current url for later redirection after sign in
-                saveUrlForRedirection(location.pathname, DOMAIN);
-              }}
+              buttonText={t(PLAYER.GUEST_SIGN_OUT_BUTTON)}
+              onButtonClick={() => signOut()}
+              errorText={t(PLAYER.ERROR_MESSAGE)}
+              text={
+                <Trans
+                  t={t}
+                  i18nKey={PLAYER.GUEST_LIMITATION_TEXT}
+                  values={{
+                    name: currentAccount?.name,
+                  }}
+                  components={{ 1: <strong /> }}
+                />
+              }
             >
-              <PreventGuestWrapper
-                id={PREVENT_GUEST_MESSAGE_ID}
-                currentAccount={currentAccount}
-                buttonText={t(PLAYER.GUEST_SIGN_OUT_BUTTON)}
-                onButtonClick={() => signOut()}
-                errorText={t(PLAYER.ERROR_MESSAGE)}
-                text={
-                  <Trans
-                    t={t}
-                    i18nKey={PLAYER.GUEST_LIMITATION_TEXT}
-                    values={{
-                      name: currentAccount?.name,
-                    }}
-                    components={{ 1: <strong /> }}
-                  />
-                }
-              >
-                <Outlet />
-              </PreventGuestWrapper>
-            </SignedInWrapper>
-          }
-        >
+              <Outlet />
+            </PreventGuestWrapper>
+          </SignedInWrapper>
+        }
+      >
+        <Route element={<PageWrapper fullscreen={fullscreen} />}>
           <Route path={HOME_PATH} element={<HomePage />} />
         </Route>
-
-        {/* Default redirect  */}
-        <Route path="*" element={<Navigate to={HOME_PATH} />} />
       </Route>
+
+      {/* Default redirect  */}
+      <Route path="*" element={<Navigate to={HOME_PATH} />} />
     </Routes>
   );
 };
