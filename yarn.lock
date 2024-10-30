@@ -5979,7 +5979,7 @@ __metadata:
     globals: "npm:15.11.0"
     http-status-codes: "npm:2.3.0"
     husky: "npm:9.1.6"
-    i18next: "npm:23.16.3"
+    i18next: "npm:23.16.4"
     katex: "npm:0.16.11"
     lodash.isarray: "npm:4.0.0"
     lodash.truncate: "npm:4.4.2"
@@ -6219,12 +6219,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:23.16.3":
-  version: 23.16.3
-  resolution: "i18next@npm:23.16.3"
+"i18next@npm:23.16.4":
+  version: 23.16.4
+  resolution: "i18next@npm:23.16.4"
   dependencies:
     "@babel/runtime": "npm:^7.23.2"
-  checksum: 10/648ad77d1564bc7d9a5715bab96ff1d504fef2cba8c3564514e199f5947590d78f0b5296bc3ef7c27b9a61bf8e0b4e44158be1c7cea10d4d822d1ec084023f7d
+  checksum: 10/a3aa6189aa4bf3022c372a03c88a2216d420b70f01369bd1017f7e51d0ed012dcda8b5f6476021835ab9574ee0ac5d056049fe4b720b5458b42bcc6ae66bd38d
   languageName: node
   linkType: hard
 
