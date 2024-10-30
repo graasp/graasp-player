@@ -43,7 +43,7 @@
     "@graasp/translations": "1.40.0",
     "@graasp/ui": "5.4.0",
     "@mui/icons-material": "6.1.6",
-    "@mui/lab": "6.0.0-beta.13",
+    "@mui/lab": "6.0.0-beta.14",
     "@mui/material": "6.1.6",
     "@sentry/react": "7.119.2",
     "axios": "1.7.7",
