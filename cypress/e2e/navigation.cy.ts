@@ -7,7 +7,6 @@ import {
 import { buildContentPagePath, buildMainPath } from '@/config/paths';
 import {
   HOME_PAGE_PAGINATION_ID,
-  TREE_FALLBACK_RELOAD_BUTTON_ID,
   TREE_VIEW_ID,
   buildHomePaginationId,
   buildTreeItemClass,
@@ -109,12 +108,8 @@ describe('Internal navigation', () => {
     cy.get(`#${link.id}`).click();
 
     cy.url().should('contain', url);
-    // wait for page to stabilize
-    cy.wait(2000);
-    cy.get('h2').should('contain', target.name);
 
-    // since the tree view crashes, expect the reload button
-    cy.get(`#${TREE_FALLBACK_RELOAD_BUTTON_ID}`).click();
+    cy.get('h2').should('contain', target.name);
 
     cy.get(`#${TREE_VIEW_ID}`).should('contain', target.name);
   });
