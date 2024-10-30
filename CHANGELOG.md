@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.21.2](https://github.com/graasp/graasp-player/compare/v2.21.1...v2.21.2) (2024-10-30)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @mui/lab to v6.0.0-beta.14 ([#890](https://github.com/graasp/graasp-player/issues/890)) ([b2cde80](https://github.com/graasp/graasp-player/commit/b2cde80ecd0587e5913332c0819464d83a652cc9))
+* move page wrapper where the ids are known ([#887](https://github.com/graasp/graasp-player/issues/887)) ([dbf4944](https://github.com/graasp/graasp-player/commit/dbf4944046db0e62d9b0c280a9a8a2e2169929b5))
+* update deps ([14a9ef7](https://github.com/graasp/graasp-player/commit/14a9ef723d3fd95aed72ad7d04c7c5d9d885628b))
+
 ## [2.21.1](https://github.com/graasp/graasp-player/compare/v2.21.0...v2.21.1) (2024-10-25)
 
 
