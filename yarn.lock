@@ -1452,10 +1452,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@faker-js/faker@npm:9.1.0":
-  version: 9.1.0
-  resolution: "@faker-js/faker@npm:9.1.0"
-  checksum: 10/2f8f8386b7ae1ed35b885563d7b051bc2b9b9048bf8f96111d3dddf1c621bc28523132290049eb02093ce5c6e8d21df43736afeadf353e7f041153911c28ef05
+"@faker-js/faker@npm:9.2.0":
+  version: 9.2.0
+  resolution: "@faker-js/faker@npm:9.2.0"
+  checksum: 10/c233aaa41ebc4f4bed36c1304c399c424b9e5abca9cb8fe54ce73d4162ec7acd66f294b90c85ed7a5df774400e44f0a10364bdd41f49e72cb519a48b5948939f
   languageName: node
   linkType: hard
 
@@ -1529,34 +1529,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/query-client@npm:5.1.0":
-  version: 5.1.0
-  resolution: "@graasp/query-client@npm:5.1.0"
+"@graasp/query-client@github:graasp/graasp-query-client#remove-displayName":
+  version: 5.4.1
+  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=507890edce71c9f0af1dddbc2b11c5c88c4e9dff"
   dependencies:
-    "@tanstack/react-query": "npm:5.59.8"
-    "@tanstack/react-query-devtools": "npm:5.59.8"
+    "@tanstack/react-query": "npm:5.59.20"
+    "@tanstack/react-query-devtools": "npm:5.59.20"
     axios: "npm:1.7.7"
     http-status-codes: "npm:2.3.0"
   peerDependencies:
-    "@graasp/sdk": ^4.0.0
+    "@graasp/sdk": ^4.0.0 || ^5.0.0
     "@graasp/translations": "*"
     react: ^18.0.0
-  checksum: 10/947d033c1fd0f734fa4a048d40d5f9bbc5f08d97b0eb7268a58046619179d417cbd2ebbe87866f9ffdb6c57de87179699fb9bc95c8682842b3323d2ac0d896f7
+  checksum: 10/6d660bd98dda215d70736cacf5880bccbaad46fceca291f881eecbaa074bae64bd86aa61af087bf7b980ac1074421a4b91a95d0eb28882a2b26bb6bcece9ee88
   languageName: node
   linkType: hard
 
-"@graasp/sdk@npm:4.33.2":
-  version: 4.33.2
-  resolution: "@graasp/sdk@npm:4.33.2"
+"@graasp/sdk@npm:5.3.1":
+  version: 5.3.1
+  resolution: "@graasp/sdk@npm:5.3.1"
   dependencies:
-    "@faker-js/faker": "npm:9.1.0"
+    "@faker-js/faker": "npm:9.2.0"
     filesize: "npm:10.1.6"
     js-cookie: "npm:3.0.5"
-    validator: "npm:13.12.0"
   peerDependencies:
     date-fns: ^3 || ^4.0.0
     uuid: ^9 || ^10 || ^11.0.0
-  checksum: 10/0c239f62e088ff91c7bbb11b0a4c105d4de06ffe9fb5d15752e6ab4192b02ca8da6fd5a6b6e7a02bb66912b173c88d2db51668e75df83b956447b5a388e5d4bf
+  checksum: 10/9c414a3763c049e0360d78ce2c9f584621fdd829826e08c1c6416cdc02e1bbeefc7e55fedba6a09a86f5515a13c726d7c1b8558842e137fe04abc4ca8f172564
   languageName: node
   linkType: hard
 
@@ -1580,9 +1579,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/ui@npm:5.4.0":
-  version: 5.4.0
-  resolution: "@graasp/ui@npm:5.4.0"
+"@graasp/ui@github:graasp/graasp-ui#1113-collapse-name":
+  version: 5.4.1
+  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=5c84f110ab33ceecbb7c6a0d9b6784099d6a28e0"
   dependencies:
     http-status-codes: "npm:2.3.0"
     interweave: "npm:13.1.0"
@@ -1592,12 +1591,12 @@ __metadata:
     react-dnd-html5-backend: "npm:16.0.1"
     react-quill: "npm:2.0.0"
     react-rnd: "npm:10.4.13"
-    uuid: "npm:10.0.0"
+    uuid: "npm:11.0.3"
   peerDependencies:
     "@emotion/cache": ~11.10.7 || ~11.11.0 || ~11.13.0
     "@emotion/react": ~11.10.6 || ~11.11.0 || ~11.13.0
     "@emotion/styled": ~11.10.6 || ~11.11.0 || ~11.13.0
-    "@graasp/sdk": ^4.29.0
+    "@graasp/sdk": ^4.29.0 || ^5.0.0
     "@graasp/stylis-plugin-rtl": ^2
     "@graasp/translations": ^1.23.0
     "@mui/icons-material": ^6
@@ -1605,13 +1604,13 @@ __metadata:
     "@mui/material": ^6
     i18next: ^22.4.15 || ^23.0.0
     katex: 0.16.11
-    lucide-react: ^0.417.0 || ^0.429.0 || ^0.436.0 || ^0.439.0 || ^0.441.0 || ^0.446.0 || ^0.447.0 || ^0.451.0
+    lucide-react: ^0.417.0 || ^0.429.0 || ^0.436.0 || ^0.439.0 || ^0.441.0 || ^0.446.0 || ^0.447.0 || ^0.451.0 || ^0.456.0
     react: ^18.0.0
     react-dom: ^18.0.0
     react-i18next: ^15.0.0
     react-router-dom: ^6.11.0
     stylis: ^4.1.3
-  checksum: 10/cc36962378a4a7921910865584770816666b96c7db9f33fe0db5a927dc067fbbd2bcc3b87b7cd666c8a1592246c704d7ceb04c134339e02d22ffd0cd451bdc0f
+  checksum: 10/a91bb6d7d6f94b5ccb364144aa6f0fe7f404ddca9cde02b4f47a4b50b9c571a45bebcde21eb4750e6299c998dcfcce9cb5242d69d0fedfd1dad10dcf29c4dba9
   languageName: node
   linkType: hard
 
@@ -2386,40 +2385,40 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/query-core@npm:5.59.6":
-  version: 5.59.6
-  resolution: "@tanstack/query-core@npm:5.59.6"
-  checksum: 10/4cd634f957175dde80ed8f2b47eb14803d959073b6dccb7868f5dd6ddce26e41820b2dfc879dfc799de0726ae640201440c7d1d95113813bbcb25b03ec05949e
+"@tanstack/query-core@npm:5.59.20":
+  version: 5.59.20
+  resolution: "@tanstack/query-core@npm:5.59.20"
+  checksum: 10/efe34f0a05f4cdef833c3885f466bab8ecee22677a9056d161087658539c1dd14063cc19c08b8f2e56cafc4692fcde7fb4fc4962df59159b1da12c49e69892df
   languageName: node
   linkType: hard
 
-"@tanstack/query-devtools@npm:5.58.0":
-  version: 5.58.0
-  resolution: "@tanstack/query-devtools@npm:5.58.0"
-  checksum: 10/ca16c47c943ea392dfddc301f7e09ecdb0c8b905fb684b8f26b908a244e2e897679efb0ead5fa8e728711017341fdd91d8c51ebb19f746819e26ade5549f539e
+"@tanstack/query-devtools@npm:5.59.20":
+  version: 5.59.20
+  resolution: "@tanstack/query-devtools@npm:5.59.20"
+  checksum: 10/0bb2995337d78910c7677f780af42cd4285b39d618cd7876e24ec16243783d4cfe9e4d067d210d5337aefaad0a21928c5e4cb30fb4c08a09521625fcfe9c14d4
   languageName: node
   linkType: hard
 
-"@tanstack/react-query-devtools@npm:5.59.8":
-  version: 5.59.8
-  resolution: "@tanstack/react-query-devtools@npm:5.59.8"
+"@tanstack/react-query-devtools@npm:5.59.20":
+  version: 5.59.20
+  resolution: "@tanstack/react-query-devtools@npm:5.59.20"
   dependencies:
-    "@tanstack/query-devtools": "npm:5.58.0"
+    "@tanstack/query-devtools": "npm:5.59.20"
   peerDependencies:
-    "@tanstack/react-query": ^5.59.8
+    "@tanstack/react-query": ^5.59.20
     react: ^18 || ^19
-  checksum: 10/1e84af45cd6c722b296aef39ac2e7c98ef0db8c963bc43ebd802adc7077d514d06189862b02351e85878616542877af64266965147d75470cf834a23a9ee07ea
+  checksum: 10/71cf2fa81ce1d7a7e35acd9f45a4c398272f69e8ab962c5fcf686b8bf5144ca8e8702049bad452186963b4b820703c19ba9372149fd56ec95fef5390c5d7346c
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:5.59.8":
-  version: 5.59.8
-  resolution: "@tanstack/react-query@npm:5.59.8"
+"@tanstack/react-query@npm:5.59.20":
+  version: 5.59.20
+  resolution: "@tanstack/react-query@npm:5.59.20"
   dependencies:
-    "@tanstack/query-core": "npm:5.59.6"
+    "@tanstack/query-core": "npm:5.59.20"
   peerDependencies:
     react: ^18 || ^19
-  checksum: 10/246cfa18e991782c97631ab30fc95987be81c7a25b057b65c3530a06f9e8acc98475ce8def29486be8d4c8f9ad391b9cfa2195b89e11dcd82f43a4ca172154f6
+  checksum: 10/4bfface953fedb124c5b30d46d22e46b18dc9c53a30ad20493c2ce70dc03058d78815c2a8a8a4f0bd279dae29469b923ccb346c69485f00c1808fa7ac908d6b4
   languageName: node
   linkType: hard
 
@@ -5942,11 +5941,11 @@ __metadata:
     "@eslint/eslintrc": "npm:3.1.0"
     "@eslint/js": "npm:9.13.0"
     "@graasp/chatbox": "npm:3.3.0"
-    "@graasp/query-client": "npm:5.1.0"
-    "@graasp/sdk": "npm:4.33.2"
+    "@graasp/query-client": "github:graasp/graasp-query-client#remove-displayName"
+    "@graasp/sdk": "npm:5.3.1"
     "@graasp/stylis-plugin-rtl": "npm:2.2.0"
     "@graasp/translations": "npm:1.40.0"
-    "@graasp/ui": "npm:5.4.0"
+    "@graasp/ui": "github:graasp/graasp-ui#1113-collapse-name"
     "@mui/icons-material": "npm:6.1.6"
     "@mui/lab": "npm:6.0.0-beta.14"
     "@mui/material": "npm:6.1.6"
@@ -10777,15 +10776,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:10.0.0":
-  version: 10.0.0
-  resolution: "uuid@npm:10.0.0"
-  bin:
-    uuid: dist/bin/uuid
-  checksum: 10/35aa60614811a201ff90f8ca5e9ecb7076a75c3821e17f0f5ff72d44e36c2d35fcbc2ceee9c4ac7317f4cc41895da30e74f3885e30313bee48fda6338f250538
-  languageName: node
-  linkType: hard
-
 "uuid@npm:11.0.2":
   version: 11.0.2
   resolution: "uuid@npm:11.0.2"
@@ -10795,19 +10785,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"uuid@npm:11.0.3":
+  version: 11.0.3
+  resolution: "uuid@npm:11.0.3"
+  bin:
+    uuid: dist/esm/bin/uuid
+  checksum: 10/251385563195709eb0697c74a834764eef28e1656d61174e35edbd129288acb4d95a43f4ce8a77b8c2fc128e2b55924296a0945f964b05b9173469d045625ff2
+  languageName: node
+  linkType: hard
+
 "uuid@npm:^8.3.2":
   version: 8.3.2
   resolution: "uuid@npm:8.3.2"
   bin:
     uuid: dist/bin/uuid
   checksum: 10/9a5f7aa1d6f56dd1e8d5f2478f855f25c645e64e26e347a98e98d95781d5ed20062d6cca2eecb58ba7c84bc3910be95c0451ef4161906abaab44f9cb68ffbdd1
-  languageName: node
-  linkType: hard
-
-"validator@npm:13.12.0":
-  version: 13.12.0
-  resolution: "validator@npm:13.12.0"
-  checksum: 10/db6eb0725e2b67d60d30073ae8573982713b5903195d031dc3c7db7e82df8b74e8c13baef8e2106d146d979599fd61a06cde1fec5c148e4abd53d52817ff0fd9
   languageName: node
   linkType: hard
 

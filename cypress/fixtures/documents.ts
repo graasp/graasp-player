@@ -29,7 +29,6 @@ export const GRAASP_DOCUMENT_ITEM_VISIBLE: DocumentItemType =
   DocumentItemFactory({
     id: 'fdf09f5a-5688-11eb-ae93-0242ac130009',
     name: 'Visible document',
-    displayName: 'Visible document',
     description: 'a description for graasp text',
     path: 'ecafbd2a_5688_11eb_ae93_0242ac130008.fdf09f5a_5688_11eb_ae93_0242ac130009',
     creator: CURRENT_USER,

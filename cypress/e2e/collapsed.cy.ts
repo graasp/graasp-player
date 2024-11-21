@@ -17,6 +17,6 @@ describe('Collapsible', () => {
     // collapsible document should show as collapsed
     cy.get(`#${buildCollapsibleId(collapsedShortcut.id)}`)
       .should('be.visible')
-      .and('contain.text', collapsedShortcut.displayName);
+      .and('contain.text', collapsedShortcut.name);
   });
 });

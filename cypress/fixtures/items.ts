@@ -25,7 +25,6 @@ export const DEFAULT_FOLDER_ITEM: MockItem = {
   description: '',
   id: '',
   name: '',
-  displayName: 'default Display Name',
   path: '',
   type: ItemType.FOLDER,
   extra: {
@@ -322,7 +321,6 @@ export const PINNED_AND_HIDDEN_ITEM: { items: MockItem[] } = {
     {
       id: 'fdf09f5a-5688-11eb-ae93-0242ac130008',
       name: 'Normal child',
-      displayName: 'Normal child',
       description: 'I am a normal item',
       type: ItemType.DOCUMENT,
       extra: { [ItemType.DOCUMENT]: { content: 'hello' } },
@@ -446,7 +444,6 @@ export const FOLDER_WITH_COLLAPSIBLE_SHORTCUT_ITEMS: { items: MockItem[] } = {
       ...DEFAULT_FOLDER_ITEM,
       id: 'ecafbd2a-5688-11eb-ae93-0242ac130008',
       name: 'parent folder',
-      displayName: 'parent folder',
       path: 'ecafbd2a_5688_11eb_ae93_0242ac130008',
       settings: {
         isPinned: false,

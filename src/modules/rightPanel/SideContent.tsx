@@ -128,7 +128,7 @@ const SideContent = ({ content, item }: Props): JSX.Element | null => {
       <div id={CHATBOX_DRAWER_ID}>
         <SideDrawer
           title={t(PLAYER.ITEM_CHATBOX_TITLE, {
-            name: item.displayName,
+            name: item.name,
           })}
           onClose={toggleChatbox}
           open={isChatboxOpen}

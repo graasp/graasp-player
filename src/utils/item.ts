@@ -1,8 +1,8 @@
 import {
   DiscriminatedItem,
-  ItemTag,
-  ItemTagType,
   ItemType,
+  ItemVisibility,
+  ItemVisibilityType,
   PackedItem,
 } from '@graasp/sdk';
 
@@ -19,7 +19,7 @@ export const isError = (error?: { statusCode: number }): boolean =>
  */
 export const isHidden = (
   item: DiscriminatedItem,
-  tags?: ItemTag[] | { statusCode: number },
+  tags?: ItemVisibility[] | { statusCode: number },
   option?: { exactPath: boolean },
 ): boolean => {
   // if there are not tags then the item is not hidden
@@ -31,7 +31,9 @@ export const isHidden = (
     return false;
   }
   if (Array.isArray(tags)) {
-    const hiddenTags = tags?.filter(({ type }) => type === ItemTagType.Hidden);
+    const hiddenTags = tags?.filter(
+      ({ type }) => type === ItemVisibilityType.Hidden,
+    );
     if (option?.exactPath) {
       return hiddenTags?.some((t) => item.path === t.item.path);
     }

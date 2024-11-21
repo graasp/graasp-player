@@ -110,7 +110,7 @@ const PageWrapper = ({ fullscreen }: PageWrapperProps): JSX.Element => {
           }
         />
       }
-      headerLeftContent={<Typography noWrap>{item?.displayName}</Typography>}
+      headerLeftContent={<Typography noWrap>{item?.name}</Typography>}
       headerRightContent={<UserSwitchWrapper />}
     >
       <Outlet />

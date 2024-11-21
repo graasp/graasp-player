@@ -6,7 +6,7 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
-import { ItemType, PackedItem, formatDate } from '@graasp/sdk';
+import { PackedItem, formatDate } from '@graasp/sdk';
 
 import { usePlayerTranslation } from '@/config/i18n';
 
@@ -44,10 +44,7 @@ const SimpleCard = ({ item }: Props): JSX.Element => {
                 overflow="hidden"
                 noWrap
               >
-                {
-                  // this is because we currently only allow to change the displayName of text elements
-                  item.type === ItemType.DOCUMENT ? item.displayName : item.name
-                }
+                {item.name}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 {formatDate(item.updatedAt, { locale: i18n.language })}

@@ -233,10 +233,7 @@ const DocumentContent = ({ item }: { item: DocumentItemType }): JSX.Element => {
   return (
     <DocumentItem
       id={buildDocumentId(item.id)}
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      showTitle={item.settings?.showTitle}
-      item={{ ...item, name: item.displayName }}
+      item={item}
       showCollapse={item.settings?.isCollapsible}
       onCollapse={onCollapse}
     />
@@ -327,7 +324,7 @@ const H5PContent = ({ item }: { item: H5PItemType }): JSX.Element => {
   return (
     <H5PItem
       itemId={item.id}
-      itemName={item.displayName}
+      itemName={item.name}
       contentId={contentId}
       integrationUrl={H5P_INTEGRATION_URL}
       showCollapse={item.settings?.isCollapsible}
