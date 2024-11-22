@@ -20,13 +20,14 @@ export const IMAGE_ITEM_DEFAULT: LocalFileItemType & { filepath: string } = {
   type: ItemType.LOCAL_FILE,
   path: 'bd5519a2_5ba9_4305_b221_185facbe6a99',
   creator: CURRENT_USER,
-  createdAt: new Date(Date.parse('2021-03-16T16:00:50.968Z')),
-  updatedAt: new Date(Date.parse('2021-03-16T16:00:52.655Z')),
+  createdAt: '2021-03-16T16:00:50.968Z',
+  updatedAt: '2021-03-16T16:00:52.655Z',
   extra: buildFileExtra({
     name: 'icon.png',
     path: '9a95/e2e1/2a7b-1615910428274',
     size: 32439,
     mimetype: MimeTypes.Image.PNG,
+    content: '',
   }),
   // for testing
   filepath: MOCK_IMAGE_URL,
@@ -34,6 +35,7 @@ export const IMAGE_ITEM_DEFAULT: LocalFileItemType & { filepath: string } = {
     isPinned: false,
     showChatbox: false,
   },
+  lang: 'en',
 };
 
 export const VIDEO_ITEM_DEFAULT: LocalFileItemType & { filepath: string } = {
@@ -43,13 +45,14 @@ export const VIDEO_ITEM_DEFAULT: LocalFileItemType & { filepath: string } = {
   type: ItemType.LOCAL_FILE,
   path: 'qd5519a2_5ba9_4305_b221_185facbe6a99',
   creator: CURRENT_USER,
-  createdAt: new Date(Date.parse('2021-03-16T16:00:50.968Z')),
-  updatedAt: new Date(Date.parse('2021-03-16T16:00:52.655Z')),
+  createdAt: '2021-03-16T16:00:50.968Z',
+  updatedAt: '2021-03-16T16:00:52.655Z',
   extra: buildFileExtra({
     name: 'video.mp4',
     path: '9a95/e2e1/2a7b-1615910428274',
     size: 52345,
     mimetype: MimeTypes.Video.MP4,
+    content: '',
   }),
   // for testing
   filepath: MOCK_VIDEO_URL,
@@ -57,6 +60,7 @@ export const VIDEO_ITEM_DEFAULT: LocalFileItemType & { filepath: string } = {
     isPinned: false,
     showChatbox: false,
   },
+  lang: 'en',
 };
 
 export const PDF_ITEM_DEFAULT: LocalFileItemType & { filepath: string } = {
@@ -66,13 +70,14 @@ export const PDF_ITEM_DEFAULT: LocalFileItemType & { filepath: string } = {
   type: ItemType.LOCAL_FILE,
   path: 'cd5519a2_5ba9_4305_b221_185facbe6a99',
   creator: CURRENT_USER,
-  createdAt: new Date(Date.parse('2021-03-16T16:00:50.968Z')),
-  updatedAt: new Date(Date.parse('2021-03-16T16:00:52.655Z')),
+  createdAt: '2021-03-16T16:00:50.968Z',
+  updatedAt: '2021-03-16T16:00:52.655Z',
   extra: buildFileExtra({
     name: 'doc.pdf',
     path: '9a95/e2e1/2a7b-1615910428274',
     size: 54321,
     mimetype: MimeTypes.PDF,
+    content: '',
   }),
   // for testing
   filepath: MOCK_PDF_URL,
@@ -80,6 +85,7 @@ export const PDF_ITEM_DEFAULT: LocalFileItemType & { filepath: string } = {
     isPinned: false,
     showChatbox: false,
   },
+  lang: 'en',
 };
 
 export const IMAGE_ITEM_S3: S3FileItemType = {
@@ -89,18 +95,20 @@ export const IMAGE_ITEM_S3: S3FileItemType = {
   type: ItemType.S3_FILE,
   path: 'ad5519a2_5ba9_4305_b221_185facbe6a99',
   creator: CURRENT_USER,
-  createdAt: new Date(Date.parse('2021-03-16T16:00:50.968Z')),
-  updatedAt: new Date(Date.parse('2021-03-16T16:00:52.655Z')),
+  createdAt: '2021-03-16T16:00:50.968Z',
+  updatedAt: '2021-03-16T16:00:52.655Z',
   extra: buildS3FileExtra({
     name: 'mock-image',
     path: MOCK_IMAGE_URL, // for testing
     size: 32439,
     mimetype: MimeTypes.Image.PNG,
+    content: '',
   }),
   settings: {
     isPinned: false,
     showChatbox: false,
   },
+  lang: 'en',
 };
 
 export const VIDEO_ITEM_S3: S3FileItemType = {
@@ -110,18 +118,20 @@ export const VIDEO_ITEM_S3: S3FileItemType = {
   type: ItemType.S3_FILE,
   path: 'qd5519a2_5ba9_4305_b221_185facbe6a93',
   creator: CURRENT_USER,
-  createdAt: new Date(Date.parse('2021-03-16T16:00:50.968Z')),
-  updatedAt: new Date(Date.parse('2021-03-16T16:00:52.655Z')),
+  createdAt: '2021-03-16T16:00:50.968Z',
+  updatedAt: '2021-03-16T16:00:52.655Z',
   extra: buildS3FileExtra({
     name: 'mock-video',
     path: MOCK_VIDEO_URL, // for testing
     size: 52345,
     mimetype: MimeTypes.Video.MP4,
+    content: '',
   }),
   settings: {
     isPinned: false,
     showChatbox: false,
   },
+  lang: 'en',
 };
 
 export const PDF_ITEM_S3: S3FileItemType = {
@@ -131,16 +141,18 @@ export const PDF_ITEM_S3: S3FileItemType = {
   type: ItemType.S3_FILE,
   path: 'bd5519a2_5ba9_4305_b221_185facbe6a99',
   creator: CURRENT_USER,
-  createdAt: new Date(Date.parse('2021-03-16T16:00:50.968Z')),
-  updatedAt: new Date(Date.parse('2021-03-16T16:00:52.655Z')),
+  createdAt: '2021-03-16T16:00:50.968Z',
+  updatedAt: '2021-03-16T16:00:52.655Z',
   extra: buildS3FileExtra({
     name: 'mock-pdf',
     path: MOCK_PDF_URL, // for testing
     size: 54321,
     mimetype: MimeTypes.PDF,
+    content: '',
   }),
   settings: {
     isPinned: false,
     showChatbox: false,
   },
+  lang: 'en',
 };

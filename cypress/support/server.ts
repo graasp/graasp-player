@@ -2,7 +2,7 @@ import { API_ROUTES } from '@graasp/query-client';
 import {
   ChatMessage,
   HttpMethod,
-  ItemTag,
+  ItemVisibility,
   Member,
   PermissionLevel,
   ResultOf,
@@ -33,7 +33,6 @@ import {
   DEFAULT_GET,
   DEFAULT_PATCH,
   DEFAULT_POST,
-  EMAIL_FORMAT,
   checkMemberHasAccess,
   getChatMessagesById,
   getChildren,
@@ -47,8 +46,6 @@ const {
   buildGetItemLoginSchemaRoute,
   buildGetItemMembershipsForItemsRoute,
   buildGetItemRoute,
-  buildGetMembersByEmailRoute,
-  buildGetMembersByIdRoute,
   buildGetCurrentMemberRoute,
   SIGN_OUT_ROUTE,
   buildGetItemGeolocationRoute,
@@ -280,31 +277,6 @@ export const mockGetDescendants = (
   ).as('getDescendants');
 };
 
-export const mockGetMemberBy = (
-  members: Member[],
-  shouldThrowError?: boolean,
-): void => {
-  cy.intercept(
-    {
-      method: DEFAULT_GET.method,
-      url: new RegExp(
-        `${API_HOST}/${parseStringToRegExp(buildGetMembersByEmailRoute([EMAIL_FORMAT]))}`,
-      ),
-    },
-    ({ reply, url }) => {
-      if (shouldThrowError) {
-        return reply({ statusCode: StatusCodes.BAD_REQUEST });
-      }
-
-      const emailReg = new RegExp(EMAIL_FORMAT);
-      const mail = emailReg.exec(url)?.[0];
-      const member = members.find(({ email }) => email === mail);
-
-      return reply([member]);
-    },
-  ).as('getMemberBy');
-};
-
 export const mockDefaultDownloadFile = (
   { items, currentMember }: { items: MockItem[]; currentMember: Member | null },
   shouldThrowError?: boolean,
@@ -375,11 +347,11 @@ export const mockGetItemsTags = (
                     ...acc.data,
                     [item.id]: ([item.public, item.hidden]
                       .filter(Boolean)
-                      .map((t) => ({ item, ...t })) ?? []) as ItemTag[],
+                      .map((t) => ({ item, ...t })) ?? []) as ItemVisibility[],
                   },
                 };
           },
-          { data: {}, errors: [] } as ResultOf<ItemTag[]>,
+          { data: {}, errors: [] } as ResultOf<ItemVisibility[]>,
         );
       reply({
         statusCode: StatusCodes.OK,
@@ -458,32 +430,6 @@ export const mockAnalytics = (): void => {
       reply(redirectionReply);
     },
   ).as('analytics');
-};
-
-export const mockGetMembers = (members: Member[]): void => {
-  cy.intercept(
-    {
-      method: DEFAULT_GET.method,
-      url: `${API_HOST}/${buildGetMembersByIdRoute([''])}*`,
-    },
-    ({ url, reply }) => {
-      const memberIds = new URLSearchParams(url).getAll('id');
-      const allMembers = memberIds?.map((id) =>
-        members.find(({ id: mId }) => mId === id),
-      );
-      // member does not exist in db
-      if (!allMembers) {
-        return reply({
-          statusCode: StatusCodes.NOT_FOUND,
-        });
-      }
-
-      return reply({
-        body: allMembers,
-        statusCode: StatusCodes.OK,
-      });
-    },
-  ).as('getMembers');
 };
 
 export const mockProfilePage = (): void => {

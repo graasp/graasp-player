@@ -1,4 +1,4 @@
-import { ItemTagType, Member } from '@graasp/sdk';
+import { ItemVisibilityType, Member } from '@graasp/sdk';
 
 import { v4 } from 'uuid';
 
@@ -9,7 +9,7 @@ export const mockItemTag = ({
   creator = CURRENT_USER,
   type,
 }: {
-  type: ItemTagType;
+  type: ItemVisibilityType;
   creator?: Member;
 }): MockItemTag => ({
   id: v4(),
@@ -18,6 +18,6 @@ export const mockItemTag = ({
   creator,
 });
 export const mockHiddenTag = (creator?: Member): MockItemTag =>
-  mockItemTag({ creator, type: ItemTagType.Hidden });
+  mockItemTag({ creator, type: ItemVisibilityType.Hidden });
 export const mockPublicTag = (creator?: Member): MockItemTag =>
-  mockItemTag({ creator, type: ItemTagType.Public });
+  mockItemTag({ creator, type: ItemVisibilityType.Public });
