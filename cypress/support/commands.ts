@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 import { ChatMessage, CookieKeys, Member } from '@graasp/sdk';
 
-import { CURRENT_USER, MEMBERS } from '../fixtures/members';
+import { CURRENT_USER } from '../fixtures/members';
 import { MockItem } from '../fixtures/mockTypes';
 import {
   mockAnalytics,
@@ -23,8 +23,6 @@ import {
   mockGetItemsInMap,
   mockGetItemsTags,
   mockGetLoginSchemaType,
-  mockGetMemberBy,
-  mockGetMembers,
   mockPatchAppData,
   mockPostAppData,
   mockProfilePage,
@@ -37,10 +35,8 @@ Cypress.Commands.add(
     items = [],
     itemLogins = {},
     chatMessages = [],
-    members = Object.values(MEMBERS),
     currentMember = CURRENT_USER,
     getItemError = false,
-    getMemberError = false,
     getAppLinkError = false,
     getCurrentMemberError = false,
   } = {}) => {
@@ -62,8 +58,6 @@ Cypress.Commands.add(
 
     mockGetDescendants(items, currentMember);
 
-    mockGetMemberBy(members, getMemberError);
-
     mockGetCurrentMember(currentMember, getCurrentMemberError);
 
     mockDefaultDownloadFile({ items, currentMember });
@@ -73,7 +67,6 @@ Cypress.Commands.add(
     mockSignOut();
     mockProfilePage();
 
-    mockGetMembers(members);
     mockAuthPage();
     mockGetAppLink(getAppLinkError);
     mockAppApiAccessToken(getAppLinkError);
@@ -119,23 +112,19 @@ declare global {
       setUpApi({
         items,
         itemLogins,
-        members,
         chatMessages,
         currentMember,
         storedSessions,
         getItemError,
-        getMemberError,
         getCurrentMemberError,
         getAppLinkError,
       }?: {
         items?: MockItem[];
         itemLogins?: { [key: string]: string };
-        members?: Member[];
         chatMessages?: ChatMessage[];
         currentMember?: Member | null;
         storedSessions?: { id: string; token: string; createdAt: number }[];
         getItemError?: boolean;
-        getMemberError?: boolean;
         getCurrentMemberError?: boolean;
         getAppLinkError?: boolean;
       }): Chainable<void>;
