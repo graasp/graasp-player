@@ -1529,9 +1529,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/query-client@npm:5.5.0":
-  version: 5.5.0
-  resolution: "@graasp/query-client@npm:5.5.0"
+"@graasp/query-client@npm:5.6.1":
+  version: 5.6.1
+  resolution: "@graasp/query-client@npm:5.6.1"
   dependencies:
     "@tanstack/react-query": "npm:5.61.0"
     "@tanstack/react-query-devtools": "npm:5.61.0"
@@ -1541,7 +1541,7 @@ __metadata:
     "@graasp/sdk": ^4.0.0 || ^5.0.0
     "@graasp/translations": "*"
     react: ^18.0.0
-  checksum: 10/05562b2f81c6da283ff7857fd5ec3203f0b2e3a59513a7c6e2daa12cfdac7a7ea9f25d3664ea992c5bd8340f1e440d0b82ae714e0de60d04626f87fdda8c58a5
+  checksum: 10/633a1a3168535af4fc3b952f00575c62ecfed5c849309db288cc6a22c7230723bc26f6a6016dd92e197ceee4cdd103433691f854cfd4cae4128d6d9597e1e691
   languageName: node
   linkType: hard
 
@@ -5970,7 +5970,7 @@ __metadata:
     "@eslint/eslintrc": "npm:3.2.0"
     "@eslint/js": "npm:9.15.0"
     "@graasp/chatbox": "npm:3.3.0"
-    "@graasp/query-client": "npm:5.5.0"
+    "@graasp/query-client": "npm:5.6.1"
     "@graasp/sdk": "npm:5.3.1"
     "@graasp/stylis-plugin-rtl": "npm:2.2.0"
     "@graasp/translations": "npm:1.42.0"

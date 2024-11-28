@@ -37,7 +37,7 @@
     "@emotion/react": "11.13.5",
     "@emotion/styled": "11.13.5",
     "@graasp/chatbox": "3.3.0",
-    "@graasp/query-client": "5.5.0",
+    "@graasp/query-client": "5.6.1",
     "@graasp/sdk": "5.3.1",
     "@graasp/stylis-plugin-rtl": "2.2.0",
     "@graasp/translations": "1.42.0",
